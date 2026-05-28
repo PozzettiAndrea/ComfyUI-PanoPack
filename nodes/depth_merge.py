@@ -27,6 +27,137 @@ def _p(msg: str) -> None:
     print(f"[PanoramaDepthMerge] {msg}", file=sys.stderr, flush=True)
 
 
+def _build_debug_image(
+    distance_maps, weights, extr_list, intr_list,
+    depth_np, out_width: int, out_height: int,
+):
+    """Render a per-pixel disagreement viridis map + text caption.
+
+    For each equirect pixel, reproject every face's input distance back to
+    that pixel via the merger's same projection (`p_cam = R @ dir + t`,
+    `K @ p_cam`, perspective divide). Pixels covered by ≥2 faces get a
+    std across faces, normalized to a percentage of the merged depth.
+    """
+    import cv2
+    from PIL import Image, ImageDraw, ImageFont
+    from ._vendor.worldgen.src.panorama_utils import spherical_uv_to_directions
+    import utils3d
+    import matplotlib.cm as mcm
+
+    H, W = int(out_height), int(out_width)
+    N = len(distance_maps)
+
+    # Equirect uv grid → unit world directions (same as the GPU merger).
+    uv = utils3d.np.uv_map((H, W))
+    dirs = spherical_uv_to_directions(uv).astype(np.float32).reshape(-1, 3)  # (H*W, 3)
+
+    sum_d = np.zeros(H * W, dtype=np.float64)
+    sum_d2 = np.zeros(H * W, dtype=np.float64)
+    n_cov = np.zeros(H * W, dtype=np.int32)
+
+    for i in range(N):
+        ext = extr_list[i]
+        R = ext[:3, :3].astype(np.float32)
+        t = ext[:3, 3].astype(np.float32)
+        K = intr_list[i].astype(np.float32)
+        d_face = np.asarray(distance_maps[i], dtype=np.float32)
+        fh, fw = d_face.shape
+        w_face = np.asarray(weights[i], dtype=np.float32)
+        if w_face.shape != (fh, fw):
+            w_face = (w_face > 0.5).astype(np.float32)
+
+        # Project equirect rays into face camera, normalize, divide.
+        p_cam = dirs @ R.T + t                                  # (H*W, 3)
+        in_front = p_cam[:, 2] > 0
+        p_proj = p_cam @ K.T                                    # (H*W, 3)
+        safe_w = np.where(p_proj[:, 2] > 1e-12, p_proj[:, 2], 1.0)
+        uv_face = p_proj[:, :2] / safe_w[:, None]               # (H*W, 2) in [0,1]
+        in_face = (
+            in_front
+            & (uv_face[:, 0] >= 0) & (uv_face[:, 0] <= 1)
+            & (uv_face[:, 1] >= 0) & (uv_face[:, 1] <= 1)
+        )
+
+        # cv2.remap for the actual sampling — bilinear, BORDER_REPLICATE.
+        px = (uv_face[:, 0] * fw - 0.5).astype(np.float32).reshape(H, W)
+        py = (uv_face[:, 1] * fh - 0.5).astype(np.float32).reshape(H, W)
+        sampled = cv2.remap(d_face, px, py, cv2.INTER_LINEAR,
+                            borderMode=cv2.BORDER_REPLICATE).ravel()
+        wsamp = cv2.remap(w_face, px, py, cv2.INTER_NEAREST,
+                          borderMode=cv2.BORDER_REPLICATE).ravel()
+
+        covered = in_face & (wsamp > 0.5) & (sampled > 0)
+        sum_d[covered] += sampled[covered]
+        sum_d2[covered] += sampled[covered].astype(np.float64) ** 2
+        n_cov[covered] += 1
+
+    has_overlap = n_cov >= 2
+    n_safe = np.maximum(n_cov, 1).astype(np.float64)
+    mean_d = sum_d / n_safe
+    var_d = np.maximum(sum_d2 / n_safe - mean_d ** 2, 0.0)
+    std_d = np.sqrt(var_d).astype(np.float32)
+    std_d[~has_overlap] = 0.0
+    std_d_2d = std_d.reshape(H, W)
+    depth_flat = depth_np.ravel().astype(np.float32)
+    pct_per_pixel = 100.0 * std_d / np.maximum(depth_flat, 1e-6)
+    pct_per_pixel[~has_overlap] = 0.0
+
+    global_median = float(np.median(depth_np))
+    if has_overlap.any() and global_median > 0:
+        mean_shift_pct_of_median = float(std_d[has_overlap].mean()) / global_median * 100.0
+        p99_pct = float(np.percentile(pct_per_pixel[has_overlap], 99))
+        max_pct = float(pct_per_pixel[has_overlap].max())
+    else:
+        mean_shift_pct_of_median = 0.0
+        p99_pct = 0.0
+        max_pct = 0.0
+
+    # Colormap normalization: clip to p99 so a handful of bright pixels don't
+    # crush all the meaningful variation into the first few percent of the
+    # viridis range.
+    norm_denom = max(p99_pct, 1e-6)
+    pct_2d = pct_per_pixel.reshape(H, W)
+    pct_norm = np.clip(pct_2d / norm_denom, 0.0, 1.0)
+    rgb = mcm.get_cmap('viridis')(pct_norm)[..., :3].astype(np.float32)  # (H, W, 3) in [0,1]
+
+    # Caption strip below the colormap.
+    cap_h = max(48, int(round(H * 0.05)))
+    cap = Image.new('RGB', (W, cap_h), (24, 24, 24))
+    draw = ImageDraw.Draw(cap)
+    font = None
+    for path in (
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+        "/System/Library/Fonts/Helvetica.ttc",
+    ):
+        try:
+            font = ImageFont.truetype(path, max(14, int(cap_h * 0.4)))
+            break
+        except Exception:
+            continue
+    if font is None:
+        font = ImageFont.load_default()
+    text = (
+        f"mean per-pixel disagreement = {mean_shift_pct_of_median:.2f}% of "
+        f"global median depth ({global_median:.3f}m);  "
+        f"p99 = {p99_pct:.2f}%,  max = {max_pct:.2f}% "
+        f"(colormap clipped at p99)"
+    )
+    # Vertical center
+    try:
+        bbox = draw.textbbox((0, 0), text, font=font)
+        th = bbox[3] - bbox[1]
+    except Exception:
+        th = int(cap_h * 0.4)
+    draw.text((10, max(2, (cap_h - th) // 2)), text, fill=(245, 245, 245), font=font)
+    cap_np = np.asarray(cap, dtype=np.float32) / 255.0
+
+    stacked = np.concatenate([rgb, cap_np], axis=0)  # (H + cap_h, W, 3)
+    _p(f"debug_image: H={H}+{cap_h}, mean_shift={mean_shift_pct_of_median:.2f}%, "
+       f"p99={p99_pct:.2f}%, max={max_pct:.2f}%, overlap_pixels={int(has_overlap.sum())}")
+    return torch.from_numpy(stacked).unsqueeze(0).contiguous().float()
+
+
 class PanoramaDepthMerge(io.ComfyNode):
     """Per-face depth maps + per-face extrinsics/intrinsics → equirect depth IMAGE."""
 
@@ -229,6 +360,22 @@ class PanoramaDepthMerge(io.ComfyNode):
             outputs=[
                 io.Image.Output(display_name="depth"),
                 io.Mask.Output(display_name="valid_mask"),
+                io.Image.Output(
+                    display_name="debug_image",
+                    tooltip=(
+                        "Per-pixel disagreement map (viridis colormap) "
+                        "showing how much the overlapping face observations "
+                        "varied at each equirect pixel — std of "
+                        "reprojected per-face distance, expressed as a "
+                        "percentage of the merged depth at that pixel. "
+                        "Dark = strong consensus, bright = high "
+                        "disagreement (typically silhouettes / depth "
+                        "edges where the merger had to compromise). A "
+                        "text panel below the colormap reports the "
+                        "mean disagreement averaged over all multi-"
+                        "covered pixels, expressed as a fraction of the "
+                        "global median depth."
+                    )),
             ],
         )
 
@@ -428,8 +575,24 @@ class PanoramaDepthMerge(io.ComfyNode):
         depth_img = torch.from_numpy(depth_np).unsqueeze(-1).expand(-1, -1, 3).unsqueeze(0).contiguous()
         valid_mask = torch.from_numpy(mask_np.astype(np.float32)).unsqueeze(0)
 
+        # ----- Debug image: per-pixel disagreement among overlapping faces -----
+        # Re-project each face's per-pixel ray distance to the equirect grid
+        # using the same projection the LSMR uses internally, then compute the
+        # std across the faces that cover each pixel. Strong consensus →
+        # std ≈ 0 (dark); silhouette / depth-edge regions where the merger had
+        # to compromise → std spikes (bright).
+        debug_img = _build_debug_image(
+            distance_maps=distance_maps,
+            weights=weights,
+            extr_list=extr_list,
+            intr_list=intr_list,
+            depth_np=depth_np,
+            out_width=int(out_width),
+            out_height=int(out_height),
+        )
+
         pbar.update_absolute(100, 100)
-        return io.NodeOutput(depth_img, valid_mask)
+        return io.NodeOutput(depth_img, valid_mask, debug_img)
 
 
 NODE_CLASS_MAPPINGS = {"PanoramaDepthMerge": PanoramaDepthMerge}
