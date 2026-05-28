@@ -5,7 +5,7 @@ from __future__ import annotations
 import torch
 from comfy_api.latest import io
 
-from ..utils import (
+from .utils import (
     PANORAMA_TYPE,
     is_two_to_one,
     normalize_pano_tensor,

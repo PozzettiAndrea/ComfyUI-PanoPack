@@ -19,7 +19,7 @@ dependencies = [
 Repository = "https://github.com/PozzettiAndrea/ComfyUI-PanoPack"
 
 [tool.setuptools.packages.find]
-include = ["nodes*", "utils*"]
+include = ["nodes*"]
 exclude = ["web*"]
 
 [tool.comfy]

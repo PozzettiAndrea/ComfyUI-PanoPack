@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from comfy_api.latest import io
 
-from ..utils import (
+from .utils import (
     PANORAMA_TYPE,
     panorama_shift_horizontal,
     unwrap_panorama_to_image,

@@ -16,7 +16,7 @@ import numpy as np
 import torch
 from comfy_api.latest import io
 
-from ..utils import (
+from .utils import (
     PANORAMA_TYPE,
     normalize_pano_tensor,
     unwrap_panorama_to_image,
