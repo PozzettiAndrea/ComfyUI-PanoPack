@@ -182,7 +182,6 @@ class PanoramaBuildMesh(io.ComfyNode):
                     tooltip="Outdoor-only: clip far depth to median * contract. "
                             "0 disables. Matches upstream HY-World traj_generate's "
                             "--contract default (8.0). Ignored when scene_type='indoor'."),
-                io.Int.Input("seed", default=1024, min=0, max=2**31 - 1),
             ],
             outputs=[
                 io.Custom("TRIMESH").Output(display_name="mesh"),
@@ -194,7 +193,7 @@ class PanoramaBuildMesh(io.ComfyNode):
 
     @classmethod
     def execute(cls, panorama, depth, sky_mask=None, valid_mask=None,
-                scene_type="indoor", contract=8.0, seed=1024):
+                scene_type="indoor", contract=8.0):
         # --- panorama → PIL ---
         pano_t = unwrap_panorama_to_image(panorama)
         arr = pano_t.detach().cpu().numpy() if isinstance(pano_t, torch.Tensor) else np.asarray(pano_t)
@@ -234,7 +233,7 @@ class PanoramaBuildMesh(io.ComfyNode):
             _p(f"scene_type='{scene_type}' unrecognized → defaulting to 'indoor'")
             st = "indoor"
 
-        _p(f"panorama {pil.size} depth {depth_np.shape} scene_type={st} seed={seed}")
+        _p(f"panorama {pil.size} depth {depth_np.shape} scene_type={st}")
 
         from ._vendor.worldgen.pipeline import build_mesh as _build_mesh
 
@@ -245,7 +244,6 @@ class PanoramaBuildMesh(io.ComfyNode):
             valid_mask_np=valid_mask_np,
             scene_type=st,
             contract=float(contract) if contract is not None else None,
-            seed=seed,
         )
         # `mesh` is a live trimesh.Trimesh — pure geometry, no hidden metadata.
         # `global_median_depth` and `scene_type` come back as explicit values
