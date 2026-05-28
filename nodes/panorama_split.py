@@ -25,6 +25,8 @@ import numpy as np
 import torch
 from comfy_api.latest import io
 
+from .utils import PANORAMA_TYPE, unwrap_panorama_to_image
+
 
 def _p(msg: str) -> None:
     print(f"[PanoramaSplit] {msg}", file=sys.stderr, flush=True)
@@ -138,13 +140,12 @@ class PanoramaSplit(io.ComfyNode):
                 "Mirrors upstream HY-World's pred_pano_depth split step."
             ),
             inputs=[
-                io.Custom("WORLDSTEREO_PANORAMA").Input(
+                io.Custom(PANORAMA_TYPE).Input(
                     "panorama",
-                    tooltip="Equirectangular RGB panorama (2:1). "
-                            "WORLDSTEREO_PANORAMA = IMAGE wrapped in a "
-                            "custom socket type. Wire from "
-                            "WorldStereoLoadPanorama OR a native IMAGE via "
-                            "WorldStereoPanoramaWrap."),
+                    tooltip="Equirectangular RGB panorama (2:1). PANORAMA = "
+                            "IMAGE wrapped in PanoPack's typed socket. Wire "
+                            "from PanoramaWrap or any node that emits a "
+                            "PANORAMA."),
                 io.Int.Input(
                     "resolution", default=512, min=128, max=2048, step=64,
                     tooltip="Per-face image resolution (square). Default 512 matches upstream."),
@@ -211,7 +212,8 @@ class PanoramaSplit(io.ComfyNode):
         t_total = time.perf_counter()
 
         # --- panorama → numpy uint8 (H, W, 3) ---
-        arr = panorama.detach().cpu().numpy() if isinstance(panorama, torch.Tensor) else np.asarray(panorama)
+        pano_t = unwrap_panorama_to_image(panorama)
+        arr = pano_t.detach().cpu().numpy() if isinstance(pano_t, torch.Tensor) else np.asarray(pano_t)
         if arr.ndim == 4:
             arr = arr[0]
         if arr.dtype != np.uint8:
