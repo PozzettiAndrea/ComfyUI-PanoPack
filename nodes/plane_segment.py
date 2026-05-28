@@ -1,0 +1,418 @@
+"""PanoramaFacesPlaneSegment — per-face plane-instance segmentation via
+Open3D RANSAC on a backprojected point cloud.
+
+Algorithm (per face, independent):
+  1. Backproject MoGe-2 depth → 3D point cloud (or consume `points_raw`
+     directly). Attach normals if provided so RANSAC scores inlier
+     consistency by point-to-plane distance AND normal alignment.
+  2. Iteratively call `pcd.segment_plane(distance_threshold, ransac_n=3,
+     num_iterations)` until remaining-inlier fraction < threshold OR
+     max planes hit.
+  3. Optional normal-consistency filter: drop planes whose RANSAC
+     normal disagrees with the median per-pixel normal of its inliers.
+  4. DBSCAN cluster inliers to split disconnected coplanar pieces
+     (e.g. two parallel walls behind / in front of the camera).
+  5. Project per-cluster labels back to the image grid via the
+     pixel→point-index map.
+
+Output: per-face plane-instance MASK + RGB visualization.
+
+Each face gets its own LOCAL plane IDs (1, 2, 3, ...; 0 = background /
+no plane). Cross-face consistency is NOT enforced here — feed the
+output into MeshSegmenter's `Lift2DTo3DLabels` (samesh algorithm) to
+unify labels across views via a mesh.
+
+Per-face inference: ~30-100 ms on CPU at 512×512.
+"""
+
+from __future__ import annotations
+
+import sys
+
+import numpy as np
+import torch
+from comfy_api.latest import io
+
+
+def _p(msg: str) -> None:
+    print(f"[PanoramaFacesPlaneSegment] {msg}", file=sys.stderr, flush=True)
+
+
+def _label_to_color(label: int) -> tuple[int, int, int]:
+    """Stable RGB color from an integer label via golden-ratio hue."""
+    if label <= 0:
+        return (0, 0, 0)
+    # Golden-ratio hue scrambling for visually-distinct colors.
+    h = (label * 0.61803398875) % 1.0
+    s, v = 0.85, 0.95
+    i = int(h * 6.0)
+    f = h * 6.0 - i
+    p = v * (1.0 - s)
+    q = v * (1.0 - f * s)
+    t = v * (1.0 - (1.0 - f) * s)
+    r, g, b = [
+        (v, t, p), (q, v, p), (p, v, t),
+        (p, q, v), (t, p, v), (v, p, q),
+    ][i % 6]
+    return (int(r * 255), int(g * 255), int(b * 255))
+
+
+def _segment_planes_one_face(
+    points: np.ndarray,
+    normals: np.ndarray | None,
+    valid: np.ndarray,
+    distance_threshold: float,
+    max_planes: int,
+    min_inlier_fraction: float,
+    ransac_iterations: int,
+    dbscan_eps: float,
+    dbscan_min_points: int,
+    normal_consistency_threshold: float,
+) -> tuple[np.ndarray, int]:
+    """Run the iterative-RANSAC + DBSCAN-split pipeline on a single
+    (H, W, 3) point map. Returns (label_map, n_planes_detected).
+    """
+    import open3d as o3d
+
+    H, W = points.shape[:2]
+    label_map = np.zeros((H, W), dtype=np.int32)
+
+    # Flatten + mask. Track pixel-index ↔ point-index correspondence.
+    pts_flat = points.reshape(-1, 3).astype(np.float64)
+    valid_flat = valid.reshape(-1).astype(bool)
+    pixel_indices = np.where(valid_flat)[0]
+    if len(pixel_indices) < dbscan_min_points:
+        return label_map, 0
+
+    valid_pts = pts_flat[pixel_indices]
+
+    pcd = o3d.geometry.PointCloud()
+    pcd.points = o3d.utility.Vector3dVector(valid_pts)
+    if normals is not None:
+        valid_normals = normals.reshape(-1, 3).astype(np.float64)[pixel_indices]
+        # Normalize defensively.
+        n_len = np.maximum(np.linalg.norm(valid_normals, axis=-1, keepdims=True), 1e-12)
+        valid_normals = valid_normals / n_len
+        pcd.normals = o3d.utility.Vector3dVector(valid_normals)
+        normals_arr = valid_normals
+    else:
+        normals_arr = None
+
+    n_total = len(valid_pts)
+    remaining = np.arange(n_total)
+    plane_id = 1
+    n_skipped_normal = 0
+
+    while plane_id <= max_planes and len(remaining) > max(
+        int(min_inlier_fraction * n_total), dbscan_min_points,
+    ):
+        sub = pcd.select_by_index(remaining.tolist())
+        try:
+            plane_eq, inliers = sub.segment_plane(
+                distance_threshold=float(distance_threshold),
+                ransac_n=3,
+                num_iterations=int(ransac_iterations),
+            )
+        except RuntimeError:
+            break
+        if len(inliers) < dbscan_min_points:
+            break
+
+        # Global indices (into valid_pts) of this plane's inliers.
+        global_inliers = remaining[np.asarray(inliers, dtype=np.int64)]
+
+        # Optional normal-consistency check.
+        if normals_arr is not None and normal_consistency_threshold > 0:
+            plane_normal = np.asarray(plane_eq[:3], dtype=np.float64)
+            plane_normal /= max(np.linalg.norm(plane_normal), 1e-12)
+            inlier_normals = normals_arr[global_inliers]
+            cos = np.abs(inlier_normals @ plane_normal)
+            consistent = cos > float(normal_consistency_threshold)
+            if consistent.sum() < dbscan_min_points:
+                # Plane doesn't pass the normal sanity check — strip those
+                # inliers from contention and try the next one.
+                remaining = np.setdiff1d(remaining, global_inliers, assume_unique=False)
+                n_skipped_normal += 1
+                continue
+            # Keep only the normal-consistent subset.
+            global_inliers = global_inliers[consistent]
+
+        # DBSCAN-split disconnected coplanar pieces.
+        inlier_pcd = pcd.select_by_index(global_inliers.tolist())
+        clusters = np.asarray(
+            inlier_pcd.cluster_dbscan(
+                eps=float(dbscan_eps),
+                min_points=int(dbscan_min_points),
+                print_progress=False,
+            ),
+            dtype=np.int64,
+        )
+
+        # Assign labels.
+        unique_clusters = np.unique(clusters)
+        unique_clusters = unique_clusters[unique_clusters >= 0]  # drop noise (-1)
+        for cid in unique_clusters:
+            cluster_mask = clusters == cid
+            if cluster_mask.sum() < dbscan_min_points:
+                continue
+            cluster_pts = global_inliers[cluster_mask]
+            pix_idx = pixel_indices[cluster_pts]
+            ys = pix_idx // W
+            xs = pix_idx % W
+            label_map[ys, xs] = plane_id
+            plane_id += 1
+
+        # Remove this plane's inliers from contention.
+        remaining = np.setdiff1d(remaining, global_inliers, assume_unique=False)
+
+    n_planes = plane_id - 1
+    return label_map, n_planes
+
+
+class PanoramaFacesPlaneSegment(io.ComfyNode):
+    """Per-face plane-instance segmentation via Open3D iterative RANSAC."""
+
+    @classmethod
+    def define_schema(cls):
+        return io.Schema(
+            node_id="PanoramaFacesPlaneSegment",
+            display_name="Panorama Faces Plane Segment (Open3D RANSAC)",
+            category="PanoPack",
+            description=(
+                "Per-face planar instance segmentation. Takes a batch of "
+                "perspective face crops' 3D point maps (e.g. MoGe-2's "
+                "`points_raw` output, shape (B, H, W, 3)) and an optional "
+                "normal map; returns per-face per-pixel plane-instance "
+                "labels via iterative Open3D RANSAC + DBSCAN-split + "
+                "optional normal-consistency filtering.\n\n"
+                "Each face gets independent LOCAL plane IDs (1, 2, 3, …; "
+                "0 = no plane). Cross-face consistency is NOT enforced "
+                "here — feed the output into MeshSegmenter's "
+                "`Lift2DTo3DLabels` (samesh algorithm) to unify labels "
+                "globally via the merged mesh."
+            ),
+            inputs=[
+                io.Image.Input(
+                    "face_points",
+                    tooltip="Per-face 3D POINT MAPS in each face's camera "
+                            "frame. Shape (B, H, W, 3). MoGe-2's "
+                            "`points_raw` output, run on the face_images "
+                            "from a panorama split."),
+                io.Image.Input(
+                    "face_normals", optional=True,
+                    tooltip="Per-face surface normals (B, H, W, 3) — "
+                            "MoGe-2's `normal` output. Used for the "
+                            "normal-consistency filter: planes whose "
+                            "RANSAC normal disagrees with the inlier "
+                            "median normal get rejected. Highly "
+                            "recommended; without it the filter is off."),
+                io.Mask.Input(
+                    "face_valid_masks", optional=True,
+                    tooltip="Per-face validity masks (B, H, W). Pixels "
+                            "with mask < 0.5 are excluded from RANSAC. "
+                            "If unset, derived from `isfinite(z) & "
+                            "(z > 0)` on the point map."),
+                io.Float.Input(
+                    "distance_threshold", default=0.02, min=0.001, max=1.0,
+                    step=0.001, optional=True,
+                    tooltip="RANSAC inlier tolerance in METERS. A pixel "
+                            "is on the candidate plane if its 3D point "
+                            "is within this distance. 0.02 m = 2 cm is "
+                            "a good starting point for room-scale indoor "
+                            "scenes. Loosen to 0.05 for noisy depth, "
+                            "tighten to 0.01 for clean depth."),
+                io.Int.Input(
+                    "max_planes_per_face", default=10, min=1, max=50,
+                    step=1, optional=True,
+                    tooltip="Stop after this many planes per face. 10 is "
+                            "plenty for typical indoor rooms (4 walls + "
+                            "floor + ceiling + a few large furniture "
+                            "faces). Increase for cluttered scenes."),
+                io.Float.Input(
+                    "min_inlier_fraction", default=0.02, min=0.001,
+                    max=0.5, step=0.001, optional=True,
+                    tooltip="Stop iterating once remaining unsegmented "
+                            "fraction falls below this. 0.02 = stop "
+                            "when ≤ 2% of the point cloud is still "
+                            "unsegmented."),
+                io.Int.Input(
+                    "ransac_iterations", default=1000, min=100, max=10000,
+                    step=100, optional=True,
+                    tooltip="Open3D RANSAC iterations per plane fit. "
+                            "1000 is fast (~5-15 ms per plane); bump to "
+                            "5000 for higher robustness on noisy point "
+                            "clouds at a ~3-5× speed cost."),
+                io.Float.Input(
+                    "dbscan_eps", default=0.05, min=0.001, max=2.0,
+                    step=0.001, optional=True,
+                    tooltip="DBSCAN connectivity radius (METERS) for "
+                            "splitting disconnected coplanar pieces. "
+                            "Two coplanar walls behind / in front of "
+                            "the camera get separate labels if they're "
+                            "more than this apart. 0.05 m = 5 cm is a "
+                            "good indoor default."),
+                io.Int.Input(
+                    "dbscan_min_points", default=100, min=10, max=10000,
+                    step=10, optional=True,
+                    tooltip="Minimum DBSCAN cluster size. Pieces smaller "
+                            "than this are dropped as noise."),
+                io.Float.Input(
+                    "normal_consistency_threshold", default=0.85,
+                    min=0.0, max=1.0, step=0.01, optional=True,
+                    tooltip="Cosine-similarity threshold between the "
+                            "RANSAC plane normal and per-pixel inlier "
+                            "normals. Pixels with |n_pixel · n_plane| < "
+                            "threshold are stripped from the plane's "
+                            "inlier set. If too few survive, the plane "
+                            "is rejected entirely.\n\n"
+                            "0.85 ≈ 30° tolerance (reasonable default). "
+                            "0.95 ≈ 18° (strict). 0.0 disables the "
+                            "filter. Requires `face_normals` to be "
+                            "wired; otherwise this parameter has no "
+                            "effect."),
+            ],
+            outputs=[
+                io.Mask.Output(
+                    display_name="plane_labels",
+                    tooltip="(B, H, W) per-face plane-instance MASK. "
+                            "Pixel value = plane ID (1, 2, 3, …) within "
+                            "the face. 0 = no plane / background. IDs "
+                            "are LOCAL to each face — face 0 and face 1 "
+                            "both use IDs 1..N, NOT shared."),
+                io.Image.Output(
+                    display_name="plane_visualization",
+                    tooltip="(B, H, W, 3) RGB visualization of the "
+                            "plane labels (golden-ratio hue per ID). "
+                            "For previewing/debugging."),
+                io.String.Output(
+                    display_name="info",
+                    tooltip="Per-face plane count + global stats as text."),
+            ],
+        )
+
+    @classmethod
+    def execute(
+        cls,
+        face_points: torch.Tensor,
+        face_normals: torch.Tensor | None = None,
+        face_valid_masks: torch.Tensor | None = None,
+        distance_threshold: float = 0.02,
+        max_planes_per_face: int = 10,
+        min_inlier_fraction: float = 0.02,
+        ransac_iterations: int = 1000,
+        dbscan_eps: float = 0.05,
+        dbscan_min_points: int = 100,
+        normal_consistency_threshold: float = 0.85,
+    ):
+        # --- Coerce inputs to numpy with consistent shapes. ---
+        p = (
+            face_points.detach().cpu().numpy()
+            if isinstance(face_points, torch.Tensor)
+            else np.asarray(face_points)
+        )
+        if p.ndim != 4 or p.shape[-1] != 3:
+            raise ValueError(
+                f"face_points must be (B, H, W, 3); got {p.shape}. "
+                f"Wire MoGe-2 Inference's `points_raw` output."
+            )
+        N, H, W, _ = p.shape
+        p = p.astype(np.float32, copy=False)
+
+        if face_normals is not None:
+            n = (
+                face_normals.detach().cpu().numpy()
+                if isinstance(face_normals, torch.Tensor)
+                else np.asarray(face_normals)
+            )
+            if n.ndim != 4 or n.shape != p.shape:
+                raise ValueError(
+                    f"face_normals shape {n.shape} doesn't match face_points {p.shape}."
+                )
+            n = n.astype(np.float32, copy=False)
+        else:
+            n = None
+
+        if face_valid_masks is not None:
+            v = (
+                face_valid_masks.detach().cpu().numpy()
+                if isinstance(face_valid_masks, torch.Tensor)
+                else np.asarray(face_valid_masks)
+            )
+            if v.ndim == 4:
+                v = v[..., 0]
+            if v.shape != (N, H, W):
+                raise ValueError(
+                    f"face_valid_masks shape {v.shape} doesn't match (N={N}, H={H}, W={W})."
+                )
+            v_arr = v > 0.5
+        else:
+            v_arr = None
+
+        # --- Run per-face segmentation. ---
+        label_masks = np.zeros((N, H, W), dtype=np.int32)
+        viz = np.zeros((N, H, W, 3), dtype=np.float32)
+        per_face_counts: list[int] = []
+        total_planes = 0
+
+        # Precompute a color LUT large enough for any reasonable plane count.
+        max_lut = max(max_planes_per_face * 4, 64)
+        lut = np.zeros((max_lut + 1, 3), dtype=np.float32)
+        for i in range(1, max_lut + 1):
+            lut[i] = np.array(_label_to_color(i), dtype=np.float32) / 255.0
+
+        for face_idx in range(N):
+            face_pts = p[face_idx]
+            face_norm = n[face_idx] if n is not None else None
+            if v_arr is not None:
+                face_valid = v_arr[face_idx]
+            else:
+                z = face_pts[..., 2]
+                face_valid = np.isfinite(z) & (z > 1e-6)
+
+            label_map, n_planes = _segment_planes_one_face(
+                face_pts, face_norm, face_valid,
+                distance_threshold=float(distance_threshold),
+                max_planes=int(max_planes_per_face),
+                min_inlier_fraction=float(min_inlier_fraction),
+                ransac_iterations=int(ransac_iterations),
+                dbscan_eps=float(dbscan_eps),
+                dbscan_min_points=int(dbscan_min_points),
+                normal_consistency_threshold=float(normal_consistency_threshold),
+            )
+            label_masks[face_idx] = label_map
+            per_face_counts.append(n_planes)
+            total_planes += n_planes
+
+            # Visualization: look up colors per label, indexed by min(label, max_lut).
+            clamped = np.minimum(label_map, max_lut)
+            viz[face_idx] = lut[clamped]
+
+        # --- Pack outputs. ---
+        labels_mask = torch.from_numpy(label_masks.astype(np.float32))
+        viz_img = torch.from_numpy(viz)
+
+        info_lines = [
+            f"PanoramaFacesPlaneSegment: {N} faces processed.",
+            f"  total planes detected: {total_planes}",
+            f"  per-face counts: {per_face_counts}",
+            f"  mean planes/face:  {total_planes / max(N, 1):.2f}",
+            f"  params: dist_thresh={distance_threshold:.3f}m, "
+            f"max_planes={max_planes_per_face}, "
+            f"dbscan_eps={dbscan_eps:.3f}m, "
+            f"normal_cos_thresh={normal_consistency_threshold:.2f}",
+        ]
+        info = "\n".join(info_lines)
+
+        _p(
+            f"{N} faces → {total_planes} total planes "
+            f"(mean {total_planes / max(N, 1):.2f}/face); "
+            f"per-face: {per_face_counts}"
+        )
+
+        return io.NodeOutput(labels_mask, viz_img, info)
+
+
+NODE_CLASS_MAPPINGS = {"PanoramaFacesPlaneSegment": PanoramaFacesPlaneSegment}
+NODE_DISPLAY_NAME_MAPPINGS = {
+    "PanoramaFacesPlaneSegment": "Panorama Faces Plane Segment (Open3D RANSAC)",
+}

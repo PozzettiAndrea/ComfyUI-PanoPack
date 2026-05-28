@@ -1,0 +1,18 @@
+[dependencies]
+# Open3D is conda-installed (the conda build pulls in libstdc++ /
+# numpy ABI compatible binaries; pip wheels sometimes mismatch with
+# torch's CUDA build). Used by PanoramaFacesPlaneSegment for
+# iterative `segment_plane` + DBSCAN.
+open3d = "*"
+
+[pypi-dependencies]
+# ComfyUI runtime deps the isolation env needs to import comfy.utils /
+# comfy.model_management / comfy.ops from the host ComfyUI tree.
+safetensors = ">=0.4.0"
+psutil = "*"
+einops = "*"
+comfy-aimdo = "*"
+# PanoPack's direct imports.
+pillow = "*"
+opencv-python-headless = "*"
+numpy = "*"
