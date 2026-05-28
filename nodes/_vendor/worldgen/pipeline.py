@@ -46,10 +46,11 @@ from .src.panorama_utils import (
     convert_rgbd2mesh_panorama,
     spherical_uv_to_directions,
 )
-from .src.navi_utils import (
-    process_single_scene,
-    pil_image_to_base64,
-)
+# navi_utils pulls in `recast` (RecastNavigation bindings), which only the
+# trajectory-planning path needs. PanoramaBuildMesh + PanoramaBuildPointCloud
+# don't, so we lazy-import these helpers inside the functions that use them —
+# keeps `from .pipeline import build_mesh` working in environments without
+# pyrecast.
 from .src.vlm_utils import QwenVLClient, get_qwen_caption_format
 import utils3d
 
@@ -140,6 +141,7 @@ def _classify_scene_type(vlm: QwenVLClient, panorama_pil: Image.Image) -> str:
     Mirrors traj_generate.py's main() block at lines ~252-272 byte-identically
     on the prompt side; only the client backend differs.
     """
+    from .src.navi_utils import pil_image_to_base64
     base64_image = pil_image_to_base64(panorama_pil)
     messages = [
         {"role": "system", "content": "You are a helpful assistant."},
@@ -516,7 +518,9 @@ def _label_objects_via_vlm(vlm: QwenVLClient, panorama_pil: Image.Image) -> List
     Uses upstream's `get_navigation_instruction` prompt verbatim. Returns a
     deduplicated list of short object names ("chair", "door", "lamp", ...).
     """
-    from .src.navi_utils import get_navigation_instruction, deduplicate_ordered
+    from .src.navi_utils import (
+        get_navigation_instruction, deduplicate_ordered, pil_image_to_base64,
+    )
     base64_image = pil_image_to_base64(panorama_pil)
     instruction = get_navigation_instruction(force_vlm=False)
     messages = [
@@ -1039,6 +1043,7 @@ def plan_from_mesh(
         if not segmentation_data:
             print("[WorldNavPlanTraj]   no segmentation_data → exploration-only trajectories "
                   "(target/surround/reconstruct paths skipped).", flush=True)
+        from .src.navi_utils import process_single_scene
         args = _default_args()
         args.target_path = scene_dir
         with timer.track("NavMesh + trajectories"):
