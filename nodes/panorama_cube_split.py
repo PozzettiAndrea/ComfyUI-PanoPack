@@ -119,6 +119,18 @@ class PanoramaCubeSplit(io.ComfyNode):
                             "attach depth (HYWM2 / WorldMirror compute their "
                             "own depth at inference, so this is rarely "
                             "needed)."),
+                io.Custom("EXTRINSICS").Output(
+                    display_name="extrinsics",
+                    tooltip="Per-crop world-to-camera matrices [N, 4, 4] "
+                            "(float32). Same N and ordering as face_images "
+                            "(3 pitches × N_view yaws). All cameras share "
+                            "the world origin (look-at from [0,0,0])."),
+                io.Custom("INTRINSICS").Output(
+                    display_name="intrinsics",
+                    tooltip="Per-crop pixel-scale intrinsics [N, 3, 3] "
+                            "(float32). cx = image_w/2, cy = image_h/2; fx, "
+                            "fy derived from fov_x_deg / fov_y_deg. Matches "
+                            "upstream pano_bank/cameras.json convention."),
             ],
         )
 
@@ -185,10 +197,12 @@ class PanoramaCubeSplit(io.ComfyNode):
         Ks = np.broadcast_to(K_pixel, (N_crops, 3, 3)).astype(np.float32)
 
         frames_t = torch.from_numpy(frames).contiguous()
+        exts_t = torch.from_numpy(exts).contiguous()
+        Ks_t = torch.from_numpy(Ks.copy()).contiguous()
         entries = {
             "frames":     frames_t,
-            "extrinsics": torch.from_numpy(exts).contiguous(),
-            "intrinsics": torch.from_numpy(Ks.copy()).contiguous(),
+            "extrinsics": exts_t,
+            "intrinsics": Ks_t,
             "depths":     None,    # filled later via WorldStereoMemoryBankEntriesAddDepth
             "fnames":     [str(fname or "pano_bank")] * N_crops,
             "frame_idx":  list(range(N_crops)),
@@ -202,7 +216,7 @@ class PanoramaCubeSplit(io.ComfyNode):
         # face_images output is the same tensor as entries["frames"] — exposed
         # separately so downstream depth nodes (MoGe2Inference) can wire in
         # without the entries dict in scope.
-        return io.NodeOutput(frames_t, float(fov_x_deg), entries)
+        return io.NodeOutput(frames_t, float(fov_x_deg), entries, exts_t, Ks_t)
 
 
 NODE_CLASS_MAPPINGS = {"PanoramaCubeSplit": PanoramaCubeSplit}
