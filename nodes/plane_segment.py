@@ -28,6 +28,7 @@ Per-face inference: ~30-100 ms on CPU at 512×512.
 from __future__ import annotations
 
 import sys
+import time
 
 import numpy as np
 import torch
@@ -68,12 +69,17 @@ def _segment_planes_one_face(
     dbscan_eps: float,
     dbscan_min_points: int,
     normal_consistency_threshold: float,
+    face_tag: str = "",
 ) -> tuple[np.ndarray, int]:
     """Run the iterative-RANSAC + DBSCAN-split pipeline on a single
     (H, W, 3) point map. Returns (label_map, n_planes_detected).
+
+    `face_tag` is prepended to each diagnostic print so multi-face
+    callers can identify which face the line belongs to (e.g. "5/42").
     """
     import open3d as o3d
 
+    tag = f"{face_tag} " if face_tag else ""
     H, W = points.shape[:2]
     label_map = np.zeros((H, W), dtype=np.int32)
 
@@ -82,6 +88,8 @@ def _segment_planes_one_face(
     valid_flat = valid.reshape(-1).astype(bool)
     pixel_indices = np.where(valid_flat)[0]
     if len(pixel_indices) < dbscan_min_points:
+        _p(f"  {tag}skip: only {len(pixel_indices)} valid pixels "
+           f"< dbscan_min_points={dbscan_min_points}")
         return label_map, 0
 
     valid_pts = pts_flat[pixel_indices]
@@ -102,10 +110,12 @@ def _segment_planes_one_face(
     remaining = np.arange(n_total)
     plane_id = 1
     n_skipped_normal = 0
+    attempt = 0
+    exit_reason = "max_planes_per_face hit"
+    min_remaining = max(int(min_inlier_fraction * n_total), dbscan_min_points)
 
-    while plane_id <= max_planes and len(remaining) > max(
-        int(min_inlier_fraction * n_total), dbscan_min_points,
-    ):
+    while plane_id <= max_planes and len(remaining) > min_remaining:
+        attempt += 1
         sub = pcd.select_by_index(remaining.tolist())
         try:
             plane_eq, inliers = sub.segment_plane(
@@ -113,9 +123,16 @@ def _segment_planes_one_face(
                 ransac_n=3,
                 num_iterations=int(ransac_iterations),
             )
-        except RuntimeError:
+        except RuntimeError as e:
+            exit_reason = f"segment_plane raised RuntimeError: {e}"
             break
-        if len(inliers) < dbscan_min_points:
+        a, b, c, d = (float(x) for x in plane_eq)
+        n_inliers_raw = len(inliers)
+        _p(f"  {tag}attempt #{attempt}: |a,b,c,d|=[{a:+.3f},{b:+.3f},{c:+.3f},{d:+.3f}], "
+           f"inliers={n_inliers_raw}/{len(remaining)}")
+
+        if n_inliers_raw < dbscan_min_points:
+            exit_reason = f"last RANSAC fit gave only {n_inliers_raw} inliers < dbscan_min_points={dbscan_min_points}"
             break
 
         # Global indices (into valid_pts) of this plane's inliers.
@@ -128,12 +145,18 @@ def _segment_planes_one_face(
             inlier_normals = normals_arr[global_inliers]
             cos = np.abs(inlier_normals @ plane_normal)
             consistent = cos > float(normal_consistency_threshold)
-            if consistent.sum() < dbscan_min_points:
+            n_kept = int(consistent.sum())
+            if n_kept < dbscan_min_points:
+                _p(f"    {tag}normal-filter REJECT: only {n_kept}/{n_inliers_raw} "
+                   f"inliers have |cos|≥{normal_consistency_threshold:.2f} "
+                   f"(< dbscan_min_points={dbscan_min_points})")
                 # Plane doesn't pass the normal sanity check — strip those
                 # inliers from contention and try the next one.
                 remaining = np.setdiff1d(remaining, global_inliers, assume_unique=False)
                 n_skipped_normal += 1
                 continue
+            _p(f"    {tag}normal-filter: kept {n_kept}/{n_inliers_raw} inliers "
+               f"(|cos|≥{normal_consistency_threshold:.2f})")
             # Keep only the normal-consistent subset.
             global_inliers = global_inliers[consistent]
 
@@ -151,21 +174,53 @@ def _segment_planes_one_face(
         # Assign labels.
         unique_clusters = np.unique(clusters)
         unique_clusters = unique_clusters[unique_clusters >= 0]  # drop noise (-1)
+        cluster_sizes = [int((clusters == cid).sum()) for cid in unique_clusters]
+        # Show top-5 sizes (the rest are usually small).
+        size_preview = sorted(cluster_sizes, reverse=True)[:5]
+        more = f" (+{len(cluster_sizes) - 5} more)" if len(cluster_sizes) > 5 else ""
+        _p(f"    {tag}DBSCAN: {len(unique_clusters)} cluster(s), "
+           f"top sizes={size_preview}{more}")
+
+        any_accepted = False
         for cid in unique_clusters:
             cluster_mask = clusters == cid
-            if cluster_mask.sum() < dbscan_min_points:
+            csize = int(cluster_mask.sum())
+            if csize < dbscan_min_points:
                 continue
             cluster_pts = global_inliers[cluster_mask]
             pix_idx = pixel_indices[cluster_pts]
             ys = pix_idx // W
             xs = pix_idx % W
             label_map[ys, xs] = plane_id
+            _p(f"      {tag}→ label_id={plane_id}, {csize} px")
             plane_id += 1
+            any_accepted = True
+            if plane_id > max_planes:
+                break
 
-        # Remove this plane's inliers from contention.
+        # Remove this plane's inliers from contention regardless of
+        # whether any cluster was kept — we don't want to refit them.
         remaining = np.setdiff1d(remaining, global_inliers, assume_unique=False)
 
+        if not any_accepted:
+            # All clusters too small; treat as ineffective attempt but
+            # keep iterating until budgets run out.
+            _p(f"    {tag}(no cluster ≥ dbscan_min_points; inliers retired)")
+
+    else:
+        # `while` exited normally on its condition — figure out which.
+        if plane_id > max_planes:
+            exit_reason = f"max_planes_per_face={max_planes} hit"
+        elif len(remaining) <= min_remaining:
+            exit_reason = (
+                f"remaining={len(remaining)} ≤ min_remaining={min_remaining} "
+                f"(min_inlier_fraction={min_inlier_fraction:.3f} of {n_total})"
+            )
+
     n_planes = plane_id - 1
+    _p(f"  {tag}RANSAC done ({exit_reason}); "
+       f"{attempt} attempt(s), {n_skipped_normal} normal-filter rejects, "
+       f"{n_planes} plane(s) accepted")
     return label_map, n_planes
 
 
@@ -348,11 +403,38 @@ class PanoramaFacesPlaneSegment(io.ComfyNode):
         else:
             v_arr = None
 
+        # --- Banner: state what we're about to do. ---
+        normals_state = "wired" if n is not None else "None (filter disabled)"
+        valid_state = "wired" if v_arr is not None else "auto (from z>0)"
+        _p(
+            f"input: {N} faces @ {H}x{W}, normals={normals_state}, "
+            f"valid_masks={valid_state}"
+        )
+        _p(
+            f"params: dist_thresh={distance_threshold:.3f}m, "
+            f"max_planes={max_planes_per_face}, "
+            f"min_inlier_frac={min_inlier_fraction:.3f}, "
+            f"ransac_iter={ransac_iterations}, "
+            f"dbscan_eps={dbscan_eps:.3f}m, "
+            f"dbscan_min_pts={dbscan_min_points}, "
+            f"normal_cos_thresh={normal_consistency_threshold:.2f}"
+        )
+
+        # ComfyUI progress bar (best-effort — not available in some test envs).
+        try:
+            import comfy.utils
+            pbar = comfy.utils.ProgressBar(N)
+        except Exception:
+            class _NoopPbar:
+                def update(self, *_a, **_k): pass
+            pbar = _NoopPbar()
+
         # --- Run per-face segmentation. ---
         label_masks = np.zeros((N, H, W), dtype=np.int32)
         viz = np.zeros((N, H, W, 3), dtype=np.float32)
         per_face_counts: list[int] = []
         total_planes = 0
+        t_start = time.perf_counter()
 
         # Precompute a color LUT large enough for any reasonable plane count.
         max_lut = max(max_planes_per_face * 4, 64)
@@ -369,6 +451,15 @@ class PanoramaFacesPlaneSegment(io.ComfyNode):
                 z = face_pts[..., 2]
                 face_valid = np.isfinite(z) & (z > 1e-6)
 
+            n_valid = int(face_valid.sum())
+            face_total = H * W
+            face_tag = f"face {face_idx + 1}/{N}"
+            _p(
+                f"{face_tag}: valid={n_valid}/{face_total} "
+                f"({100.0 * n_valid / max(face_total, 1):.1f}%)"
+            )
+
+            t_face = time.perf_counter()
             label_map, n_planes = _segment_planes_one_face(
                 face_pts, face_norm, face_valid,
                 distance_threshold=float(distance_threshold),
@@ -378,7 +469,9 @@ class PanoramaFacesPlaneSegment(io.ComfyNode):
                 dbscan_eps=float(dbscan_eps),
                 dbscan_min_points=int(dbscan_min_points),
                 normal_consistency_threshold=float(normal_consistency_threshold),
+                face_tag=face_tag,
             )
+            dt_face = time.perf_counter() - t_face
             label_masks[face_idx] = label_map
             per_face_counts.append(n_planes)
             total_planes += n_planes
@@ -387,15 +480,39 @@ class PanoramaFacesPlaneSegment(io.ComfyNode):
             clamped = np.minimum(label_map, max_lut)
             viz[face_idx] = lut[clamped]
 
+            labeled_px = int((label_map > 0).sum())
+            cov_pct = 100.0 * labeled_px / max(face_total, 1)
+            _p(
+                f"{face_tag} done: {n_planes} plane(s), "
+                f"{labeled_px}/{face_total} px labeled ({cov_pct:.1f}%), "
+                f"{1000.0 * dt_face:.0f}ms"
+            )
+
+            pbar.update(1)
+
+        dt_total = time.perf_counter() - t_start
+
         # --- Pack outputs. ---
         labels_mask = torch.from_numpy(label_masks.astype(np.float32))
         viz_img = torch.from_numpy(viz)
 
+        if per_face_counts:
+            cnt_arr = np.asarray(per_face_counts, dtype=np.int32)
+            cnt_min = int(cnt_arr.min())
+            cnt_med = int(np.median(cnt_arr))
+            cnt_max = int(cnt_arr.max())
+            cnt_zero = int((cnt_arr == 0).sum())
+        else:
+            cnt_min = cnt_med = cnt_max = cnt_zero = 0
+
         info_lines = [
-            f"PanoramaFacesPlaneSegment: {N} faces processed.",
+            f"PanoramaFacesPlaneSegment: {N} faces processed in "
+            f"{dt_total:.2f}s ({1000.0 * dt_total / max(N, 1):.0f} ms/face).",
             f"  total planes detected: {total_planes}",
+            f"  per-face: min={cnt_min}, median={cnt_med}, max={cnt_max}, "
+            f"zero-plane faces={cnt_zero}/{N}",
+            f"  mean planes/face: {total_planes / max(N, 1):.2f}",
             f"  per-face counts: {per_face_counts}",
-            f"  mean planes/face:  {total_planes / max(N, 1):.2f}",
             f"  params: dist_thresh={distance_threshold:.3f}m, "
             f"max_planes={max_planes_per_face}, "
             f"dbscan_eps={dbscan_eps:.3f}m, "
@@ -404,9 +521,10 @@ class PanoramaFacesPlaneSegment(io.ComfyNode):
         info = "\n".join(info_lines)
 
         _p(
-            f"{N} faces → {total_planes} total planes "
-            f"(mean {total_planes / max(N, 1):.2f}/face); "
-            f"per-face: {per_face_counts}"
+            f"DONE: {N} faces → {total_planes} total planes "
+            f"in {dt_total:.2f}s "
+            f"(min={cnt_min}/med={cnt_med}/max={cnt_max} planes/face, "
+            f"zero-plane faces: {cnt_zero})"
         )
 
         return io.NodeOutput(labels_mask, viz_img, info)
