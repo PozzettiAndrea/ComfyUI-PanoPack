@@ -46,6 +46,78 @@ def _p(msg: str) -> None:
     print(f"[PanoramaCubeSplit] {msg}", file=sys.stderr, flush=True)
 
 
+def _hsv_color_bgr(idx: int, total: int):
+    import cv2
+    hue = int(round(180.0 * idx / max(total, 1))) % 180
+    hsv = np.array([[[hue, 255, 255]]], dtype=np.uint8)
+    bgr = cv2.cvtColor(hsv, cv2.COLOR_HSV2BGR)[0, 0]
+    return int(bgr[0]), int(bgr[1]), int(bgr[2])
+
+
+def _make_pano_debug_overlay_rect(
+    panorama_u8: np.ndarray,
+    extrinsics: np.ndarray,
+    fov_x_rad: float,
+    fov_y_rad: float,
+) -> np.ndarray:
+    """Rectangular-frustum version of PanoramaSplit's debug overlay.
+
+    Draws each face's 4 frustum edges on the equirect panorama. Same
+    spherical convention as `panorama_split._make_pano_debug_overlay` —
+    only difference is the camera-space corners use separate half-FOVs
+    on x vs y so the rendered frustum matches the 832×480-ish aspect of
+    the cube split (vs the square aspect of the icosahedron split).
+    """
+    import math
+    import cv2
+
+    H, W = panorama_u8.shape[:2]
+    debug = panorama_u8.copy()
+    N = int(extrinsics.shape[0])
+    ext_np = np.asarray(extrinsics, dtype=np.float32)
+
+    S = 64
+    half_x = math.tan(fov_x_rad / 2.0)
+    half_y = math.tan(fov_y_rad / 2.0)
+    edge_corners = [
+        ([-half_x, -half_y], [+half_x, -half_y]),  # top
+        ([+half_x, -half_y], [+half_x, +half_y]),  # right
+        ([+half_x, +half_y], [-half_x, +half_y]),  # bottom
+        ([-half_x, +half_y], [-half_x, -half_y]),  # left
+    ]
+
+    for i in range(N):
+        R_c2w = ext_np[i, :3, :3].T
+        color = _hsv_color_bgr(i, N)
+        for (p0, p1) in edge_corners:
+            t = np.linspace(0.0, 1.0, S, dtype=np.float32)
+            xs = p0[0] + t * (p1[0] - p0[0])
+            ys = p0[1] + t * (p1[1] - p0[1])
+            cam_dirs = np.stack([xs, ys, np.ones_like(xs)], axis=-1)
+            world_dirs = cam_dirs @ R_c2w.T
+            world_dirs /= np.maximum(
+                np.linalg.norm(world_dirs, axis=-1, keepdims=True), 1e-12,
+            )
+            rx, ry, rz = world_dirs[:, 0], world_dirs[:, 1], world_dirs[:, 2]
+            theta = np.arctan2(ry, rx) % (2.0 * np.pi)
+            phi = np.arccos(np.clip(rz, -1.0, 1.0))
+            u = (1.0 - theta / (2.0 * np.pi)) * (W - 1)
+            v = (phi / np.pi) * (H - 1)
+            pts = np.stack([u, v], axis=-1).astype(np.float32)
+            du = np.abs(np.diff(pts[:, 0]))
+            breaks = np.where(du > W * 0.5)[0]
+            segments = np.split(pts, breaks + 1) if len(breaks) else [pts]
+            for seg in segments:
+                if len(seg) < 2:
+                    continue
+                seg_int = seg.astype(np.int32).reshape(-1, 1, 2)
+                cv2.polylines(
+                    debug, [seg_int], isClosed=False,
+                    color=color, thickness=2, lineType=cv2.LINE_AA,
+                )
+    return debug
+
+
 class PanoramaCubeSplit(io.ComfyNode):
     """Equirect panorama -> N perspective crops at fixed pitch/yaw grid."""
 
@@ -131,6 +203,19 @@ class PanoramaCubeSplit(io.ComfyNode):
                             "(float32). cx = image_w/2, cy = image_h/2; fx, "
                             "fy derived from fov_x_deg / fov_y_deg. Matches "
                             "upstream pano_bank/cameras.json convention."),
+                io.Image.Output(
+                    display_name="debug_image",
+                    tooltip=(
+                        "Original panorama with each crop's frustum edges "
+                        "drawn on it (HSV-colored polylines, one color per "
+                        "crop in pitch×yaw order). Rectangular frustum "
+                        "matches the cube split's separate fov_x / fov_y. "
+                        "Visually confirms coverage of the sphere by the "
+                        "27-crop grid and surfaces any rotation / look-at "
+                        "errors before paying for downstream depth + "
+                        "memory-bank work."
+                    ),
+                ),
             ],
         )
 
@@ -213,10 +298,23 @@ class PanoramaCubeSplit(io.ComfyNode):
             f"rot={rot_deg:.0f}deg -> {N_view}/pitch x 3 pitches, fname={fname!r} "
             f"(depths=None; wire face_images through MoGe2Inference + AddDepth)"
         )
+        # ----- Debug overlay: panorama + N rectangular frustums -----
+        debug_u8 = _make_pano_debug_overlay_rect(
+            pano, exts,
+            float(np.deg2rad(fov_x_deg)),
+            float(np.deg2rad(fov_y_deg)),
+        )
+        debug_t = (
+            torch.from_numpy(debug_u8.astype(np.float32) / 255.0)
+            .unsqueeze(0).contiguous()
+        )
+
         # face_images output is the same tensor as entries["frames"] — exposed
         # separately so downstream depth nodes (MoGe2Inference) can wire in
         # without the entries dict in scope.
-        return io.NodeOutput(frames_t, float(fov_x_deg), entries, exts_t, Ks_t)
+        return io.NodeOutput(
+            frames_t, float(fov_x_deg), entries, exts_t, Ks_t, debug_t,
+        )
 
 
 NODE_CLASS_MAPPINGS = {"PanoramaCubeSplit": PanoramaCubeSplit}
