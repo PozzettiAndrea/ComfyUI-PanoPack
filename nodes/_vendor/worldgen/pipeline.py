@@ -880,7 +880,21 @@ def build_mesh(
                 size=edge_mask.shape, mode="nearest",
             )[0, 0].bool()
         full_mask = (sky_mask_for_depth | edge_mask | invalid_init.to(edge_mask.device)).to(dev)
-        max_d = torch.quantile(full_depth["distance"][~full_mask], q=0.99).item()
+        unmasked = full_depth["distance"][~full_mask]
+        if unmasked.numel() == 0:
+            # Degenerate case: sky + edge + invalid covers every pixel. Usually
+            # means WorldNavPerceive's sky_mask misfired (whole-image sky on an
+            # indoor scene). Don't crash — fall back to q99 over the full depth
+            # map without exclusion. The downstream clip is still applied,
+            # just relative to the full distribution.
+            n_masked = int(full_mask.sum().item())
+            print(f"[WorldNavBuildMesh]   WARN: sky+edge+invalid mask covers all "
+                  f"{n_masked}/{full_mask.numel()} pixels (likely Perceive "
+                  f"sky-mask misfire); falling back to q99 over the full depth.",
+                  flush=True)
+            max_d = torch.quantile(full_depth["distance"].flatten(), q=0.99).item()
+        else:
+            max_d = torch.quantile(unmasked, q=0.99).item()
         print(f"[WorldNavBuildMesh]   q99 depth = {max_d:.3f}, clipping distance to [0, {max_d:.3f}]", flush=True)
         full_depth["distance"] = torch.clip(full_depth["distance"], 0, max_d)
 
