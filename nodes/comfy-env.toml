@@ -16,3 +16,7 @@ comfy-aimdo = "*"
 pillow = "*"
 opencv-python-headless = "*"
 numpy = "*"
+# Pure-Python torch-CUDA RANSAC for the GPU plane-fit path on
+# PanoramaFacesPlaneSegment (use_gpu=True). Falls back to Open3D's
+# CPU RANSAC when the package isn't installed or CUDA isn't available.
+torch-ransac3d = "*"
