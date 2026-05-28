@@ -384,6 +384,24 @@ class PanoramaFacesPlaneSegment(io.ComfyNode):
                     f"face_normals shape {n.shape} doesn't match face_points {p.shape}."
                 )
             n = n.astype(np.float32, copy=False)
+            # Auto-detect normal encoding. MoGe-2's ComfyUI `normal` output
+            # is RGB-encoded `(n + 1) / 2` so it can flow on the IMAGE
+            # socket — range [0, 1], NOT [-1, +1]. Some other models emit
+            # raw signed normals. Heuristic: if the global min ≥ -0.05,
+            # treat as RGB-encoded and decode. Otherwise treat as raw.
+            n_min = float(n.min())
+            n_max = float(n.max())
+            if n_min >= -0.05:
+                _p(
+                    f"normals: RGB-encoded detected (range "
+                    f"[{n_min:.3f}, {n_max:.3f}] ⊂ [0, 1]) → decoding via 2·x−1"
+                )
+                n = 2.0 * n - 1.0
+            else:
+                _p(
+                    f"normals: signed range detected "
+                    f"[{n_min:.3f}, {n_max:.3f}] → using as-is"
+                )
         else:
             n = None
 
