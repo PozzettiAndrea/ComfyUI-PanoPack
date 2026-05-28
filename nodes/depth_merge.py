@@ -51,8 +51,13 @@ def _build_debug_image(
     uv = utils3d.np.uv_map((H, W))
     dirs = spherical_uv_to_directions(uv).astype(np.float32).reshape(-1, 3)  # (H*W, 3)
 
-    sum_d = np.zeros(H * W, dtype=np.float64)
-    sum_d2 = np.zeros(H * W, dtype=np.float64)
+    # Disagreement is measured in LOG-DISTANCE space, the same space the
+    # LSMR merger minimizes in. Rationale (Bregman / Fisher-Rao geometry on
+    # ℝ⁺, plus monocular-depth noise being multiplicative): std(log d) is
+    # scale-invariant and matches the solver's loss. Reported as a
+    # multiplicative disagreement percentage via `100·(exp(std) − 1)`.
+    sum_ld = np.zeros(H * W, dtype=np.float64)
+    sum_ld2 = np.zeros(H * W, dtype=np.float64)
     n_cov = np.zeros(H * W, dtype=np.int32)
 
     for i in range(N):
@@ -87,28 +92,51 @@ def _build_debug_image(
                           borderMode=cv2.BORDER_REPLICATE).ravel()
 
         covered = in_face & (wsamp > 0.5) & (sampled > 0)
-        sum_d[covered] += sampled[covered]
-        sum_d2[covered] += sampled[covered].astype(np.float64) ** 2
+        log_sampled = np.log(np.maximum(sampled, 1e-6))
+        sum_ld[covered] += log_sampled[covered]
+        sum_ld2[covered] += log_sampled[covered] ** 2
         n_cov[covered] += 1
 
     has_overlap = n_cov >= 2
     n_safe = np.maximum(n_cov, 1).astype(np.float64)
-    mean_d = sum_d / n_safe
-    var_d = np.maximum(sum_d2 / n_safe - mean_d ** 2, 0.0)
-    std_d = np.sqrt(var_d).astype(np.float32)
-    std_d[~has_overlap] = 0.0
-    std_d_2d = std_d.reshape(H, W)
-    depth_flat = depth_np.ravel().astype(np.float32)
-    pct_per_pixel = 100.0 * std_d / np.maximum(depth_flat, 1e-6)
+    mean_ld = sum_ld / n_safe
+    var_ld = np.maximum(sum_ld2 / n_safe - mean_ld ** 2, 0.0)
+    std_ld = np.sqrt(var_ld).astype(np.float32)               # std(log d_i) per pixel
+    std_ld[~has_overlap] = 0.0
+    # Per-pixel multiplicative % disagreement: `100·(exp(σ_log) − 1)`. For
+    # small σ this ≈ 100·σ ≈ coefficient of variation; for larger σ it
+    # reflects the actual geometric spread of overlapping predictions.
+    pct_per_pixel = 100.0 * (np.exp(std_ld) - 1.0).astype(np.float32)
     pct_per_pixel[~has_overlap] = 0.0
 
+    # Solid-angle weights: dΩ = sin(φ) dφ dθ. v ∈ [0, H-1] maps to
+    # φ = (v + 0.5) / H · π. Without sin(φ) the equirect pole rows
+    # (which collapse to a single sphere point) would bias the mean.
+    v_idx = np.arange(H, dtype=np.float64)
+    sin_phi = np.sin((v_idx + 0.5) / float(H) * np.pi)
+    w_flat = np.broadcast_to(sin_phi[:, None], (H, W)).reshape(H * W)
+    overlap_w = (w_flat * has_overlap.astype(np.float64))
+    overlap_w_sum = float(overlap_w.sum())
+
     global_median = float(np.median(depth_np))
-    if has_overlap.any() and global_median > 0:
-        mean_shift_pct_of_median = float(std_d[has_overlap].mean()) / global_median * 100.0
-        p99_pct = float(np.percentile(pct_per_pixel[has_overlap], 99))
+    if overlap_w_sum > 0:
+        # Sphere-uniform mean std(log d) → exp-1 → multiplicative %.
+        mean_std_ld = float((std_ld * overlap_w).sum() / overlap_w_sum)
+        mean_pct = 100.0 * (np.exp(mean_std_ld) - 1.0)
+        # sin(φ)-weighted percentile for the colormap clip and the p99 stat.
+        order = np.argsort(pct_per_pixel * has_overlap.astype(np.float32))
+        sorted_pct = pct_per_pixel[order]
+        sorted_w = overlap_w[order]
+        cum_w = np.cumsum(sorted_w)
+        if cum_w[-1] > 0:
+            cum_w /= cum_w[-1]
+            p99_idx = int(np.searchsorted(cum_w, 0.99))
+            p99_pct = float(sorted_pct[min(p99_idx, len(sorted_pct) - 1)])
+        else:
+            p99_pct = 0.0
         max_pct = float(pct_per_pixel[has_overlap].max())
     else:
-        mean_shift_pct_of_median = 0.0
+        mean_pct = 0.0
         p99_pct = 0.0
         max_pct = 0.0
 
@@ -138,9 +166,10 @@ def _build_debug_image(
     if font is None:
         font = ImageFont.load_default()
     text = (
-        f"mean per-pixel disagreement = {mean_shift_pct_of_median:.2f}% of "
-        f"global median depth ({global_median:.3f}m);  "
-        f"p99 = {p99_pct:.2f}%,  max = {max_pct:.2f}% "
+        f"multiplicative disagreement (log-d, sphere-uniform): "
+        f"mean = {mean_pct:.2f}%,  p99 = {p99_pct:.2f}%,  "
+        f"max = {max_pct:.2f}%  "
+        f"(global median depth {global_median:.3f}m) "
         f"(colormap clipped at p99)"
     )
     # Vertical center
@@ -153,8 +182,9 @@ def _build_debug_image(
     cap_np = np.asarray(cap, dtype=np.float32) / 255.0
 
     stacked = np.concatenate([rgb, cap_np], axis=0)  # (H + cap_h, W, 3)
-    _p(f"debug_image: H={H}+{cap_h}, mean_shift={mean_shift_pct_of_median:.2f}%, "
-       f"p99={p99_pct:.2f}%, max={max_pct:.2f}%, overlap_pixels={int(has_overlap.sum())}")
+    _p(f"debug_image: H={H}+{cap_h}, mult_disagreement (log-d, sphere-uniform): "
+       f"mean={mean_pct:.2f}%, p99={p99_pct:.2f}%, max={max_pct:.2f}%; "
+       f"overlap_pixels={int(has_overlap.sum())}")
     return torch.from_numpy(stacked).unsqueeze(0).contiguous().float()
 
 
@@ -363,18 +393,22 @@ class PanoramaDepthMerge(io.ComfyNode):
                 io.Image.Output(
                     display_name="debug_image",
                     tooltip=(
-                        "Per-pixel disagreement map (viridis colormap) "
-                        "showing how much the overlapping face observations "
-                        "varied at each equirect pixel — std of "
-                        "reprojected per-face distance, expressed as a "
-                        "percentage of the merged depth at that pixel. "
-                        "Dark = strong consensus, bright = high "
+                        "Per-pixel multiplicative-disagreement viridis "
+                        "colormap on the equirect grid. For each pixel "
+                        "covered by ≥2 faces, computes std of log-"
+                        "distance across the reprojected per-face "
+                        "predictions, then `100·(exp(σ_log) − 1)` — the "
+                        "multiplicative percentage spread of overlapping "
+                        "predictions at that direction. Log-distance "
+                        "matches the LSMR merger's own objective (it "
+                        "solves in log-d space), so this is the metric "
+                        "the solver actually 'saw' the overlapping inputs "
+                        "in.\n\nDark = strong consensus, bright = high "
                         "disagreement (typically silhouettes / depth "
-                        "edges where the merger had to compromise). A "
-                        "text panel below the colormap reports the "
-                        "mean disagreement averaged over all multi-"
-                        "covered pixels, expressed as a fraction of the "
-                        "global median depth."
+                        "edges). The caption strip reports the sphere-"
+                        "uniform mean, p99, and max — sin(φ)-weighted so "
+                        "the pole rows of the equirect don't dominate. "
+                        "Global median depth printed for unit context."
                     )),
             ],
         )
