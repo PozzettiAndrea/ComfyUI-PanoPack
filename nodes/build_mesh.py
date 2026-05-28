@@ -18,6 +18,8 @@ import torch
 from PIL import Image, ImageDraw
 from comfy_api.latest import io
 
+from .utils import PANORAMA_TYPE, unwrap_panorama_to_image
+
 
 def _p(msg: str) -> None:
     print(f"[PanoramaBuildMesh] {msg}", file=sys.stderr, flush=True)
@@ -149,12 +151,12 @@ class PanoramaBuildMesh(io.ComfyNode):
                 "IMAGE for instant visual sanity-check before paying the navmesh cost."
             ),
             inputs=[
-                io.Custom("WORLDSTEREO_PANORAMA").Input(
+                io.Custom(PANORAMA_TYPE).Input(
                     "panorama",
-                    tooltip="Equirectangular RGB panorama. WORLDSTEREO_PANORAMA "
-                            "= IMAGE wrapped in a custom socket type. Wire "
-                            "from WorldStereoLoadPanorama OR a native IMAGE "
-                            "via WorldStereoPanoramaWrap."),
+                    tooltip="Equirectangular RGB panorama (2:1). PANORAMA = "
+                            "IMAGE wrapped in PanoPack's typed socket. Wire "
+                            "from PanoramaWrap or any node that emits a "
+                            "PANORAMA."),
                 io.Image.Input(
                     "depth",
                     tooltip="Equirect distance map (from MoGe panorama node)."),
@@ -194,7 +196,8 @@ class PanoramaBuildMesh(io.ComfyNode):
     def execute(cls, panorama, depth, sky_mask=None, valid_mask=None,
                 scene_type="indoor", contract=8.0, seed=1024):
         # --- panorama → PIL ---
-        arr = panorama.detach().cpu().numpy() if isinstance(panorama, torch.Tensor) else np.asarray(panorama)
+        pano_t = unwrap_panorama_to_image(panorama)
+        arr = pano_t.detach().cpu().numpy() if isinstance(pano_t, torch.Tensor) else np.asarray(pano_t)
         if arr.ndim == 4:
             arr = arr[0]
         if arr.dtype != np.uint8:

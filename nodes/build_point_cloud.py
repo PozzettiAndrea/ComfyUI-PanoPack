@@ -32,6 +32,8 @@ import torch
 from PIL import Image
 from comfy_api.latest import io
 
+from .utils import PANORAMA_TYPE, unwrap_panorama_to_image
+
 
 def _p(msg: str) -> None:
     print(f"[PanoramaBuildPointCloud] {msg}", file=sys.stderr, flush=True)
@@ -58,13 +60,12 @@ class PanoramaBuildPointCloud(io.ComfyNode):
                 "WorldStereo DiT."
             ),
             inputs=[
-                io.Custom("WORLDSTEREO_PANORAMA").Input(
+                io.Custom(PANORAMA_TYPE).Input(
                     "panorama",
                     tooltip="Equirectangular RGB panorama (2:1) - source of "
-                            "per-point colors. WORLDSTEREO_PANORAMA = IMAGE "
-                            "wrapped in a custom socket type. Wire from "
-                            "WorldStereoLoadPanorama OR a native IMAGE via "
-                            "WorldStereoPanoramaWrap."),
+                            "per-point colors. PANORAMA = IMAGE wrapped in "
+                            "PanoPack's typed socket. Wire from PanoramaWrap "
+                            "or any node that emits a PANORAMA."),
                 io.Image.Input(
                     "depth",
                     tooltip="Equirect distance map (from PanoramaDepthMerge "
@@ -135,7 +136,8 @@ class PanoramaBuildPointCloud(io.ComfyNode):
         )
 
         # --- panorama -> PIL -> torch (H, W, 3) ---
-        arr = panorama.detach().cpu().numpy() if isinstance(panorama, torch.Tensor) else np.asarray(panorama)
+        pano_t = unwrap_panorama_to_image(panorama)
+        arr = pano_t.detach().cpu().numpy() if isinstance(pano_t, torch.Tensor) else np.asarray(pano_t)
         if arr.ndim == 4:
             arr = arr[0]
         if arr.dtype != np.uint8:
