@@ -2,7 +2,8 @@
 # Open3D is conda-installed (the conda build pulls in libstdc++ /
 # numpy ABI compatible binaries; pip wheels sometimes mismatch with
 # torch's CUDA build). Used by PanoramaFacesPlaneSegment for
-# iterative `segment_plane` + DBSCAN.
+# iterative `segment_plane` + DBSCAN, and by PanoramaBuildPointCloud
+# / PanoramaBuildMesh for point-cloud / mesh utilities.
 open3d = "*"
 
 [pypi-dependencies]
@@ -16,6 +17,19 @@ comfy-aimdo = "*"
 pillow = "*"
 opencv-python-headless = "*"
 numpy = "*"
+scipy = "*"
+matplotlib = "*"
+scikit-image = "*"
+tqdm = "*"
+trimesh = ">=4.0"
+rtree = "*"     # trimesh ray intersect / bounds_tree → import rtree
+plyfile = "*"
+imageio = { version = "*", extras = ["ffmpeg"] }
+loguru = "*"
+# pyvista for the PanoramaBuildMesh cross-section preview.
+# Headless rendering uses VTK's OSMesa backend (bundled in the pyvista wheel).
+pyvista = ">=0.45"
+utils3d = { git = "https://github.com/EasternJournalist/utils3d.git", rev = "3fab839f0be9931dac7c8488eb0e1600c236e183" }
 # Pure-Python torch-CUDA RANSAC for the GPU plane-fit path on
 # PanoramaFacesPlaneSegment (use_gpu=True). Falls back to Open3D's
 # CPU RANSAC when the package isn't installed or CUDA isn't available.
