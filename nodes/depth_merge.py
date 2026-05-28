@@ -430,3 +430,7 @@ class PanoramaDepthMerge(io.ComfyNode):
 
         pbar.update_absolute(100, 100)
         return io.NodeOutput(depth_img, valid_mask)
+
+
+NODE_CLASS_MAPPINGS = {"PanoramaDepthMerge": PanoramaDepthMerge}
+NODE_DISPLAY_NAME_MAPPINGS = {"PanoramaDepthMerge": "Panorama Depth Merge"}

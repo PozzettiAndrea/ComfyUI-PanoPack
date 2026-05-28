@@ -248,3 +248,7 @@ class PanoramaBuildPointCloud(io.ComfyNode):
         _p(f"emit trimesh.PointCloud: {n_pts} vertices, "
            f"global_median_depth={global_median_depth:.3f}")
         return io.NodeOutput(pcd, global_median_depth)
+
+
+NODE_CLASS_MAPPINGS = {"PanoramaBuildPointCloud": PanoramaBuildPointCloud}
+NODE_DISPLAY_NAME_MAPPINGS = {"PanoramaBuildPointCloud": "Panorama Build Point Cloud"}

@@ -263,3 +263,7 @@ class PanoramaBuildMesh(io.ComfyNode):
            f"global_median_depth={global_median_depth:.3f}; scene_type={scene_type_out}; "
            f"preview {preview_t.shape}")
         return io.NodeOutput(mesh, preview_t, global_median_depth, scene_type_out)
+
+
+NODE_CLASS_MAPPINGS = {"PanoramaBuildMesh": PanoramaBuildMesh}
+NODE_DISPLAY_NAME_MAPPINGS = {"PanoramaBuildMesh": "Panorama Build Mesh"}
