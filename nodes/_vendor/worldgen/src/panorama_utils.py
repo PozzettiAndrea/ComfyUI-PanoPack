@@ -552,6 +552,19 @@ def merge_panorama_depth_gpu(width: int, height: int, distance_maps: List[np.nda
     else:
         panorama_depth_init = None
 
+    # Force the caching allocator to return cached-but-unreferenced blocks
+    # to CUDA *before* this level allocates its (potentially much larger)
+    # working set. Without this, a 4x size jump from the recursive child
+    # level to the parent level (e.g. 1920x960 → 3840x1920, N=42) can OOM
+    # on a 24 GB card even though Python has dropped every reference --
+    # PyTorch's caching allocator holds the freed blocks at the child
+    # level's size and the parent's bigger contiguous request fragments
+    # the cache. Per-level empty_cache() lets the parent see the full
+    # free pool. Cheap: empty_cache itself is a few-millisecond memcpy
+    # of the allocator's metadata, not a real free of allocated memory.
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+
     # Phase 2 (commit after 78380f4): the per-face cv2.remap loop +
     # scipy.ndimage.convolve calls + np.stack/np.sum reductions are now
     # one batched torch pipeline. All faces' projections, warps, gradients,

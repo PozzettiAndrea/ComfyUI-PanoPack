@@ -625,6 +625,17 @@ class PanoramaDepthMerge(io.ComfyNode):
             out_height=int(out_height),
         )
 
+        # Release the merge function's GPU cache back to CUDA. The
+        # caching allocator otherwise keeps cached blocks alive for the
+        # lifetime of the comfy-env worker subprocess, starving the next
+        # node in the workflow (CuMesh remesh, SHARP predict, etc.) of
+        # contiguous VRAM. Also drop any local references the caller
+        # would otherwise hold across the return boundary.
+        import gc
+        gc.collect()
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+
         pbar.update_absolute(100, 100)
         return io.NodeOutput(depth_img, valid_mask, debug_img)
 
