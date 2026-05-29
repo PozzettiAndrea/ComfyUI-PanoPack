@@ -27,6 +27,60 @@ def _p(msg: str) -> None:
     print(f"[PanoramaDepthMerge] {msg}", file=sys.stderr, flush=True)
 
 
+def _request_vram_eviction(needed_bytes: int) -> None:
+    """Ask comfy-env's parent ComfyUI process to evict cross-worker models
+    so this transient-tensor node has VRAM headroom.
+
+    Mechanics: every comfy-env worker subprocess gets a `comfy_worker` helper
+    module injected into sys.modules at startup. Calling
+    `comfy_worker.call_parent("request_vram_budget", total_size=N)` routes
+    through the shim's `request_vram_budget` IPC channel (the same one used
+    by the shimmed `load_models_gpu`). The parent ComfyUI process handles
+    the request via `_handle_vram_budget(...)` which calls
+    `comfy.model_management.free_memory(N * 1.1, device)` on its side --
+    evicting any sibling-worker models (e.g. HYWM2's 10 GB DiT) since
+    they're registered in the parent's `current_loaded_models`.
+
+    This is the cross-worker equivalent of a native sampler's
+    `mm.load_models_gpu([model], memory_required=N)`. For transient-tensor
+    workloads (like PanoramaDepthMerge, which doesn't register a model)
+    it's the only way to free VRAM held by other packs.
+
+    No-ops gracefully outside a comfy-env worker (e.g. unit tests running
+    in plain Python).
+    """
+    # Cross-worker eviction via comfy-env's IPC bridge.
+    try:
+        import comfy_worker  # noqa: F401 - injected by comfy-env at worker startup
+        try:
+            comfy_worker.call_parent(
+                "request_vram_budget", total_size=int(needed_bytes)
+            )
+            _p(f"  -> requested {needed_bytes / 1e9:.2f} GB eviction via comfy_worker.call_parent")
+        except Exception as e:
+            _p(f"  -> comfy_worker.call_parent failed: {e}")
+    except ImportError:
+        _p("  -> comfy_worker module unavailable; local free_memory only")
+
+    # Also run the standard intra-worker path. Harmless even if this
+    # worker holds no models (PanoPack typically doesn't), and defensive
+    # if PanoPack ever gains a model loader.
+    try:
+        import comfy.model_management as mm
+        device = mm.get_torch_device()
+        mm.free_memory(int(needed_bytes), device)
+    except Exception as e:
+        _p(f"  -> local mm.free_memory failed: {e}")
+
+    # Drop any cached blocks the allocator is holding in THIS worker so the
+    # next big alloc sees the freshly-evicted space contiguously.
+    try:
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+    except Exception:
+        pass
+
+
 def _build_debug_image(
     distance_maps, weights, extr_list, intr_list,
     depth_np, out_width: int, out_height: int,
@@ -555,6 +609,37 @@ class PanoramaDepthMerge(io.ComfyNode):
         pbar.update_absolute(1, 100)
 
         if use_gpu:
+            # Ask ComfyUI's model manager (across all comfy-env worker
+            # subprocesses, via comfy_worker.call_parent) to free VRAM
+            # before we hit the top pyramid level. The top-level einsum
+            # at large output resolutions (3840×1920 with N=42) needs
+            # several GB of contiguous CUDA memory; if a sibling worker
+            # is still holding a model (HYWM2's DiT, SHARP's UNet) the
+            # allocation can OOM even when the totals would fit. Native
+            # samplers do the same thing via `mm.load_models_gpu(...,
+            # memory_required=N)`; ours is the transient-tensor analog.
+            #
+            # Peak estimate: per-chunk float32 working tensors ≈ 12
+            # channels per output pixel per face in flight (p_cam +
+            # p_proj + projected_uv + safe_w + sampled_log_dist +
+            # sampled_pred_mask + grid xy + grad/lap intermediates),
+            # summed over `chunk_size` faces. Plus a handful of
+            # accumulators at full output resolution (six float + three
+            # bool buffers ≈ 7 floats' worth). 10% headroom is added by
+            # the parent's _handle_vram_budget. Estimate is approximate
+            # but a generous overestimate helps -- worst case is we
+            # evict more models than strictly needed; best case we
+            # avoid the OOM entirely.
+            N_f = len(distance_maps)
+            Nc = max(1, min(int(chunk_size), N_f))
+            per_chunk_bytes = Nc * int(out_height) * int(out_width) * 4 * 12
+            accum_bytes = int(out_height) * int(out_width) * 4 * 7
+            peak_estimate = per_chunk_bytes + accum_bytes
+            _p(f"top-level peak VRAM estimate: "
+               f"{peak_estimate / 1e9:.2f} GB ({out_width}×{out_height}, "
+               f"N={N_f}, chunk_size={Nc})")
+            _request_vram_eviction(peak_estimate)
+
             # GPU path: scipy LSMR with torch.sparse-backed matvecs (cuSPARSE
             # under the hood). The vendored merge_panorama_depth_gpu calls
             # solve_lsmr_gpu internally, which routes to the GPU operator when
