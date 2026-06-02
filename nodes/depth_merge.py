@@ -242,6 +242,133 @@ def _build_debug_image(
     return torch.from_numpy(stacked).unsqueeze(0).contiguous().float()
 
 
+def _render_xyz_views(
+    depth_np: np.ndarray,
+    mask_np: np.ndarray,
+    panel_w: int = 720,
+    panel_h: int = 720,
+    max_points: int = 80_000,
+) -> torch.Tensor:
+    """Render orthographic XY (top-down), XZ (front), YZ (side) projections
+    of the equirect-unprojected 3D point cloud via PyVista offscreen.
+
+    Each panel shows:
+      • the point cloud scattered (subsampled to `max_points` for speed)
+      • an axes triad
+      • a caption strip with bounding-box dimensions in metric units
+
+    Returns a [1, H, panel_w × 3, 3] IMAGE tensor (3 panels side-by-side).
+    Falls back to a small zero tensor + a stderr log if PyVista's
+    offscreen rasterizer isn't available in the worker.
+    """
+    try:
+        import pyvista as pv
+    except ImportError:
+        _p("xyz_views: pyvista not installed; returning empty image")
+        return torch.zeros((1, 1, 1, 3), dtype=torch.float32)
+
+    # --- Equirect → 3D point cloud (ray distance × spherical direction). ---
+    H, W = depth_np.shape
+    try:
+        from utils3d.numpy.maps import uv_map as _uv_map
+        from ._vendor.worldgen.src.panorama_utils import (
+            spherical_uv_to_directions,
+        )
+    except Exception as e:
+        _p(f"xyz_views: unprojection helpers unavailable ({e}); skipping")
+        return torch.zeros((1, 1, 1, 3), dtype=torch.float32)
+
+    uv = _uv_map(H, W)
+    rays = spherical_uv_to_directions(uv).astype(np.float32)  # [H, W, 3]
+    pts = rays * depth_np[..., None]                          # [H, W, 3] in meters
+    valid = mask_np.astype(bool) & np.isfinite(pts).all(axis=-1)
+    if not valid.any():
+        _p("xyz_views: no valid points to render")
+        return torch.zeros((1, 1, 1, 3), dtype=torch.float32)
+    flat = pts[valid].reshape(-1, 3)
+
+    # --- Subsample for speed. ---
+    if flat.shape[0] > max_points:
+        idx = np.random.default_rng(seed=42).choice(
+            flat.shape[0], size=max_points, replace=False,
+        )
+        flat = flat[idx]
+
+    # --- Bounding box stats. ---
+    bb_min = flat.min(axis=0)
+    bb_max = flat.max(axis=0)
+    bb_size = bb_max - bb_min
+    bb_center = (bb_min + bb_max) / 2.0
+    _p(f"xyz_views: cloud bbox center=({bb_center[0]:+.2f}, "
+       f"{bb_center[1]:+.2f}, {bb_center[2]:+.2f}) m, "
+       f"size=({bb_size[0]:.2f} × {bb_size[1]:.2f} × {bb_size[2]:.2f}) m, "
+       f"N={flat.shape[0]} (subsampled)")
+
+    # --- Render the 3 orthographic views with PyVista. ---
+    # off_screen=True uses VTK's OSMesa/EGL backend; works headless on
+    # Linux as long as VTK was built with offscreen support (the
+    # pixi/conda VTK 9.x build is).
+    cloud = pv.PolyData(flat.astype(np.float32))
+
+    views = [
+        # (label, camera position offset from center, view-up axis, axis labels)
+        ("TOP (XY, look -Y)",  np.array([0.0,  1.0, 0.0]), np.array([0.0, 0.0, 1.0]),  "X→ right, Z→ up"),
+        ("FRONT (XZ, look -Z)", np.array([0.0, 0.0,  1.0]), np.array([0.0, 1.0, 0.0]),  "X→ right, Y→ up"),
+        ("SIDE (YZ, look -X)",  np.array([1.0, 0.0,  0.0]), np.array([0.0, 1.0, 0.0]),  "Z→ right, Y→ up"),
+    ]
+    bg = (0.08, 0.08, 0.10)
+    fg_pt = (0.95, 0.95, 0.95)
+    panels: list[np.ndarray] = []
+    for label, cam_dir, up_axis, axis_hint in views:
+        try:
+            p = pv.Plotter(off_screen=True, window_size=(panel_w, panel_h))
+            p.background_color = bg
+            p.add_mesh(cloud, color=fg_pt, point_size=1.5, render_points_as_spheres=False)
+            # Orthographic camera. Distance is set to the bbox diagonal so
+            # the whole cloud fits regardless of viewing axis. The view-up
+            # picks the second-in-plane axis for each projection so the
+            # labels line up.
+            radius = float(np.linalg.norm(bb_size)) * 0.6 + 1e-3
+            cam_pos = bb_center + cam_dir * (radius * 2.0)
+            p.camera.position = tuple(cam_pos.tolist())
+            p.camera.focal_point = tuple(bb_center.tolist())
+            p.camera.up = tuple(up_axis.tolist())
+            p.enable_parallel_projection()
+            p.camera.parallel_scale = radius
+            # Bounding box outline + grid for scale.
+            p.show_bounds(
+                grid="back", location="outer", color="white",
+                font_size=10, n_xlabels=5, n_ylabels=5, n_zlabels=5,
+                xtitle=f"X ({bb_size[0]:.2f} m)",
+                ytitle=f"Y ({bb_size[1]:.2f} m)",
+                ztitle=f"Z ({bb_size[2]:.2f} m)",
+            )
+            p.add_text(
+                f"{label}\n{axis_hint}\n"
+                f"bbox X={bb_size[0]:.2f}  Y={bb_size[1]:.2f}  Z={bb_size[2]:.2f} m\n"
+                f"min=({bb_min[0]:+.2f},{bb_min[1]:+.2f},{bb_min[2]:+.2f}) "
+                f"max=({bb_max[0]:+.2f},{bb_max[1]:+.2f},{bb_max[2]:+.2f})",
+                position="upper_left", font_size=8, color="white",
+                shadow=True,
+            )
+            img = p.screenshot(return_img=True)  # [H, W, 3] uint8
+            p.close()
+            if img is None:
+                raise RuntimeError("screenshot returned None")
+            # PyVista may return RGBA; trim to RGB.
+            if img.ndim == 3 and img.shape[-1] == 4:
+                img = img[..., :3]
+            panels.append(img.astype(np.uint8))
+        except Exception as e:
+            _p(f"xyz_views: panel '{label}' failed ({e}); using placeholder")
+            placeholder = np.full((panel_h, panel_w, 3), 32, dtype=np.uint8)
+            panels.append(placeholder)
+
+    composite = np.concatenate(panels, axis=1)              # [H, 3W, 3] uint8
+    composite_f = composite.astype(np.float32) / 255.0
+    return torch.from_numpy(composite_f).unsqueeze(0).contiguous()  # [1, H, 3W, 3]
+
+
 class PanoramaDepthMerge(io.ComfyNode):
     """Per-face depth maps + per-face extrinsics/intrinsics → equirect depth IMAGE."""
 
@@ -463,6 +590,22 @@ class PanoramaDepthMerge(io.ComfyNode):
                         "uniform mean, p99, and max — sin(φ)-weighted so "
                         "the pole rows of the equirect don't dominate. "
                         "Global median depth printed for unit context."
+                    )),
+                io.Image.Output(
+                    display_name="xyz_views",
+                    tooltip=(
+                        "Three orthographic projections of the unprojected "
+                        "depth cloud rendered side-by-side via PyVista: "
+                        "TOP (XY, looking down -Y), FRONT (XZ, looking "
+                        "down -Z), SIDE (YZ, looking down -X). Each panel "
+                        "shows the point cloud with an axes triad, a "
+                        "back-grid with metric tick labels (X/Y/Z in "
+                        "meters), and an upper-left caption strip "
+                        "reporting the bounding box dimensions and "
+                        "min/max in world units. Useful to eyeball scene "
+                        "scale and verify the LSMR-fused depth produces "
+                        "a sensible 3D shape (e.g. a cubic room should "
+                        "show ~equal bbox dims in TOP)."
                     )),
             ],
         )
@@ -710,6 +853,18 @@ class PanoramaDepthMerge(io.ComfyNode):
             out_height=int(out_height),
         )
 
+        # ----- xyz_views: 3 orthographic projections of the unprojected
+        # depth cloud (TOP/FRONT/SIDE), rendered offscreen with PyVista
+        # and concatenated into a single 3-panel IMAGE. -----
+        try:
+            xyz_views_img = _render_xyz_views(
+                depth_np=depth_np,
+                mask_np=mask_np,
+            )
+        except Exception as e:
+            _p(f"xyz_views: render failed ({e}); returning empty image")
+            xyz_views_img = torch.zeros((1, 1, 1, 3), dtype=torch.float32)
+
         # Release the merge function's GPU cache back to CUDA. The
         # caching allocator otherwise keeps cached blocks alive for the
         # lifetime of the comfy-env worker subprocess, starving the next
@@ -722,7 +877,7 @@ class PanoramaDepthMerge(io.ComfyNode):
             torch.cuda.empty_cache()
 
         pbar.update_absolute(100, 100)
-        return io.NodeOutput(depth_img, valid_mask, debug_img)
+        return io.NodeOutput(depth_img, valid_mask, debug_img, xyz_views_img)
 
 
 NODE_CLASS_MAPPINGS = {"PanoramaDepthMerge": PanoramaDepthMerge}

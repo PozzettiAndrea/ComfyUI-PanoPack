@@ -147,8 +147,8 @@ class PanoramaSplit(io.ComfyNode):
                             "from PanoramaWrap or any node that emits a "
                             "PANORAMA."),
                 io.Int.Input(
-                    "resolution", default=512, min=128, max=2048, step=64,
-                    tooltip="Per-face image resolution (square). Default 512 matches upstream."),
+                    "resolution", default=952, min=128, max=2048, step=1,
+                    tooltip="Per-face image resolution (square). Any integer."),
                 io.Combo.Input(
                     "subdivision",
                     options=["icosahedron_12", "icosahedron_42"],
@@ -211,13 +211,69 @@ class PanoramaSplit(io.ComfyNode):
 
         t_total = time.perf_counter()
 
-        # --- panorama → numpy uint8 (H, W, 3) ---
+        # --- panorama → numpy (H, W, 3), preserving value range ---
+        # Three input cases:
+        #   1. uint8 [0, 255]                     — visual RGB
+        #   2. float32 [0, 1]                     — visual RGB (ComfyUI IMAGE convention)
+        #   3. float32 with values outside [0, 1] — DATA panorama (depth in meters,
+        #      ||point|| ray-distance, scalar field, etc.)
+        # The split helpers (`split_panorama_image` via cv2.remap,
+        # `split_panorama_image_gpu` via grid_sample) handle uint8 and float32
+        # alike; they preserve the input dtype. Previously this node UNCONDITIONALLY
+        # quantized non-uint8 input to uint8 [0, 255] via `np.clip(arr, 0, 1) * 255`
+        # — fine for visual RGB, FATAL for metric depth panoramas (0.5–50 m): values
+        # outside [0, 1] saturate, and the post-split /255 recovers a [0, 1] float
+        # with no magnitude. Symptom: gaussian splat collapses to a sphere because
+        # all gaussians end up at ~uniform distance from the camera.
         pano_t = unwrap_panorama_to_image(panorama)
-        arr = pano_t.detach().cpu().numpy() if isinstance(pano_t, torch.Tensor) else np.asarray(pano_t)
-        if arr.ndim == 4:
-            arr = arr[0]
-        if arr.dtype != np.uint8:
-            arr = (np.clip(arr, 0, 1) * 255).astype(np.uint8)
+        arr_orig = pano_t.detach().cpu().numpy() if isinstance(pano_t, torch.Tensor) else np.asarray(pano_t)
+        if arr_orig.ndim == 4:
+            arr_orig = arr_orig[0]
+
+        if arr_orig.dtype == np.uint8:
+            # Case 1: visual RGB uint8. Pass straight through; recover [0, 1]
+            # float at the end by dividing by 255.
+            arr = arr_orig
+            face_norm_divisor = 255.0
+            arr_for_overlay_u8 = arr_orig
+            data_panorama = False
+        elif np.issubdtype(arr_orig.dtype, np.floating):
+            arr = arr_orig.astype(np.float32, copy=False)
+            arr_min = float(arr.min())
+            arr_max = float(arr.max())
+            # 1e-3 slack so a visual panorama at exactly 1.0 doesn't get
+            # mistaken for a data panorama.
+            in_unit_range = arr_min >= -1e-3 and arr_max <= 1.0 + 1e-3
+            if in_unit_range:
+                # Case 2: visual RGB float [0, 1]. Helpers return float [0, 1];
+                # no rescale needed at the end.
+                face_norm_divisor = 1.0
+                arr_for_overlay_u8 = (np.clip(arr, 0, 1) * 255).astype(np.uint8)
+                data_panorama = False
+            else:
+                # Case 3: DATA panorama (depth, etc.). Preserve raw float values
+                # through the split — helpers will return float32 with the same
+                # metric magnitudes. For the debug overlay (which uses cv2 to
+                # draw colored polylines and needs uint8 RGB), build a
+                # min-max-normalized visualization.
+                face_norm_divisor = 1.0
+                if arr_max > arr_min:
+                    vis = ((arr - arr_min) / (arr_max - arr_min) * 255.0).clip(0, 255).astype(np.uint8)
+                else:
+                    vis = np.zeros(arr.shape, dtype=np.uint8)
+                if vis.ndim == 2:
+                    vis = np.repeat(vis[..., None], 3, axis=-1)
+                elif vis.shape[-1] == 1:
+                    vis = np.repeat(vis, 3, axis=-1)
+                arr_for_overlay_u8 = np.ascontiguousarray(vis)
+                data_panorama = True
+                _p(f"  data panorama detected (float, range [{arr_min:.3g}, {arr_max:.3g}]) "
+                   f"→ preserving raw values through split; overlay uses min-max normalize")
+        else:
+            raise TypeError(
+                f"PanoramaSplit: unsupported panorama dtype {arr_orig.dtype} "
+                f"(expected uint8 or float)"
+            )
         H, W = arr.shape[:2]
 
         # --- pick the icosahedron vertices ---
@@ -283,13 +339,20 @@ class PanoramaSplit(io.ComfyNode):
             backend = ("cv2.remap (CPU, cuda unavailable)"
                        if use_gpu else "cv2.remap (CPU, use_gpu=False)")
         t_split_done = time.perf_counter()
-        # splitted is list of (resolution, resolution, 3) uint8 arrays. Stack + normalize.
-        face_stack = np.stack(splitted, axis=0).astype(np.float32) / 255.0  # (N, R, R, 3)
+        # Stack + recover the ComfyUI IMAGE convention (float32, range
+        # depends on input case):
+        #   - uint8 in  → splitted is uint8 → /255.0 → float [0, 1]
+        #   - float [0,1] in → splitted is float [0, 1] → /1.0 → float [0, 1]
+        #   - data panorama in → splitted is float (metric units) → /1.0 →
+        #     PRESERVED magnitudes (this is the whole point of the dtype branching).
+        face_stack = np.stack(splitted, axis=0).astype(np.float32) / face_norm_divisor  # (N, R, R, C)
         face_t = torch.from_numpy(face_stack)
 
         # --- Debug overlay: original panorama with each face's frustum
-        # edges drawn as a colored polyline. `arr` is already uint8 RGB.
-        debug_np = _make_pano_debug_overlay(arr, extrinsics, fov_rad)
+        # edges drawn as a colored polyline. Uses the uint8 RGB
+        # visualization we built above (raw for visual panoramas;
+        # min-max normalized for data panoramas).
+        debug_np = _make_pano_debug_overlay(arr_for_overlay_u8, extrinsics, fov_rad)
         debug_t = (
             torch.from_numpy(debug_np.astype(np.float32) / 255.0).unsqueeze(0)
         )  # [1, H, W, 3]
