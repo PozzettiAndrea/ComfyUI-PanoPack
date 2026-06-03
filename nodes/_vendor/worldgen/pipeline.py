@@ -809,6 +809,7 @@ def build_mesh(
     valid_mask_np: Optional[np.ndarray] = None,
     scene_type: str = "indoor",
     contract: Optional[float] = 8.0,
+    edge_rtol: float = 0.1,
     seed: int = 1024,
     device: str = "cuda",
 ):
@@ -868,7 +869,7 @@ def build_mesh(
     _stage(25, "depth post-process: edge mask + sky mask + quantile-99 clip")
     with timer.track("Depth post-process"):
         edge_mask = torch.from_numpy(
-            _depth_map_edge(full_depth["distance"].cpu().numpy(), rtol=0.1)
+            _depth_map_edge(full_depth["distance"].cpu().numpy(), rtol=float(edge_rtol))
         ).bool()
         print(f"[WorldNavBuildMesh]   depth-edge mask: {edge_mask.sum().item()} edge pixels", flush=True)
         sky_mask_for_depth = sky_mask

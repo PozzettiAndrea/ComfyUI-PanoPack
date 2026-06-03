@@ -182,6 +182,18 @@ class PanoramaBuildMesh(io.ComfyNode):
                     tooltip="Outdoor-only: clip far depth to median * contract. "
                             "0 disables. Matches upstream HY-World traj_generate's "
                             "--contract default (8.0). Ignored when scene_type='indoor'."),
+                io.Float.Input(
+                    "edge_rtol", default=0.1, min=0.0, max=1.0, step=0.01,
+                    optional=True,
+                    tooltip="Relative-tolerance for depth-edge detection in "
+                            "the mesh build's depth post-process. Pixels "
+                            "where the depth gradient exceeds rtol × local "
+                            "depth get masked out (drops silhouettes / "
+                            "depth discontinuities before triangulation, "
+                            "preventing 'stretched' faces). Smaller = "
+                            "stricter (more pixels excluded). Matches "
+                            "BuildPointCloud's `edge_rtol`. Default 0.1 "
+                            "preserves prior behavior."),
             ],
             outputs=[
                 io.Custom("TRIMESH").Output(display_name="mesh"),
@@ -193,7 +205,7 @@ class PanoramaBuildMesh(io.ComfyNode):
 
     @classmethod
     def execute(cls, panorama, depth, sky_mask=None, valid_mask=None,
-                scene_type="indoor", contract=8.0):
+                scene_type="indoor", contract=8.0, edge_rtol=0.1):
         # --- panorama → PIL ---
         pano_t = unwrap_panorama_to_image(panorama)
         arr = pano_t.detach().cpu().numpy() if isinstance(pano_t, torch.Tensor) else np.asarray(pano_t)
@@ -244,6 +256,7 @@ class PanoramaBuildMesh(io.ComfyNode):
             valid_mask_np=valid_mask_np,
             scene_type=st,
             contract=float(contract) if contract is not None else None,
+            edge_rtol=float(edge_rtol),
         )
         # `mesh` is a live trimesh.Trimesh — pure geometry, no hidden metadata.
         # `global_median_depth` and `scene_type` come back as explicit values

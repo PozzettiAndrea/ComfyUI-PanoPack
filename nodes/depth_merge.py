@@ -567,6 +567,25 @@ class PanoramaDepthMerge(io.ComfyNode):
                         "False (default): off.\n"
                         "True: apply the soft consistency multiplier."
                     )),
+                io.Float.Input(
+                    "max_ray_distance_m", default=0.0, min=0.0, max=10000.0, step=0.5,
+                    optional=True,
+                    tooltip=(
+                        "Drop per-face pixels whose ||point|| (ray distance "
+                        "from camera) exceeds this threshold, BEFORE the "
+                        "LSMR build. 0 = disabled.\n\n"
+                        "Use when the depth model hallucinates extreme "
+                        "depths through windows / glass / open doors — "
+                        "those outliers blow up the log-depth median + "
+                        "residuals and make the rest of the scene merge "
+                        "incorrectly. Pick ~1.5–2× the longest dimension "
+                        "of the room you actually want reconstructed; "
+                        "e.g. 20 for a typical interior, 100 for an "
+                        "outdoor courtyard.\n\n"
+                        "Multiplies into the existing face_valid_masks × "
+                        "face_confidences × center_weight × normal-filter "
+                        "weight chain (it's just another mask term)."
+                    )),
             ],
             outputs=[
                 io.Image.Output(display_name="depth"),
@@ -618,6 +637,7 @@ class PanoramaDepthMerge(io.ComfyNode):
                 use_gpu=True, chunk_size=8, center_weight_power=0.0,
                 normal_edge_threshold_deg=0.0,
                 normal_consistency_boost=False,
+                max_ray_distance_m=0.0,
                 scale_anchor=True):
         from ._vendor.moge_panorama import merge_panorama_depth
 
@@ -674,6 +694,25 @@ class PanoramaDepthMerge(io.ComfyNode):
             c = _mask_to_nhw(face_confidences, "face_confidences")
             np.clip(c, 0.0, 1.0, out=c)
             weights *= c
+
+        # Max ray-distance pre-filter — drop outlier far-points that
+        # blow up the LSMR log-d objective. Distance maps are already
+        # computed above as np.linalg.norm(p_f32[i]) per face.
+        if max_ray_distance_m > 0.0:
+            dropped_total = 0
+            kept_total = 0
+            for i in range(N):
+                keep = (distance_maps[i] <= float(max_ray_distance_m)).astype(np.float32)
+                dropped_total += int((keep == 0).sum())
+                kept_total += int((keep > 0).sum())
+                weights[i] *= keep
+            total_px = N * fh * fw
+            _p(
+                f"max_ray_distance_m={max_ray_distance_m:.2f} m → "
+                f"dropped {dropped_total}/{total_px} pixels "
+                f"({100.0 * dropped_total / max(total_px, 1):.1f}%) "
+                f"with ||point|| above the threshold"
+            )
 
         # Normal-based per-face weight modifiers. Both require `face_normals`
         # wired and at least one of (edge filter, consistency boost) enabled.
