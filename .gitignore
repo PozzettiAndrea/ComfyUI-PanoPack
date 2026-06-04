@@ -26,6 +26,9 @@ venv/
 Thumbs.db
 *.swp
 
+# Jupyter
+.ipynb_checkpoints/
+
 # ComfyUI cache / temp
 output/
 input/

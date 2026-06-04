@@ -157,6 +157,69 @@ def panorama_shift_horizontal(
     return out
 
 
+def panorama_shift_pitch(
+    image: torch.Tensor, pitch_deg: float,
+) -> torch.Tensor:
+    """Rotate an equirect by `pitch_deg` degrees around the horizontal axis.
+
+    Implementation: spherical-coordinate remap via grid_sample.  Each output
+    pixel (u, v) is mapped through spherical coordinates, the latitude is
+    offset by the pitch angle, and we sample the input at the resulting
+    position.
+
+    Sign convention: positive pitch tilts the camera UP (scene moves down).
+    """
+    import torch.nn.functional as F
+    import math
+
+    if abs(pitch_deg) < 1e-6:
+        return image
+
+    img = normalize_pano_tensor(image)
+    b, h, w, c = img.shape
+
+    pitch_rad = math.radians(float(pitch_deg))
+
+    device = img.device
+    # Output pixel coordinates
+    u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)
+    v = torch.linspace(0.5, h - 0.5, h, device=device)  # [0, H)
+    grid_v, grid_u = torch.meshgrid(v, u, indexing="ij")  # (H, W)
+
+    # Output pixel → spherical angles (longitude, latitude)
+    lon = (grid_u / w) * 2.0 * math.pi - math.pi       # [-pi, pi]
+    lat = (grid_v / h) * math.pi - (math.pi / 2.0)      # [-pi/2, pi/2] (top=-pi/2, bottom=pi/2)
+
+    # Apply pitch offset to latitude
+    lat_src = lat - pitch_rad
+
+    # Convert (lon, lat_src) to 3D direction, then back to (lon_src, lat_src)
+    # to handle poles correctly via the full spherical mapping.
+    cos_lat = torch.cos(lat_src)
+    x = cos_lat * torch.sin(lon)
+    y = torch.sin(lat_src)
+    z = cos_lat * torch.cos(lon)
+
+    lon_src = torch.atan2(x, z)
+    lat_src = torch.asin(y.clamp(-1.0, 1.0))
+
+    # Spherical angles → input pixel coordinates, normalized to [-1, 1]
+    u_src = (lon_src + math.pi) / (2.0 * math.pi)   # [0, 1]
+    v_src = (lat_src + math.pi / 2.0) / math.pi      # [0, 1]
+    norm_x = u_src * 2.0 - 1.0   # [-1, 1]
+    norm_y = v_src * 2.0 - 1.0   # [-1, 1]
+
+    grid = torch.stack([norm_x, norm_y], dim=-1).unsqueeze(0)  # (1, H, W, 2)
+    grid = grid.expand(b, -1, -1, -1)
+
+    img_nchw = img.permute(0, 3, 1, 2).contiguous()  # (B, C, H, W)
+    sampled = F.grid_sample(
+        img_nchw, grid,
+        mode="bilinear", padding_mode="border", align_corners=False,
+    )
+    return sampled.permute(0, 2, 3, 1).contiguous()  # (B, H, W, C)
+
+
 def border_continuity_score(image: torch.Tensor) -> dict[str, float]:
     """Quantify how seamless an equirect is at its ±π wrap and ±π/2 poles.
 

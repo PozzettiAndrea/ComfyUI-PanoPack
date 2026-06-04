@@ -7,6 +7,7 @@ from .equirect import (
     wrap_image_as_panorama,
     unwrap_panorama_to_image,
     panorama_shift_horizontal,
+    panorama_shift_pitch,
     border_continuity_score,
 )
 
@@ -17,5 +18,6 @@ __all__ = [
     "wrap_image_as_panorama",
     "unwrap_panorama_to_image",
     "panorama_shift_horizontal",
+    "panorama_shift_pitch",
     "border_continuity_score",
 ]
