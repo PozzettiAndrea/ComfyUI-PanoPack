@@ -1,29 +1,85 @@
 /**
- * ComfyUI PanoPack - Panorama Info Text Report Renderer
+ * ComfyUI GeomPack - Generic Text Report Renderer
  * Collapsible info panel. Arrow toggle at top of box.
  */
 
 import { app } from "../../../scripts/app.js";
+import { buildTextReportHTML } from "./utils/analysisPanel.js";
 
 const TEXT_REPORT_NODES = [
-    "PanoramaInfo",
+    // Analysis
+    "GeomPackMeshInfo",
+    "GeomPackMeshQuality",
+    "GeomPackDegenerateFaces",
+    "GeomPackConnectedComponents",
+    "GeomPackOpenEdges",
+    // Repair
+    "GeomPackFillHoles",
+    "GeomPackMeshFix",
+    "GeomPackCheckNormals",
+    "GeomPackFixNormals",
+    "GeomPackRemoveDegenerateFaces",
+    "GeomPackMergeVertices",
+    "GeomPackVisualizeNormals",
+    "GeomPackAddNormalsToPointCloud",
+    "GeomPackFixSelfIntersectionsByRemoval",
+    "GeomPackDetectSelfIntersections",
+    "GeomPackFixSelfIntersectionsByPerturbation",
+    "GeomPackRemeshSelfIntersections",
+    // Remeshing
+    "GeomPackRemesh",
+    "GeomPackRemeshCGAL",
+    "GeomPackRemeshBlender",
+    "GeomPackRemeshGPU",
+    "RefineMesh",
+    // Reconstruction
+    "GeomPackReconstructSurface",
+    "GeomPackAlphaWrap",
+    // Texture remeshing
+    "GeomPackTextureToGeometry",
+    "GeomPackDepthNormalsToMesh",
+    "GeomPackRemeshWithTexture",
+    // Boolean
+    "GeomPackBooleanCGAL",
+    "GeomPackBooleanBlender",
+    // Combine
+    "GeomPackCombineMeshes",
+    "GeomPackCombineMeshesBatch",
+    "GeomPackSplitByField",
+    // Transforms
+    "GeomPackTransformMesh",
+    "GeomPackNormalizeMeshToBBox",
+    // UV
+    "GeomPackUVUnwrap",
+    // Distance
+    "GeomPackPointToMeshDistance",
+    "GeomPackMeshToMeshDistance",
+    // IO
+    "GeomPackLoadMeshFBX",
+    "GeomPackLoadMeshBlend",
+    // CADabra
+    "CADEdgeAnalysis",
+    "CAD_Quality_Metrics",
+    "CADCurvature",
+    "CADSewFaces",
+    "CADCheckOverlappingFaces",
+    "CADSplitComponents",
+    "CADHealShape",
+    "CADFixDegenerateFaces",
+    "CADPrimitiveReconstruction",
+    "CADFaceAnalysis",
+    // MeshSegmenter
+    "MeshSegGenerateMasks",
+    "MeshSegLift2DTo3DLabels",
+    "MeshSegSmoothLabels",
+    "MeshSegApplyLabelsToMesh",
 ];
 
 const TOGGLE_HEIGHT = 28;
 const DEFAULT_CONTENT_HEIGHT = 60;
 
-function buildTextReportHTML(text) {
-    const escaped = text
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/\n/g, '<br>');
-
-    return `<div style="white-space: pre-wrap; font-size: 10px; line-height: 1.4;">${escaped}</div>`;
-}
-
 app.registerExtension({
-    name: "panopack.text_report",
+    name: "geompack.text_report",
 
     async beforeRegisterNodeDef(nodeType, nodeData, app) {
         if (!TEXT_REPORT_NODES.includes(nodeData.name)) return;
@@ -62,6 +118,7 @@ app.registerExtension({
             container.appendChild(header);
             container.appendChild(content);
 
+            // Use getMinHeight/getHeight — the API ComfyUI's DOMWidgetImpl actually reads
             const widget = this.addDOMWidget("report_panel", "REPORT_PANEL", container, {
                 getValue() { return expanded ? "true" : "false"; },
                 setValue(v) { if (v === "true") setExpanded(true); },
@@ -69,6 +126,7 @@ app.registerExtension({
                 getHeight: () => widgetHeight,
             });
 
+            // Force node to grow to fit the widget
             requestAnimationFrame(() => {
                 node.setSize([node.size[0], node.computeSize()[1]]);
                 node.setDirtyCanvas(true, true);
@@ -87,6 +145,7 @@ app.registerExtension({
                 resize();
             }
 
+            // Toggle click
             header.addEventListener("click", () => {
                 setExpanded(!expanded);
             });

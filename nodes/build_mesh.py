@@ -168,20 +168,18 @@ class PanoramaBuildMesh(io.ComfyNode):
                     "valid_mask",
                     optional=True,
                     tooltip="From MoGe2's valid_mask output. Untrusted pixels filtered out."),
-                io.String.Input(
-                    "scene_type",
-                    default="indoor",
-                    optional=True,
-                    tooltip="From WorldNavPerceive. Gates the outdoor `contract` clip "
-                            "below and is passed through unchanged to "
-                            "WorldNavPlanTrajectories."),
+                io.Boolean.Input(
+                    "contract", default=False,
+                    tooltip="Enable depth contraction: clip far depth to "
+                            "median × contract_beyond. Useful for outdoor "
+                            "scenes to cap distant background."),
                 io.Float.Input(
-                    "contract",
-                    default=8.0, min=0.0, max=64.0, step=0.5,
+                    "contract_beyond",
+                    default=8.0, min=1.0, max=64.0, step=0.5,
                     optional=True,
-                    tooltip="Outdoor-only: clip far depth to median * contract. "
-                            "0 disables. Matches upstream HY-World traj_generate's "
-                            "--contract default (8.0). Ignored when scene_type='indoor'."),
+                    tooltip="Clip far depth to median × this value. Only "
+                            "used when 'contract' is enabled. Default 8.0 "
+                            "matches upstream HY-World."),
                 io.Float.Input(
                     "edge_rtol", default=0.1, min=0.0, max=1.0, step=0.01,
                     optional=True,
@@ -199,13 +197,12 @@ class PanoramaBuildMesh(io.ComfyNode):
                 io.Custom("TRIMESH").Output(display_name="mesh"),
                 io.Image.Output(display_name="mesh_preview"),
                 io.Float.Output(display_name="global_median_depth"),
-                io.String.Output(display_name="scene_type"),
             ],
         )
 
     @classmethod
     def execute(cls, panorama, depth, sky_mask=None, valid_mask=None,
-                scene_type="indoor", contract=8.0, edge_rtol=0.1):
+                contract=False, contract_beyond=8.0, edge_rtol=0.1):
         # --- panorama → PIL ---
         pano_t = unwrap_panorama_to_image(panorama)
         arr = pano_t.detach().cpu().numpy() if isinstance(pano_t, torch.Tensor) else np.asarray(pano_t)
@@ -239,30 +236,23 @@ class PanoramaBuildMesh(io.ComfyNode):
                 vm = vm[0]
             valid_mask_np = (vm > 0.5).astype(bool)
 
-        # Normalize the (possibly empty) scene_type input
-        st = str(scene_type).strip().lower() if scene_type else "indoor"
-        if st not in ("indoor", "outdoor"):
-            _p(f"scene_type='{scene_type}' unrecognized → defaulting to 'indoor'")
-            st = "indoor"
+        # Map contract toggle to scene_type for the underlying pipeline
+        st = "outdoor" if contract else "indoor"
+        contract_val = float(contract_beyond) if contract else None
 
-        _p(f"panorama {pil.size} depth {depth_np.shape} scene_type={st}")
+        _p(f"panorama {pil.size} depth {depth_np.shape} contract={contract}")
 
         from ._vendor.worldgen.pipeline import build_mesh as _build_mesh
 
-        mesh, global_median_depth, scene_type_out = _build_mesh(
+        mesh, global_median_depth, _scene_type_out = _build_mesh(
             pil,
             depth_np,
             sky_mask_np=sky_mask_np,
             valid_mask_np=valid_mask_np,
             scene_type=st,
-            contract=float(contract) if contract is not None else None,
+            contract=contract_val,
             edge_rtol=float(edge_rtol),
         )
-        # `mesh` is a live trimesh.Trimesh — pure geometry, no hidden metadata.
-        # `global_median_depth` and `scene_type` come back as explicit values
-        # to wire as separate sockets into WorldNavPlanTrajectories. Mesh
-        # itself is compatible with GeometryPack's TRIMESH (Preview Mesh,
-        # SaveMesh, decimation, etc).
 
         # --- Mesh preview (PIL wireframe) ---
         _p("rendering mesh_preview wireframe…")
@@ -274,9 +264,9 @@ class PanoramaBuildMesh(io.ComfyNode):
         preview_t = torch.from_numpy(preview_np.astype(np.float32) / 255.0).unsqueeze(0)
 
         _p(f"output: mesh {len(mesh.vertices)} verts / {len(mesh.faces)} faces (TRIMESH); "
-           f"global_median_depth={global_median_depth:.3f}; scene_type={scene_type_out}; "
+           f"global_median_depth={global_median_depth:.3f}; "
            f"preview {preview_t.shape}")
-        return io.NodeOutput(mesh, preview_t, global_median_depth, scene_type_out)
+        return io.NodeOutput(mesh, preview_t, global_median_depth)
 
 
 NODE_CLASS_MAPPINGS = {"PanoramaBuildMesh": PanoramaBuildMesh}

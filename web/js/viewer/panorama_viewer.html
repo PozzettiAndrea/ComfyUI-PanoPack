@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: #000; }
+  #viewport { width: 100%; height: calc(100% - 50px); position: relative; }
+  #viewport canvas { display: block; }
+  #buttons {
+    position: absolute; top: 6px; right: 6px; display: flex; gap: 3px;
+    flex-wrap: wrap; z-index: 10;
+  }
+  #buttons button {
+    padding: 2px 6px; font-size: 9px; border: 1px solid #555; border-radius: 3px;
+    background: rgba(30,30,50,0.8); color: #ccc; cursor: pointer; line-height: 1.3;
+    backdrop-filter: blur(4px);
+  }
+  #buttons button:hover { background: rgba(60,60,90,0.9); }
+  #info {
+    height: 22px; padding: 2px 8px; font-size: 10px; font-family: monospace;
+    color: #aaa; background: #111; border-top: 1px solid #333;
+    display: flex; align-items: center; white-space: nowrap; overflow: hidden;
+  }
+  #controls {
+    height: 28px; padding: 2px 8px; font-size: 10px; font-family: monospace;
+    color: #888; background: #0a0a0a; border-top: 1px solid #222;
+    display: flex; align-items: center; gap: 8px;
+  }
+  #controls span { color: #666; }
+</style>
+</head>
+<body>
+<div id="viewport"></div>
+<div id="info">lon: --  lat: --  |  u: --  v: --</div>
+<div id="controls">
+  <span>Drag to rotate | Scroll to zoom | WASD / Arrows to navigate</span>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from "three";
+
+const PRESETS = [
+  { label: "Front",  lon: 0,    lat: 0   },
+  { label: "Back",   lon: 180,  lat: 0   },
+  { label: "Left",   lon: -90,  lat: 0   },
+  { label: "Right",  lon: 90,   lat: 0   },
+  { label: "Top",    lon: 0,    lat: 90  },
+  { label: "Bottom", lon: 0,    lat: -90 },
+];
+
+const KEY_SPEED = 2;
+const viewport = document.getElementById("viewport");
+const infoEl = document.getElementById("info");
+
+// Preset buttons
+const btnBar = document.getElementById("buttons") || (() => {
+  const d = document.createElement("div"); d.id = "buttons";
+  viewport.appendChild(d); return d;
+})();
+for (const p of PRESETS) {
+  const b = document.createElement("button");
+  b.textContent = p.label;
+  b.addEventListener("click", () => { lon = p.lon; lat = p.lat; });
+  btnBar.appendChild(b);
+}
+viewport.appendChild(btnBar);
+
+// Three.js setup
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1100);
+camera.position.set(0, 0, 0);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(window.devicePixelRatio);
+viewport.appendChild(renderer.domElement);
+
+let lon = 0, lat = 0, fov = 75;
+let isDragging = false, startX = 0, startY = 0, startLon = 0, startLat = 0;
+let panoWidth = 0, panoHeight = 0;
+const keys = new Set();
+
+function resize() {
+  const w = viewport.clientWidth, h = viewport.clientHeight;
+  if (w > 0 && h > 0) {
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  }
+}
+window.addEventListener("resize", resize);
+resize();
+
+// Mouse
+viewport.addEventListener("mousedown", e => {
+  isDragging = true; startX = e.clientX; startY = e.clientY;
+  startLon = lon; startLat = lat; e.preventDefault();
+});
+viewport.addEventListener("mousemove", e => {
+  if (!isDragging) return;
+  lon = (startX - e.clientX) * 0.15 + startLon;
+  lat = (startY - e.clientY) * 0.15 + startLat;
+  e.preventDefault();
+});
+viewport.addEventListener("mouseup", () => { isDragging = false; });
+viewport.addEventListener("mouseleave", () => { isDragging = false; });
+viewport.addEventListener("wheel", e => {
+  fov = Math.max(30, Math.min(100, fov + e.deltaY * 0.05));
+  camera.fov = fov; camera.updateProjectionMatrix();
+  e.preventDefault();
+}, { passive: false });
+
+// Keyboard
+document.addEventListener("keydown", e => {
+  const nav = ["arrowup","arrowdown","arrowleft","arrowright","w","a","s","d"];
+  if (nav.includes(e.key.toLowerCase())) { keys.add(e.key.toLowerCase()); e.preventDefault(); }
+});
+document.addEventListener("keyup", e => { keys.delete(e.key.toLowerCase()); });
+
+// Animation
+let animating = false;
+function animate() {
+  requestAnimationFrame(animate);
+  if (keys.has("arrowleft")  || keys.has("a")) lon -= KEY_SPEED;
+  if (keys.has("arrowright") || keys.has("d")) lon += KEY_SPEED;
+  if (keys.has("arrowup")    || keys.has("w")) lat += KEY_SPEED;
+  if (keys.has("arrowdown")  || keys.has("s")) lat -= KEY_SPEED;
+  lat = Math.max(-85, Math.min(85, lat));
+
+  const phi = THREE.MathUtils.degToRad(90 - lat);
+  const theta = THREE.MathUtils.degToRad(lon);
+  camera.lookAt(new THREE.Vector3(
+    Math.sin(phi) * Math.cos(theta), Math.cos(phi), Math.sin(phi) * Math.sin(theta)
+  ));
+  renderer.render(scene, camera);
+  updateInfo();
+}
+
+function updateInfo() {
+  let lonNorm = ((lon % 360) + 360) % 360;
+  const u = lonNorm / 360.0;
+  const v = 0.5 - (lat / 180.0);
+  let px = "";
+  if (panoWidth > 0 && panoHeight > 0) {
+    px = `  |  px: (${Math.round(u * panoWidth) % panoWidth}, ${Math.min(Math.round(v * panoHeight), panoHeight - 1)})`;
+  }
+  const lonD = ((lonNorm + 180) % 360 - 180);
+  infoEl.textContent = `lon: ${lonD.toFixed(1)} lat: ${lat.toFixed(1)}  |  u: ${u.toFixed(4)}  v: ${v.toFixed(4)}  |  fov: ${fov.toFixed(0)}${px}`;
+}
+
+function loadImage(url) {
+  new THREE.TextureLoader().load(url, tex => {
+    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.mapping = THREE.EquirectangularReflectionMapping;
+    tex.minFilter = THREE.LinearFilter;
+    tex.magFilter = THREE.LinearFilter;
+    scene.background = tex;
+    resize();
+    if (!animating) { animating = true; animate(); }
+  }, undefined, err => console.error("PanoPack: texture load error", err));
+}
+
+// Listen for messages from parent (ComfyUI extension JS)
+window.addEventListener("message", e => {
+  const d = e.data;
+  if (!d || !d.type) return;
+  if (d.type === "load_panorama") {
+    loadImage(d.url);
+    if (d.width) panoWidth = d.width;
+    if (d.height) panoHeight = d.height;
+    if (d.initial_yaw !== undefined) lon = d.initial_yaw;
+    if (d.initial_pitch !== undefined) lat = d.initial_pitch;
+  }
+});
+
+// Signal ready
+window.parent.postMessage({ type: "panopack_viewer_ready" }, "*");
+</script>
+</body>
+</html>

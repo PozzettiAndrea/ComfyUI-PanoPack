@@ -77,17 +77,18 @@ class PanoramaBuildPointCloud(io.ComfyNode):
                     "valid_mask", optional=True,
                     tooltip="From MoGe2's valid_mask output. Invalid pixels "
                             "(typically sky / no-depth) are excluded."),
-                io.String.Input(
-                    "scene_type", default="indoor", optional=True,
-                    tooltip="From WorldNavPerceive. Gates the outdoor "
-                            "`contract` clip below."),
+                io.Boolean.Input(
+                    "contract", default=False,
+                    tooltip="Enable depth contraction: clip far depth to "
+                            "median × contract_beyond. Useful for outdoor "
+                            "scenes to cap distant background."),
                 io.Float.Input(
-                    "contract", default=8.0, min=0.0, max=64.0, step=0.5,
+                    "contract_beyond",
+                    default=8.0, min=1.0, max=64.0, step=0.5,
                     optional=True,
-                    tooltip="Outdoor-only: clip far depth to median * "
-                            "contract. 0 disables. Matches upstream "
-                            "HY-World traj_generate's --contract default "
-                            "(8.0). Ignored when scene_type='indoor'."),
+                    tooltip="Clip far depth to median × this value. Only "
+                            "used when 'contract' is enabled. Default 8.0 "
+                            "matches upstream HY-World."),
                 io.Float.Input(
                     "edge_rtol", default=0.1, min=0.0, max=1.0, step=0.01,
                     optional=True,
@@ -122,8 +123,8 @@ class PanoramaBuildPointCloud(io.ComfyNode):
     @classmethod
     def execute(cls, panorama, depth,
                 sky_mask=None, valid_mask=None,
-                scene_type: str = "indoor",
-                contract: float = 8.0,
+                contract: bool = False,
+                contract_beyond: float = 8.0,
                 edge_rtol: float = 0.1,
                 max_size: int = 4096,
                 dropout_pcd: bool = False):
@@ -182,9 +183,8 @@ class PanoramaBuildPointCloud(io.ComfyNode):
             iv_t = torch.from_numpy(invalid_init_np.astype(np.float32))[None, None]
             invalid_init_np = (F.interpolate(iv_t, size=(H, W), mode="nearest")[0, 0] > 0.5).numpy().astype(bool)
 
-        st = str(scene_type).strip().lower() if scene_type else "indoor"
-        is_outdoor = (st == "outdoor")
-        _p(f"panorama {pil.size}, depth {depth_np.shape}, scene_type={st}, "
+        is_outdoor = bool(contract)
+        _p(f"panorama {pil.size}, depth {depth_np.shape}, contract={contract}, "
            f"sky={int(sky_mask_np.sum())}, invalid={int(invalid_init_np.sum())}")
 
         # Equirect sanity: panorama is (W, H) via PIL; depth is (H, W) via
@@ -221,11 +221,11 @@ class PanoramaBuildPointCloud(io.ComfyNode):
         depth_np = np.clip(depth_np, 0, max_d)
         _p(f"q99 clip: distance clipped to [0, {max_d:.3f}]")
 
-        if is_outdoor and contract is not None and contract > 0:
+        if is_outdoor and contract_beyond > 0:
             median_d = float(np.median(depth_np[~full_mask_np]))
-            contract_d = median_d * float(contract)
+            contract_d = median_d * float(contract_beyond)
             depth_np = np.clip(depth_np, 0, contract_d)
-            _p(f"outdoor contract: median={median_d:.3f} * {float(contract):.2f} = "
+            _p(f"contract: median={median_d:.3f} * {float(contract_beyond):.2f} = "
                f"{contract_d:.3f} -> clipping")
 
         global_median_depth = float(np.median(depth_np[~full_mask_np]))

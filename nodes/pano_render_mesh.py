@@ -1,4 +1,4 @@
-"""PanoRenderMesh — render a trimesh as an ERP panorama (color).
+"""PanoRenderMesh — render a trimesh/pointcloud as an ERP panorama (color).
 PanoRenderMeshDepth — same but outputs an ERP depth map.
 
 Both use PyVista offscreen rendering of 6 cube faces stitched to equirect.
@@ -23,19 +23,33 @@ def _p(msg: str) -> None:
 # 6 cube face cameras from origin, 90° FOV each.
 # (camera_position, focal_point, view_up)
 _CUBE_CAMERAS = [
-    # +X
     ((0, 0, 0), (1, 0, 0), (0, 1, 0)),
-    # -X
     ((0, 0, 0), (-1, 0, 0), (0, 1, 0)),
-    # +Y
     ((0, 0, 0), (0, 1, 0), (0, 0, -1)),
-    # -Y
     ((0, 0, 0), (0, -1, 0), (0, 0, 1)),
-    # +Z
     ((0, 0, 0), (0, 0, 1), (0, 1, 0)),
-    # -Z
     ((0, 0, 0), (0, 0, -1), (0, 1, 0)),
 ]
+
+
+def _apply_yz_flip(mesh):
+    """Swap Y and Z axes on a trimesh object."""
+    import trimesh
+    verts = np.asarray(mesh.vertices, dtype=np.float32).copy()
+    verts[:, [1, 2]] = verts[:, [2, 1]]
+
+    if hasattr(mesh, "faces") and len(getattr(mesh, "faces", [])) > 0:
+        new_mesh = trimesh.Trimesh(vertices=verts, faces=np.asarray(mesh.faces), process=False)
+        if hasattr(mesh, "visual"):
+            new_mesh.visual = mesh.visual
+    else:
+        new_mesh = trimesh.PointCloud(vertices=verts)
+        if hasattr(mesh, "colors") and mesh.colors is not None:
+            new_mesh.colors = mesh.colors
+        elif hasattr(mesh, "visual") and hasattr(mesh.visual, "vertex_colors"):
+            new_mesh.colors = mesh.visual.vertex_colors
+
+    return new_mesh
 
 
 def _trimesh_to_pyvista(mesh):
@@ -44,7 +58,6 @@ def _trimesh_to_pyvista(mesh):
 
     verts = np.asarray(mesh.vertices, dtype=np.float32)
 
-    # Check if it's a mesh with faces or a point cloud
     if hasattr(mesh, "faces") and len(mesh.faces) > 0:
         faces = np.asarray(mesh.faces, dtype=np.int64)
         F = faces.shape[0]
@@ -53,10 +66,8 @@ def _trimesh_to_pyvista(mesh):
         ).flatten()
         poly = pv.PolyData(verts, faces_flat)
     else:
-        # Point cloud — create as point set
         poly = pv.PolyData(verts)
 
-    # Vertex colors if available
     if hasattr(mesh, "visual") and hasattr(mesh.visual, "vertex_colors"):
         colors = np.asarray(mesh.visual.vertex_colors, dtype=np.uint8)
         if colors.shape[-1] >= 3:
@@ -71,37 +82,43 @@ def _trimesh_to_pyvista(mesh):
     return poly
 
 
-def _render_cube_faces_color(mesh, face_size, point_size=2.0):
-    """Render 6 cube faces of a mesh/point cloud as color images."""
+def _render_cube_faces_color(mesh, face_size, mode_params):
+    """Render 6 cube faces as color images."""
     import os
     os.environ.setdefault("PYVISTA_OFF_SCREEN", "true")
     import pyvista as pv
 
     poly = _trimesh_to_pyvista(mesh)
     has_colors = "RGB" in poly.array_names
-    is_pointcloud = poly.n_cells == poly.n_points  # no faces = point cloud
+    mode = mode_params.get("mode", "mesh")
 
     faces = []
     for cam_pos, focal, view_up in _CUBE_CAMERAS:
         plotter = pv.Plotter(off_screen=True, window_size=(face_size, face_size))
         plotter.set_background((0, 0, 0))
 
-        if is_pointcloud:
+        if mode == "pointcloud":
+            pt_size = float(mode_params.get("point_size", 2.0))
             if has_colors:
                 plotter.add_points(poly, scalars="RGB", rgb=True,
-                                   point_size=point_size, render_points_as_spheres=True)
+                                   point_size=pt_size,
+                                   render_points_as_spheres=True)
             else:
                 plotter.add_points(poly, color=(0.7, 0.8, 0.95),
-                                   point_size=point_size, render_points_as_spheres=True)
+                                   point_size=pt_size,
+                                   render_points_as_spheres=True)
         else:
+            kwargs = dict(lighting=True, ambient=0.3, diffuse=0.7)
+            show_edges = str(mode_params.get("show_edges", "false")).lower() == "true"
+            if show_edges:
+                kwargs["show_edges"] = True
+                kwargs["edge_color"] = (0.18, 0.28, 0.45)
+                kwargs["line_width"] = float(mode_params.get("edge_thickness", 1.0))
             if has_colors:
-                plotter.add_mesh(poly, scalars="RGB", rgb=True,
-                                 lighting=True, ambient=0.3, diffuse=0.7)
+                plotter.add_mesh(poly, scalars="RGB", rgb=True, **kwargs)
             else:
-                plotter.add_mesh(poly, color=(0.7, 0.8, 0.95),
-                                 lighting=True, ambient=0.3, diffuse=0.7)
+                plotter.add_mesh(poly, color=(0.7, 0.8, 0.95), **kwargs)
 
-        # Set up 90° FOV perspective camera at origin
         plotter.camera.position = cam_pos
         plotter.camera.focal_point = focal
         plotter.camera.up = view_up
@@ -116,7 +133,7 @@ def _render_cube_faces_color(mesh, face_size, point_size=2.0):
 
 
 def _render_cube_faces_depth(mesh, face_size):
-    """Render 6 cube faces of a mesh as depth images."""
+    """Render 6 cube faces as depth images."""
     import os
     os.environ.setdefault("PYVISTA_OFF_SCREEN", "true")
     import pyvista as pv
@@ -127,7 +144,6 @@ def _render_cube_faces_depth(mesh, face_size):
     for cam_pos, focal, view_up in _CUBE_CAMERAS:
         plotter = pv.Plotter(off_screen=True, window_size=(face_size, face_size))
         plotter.set_background((0, 0, 0))
-
         plotter.add_mesh(poly, color="white", lighting=False)
 
         plotter.camera.position = cam_pos
@@ -136,13 +152,10 @@ def _render_cube_faces_depth(mesh, face_size):
         plotter.camera.view_angle = 90.0
         plotter.camera.clipping_range = (0.001, 1000.0)
 
-        # Get the depth buffer from VTK
         plotter.render()
         zbuf = plotter.get_image_depth(fill_value=0.0)
         plotter.close()
 
-        # zbuf is (H, W) float, distance from camera
-        # Convert to 3-channel for cube_faces_to_equirect compatibility
         depth_3ch = np.stack([zbuf, zbuf, zbuf], axis=-1).astype(np.float32)
         faces.append(depth_3ch)
 
@@ -161,6 +174,8 @@ class PanoRenderMesh(io.ComfyNode):
             description=(
                 "Render a TRIMESH (mesh or point cloud) as an equirectangular "
                 "panorama from the world origin.\n\n"
+                "Mode 'mesh': renders with faces, optional wireframe edges.\n"
+                "Mode 'pointcloud': renders as point splats.\n\n"
                 "Uses PyVista offscreen rendering of 6 cube faces "
                 "stitched into a 2:1 equirect."
             ),
@@ -168,15 +183,40 @@ class PanoRenderMesh(io.ComfyNode):
                 io.Custom("TRIMESH").Input(
                     "mesh",
                     tooltip="The mesh or point cloud to render."),
+                io.DynamicCombo.Input("mode",
+                    tooltip="Render mode.",
+                    options=[
+                        io.DynamicCombo.Option("mesh", [
+                            io.Combo.Input("show_edges",
+                                options=["false", "true"], default="false",
+                                tooltip="Show triangle wireframe edges."),
+                            io.Float.Input("edge_thickness",
+                                default=1.0, min=0.1, max=10.0, step=0.1,
+                                tooltip="Wireframe edge line width "
+                                        "(only used when show_edges is true)."),
+                        ]),
+                        io.DynamicCombo.Option("pointcloud", [
+                            io.Float.Input("point_size",
+                                default=2.0, min=0.5, max=20.0, step=0.5,
+                                tooltip="Screen-space point size in pixels."),
+                            io.Float.Input("render_radius",
+                                default=0.008, min=0.001, max=0.1, step=0.001,
+                                display_mode="number",
+                                tooltip="World-space splat radius "
+                                        "(matches WorldStereo convention)."),
+                        ]),
+                    ]),
+                io.Boolean.Input(
+                    "yz_flip", default=True,
+                    tooltip="Swap Y and Z axes. Enable when the input "
+                            "uses Z-up convention (common in 3D scanning "
+                            "and reconstruction)."),
                 io.Int.Input(
                     "width", default=2048, min=256, max=8192, step=64,
                     tooltip="Output panorama width. Height = width / 2."),
                 io.Int.Input(
                     "face_resolution", default=1024, min=256, max=4096, step=64,
                     tooltip="Resolution of each cube face render."),
-                io.Float.Input(
-                    "point_size", default=2.0, min=0.5, max=20.0, step=0.5,
-                    tooltip="Point size for point cloud rendering (ignored for meshes)."),
             ],
             outputs=[
                 io.Custom(PANORAMA_TYPE).Output(display_name="panorama"),
@@ -185,16 +225,20 @@ class PanoRenderMesh(io.ComfyNode):
         )
 
     @classmethod
-    def execute(cls, mesh, width=2048, face_resolution=1024, point_size=2.0):
+    def execute(cls, mesh, mode, yz_flip=True, width=2048, face_resolution=1024):
         import time
         t0 = time.perf_counter()
+
+        if yz_flip:
+            mesh = _apply_yz_flip(mesh)
 
         erp_w = int(width)
         erp_h = erp_w // 2
         face_size = int(face_resolution)
+        selected_mode = mode.get("mode", "mesh")
 
-        _p(f"rendering 6 cube faces @ {face_size}px (color)")
-        faces = _render_cube_faces_color(mesh, face_size, point_size=float(point_size))
+        _p(f"rendering 6 cube faces @ {face_size}px (color, mode={selected_mode})")
+        faces = _render_cube_faces_color(mesh, face_size, mode_params=mode)
 
         _p(f"stitching to {erp_w}x{erp_h} equirect")
         erp = cube_faces_to_equirect(faces, erp_w, erp_h)
@@ -226,6 +270,10 @@ class PanoRenderMeshDepth(io.ComfyNode):
                 io.Custom("TRIMESH").Input(
                     "mesh",
                     tooltip="The mesh to render depth from."),
+                io.Boolean.Input(
+                    "yz_flip", default=True,
+                    tooltip="Swap Y and Z axes. Enable when the input "
+                            "uses Z-up convention."),
                 io.Int.Input(
                     "width", default=2048, min=256, max=8192, step=64,
                     tooltip="Output panorama width. Height = width / 2."),
@@ -244,9 +292,12 @@ class PanoRenderMeshDepth(io.ComfyNode):
         )
 
     @classmethod
-    def execute(cls, mesh, width=2048, face_resolution=1024):
+    def execute(cls, mesh, yz_flip=True, width=2048, face_resolution=1024):
         import time
         t0 = time.perf_counter()
+
+        if yz_flip:
+            mesh = _apply_yz_flip(mesh)
 
         erp_w = int(width)
         erp_h = erp_w // 2
@@ -258,18 +309,15 @@ class PanoRenderMeshDepth(io.ComfyNode):
         _p(f"stitching to {erp_w}x{erp_h} equirect")
         erp = cube_faces_to_equirect(faces, erp_w, erp_h)
 
-        # Extract single-channel depth
-        depth = erp[..., 0]  # (H, W)
+        depth = erp[..., 0]
         max_depth = float(depth.max()) if depth.max() > 0 else 1.0
 
-        # Normalized visualization (0 = near/black, 1 = far/white)
         depth_vis = depth / max(max_depth, 1e-6)
         depth_vis = np.clip(depth_vis, 0, 1).astype(np.float32)
         depth_vis_3ch = np.stack([depth_vis] * 3, axis=-1)
 
         _p(f"depth range: [0, {max_depth:.3f}], done in {time.perf_counter() - t0:.2f}s")
 
-        # Panorama output: raw depth as 3-channel (for PANORAMA type compatibility)
         depth_pano_3ch = np.stack([depth, depth, depth], axis=-1).astype(np.float32)
         depth_pano_t = torch.from_numpy(depth_pano_3ch).unsqueeze(0)
         pano = wrap_image_as_panorama(depth_pano_t)
