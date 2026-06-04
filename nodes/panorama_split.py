@@ -178,12 +178,30 @@ class PanoramaSplit(io.ComfyNode):
                             "Falls back to CPU cv2.remap loop if CUDA "
                             "isn't available. Math identical within fp32 "
                             "round-off."),
+                io.Boolean.Input(
+                    "create_masks", default=False,
+                    optional=True,
+                    tooltip="Generate per-face masks. Wire into SHARP's "
+                            "mask input to delete overlapping gaussians."),
+                io.Combo.Input(
+                    "mask_method",
+                    options=["closest_to"],
+                    default="closest_to",
+                    optional=True,
+                    tooltip="closest_to: each pixel in a crop is 1 only if "
+                            "it's closer to this crop's center than to any "
+                            "other crop's center (Voronoi on the sphere). "
+                            "Eliminates overlap between adjacent faces."),
             ],
             outputs=[
                 io.Image.Output(display_name="face_images"),
                 io.Custom("EXTRINSICS").Output(display_name="extrinsics"),
                 io.Custom("INTRINSICS").Output(display_name="intrinsics"),
                 io.Float.Output(display_name="fov_x_deg"),
+                io.Mask.Output(
+                    display_name="face_masks",
+                    tooltip="Per-face masks (N, H, W). Only emitted when "
+                            "create_masks is enabled; otherwise zeros."),
                 io.Image.Output(
                     display_name="debug_image",
                     tooltip=(
@@ -194,12 +212,18 @@ class PanoramaSplit(io.ComfyNode):
                         "orientation."
                     ),
                 ),
+                io.Image.Output(
+                    display_name="debug_masks",
+                    tooltip="Equirect image with each pixel colored by its "
+                            "Voronoi cell (which face owns it). Only "
+                            "populated when create_masks is enabled."),
             ],
         )
 
     @classmethod
     def execute(cls, panorama, resolution=512, subdivision="icosahedron_42",
-                fov_degrees=90.0, use_gpu=True):
+                fov_degrees=90.0, use_gpu=True, create_masks=False,
+                mask_method="closest_to"):
         from PIL import Image
         import cv2
         from ._vendor.moge_panorama import (
@@ -357,6 +381,69 @@ class PanoramaSplit(io.ComfyNode):
             torch.from_numpy(debug_np.astype(np.float32) / 255.0).unsqueeze(0)
         )  # [1, H, W, 3]
 
+        # --- Per-face masks (Voronoi on sphere) ---
+        if create_masks and mask_method == "closest_to":
+            _p("generating closest_to masks...")
+            t_mask = time.perf_counter()
+            # For each face i, for each pixel (u, v) in that face:
+            #   1. Unproject (u, v) to a 3D direction on the unit sphere
+            #   2. Check which face center (icosahedron vertex) is closest
+            #   3. mask[i, v, u] = 1.0 if face i is the closest, else 0.0
+            R = resolution
+            uv = utils3d.np.uv_map((R, R))  # (R, R, 2) normalized pixel coords
+            face_dirs = verts / np.maximum(
+                np.linalg.norm(verts, axis=-1, keepdims=True), 1e-12
+            )  # (N, 3) unit direction per face center
+
+            masks = np.zeros((N, R, R), dtype=np.float32)
+            for i in range(N):
+                # Unproject this face's pixel grid to world 3D directions
+                pixel_dirs = utils3d.np.unproject_cv(
+                    uv, np.ones_like(uv[..., 0]),
+                    extrinsics=extrinsics[i], intrinsics=intrinsics[i],
+                )  # (R, R, 3)
+                pixel_dirs = pixel_dirs / np.maximum(
+                    np.linalg.norm(pixel_dirs, axis=-1, keepdims=True), 1e-12
+                )
+                # Dot product with all face centers: (R, R, N)
+                dots = np.einsum("hwc,nc->hwn", pixel_dirs, face_dirs)
+                # This pixel belongs to face i if face i has the highest dot product
+                closest_face = np.argmax(dots, axis=-1)  # (R, R)
+                masks[i] = (closest_face == i).astype(np.float32)
+
+            face_masks_t = torch.from_numpy(masks)  # (N, R, R)
+            _p(f"masks done in {time.perf_counter() - t_mask:.3f}s; "
+               f"avg coverage per face: {masks.mean():.1%}")
+
+            # Debug masks: color each equirect pixel by its Voronoi cell
+            _p("generating debug_masks equirect image...")
+            from .panorama_split_adaptive import _equirect_ray_dirs
+            eq_rays = _equirect_ray_dirs(H, W).reshape(-1, 3)
+            eq_dots = eq_rays @ face_dirs.T
+            eq_assignment = np.argmax(eq_dots, axis=1)
+
+            hsv_colors = np.zeros((N, 3), dtype=np.float32)
+            for i in range(N):
+                hue = float(i) / max(N, 1)
+                h6 = hue * 6.0
+                c = 0.8
+                x = c * (1 - abs(h6 % 2 - 1))
+                if h6 < 1:   r, g, b = c, x, 0
+                elif h6 < 2: r, g, b = x, c, 0
+                elif h6 < 3: r, g, b = 0, c, x
+                elif h6 < 4: r, g, b = 0, x, c
+                elif h6 < 5: r, g, b = x, 0, c
+                else:        r, g, b = c, 0, x
+                hsv_colors[i] = [r + 0.2, g + 0.2, b + 0.2]
+
+            debug_masks_np = hsv_colors[eq_assignment].reshape(H, W, 3)
+            pano_f = arr_for_overlay_u8[..., :3].astype(np.float32) / 255.0
+            debug_masks_np = np.clip(0.5 * debug_masks_np + 0.5 * pano_f, 0, 1)
+            debug_masks_t = torch.from_numpy(debug_masks_np.astype(np.float32)).unsqueeze(0)
+        else:
+            face_masks_t = torch.zeros(N, resolution, resolution)
+            debug_masks_t = torch.zeros((1, H, W, 3), dtype=torch.float32)
+
         _p(f"({W}×{H} RGB) → {N} faces @ {resolution}×{resolution}, "
            f"fov={fov_degrees:.1f}° via {backend}; "
            f"cameras {t_geom_done - t_geom:.3f}s, split {t_split_done - t_split:.3f}s, "
@@ -367,7 +454,9 @@ class PanoramaSplit(io.ComfyNode):
             torch.from_numpy(extrinsics),
             torch.from_numpy(intrinsics),
             float(fov_degrees),
+            face_masks_t,
             debug_t,
+            debug_masks_t,
         )
 
 

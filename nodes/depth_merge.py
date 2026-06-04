@@ -611,6 +611,16 @@ class PanoramaDepthMerge(io.ComfyNode):
                         "Global median depth printed for unit context."
                     )),
                 io.Image.Output(
+                    display_name="normals",
+                    tooltip=(
+                        "Merged equirectangular world-space surface normals "
+                        "(H, W, 3). Only populated when face_normals is "
+                        "wired; otherwise zeros. Per-face camera-space "
+                        "normals are rotated to world space via extrinsics, "
+                        "then weighted-averaged on the equirect grid using "
+                        "the same weights as the depth merger."
+                    )),
+                io.Image.Output(
                     display_name="xyz_views",
                     tooltip=(
                         "Three orthographic projections of the unprojected "
@@ -876,6 +886,86 @@ class PanoramaDepthMerge(io.ComfyNode):
         depth_img = torch.from_numpy(depth_np).unsqueeze(-1).expand(-1, -1, 3).unsqueeze(0).contiguous()
         valid_mask = torch.from_numpy(mask_np.astype(np.float32)).unsqueeze(0)
 
+        # ----- Normals merge: reproject per-face camera-space normals to
+        # world-space equirect via weighted average. Same projection +
+        # weights as the depth merger. -----
+        H_out, W_out = int(out_height), int(out_width)
+        if face_normals is not None:
+            _p("merging normals to equirect...")
+            import cv2
+            from ._vendor.worldgen.src.panorama_utils import spherical_uv_to_directions
+            import utils3d
+
+            fn = face_normals.detach().cpu().numpy() if isinstance(face_normals, torch.Tensor) else np.asarray(face_normals)
+            if fn.ndim == 4 and fn.shape[-1] == 3:
+                fn = fn.astype(np.float32, copy=False)
+            else:
+                _p(f"WARN: face_normals shape {fn.shape} unexpected; skipping merge")
+                fn = None
+
+            if fn is not None:
+                uv_eq = utils3d.np.uv_map((H_out, W_out))
+                dirs_eq = spherical_uv_to_directions(uv_eq).astype(np.float32).reshape(-1, 3)
+
+                normals_accum = np.zeros((H_out * W_out, 3), dtype=np.float64)
+                normals_weight = np.zeros(H_out * W_out, dtype=np.float64)
+
+                for i in range(N):
+                    ext_i = extr_list[i]
+                    R = ext_i[:3, :3].astype(np.float32)
+                    t = ext_i[:3, 3].astype(np.float32)
+                    K = intr_list[i].astype(np.float32)
+                    w_face = weights[i]
+
+                    # Rotate camera-space normals to world space: n_world = R^T @ n_cam
+                    n_cam = fn[i]  # (fh, fw, 3)
+                    n_world = np.einsum("hwc,dc->hwd", n_cam, R)  # R^T via transposed einsum
+                    # Re-normalize
+                    n_len = np.maximum(np.linalg.norm(n_world, axis=-1, keepdims=True), 1e-12)
+                    n_world = n_world / n_len
+
+                    # Project equirect rays into this face's camera
+                    p_cam = dirs_eq @ R.T + t
+                    in_front = p_cam[:, 2] > 0
+                    p_proj = p_cam @ K.T
+                    safe_w = np.where(p_proj[:, 2] > 1e-12, p_proj[:, 2], 1.0)
+                    uv_face = p_proj[:, :2] / safe_w[:, None]
+                    in_face = (
+                        in_front
+                        & (uv_face[:, 0] >= 0) & (uv_face[:, 0] <= 1)
+                        & (uv_face[:, 1] >= 0) & (uv_face[:, 1] <= 1)
+                    )
+
+                    px = (uv_face[:, 0] * fw - 0.5).astype(np.float32).reshape(H_out, W_out)
+                    py = (uv_face[:, 1] * fh - 0.5).astype(np.float32).reshape(H_out, W_out)
+
+                    # Sample world-space normals + weights
+                    for ch in range(3):
+                        sampled_ch = cv2.remap(n_world[..., ch], px, py,
+                                               cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE).ravel()
+                        normals_accum[in_face, ch] += sampled_ch[in_face].astype(np.float64)
+
+                    w_sampled = cv2.remap(w_face, px, py,
+                                          cv2.INTER_NEAREST, borderMode=cv2.BORDER_REPLICATE).ravel()
+                    covered = in_face & (w_sampled > 0.5)
+                    normals_weight[covered] += 1.0
+
+                # Weighted average + re-normalize
+                safe_nw = np.maximum(normals_weight, 1e-12)[:, None]
+                merged_normals = (normals_accum / safe_nw).astype(np.float32)
+                n_len = np.maximum(np.linalg.norm(merged_normals, axis=-1, keepdims=True), 1e-12)
+                merged_normals = merged_normals / n_len
+                merged_normals = merged_normals.reshape(H_out, W_out, 3)
+                # Map [-1,1] to [0,1] for IMAGE convention
+                normals_img = torch.from_numpy(
+                    (merged_normals * 0.5 + 0.5).clip(0, 1)
+                ).unsqueeze(0).contiguous()
+                _p(f"normals merged: {H_out}×{W_out}")
+            else:
+                normals_img = torch.zeros((1, H_out, W_out, 3), dtype=torch.float32)
+        else:
+            normals_img = torch.zeros((1, H_out, W_out, 3), dtype=torch.float32)
+
         # ----- Debug image: per-pixel disagreement among overlapping faces -----
         # Re-project each face's per-pixel ray distance to the equirect grid
         # using the same projection the LSMR uses internally, then compute the
@@ -916,7 +1006,7 @@ class PanoramaDepthMerge(io.ComfyNode):
             torch.cuda.empty_cache()
 
         pbar.update_absolute(100, 100)
-        return io.NodeOutput(depth_img, valid_mask, debug_img, xyz_views_img)
+        return io.NodeOutput(depth_img, valid_mask, normals_img, debug_img, xyz_views_img)
 
 
 NODE_CLASS_MAPPINGS = {"PanoramaDepthMerge": PanoramaDepthMerge}
