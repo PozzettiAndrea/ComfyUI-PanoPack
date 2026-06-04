@@ -1,2 +1,3 @@
 [node_reqs]
 ComfyUI-MoGe2 = "PozzettiAndrea/ComfyUI-MoGe2"
+ComfyUI-GeometryPack = "PozzettiAndrea/ComfyUI-GeometryPack"
