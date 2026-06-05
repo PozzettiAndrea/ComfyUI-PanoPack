@@ -97,6 +97,15 @@ function resize() {
 window.addEventListener("resize", resize);
 resize();
 
+// The keyboard handlers below live on this iframe's document, so they only
+// fire while the iframe holds keyboard focus. Make the viewport focusable and
+// grab focus on hover/click so WASD / arrow keys work without an extra click.
+viewport.tabIndex = 0;
+viewport.style.outline = "none";
+const focusViewer = () => { try { window.focus(); viewport.focus(); } catch (_) {} };
+viewport.addEventListener("mouseenter", focusViewer);
+viewport.addEventListener("pointerdown", focusViewer);
+
 // Mouse
 viewport.addEventListener("mousedown", e => {
   isDragging = true; startX = e.clientX; startY = e.clientY;
@@ -140,11 +149,13 @@ function animate() {
   ));
   renderer.render(scene, camera);
   updateInfo();
+  scheduleCameraState();
 }
 
 function updateInfo() {
   let lonNorm = ((lon % 360) + 360) % 360;
-  const u = lonNorm / 360.0;
+  // +0.5: the view centre samples image-U lon/360 + 0.5 (three.js equirect).
+  const u = ((lonNorm / 360.0) + 0.5) % 1.0;
   const v = 0.5 - (lat / 180.0);
   let px = "";
   if (panoWidth > 0 && panoHeight > 0) {
@@ -166,6 +177,23 @@ function loadImage(url) {
   }, undefined, err => console.error("PanoPack: texture load error", err));
 }
 
+// Report the current camera orientation back to the parent so that
+// re-running the node produces a crop matching the current view.
+// Coalesced to at most once per ~60ms and deduped while idle.
+let lastSent = { yaw: NaN, pitch: NaN, fov: NaN };
+let camTimer = null;
+function sendCameraState() {
+  const lonNorm = ((lon % 360) + 360) % 360;
+  const yaw = ((lonNorm + 180) % 360) - 180;  // normalize to [-180, 180]
+  if (yaw === lastSent.yaw && lat === lastSent.pitch && fov === lastSent.fov) return;
+  lastSent = { yaw, pitch: lat, fov };
+  window.parent.postMessage({ type: "camera_state", yaw, pitch: lat, fov }, "*");
+}
+function scheduleCameraState() {
+  if (camTimer) return;
+  camTimer = setTimeout(() => { camTimer = null; sendCameraState(); }, 60);
+}
+
 // Listen for messages from parent (ComfyUI extension JS)
 window.addEventListener("message", e => {
   const d = e.data;
@@ -176,6 +204,11 @@ window.addEventListener("message", e => {
     if (d.height) panoHeight = d.height;
     if (d.initial_yaw !== undefined) lon = d.initial_yaw;
     if (d.initial_pitch !== undefined) lat = d.initial_pitch;
+    if (d.crop_fov !== undefined) {
+      fov = d.crop_fov;
+      camera.fov = fov;
+      camera.updateProjectionMatrix();
+    }
   }
 });
 

@@ -5,11 +5,9 @@
 
 import { app } from "../../../scripts/app.js";
 
-const EXTENSION_FOLDER = (() => {
-    const url = import.meta.url;
-    const match = url.match(/\/extensions\/([^/]+)\//);
-    return match ? match[1] : "ComfyUI-PanoPack";
-})();
+// Resolve the viewer HTML relative to this module so the served path
+// (".../js/viewer/panorama_viewer.html") is always correct.
+const VIEWER_HTML_URL = new URL("./viewer/panorama_viewer.html", import.meta.url).href;
 
 const VIEWER_MIN_HEIGHT = 300;
 
@@ -31,9 +29,31 @@ app.registerExtension({
             iframe.style.border = "none";
             iframe.style.backgroundColor = "#000";
             iframe.style.borderRadius = "6px";
-            iframe.src = `/extensions/${EXTENSION_FOLDER}/viewer/panorama_viewer.html?v=${Date.now()}`;
+            iframe.src = `${VIEWER_HTML_URL}?v=${Date.now()}`;
 
             this._panoIframe = iframe;
+
+            // Sync the viewer's live camera orientation back into the node's
+            // widgets so re-running the node yields a crop matching the view.
+            const setWidget = (name, val) => {
+                const w = node.widgets?.find((x) => x.name === name);
+                if (!w || typeof val !== "number" || Number.isNaN(val)) return;
+                let v = val;
+                if (w.options?.min !== undefined) v = Math.max(w.options.min, v);
+                if (w.options?.max !== undefined) v = Math.min(w.options.max, v);
+                w.value = v;
+            };
+            const onMessage = (e) => {
+                if (e.source !== iframe.contentWindow) return;  // only this node's viewer
+                const d = e.data;
+                if (!d || d.type !== "camera_state") return;
+                setWidget("initial_yaw", d.yaw);
+                setWidget("initial_pitch", d.pitch);
+                setWidget("crop_fov", d.fov);
+                node.setDirtyCanvas(true, true);
+            };
+            window.addEventListener("message", onMessage);
+            this._panoOnMessage = onMessage;
 
             // Track desired viewer size
             let vWidth = VIEWER_MIN_HEIGHT;
@@ -103,6 +123,7 @@ app.registerExtension({
                     height: pano.height || 0,
                     initial_yaw: pano.initial_yaw ?? 0,
                     initial_pitch: pano.initial_pitch ?? 0,
+                    crop_fov: pano.crop_fov ?? 90,
                 });
 
                 if (pano.viewer_width && pano.viewer_height) {
@@ -121,6 +142,16 @@ app.registerExtension({
                     url: `/view?${params.toString()}`,
                 });
             }
+        };
+
+        // Remove the camera-state listener when the node is deleted.
+        const onRemoved = nodeType.prototype.onRemoved;
+        nodeType.prototype.onRemoved = function () {
+            if (this._panoOnMessage) {
+                window.removeEventListener("message", this._panoOnMessage);
+                this._panoOnMessage = null;
+            }
+            return onRemoved?.apply(this, arguments);
         };
     },
 });

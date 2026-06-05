@@ -136,9 +136,11 @@ class PanoramaViewer(io.ComfyNode):
         out_path = os.path.join(_OUTPUT_DIR, fname)
         PILImage.fromarray(uint8_img).save(out_path, format="PNG", optimize=False)
 
-        # Perspective crop at initial_yaw / initial_pitch
-        # Convert yaw/pitch (degrees) to equirect UV
-        center_u = ((float(initial_yaw) % 360.0) / 360.0)
+        # Perspective crop at initial_yaw / initial_pitch.
+        # Convert yaw/pitch (degrees) to equirect UV. The +0.5 (half turn) on
+        # U matches the three.js viewer convention, where yaw=0 looks at the
+        # centre of the equirect image (image U=0.5), not its left edge.
+        center_u = ((float(initial_yaw) / 360.0) + 0.5) % 1.0
         center_v = 0.5 - (float(initial_pitch) / 180.0)
         crop_np = _crop_perspective(
             np_img, center_u, center_v,
@@ -147,12 +149,10 @@ class PanoramaViewer(io.ComfyNode):
         )
         crop_t = torch.from_numpy(crop_np).unsqueeze(0).clamp(0, 1)
 
+        # Note: intentionally NOT including an "images" key here — that would
+        # make ComfyUI render a full-size preview below the node. The 360°
+        # viewer is driven entirely by the "panorama" payload below.
         ui_payload = {
-            "images": [{
-                "filename": fname,
-                "subfolder": "",
-                "type": "output",
-            }],
             "panorama": [{
                 "filename": fname,
                 "subfolder": "",
@@ -163,6 +163,7 @@ class PanoramaViewer(io.ComfyNode):
                 "viewer_height": int(viewer_height),
                 "initial_yaw": float(initial_yaw),
                 "initial_pitch": float(initial_pitch),
+                "crop_fov": float(crop_fov),
             }],
         }
 
