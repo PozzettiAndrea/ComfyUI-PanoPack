@@ -181,6 +181,15 @@ def _render_cube_faces_depth(mesh, face_size):
     poly = _trimesh_to_pyvista(mesh)
     _p(f"  depth pyvista poly: n_points={poly.n_points} n_cells={poly.n_cells}")
 
+    # Per-pixel factor to turn camera-axis (perpendicular) depth into radial
+    # distance from the origin: radial = z_perp * sqrt(1 + fx^2 + fy^2), where
+    # fx,fy are tangent-space offsets (pixel - center) / focal. The cameras all
+    # sit at the origin, so this yields true distance from the world origin.
+    f_px = (face_size / 2.0) / np.tan(np.radians(FACE_FOV_DEG) / 2.0)
+    ax = (np.arange(face_size, dtype=np.float32) + 0.5 - face_size / 2.0) / f_px
+    fxx, fyy = np.meshgrid(ax, ax)
+    radial_factor = np.sqrt(1.0 + fxx * fxx + fyy * fyy).astype(np.float32)
+
     faces = []
     for idx, (cam_pos, focal, view_up) in enumerate(_CUBE_CAMERAS):
         plotter = pv.Plotter(off_screen=True, window_size=(face_size, face_size))
@@ -193,14 +202,21 @@ def _render_cube_faces_depth(mesh, face_size):
         plotter.camera.view_angle = FACE_FOV_DEG
         plotter.camera.clipping_range = (0.001, 1000.0)
 
-        plotter.render()
-        zbuf = plotter.get_image_depth(fill_value=0.0)
+        # off_screen render must go through show() to be marked rendered; a bare
+        # render() leaves get_image_depth() raising "has not yet been rendered".
+        plotter.show(auto_close=False)
+        # get_image_depth returns negative camera-space depth (scene is in front),
+        # NaN for background. Flip to positive distance and zero the background.
+        zbuf = plotter.get_image_depth(fill_value=np.nan)
         plotter.close()
 
-        zbuf = np.asarray(zbuf, dtype=np.float32)
+        zbuf = np.abs(np.asarray(zbuf, dtype=np.float32))
+        zbuf[~np.isfinite(zbuf)] = 0.0
+        # perpendicular depth -> radial distance from origin (background stays 0)
+        zbuf = zbuf * radial_factor
         hit = int((zbuf > 0).sum())
         _p(f"  depth face {idx} focal={focal}: hit_px={hit} "
-           f"range=[{float(zbuf.min()):.3f},{float(zbuf.max()):.3f}]")
+           f"range=[{float(zbuf.min()):.3f},{float(zbuf.max()):.3f}] (radial)")
         depth_3ch = np.stack([zbuf, zbuf, zbuf], axis=-1).astype(np.float32)
         faces.append(depth_3ch)
 
