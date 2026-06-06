@@ -1,0 +1,1134 @@
+[00:00] Crash dump logging enabled: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/PanoPack-1600/dev/linux-cpu/crash_dump.log
+[00:00] 
+[00:00] [1/5] SYNTAX
+[00:00] ----------------------------------------
+[00:00] 
+[DEBUG] server=None, api=None
+[00:00] Found pyproject.toml (modern format)
+[00:00] Found requirements.txt (legacy format)
+[00:00] Unicode check: OK (all characters cp1252-safe)
+[00:00] Forbidden patterns check: OK
+[00:00] [SYNTAX] PASSED
+[00:00] 
+[00:00] [2/5] INSTALL
+[00:00] ----------------------------------------
+[00:00] 
+[DEBUG] server=None, api=None
+[00:00] 
+Setting up ComfyUI...
+[00:00] Creating virtual environment...
+[00:00] Running: uv venv /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/.venv --python 3.10
+[00:01] torch_version='2.10.0' -> pinning torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0
+[00:01] Cloning ComfyUI (latest)...
+[00:01] Running: git clone --depth 1 https://github.com/comfyanonymous/ComfyUI.git /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI
+[00:02] Pinning torch family from https://download.pytorch.org/whl/cpu: torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0
+[00:02] Running: uv pip install --python /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/.venv/bin/python --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple --index-strategy unsafe-best-match torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0
+[00:07] Installing ComfyUI requirements...
+[00:07] Running: uv pip install --python /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/.venv/bin/python --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple --index-strategy unsafe-best-match -r /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/requirements.txt
+[00:11] 
+Installing custom node...
+[00:11] Copying ComfyUI-PanoPack to custom_nodes/...
+[00:11] Installing node requirements...
+[00:11] Running: uv pip install --python /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/.venv/bin/python --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple --index-strategy unsafe-best-match -r /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/requirements.txt
+[00:12] 
+Running install.py...
+[00:12] Running: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/.venv/bin/python /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/install.py
+[00:13]   
+[00:13]   Installing 2 node dependencies...
+[00:13]     Cloning ComfyUI-MoGe2...
+[00:13]     Installing requirements for ComfyUI-MoGe2...
+[00:13]     Running install.py for ComfyUI-MoGe2...
+[00:13]   [comfy-env] _discover: scanning /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes
+[00:13]   [comfy-env] _discover: ComfyUI-MoGe2 -> moge2-nodes (custom_nodes/ComfyUI-MoGe2/nodes/comfy-env.toml)
+[00:13]   [comfy-env] _discover: ComfyUI-PanoPack -> panopack-nodes (custom_nodes/ComfyUI-PanoPack/nodes/comfy-env.toml)
+[00:13]   [comfy-env] Workspace: /home/runner/.ce
+[00:13]   [comfy-env] ComfyUI: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI
+[00:13]   [comfy-env] Found 2 node config(s):
+[00:13]     - moge2-nodes <- custom_nodes/ComfyUI-MoGe2/nodes/comfy-env.toml (python=host)
+[00:13]     - panopack-nodes <- custom_nodes/ComfyUI-PanoPack/nodes/comfy-env.toml (python=host)
+[00:13]   [comfy-env] Bootstrap interpreter has python 3.10 + torch 2.10.0 (cpu). Looking for cuda-only wheels matching cpu/torch2.10/cp310.
+[00:16]   [comfy-env] GPU: No GPU detected
+[00:16]   [comfy-env] No CUDA detected -- pinning comfyui torch to CPU index
+[00:16]   [comfy-env] Writing 2 per-env manifest(s):
+[00:16]     - moge2-nodes: /home/runner/.ce/envs/moge2-nodes/pixi.toml
+[00:16]     - panopack-nodes: /home/runner/.ce/envs/panopack-nodes/pixi.toml
+[00:16]   [comfy-env] Installing 2 environment(s):
+[00:16]     - moge2-nodes (python=host, 12 pypi deps, 2 cuda wheels)
+[00:16]     - panopack-nodes (python=host, 23 pypi deps)
+[00:16]   [comfy-env] Running `pixi install --manifest-path /home/runner/.ce/envs/moge2-nodes/pixi.toml` ...
+[00:22]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
+[00:22]     	- bin/.librsvg-pre-unlink.sh
+[00:22]     To enable them, run:
+[00:22]     	pixi config set --local run-post-link-scripts insecure
+[00:22]     More info:
+[00:22]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
+[00:27]     ✔ The default environment has been installed.
+[00:27]   [comfy-env] Running `pixi install --manifest-path /home/runner/.ce/envs/panopack-nodes/pixi.toml` ...
+[00:37]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
+[00:37]     	- bin/.librsvg-pre-unlink.sh
+[00:37]     To enable them, run:
+[00:37]     	pixi config set --local run-post-link-scripts insecure
+[00:37]     More info:
+[00:37]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
+[00:39]     ✔ The default environment has been installed.
+[00:39]   [comfy-env] Recorded install hash e93f585de2c4 -> /home/runner/.ce/install.hash
+[00:39]   [comfy-env] Install log: /home/runner/.ce/install.log
+[00:39]   
+[00:39]   Installation complete!
+[00:39]     Cloning ComfyUI-GeometryPack...
+[00:41]     Installing requirements for ComfyUI-GeometryPack...
+[00:41]     Running install.py for ComfyUI-GeometryPack...
+[00:41]   [comfy-env] _discover: scanning /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes
+[00:41]   [comfy-env] _discover: ComfyUI-GeometryPack -> geometrypack-nodes (custom_nodes/ComfyUI-GeometryPack/nodes/comfy-env.toml)
+[00:41]   [comfy-env] _discover: ComfyUI-MoGe2 -> moge2-nodes (custom_nodes/ComfyUI-MoGe2/nodes/comfy-env.toml)
+[00:41]   [comfy-env] _discover: ComfyUI-PanoPack -> panopack-nodes (custom_nodes/ComfyUI-PanoPack/nodes/comfy-env.toml)
+[00:41]   [comfy-env] Workspace: /home/runner/.ce
+[00:41]   [comfy-env] ComfyUI: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI
+[00:41]   [comfy-env] Found 3 node config(s):
+[00:41]     - geometrypack-nodes <- custom_nodes/ComfyUI-GeometryPack/nodes/comfy-env.toml (python=host)
+[00:41]     - moge2-nodes <- custom_nodes/ComfyUI-MoGe2/nodes/comfy-env.toml (python=host)
+[00:41]     - panopack-nodes <- custom_nodes/ComfyUI-PanoPack/nodes/comfy-env.toml (python=host)
+[00:41]   [comfy-env] Bootstrap interpreter has python 3.10 + torch 2.10.0 (cpu). Looking for cuda-only wheels matching cpu/torch2.10/cp310.
+[00:42]   [comfy-env] GPU: No GPU detected
+[00:42]   [comfy-env] No CUDA detected -- pinning comfyui torch to CPU index
+[00:42]   [comfy-env] Writing 3 per-env manifest(s):
+[00:42]     - geometrypack-nodes: /home/runner/.ce/envs/geometrypack-nodes/pixi.toml
+[00:42]     - moge2-nodes: /home/runner/.ce/envs/moge2-nodes/pixi.toml
+[00:42]     - panopack-nodes: /home/runner/.ce/envs/panopack-nodes/pixi.toml
+[00:42]   [comfy-env] Installing 3 environment(s):
+[00:42]     - geometrypack-nodes (python=host, 14 pypi deps, 1 cuda wheels)
+[00:42]     - moge2-nodes (python=host, 12 pypi deps, 2 cuda wheels)
+[00:42]     - panopack-nodes (python=host, 23 pypi deps)
+[00:42]   [comfy-env] Running `pixi install --manifest-path /home/runner/.ce/envs/geometrypack-nodes/pixi.toml` ...
+[05:50]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
+[05:50]     	- bin/.librsvg-pre-unlink.sh
+[05:50]     To enable them, run:
+[05:50]     	pixi config set --local run-post-link-scripts insecure
+[05:50]     More info:
+[05:50]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
+[05:52]     ✔ The default environment has been installed.
+[05:52]   [comfy-env] Running `pixi install --manifest-path /home/runner/.ce/envs/moge2-nodes/pixi.toml` ...
+[05:52]     ✔ The default environment has been installed.
+[05:52]   [comfy-env] Running `pixi install --manifest-path /home/runner/.ce/envs/panopack-nodes/pixi.toml` ...
+[05:52]     ✔ The default environment has been installed.
+[05:52]   [comfy-env] Recorded install hash 080823974feb -> /home/runner/.ce/install.hash
+[05:52]   [comfy-env] Install log: /home/runner/.ce/install.log
+[05:52]   
+[05:52]   Installation complete!
+[05:53]   
+[05:53]   [requirements] Re-installing main package requirements...
+[05:53]     Installing requirements for ComfyUI-PanoPack...
+[05:53]   [comfy-env] _discover: scanning /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes
+[05:53]   [comfy-env] _discover: ComfyUI-GeometryPack -> geometrypack-nodes (custom_nodes/ComfyUI-GeometryPack/nodes/comfy-env.toml)
+[05:53]   [comfy-env] _discover: ComfyUI-MoGe2 -> moge2-nodes (custom_nodes/ComfyUI-MoGe2/nodes/comfy-env.toml)
+[05:53]   [comfy-env] _discover: ComfyUI-PanoPack -> panopack-nodes (custom_nodes/ComfyUI-PanoPack/nodes/comfy-env.toml)
+[05:53]   [comfy-env] Workspace inputs unchanged (hash 080823974feb) -- skipping install. Delete /home/runner/.ce/install.hash to force.
+[05:53]   
+[05:53]   Installation complete!
+[05:53] Installing 2 node dependency(ies)...
+[05:53]   ComfyUI-MoGe2 from PozzettiAndrea/ComfyUI-MoGe2
+[05:53]   ComfyUI-MoGe2 already exists, skipping...
+[05:53]   ComfyUI-GeometryPack from PozzettiAndrea/ComfyUI-GeometryPack
+[05:53]   ComfyUI-GeometryPack already exists, skipping...
+[05:53] Installing validation endpoint...
+[05:53]   Cloning PozzettiAndrea/ComfyUI-validate-endpoint...
+[05:53] Running: git clone --depth 1 https://x-access-token:***@github.com/PozzettiAndrea/ComfyUI-validate-endpoint.git /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-validate-endpoint
+[05:53] [INSTALL] PASSED
+[05:53] 
+[05:53] [3/5] REGISTRATION
+[05:53] ----------------------------------------
+[05:53] 
+[DEBUG] server=None, api=None
+[05:53] 
+Starting ComfyUI server...
+[05:53] Starting ComfyUI server on port 41894...
+[05:53] Starting ComfyUI server on port 41894...
+[05:53] Waiting for server to be ready (timeout: 600s)...
+[05:54]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.schemas
+[05:54]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.tables
+[05:54]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.types
+[05:54]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.constraints
+[05:54]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.defaults
+[05:54]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.comments
+[05:54]   [ComfyUI] [1m[31m[ERROR][0m Failed to execute startup-script: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-GeometryPack/prestartup_script.py / No module named 'comfy_3d_viewers'
+[05:54]   [ComfyUI] [1m[31m[ERROR][0m Failed to execute startup-script: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/prestartup_script.py / No module named 'comfy_3d_viewers'
+[05:54]   [ComfyUI] [comfy-env] ComfyUI-MoGe2: 1 isolation env(s):
+[05:54]   [ComfyUI] [comfy-env]   nodes -> /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes
+[05:54]   [ComfyUI] [comfy-env] Workspace: /home/runner/.ce
+[05:54]   [ComfyUI] [comfy-env]     env: /home/runner/.ce/envs/moge2-nodes/.pixi/envs/default  [OK]
+[05:54]   [ComfyUI] [comfy-env] prestartup complete
+[05:54]   [ComfyUI] [32m[INFO][0m
+[05:54]   [ComfyUI] Prestartup times for custom nodes:
+[05:54]   [ComfyUI] [32m[INFO][0m    0.0 seconds (PRESTARTUP FAILED): /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack
+[05:54]   [ComfyUI] [32m[INFO][0m    0.1 seconds: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-MoGe2
+[05:54]   [ComfyUI] [32m[INFO][0m    0.1 seconds (PRESTARTUP FAILED): /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-GeometryPack
+[05:54]   [ComfyUI] [32m[INFO][0m
+[05:58]   [ComfyUI] [32m[INFO][0m Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'apply_rope_split_half', 'apply_rope_split_half1', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'gemv_awq_w4a16', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'quantize_svdquant_w4a4', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4', 'scaled_mm_svdquant_w4a4', 'stochastic_rounding_fp8']}
+[05:58]   [ComfyUI] [32m[INFO][0m Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': "ImportError: No module named 'triton'", 'capabilities': []}
+[05:58]   [ComfyUI] [32m[INFO][0m Found comfy_kitchen backend cuda: {'available': False, 'disabled': True, 'unavailable_reason': 'CUDA not available on this system', 'capabilities': []}
+[05:58]   [ComfyUI] [32m[INFO][0m Checkpoint files will always be loaded safely.
+[05:58]   [ComfyUI] [32m[INFO][0m Total VRAM 15990 MB, total RAM 15990 MB
+[05:58]   [ComfyUI] [32m[INFO][0m pytorch version: 2.10.0+cpu
+[05:58]   [ComfyUI] [32m[INFO][0m Set vram state to: DISABLED
+[05:58]   [ComfyUI] [32m[INFO][0m Device: cpu
+[05:59]   [ComfyUI] [32m[INFO][0m Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
+[06:03]   [ComfyUI] [32m[INFO][0m Python version: 3.10.20 (main, Jun  2 2026, 22:25:53) [Clang 22.1.3 ]
+[06:03]   [ComfyUI] [32m[INFO][0m ComfyUI version: 0.24.0
+[06:03]   [ComfyUI] [32m[INFO][0m comfy-aimdo version: 0.4.9
+[06:03]   [ComfyUI] [32m[INFO][0m comfy-kitchen version: 0.2.10
+[06:03]   [ComfyUI] [1m[33m[WARNING][0m ****** User settings have been changed to be stored on the server instead of browser storage. ******
+[06:03]   [ComfyUI] [1m[33m[WARNING][0m ****** For multi-user setups add the --multi-user CLI argument to enable multiple user profiles. ******
+[06:03]   [ComfyUI] [32m[INFO][0m comfyui-frontend-package version: 1.45.15
+[06:03]   [ComfyUI] [32m[INFO][0m comfyui-workflow-templates version: 0.9.98
+[06:03]   [ComfyUI] [32m[INFO][0m comfyui-embedded-docs version: 0.5.2
+[06:03]   [ComfyUI] [32m[INFO][0m comfy-kitchen version: 0.2.10
+[06:03]   [ComfyUI] [32m[INFO][0m comfy-aimdo version: 0.4.9
+[06:03]   [ComfyUI] [32m[INFO][0m [Prompt Server] web root: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/.venv/lib/python3.10/site-packages/comfyui_frontend_package/static
+[06:03]   [ComfyUI] [32m[INFO][0m Asset seeder disabled
+[06:05]   [ComfyUI] [32m[INFO][0m loading...
+[06:05]   [ComfyUI] [32m[INFO][0m calling register_nodes
+[06:05]   [ComfyUI] [comfy-env] Version: 0.4.1
+[06:05]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-GeometryPack
+[06:05]   [ComfyUI] [comfy-env] ComfyUI source dir: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI
+[06:05]   [ComfyUI] [comfy-env] Found 1 isolation env(s)
+[06:05]   [ComfyUI] [comfy-env] Scanning nodes metadata (isolation root)...
+[06:05]   [ComfyUI] [comfy-env] Metadata scan: /home/runner/.pixi/bin/pixi run --as-is --manifest-path /home/runner/.ce/envs/geometrypack-nodes/pixi.toml -e default python /tmp/comfy_meta_wzgzchmx.py /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-GeometryPack nodes /tmp/comfy_meta_out_quv1kxp2.pkl
+[06:05]   [ComfyUI] [comfy-env] Scan env PATH for nodes:
+[06:05]   [ComfyUI] [comfy-env]   [0] /opt/hostedtoolcache/Python/3.13.13/x64/bin
+[06:05]   [ComfyUI] [comfy-env]   [1] /opt/hostedtoolcache/Python/3.13.13/x64
+[06:05]   [ComfyUI] [comfy-env]   [2] /snap/bin
+[06:05]   [ComfyUI] [comfy-env]   [3] /home/runner/.local/bin
+[06:05]   [ComfyUI] [comfy-env]   [4] /opt/pipx_bin
+[06:05]   [ComfyUI] [comfy-env]   [5] /home/runner/.cargo/bin
+[06:05]   [ComfyUI] [comfy-env]   [6] /home/runner/.config/composer/vendor/bin
+[06:05]   [ComfyUI] [comfy-env]   [7] /usr/local/.ghcup/bin
+[06:05]   [ComfyUI] [comfy-env]   [8] /home/runner/.dotnet/tools
+[06:05]   [ComfyUI] [comfy-env]   [9] /usr/local/sbin
+[06:05]   [ComfyUI] [comfy-env]   [10] /usr/local/bin
+[06:05]   [ComfyUI] [comfy-env]   [11] /usr/sbin
+[06:05]   [ComfyUI] [comfy-env]   [12] /usr/bin
+[06:05]   [ComfyUI] [comfy-env]   [13] /sbin
+[06:05]   [ComfyUI] [comfy-env]   [14] /bin
+[06:05]   [ComfyUI] [comfy-env]   [15] /usr/games
+[06:05]   [ComfyUI] [comfy-env]   [16] /usr/local/games
+[06:05]   [ComfyUI] [comfy-env]   [17] /snap/bin
+[06:10]   [ComfyUI] [comfy-env] Metadata scan stderr for nodes:
+[06:10]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-GeometryPack
+[06:10]   [ComfyUI] [comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[06:10]   [ComfyUI] [comfy-env]   WARNING:root:comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+[06:10]   [ComfyUI] [comfy-env]   [meta-scan] import OK
+[06:10]   [ComfyUI] [comfy-env] Scanned nodes: 125 nodes (4.4s)
+[06:10]   [ComfyUI] [comfy-env] Scanned nodes root: 125 nodes (4.4s)
+[06:10]   [ComfyUI] [comfy-env] Imported nodes root: 125 nodes (isolation)
+[06:10]   [ComfyUI] [comfy-env] Registered 125 total nodes
+[06:10]   [ComfyUI] [comfy-env] Version: 0.4.1
+[06:10]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-PanoPack
+[06:10]   [ComfyUI] [comfy-env] ComfyUI source dir: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI
+[06:10]   [ComfyUI] [comfy-env] Found 1 isolation env(s)
+[06:10]   [ComfyUI] [comfy-env] Scanning nodes metadata (isolation root)...
+[06:10]   [ComfyUI] [comfy-env] Metadata scan: /home/runner/.pixi/bin/pixi run --as-is --manifest-path /home/runner/.ce/envs/panopack-nodes/pixi.toml -e default python /tmp/comfy_meta_py5krdex.py /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack nodes /tmp/comfy_meta_out_x_5e25dc.pkl
+[06:10]   [ComfyUI] [comfy-env] Scan env PATH for nodes:
+[06:10]   [ComfyUI] [comfy-env]   [0] /opt/hostedtoolcache/Python/3.13.13/x64/bin
+[06:10]   [ComfyUI] [comfy-env]   [1] /opt/hostedtoolcache/Python/3.13.13/x64
+[06:10]   [ComfyUI] [comfy-env]   [2] /snap/bin
+[06:10]   [ComfyUI] [comfy-env]   [3] /home/runner/.local/bin
+[06:10]   [ComfyUI] [comfy-env]   [4] /opt/pipx_bin
+[06:10]   [ComfyUI] [comfy-env]   [5] /home/runner/.cargo/bin
+[06:10]   [ComfyUI] [comfy-env]   [6] /home/runner/.config/composer/vendor/bin
+[06:10]   [ComfyUI] [comfy-env]   [7] /usr/local/.ghcup/bin
+[06:10]   [ComfyUI] [comfy-env]   [8] /home/runner/.dotnet/tools
+[06:10]   [ComfyUI] [comfy-env]   [9] /usr/local/sbin
+[06:10]   [ComfyUI] [comfy-env]   [10] /usr/local/bin
+[06:10]   [ComfyUI] [comfy-env]   [11] /usr/sbin
+[06:10]   [ComfyUI] [comfy-env]   [12] /usr/bin
+[06:10]   [ComfyUI] [comfy-env]   [13] /sbin
+[06:10]   [ComfyUI] [comfy-env]   [14] /bin
+[06:10]   [ComfyUI] [comfy-env]   [15] /usr/games
+[06:10]   [ComfyUI] [comfy-env]   [16] /usr/local/games
+[06:10]   [ComfyUI] [comfy-env]   [17] /snap/bin
+[06:13]   [ComfyUI] [comfy-env] Metadata scan stderr for nodes:
+[06:13]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack
+[06:13]   [ComfyUI] [comfy-env]   [meta-scan] import OK
+[06:13]   [ComfyUI] [comfy-env] Scanned nodes: 15 nodes (2.9s)
+[06:13]   [ComfyUI] [comfy-env] Scanned nodes root: 15 nodes (2.9s)
+[06:13]   [ComfyUI] [comfy-env] Imported nodes root: 15 nodes (isolation)
+[06:13]   [ComfyUI] [comfy-env] Registered 15 total nodes
+[06:13]   [ComfyUI] [comfy-env] Version: 0.4.1
+[06:13]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-MoGe2
+[06:13]   [ComfyUI] [comfy-env] ComfyUI source dir: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI
+[06:13]   [ComfyUI] [comfy-env] Found 1 isolation env(s)
+[06:13]   [ComfyUI] [comfy-env] Scanning nodes metadata (isolation root)...
+[06:13]   [ComfyUI] [comfy-env] Metadata scan: /home/runner/.pixi/bin/pixi run --as-is --manifest-path /home/runner/.ce/envs/moge2-nodes/pixi.toml -e default python /tmp/comfy_meta_dbdtrn85.py /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-MoGe2 nodes /tmp/comfy_meta_out_yx8zv3my.pkl
+[06:13]   [ComfyUI] [comfy-env] Scan env PATH for nodes:
+[06:13]   [ComfyUI] [comfy-env]   [0] /opt/hostedtoolcache/Python/3.13.13/x64/bin
+[06:13]   [ComfyUI] [comfy-env]   [1] /opt/hostedtoolcache/Python/3.13.13/x64
+[06:13]   [ComfyUI] [comfy-env]   [2] /snap/bin
+[06:13]   [ComfyUI] [comfy-env]   [3] /home/runner/.local/bin
+[06:13]   [ComfyUI] [comfy-env]   [4] /opt/pipx_bin
+[06:13]   [ComfyUI] [comfy-env]   [5] /home/runner/.cargo/bin
+[06:13]   [ComfyUI] [comfy-env]   [6] /home/runner/.config/composer/vendor/bin
+[06:13]   [ComfyUI] [comfy-env]   [7] /usr/local/.ghcup/bin
+[06:13]   [ComfyUI] [comfy-env]   [8] /home/runner/.dotnet/tools
+[06:13]   [ComfyUI] [comfy-env]   [9] /usr/local/sbin
+[06:13]   [ComfyUI] [comfy-env]   [10] /usr/local/bin
+[06:13]   [ComfyUI] [comfy-env]   [11] /usr/sbin
+[06:13]   [ComfyUI] [comfy-env]   [12] /usr/bin
+[06:13]   [ComfyUI] [comfy-env]   [13] /sbin
+[06:13]   [ComfyUI] [comfy-env]   [14] /bin
+[06:13]   [ComfyUI] [comfy-env]   [15] /usr/games
+[06:13]   [ComfyUI] [comfy-env]   [16] /usr/local/games
+[06:13]   [ComfyUI] [comfy-env]   [17] /snap/bin
+[06:16]   [ComfyUI] [comfy-env] Metadata scan stderr for nodes:
+[06:16]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-MoGe2
+[06:16]   [ComfyUI] [comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[06:16]   [ComfyUI] [comfy-env]   WARNING:root:comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+[06:16]   [ComfyUI] [comfy-env]   [meta-scan] import OK
+[06:16]   [ComfyUI] [comfy-env] Scanned nodes: 3 nodes (2.9s)
+[06:16]   [ComfyUI] [comfy-env] Scanned nodes root: 3 nodes (2.9s)
+[06:16]   [ComfyUI] [comfy-env] Imported nodes root: 3 nodes (isolation)
+[06:16]   [ComfyUI] [comfy-env] Registered 3 total nodes
+[06:16]   [ComfyUI] [32m[INFO][0m
+[06:16]   [ComfyUI] Import times for custom nodes:
+[06:16]   [ComfyUI] [32m[INFO][0m    0.0 seconds: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/websocket_image_save.py
+[06:16]   [ComfyUI] [32m[INFO][0m    0.0 seconds: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-validate-endpoint
+[06:16]   [ComfyUI] [32m[INFO][0m    3.0 seconds: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-MoGe2
+[06:16]   [ComfyUI] [32m[INFO][0m    3.0 seconds: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack
+[06:16]   [ComfyUI] [32m[INFO][0m    4.6 seconds: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-GeometryPack
+[06:16]   [ComfyUI] [32m[INFO][0m
+[06:16]   [ComfyUI] [32m[INFO][0m Context impl SQLiteImpl.
+[06:16]   [ComfyUI] [32m[INFO][0m Will assume non-transactional DDL.
+[06:16]   [ComfyUI] [32m[INFO][0m Context impl SQLiteImpl.
+[06:16]   [ComfyUI] [32m[INFO][0m Will assume non-transactional DDL.
+[06:16]   [ComfyUI] [32m[INFO][0m Running upgrade  -> 0001_assets, Initial assets schema
+[06:16]   [ComfyUI] Revision ID: 0001_assets
+[06:16]   [ComfyUI] Revises: None
+[06:16]   [ComfyUI] Create Date: 2025-12-10 00:00:00
+[06:16]   [ComfyUI] [32m[INFO][0m Running upgrade 0001_assets -> 0002_merge_to_asset_references, Merge AssetInfo and AssetCacheState into unified asset_references table.
+[06:16]   [ComfyUI] [32m[INFO][0m Running upgrade 0002_merge_to_asset_references -> 0003_add_metadata_job_id, Add system_metadata and job_id columns to asset_references.
+[06:16]   [ComfyUI] Change preview_id FK from assets.id to asset_references.id.
+[06:16]   [ComfyUI] [32m[INFO][0m Database upgraded from None to 0003_add_metadata_job_id
+[06:16]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[06:16]   [ComfyUI] [32m[INFO][0m Starting server
+[06:16]   [ComfyUI] 
+[06:16]   [ComfyUI] [32m[INFO][0m To see the GUI go to: http://127.0.0.1:41894
+[06:17] Server responding, waiting for nodes to load...
+[06:37] Server is ready!
+[06:37] Checking for import errors in server logs...
+[06:37] No import errors detected
+[06:37] Found 914 registered nodes
+[06:37] [REGISTRATION] PASSED
+[06:37] 
+[06:37] [4/5] INSTANTIATION
+[06:37] ----------------------------------------
+[06:37] 
+[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x7fe821d117f0>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x7fe821d12120>
+[06:37] Testing node constructors...
+[06:38] All 15 node(s) instantiated successfully!
+[06:38] [INSTANTIATION] PASSED
+[06:38] 
+[06:38] [5/5] EXECUTION
+[06:38] ----------------------------------------
+[06:38] 
+[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x7fe821d117f0>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x7fe821d12120>
+[06:38] CPU runner - will execute 9 workflow(s)
+[06:38] Running 13 workflow(s) (all with videos)...
+[06:39] Installing screenshot dependencies (playwright, pillow)...
+[06:39]   Packages installed, downloading chromium browser...
+[06:49]   Screenshot dependencies installed successfully
+[06:50] Starting headless browser...
+[06:50]   Installing Mesa llvmpipe (apt)...
+[07:01]   Mesa install failed: E: Unable to locate package libegl1-mesa
+
+[07:01]   No GPU, no Mesa -- using SwiftShader software rendering
+[07:01]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:01] Capturing execution frames: 360_render.json
+[07:02]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:08]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[07:08]   Validating workflow...
+[07:08]   [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+[07:08]   [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+[07:08]   [ComfyUI] [32m[INFO][0m Prompt has 11 nodes
+[07:08]   [ComfyUI] [32m[INFO][0m   Node 84: GeomPackLoadMesh
+[07:08]   [ComfyUI] [32m[INFO][0m     Inputs: {"file_path": "3d/pano_mesh.vtp"}
+[07:08]   [ComfyUI] [32m[INFO][0m   Node 87: GeomPackLoadMesh
+[07:08]   [ComfyUI] [32m[INFO][0m     Inputs: {"file_path": "3d/pano_pc.ply"}
+[07:08]   [ComfyUI] [32m[INFO][0m   Node 88: PreviewImage
+[07:08]   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["92", 1]}
+[07:08]   [ComfyUI] [32m[INFO][0m   Node 90: PanoRenderMesh
+[07:08]   [ComfyUI] [32m[INFO][0m     Inputs: {"mode": "pointcloud", "mode.point_size": 4, "mode.render_radius": 0.03, "yz_flip": true, "width": 2048, "face_resolution": 1024, "mesh": ["87", 0]}
+[07:08]   [ComfyUI] [32m[INFO][0m   Node 91: PreviewImage
+[07:08]   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["90", 1]}
+[07:08]   [ComfyUI] [32m[INFO][0m   Node 92: PanoRenderMesh
+[07:08]   Warning: 2 node(s) have validation errors (will fail after screenshots)
+[07:08]   Queuing workflow for execution...
+[07:08]   [ComfyUI] [32m[INFO][0m     Inputs: {"mode": "mesh", "mode.show_edges": "on", "mode.show_edges.edge_thickness": 1, "yz_flip": true, "width": 2048, "face_resolution": 1024, "mesh": ["84", 0]}
+[07:08]   [ComfyUI] [32m[INFO][0m   Node 93: PrimitiveString
+[07:08]   [ComfyUI] [32m[INFO][0m     Inputs: {"value": "/input/3d/pano_gaussians.ply"}
+[07:08]   [ComfyUI] [32m[INFO][0m   Node 94: PanoRenderGaussians
+[07:08]   [ComfyUI] [32m[INFO][0m     Inputs: {"gaussian_ply_path": ["93", 0], "width": 2048, "face_resolution": 1024, "gain": 2, "backend": "cpu"}
+[07:08]   [ComfyUI] [32m[INFO][0m   Node 95: PreviewImage
+[07:08]   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["94", 1]}
+[07:08]   [ComfyUI] [32m[INFO][0m   Node 96: PanoRenderMeshDepth
+[07:08]   [ComfyUI] [32m[INFO][0m     Inputs: {"yz_flip": true, "width": 2048, "face_resolution": 1024, "mesh": ["84", 0]}
+[07:08]   [ComfyUI] [32m[INFO][0m   Node 97: PreviewImage
+[07:08]   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["96", 1]}
+[07:08]   [ComfyUI] [32m[INFO][0m Generated prompt_id: 659b3159-22d5-40be-86af-4341b8ff72ec
+[07:08]   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+[07:08]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 88:
+[07:08]   [ComfyUI] [1m[31m[ERROR][0m * GeomPackLoadMesh 84:
+[07:08]   [ComfyUI] [1m[31m[ERROR][0m   - Value not in list: file_path: '3d/pano_mesh.vtp' not in ['No mesh files found in input/3d or input folders']
+[07:08]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:08]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 97:
+[07:08]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:08]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 91:
+[07:08]   [ComfyUI] [1m[31m[ERROR][0m * GeomPackLoadMesh 87:
+[07:08]   [ComfyUI] [1m[31m[ERROR][0m   - Value not in list: file_path: '3d/pano_pc.ply' not in ['No mesh files found in input/3d or input folders']
+[07:08]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:08]   [ComfyUI] [32m[INFO][0m Validation result: valid=True
+[07:08]   [ComfyUI] [32m[INFO][0m   Node errors: {"84": {"errors": [{"type": "value_not_in_list", "message": "Value not in list", "details": "file_path: '3d/pano_mesh.vtp' not in ['No mesh files found in input/3d or input folders']", "extra_info": {"input_name": "file_path", "input_config": ["COMBO", {"multiselect": false, "options": ["No mesh files found in input/3d or input folders"]}], "received_value": "3d/pano_mesh.vtp"}}], "dependent_outputs": ["88", "97", "91"], "class_type": "GeomPackLoadMesh"}, "87": {"errors": [{"type": "value_not_in
+[07:08]   [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+[07:08]   [ComfyUI] [32m[INFO][0m got prompt
+[07:08]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 88:
+[07:08]   [ComfyUI] [1m[31m[ERROR][0m * GeomPackLoadMesh 84:
+[07:08]   [ComfyUI] [1m[31m[ERROR][0m   - Value not in list: file_path: '3d/pano_mesh.vtp' not in ['No mesh files found in input/3d or input folders']
+[07:08]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:08]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 97:
+[07:08]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:08]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 91:
+[07:08]   [ComfyUI] [1m[31m[ERROR][0m * GeomPackLoadMesh 87:
+[07:08]   [ComfyUI] [1m[31m[ERROR][0m   - Value not in list: file_path: '3d/pano_pc.ply' not in ['No mesh files found in input/3d or input folders']
+[07:08]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:08]   [ComfyUI] [comfy-env] Running PanoRenderGaussians: gaussian_ply_path: '/input/3d/pano_gaussians.ply', width: 2048, face_resolution: 1024, gain: 2.0, backend: 'cpu'
+[07:08]   [ComfyUI] [comfy-env] SubprocessWorker: /home/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
+[07:08]   [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI'}
+[07:08]   [ComfyUI] [SubprocessWorker] call_method: nodes.pano_render_gaussians.PanoRenderGaussians.EXECUTE_NORMALIZED
+[07:08]   [ComfyUI] [ComfyUI-PanoPack] python: /home/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
+[07:08]   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+[07:08]   [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack', '/home/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.10/site-packages', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack']
+[07:08]   [ComfyUI] [SubprocessWorker] is_pixi=True, python=/home/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
+[07:08]   [ComfyUI] [SubprocessWorker] launching cmd=['/home/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/home/runner/.ce/envs/panopack-nodes/pixi.toml', '-e', 'default', 'python', '/tmp/comfyui_pvenv_1gurs4y4/persistent_worker.py', 'abstract://comfy_worker_bad66451f141']...
+[07:08]   [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_bad66451f141 (abstract, no filesystem path)
+[07:09]   [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[07:09]   [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+[07:09]   [ComfyUI] [SubprocessWorker] worker started/confirmed
+[07:09]   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+[07:09]   [ComfyUI] [SubprocessWorker] created 0 shm blocks
+[07:09]   [ComfyUI] [SubprocessWorker] sending request via socket...
+[07:09]   [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
+[07:09]   [ComfyUI] [worker:ComfyUI-PanoPack] [PanoRenderGaussians] === PanoRenderGaussians: backend=cpu gain=2.0 width=2048 face_res=1024 ===
+[07:09]   [ComfyUI] [SubprocessWorker] got response: error
+[07:09]   [ComfyUI] [1m[31m[ERROR][0m !!! Exception during processing !!! PanoRenderGaussians: PLY not found: '/input/3d/pano_gaussians.ply' (tried ['/input/3d/pano_gaussians.ply', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply'])
+[07:09]   [ComfyUI] 
+[07:09]   [ComfyUI] Worker traceback:
+[07:09]   [ComfyUI] Traceback (most recent call last):
+[07:09]   [ComfyUI]   File "/tmp/comfyui_pvenv_1gurs4y4/persistent_worker.py", line 1762, in main
+[07:09]   [ComfyUI]     result = method(**inputs)
+[07:09]   [ComfyUI]   File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
+[07:09]   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
+[07:09]   [ComfyUI]   File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py", line 219, in execute
+[07:09]   [ComfyUI]     resolved = _resolve_ply_path(gaussian_ply_path)
+[07:09]   [ComfyUI]   File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py", line 45, in _resolve_ply_path
+[07:09]   [ComfyUI]     raise FileNotFoundError(
+[07:09]   [ComfyUI] FileNotFoundError: PanoRenderGaussians: PLY not found: '/input/3d/pano_gaussians.ply' (tried ['/input/3d/pano_gaussians.ply', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply'])
+[07:09]   [ComfyUI] 
+[07:09]   [ComfyUI] [1m[31m[ERROR][0m Traceback (most recent call last):
+[07:09]   [ComfyUI]   File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 536, in execute
+[07:09]   [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+[07:09]   [ComfyUI]   File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 336, in get_output_data
+[07:09]   [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+[07:09]   [ComfyUI]   File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 310, in _async_map_node_over_list
+[07:09]   [ComfyUI]     await process_inputs(input_dict, i)
+[07:09]   [ComfyUI]   File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 298, in process_inputs
+[07:09]   [ComfyUI]     result = f(**inputs)
+[07:09]   [ComfyUI]   File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/.venv/lib/python3.10/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy
+[07:09]   [ComfyUI]     result = worker.call_method(
+[07:09]   [ComfyUI]   File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/.venv/lib/python3.10/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method
+[07:09]   [ComfyUI]     raise WorkerError(
+[07:09]   [ComfyUI] comfy_env.isolation.workers.base.WorkerError: PanoRenderGaussians: PLY not found: '/input/3d/pano_gaussians.ply' (tried ['/input/3d/pano_gaussians.ply', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply'])
+[07:09]   [ComfyUI] 
+[07:09]   [ComfyUI] Worker traceback:
+[07:09]   [ComfyUI] Traceback (most recent call last):
+[07:09]   [ComfyUI]   File "/tmp/comfyui_pvenv_1gurs4y4/persistent_worker.py", line 1762, in main
+[07:09]   [ComfyUI]     result = method(**inputs)
+[07:09]   [ComfyUI]   File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
+[07:09]   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
+[07:09]   [ComfyUI]   File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py", line 219, in execute
+[07:09]   [ComfyUI]     resolved = _resolve_ply_path(gaussian_ply_path)
+[07:09]   [ComfyUI]   File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py", line 45, in _resolve_ply_path
+[07:09]   [ComfyUI]     raise FileNotFoundError(
+[07:09]   [ComfyUI] FileNotFoundError: PanoRenderGaussians: PLY not found: '/input/3d/pano_gaussians.ply' (tried ['/input/3d/pano_gaussians.ply', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply'])
+[07:09]   [ComfyUI] 
+[07:09]   [ComfyUI] 
+[07:09]   [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.56 seconds[0m
+[07:09]   Execution complete (t=1.8s)
+[07:09]   Execution error: {'prompt_id': '828647fa-8ba4-4937-95ef-68c6b5221edc', 'node_id': '94', 'node_type': 'PanoRenderGaussians', 'executed': ['93'], 'exception_message': 'PanoRenderGaussians: PLY not found: \'/input/3d/pano_gaussians.ply\' (tried [\'/input/3d/pano_gaussians.ply\', \'/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply\', \'/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\', \'/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\'])\n\nWorker traceback:\nTraceback (most recent call last):\n  File "/tmp/comfyui_pvenv_1gurs4y4/persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n  File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n  File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py", line 219, in execute\n    resolved = _resolve_ply_path(gaussian_ply_path)\n  File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py", line 45, in _resolve_ply_path\n    raise FileNotFoundError(\nFileNotFoundError: PanoRenderGaussians: PLY not found: \'/input/3d/pano_gaussians.ply\' (tried [\'/input/3d/pano_gaussians.ply\', \'/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply\', \'/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\', \'/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\'])\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 536, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 336, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 310, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 298, in process_inputs\n    result = f(**inputs)\n', '  File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/.venv/lib/python3.10/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy\n    result = worker.call_method(\n', '  File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/.venv/lib/python3.10/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method\n    raise WorkerError(\n'], 'current_inputs': {'gaussian_ply_path': ['/input/3d/pano_gaussians.ply'], 'width': [2048], 'face_resolution': [1024], 'gain': [2], 'backend': ['cpu']}, 'current_outputs': ['84', '96', '88', '93', '90', '95', '97', '91', '87', '94', '92'], 'timestamp': 1780762033964}
+[07:09]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:10]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:10] Capturing execution frames: cpu_depth_merge_mesh_pointcloud.json
+[07:10]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:16]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[07:16]   Validating workflow...
+[07:16]   [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+[07:16]   Validation failed: Prompt outputs failed validation
+Node errors:
+{
+  "1": {
+    "errors": [
+      {
+        "type": "custom_validation_failed",
+        "message": "Custom validation failed for node",
+        "details": "image - Invalid image file: actual_pano_from_real_life.jpg",
+        "extra_info": {
+          "input_name": "image"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "82",
+      "76",
+      "36",
+      "81",
+      "35",
+      "78",
+      "77"
+    ],
+    "class_type": "LoadImage"
+  }
+}
+[07:16]   [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+[07:16]   [ComfyUI] [32m[INFO][0m Prompt has 17 nodes
+[07:16]   [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+[07:16]   [ComfyUI] [32m[INFO][0m     Inputs: {"image": "actual_pano_from_real_life.jpg"}
+[07:16]   [ComfyUI] [32m[INFO][0m   Node 10: DownloadAndLoadMoGe2Model
+[07:16]   [ComfyUI] [32m[INFO][0m     Inputs: {"model": "moge-2-vitl-normal.pt", "precision": "auto", "attention": "auto"}
+[07:16]   [ComfyUI] [32m[INFO][0m   Node 35: GeomPackRemesh
+[07:16]   [ComfyUI] [32m[INFO][0m     Inputs: {"backend": "pymeshlab_isotropic", "backend.target_edge_length": 0.03, "backend.iterations": 3, "backend.feature_angle": 30, "backend.adaptive": "false", "report_panel": "false", "trimesh": ["80", 0]}
+[07:16]   [ComfyUI] [32m[INFO][0m   Node 36: GeomPackPreviewMeshVTK
+[07:16]   [ComfyUI] [32m[INFO][0m     Inputs: {"mode": "fields", "trimesh": ["35", 0]}
+[07:16]   [ComfyUI] [32m[INFO][0m   Node 63: MoGe2Inference
+[07:16]   [ComfyUI] [32m[INFO][0m     Inputs: {"resolution_level": 9, "num_tokens": 0, "fov_x_deg": ["85", 3], "force_projection": true, "apply_mask": true, "moge2_model": ["10", 0], "images": ["85", 0]}
+[07:16]   [ComfyUI] [32m[INFO][0m   Node 65: PanoramaWrap
+[07:16]   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+[07:16]   [ComfyUI] [32m[INFO][0m   Node 69: PanoramaDepthMerge
+[07:16]   [ComfyUI] [32m[INFO][0m     Inputs: {"out_width": ["74", 0], "out_height": ["74", 1], "use_gpu": false, "scale_anchor": true, "chunk_size": 8, "center_weight_power": 2, "normal_edge_threshold_deg": 0, "normal_consistency_boost": false,
+[07:16]   [ComfyUI] [32m[INFO][0m   Node 74: GetImageSize
+[07:16]   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+[07:16]   [ComfyUI] [32m[INFO][0m   Node 76: GeomPackPreviewMeshVTK
+[07:16]   [ComfyUI] [32m[INFO][0m     Inputs: {"mode": "fields", "trimesh": ["83", 0]}
+[07:16]   [ComfyUI] [32m[INFO][0m   Node 77: GeomPackSaveMesh
+[07:16]   [ComfyUI] [32m[INFO][0m     Inputs: {"file_path": "pano_pc", "format": "ply", "trimesh": ["83", 0]}
+[07:16]   [ComfyUI] [32m[INFO][0m   Node 78: GeomPackSaveMesh
+[07:16]   [ComfyUI] [32m[INFO][0m     Inputs: {"file_path": "pano_mesh", "format": "vtp", "trimesh": ["35", 0]}
+[07:16]   [ComfyUI] [32m[INFO][0m   Node 79: PanoramaBuildPointCloud
+[07:16]   [ComfyUI] [32m[INFO][0m     Inputs: {"contract": true, "contract_beyond": 8, "edge_rtol": 0.1, "max_size": 4096, "dropout_pcd": true, "panorama": ["65", 0], "depth": ["69", 0], "valid_mask": ["69", 1]}
+[07:16]   [ComfyUI] [32m[INFO][0m   Node 80: PanoramaBuildMesh
+[07:16]   [ComfyUI] [32m[INFO][0m     Inputs: {"contract": false, "contract_beyond": 8, "edge_rtol": 0.1, "clip_quantile": 1, "panorama": ["65", 0], "depth": ["69", 0], "valid_mask": ["69", 1]}
+[07:16]   [ComfyUI] [32m[INFO][0m   Node 81: PreviewImage
+[07:16]   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["85", 5]}
+[07:16]   [ComfyUI] [32m[INFO][0m   Node 82: PreviewImage
+[07:16]   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["69", 2]}
+[07:16]   [ComfyUI] [32m[INFO][0m   Node 83: GeomPackSubsamplePointCloud
+[07:16]   [ComfyUI] [32m[INFO][0m     Inputs: {"method": "random", "target_count": 2100, "seed": 42, "point_cloud": ["79", 0]}
+[07:16]   [ComfyUI] [32m[INFO][0m   Node 85: PanoramaSplit
+[07:16]   [ComfyUI] [32m[INFO][0m     Inputs: {"split_method": "icosahedron_12", "resolution": 512, "fov_degrees": 90, "use_gpu": false, "create_masks": false, "fname": "pano_bank", "panorama": ["65", 0]}
+[07:16]   [ComfyUI] [32m[INFO][0m Generated prompt_id: 451fc131-af16-4ec1-babc-23176b89c8f0
+[07:16]   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+[07:16]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 82:
+[07:16]   [ComfyUI] [1m[31m[ERROR][0m * LoadImage 1:
+[07:16]   [ComfyUI] [1m[31m[ERROR][0m   - Custom validation failed for node: image - Invalid image file: actual_pano_from_real_life.jpg
+[07:16]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:16]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 76:
+[07:16]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:16]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 36:
+[07:16]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:16]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 81:
+[07:16]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:16]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 35:
+[07:16]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:16]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 78:
+[07:16]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:16]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 77:
+[07:16]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:16]   [ComfyUI] [32m[INFO][0m Validation result: valid=False
+[07:16]   [ComfyUI] [32m[INFO][0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}
+[07:16]   [ComfyUI] [32m[INFO][0m   Node errors: {"1": {"errors": [{"type": "custom_validation_failed", "message": "Custom validation failed for node", "details": "image - Invalid image file: actual_pano_from_real_life.jpg", "extra_info": {"input_name": "image"}}], "dependent_outputs": ["82", "76", "36", "81", "35", "78", "77"], "class_type": "LoadImage"}}
+[07:16]   [ComfyUI] [32m[INFO][0m === Validation FAILED ===
+[07:16]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:17]   [3/13] SKIPPED (not in cpu list) cpu_depth_normal_conditioned.json
+[07:17]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:17]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:17] Capturing execution frames: cpu_plane_segmentation.json
+[07:17]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:23]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[07:23]   Validating workflow...
+[07:23]   [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+[07:23]   [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+[07:23]   [ComfyUI] [32m[INFO][0m Prompt has 13 nodes
+[07:23]   [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+[07:23]   [ComfyUI] [32m[INFO][0m     Inputs: {"image": "actual_pano_from_real_life.jpg"}
+[07:23]   [ComfyUI] [32m[INFO][0m   Node 10: DownloadAndLoadMoGe2Model
+[07:23]   [ComfyUI] [32m[INFO][0m     Inputs: {"model": "moge-2-vitl-normal.pt", "precision": "auto", "attention": "auto"}
+[07:23]   [ComfyUI] [32m[INFO][0m   Node 63: MoGe2Inference
+[07:23]   [ComfyUI] [32m[INFO][0m     Inputs: {"resolution_level": 9, "num_tokens": 0, "fov_x_deg": ["66", 3], "force_projection": true, "apply_mask": true, "moge2_model": ["10", 0], "images": ["66", 0]}
+[07:23]   [ComfyUI] [32m[INFO][0m   Node 65: PanoramaWrap
+[07:23]   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+[07:23]   [ComfyUI] [32m[INFO][0m   Node 66: PanoramaSplit
+[07:23]   Validation failed: Prompt outputs failed validation
+Node errors:
+{
+  "1": {
+    "errors": [
+      {
+        "type": "custom_validation_failed",
+        "message": "Custom validation failed for node",
+        "details": "image - Invalid image file: actual_pano_from_real_life.jpg",
+        "extra_info": {
+          "input_name": "image"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "81",
+      "97",
+      "106",
+      "85"
+    ],
+    "class_type": "LoadImage"
+  },
+  "66": {
+    "errors": [
+      {
+        "type": "invalid_input_type",
+        "message": "Failed to convert an input value to a INT value",
+        "details": "resolution, icosahedron_12, invalid literal for int() with base 10: 'icosahedron_12'",
+        "extra_info": {
+          "input_name": "resolution",
+          "input_config": [
+            "INT",
+            {
+              "tooltip": "Square per-crop resolution (icosahedron methods).",
+              "default": 952,
+              "min": 128,
+              "max": 2048,
+              "step": 1
+            }
+          ],
+          "received_value": "icosahedron_12",
+          "exception_message": "invalid literal for int() with base 10: 'icosahedron_12'"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "81",
+      "97",
+      "106",
+      "85"
+    ],
+    "class_type": "PanoramaSplit"
+  }
+}
+[07:23]   [ComfyUI] [32m[INFO][0m     Inputs: {"split_method": 512, "resolution": "icosahedron_12", "fov_degrees": 90, "use_gpu": false, "create_masks": false, "fname": "closest_to", "panorama": ["65", 0]}
+[07:23]   [ComfyUI] [32m[INFO][0m   Node 81: PreviewImage
+[07:23]   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["66", 5]}
+[07:23]   [ComfyUI] [32m[INFO][0m   Node 84: PanoramaFacesPlaneSegment
+[07:23]   [ComfyUI] [32m[INFO][0m     Inputs: {"use_gpu": false, "ransac_iterations_per_batch": 100, "distance_threshold": 0.02, "max_planes_per_face": 25, "min_inlier_fraction": 0.02, "ransac_iterations": 1000, "dbscan_eps": 0.05, "dbscan_min_po
+[07:23]   [ComfyUI] [32m[INFO][0m   Node 85: PreviewImage
+[07:23]   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["84", 1]}
+[07:23]   [ComfyUI] [32m[INFO][0m   Node 91: GetImageSize
+[07:23]   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["96", 0]}
+[07:23]   [ComfyUI] [32m[INFO][0m   Node 96: ResizeImageMaskNode
+[07:23]   [ComfyUI] [32m[INFO][0m     Inputs: {"resize_type": "scale by multiplier", "resize_type.multiplier": 0.25, "scale_method": "area", "input": ["1", 0]}
+[07:23]   [ComfyUI] [32m[INFO][0m   Node 97: PreviewImage
+[07:23]   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["63", 3]}
+[07:23]   [ComfyUI] [32m[INFO][0m   Node 103: PanoramaDepthMerge
+[07:23]   [ComfyUI] [32m[INFO][0m     Inputs: {"out_width": 1920, "out_height": 960, "use_gpu": false, "scale_anchor": "lsmr_depth", "chunk_size": 8, "center_weight_power": 2, "normal_edge_threshold_deg": 0, "normal_consistency_boost": 60, "max_r
+[07:23]   [ComfyUI] [32m[INFO][0m   Node 106: PreviewImage
+[07:23]   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["103", 4]}
+[07:23]   [ComfyUI] [32m[INFO][0m Generated prompt_id: 18224dff-d5a3-441d-92cd-de6d83087401
+[07:23]   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+[07:23]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 81:
+[07:23]   [ComfyUI] [1m[31m[ERROR][0m * LoadImage 1:
+[07:23]   [ComfyUI] [1m[31m[ERROR][0m   - Custom validation failed for node: image - Invalid image file: actual_pano_from_real_life.jpg
+[07:23]   [ComfyUI] [1m[31m[ERROR][0m * PanoramaSplit 66:
+[07:23]   [ComfyUI] [1m[31m[ERROR][0m   - Failed to convert an input value to a INT value: resolution, icosahedron_12, invalid literal for int() with base 10: 'icosahedron_12'
+[07:23]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:23]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 97:
+[07:23]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:23]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 106:
+[07:23]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:23]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 85:
+[07:23]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:23]   [ComfyUI] [32m[INFO][0m Validation result: valid=False
+[07:23]   [ComfyUI] [32m[INFO][0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}
+[07:23]   [ComfyUI] [32m[INFO][0m   Node errors: {"1": {"errors": [{"type": "custom_validation_failed", "message": "Custom validation failed for node", "details": "image - Invalid image file: actual_pano_from_real_life.jpg", "extra_info": {"input_name": "image"}}], "dependent_outputs": ["81", "97", "106", "85"], "class_type": "LoadImage"}, "66": {"errors": [{"type": "invalid_input_type", "message": "Failed to convert an input value to a INT value", "details": "resolution, icosahedron_12, invalid literal for int() with base 10: 'icosahedron_12'
+[07:23]   [ComfyUI] [32m[INFO][0m === Validation FAILED ===
+[07:24]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:24]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:24]   [5/13] SKIPPED (not in cpu list) depth_merge_mesh_pointcloud.json
+[07:24]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:24]   [6/13] SKIPPED (not in cpu list) gpu_depth_merge_mesh_pointcloud.json
+[07:24]   [7/13] SKIPPED (not in cpu list) gpu_depth_normal_conditioned.json
+[07:24]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:25]   [8/13] SKIPPED (not in cpu list) gpu_plane_segmentation.json
+[07:25]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:25]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:25] Capturing execution frames: pano_crop.json
+[07:25]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:31]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[07:31]   Validating workflow...
+[07:31]   [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+[07:31]   [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+[07:31]   [ComfyUI] [32m[INFO][0m Prompt has 4 nodes
+[07:31]   [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+[07:31]   [ComfyUI] [32m[INFO][0m     Inputs: {"image": "actual_pano_from_real_life.jpg"}
+[07:31]   [ComfyUI] [32m[INFO][0m   Node 65: PanoramaWrap
+[07:31]   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+[07:31]   [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
+[07:31]   [ComfyUI] [32m[INFO][0m     Inputs: {"center_u": 0.5, "center_v": 0.5, "fov_h": 90, "fov_v": 90, "width": 512, "height": 512, "panorama": ["65", 0]}
+[07:31]   Validation failed: Prompt outputs failed validation
+Node errors:
+{
+  "1": {
+    "errors": [
+      {
+        "type": "custom_validation_failed",
+        "message": "Custom validation failed for node",
+        "details": "image - Invalid image file: actual_pano_from_real_life.jpg",
+        "extra_info": {
+          "input_name": "image"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "88"
+    ],
+    "class_type": "LoadImage"
+  }
+}
+[07:31]   [ComfyUI] [32m[INFO][0m   Node 88: PreviewImage
+[07:31]   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
+[07:31]   [ComfyUI] [32m[INFO][0m Generated prompt_id: dd97ae67-ba94-41fc-abd5-41a0700af233
+[07:31]   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+[07:31]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 88:
+[07:31]   [ComfyUI] [1m[31m[ERROR][0m * LoadImage 1:
+[07:31]   [ComfyUI] [1m[31m[ERROR][0m   - Custom validation failed for node: image - Invalid image file: actual_pano_from_real_life.jpg
+[07:31]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:31]   [ComfyUI] [32m[INFO][0m Validation result: valid=False
+[07:31]   [ComfyUI] [32m[INFO][0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}
+[07:31]   [ComfyUI] [32m[INFO][0m   Node errors: {"1": {"errors": [{"type": "custom_validation_failed", "message": "Custom validation failed for node", "details": "image - Invalid image file: actual_pano_from_real_life.jpg", "extra_info": {"input_name": "image"}}], "dependent_outputs": ["88"], "class_type": "LoadImage"}}
+[07:31]   [ComfyUI] [32m[INFO][0m === Validation FAILED ===
+[07:31]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:32]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:32] Capturing execution frames: pano_info.json
+[07:32]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:37]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[07:37]   Validating workflow...
+[07:37]   [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+[07:37]   [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+[07:37]   [ComfyUI] [32m[INFO][0m Prompt has 3 nodes
+[07:37]   [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+[07:37]   [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+[07:37]   [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+[07:37]   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+[07:37]   [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
+[07:37]   [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+[07:37]   [ComfyUI] [32m[INFO][0m Generated prompt_id: 35fb20f1-3c1d-4385-ae14-0df7a204b792
+[07:37]   Validation failed: Prompt outputs failed validation
+Node errors:
+{
+  "1": {
+    "errors": [
+      {
+        "type": "custom_validation_failed",
+        "message": "Custom validation failed for node",
+        "details": "image - Invalid image file: pano.png",
+        "extra_info": {
+          "input_name": "image"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "3"
+    ],
+    "class_type": "LoadImage"
+  }
+}
+[07:37]   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+[07:37]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 3:
+[07:37]   [ComfyUI] [1m[31m[ERROR][0m * LoadImage 1:
+[07:37]   [ComfyUI] [1m[31m[ERROR][0m   - Custom validation failed for node: image - Invalid image file: pano.png
+[07:37]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:37]   [ComfyUI] [32m[INFO][0m Validation result: valid=False
+[07:37]   [ComfyUI] [32m[INFO][0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}
+[07:37]   [ComfyUI] [32m[INFO][0m   Node errors: {"1": {"errors": [{"type": "custom_validation_failed", "message": "Custom validation failed for node", "details": "image - Invalid image file: pano.png", "extra_info": {"input_name": "image"}}], "dependent_outputs": ["3"], "class_type": "LoadImage"}}
+[07:37]   [ComfyUI] [32m[INFO][0m === Validation FAILED ===
+[07:37]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:38]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:38] Capturing execution frames: panorama_shift.json
+[07:38]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:44]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[07:44]   Validating workflow...
+[07:44]   [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+[07:44]   [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+[07:44]   [ComfyUI] [32m[INFO][0m Prompt has 8 nodes
+[07:44]   [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+[07:44]   [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+[07:44]   [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+[07:44]   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+[07:44]   [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
+[07:44]   [ComfyUI] [32m[INFO][0m     Inputs: {"yaw_degrees": 90, "pitch_degrees": 0, "panorama": ["2", 0]}
+[07:44]   [ComfyUI] [32m[INFO][0m   Node 4: PanoramaUnwrap
+[07:44]   [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["3", 0]}
+[07:44]   [ComfyUI] [32m[INFO][0m   Node 5: PreviewImage
+[07:44]   Validation failed: Prompt outputs failed validation
+Node errors:
+{
+  "1": {
+    "errors": [
+      {
+        "type": "custom_validation_failed",
+        "message": "Custom validation failed for node",
+        "details": "image - Invalid image file: pano.png",
+        "extra_info": {
+          "input_name": "image"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "6",
+      "5"
+    ],
+    "class_type": "LoadImage"
+  }
+}
+[07:44]   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
+[07:44]   [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
+[07:44]   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["7", 0]}
+[07:44]   [ComfyUI] [32m[INFO][0m   Node 7: PanoramaUnwrap
+[07:44]   [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["8", 0]}
+[07:44]   [ComfyUI] [32m[INFO][0m   Node 8: PanoramaShift
+[07:44]   [ComfyUI] [32m[INFO][0m     Inputs: {"yaw_degrees": 0, "pitch_degrees": 45, "panorama": ["2", 0]}
+[07:44]   [ComfyUI] [32m[INFO][0m Generated prompt_id: c8da4945-f477-4e8d-8bf7-5cc0e1e35fff
+[07:44]   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+[07:44]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 6:
+[07:44]   [ComfyUI] [1m[31m[ERROR][0m * LoadImage 1:
+[07:44]   [ComfyUI] [1m[31m[ERROR][0m   - Custom validation failed for node: image - Invalid image file: pano.png
+[07:44]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:44]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 5:
+[07:44]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:44]   [ComfyUI] [32m[INFO][0m Validation result: valid=False
+[07:44]   [ComfyUI] [32m[INFO][0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}
+[07:44]   [ComfyUI] [32m[INFO][0m   Node errors: {"1": {"errors": [{"type": "custom_validation_failed", "message": "Custom validation failed for node", "details": "image - Invalid image file: pano.png", "extra_info": {"input_name": "image"}}], "dependent_outputs": ["6", "5"], "class_type": "LoadImage"}}
+[07:44]   [ComfyUI] [32m[INFO][0m === Validation FAILED ===
+[07:44]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:44]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:44] Capturing execution frames: preview_panorama.json
+[07:44]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:50]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[07:50]   Validating workflow...
+[07:50]   [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+[07:50]   [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+[07:50]   [ComfyUI] [32m[INFO][0m Prompt has 4 nodes
+[07:50]   [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+[07:50]   [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+[07:50]   [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+[07:50]   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+[07:50]   [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
+[07:50]   [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
+[07:50]   [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
+[07:50]   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
+[07:50]   Validation failed: Prompt outputs failed validation
+Node errors:
+{
+  "1": {
+    "errors": [
+      {
+        "type": "custom_validation_failed",
+        "message": "Custom validation failed for node",
+        "details": "image - Invalid image file: pano.png",
+        "extra_info": {
+          "input_name": "image"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "4",
+      "6"
+    ],
+    "class_type": "LoadImage"
+  }
+}
+[07:50]   [ComfyUI] [32m[INFO][0m Generated prompt_id: 9c9a5007-79d6-4984-b05b-e9fa08750f7e
+[07:50]   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+[07:50]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 4:
+[07:50]   [ComfyUI] [1m[31m[ERROR][0m * LoadImage 1:
+[07:50]   [ComfyUI] [1m[31m[ERROR][0m   - Custom validation failed for node: image - Invalid image file: pano.png
+[07:50]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:50]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 6:
+[07:50]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:50]   [ComfyUI] [32m[INFO][0m Validation result: valid=False
+[07:50]   [ComfyUI] [32m[INFO][0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}
+[07:50]   [ComfyUI] [32m[INFO][0m   Node errors: {"1": {"errors": [{"type": "custom_validation_failed", "message": "Custom validation failed for node", "details": "image - Invalid image file: pano.png", "extra_info": {"input_name": "image"}}], "dependent_outputs": ["4", "6"], "class_type": "LoadImage"}}
+[07:50]   [ComfyUI] [32m[INFO][0m === Validation FAILED ===
+[07:50]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:50]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:50] Capturing execution frames: test_wrap_unwrap.json
+[07:50]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:56]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[07:56]   Validating workflow...
+[07:56]   [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+[07:56]   [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+[07:56]   [ComfyUI] [32m[INFO][0m Prompt has 4 nodes
+[07:56]   [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+[07:56]   [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+[07:56]   [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+[07:56]   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+[07:56]   [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
+[07:56]   [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+[07:56]   [ComfyUI] [32m[INFO][0m   Node 4: PreviewImage
+[07:56]   Validation failed: Prompt outputs failed validation
+Node errors:
+{
+  "1": {
+    "errors": [
+      {
+        "type": "custom_validation_failed",
+        "message": "Custom validation failed for node",
+        "details": "image - Invalid image file: pano.png",
+        "extra_info": {
+          "input_name": "image"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "4"
+    ],
+    "class_type": "LoadImage"
+  }
+}
+[07:56]   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["3", 0]}
+[07:56]   [ComfyUI] [32m[INFO][0m Generated prompt_id: 72e72ee9-fc51-42ad-846e-428194413eb2
+[07:56]   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+[07:56]   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 4:
+[07:56]   [ComfyUI] [1m[31m[ERROR][0m * LoadImage 1:
+[07:56]   [ComfyUI] [1m[31m[ERROR][0m   - Custom validation failed for node: image - Invalid image file: pano.png
+[07:56]   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+[07:56]   [ComfyUI] [32m[INFO][0m Validation result: valid=False
+[07:56]   [ComfyUI] [32m[INFO][0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}
+[07:56]   [ComfyUI] [32m[INFO][0m   Node errors: {"1": {"errors": [{"type": "custom_validation_failed", "message": "Custom validation failed for node", "details": "image - Invalid image file: pano.png", "extra_info": {"input_name": "image"}}], "dependent_outputs": ["4"], "class_type": "LoadImage"}}
+[07:56]   [ComfyUI] [32m[INFO][0m === Validation FAILED ===
+[07:56]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:56] Results saved to /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/PanoPack-1600/dev/linux-cpu/results.json
+[07:56] Saved: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/PanoPack-1600/dev/linux-cpu/index.html
+[07:56] 
+linux: FAILED
+[07:56] Error: Workflow execution failed (8 error(s))
+[07:56] Details: 360_render.json: Workflow execution failed: {'prompt_id': '828647fa-8ba4-4937-95ef-68c6b5221edc', 'node_id': '94', 'node_type': 'PanoRenderGaussians', 'executed': ['93'], 'exception_message': 'PanoRenderGaussians: PLY not found: \'/input/3d/pano_gaussians.ply\' (tried [\'/input/3d/pano_gaussians.ply\', \'/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply\', \'/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\', \'/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\'])\n\nWorker traceback:\nTraceback (most recent call last):\n  File "/tmp/comfyui_pvenv_1gurs4y4/persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n  File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n  File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py", line 219, in execute\n    resolved = _resolve_ply_path(gaussian_ply_path)\n  File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py", line 45, in _resolve_ply_path\n    raise FileNotFoundError(\nFileNotFoundError: PanoRenderGaussians: PLY not found: \'/input/3d/pano_gaussians.ply\' (tried [\'/input/3d/pano_gaussians.ply\', \'/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply\', \'/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\', \'/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\'])\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 536, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 336, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 310, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 298, in process_inputs\n    result = f(**inputs)\n', '  File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/.venv/lib/python3.10/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy\n    result = worker.call_method(\n', '  File "/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/.venv/lib/python3.10/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method\n    raise WorkerError(\n'], 'current_inputs': {'gaussian_ply_path': ['/input/3d/pano_gaussians.ply'], 'width': [2048], 'face_resolution': [1024], 'gain': [2], 'backend': ['cpu']}, 'current_outputs': ['84', '96', '88', '93', '90', '95', '97', '91', '87', '94', '92'], 'timestamp': 1780762033964}
+
+Details:
+Workflow: /tmp/comfy-test-run-xxmlos0s/ComfyUI-PanoPack/workflows/360_render.json
+Node error: PanoRenderGaussians
+cpu_depth_merge_mesh_pointcloud.json: Workflow validation failed
+
+Details:
+Prompt outputs failed validation
+Node errors:
+{
+  "1": {
+    "errors": [
+      {
+        "type": "custom_validation_failed",
+        "message": "Custom validation failed for node",
+        "details": "image - Invalid image file: actual_pano_from_real_life.jpg",
+        "extra_info": {
+          "input_name": "image"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "82",
+      "76",
+      "36",
+      "81",
+      "35",
+      "78",
+      "77"
+    ],
+    "class_type": "LoadImage"
+  }
+}
+cpu_plane_segmentation.json: Workflow validation failed
+
+Details:
+Prompt outputs failed validation
+Node errors:
+{
+  "1": {
+    "errors": [
+      {
+        "type": "custom_validation_failed",
+        "message": "Custom validation failed for node",
+        "details": "image - Invalid image file: actual_pano_from_real_life.jpg",
+        "extra_info": {
+          "input_name": "image"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "81",
+      "97",
+      "106",
+      "85"
+    ],
+    "class_type": "LoadImage"
+  },
+  "66": {
+    "errors": [
+      {
+        "type": "invalid_input_type",
+        "message": "Failed to convert an input value to a INT value",
+        "details": "resolution, icosahedron_12, invalid literal for int() with base 10: 'icosahedron_12'",
+        "extra_info": {
+          "input_name": "resolution",
+          "input_config": [
+            "INT",
+            {
+              "tooltip": "Square per-crop resolution (icosahedron methods).",
+              "default": 952,
+              "min": 128,
+              "max": 2048,
+              "step": 1
+            }
+          ],
+          "received_value": "icosahedron_12",
+          "exception_message": "invalid literal for int() with base 10: 'icosahedron_12'"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "81",
+      "97",
+      "106",
+      "85"
+    ],
+    "class_type": "PanoramaSplit"
+  }
+}
+pano_crop.json: Workflow validation failed
+
+Details:
+Prompt outputs failed validation
+Node errors:
+{
+  "1": {
+    "errors": [
+      {
+        "type": "custom_validation_failed",
+        "message": "Custom validation failed for node",
+        "details": "image - Invalid image file: actual_pano_from_real_life.jpg",
+        "extra_info": {
+          "input_name": "image"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "88"
+    ],
+    "class_type": "LoadImage"
+  }
+}
+pano_info.json: Workflow validation failed
+
+Details:
+Prompt outputs failed validation
+Node errors:
+{
+  "1": {
+    "errors": [
+      {
+        "type": "custom_validation_failed",
+        "message": "Custom validation failed for node",
+        "details": "image - Invalid image file: pano.png",
+        "extra_info": {
+          "input_name": "image"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "3"
+    ],
+    "class_type": "LoadImage"
+  }
+}
+panorama_shift.json: Workflow validation failed
+
+Details:
+Prompt outputs failed validation
+Node errors:
+{
+  "1": {
+    "errors": [
+      {
+        "type": "custom_validation_failed",
+        "message": "Custom validation failed for node",
+        "details": "image - Invalid image file: pano.png",
+        "extra_info": {
+          "input_name": "image"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "6",
+      "5"
+    ],
+    "class_type": "LoadImage"
+  }
+}
+preview_panorama.json: Workflow validation failed
+
+Details:
+Prompt outputs failed validation
+Node errors:
+{
+  "1": {
+    "errors": [
+      {
+        "type": "custom_validation_failed",
+        "message": "Custom validation failed for node",
+        "details": "image - Invalid image file: pano.png",
+        "extra_info": {
+          "input_name": "image"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "4",
+      "6"
+    ],
+    "class_type": "LoadImage"
+  }
+}
+test_wrap_unwrap.json: Workflow validation failed
+
+Details:
+Prompt outputs failed validation
+Node errors:
+{
+  "1": {
+    "errors": [
+      {
+        "type": "custom_validation_failed",
+        "message": "Custom validation failed for node",
+        "details": "image - Invalid image file: pano.png",
+        "extra_info": {
+          "input_name": "image"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "4"
+    ],
+    "class_type": "LoadImage"
+  }
+}
+[07:56] Stopping ComfyUI server...
