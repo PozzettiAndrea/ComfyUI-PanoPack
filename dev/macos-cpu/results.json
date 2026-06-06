@@ -1,0 +1,197 @@
+{
+  "timestamp": "2026-06-06T16:04:14.308537+00:00",
+  "platform": "macos",
+  "hardware": {
+    "os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+    "cpu": "arm"
+  },
+  "commit_hash": "826858000be59570b269e34310ba979507cc37c8",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27066991629",
+  "success": false,
+  "summary": {
+    "total": 13,
+    "passed": 0,
+    "failed": 8
+  },
+  "workflows": [
+    {
+      "name": "360_render",
+      "status": "fail",
+      "duration_seconds": 11.7,
+      "error": "Workflow execution failed: {'prompt_id': 'f16031e6-e2e4-4703-8975-01edf5ba6323', 'node_id': '94', 'node_type': 'PanoRenderGaussians', 'executed': ['93'], 'exception_message': 'PanoRenderGaussians: PLY not found: \\'/input/3d/pano_gaussians.ply\\' (tried [\\'/input/3d/pano_gaussians.ply\\', \\'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply\\', \\'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\\', \\'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\\'])\\n\\nWorker traceback:\\nTraceback (most recent call last):\\n  File \"/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_1481c_2u/persistent_worker.py\", line 1762, in main\\n    result = method(**inputs)\\n  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/comfy_api/latest/_io.py\", line 1892, in EXECUTE_NORMALIZED\\n    to_return = cls.execute(*args, **kwargs)\\n  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py\", line 219, in execute\\n    resolved = _resolve_ply_path(gaussian_ply_path)\\n  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py\", line 45, in _resolve_ply_path\\n    raise FileNotFoundError(\\n        f\"PanoRenderGaussians: PLY not found: {p!r} (tried {[p, *candidates]})\")\\nFileNotFoundError: PanoRenderGaussians: PLY not found: \\'/input/3d/pano_gaussians.ply\\' (tried [\\'/input/3d/pano_gaussians.ply\\', \\'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply\\', \\'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\\', \\'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\\'])\\n\\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py\", line 536, in execute\\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py\", line 336, in get_output_data\\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py\", line 310, in _async_map_node_over_list\\n    await process_inputs(input_dict, i)\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py\", line 298, in process_inputs\\n    result = f(**inputs)\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/venv/lib/python3.13/site-packages/comfy_env/isolation/metadata.py\", line 560, in proxy\\n    result = worker.call_method(\\n        module_name=mod,\\n    ...<4 lines>...\\n        timeout=600.0,\\n    )\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/venv/lib/python3.13/site-packages/comfy_env/isolation/workers/subprocess.py\", line 674, in call_method\\n    raise WorkerError(\\n    ...<2 lines>...\\n    )\\n'], 'current_inputs': {'gaussian_ply_path': ['/input/3d/pano_gaussians.ply'], 'width': [2048], 'face_resolution': [1024], 'gain': [2], 'backend': ['cpu']}, 'current_outputs': ['91', '92', '94', '87', '90', '96', '84', '93', '95', '97', '88'], 'timestamp': 1780761812973}\n\nDetails:\nWorkflow: /private/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy-test-run-gu4gfx7e/ComfyUI-PanoPack/workflows/360_render.json\nNode error: PanoRenderGaussians",
+      "hardware": {
+        "os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+        "cpu": "arm"
+      },
+      "resources": {
+        "ram": {
+          "peak": 0.79,
+          "avg": 0.61
+        },
+        "total_ram_gb": 7.0,
+        "samples": 11
+      }
+    },
+    {
+      "name": "cpu_depth_merge_mesh_pointcloud",
+      "status": "fail",
+      "duration_seconds": 5.96,
+      "error": "Workflow validation failed\n\nDetails:\nPrompt outputs failed validation\nNode errors:\n{\n  \"1\": {\n    \"errors\": [\n      {\n        \"type\": \"custom_validation_failed\",\n        \"message\": \"Custom validation failed for node\",\n        \"details\": \"image - Invalid image file: actual_pano_from_real_life.jpg\",\n        \"extra_info\": {\n          \"input_name\": \"image\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"78\",\n      \"81\",\n      \"82\",\n      \"35\",\n      \"77\",\n      \"36\",\n      \"76\"\n    ],\n    \"class_type\": \"LoadImage\"\n  }\n}",
+      "hardware": {
+        "os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+        "cpu": "arm"
+      },
+      "resources": {
+        "ram": {
+          "peak": 0.81,
+          "avg": 0.8
+        },
+        "total_ram_gb": 7.0,
+        "samples": 6
+      }
+    },
+    {
+      "name": "cpu_depth_normal_conditioned",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "cpu_plane_segmentation",
+      "status": "fail",
+      "duration_seconds": 5.57,
+      "error": "Workflow validation failed\n\nDetails:\nPrompt outputs failed validation\nNode errors:\n{\n  \"1\": {\n    \"errors\": [\n      {\n        \"type\": \"custom_validation_failed\",\n        \"message\": \"Custom validation failed for node\",\n        \"details\": \"image - Invalid image file: actual_pano_from_real_life.jpg\",\n        \"extra_info\": {\n          \"input_name\": \"image\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"106\",\n      \"85\",\n      \"97\",\n      \"81\"\n    ],\n    \"class_type\": \"LoadImage\"\n  },\n  \"66\": {\n    \"errors\": [\n      {\n        \"type\": \"invalid_input_type\",\n        \"message\": \"Failed to convert an input value to a INT value\",\n        \"details\": \"resolution, icosahedron_12, invalid literal for int() with base 10: 'icosahedron_12'\",\n        \"extra_info\": {\n          \"input_name\": \"resolution\",\n          \"input_config\": [\n            \"INT\",\n            {\n              \"tooltip\": \"Square per-crop resolution (icosahedron methods).\",\n              \"default\": 952,\n              \"min\": 128,\n              \"max\": 2048,\n              \"step\": 1\n            }\n          ],\n          \"received_value\": \"icosahedron_12\",\n          \"exception_message\": \"invalid literal for int() with base 10: 'icosahedron_12'\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"106\",\n      \"85\",\n      \"97\",\n      \"81\"\n    ],\n    \"class_type\": \"PanoramaSplit\"\n  }\n}",
+      "hardware": {
+        "os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+        "cpu": "arm"
+      },
+      "resources": {
+        "ram": {
+          "peak": 0.8,
+          "avg": 0.8
+        },
+        "total_ram_gb": 7.0,
+        "samples": 6
+      }
+    },
+    {
+      "name": "depth_merge_mesh_pointcloud",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "gpu_depth_merge_mesh_pointcloud",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "gpu_depth_normal_conditioned",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "gpu_plane_segmentation",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "pano_crop",
+      "status": "fail",
+      "duration_seconds": 5.12,
+      "error": "Workflow validation failed\n\nDetails:\nPrompt outputs failed validation\nNode errors:\n{\n  \"1\": {\n    \"errors\": [\n      {\n        \"type\": \"custom_validation_failed\",\n        \"message\": \"Custom validation failed for node\",\n        \"details\": \"image - Invalid image file: actual_pano_from_real_life.jpg\",\n        \"extra_info\": {\n          \"input_name\": \"image\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"88\"\n    ],\n    \"class_type\": \"LoadImage\"\n  }\n}",
+      "hardware": {
+        "os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+        "cpu": "arm"
+      },
+      "resources": {
+        "ram": {
+          "peak": 0.77,
+          "avg": 0.75
+        },
+        "total_ram_gb": 7.0,
+        "samples": 5
+      }
+    },
+    {
+      "name": "pano_info",
+      "status": "fail",
+      "duration_seconds": 5.31,
+      "error": "Workflow validation failed\n\nDetails:\nPrompt outputs failed validation\nNode errors:\n{\n  \"1\": {\n    \"errors\": [\n      {\n        \"type\": \"custom_validation_failed\",\n        \"message\": \"Custom validation failed for node\",\n        \"details\": \"image - Invalid image file: pano.png\",\n        \"extra_info\": {\n          \"input_name\": \"image\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"3\"\n    ],\n    \"class_type\": \"LoadImage\"\n  }\n}",
+      "hardware": {
+        "os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+        "cpu": "arm"
+      },
+      "resources": {
+        "ram": {
+          "peak": 0.73,
+          "avg": 0.73
+        },
+        "total_ram_gb": 7.0,
+        "samples": 5
+      }
+    },
+    {
+      "name": "panorama_shift",
+      "status": "fail",
+      "duration_seconds": 5.19,
+      "error": "Workflow validation failed\n\nDetails:\nPrompt outputs failed validation\nNode errors:\n{\n  \"1\": {\n    \"errors\": [\n      {\n        \"type\": \"custom_validation_failed\",\n        \"message\": \"Custom validation failed for node\",\n        \"details\": \"image - Invalid image file: pano.png\",\n        \"extra_info\": {\n          \"input_name\": \"image\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"5\",\n      \"6\"\n    ],\n    \"class_type\": \"LoadImage\"\n  }\n}",
+      "hardware": {
+        "os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+        "cpu": "arm"
+      },
+      "resources": {
+        "ram": {
+          "peak": 0.74,
+          "avg": 0.74
+        },
+        "total_ram_gb": 7.0,
+        "samples": 5
+      }
+    },
+    {
+      "name": "preview_panorama",
+      "status": "fail",
+      "duration_seconds": 5.65,
+      "error": "Workflow validation failed\n\nDetails:\nPrompt outputs failed validation\nNode errors:\n{\n  \"1\": {\n    \"errors\": [\n      {\n        \"type\": \"custom_validation_failed\",\n        \"message\": \"Custom validation failed for node\",\n        \"details\": \"image - Invalid image file: pano.png\",\n        \"extra_info\": {\n          \"input_name\": \"image\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"6\",\n      \"4\"\n    ],\n    \"class_type\": \"LoadImage\"\n  }\n}",
+      "hardware": {
+        "os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+        "cpu": "arm"
+      },
+      "resources": {
+        "ram": {
+          "peak": 0.74,
+          "avg": 0.74
+        },
+        "total_ram_gb": 7.0,
+        "samples": 6
+      }
+    },
+    {
+      "name": "test_wrap_unwrap",
+      "status": "fail",
+      "duration_seconds": 5.24,
+      "error": "Workflow validation failed\n\nDetails:\nPrompt outputs failed validation\nNode errors:\n{\n  \"1\": {\n    \"errors\": [\n      {\n        \"type\": \"custom_validation_failed\",\n        \"message\": \"Custom validation failed for node\",\n        \"details\": \"image - Invalid image file: pano.png\",\n        \"extra_info\": {\n          \"input_name\": \"image\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"4\"\n    ],\n    \"class_type\": \"LoadImage\"\n  }\n}",
+      "hardware": {
+        "os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+        "cpu": "arm"
+      },
+      "resources": {
+        "ram": {
+          "peak": 0.74,
+          "avg": 0.74
+        },
+        "total_ram_gb": 7.0,
+        "samples": 5
+      }
+    }
+  ]
+}

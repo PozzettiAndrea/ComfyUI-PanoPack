@@ -1,0 +1,197 @@
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+Capturing execution frames: preview_panorama.json
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  Frame 1 saved (frame_000.jpg, t=0.0s)
+  Validating workflow...
+  Validation failed: Prompt outputs failed validation
+Node errors:
+{
+  "1": {
+    "errors": [
+      {
+        "type": "custom_validation_failed",
+        "message": "Custom validation failed for node",
+        "details": "image - Invalid image file: pano.png",
+        "extra_info": {
+          "input_name": "image"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "6",
+      "4"
+    ],
+    "class_type": "LoadImage"
+  }
+}
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+    Status: FAILED
+    Error: Workflow validation failed
+    Details: Prompt outputs failed validation
+Node errors:
+{
+  "1": {
+    "errors": [
+      {
+        "type": "custom_validation_failed",
+        "message": "Custom validation failed for node",
+        "details": "image - Invalid image file: pano.png",
+        "extra_info": {
+          "input_name": "image"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "6",
+      "4"
+    ],
+    "class_type": "LoadImage"
+  }
+}
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Prompt has 4 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 4 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 4 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 4 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 4 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 4 nodes
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
+  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
+  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
+  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
+  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
+  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
+  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 850fdd0d-4f68-4b66-a10b-3357f5ce7271
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 850fdd0d-4f68-4b66-a10b-3357f5ce7271
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 850fdd0d-4f68-4b66-a10b-3357f5ce7271
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 850fdd0d-4f68-4b66-a10b-3357f5ce7271
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 850fdd0d-4f68-4b66-a10b-3357f5ce7271
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 850fdd0d-4f68-4b66-a10b-3357f5ce7271
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 6:
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 6:
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 6:
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 6:
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 6:
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 6:
+  [ComfyUI] [1m[31m[ERROR][0m * LoadImage 1:
+  [ComfyUI] [1m[31m[ERROR][0m * LoadImage 1:
+  [ComfyUI] [1m[31m[ERROR][0m * LoadImage 1:
+  [ComfyUI] [1m[31m[ERROR][0m * LoadImage 1:
+  [ComfyUI] [1m[31m[ERROR][0m * LoadImage 1:
+  [ComfyUI] [1m[31m[ERROR][0m * LoadImage 1:
+  [ComfyUI] [1m[31m[ERROR][0m   - Custom validation failed for node: image - Invalid image file: pano.png
+  [ComfyUI] [1m[31m[ERROR][0m   - Custom validation failed for node: image - Invalid image file: pano.png
+  [ComfyUI] [1m[31m[ERROR][0m   - Custom validation failed for node: image - Invalid image file: pano.png
+  [ComfyUI] [1m[31m[ERROR][0m   - Custom validation failed for node: image - Invalid image file: pano.png
+  [ComfyUI] [1m[31m[ERROR][0m   - Custom validation failed for node: image - Invalid image file: pano.png
+  [ComfyUI] [1m[31m[ERROR][0m   - Custom validation failed for node: image - Invalid image file: pano.png
+  [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+  [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+  [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+  [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+  [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+  [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 4:
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 4:
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 4:
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 4:
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 4:
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 4:
+  [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+  [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+  [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+  [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+  [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+  [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+  [ComfyUI] [32m[INFO][0m Validation result: valid=False
+  [ComfyUI] [32m[INFO][0m Validation result: valid=False
+  [ComfyUI] [32m[INFO][0m Validation result: valid=False
+  [ComfyUI] [32m[INFO][0m Validation result: valid=False
+  [ComfyUI] [32m[INFO][0m Validation result: valid=False
+  [ComfyUI] [32m[INFO][0m Validation result: valid=False
+  [ComfyUI] [32m[INFO][0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}
+  [ComfyUI] [32m[INFO][0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}
+  [ComfyUI] [32m[INFO][0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}
+  [ComfyUI] [32m[INFO][0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}
+  [ComfyUI] [32m[INFO][0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}
+  [ComfyUI] [32m[INFO][0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}
+  [ComfyUI] [32m[INFO][0m   Node errors: {"1": {"errors": [{"type": "custom_validation_failed", "message": "Custom validation failed for node", "details": "image - Invalid image file: pano.png", "extra_info": {"input_name": "image"}}], "dependent_outputs": ["6", "4"], "class_type": "LoadImage"}}
+  [ComfyUI] [32m[INFO][0m   Node errors: {"1": {"errors": [{"type": "custom_validation_failed", "message": "Custom validation failed for node", "details": "image - Invalid image file: pano.png", "extra_info": {"input_name": "image"}}], "dependent_outputs": ["6", "4"], "class_type": "LoadImage"}}
+  [ComfyUI] [32m[INFO][0m   Node errors: {"1": {"errors": [{"type": "custom_validation_failed", "message": "Custom validation failed for node", "details": "image - Invalid image file: pano.png", "extra_info": {"input_name": "image"}}], "dependent_outputs": ["6", "4"], "class_type": "LoadImage"}}
+  [ComfyUI] [32m[INFO][0m   Node errors: {"1": {"errors": [{"type": "custom_validation_failed", "message": "Custom validation failed for node", "details": "image - Invalid image file: pano.png", "extra_info": {"input_name": "image"}}], "dependent_outputs": ["6", "4"], "class_type": "LoadImage"}}
+  [ComfyUI] [32m[INFO][0m   Node errors: {"1": {"errors": [{"type": "custom_validation_failed", "message": "Custom validation failed for node", "details": "image - Invalid image file: pano.png", "extra_info": {"input_name": "image"}}], "dependent_outputs": ["6", "4"], "class_type": "LoadImage"}}
+  [ComfyUI] [32m[INFO][0m   Node errors: {"1": {"errors": [{"type": "custom_validation_failed", "message": "Custom validation failed for node", "details": "image - Invalid image file: pano.png", "extra_info": {"input_name": "image"}}], "dependent_outputs": ["6", "4"], "class_type": "LoadImage"}}
+  [ComfyUI] [32m[INFO][0m === Validation FAILED ===
+  [ComfyUI] [32m[INFO][0m === Validation FAILED ===
+  [ComfyUI] [32m[INFO][0m === Validation FAILED ===
+  [ComfyUI] [32m[INFO][0m === Validation FAILED ===
+  [ComfyUI] [32m[INFO][0m === Validation FAILED ===
+  [ComfyUI] [32m[INFO][0m === Validation FAILED ===

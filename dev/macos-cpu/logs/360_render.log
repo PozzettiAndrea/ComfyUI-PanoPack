@@ -1,0 +1,140 @@
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+Capturing execution frames: 360_render.json
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  Frame 1 saved (frame_000.jpg, t=0.0s)
+  Validating workflow...
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Prompt has 11 nodes
+  [ComfyUI] [32m[INFO][0m   Node 84: GeomPackLoadMesh
+  [ComfyUI] [32m[INFO][0m     Inputs: {"file_path": "3d/pano_mesh.vtp"}
+  [ComfyUI] [32m[INFO][0m   Node 87: GeomPackLoadMesh
+  [ComfyUI] [32m[INFO][0m     Inputs: {"file_path": "3d/pano_pc.ply"}
+  [ComfyUI] [32m[INFO][0m   Node 88: PreviewImage
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["92", 1]}
+  [ComfyUI] [32m[INFO][0m   Node 90: PanoRenderMesh
+  [ComfyUI] [32m[INFO][0m     Inputs: {"mode": "pointcloud", "mode.point_size": 4, "mode.render_radius": 0.03, "yz_flip": true, "width": 2048, "face_resolution": 1024, "mesh": ["87", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 91: PreviewImage
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["90", 1]}
+  [ComfyUI] [32m[INFO][0m   Node 92: PanoRenderMesh
+  [ComfyUI] [32m[INFO][0m     Inputs: {"mode": "mesh", "mode.show_edges": "on", "mode.show_edges.edge_thickness": 1, "yz_flip": true, "width": 2048, "face_resolution": 1024, "mesh": ["84", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 93: PrimitiveString
+  [ComfyUI] [32m[INFO][0m     Inputs: {"value": "/input/3d/pano_gaussians.ply"}
+  [ComfyUI] [32m[INFO][0m   Node 94: PanoRenderGaussians
+  [ComfyUI] [32m[INFO][0m     Inputs: {"gaussian_ply_path": ["93", 0], "width": 2048, "face_resolution": 1024, "gain": 2, "backend": "cpu"}
+  [ComfyUI] [32m[INFO][0m   Node 95: PreviewImage
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["94", 1]}
+  Warning: 2 node(s) have validation errors (will fail after screenshots)
+  [ComfyUI] [32m[INFO][0m   Node 96: PanoRenderMeshDepth
+  Queuing workflow for execution...
+  [ComfyUI] [32m[INFO][0m     Inputs: {"yz_flip": true, "width": 2048, "face_resolution": 1024, "mesh": ["84", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 97: PreviewImage
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["96", 1]}
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 10e51fc4-3ff9-4913-985a-55fddde6a6e4
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 91:
+  [ComfyUI] [1m[31m[ERROR][0m * GeomPackLoadMesh 87:
+  [ComfyUI] [1m[31m[ERROR][0m   - Value not in list: file_path: '3d/pano_pc.ply' not in ['No mesh files found in input/3d or input folders']
+  [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 97:
+  [ComfyUI] [1m[31m[ERROR][0m * GeomPackLoadMesh 84:
+  [ComfyUI] [1m[31m[ERROR][0m   - Value not in list: file_path: '3d/pano_mesh.vtp' not in ['No mesh files found in input/3d or input folders']
+  [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 88:
+  [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m   Node errors: {"87": {"errors": [{"type": "value_not_in_list", "message": "Value not in list", "details": "file_path: '3d/pano_pc.ply' not in ['No mesh files found in input/3d or input folders']", "extra_info": {"input_name": "file_path", "input_config": ["COMBO", {"multiselect": false, "options": ["No mesh files found in input/3d or input folders"]}], "received_value": "3d/pano_pc.ply"}}], "dependent_outputs": ["91", "97", "88"], "class_type": "GeomPackLoadMesh"}, "84": {"errors": [{"type": "value_not_in_lis
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m got prompt
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 91:
+  [ComfyUI] [1m[31m[ERROR][0m * GeomPackLoadMesh 87:
+  [ComfyUI] [1m[31m[ERROR][0m   - Value not in list: file_path: '3d/pano_pc.ply' not in ['No mesh files found in input/3d or input folders']
+  [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 97:
+  [ComfyUI] [1m[31m[ERROR][0m * GeomPackLoadMesh 84:
+  [ComfyUI] [1m[31m[ERROR][0m   - Value not in list: file_path: '3d/pano_mesh.vtp' not in ['No mesh files found in input/3d or input folders']
+  [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 88:
+  [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+  [ComfyUI] [comfy-env] Running PanoRenderGaussians: gaussian_ply_path: '/input/3d/pano_gaussians.ply', width: 2048, face_resolution: 1024, gain: 2.0, backend: 'cpu'
+  [ComfyUI] [comfy-env] SubprocessWorker: /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
+  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI'}
+  [ComfyUI] [SubprocessWorker] call_method: nodes.pano_render_gaussians.PanoRenderGaussians.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [ComfyUI-PanoPack] python: /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
+  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack', '/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.13/site-packages', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack']
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
+  [ComfyUI] [SubprocessWorker] launching cmd=['/Users/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/Users/runner/.ce/envs/panopack-nodes/pixi.toml', '-e', 'default', 'python', '/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_1481c_2u/persistent_worker.py', 'unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_bcac496c91ab.sock']...
+  [ComfyUI] [SubprocessWorker] socket_addr=unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_bcac496c91ab.sock exists=True
+  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+  Frame 2 saved (frame_001.jpg, t=2.4s)
+  [capture-periodic] freeze=2ms shot=85ms unfreeze=2ms saved=True
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
+  [ComfyUI] objc[6256]: Class AVFFrameReceiver is implemented in both /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x11467c7a8) and /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.13/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x11ba503a8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+  [ComfyUI] objc[6256]: Class AVFAudioReceiver is implemented in both /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x11467c7f8) and /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.13/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x11ba503f8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoRenderGaussians] === PanoRenderGaussians: backend=cpu gain=2.0 width=2048 face_res=1024 ===
+  [ComfyUI] [SubprocessWorker] got response: error
+  [ComfyUI] [1m[31m[ERROR][0m !!! Exception during processing !!! PanoRenderGaussians: PLY not found: '/input/3d/pano_gaussians.ply' (tried ['/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply'])
+  [ComfyUI] 
+  [ComfyUI] Worker traceback:
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_1481c_2u/persistent_worker.py", line 1762, in main
+  [ComfyUI]     result = method(**inputs)
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
+  [ComfyUI]     to_return = cls.execute(*args, **kwargs)
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py", line 219, in execute
+  [ComfyUI]     resolved = _resolve_ply_path(gaussian_ply_path)
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py", line 45, in _resolve_ply_path
+  [ComfyUI]     raise FileNotFoundError(
+  [ComfyUI]         f"PanoRenderGaussians: PLY not found: {p!r} (tried {[p, *candidates]})")
+  [ComfyUI] FileNotFoundError: PanoRenderGaussians: PLY not found: '/input/3d/pano_gaussians.ply' (tried ['/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply'])
+  [ComfyUI] 
+  [ComfyUI] [1m[31m[ERROR][0m Traceback (most recent call last):
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 536, in execute
+  [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+  [ComfyUI]                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 336, in get_output_data
+  [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+  [ComfyUI]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 310, in _async_map_node_over_list
+  [ComfyUI]     await process_inputs(input_dict, i)
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 298, in process_inputs
+  [ComfyUI]     result = f(**inputs)
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/venv/lib/python3.13/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy
+  [ComfyUI]     result = worker.call_method(
+  [ComfyUI]         module_name=mod,
+  [ComfyUI]     ...<4 lines>...
+  [ComfyUI]         timeout=600.0,
+  [ComfyUI]     )
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/venv/lib/python3.13/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method
+  [ComfyUI]     raise WorkerError(
+  [ComfyUI]     ...<2 lines>...
+  [ComfyUI]     )
+  [ComfyUI] comfy_env.isolation.workers.base.WorkerError: PanoRenderGaussians: PLY not found: '/input/3d/pano_gaussians.ply' (tried ['/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply'])
+  [ComfyUI] 
+  [ComfyUI] Worker traceback:
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_1481c_2u/persistent_worker.py", line 1762, in main
+  [ComfyUI]     result = method(**inputs)
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
+  [ComfyUI]     to_return = cls.execute(*args, **kwargs)
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py", line 219, in execute
+  [ComfyUI]     resolved = _resolve_ply_path(gaussian_ply_path)
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py", line 45, in _resolve_ply_path
+  [ComfyUI]     raise FileNotFoundError(
+  [ComfyUI]         f"PanoRenderGaussians: PLY not found: {p!r} (tried {[p, *candidates]})")
+  [ComfyUI] FileNotFoundError: PanoRenderGaussians: PLY not found: '/input/3d/pano_gaussians.ply' (tried ['/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply'])
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 3.51 seconds[0m
+  Execution complete (t=3.8s)
+  Execution error: {'prompt_id': 'f16031e6-e2e4-4703-8975-01edf5ba6323', 'node_id': '94', 'node_type': 'PanoRenderGaussians', 'executed': ['93'], 'exception_message': 'PanoRenderGaussians: PLY not found: \'/input/3d/pano_gaussians.ply\' (tried [\'/input/3d/pano_gaussians.ply\', \'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply\', \'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\', \'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\'])\n\nWorker traceback:\nTraceback (most recent call last):\n  File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_1481c_2u/persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py", line 219, in execute\n    resolved = _resolve_ply_path(gaussian_ply_path)\n  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py", line 45, in _resolve_ply_path\n    raise FileNotFoundError(\n        f"PanoRenderGaussians: PLY not found: {p!r} (tried {[p, *candidates]})")\nFileNotFoundError: PanoRenderGaussians: PLY not found: \'/input/3d/pano_gaussians.ply\' (tried [\'/input/3d/pano_gaussians.ply\', \'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply\', \'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\', \'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\'])\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 536, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 336, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 310, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 298, in process_inputs\n    result = f(**inputs)\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/venv/lib/python3.13/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy\n    result = worker.call_method(\n        module_name=mod,\n    ...<4 lines>...\n        timeout=600.0,\n    )\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/venv/lib/python3.13/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method\n    raise WorkerError(\n    ...<2 lines>...\n    )\n'], 'current_inputs': {'gaussian_ply_path': ['/input/3d/pano_gaussians.ply'], 'width': [2048], 'face_resolution': [1024], 'gain': [2], 'backend': ['cpu']}, 'current_outputs': ['91', '92', '94', '87', '90', '96', '84', '93', '95', '97', '88'], 'timestamp': 1780761812973}
+    Status: FAILED
+    Error: Workflow execution failed: {'prompt_id': 'f16031e6-e2e4-4703-8975-01edf5ba6323', 'node_id': '94', 'node_type': 'PanoRenderGaussians', 'executed': ['93'], 'exception_message': 'PanoRenderGaussians: PLY not found: \'/input/3d/pano_gaussians.ply\' (tried [\'/input/3d/pano_gaussians.ply\', \'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply\', \'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\', \'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\'])\n\nWorker traceback:\nTraceback (most recent call last):\n  File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_1481c_2u/persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py", line 219, in execute\n    resolved = _resolve_ply_path(gaussian_ply_path)\n  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py", line 45, in _resolve_ply_path\n    raise FileNotFoundError(\n        f"PanoRenderGaussians: PLY not found: {p!r} (tried {[p, *candidates]})")\nFileNotFoundError: PanoRenderGaussians: PLY not found: \'/input/3d/pano_gaussians.ply\' (tried [\'/input/3d/pano_gaussians.ply\', \'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply\', \'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\', \'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\'])\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 536, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 336, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 310, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py", line 298, in process_inputs\n    result = f(**inputs)\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/venv/lib/python3.13/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy\n    result = worker.call_method(\n        module_name=mod,\n    ...<4 lines>...\n        timeout=600.0,\n    )\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/venv/lib/python3.13/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method\n    raise WorkerError(\n    ...<2 lines>...\n    )\n'], 'current_inputs': {'gaussian_ply_path': ['/input/3d/pano_gaussians.ply'], 'width': [2048], 'face_resolution': [1024], 'gain': [2], 'backend': ['cpu']}, 'current_outputs': ['91', '92', '94', '87', '90', '96', '84', '93', '95', '97', '88'], 'timestamp': 1780761812973}
+    Details: Workflow: /private/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy-test-run-gu4gfx7e/ComfyUI-PanoPack/workflows/360_render.json
+Node error: PanoRenderGaussians

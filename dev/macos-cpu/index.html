@@ -1,0 +1,1905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PozzettiAndrea/ComfyUI-PanoPack - Test Results</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f1923;
+            color: #e6edf3;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #162033;
+            padding: 1.25rem 2rem;
+            border-bottom: 1px solid #243656;
+        }
+
+        body.in-iframe header {
+            display: none;
+        }
+
+        body.in-iframe .container {
+            padding-top: 1.25rem;
+        }
+
+        body.in-iframe .summary-meta {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        h1 a {
+            color: #e6edf3;
+            text-decoration: none;
+        }
+
+        h1 a:hover { color: #58a6ff; }
+
+        .meta-chips {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .meta-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.2rem 0.6rem;
+            background: #1c2d44;
+            border: 1px solid #243656;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            color: #8ba3c1;
+        }
+
+        a.meta-chip {
+            text-decoration: none;
+            transition: background 0.15s, border-color 0.15s, color 0.15s;
+        }
+
+        a.meta-chip:hover {
+            background: #25395a;
+            border-color: #3a5587;
+            color: #cfe1f7;
+        }
+
+        .meta-chip svg {
+            width: 12px;
+            height: 12px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Summary Section */
+        .summary {
+            background: #162033;
+            border: 1px solid #243656;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .progress-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            background: #1c2d44;
+            border-radius: 6px;
+            height: 10px;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .progress-fill {
+            background: #3fb950;
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.3s ease;
+        }
+
+        .progress-fill.has-failures {
+            background: linear-gradient(90deg, #3fb950 0%, #3fb950 0.0%, #f85149 0.0%, #f85149 100%);
+            width: 100% !important;
+            border-radius: 6px;
+        }
+
+        .progress-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #8ba3c1;
+            white-space: nowrap;
+            min-width: 3.5rem;
+            text-align: right;
+        }
+
+        .stats {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .stat-badge {
+            padding: 0.35rem 0.75rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .stat-pass {
+            background: rgba(63, 185, 80, 0.15);
+            color: #3fb950;
+        }
+
+        .stat-fail {
+            background: rgba(248, 81, 73, 0.15);
+            color: #f85149;
+        }
+
+        .stat-total {
+            color: #8ba3c1;
+            font-size: 0.85rem;
+        }
+
+        /* Failed Section */
+        .failed-section {
+            background: rgba(248, 81, 73, 0.08);
+            border: 1px solid rgba(248, 81, 73, 0.3);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .failed-section h2 {
+            color: #f85149;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .failed-item {
+            background: #162033;
+            border: 1px solid #243656;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .failed-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .failed-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .failed-name {
+            font-weight: 600;
+            color: #f85149;
+        }
+
+        .failed-duration {
+            color: #8ba3c1;
+            font-size: 0.8rem;
+        }
+
+        .failed-error {
+            background: #0f1923;
+            border: 1px solid #243656;
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-family: 'SFMono-Regular', 'Menlo', 'Monaco', monospace;
+            font-size: 0.8rem;
+            color: #d29922;
+            margin-bottom: 0.5rem;
+        }
+
+        .log-link {
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+
+        .log-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Workflow Grid */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-title {
+            font-size: 0.8rem;
+            color: #8ba3c1;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .view-controls {
+            display: flex;
+            gap: 0;
+            align-items: center;
+            border: 1px solid #243656;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .view-btn {
+            background: #1c2d44;
+            color: #8ba3c1;
+            border: none;
+            border-right: 1px solid #243656;
+            padding: 0.3rem 0.75rem;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: all 0.15s;
+        }
+
+        .view-btn:last-child {
+            border-right: none;
+        }
+
+        .view-btn:hover {
+            background: #243656;
+            color: #e6edf3;
+        }
+
+        .view-btn.active {
+            background: #58a6ff;
+            color: #fff;
+        }
+
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .workflow-grid.view-list {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+
+        .workflow-grid.view-list .workflow-card {
+            border-radius: 0;
+            border-bottom: 1px solid #243656;
+        }
+
+        .workflow-grid.view-list .workflow-card:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+
+        .workflow-grid.view-list .workflow-card:last-child {
+            border-radius: 0 0 8px 8px;
+            border-bottom: none;
+        }
+
+        .workflow-grid.view-list .workflow-card:only-child {
+            border-radius: 8px;
+        }
+
+        .workflow-grid.view-list .workflow-screenshot {
+            width: 100%;
+            height: auto;
+            aspect-ratio: auto;
+        }
+
+        .workflow-grid.view-list .workflow-info {
+            border-top: 1px solid #243656;
+            padding: 0.75rem 1rem;
+        }
+
+        .workflow-grid.view-list .workflow-name {
+            max-width: none;
+            font-size: 0.9rem;
+        }
+
+        .workflow-card {
+            background: #162033;
+            border: 1px solid #243656;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.15s, border-color 0.15s;
+        }
+
+        .workflow-card:hover {
+            transform: translateY(-1px);
+            border-color: #4a6282;
+        }
+
+        .workflow-card.clickable {
+            cursor: pointer;
+        }
+
+        .workflow-card.failed {
+            border-color: #f85149;
+        }
+
+        .workflow-card.failed:hover {
+            border-color: #f85149;
+        }
+
+        .workflow-screenshot {
+            width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+            background: #0f1923;
+            display: block;
+        }
+
+        .workflow-screenshot.placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a6282;
+            font-size: 0.8rem;
+        }
+
+        .workflow-info {
+            padding: 0.75rem 1rem;
+            border-top: 1px solid #243656;
+        }
+
+        .workflow-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .workflow-name {
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: #e6edf3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 65%;
+        }
+
+        .workflow-badge {
+            padding: 0.15rem 0.5rem;
+            border-radius: 2rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            flex-shrink: 0;
+        }
+
+        .workflow-badge.pass {
+            background: rgba(63, 185, 80, 0.15);
+            color: #3fb950;
+        }
+
+        .workflow-badge.fail {
+            background: rgba(248, 81, 73, 0.15);
+            color: #f85149;
+        }
+
+        .workflow-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: #4a6282;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(1, 4, 9, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            width: 100%;
+            margin: auto;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 60vh;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 1px solid #243656;
+            align-self: center;
+            cursor: zoom-in;
+        }
+
+        .img-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1002;
+            background: rgba(1, 4, 9, 0.95);
+            overflow: auto;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .img-overlay.active {
+            display: flex;
+        }
+
+        .img-overlay.zoomed {
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        .img-overlay img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            cursor: zoom-in;
+        }
+
+        .img-overlay.zoomed img {
+            max-width: none;
+            max-height: none;
+            cursor: zoom-out;
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            color: #e6edf3;
+            cursor: pointer;
+            opacity: 0.6;
+            background: none;
+            border: none;
+            z-index: 1001;
+        }
+
+        .lightbox-close:hover {
+            opacity: 1;
+        }
+
+        .lightbox-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(22, 32, 51, 0.8);
+            border: 1px solid #243656;
+            color: #e6edf3;
+            font-size: 2.5rem;
+            width: 48px;
+            height: 64px;
+            border-radius: 8px;
+            cursor: pointer;
+            opacity: 0.6;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.15s;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .lightbox-nav:hover {
+            opacity: 1;
+        }
+
+        .lightbox-nav-left { left: 1rem; }
+        .lightbox-nav-right { right: 1rem; }
+
+        .lightbox-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            background: #162033;
+            border: 1px solid #243656;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .lightbox-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #e6edf3;
+        }
+
+        .lightbox-hardware {
+            display: block;
+            font-size: 0.75rem;
+            color: #8ba3c1;
+            margin-top: 0.25rem;
+        }
+
+        .lightbox-meta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .lightbox-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .lightbox-badge.pass {
+            background: rgba(63, 185, 80, 0.15);
+            color: #3fb950;
+        }
+
+        .lightbox-badge.fail {
+            background: rgba(248, 81, 73, 0.15);
+            color: #f85149;
+        }
+
+        .lightbox-duration {
+            color: #8ba3c1;
+            font-size: 0.85rem;
+        }
+
+        .lightbox-log {
+            background: #0f1923;
+            border: 1px solid #243656;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: 'SFMono-Regular', 'Menlo', 'Monaco', monospace;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            word-break: break-all;
+            color: #8ba3c1;
+        }
+
+        .lightbox-log::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .lightbox-log::-webkit-scrollbar-track {
+            background: #162033;
+            border-radius: 4px;
+        }
+
+        .lightbox-log::-webkit-scrollbar-thumb {
+            background: #243656;
+            border-radius: 4px;
+        }
+
+        .lightbox-log::-webkit-scrollbar-thumb:hover {
+            background: #4a6282;
+        }
+
+        /* Resource Graph */
+        .resource-graph {
+            display: none;
+            margin-top: 1rem;
+            background: #162033;
+            border: 1px solid #243656;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .resource-graph.active {
+            display: block;
+        }
+
+        .resource-graph-title {
+            font-size: 0.8rem;
+            color: #8ba3c1;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-graph canvas {
+            width: 100%;
+            height: 120px;
+            cursor: crosshair;
+        }
+
+        .resource-legend {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            color: #8ba3c1;
+        }
+
+        .resource-legend span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .resource-legend .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .resource-legend .ram { background: #3fb950; }
+        .resource-legend .gpu { background: #d29922; }
+
+        /* Video Player */
+        .video-player {
+            display: none;
+            margin-top: 1rem;
+            background: #162033;
+            border: 1px solid #243656;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .video-player.active {
+            display: block;
+        }
+
+        .video-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .video-play-btn {
+            background: #58a6ff;
+            color: #fff;
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .video-play-btn:hover {
+            background: #79b8ff;
+        }
+
+        .video-frame-counter {
+            color: #8ba3c1;
+            font-size: 0.8rem;
+        }
+
+        .video-slider-container {
+            padding: 15px 0;
+        }
+
+        /* noUiSlider customization */
+        #video-slider {
+            height: 6px;
+            background: #1c2d44;
+            border: none;
+            box-shadow: none;
+        }
+
+        #video-slider .noUi-connect {
+            background: #58a6ff;
+        }
+
+        #video-slider .noUi-handle {
+            width: 16px;
+            height: 16px;
+            background: #58a6ff;
+            border: none;
+            border-radius: 50%;
+            box-shadow: none;
+            top: -5px;
+            right: -8px;
+            cursor: pointer;
+        }
+
+        #video-slider .noUi-handle:before,
+        #video-slider .noUi-handle:after {
+            display: none;
+        }
+
+        /* Pips (tick marks) */
+        .noUi-pips {
+            color: #4a6282;
+        }
+
+        .noUi-marker {
+            background: #243656;
+            width: 2px;
+        }
+
+        .noUi-marker-large {
+            height: 12px;
+        }
+
+        .noUi-value {
+            display: none;
+        }
+
+        /* Models Section */
+        .models-section {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .models-total {
+            font-size: 0.8rem;
+            color: #8ba3c1;
+        }
+
+        .models-folder {
+            background: #162033;
+            border: 1px solid #243656;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            overflow: hidden;
+        }
+
+        .models-folder-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            user-select: none;
+            list-style: none;
+        }
+
+        .models-folder-header::-webkit-details-marker {
+            display: none;
+        }
+
+        .models-folder-header::before {
+            content: '\25B6';
+            font-size: 0.6rem;
+            color: #4a6282;
+            margin-right: 0.5rem;
+            transition: transform 0.15s;
+        }
+
+        .models-folder[open] > .models-folder-header::before {
+            transform: rotate(90deg);
+        }
+
+        .models-folder-name {
+            font-family: 'SFMono-Regular', 'Menlo', 'Monaco', monospace;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #58a6ff;
+        }
+
+        .models-folder-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .models-folder-size {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #8ba3c1;
+        }
+
+        .models-source-link {
+            font-size: 0.75rem;
+            color: #3fb950;
+            text-decoration: none;
+            padding: 0.15rem 0.5rem;
+            background: rgba(63, 185, 80, 0.1);
+            border: 1px solid rgba(63, 185, 80, 0.2);
+            border-radius: 2rem;
+        }
+
+        .models-source-link:hover {
+            background: rgba(63, 185, 80, 0.2);
+            text-decoration: none;
+        }
+
+        .models-file-list {
+            border-top: 1px solid #243656;
+            padding: 0.25rem 0;
+        }
+
+        .models-file {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.35rem 1rem 0.35rem 2rem;
+            font-size: 0.8rem;
+        }
+
+        .models-file:hover {
+            background: rgba(88, 166, 255, 0.05);
+        }
+
+        .models-file-path {
+            font-family: 'SFMono-Regular', 'Menlo', 'Monaco', monospace;
+            color: #8ba3c1;
+            word-break: break-all;
+        }
+
+        .models-file-size {
+            color: #4a6282;
+            white-space: nowrap;
+            margin-left: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            color: #4a6282;
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .workflow-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .workflow-grid.view-list .workflow-card {
+                grid-template-columns: 1fr;
+            }
+
+            .workflow-grid.view-list .workflow-screenshot {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 16/10;
+            }
+
+            .stats {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/nouislider@15/dist/nouislider.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/nouislider@15/dist/nouislider.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1><a href="https://github.com/PozzettiAndrea/PozzettiAndrea/ComfyUI-PanoPack">PozzettiAndrea/ComfyUI-PanoPack</a> Test Results</h1>
+        <div class="meta-chips">
+            <span class="meta-chip"><svg viewBox="0 0 16 16"><path d="M8 0a8 8 0 110 16A8 8 0 018 0zm.5 4.5a.5.5 0 00-1 0v3.793L5.854 9.854a.5.5 0 10.708.708l1.853-1.854a.5.5 0 00.085-.094V4.5z"/></svg> 2026-06-06 16:04 UTC</span> <a class="meta-chip" href="https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27066991629" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zM6.5 4.5l5 3.5-5 3.5v-7z"/></svg> Test run</a> <span class="meta-chip"><svg viewBox="0 0 16 16"><path d="M2.5 4a.5.5 0 100 1 .5.5 0 000-1zM4 4.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5zM2.5 7a.5.5 0 100 1 .5.5 0 000-1zM4 7.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7A.5.5 0 014 7.5zM2.5 10a.5.5 0 100 1 .5.5 0 000-1zM4 10.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5z"/></svg> macOS-15.7.7-arm64-arm-64bit-Mach-O</span> <span class="meta-chip"><svg viewBox="0 0 16 16"><path d="M5 0a.5.5 0 01.5.5V2h1V.5a.5.5 0 011 0V2h1V.5a.5.5 0 011 0V2h.5A2.5 2.5 0 0112.5 4.5H14v1h-1.5v1H14v1h-1.5v1H14v1h-1.5A2.5 2.5 0 0110 12h-.5v1.5a.5.5 0 01-1 0V12h-1v1.5a.5.5 0 01-1 0V12H6v1.5a.5.5 0 01-1 0V12h-.5A2.5 2.5 0 012 9.5H.5v-1H2v-1H.5v-1H2v-1H.5v-1H2A2.5 2.5 0 014.5 2V.5A.5.5 0 015 0zm-.5 4A1.5 1.5 0 003 5.5v4A1.5 1.5 0 004.5 11h6a1.5 1.5 0 001.5-1.5v-4A1.5 1.5 0 0010.5 4h-6z"/></svg> arm</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="summary">
+            <div class="progress-wrapper">
+                <div class="progress-bar">
+                    <div class="progress-fill has-failures" style="width: 0.0%"></div>
+                </div>
+                <span class="progress-label">0.0%</span>
+            </div>
+            <div class="stats">
+                <span class="stat-badge stat-pass">0 passed</span>
+                <span class="stat-badge stat-fail">8 failed</span>
+                <span class="stat-total">0/8 tests</span>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <h2 class="section-title">Workflows</h2>
+            <div class="view-controls">
+                <button class="view-btn active" onclick="setView('grid')">Grid</button>
+                <button class="view-btn" onclick="setView('list')">List</button>
+            </div>
+        </div>
+        <div class="workflow-grid" id="workflow-grid">
+            
+            <div class="workflow-card clickable failed" onclick="openLightboxByName('360_render')">
+                <div class="workflow-screenshot placeholder">No screenshot</div>
+                <div class="workflow-info">
+                    <div class="workflow-header">
+                        <span class="workflow-name" title="360_render">360_render</span>
+                        <span class="workflow-badge fail">fail</span>
+                    </div>
+                    <div class="workflow-meta">
+                        <span>11.70s</span>
+                    </div>
+                </div>
+            </div>
+        
+
+            <div class="workflow-card clickable failed" onclick="openLightboxByName('cpu_depth_merge_mesh_pointcloud')">
+                <div class="workflow-screenshot placeholder">No screenshot</div>
+                <div class="workflow-info">
+                    <div class="workflow-header">
+                        <span class="workflow-name" title="cpu_depth_merge_mesh_pointcloud">cpu_depth_merge_mesh_pointcloud</span>
+                        <span class="workflow-badge fail">fail</span>
+                    </div>
+                    <div class="workflow-meta">
+                        <span>5.96s</span>
+                    </div>
+                </div>
+            </div>
+        
+
+            <div class="workflow-card clickable failed" onclick="openLightboxByName('cpu_plane_segmentation')">
+                <div class="workflow-screenshot placeholder">No screenshot</div>
+                <div class="workflow-info">
+                    <div class="workflow-header">
+                        <span class="workflow-name" title="cpu_plane_segmentation">cpu_plane_segmentation</span>
+                        <span class="workflow-badge fail">fail</span>
+                    </div>
+                    <div class="workflow-meta">
+                        <span>5.57s</span>
+                    </div>
+                </div>
+            </div>
+        
+
+            <div class="workflow-card clickable failed" onclick="openLightboxByName('pano_crop')">
+                <div class="workflow-screenshot placeholder">No screenshot</div>
+                <div class="workflow-info">
+                    <div class="workflow-header">
+                        <span class="workflow-name" title="pano_crop">pano_crop</span>
+                        <span class="workflow-badge fail">fail</span>
+                    </div>
+                    <div class="workflow-meta">
+                        <span>5.12s</span>
+                    </div>
+                </div>
+            </div>
+        
+
+            <div class="workflow-card clickable failed" onclick="openLightboxByName('pano_info')">
+                <div class="workflow-screenshot placeholder">No screenshot</div>
+                <div class="workflow-info">
+                    <div class="workflow-header">
+                        <span class="workflow-name" title="pano_info">pano_info</span>
+                        <span class="workflow-badge fail">fail</span>
+                    </div>
+                    <div class="workflow-meta">
+                        <span>5.31s</span>
+                    </div>
+                </div>
+            </div>
+        
+
+            <div class="workflow-card clickable failed" onclick="openLightboxByName('panorama_shift')">
+                <div class="workflow-screenshot placeholder">No screenshot</div>
+                <div class="workflow-info">
+                    <div class="workflow-header">
+                        <span class="workflow-name" title="panorama_shift">panorama_shift</span>
+                        <span class="workflow-badge fail">fail</span>
+                    </div>
+                    <div class="workflow-meta">
+                        <span>5.19s</span>
+                    </div>
+                </div>
+            </div>
+        
+
+            <div class="workflow-card clickable failed" onclick="openLightboxByName('preview_panorama')">
+                <div class="workflow-screenshot placeholder">No screenshot</div>
+                <div class="workflow-info">
+                    <div class="workflow-header">
+                        <span class="workflow-name" title="preview_panorama">preview_panorama</span>
+                        <span class="workflow-badge fail">fail</span>
+                    </div>
+                    <div class="workflow-meta">
+                        <span>5.65s</span>
+                    </div>
+                </div>
+            </div>
+        
+
+            <div class="workflow-card clickable failed" onclick="openLightboxByName('test_wrap_unwrap')">
+                <div class="workflow-screenshot placeholder">No screenshot</div>
+                <div class="workflow-info">
+                    <div class="workflow-header">
+                        <span class="workflow-name" title="test_wrap_unwrap">test_wrap_unwrap</span>
+                        <span class="workflow-badge fail">fail</span>
+                    </div>
+                    <div class="workflow-meta">
+                        <span>5.24s</span>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+
+        
+        <div class="failed-section">
+            <h2>Failed Tests</h2>
+            
+            <div class="failed-item">
+                <div class="failed-header">
+                    <span class="failed-name">360_render</span>
+                    <span class="failed-duration">11.70s</span>
+                </div>
+                <div class="failed-error">Workflow execution failed: {&#x27;prompt_id&#x27;: &#x27;f16031e6-e2e4-4703-8975-01edf5ba6323&#x27;, &#x27;node_id&#x27;: &#x27;94&#x27;, &#x27;node_type&#x27;: &#x27;PanoRenderGaussians&#x27;, &#x27;executed&#x27;: [&#x27;93&#x27;], &#x27;exception_message&#x27;: &#x27;PanoRenderGaussians: PLY not found: \&#x27;/input/3d/pano_gaussians.ply\&#x27; (tried [\&#x27;/input/3d/pano_gaussians.ply\&#x27;, \&#x27;/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply\&#x27;, \&#x27;/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\&#x27;, \&#x27;/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\&#x27;])\n\nWorker traceback:\nTraceback (most recent call last):\n  File &quot;/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_1481c_2u/persistent_worker.py&quot;, line 1762, in main\n    result = method(**inputs)\n  File &quot;/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/comfy_api/latest/_io.py&quot;, line 1892, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n  File &quot;/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py&quot;, line 219, in execute\n    resolved = _resolve_ply_path(gaussian_ply_path)\n  File &quot;/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py&quot;, line 45, in _resolve_ply_path\n    raise FileNotFoundError(\n        f&quot;PanoRenderGaussians: PLY not found: {p!r} (tried {[p, *candidates]})&quot;)\nFileNotFoundError: PanoRenderGaussians: PLY not found: \&#x27;/input/3d/pano_gaussians.ply\&#x27; (tried [\&#x27;/input/3d/pano_gaussians.ply\&#x27;, \&#x27;/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply\&#x27;, \&#x27;/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\&#x27;, \&#x27;/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\&#x27;])\n\n&#x27;, &#x27;exception_type&#x27;: &#x27;comfy_env.isolation.workers.base.WorkerError&#x27;, &#x27;traceback&#x27;: [&#x27;  File &quot;/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py&quot;, line 536, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n&#x27;, &#x27;  File &quot;/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py&quot;, line 336, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n&#x27;, &#x27;  File &quot;/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py&quot;, line 310, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n&#x27;, &#x27;  File &quot;/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py&quot;, line 298, in process_inputs\n    result = f(**inputs)\n&#x27;, &#x27;  File &quot;/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/venv/lib/python3.13/site-packages/comfy_env/isolation/metadata.py&quot;, line 560, in proxy\n    result = worker.call_method(\n        module_name=mod,\n    ...&lt;4 lines&gt;...\n        timeout=600.0,\n    )\n&#x27;, &#x27;  File &quot;/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/venv/lib/python3.13/site-packages/comfy_env/isolation/workers/subprocess.py&quot;, line 674, in call_method\n    raise WorkerError(\n    ...&lt;2 lines&gt;...\n    )\n&#x27;], &#x27;current_inputs&#x27;: {&#x27;gaussian_ply_path&#x27;: [&#x27;/input/3d/pano_gaussians.ply&#x27;], &#x27;width&#x27;: [2048], &#x27;face_resolution&#x27;: [1024], &#x27;gain&#x27;: [2], &#x27;backend&#x27;: [&#x27;cpu&#x27;]}, &#x27;current_outputs&#x27;: [&#x27;91&#x27;, &#x27;92&#x27;, &#x27;94&#x27;, &#x27;87&#x27;, &#x27;90&#x27;, &#x27;96&#x27;, &#x27;84&#x27;, &#x27;93&#x27;, &#x27;95&#x27;, &#x27;97&#x27;, &#x27;88&#x27;], &#x27;timestamp&#x27;: 1780761812973}
+
+Details:
+Workflow: /private/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy-test-run-gu4gfx7e/ComfyUI-PanoPack/workflows/360_render.json
+Node error: PanoRenderGaussians</div>
+            </div>
+        
+            <div class="failed-item">
+                <div class="failed-header">
+                    <span class="failed-name">cpu_depth_merge_mesh_pointcloud</span>
+                    <span class="failed-duration">5.96s</span>
+                </div>
+                <div class="failed-error">Workflow validation failed
+
+Details:
+Prompt outputs failed validation
+Node errors:
+{
+  &quot;1&quot;: {
+    &quot;errors&quot;: [
+      {
+        &quot;type&quot;: &quot;custom_validation_failed&quot;,
+        &quot;message&quot;: &quot;Custom validation failed for node&quot;,
+        &quot;details&quot;: &quot;image - Invalid image file: actual_pano_from_real_life.jpg&quot;,
+        &quot;extra_info&quot;: {
+          &quot;input_name&quot;: &quot;image&quot;
+        }
+      }
+    ],
+    &quot;dependent_outputs&quot;: [
+      &quot;78&quot;,
+      &quot;81&quot;,
+      &quot;82&quot;,
+      &quot;35&quot;,
+      &quot;77&quot;,
+      &quot;36&quot;,
+      &quot;76&quot;
+    ],
+    &quot;class_type&quot;: &quot;LoadImage&quot;
+  }
+}</div>
+            </div>
+        
+            <div class="failed-item">
+                <div class="failed-header">
+                    <span class="failed-name">cpu_plane_segmentation</span>
+                    <span class="failed-duration">5.57s</span>
+                </div>
+                <div class="failed-error">Workflow validation failed
+
+Details:
+Prompt outputs failed validation
+Node errors:
+{
+  &quot;1&quot;: {
+    &quot;errors&quot;: [
+      {
+        &quot;type&quot;: &quot;custom_validation_failed&quot;,
+        &quot;message&quot;: &quot;Custom validation failed for node&quot;,
+        &quot;details&quot;: &quot;image - Invalid image file: actual_pano_from_real_life.jpg&quot;,
+        &quot;extra_info&quot;: {
+          &quot;input_name&quot;: &quot;image&quot;
+        }
+      }
+    ],
+    &quot;dependent_outputs&quot;: [
+      &quot;106&quot;,
+      &quot;85&quot;,
+      &quot;97&quot;,
+      &quot;81&quot;
+    ],
+    &quot;class_type&quot;: &quot;LoadImage&quot;
+  },
+  &quot;66&quot;: {
+    &quot;errors&quot;: [
+      {
+        &quot;type&quot;: &quot;invalid_input_type&quot;,
+        &quot;message&quot;: &quot;Failed to convert an input value to a INT value&quot;,
+        &quot;details&quot;: &quot;resolution, icosahedron_12, invalid literal for int() with base 10: &#x27;icosahedron_12&#x27;&quot;,
+        &quot;extra_info&quot;: {
+          &quot;input_name&quot;: &quot;resolution&quot;,
+          &quot;input_config&quot;: [
+            &quot;INT&quot;,
+            {
+              &quot;tooltip&quot;: &quot;Square per-crop resolution (icosahedron methods).&quot;,
+              &quot;default&quot;: 952,
+              &quot;min&quot;: 128,
+              &quot;max&quot;: 2048,
+              &quot;step&quot;: 1
+            }
+          ],
+          &quot;received_value&quot;: &quot;icosahedron_12&quot;,
+          &quot;exception_message&quot;: &quot;invalid literal for int() with base 10: &#x27;icosahedron_12&#x27;&quot;
+        }
+      }
+    ],
+    &quot;dependent_outputs&quot;: [
+      &quot;106&quot;,
+      &quot;85&quot;,
+      &quot;97&quot;,
+      &quot;81&quot;
+    ],
+    &quot;class_type&quot;: &quot;PanoramaSplit&quot;
+  }
+}</div>
+            </div>
+        
+            <div class="failed-item">
+                <div class="failed-header">
+                    <span class="failed-name">pano_crop</span>
+                    <span class="failed-duration">5.12s</span>
+                </div>
+                <div class="failed-error">Workflow validation failed
+
+Details:
+Prompt outputs failed validation
+Node errors:
+{
+  &quot;1&quot;: {
+    &quot;errors&quot;: [
+      {
+        &quot;type&quot;: &quot;custom_validation_failed&quot;,
+        &quot;message&quot;: &quot;Custom validation failed for node&quot;,
+        &quot;details&quot;: &quot;image - Invalid image file: actual_pano_from_real_life.jpg&quot;,
+        &quot;extra_info&quot;: {
+          &quot;input_name&quot;: &quot;image&quot;
+        }
+      }
+    ],
+    &quot;dependent_outputs&quot;: [
+      &quot;88&quot;
+    ],
+    &quot;class_type&quot;: &quot;LoadImage&quot;
+  }
+}</div>
+            </div>
+        
+            <div class="failed-item">
+                <div class="failed-header">
+                    <span class="failed-name">pano_info</span>
+                    <span class="failed-duration">5.31s</span>
+                </div>
+                <div class="failed-error">Workflow validation failed
+
+Details:
+Prompt outputs failed validation
+Node errors:
+{
+  &quot;1&quot;: {
+    &quot;errors&quot;: [
+      {
+        &quot;type&quot;: &quot;custom_validation_failed&quot;,
+        &quot;message&quot;: &quot;Custom validation failed for node&quot;,
+        &quot;details&quot;: &quot;image - Invalid image file: pano.png&quot;,
+        &quot;extra_info&quot;: {
+          &quot;input_name&quot;: &quot;image&quot;
+        }
+      }
+    ],
+    &quot;dependent_outputs&quot;: [
+      &quot;3&quot;
+    ],
+    &quot;class_type&quot;: &quot;LoadImage&quot;
+  }
+}</div>
+            </div>
+        
+            <div class="failed-item">
+                <div class="failed-header">
+                    <span class="failed-name">panorama_shift</span>
+                    <span class="failed-duration">5.19s</span>
+                </div>
+                <div class="failed-error">Workflow validation failed
+
+Details:
+Prompt outputs failed validation
+Node errors:
+{
+  &quot;1&quot;: {
+    &quot;errors&quot;: [
+      {
+        &quot;type&quot;: &quot;custom_validation_failed&quot;,
+        &quot;message&quot;: &quot;Custom validation failed for node&quot;,
+        &quot;details&quot;: &quot;image - Invalid image file: pano.png&quot;,
+        &quot;extra_info&quot;: {
+          &quot;input_name&quot;: &quot;image&quot;
+        }
+      }
+    ],
+    &quot;dependent_outputs&quot;: [
+      &quot;5&quot;,
+      &quot;6&quot;
+    ],
+    &quot;class_type&quot;: &quot;LoadImage&quot;
+  }
+}</div>
+            </div>
+        
+            <div class="failed-item">
+                <div class="failed-header">
+                    <span class="failed-name">preview_panorama</span>
+                    <span class="failed-duration">5.65s</span>
+                </div>
+                <div class="failed-error">Workflow validation failed
+
+Details:
+Prompt outputs failed validation
+Node errors:
+{
+  &quot;1&quot;: {
+    &quot;errors&quot;: [
+      {
+        &quot;type&quot;: &quot;custom_validation_failed&quot;,
+        &quot;message&quot;: &quot;Custom validation failed for node&quot;,
+        &quot;details&quot;: &quot;image - Invalid image file: pano.png&quot;,
+        &quot;extra_info&quot;: {
+          &quot;input_name&quot;: &quot;image&quot;
+        }
+      }
+    ],
+    &quot;dependent_outputs&quot;: [
+      &quot;6&quot;,
+      &quot;4&quot;
+    ],
+    &quot;class_type&quot;: &quot;LoadImage&quot;
+  }
+}</div>
+            </div>
+        
+            <div class="failed-item">
+                <div class="failed-header">
+                    <span class="failed-name">test_wrap_unwrap</span>
+                    <span class="failed-duration">5.24s</span>
+                </div>
+                <div class="failed-error">Workflow validation failed
+
+Details:
+Prompt outputs failed validation
+Node errors:
+{
+  &quot;1&quot;: {
+    &quot;errors&quot;: [
+      {
+        &quot;type&quot;: &quot;custom_validation_failed&quot;,
+        &quot;message&quot;: &quot;Custom validation failed for node&quot;,
+        &quot;details&quot;: &quot;image - Invalid image file: pano.png&quot;,
+        &quot;extra_info&quot;: {
+          &quot;input_name&quot;: &quot;image&quot;
+        }
+      }
+    ],
+    &quot;dependent_outputs&quot;: [
+      &quot;4&quot;
+    ],
+    &quot;class_type&quot;: &quot;LoadImage&quot;
+  }
+}</div>
+            </div>
+        
+        </div>
+    
+
+        
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <button class="lightbox-nav lightbox-nav-left" onclick="navigateLightbox(-1)">&#8249;</button>
+        <button class="lightbox-nav lightbox-nav-right" onclick="navigateLightbox(1)">&#8250;</button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+            <video id="lightbox-video" controls preload="metadata" style="display:none; max-width:90vw; max-height:80vh; background:#000;"></video>
+            <div class="video-player" id="video-player">
+                <div class="video-slider-container">
+                    <div id="video-slider"></div>
+                </div>
+                <div class="video-controls">
+                    <span class="video-frame-counter" id="video-frame-counter">0.0s / 0.0s</span>
+                </div>
+            </div>
+            <div class="resource-graph" id="resource-graph">
+                <div class="resource-graph-title">Resource Usage</div>
+                <canvas id="resource-canvas"></canvas>
+                <div class="resource-legend">
+                    <span><span class="dot ram"></span> RAM (GB)</span>
+                    <span id="gpu-legend" style="display:none"><span class="dot gpu"></span> VRAM (GB)</span>
+                </div>
+            </div>
+            <div class="lightbox-info">
+                <div>
+                    <span class="lightbox-title" id="lightbox-title"></span>
+                    <span class="lightbox-hardware" id="lightbox-hardware"></span>
+                </div>
+                <div class="lightbox-meta">
+                    <span class="lightbox-badge" id="lightbox-badge"></span>
+                    <span class="lightbox-duration" id="lightbox-duration"></span>
+                </div>
+            </div>
+            <pre class="lightbox-log" id="lightbox-log"></pre>
+        </div>
+    </div>
+
+    <div class="img-overlay" id="img-overlay">
+        <img id="img-overlay-content" src="" alt="">
+    </div>
+
+    <footer>
+        Generated by <a href="https://github.com/PozzettiAndrea/comfy-test">comfy-test</a>
+    </footer>
+
+    <script>
+        function setView(mode) {
+            const grid = document.getElementById('workflow-grid');
+            grid.className = mode === 'list' ? 'workflow-grid view-list' : 'workflow-grid';
+            document.querySelectorAll('.view-controls .view-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === mode);
+            });
+        }
+
+        const workflowData = {"360_render": {"src": "", "title": "360_render", "status": "fail", "duration": "11.70", "log": "  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\nCapturing execution frames: 360_render.json\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 11 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 84: GeomPackLoadMesh\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"file_path\": \"3d/pano_mesh.vtp\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 87: GeomPackLoadMesh\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"file_path\": \"3d/pano_pc.ply\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 88: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"92\", 1]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 90: PanoRenderMesh\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"mode\": \"pointcloud\", \"mode.point_size\": 4, \"mode.render_radius\": 0.03, \"yz_flip\": true, \"width\": 2048, \"face_resolution\": 1024, \"mesh\": [\"87\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 91: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"90\", 1]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 92: PanoRenderMesh\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"mode\": \"mesh\", \"mode.show_edges\": \"on\", \"mode.show_edges.edge_thickness\": 1, \"yz_flip\": true, \"width\": 2048, \"face_resolution\": 1024, \"mesh\": [\"84\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 93: PrimitiveString\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"value\": \"/input/3d/pano_gaussians.ply\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 94: PanoRenderGaussians\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"gaussian_ply_path\": [\"93\", 0], \"width\": 2048, \"face_resolution\": 1024, \"gain\": 2, \"backend\": \"cpu\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 95: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"94\", 1]}\n  Warning: 2 node(s) have validation errors (will fail after screenshots)\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 96: PanoRenderMeshDepth\n  Queuing workflow for execution...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"yz_flip\": true, \"width\": 2048, \"face_resolution\": 1024, \"mesh\": [\"84\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 97: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"96\", 1]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 10e51fc4-3ff9-4913-985a-55fddde6a6e4\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 91:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * GeomPackLoadMesh 87:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Value not in list: file_path: '3d/pano_pc.ply' not in ['No mesh files found in input/3d or input folders']\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 97:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * GeomPackLoadMesh 84:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Value not in list: file_path: '3d/pano_mesh.vtp' not in ['No mesh files found in input/3d or input folders']\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 88:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=True\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"87\": {\"errors\": [{\"type\": \"value_not_in_list\", \"message\": \"Value not in list\", \"details\": \"file_path: '3d/pano_pc.ply' not in ['No mesh files found in input/3d or input folders']\", \"extra_info\": {\"input_name\": \"file_path\", \"input_config\": [\"COMBO\", {\"multiselect\": false, \"options\": [\"No mesh files found in input/3d or input folders\"]}], \"received_value\": \"3d/pano_pc.ply\"}}], \"dependent_outputs\": [\"91\", \"97\", \"88\"], \"class_type\": \"GeomPackLoadMesh\"}, \"84\": {\"errors\": [{\"type\": \"value_not_in_lis\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation PASSED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m got prompt\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 91:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * GeomPackLoadMesh 87:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Value not in list: file_path: '3d/pano_pc.ply' not in ['No mesh files found in input/3d or input folders']\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 97:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * GeomPackLoadMesh 84:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Value not in list: file_path: '3d/pano_mesh.vtp' not in ['No mesh files found in input/3d or input folders']\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 88:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] [comfy-env] Running PanoRenderGaussians: gaussian_ply_path: '/input/3d/pano_gaussians.ply', width: 2048, face_resolution: 1024, gain: 2.0, backend: 'cpu'\n  [ComfyUI] [comfy-env] SubprocessWorker: /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python\n  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI'}\n  [ComfyUI] [SubprocessWorker] call_method: nodes.pano_render_gaussians.PanoRenderGaussians.EXECUTE_NORMALIZED\n  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...\n  [ComfyUI] [ComfyUI-PanoPack] python: /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python\n  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack', '/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.13/site-packages', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack']\n  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python\n  [ComfyUI] [SubprocessWorker] launching cmd=['/Users/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/Users/runner/.ce/envs/panopack-nodes/pixi.toml', '-e', 'default', 'python', '/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_1481c_2u/persistent_worker.py', 'unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_bcac496c91ab.sock']...\n  [ComfyUI] [SubprocessWorker] socket_addr=unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_bcac496c91ab.sock exists=True\n  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.\n  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.\n  Frame 2 saved (frame_001.jpg, t=2.4s)\n  [capture-periodic] freeze=2ms shot=85ms unfreeze=2ms saved=True\n  [ComfyUI] [SubprocessWorker] worker started/confirmed\n  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...\n  [ComfyUI] [SubprocessWorker] created 0 shm blocks\n  [ComfyUI] [SubprocessWorker] sending request via socket...\n  [ComfyUI] [SubprocessWorker] call_id=1 sending call_method\n  [ComfyUI] objc[6256]: Class AVFFrameReceiver is implemented in both /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x11467c7a8) and /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.13/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x11ba503a8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.\n  [ComfyUI] objc[6256]: Class AVFAudioReceiver is implemented in both /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x11467c7f8) and /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.13/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x11ba503f8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.\n  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoRenderGaussians] === PanoRenderGaussians: backend=cpu gain=2.0 width=2048 face_res=1024 ===\n  [ComfyUI] [SubprocessWorker] got response: error\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m !!! Exception during processing !!! PanoRenderGaussians: PLY not found: '/input/3d/pano_gaussians.ply' (tried ['/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply'])\n  [ComfyUI] \n  [ComfyUI] Worker traceback:\n  [ComfyUI] Traceback (most recent call last):\n  [ComfyUI]   File \"/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_1481c_2u/persistent_worker.py\", line 1762, in main\n  [ComfyUI]     result = method(**inputs)\n  [ComfyUI]   File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/comfy_api/latest/_io.py\", line 1892, in EXECUTE_NORMALIZED\n  [ComfyUI]     to_return = cls.execute(*args, **kwargs)\n  [ComfyUI]   File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py\", line 219, in execute\n  [ComfyUI]     resolved = _resolve_ply_path(gaussian_ply_path)\n  [ComfyUI]   File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py\", line 45, in _resolve_ply_path\n  [ComfyUI]     raise FileNotFoundError(\n  [ComfyUI]         f\"PanoRenderGaussians: PLY not found: {p!r} (tried {[p, *candidates]})\")\n  [ComfyUI] FileNotFoundError: PanoRenderGaussians: PLY not found: '/input/3d/pano_gaussians.ply' (tried ['/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply'])\n  [ComfyUI] \n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Traceback (most recent call last):\n  [ComfyUI]   File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py\", line 536, in execute\n  [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n  [ComfyUI]                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  [ComfyUI]   File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py\", line 336, in get_output_data\n  [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n  [ComfyUI]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  [ComfyUI]   File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py\", line 310, in _async_map_node_over_list\n  [ComfyUI]     await process_inputs(input_dict, i)\n  [ComfyUI]   File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py\", line 298, in process_inputs\n  [ComfyUI]     result = f(**inputs)\n  [ComfyUI]   File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/venv/lib/python3.13/site-packages/comfy_env/isolation/metadata.py\", line 560, in proxy\n  [ComfyUI]     result = worker.call_method(\n  [ComfyUI]         module_name=mod,\n  [ComfyUI]     ...<4 lines>...\n  [ComfyUI]         timeout=600.0,\n  [ComfyUI]     )\n  [ComfyUI]   File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/venv/lib/python3.13/site-packages/comfy_env/isolation/workers/subprocess.py\", line 674, in call_method\n  [ComfyUI]     raise WorkerError(\n  [ComfyUI]     ...<2 lines>...\n  [ComfyUI]     )\n  [ComfyUI] comfy_env.isolation.workers.base.WorkerError: PanoRenderGaussians: PLY not found: '/input/3d/pano_gaussians.ply' (tried ['/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply'])\n  [ComfyUI] \n  [ComfyUI] Worker traceback:\n  [ComfyUI] Traceback (most recent call last):\n  [ComfyUI]   File \"/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_1481c_2u/persistent_worker.py\", line 1762, in main\n  [ComfyUI]     result = method(**inputs)\n  [ComfyUI]   File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/comfy_api/latest/_io.py\", line 1892, in EXECUTE_NORMALIZED\n  [ComfyUI]     to_return = cls.execute(*args, **kwargs)\n  [ComfyUI]   File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py\", line 219, in execute\n  [ComfyUI]     resolved = _resolve_ply_path(gaussian_ply_path)\n  [ComfyUI]   File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py\", line 45, in _resolve_ply_path\n  [ComfyUI]     raise FileNotFoundError(\n  [ComfyUI]         f\"PanoRenderGaussians: PLY not found: {p!r} (tried {[p, *candidates]})\")\n  [ComfyUI] FileNotFoundError: PanoRenderGaussians: PLY not found: '/input/3d/pano_gaussians.ply' (tried ['/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply'])\n  [ComfyUI] \n  [ComfyUI] \n  [ComfyUI] \u001b[32m[INFO]\u001b[0m \u001b[32mPrompt executed in 3.51 seconds\u001b[0m\n  Execution complete (t=3.8s)\n  Execution error: {'prompt_id': 'f16031e6-e2e4-4703-8975-01edf5ba6323', 'node_id': '94', 'node_type': 'PanoRenderGaussians', 'executed': ['93'], 'exception_message': 'PanoRenderGaussians: PLY not found: \\'/input/3d/pano_gaussians.ply\\' (tried [\\'/input/3d/pano_gaussians.ply\\', \\'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply\\', \\'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\\', \\'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\\'])\\n\\nWorker traceback:\\nTraceback (most recent call last):\\n  File \"/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_1481c_2u/persistent_worker.py\", line 1762, in main\\n    result = method(**inputs)\\n  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/comfy_api/latest/_io.py\", line 1892, in EXECUTE_NORMALIZED\\n    to_return = cls.execute(*args, **kwargs)\\n  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py\", line 219, in execute\\n    resolved = _resolve_ply_path(gaussian_ply_path)\\n  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py\", line 45, in _resolve_ply_path\\n    raise FileNotFoundError(\\n        f\"PanoRenderGaussians: PLY not found: {p!r} (tried {[p, *candidates]})\")\\nFileNotFoundError: PanoRenderGaussians: PLY not found: \\'/input/3d/pano_gaussians.ply\\' (tried [\\'/input/3d/pano_gaussians.ply\\', \\'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply\\', \\'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\\', \\'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\\'])\\n\\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py\", line 536, in execute\\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py\", line 336, in get_output_data\\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py\", line 310, in _async_map_node_over_list\\n    await process_inputs(input_dict, i)\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py\", line 298, in process_inputs\\n    result = f(**inputs)\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/venv/lib/python3.13/site-packages/comfy_env/isolation/metadata.py\", line 560, in proxy\\n    result = worker.call_method(\\n        module_name=mod,\\n    ...<4 lines>...\\n        timeout=600.0,\\n    )\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/venv/lib/python3.13/site-packages/comfy_env/isolation/workers/subprocess.py\", line 674, in call_method\\n    raise WorkerError(\\n    ...<2 lines>...\\n    )\\n'], 'current_inputs': {'gaussian_ply_path': ['/input/3d/pano_gaussians.ply'], 'width': [2048], 'face_resolution': [1024], 'gain': [2], 'backend': ['cpu']}, 'current_outputs': ['91', '92', '94', '87', '90', '96', '84', '93', '95', '97', '88'], 'timestamp': 1780761812973}\n    Status: FAILED\n    Error: Workflow execution failed: {'prompt_id': 'f16031e6-e2e4-4703-8975-01edf5ba6323', 'node_id': '94', 'node_type': 'PanoRenderGaussians', 'executed': ['93'], 'exception_message': 'PanoRenderGaussians: PLY not found: \\'/input/3d/pano_gaussians.ply\\' (tried [\\'/input/3d/pano_gaussians.ply\\', \\'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply\\', \\'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\\', \\'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\\'])\\n\\nWorker traceback:\\nTraceback (most recent call last):\\n  File \"/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_1481c_2u/persistent_worker.py\", line 1762, in main\\n    result = method(**inputs)\\n  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/comfy_api/latest/_io.py\", line 1892, in EXECUTE_NORMALIZED\\n    to_return = cls.execute(*args, **kwargs)\\n  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py\", line 219, in execute\\n    resolved = _resolve_ply_path(gaussian_ply_path)\\n  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/pano_render_gaussians.py\", line 45, in _resolve_ply_path\\n    raise FileNotFoundError(\\n        f\"PanoRenderGaussians: PLY not found: {p!r} (tried {[p, *candidates]})\")\\nFileNotFoundError: PanoRenderGaussians: PLY not found: \\'/input/3d/pano_gaussians.ply\\' (tried [\\'/input/3d/pano_gaussians.ply\\', \\'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/3d/pano_gaussians.ply\\', \\'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\\', \\'/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/input/input/3d/pano_gaussians.ply\\'])\\n\\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py\", line 536, in execute\\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py\", line 336, in get_output_data\\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py\", line 310, in _async_map_node_over_list\\n    await process_inputs(input_dict, i)\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/ComfyUI/execution.py\", line 298, in process_inputs\\n    result = f(**inputs)\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/venv/lib/python3.13/site-packages/comfy_env/isolation/metadata.py\", line 560, in proxy\\n    result = worker.call_method(\\n        module_name=mod,\\n    ...<4 lines>...\\n        timeout=600.0,\\n    )\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1600/venv/lib/python3.13/site-packages/comfy_env/isolation/workers/subprocess.py\", line 674, in call_method\\n    raise WorkerError(\\n    ...<2 lines>...\\n    )\\n'], 'current_inputs': {'gaussian_ply_path': ['/input/3d/pano_gaussians.ply'], 'width': [2048], 'face_resolution': [1024], 'gain': [2], 'backend': ['cpu']}, 'current_outputs': ['91', '92', '94', '87', '90', '96', '84', '93', '95', '97', '88'], 'timestamp': 1780761812973}\n    Details: Workflow: /private/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy-test-run-gu4gfx7e/ComfyUI-PanoPack/workflows/360_render.json\nNode error: PanoRenderGaussians", "hardware": {"os": "macOS-15.7.7-arm64-arm-64bit-Mach-O", "cpu": "arm"}}, "cpu_depth_merge_mesh_pointcloud": {"src": "", "title": "cpu_depth_merge_mesh_pointcloud", "status": "fail", "duration": "5.96", "log": "Capturing execution frames: cpu_depth_merge_mesh_pointcloud.json\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 17 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"actual_pano_from_real_life.jpg\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 10: DownloadAndLoadMoGe2Model\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"model\": \"moge-2-vitl-normal.pt\", \"precision\": \"auto\", \"attention\": \"auto\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 35: GeomPackRemesh\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"backend\": \"pymeshlab_isotropic\", \"backend.target_edge_length\": 0.03, \"backend.iterations\": 3, \"backend.feature_angle\": 30, \"backend.adaptive\": \"false\", \"report_panel\": \"false\", \"trimesh\": [\"80\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 36: GeomPackPreviewMeshVTK\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"mode\": \"fields\", \"trimesh\": [\"35\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 63: MoGe2Inference\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"resolution_level\": 9, \"num_tokens\": 0, \"fov_x_deg\": [\"85\", 3], \"force_projection\": true, \"apply_mask\": true, \"moge2_model\": [\"10\", 0], \"images\": [\"85\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 65: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 69: PanoramaDepthMerge\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"out_width\": [\"74\", 0], \"out_height\": [\"74\", 1], \"use_gpu\": false, \"scale_anchor\": true, \"chunk_size\": 8, \"center_weight_power\": 2, \"normal_edge_threshold_deg\": 0, \"normal_consistency_boost\": false,\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 74: GetImageSize\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 76: GeomPackPreviewMeshVTK\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"mode\": \"fields\", \"trimesh\": [\"83\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 77: GeomPackSaveMesh\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"file_path\": \"pano_pc\", \"format\": \"ply\", \"trimesh\": [\"83\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 78: GeomPackSaveMesh\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"file_path\": \"pano_mesh\", \"format\": \"vtp\", \"trimesh\": [\"35\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 79: PanoramaBuildPointCloud\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"contract\": true, \"contract_beyond\": 8, \"edge_rtol\": 0.1, \"max_size\": 4096, \"dropout_pcd\": true, \"panorama\": [\"65\", 0], \"depth\": [\"69\", 0], \"valid_mask\": [\"69\", 1]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 80: PanoramaBuildMesh\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"contract\": false, \"contract_beyond\": 8, \"edge_rtol\": 0.1, \"clip_quantile\": 1, \"panorama\": [\"65\", 0], \"depth\": [\"69\", 0], \"valid_mask\": [\"69\", 1]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 81: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"85\", 5]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 82: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"69\", 2]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 83: GeomPackSubsamplePointCloud\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"method\": \"random\", \"target_count\": 2100, \"seed\": 42, \"point_cloud\": [\"79\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 85: PanoramaSplit\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"split_method\": \"icosahedron_12\", \"resolution\": 512, \"fov_degrees\": 90, \"use_gpu\": false, \"create_masks\": false, \"fname\": \"pano_bank\", \"panorama\": [\"65\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: d7fa5f10-4be2-4941-aac5-588de7fcfa7e\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 78:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: actual_pano_from_real_life.jpg\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 81:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 82:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 35:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 77:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 36:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 76:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: actual_pano_from_real_life.jpg\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"78\", \"81\", \"82\", \"35\", \"77\", \"36\", \"76\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  Validation failed: Prompt outputs failed validation\nNode errors:\n{\n  \"1\": {\n    \"errors\": [\n      {\n        \"type\": \"custom_validation_failed\",\n        \"message\": \"Custom validation failed for node\",\n        \"details\": \"image - Invalid image file: actual_pano_from_real_life.jpg\",\n        \"extra_info\": {\n          \"input_name\": \"image\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"78\",\n      \"81\",\n      \"82\",\n      \"35\",\n      \"77\",\n      \"36\",\n      \"76\"\n    ],\n    \"class_type\": \"LoadImage\"\n  }\n}\n    Status: FAILED\n    Error: Workflow validation failed\n    Details: Prompt outputs failed validation\nNode errors:\n{\n  \"1\": {\n    \"errors\": [\n      {\n        \"type\": \"custom_validation_failed\",\n        \"message\": \"Custom validation failed for node\",\n        \"details\": \"image - Invalid image file: actual_pano_from_real_life.jpg\",\n        \"extra_info\": {\n          \"input_name\": \"image\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"78\",\n      \"81\",\n      \"82\",\n      \"35\",\n      \"77\",\n      \"36\",\n      \"76\"\n    ],\n    \"class_type\": \"LoadImage\"\n  }\n}", "hardware": {"os": "macOS-15.7.7-arm64-arm-64bit-Mach-O", "cpu": "arm"}}, "cpu_plane_segmentation": {"src": "", "title": "cpu_plane_segmentation", "status": "fail", "duration": "5.57", "log": "  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\nCapturing execution frames: cpu_plane_segmentation.json\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 13 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 13 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"actual_pano_from_real_life.jpg\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"actual_pano_from_real_life.jpg\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 10: DownloadAndLoadMoGe2Model\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 10: DownloadAndLoadMoGe2Model\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"model\": \"moge-2-vitl-normal.pt\", \"precision\": \"auto\", \"attention\": \"auto\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"model\": \"moge-2-vitl-normal.pt\", \"precision\": \"auto\", \"attention\": \"auto\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 63: MoGe2Inference\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 63: MoGe2Inference\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"resolution_level\": 9, \"num_tokens\": 0, \"fov_x_deg\": [\"66\", 3], \"force_projection\": true, \"apply_mask\": true, \"moge2_model\": [\"10\", 0], \"images\": [\"66\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"resolution_level\": 9, \"num_tokens\": 0, \"fov_x_deg\": [\"66\", 3], \"force_projection\": true, \"apply_mask\": true, \"moge2_model\": [\"10\", 0], \"images\": [\"66\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 65: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 65: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  Validation failed: Prompt outputs failed validation\nNode errors:\n{\n  \"1\": {\n    \"errors\": [\n      {\n        \"type\": \"custom_validation_failed\",\n        \"message\": \"Custom validation failed for node\",\n        \"details\": \"image - Invalid image file: actual_pano_from_real_life.jpg\",\n        \"extra_info\": {\n          \"input_name\": \"image\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"106\",\n      \"85\",\n      \"97\",\n      \"81\"\n    ],\n    \"class_type\": \"LoadImage\"\n  },\n  \"66\": {\n    \"errors\": [\n      {\n        \"type\": \"invalid_input_type\",\n        \"message\": \"Failed to convert an input value to a INT value\",\n        \"details\": \"resolution, icosahedron_12, invalid literal for int() with base 10: 'icosahedron_12'\",\n        \"extra_info\": {\n          \"input_name\": \"resolution\",\n          \"input_config\": [\n            \"INT\",\n            {\n              \"tooltip\": \"Square per-crop resolution (icosahedron methods).\",\n              \"default\": 952,\n              \"min\": 128,\n              \"max\": 2048,\n              \"step\": 1\n            }\n          ],\n          \"received_value\": \"icosahedron_12\",\n          \"exception_message\": \"invalid literal for int() with base 10: 'icosahedron_12'\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"106\",\n      \"85\",\n      \"97\",\n      \"81\"\n    ],\n    \"class_type\": \"PanoramaSplit\"\n  }\n}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 66: PanoramaSplit\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 66: PanoramaSplit\n    Status: FAILED\n    Error: Workflow validation failed\n    Details: Prompt outputs failed validation\nNode errors:\n{\n  \"1\": {\n    \"errors\": [\n      {\n        \"type\": \"custom_validation_failed\",\n        \"message\": \"Custom validation failed for node\",\n        \"details\": \"image - Invalid image file: actual_pano_from_real_life.jpg\",\n        \"extra_info\": {\n          \"input_name\": \"image\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"106\",\n      \"85\",\n      \"97\",\n      \"81\"\n    ],\n    \"class_type\": \"LoadImage\"\n  },\n  \"66\": {\n    \"errors\": [\n      {\n        \"type\": \"invalid_input_type\",\n        \"message\": \"Failed to convert an input value to a INT value\",\n        \"details\": \"resolution, icosahedron_12, invalid literal for int() with base 10: 'icosahedron_12'\",\n        \"extra_info\": {\n          \"input_name\": \"resolution\",\n          \"input_config\": [\n            \"INT\",\n            {\n              \"tooltip\": \"Square per-crop resolution (icosahedron methods).\",\n              \"default\": 952,\n              \"min\": 128,\n              \"max\": 2048,\n              \"step\": 1\n            }\n          ],\n          \"received_value\": \"icosahedron_12\",\n          \"exception_message\": \"invalid literal for int() with base 10: 'icosahedron_12'\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"106\",\n      \"85\",\n      \"97\",\n      \"81\"\n    ],\n    \"class_type\": \"PanoramaSplit\"\n  }\n}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"split_method\": 512, \"resolution\": \"icosahedron_12\", \"fov_degrees\": 90, \"use_gpu\": false, \"create_masks\": false, \"fname\": \"closest_to\", \"panorama\": [\"65\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"split_method\": 512, \"resolution\": \"icosahedron_12\", \"fov_degrees\": 90, \"use_gpu\": false, \"create_masks\": false, \"fname\": \"closest_to\", \"panorama\": [\"65\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 81: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 81: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"66\", 5]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"66\", 5]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 84: PanoramaFacesPlaneSegment\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 84: PanoramaFacesPlaneSegment\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"use_gpu\": false, \"ransac_iterations_per_batch\": 100, \"distance_threshold\": 0.02, \"max_planes_per_face\": 25, \"min_inlier_fraction\": 0.02, \"ransac_iterations\": 1000, \"dbscan_eps\": 0.05, \"dbscan_min_po\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"use_gpu\": false, \"ransac_iterations_per_batch\": 100, \"distance_threshold\": 0.02, \"max_planes_per_face\": 25, \"min_inlier_fraction\": 0.02, \"ransac_iterations\": 1000, \"dbscan_eps\": 0.05, \"dbscan_min_po\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 85: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 85: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"84\", 1]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"84\", 1]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 91: GetImageSize\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 91: GetImageSize\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"96\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"96\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 96: ResizeImageMaskNode\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 96: ResizeImageMaskNode", "hardware": {"os": "macOS-15.7.7-arm64-arm-64bit-Mach-O", "cpu": "arm"}}, "pano_crop": {"src": "", "title": "pano_crop", "status": "fail", "duration": "5.12", "log": "  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\nCapturing execution frames: pano_crop.json\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 4 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 4 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 4 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 4 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 4 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 4 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"actual_pano_from_real_life.jpg\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"actual_pano_from_real_life.jpg\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"actual_pano_from_real_life.jpg\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"actual_pano_from_real_life.jpg\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"actual_pano_from_real_life.jpg\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"actual_pano_from_real_life.jpg\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 65: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 65: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 65: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 65: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 65: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 65: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 87: PanoCrop\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 87: PanoCrop\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 87: PanoCrop\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 87: PanoCrop\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 87: PanoCrop\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 87: PanoCrop\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"center_u\": 0.5, \"center_v\": 0.5, \"fov_h\": 90, \"fov_v\": 90, \"width\": 512, \"height\": 512, \"panorama\": [\"65\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"center_u\": 0.5, \"center_v\": 0.5, \"fov_h\": 90, \"fov_v\": 90, \"width\": 512, \"height\": 512, \"panorama\": [\"65\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"center_u\": 0.5, \"center_v\": 0.5, \"fov_h\": 90, \"fov_v\": 90, \"width\": 512, \"height\": 512, \"panorama\": [\"65\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"center_u\": 0.5, \"center_v\": 0.5, \"fov_h\": 90, \"fov_v\": 90, \"width\": 512, \"height\": 512, \"panorama\": [\"65\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"center_u\": 0.5, \"center_v\": 0.5, \"fov_h\": 90, \"fov_v\": 90, \"width\": 512, \"height\": 512, \"panorama\": [\"65\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"center_u\": 0.5, \"center_v\": 0.5, \"fov_h\": 90, \"fov_v\": 90, \"width\": 512, \"height\": 512, \"panorama\": [\"65\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 88: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 88: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 88: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 88: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 88: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 88: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"87\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"87\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"87\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"87\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"87\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"87\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: c88dc94b-bd6d-45b0-b511-ccf997aeb5ca\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: c88dc94b-bd6d-45b0-b511-ccf997aeb5ca\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: c88dc94b-bd6d-45b0-b511-ccf997aeb5ca\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: c88dc94b-bd6d-45b0-b511-ccf997aeb5ca\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: c88dc94b-bd6d-45b0-b511-ccf997aeb5ca\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: c88dc94b-bd6d-45b0-b511-ccf997aeb5ca\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 88:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 88:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 88:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 88:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 88:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 88:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: actual_pano_from_real_life.jpg\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: actual_pano_from_real_life.jpg\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: actual_pano_from_real_life.jpg\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: actual_pano_from_real_life.jpg\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: actual_pano_from_real_life.jpg\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: actual_pano_from_real_life.jpg\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  Validation failed: Prompt outputs failed validation\nNode errors:\n{\n  \"1\": {\n    \"errors\": [\n      {\n        \"type\": \"custom_validation_failed\",\n        \"message\": \"Custom validation failed for node\",\n        \"details\": \"image - Invalid image file: actual_pano_from_real_life.jpg\",\n        \"extra_info\": {\n          \"input_name\": \"image\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"88\"\n    ],\n    \"class_type\": \"LoadImage\"\n  }\n}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n    Status: FAILED\n    Error: Workflow validation failed\n    Details: Prompt outputs failed validation\nNode errors:\n{\n  \"1\": {\n    \"errors\": [\n      {\n        \"type\": \"custom_validation_failed\",\n        \"message\": \"Custom validation failed for node\",\n        \"details\": \"image - Invalid image file: actual_pano_from_real_life.jpg\",\n        \"extra_info\": {\n          \"input_name\": \"image\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"88\"\n    ],\n    \"class_type\": \"LoadImage\"\n  }\n}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: actual_pano_from_real_life.jpg\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"88\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: actual_pano_from_real_life.jpg\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"88\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: actual_pano_from_real_life.jpg\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"88\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: actual_pano_from_real_life.jpg\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"88\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: actual_pano_from_real_life.jpg\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"88\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: actual_pano_from_real_life.jpg\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"88\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===", "hardware": {"os": "macOS-15.7.7-arm64-arm-64bit-Mach-O", "cpu": "arm"}}, "pano_info": {"src": "", "title": "pano_info", "status": "fail", "duration": "5.31", "log": "  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\nCapturing execution frames: pano_info.json\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 3 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 3 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 3 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 3 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 3 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 3 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 3: PanoramaInfo\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 3: PanoramaInfo\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 3: PanoramaInfo\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 3: PanoramaInfo\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 3: PanoramaInfo\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 3: PanoramaInfo\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 0b78450e-abbf-48cc-b09e-60e58ad2061b\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 0b78450e-abbf-48cc-b09e-60e58ad2061b\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 0b78450e-abbf-48cc-b09e-60e58ad2061b\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 0b78450e-abbf-48cc-b09e-60e58ad2061b\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 0b78450e-abbf-48cc-b09e-60e58ad2061b\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 0b78450e-abbf-48cc-b09e-60e58ad2061b\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 3:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 3:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 3:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 3:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 3:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 3:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"3\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"3\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"3\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"3\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"3\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"3\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  Validation failed: Prompt outputs failed validation\nNode errors:\n{\n  \"1\": {\n    \"errors\": [\n      {\n        \"type\": \"custom_validation_failed\",\n        \"message\": \"Custom validation failed for node\",\n        \"details\": \"image - Invalid image file: pano.png\",\n        \"extra_info\": {\n          \"input_name\": \"image\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"3\"\n    ],\n    \"class_type\": \"LoadImage\"\n  }\n}\n    Status: FAILED\n    Error: Workflow validation failed\n    Details: Prompt outputs failed validation\nNode errors:\n{\n  \"1\": {\n    \"errors\": [\n      {\n        \"type\": \"custom_validation_failed\",\n        \"message\": \"Custom validation failed for node\",\n        \"details\": \"image - Invalid image file: pano.png\",\n        \"extra_info\": {\n          \"input_name\": \"image\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"3\"\n    ],\n    \"class_type\": \"LoadImage\"\n  }\n}", "hardware": {"os": "macOS-15.7.7-arm64-arm-64bit-Mach-O", "cpu": "arm"}}, "panorama_shift": {"src": "", "title": "panorama_shift", "status": "fail", "duration": "5.19", "log": "  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\nCapturing execution frames: panorama_shift.json\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 8 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 8 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 8 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 8 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 8 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 8 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 3: PanoramaShift\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 3: PanoramaShift\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 3: PanoramaShift\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 3: PanoramaShift\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 3: PanoramaShift\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 3: PanoramaShift\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"yaw_degrees\": 90, \"pitch_degrees\": 0, \"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"yaw_degrees\": 90, \"pitch_degrees\": 0, \"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"yaw_degrees\": 90, \"pitch_degrees\": 0, \"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"yaw_degrees\": 90, \"pitch_degrees\": 0, \"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"yaw_degrees\": 90, \"pitch_degrees\": 0, \"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"yaw_degrees\": 90, \"pitch_degrees\": 0, \"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 4: PanoramaUnwrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 4: PanoramaUnwrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 4: PanoramaUnwrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 4: PanoramaUnwrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 4: PanoramaUnwrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 4: PanoramaUnwrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"3\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"3\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"3\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"3\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"3\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"3\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 5: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 5: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 5: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 5: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 5: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 5: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"4\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"4\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"4\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"4\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"4\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"4\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 6: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 6: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 6: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 6: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 6: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 6: PreviewImage\n  Validation failed: Prompt outputs failed validation\nNode errors:\n{\n  \"1\": {\n    \"errors\": [\n      {\n        \"type\": \"custom_validation_failed\",\n        \"message\": \"Custom validation failed for node\",\n        \"details\": \"image - Invalid image file: pano.png\",\n        \"extra_info\": {\n          \"input_name\": \"image\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"5\",\n      \"6\"\n    ],\n    \"class_type\": \"LoadImage\"\n  }\n}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"7\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"7\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"7\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"7\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"7\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"7\", 0]}\n    Status: FAILED\n    Error: Workflow validation failed\n    Details: Prompt outputs failed validation\nNode errors:\n{\n  \"1\": {\n    \"errors\": [\n      {\n        \"type\": \"custom_validation_failed\",\n        \"message\": \"Custom validation failed for node\",\n        \"details\": \"image - Invalid image file: pano.png\",\n        \"extra_info\": {\n          \"input_name\": \"image\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"5\",\n      \"6\"\n    ],\n    \"class_type\": \"LoadImage\"\n  }\n}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 7: PanoramaUnwrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 7: PanoramaUnwrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 7: PanoramaUnwrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 7: PanoramaUnwrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 7: PanoramaUnwrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 7: PanoramaUnwrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"8\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"8\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"8\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"8\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"8\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"8\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 8: PanoramaShift\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 8: PanoramaShift\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 8: PanoramaShift\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 8: PanoramaShift\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 8: PanoramaShift\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 8: PanoramaShift\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"yaw_degrees\": 0, \"pitch_degrees\": 45, \"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"yaw_degrees\": 0, \"pitch_degrees\": 45, \"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"yaw_degrees\": 0, \"pitch_degrees\": 45, \"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"yaw_degrees\": 0, \"pitch_degrees\": 45, \"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"yaw_degrees\": 0, \"pitch_degrees\": 45, \"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"yaw_degrees\": 0, \"pitch_degrees\": 45, \"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 62c010d0-a25e-4ec0-a877-f2a6668c64ee\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 62c010d0-a25e-4ec0-a877-f2a6668c64ee\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 62c010d0-a25e-4ec0-a877-f2a6668c64ee\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 62c010d0-a25e-4ec0-a877-f2a6668c64ee\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 62c010d0-a25e-4ec0-a877-f2a6668c64ee\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 62c010d0-a25e-4ec0-a877-f2a6668c64ee\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 5:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 5:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 5:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 5:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 5:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 5:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 6:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 6:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 6:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 6:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 6:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 6:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"5\", \"6\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"5\", \"6\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"5\", \"6\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"5\", \"6\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"5\", \"6\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"5\", \"6\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===", "hardware": {"os": "macOS-15.7.7-arm64-arm-64bit-Mach-O", "cpu": "arm"}}, "preview_panorama": {"src": "", "title": "preview_panorama", "status": "fail", "duration": "5.65", "log": "  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\nCapturing execution frames: preview_panorama.json\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  Validation failed: Prompt outputs failed validation\nNode errors:\n{\n  \"1\": {\n    \"errors\": [\n      {\n        \"type\": \"custom_validation_failed\",\n        \"message\": \"Custom validation failed for node\",\n        \"details\": \"image - Invalid image file: pano.png\",\n        \"extra_info\": {\n          \"input_name\": \"image\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"6\",\n      \"4\"\n    ],\n    \"class_type\": \"LoadImage\"\n  }\n}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n    Status: FAILED\n    Error: Workflow validation failed\n    Details: Prompt outputs failed validation\nNode errors:\n{\n  \"1\": {\n    \"errors\": [\n      {\n        \"type\": \"custom_validation_failed\",\n        \"message\": \"Custom validation failed for node\",\n        \"details\": \"image - Invalid image file: pano.png\",\n        \"extra_info\": {\n          \"input_name\": \"image\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"6\",\n      \"4\"\n    ],\n    \"class_type\": \"LoadImage\"\n  }\n}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 4 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 4 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 4 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 4 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 4 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 4 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 4: PanoramaViewer\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 4: PanoramaViewer\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 4: PanoramaViewer\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 4: PanoramaViewer\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 4: PanoramaViewer\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 4: PanoramaViewer\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"viewer_width\": 512, \"viewer_height\": 512, \"initial_yaw\": 8, \"initial_pitch\": -54, \"crop_fov\": 90, \"filename_prefix\": \"panorama\", \"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"viewer_width\": 512, \"viewer_height\": 512, \"initial_yaw\": 8, \"initial_pitch\": -54, \"crop_fov\": 90, \"filename_prefix\": \"panorama\", \"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"viewer_width\": 512, \"viewer_height\": 512, \"initial_yaw\": 8, \"initial_pitch\": -54, \"crop_fov\": 90, \"filename_prefix\": \"panorama\", \"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"viewer_width\": 512, \"viewer_height\": 512, \"initial_yaw\": 8, \"initial_pitch\": -54, \"crop_fov\": 90, \"filename_prefix\": \"panorama\", \"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"viewer_width\": 512, \"viewer_height\": 512, \"initial_yaw\": 8, \"initial_pitch\": -54, \"crop_fov\": 90, \"filename_prefix\": \"panorama\", \"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"viewer_width\": 512, \"viewer_height\": 512, \"initial_yaw\": 8, \"initial_pitch\": -54, \"crop_fov\": 90, \"filename_prefix\": \"panorama\", \"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 6: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 6: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 6: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 6: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 6: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 6: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"4\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"4\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"4\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"4\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"4\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"4\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 850fdd0d-4f68-4b66-a10b-3357f5ce7271\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 850fdd0d-4f68-4b66-a10b-3357f5ce7271\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 850fdd0d-4f68-4b66-a10b-3357f5ce7271\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 850fdd0d-4f68-4b66-a10b-3357f5ce7271\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 850fdd0d-4f68-4b66-a10b-3357f5ce7271\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 850fdd0d-4f68-4b66-a10b-3357f5ce7271\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 6:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 6:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 6:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 6:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 6:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 6:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 4:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 4:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 4:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 4:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 4:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 4:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"6\", \"4\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"6\", \"4\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"6\", \"4\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"6\", \"4\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"6\", \"4\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"6\", \"4\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===", "hardware": {"os": "macOS-15.7.7-arm64-arm-64bit-Mach-O", "cpu": "arm"}}, "test_wrap_unwrap": {"src": "", "title": "test_wrap_unwrap", "status": "fail", "duration": "5.24", "log": "  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\nCapturing execution frames: test_wrap_unwrap.json\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === /validate endpoint called ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Received JSON with keys: ['prompt']\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 4 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 4 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 4 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 4 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 4 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Prompt has 4 nodes\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 1: LoadImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": \"pano.png\"}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 2: PanoramaWrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"image\": [\"1\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 3: PanoramaUnwrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 3: PanoramaUnwrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 3: PanoramaUnwrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 3: PanoramaUnwrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 3: PanoramaUnwrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 3: PanoramaUnwrap\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"panorama\": [\"2\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 4: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 4: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 4: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 4: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 4: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node 4: PreviewImage\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"3\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"3\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"3\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"3\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"3\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m     Inputs: {\"images\": [\"3\", 0]}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 417861be-3b08-4645-a67b-7480482df466\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 417861be-3b08-4645-a67b-7480482df466\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 417861be-3b08-4645-a67b-7480482df466\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 417861be-3b08-4645-a67b-7480482df466\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 417861be-3b08-4645-a67b-7480482df466\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Generated prompt_id: 417861be-3b08-4645-a67b-7480482df466\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Calling execution.validate_prompt()...\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 4:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 4:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 4:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 4:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 4:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Failed to validate prompt for output 4:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m * LoadImage 1:\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m   - Custom validation failed for node: image - Invalid image file: pano.png\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  [ComfyUI] \u001b[1m\u001b[31m[ERROR]\u001b[0m Output will be ignored\n  Validation failed: Prompt outputs failed validation\nNode errors:\n{\n  \"1\": {\n    \"errors\": [\n      {\n        \"type\": \"custom_validation_failed\",\n        \"message\": \"Custom validation failed for node\",\n        \"details\": \"image - Invalid image file: pano.png\",\n        \"extra_info\": {\n          \"input_name\": \"image\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"4\"\n    ],\n    \"class_type\": \"LoadImage\"\n  }\n}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m Validation result: valid=False\n    Status: FAILED\n    Error: Workflow validation failed\n    Details: Prompt outputs failed validation\nNode errors:\n{\n  \"1\": {\n    \"errors\": [\n      {\n        \"type\": \"custom_validation_failed\",\n        \"message\": \"Custom validation failed for node\",\n        \"details\": \"image - Invalid image file: pano.png\",\n        \"extra_info\": {\n          \"input_name\": \"image\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"4\"\n    ],\n    \"class_type\": \"LoadImage\"\n  }\n}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"4\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"4\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"4\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"4\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"4\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m   Node errors: {\"1\": {\"errors\": [{\"type\": \"custom_validation_failed\", \"message\": \"Custom validation failed for node\", \"details\": \"image - Invalid image file: pano.png\", \"extra_info\": {\"input_name\": \"image\"}}], \"dependent_outputs\": [\"4\"], \"class_type\": \"LoadImage\"}}\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===\n  [ComfyUI] \u001b[32m[INFO]\u001b[0m === Validation FAILED ===", "hardware": {"os": "macOS-15.7.7-arm64-arm-64bit-Mach-O", "cpu": "arm"}}};
+        const workflowNames = Object.keys(workflowData);
+        const videoData = {};
+
+        const inIframe = window !== window.top;
+        let currentWorkflow = null;
+        let playInterval = null;
+        let originalLogContent = '';
+        let currentFrameIndex = 0;
+        let currentFrames = [];
+        let currentTotalTime = 0;
+
+        function openLightboxByName(name) {
+            const w = workflowData[name];
+            if (w) openLightbox(w.src, w.title, w.status, w.duration, w.log, w.hardware);
+        }
+
+        function openLightbox(src, title, status, duration, logContent, hardware) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox-title').textContent = title;
+            currentWorkflow = title;
+            originalLogContent = logContent;
+
+            const badge = document.getElementById('lightbox-badge');
+            badge.textContent = status;
+            badge.className = 'lightbox-badge ' + status;
+
+            document.getElementById('lightbox-duration').textContent = duration + 's';
+            document.getElementById('lightbox-log').textContent = logContent || '(No log available)';
+
+            const hwEl = document.getElementById('lightbox-hardware');
+            if (hardware) {
+                const parts = [];
+                if (hardware.os) parts.push(hardware.os);
+                if (hardware.cpu) parts.push(hardware.cpu);
+                if (hardware.gpu) parts.push(hardware.gpu);
+                hwEl.textContent = parts.join(' | ');
+            } else {
+                hwEl.textContent = status === 'skipped' ? '(Did not run on this machine)' : '';
+            }
+
+            const data = videoData[title];
+            const videoPlayer = document.getElementById('video-player');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxVideo = document.getElementById('lightbox-video');
+
+            // Reset both modes; the branch below activates one.
+            videoPlayer.classList.remove('active');
+            lightboxVideo.style.display = 'none';
+            lightboxVideo.removeAttribute('src');
+            lightboxImg.style.display = '';
+
+            if (data && data.mp4) {
+                // Playable mp4 (desktop runs). Show <video>, hide the
+                // frame-slideshow img + slider.
+                lightboxVideo.src = 'videos/' + encodeURIComponent(title) + '/' + data.mp4;
+                lightboxVideo.style.display = '';
+                lightboxImg.style.display = 'none';
+            } else if (data && data.frames && data.frames.length > 1) {
+                currentFrames = data.frames;
+                currentTotalTime = data.total_time || data.frames[data.frames.length - 1].time;
+                setupVideoSlider(data.frames, currentTotalTime);
+                updateVideoFrameByIndex(title, data.frames.length - 1);
+                videoPlayer.classList.add('active');
+            }
+
+            loadResourceGraph(title);
+
+            // Close image overlay if open
+            closeImgOverlay();
+
+            document.getElementById('lightbox').classList.add('active');
+            history.replaceState(null, '', '#' + encodeURIComponent(title));
+
+            // Notify parent frames for deep linking
+            if (inIframe) {
+                window.parent.postMessage({ type: 'comfytest-open', name: title }, '*');
+            }
+        }
+
+        function buildSliderRange(frames, totalTime) {
+            const range = { 'min': frames[0].time };
+            frames.forEach((frame, idx) => {
+                if (idx > 0 && idx < frames.length - 1) {
+                    const pct = (frame.time / totalTime * 100).toFixed(1) + '%';
+                    range[pct] = frame.time;
+                }
+            });
+            range['max'] = frames[frames.length - 1].time;
+            return range;
+        }
+
+        function setupVideoSlider(frames, totalTime) {
+            const sliderEl = document.getElementById('video-slider');
+
+            if (sliderEl.noUiSlider) {
+                sliderEl.noUiSlider.destroy();
+            }
+
+            const range = buildSliderRange(frames, totalTime);
+
+            noUiSlider.create(sliderEl, {
+                start: frames[frames.length - 1].time,
+                snap: true,
+                range: range,
+                pips: {
+                    mode: 'range',
+                    density: 100
+                }
+            });
+
+            sliderEl.noUiSlider.on('update', function(values) {
+                const time = parseFloat(values[0]);
+                const frameIdx = frames.findIndex(f => Math.abs(f.time - time) < 0.01);
+                if (frameIdx >= 0 && frameIdx !== currentFrameIndex) {
+                    currentFrameIndex = frameIdx;
+                    showFrame(currentWorkflow, frameIdx);
+                }
+            });
+        }
+
+        function showFrame(workflowName, frameIndex) {
+            const data = videoData[workflowName];
+            if (!data || !data.frames) return;
+
+            const frame = data.frames[frameIndex];
+            const img = document.getElementById('lightbox-img');
+
+            const isLastFrame = frameIndex === data.frames.length - 1;
+            if (isLastFrame && workflowData[workflowName] && workflowData[workflowName].src) {
+                img.src = workflowData[workflowName].src;
+            } else {
+                img.src = 'videos/' + workflowName + '/' + frame.file;
+            }
+
+            const counter = document.getElementById('video-frame-counter');
+            const totalTime = data.total_time || data.frames[data.frames.length - 1].time;
+            counter.textContent = frame.time.toFixed(1) + 's / ' + totalTime.toFixed(1) + 's';
+
+            const logEl = document.getElementById('lightbox-log');
+            if (frame.log) {
+                logEl.textContent = frame.log;
+                logEl.scrollTop = logEl.scrollHeight;
+            }
+        }
+
+        function updateVideoFrameByIndex(workflowName, frameIndex) {
+            currentFrameIndex = frameIndex;
+            showFrame(workflowName, frameIndex);
+
+            const sliderEl = document.getElementById('video-slider');
+            if (sliderEl.noUiSlider && currentFrames[frameIndex]) {
+                sliderEl.noUiSlider.set(currentFrames[frameIndex].time);
+            }
+        }
+
+        function toggleVideoPlay() {
+            const btn = document.getElementById('video-play-btn');
+            if (playInterval) {
+                clearInterval(playInterval);
+                playInterval = null;
+                btn.innerHTML = '&#9654; Play';
+            } else {
+                btn.innerHTML = '&#9632; Stop';
+                playInterval = setInterval(() => {
+                    if (!currentFrames.length) return;
+                    currentFrameIndex = (currentFrameIndex + 1) % currentFrames.length;
+                    updateVideoFrameByIndex(currentWorkflow, currentFrameIndex);
+                }, 500);
+            }
+        }
+
+        let resourceGraphState = null;
+
+        async function loadResourceGraph(workflowName) {
+            const graphContainer = document.getElementById('resource-graph');
+            const canvas = document.getElementById('resource-canvas');
+            const gpuLegend = document.getElementById('gpu-legend');
+
+            resourceGraphState = null;
+
+            try {
+                const csvResponse = await fetch('logs/' + workflowName + '_resources.csv');
+
+                if (!csvResponse.ok) {
+                    graphContainer.classList.remove('active');
+                    return;
+                }
+
+                const text = await csvResponse.text();
+                const allLines = text.trim().split('\n');
+
+                let totalRamGb = 32;
+                if (allLines[0].startsWith('#')) {
+                    const metaMatch = allLines[0].match(/total_ram_gb=([\d.]+)/);
+                    if (metaMatch) {
+                        totalRamGb = parseFloat(metaMatch[1]);
+                    }
+                }
+
+                const dataLines = allLines.slice(2);
+
+                if (dataLines.length < 2) {
+                    graphContainer.classList.remove('active');
+                    return;
+                }
+
+                const data = dataLines.map(line => {
+                    const [t, ram, vram] = line.split(',');
+                    return {
+                        t: parseFloat(t),
+                        ram: parseFloat(ram),
+                        vram: vram ? parseFloat(vram) : null
+                    };
+                });
+
+                const hasVram = data.some(d => d.vram !== null);
+                gpuLegend.style.display = hasVram ? 'flex' : 'none';
+
+                graphContainer.classList.add('active');
+                await new Promise(r => setTimeout(r, 10));
+
+                const ctx = canvas.getContext('2d');
+                const dpr = window.devicePixelRatio || 1;
+                const rect = canvas.getBoundingClientRect();
+                canvas.width = rect.width * dpr;
+                canvas.height = rect.height * dpr;
+                ctx.scale(dpr, dpr);
+
+                const w = rect.width;
+                const h = rect.height;
+                const padding = { top: 10, right: 40, bottom: 20, left: 45 };
+                const graphW = w - padding.left - padding.right;
+                const graphH = h - padding.top - padding.bottom;
+
+                const maxRam = Math.max(...data.map(d => d.ram), 0.5);
+                const maxVram = hasVram ? Math.max(...data.filter(d => d.vram !== null).map(d => d.vram), 0.5) : 1;
+                const maxTime = data[data.length - 1].t;
+
+                resourceGraphState = { data, padding, w, h, graphW, graphH, maxRam, maxVram, maxTime, hasVram, dpr };
+
+                drawResourceGraph();
+            } catch (e) {
+                console.error('Resource graph error:', e);
+                graphContainer.classList.remove('active');
+            }
+        }
+
+        function drawResourceGraph(hoverX) {
+            if (!resourceGraphState) return;
+            const { data, padding, w, h, graphW, graphH, maxRam, maxVram, maxTime, hasVram, dpr } = resourceGraphState;
+
+            const canvas = document.getElementById('resource-canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            ctx.clearRect(0, 0, w, h);
+
+            // Grid lines
+            ctx.strokeStyle = '#1c2d44';
+            ctx.lineWidth = 0.5;
+            for (let i = 1; i < 4; i++) {
+                const y = padding.top + (graphH * i / 4);
+                ctx.beginPath();
+                ctx.moveTo(padding.left, y);
+                ctx.lineTo(w - padding.right, y);
+                ctx.stroke();
+            }
+
+            // Axes
+            ctx.strokeStyle = '#243656';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(padding.left, padding.top);
+            ctx.lineTo(padding.left, h - padding.bottom);
+            ctx.lineTo(w - padding.right, h - padding.bottom);
+            ctx.lineTo(w - padding.right, padding.top);
+            ctx.stroke();
+
+            // Left axis: RAM
+            ctx.fillStyle = '#3fb950';
+            ctx.font = '9px sans-serif';
+            ctx.textAlign = 'right';
+            const ramMax = Math.ceil(maxRam * 10) / 10;
+            ctx.fillText(ramMax.toFixed(1) + ' GB', padding.left - 3, padding.top + 4);
+            ctx.fillText('0', padding.left - 3, h - padding.bottom + 4);
+
+            // Right axis: VRAM (if present)
+            if (hasVram) {
+                ctx.fillStyle = '#d29922';
+                ctx.textAlign = 'left';
+                const vramMax = Math.ceil(maxVram * 10) / 10;
+                ctx.fillText(vramMax.toFixed(1) + ' GB', w - padding.right + 3, padding.top + 4);
+                ctx.fillText('0', w - padding.right + 3, h - padding.bottom + 4);
+            }
+
+            // Time labels
+            ctx.fillStyle = '#4a6282';
+            ctx.textAlign = 'center';
+            ctx.fillText('0s', padding.left, h - padding.bottom + 12);
+            ctx.fillText(maxTime.toFixed(0) + 's', w - padding.right, h - padding.bottom + 12);
+
+            function drawLine(values, maxVal, color) {
+                if (values.every(v => v === null || isNaN(v))) return;
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                let started = false;
+                data.forEach((d, i) => {
+                    const val = values[i];
+                    if (val === null || isNaN(val)) return;
+                    const x = padding.left + (d.t / maxTime) * graphW;
+                    const y = padding.top + (1 - val / maxVal) * graphH;
+                    if (!started) { ctx.moveTo(x, y); started = true; }
+                    else { ctx.lineTo(x, y); }
+                });
+                ctx.stroke();
+            }
+
+            drawLine(data.map(d => d.ram), ramMax, '#3fb950');
+            if (hasVram) {
+                drawLine(data.map(d => d.vram), Math.ceil(maxVram * 10) / 10, '#d29922');
+            }
+
+            // Hover crosshair
+            if (hoverX !== undefined && hoverX >= padding.left && hoverX <= w - padding.right) {
+                const timeAtCursor = ((hoverX - padding.left) / graphW) * maxTime;
+                let closest = data[0], closestDist = Infinity;
+                for (const d of data) {
+                    const dist = Math.abs(d.t - timeAtCursor);
+                    if (dist < closestDist) { closestDist = dist; closest = d; }
+                }
+
+                const snapX = padding.left + (closest.t / maxTime) * graphW;
+
+                // Vertical line
+                ctx.strokeStyle = 'rgba(230,237,243,0.2)';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(snapX, padding.top);
+                ctx.lineTo(snapX, h - padding.bottom);
+                ctx.stroke();
+
+                // Readout
+                ctx.font = '10px sans-serif';
+                ctx.textAlign = 'left';
+                const readoutX = snapX + 6;
+                let readoutY = padding.top + 14;
+
+                ctx.fillStyle = '#8ba3c1';
+                ctx.fillText(closest.t.toFixed(1) + 's', readoutX, readoutY);
+                readoutY += 13;
+
+                ctx.fillStyle = '#3fb950';
+                ctx.fillText('RAM: ' + closest.ram.toFixed(2) + ' GB', readoutX, readoutY);
+                readoutY += 13;
+
+                if (hasVram && closest.vram !== null) {
+                    ctx.fillStyle = '#d29922';
+                    ctx.fillText('VRAM: ' + closest.vram.toFixed(2) + ' GB', readoutX, readoutY);
+                }
+            }
+        }
+
+        // Canvas hover handler
+        document.getElementById('resource-canvas').addEventListener('mousemove', function(e) {
+            if (!resourceGraphState) return;
+            const rect = this.getBoundingClientRect();
+            drawResourceGraph(e.clientX - rect.left);
+        });
+        document.getElementById('resource-canvas').addEventListener('mouseleave', function() {
+            drawResourceGraph();
+        });
+
+        function closeImgOverlay() {
+            const overlay = document.getElementById('img-overlay');
+            overlay.classList.remove('active', 'zoomed');
+        }
+
+        function closeLightbox() {
+            if (playInterval) {
+                clearInterval(playInterval);
+                playInterval = null;
+                document.getElementById('video-play-btn').innerHTML = '&#9654; Play';
+            }
+            closeImgOverlay();
+            document.getElementById('resource-graph').classList.remove('active');
+            document.getElementById('lightbox').classList.remove('active');
+            history.replaceState(null, '', window.location.pathname);
+
+            if (inIframe) {
+                window.parent.postMessage({ type: 'comfytest-close' }, '*');
+            }
+        }
+
+        document.getElementById('lightbox').onclick = (e) => {
+            if (e.target.id === 'lightbox') closeLightbox();
+        };
+
+        function navigateLightbox(delta) {
+            if (workflowNames.length === 0) return;
+            const idx = workflowNames.indexOf(currentWorkflow);
+            if (idx === -1) return;
+            const newIdx = (idx + delta + workflowNames.length) % workflowNames.length;
+            openLightboxByName(workflowNames[newIdx]);
+        }
+
+        function handleKey(key) {
+            const overlay = document.getElementById('img-overlay');
+            if (key === 'Escape') {
+                if (overlay.classList.contains('active')) {
+                    closeImgOverlay();
+                } else {
+                    closeLightbox();
+                }
+                return;
+            }
+            if (document.getElementById('lightbox').classList.contains('active') && !overlay.classList.contains('active')) {
+                if (key === 'ArrowLeft') { navigateLightbox(-1); }
+                if (key === 'ArrowRight') { navigateLightbox(1); }
+                if ((key === 'ArrowUp' || key === 'ArrowDown') && inIframe) {
+                    window.parent.postMessage({
+                        type: 'comfytest-platform-shift',
+                        delta: key === 'ArrowUp' ? -1 : 1,
+                        workflow: currentWorkflow,
+                    }, '*');
+                }
+            }
+        }
+
+        document.onkeydown = (e) => {
+            if (['Escape', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
+                e.preventDefault();
+                handleKey(e.key);
+            }
+        };
+
+        // Click lightbox image -> open in fullscreen overlay (fit mode)
+        document.getElementById('lightbox-img').addEventListener('click', function(e) {
+            e.stopPropagation();
+            const overlay = document.getElementById('img-overlay');
+            const overlayImg = document.getElementById('img-overlay-content');
+            overlayImg.src = this.src;
+            overlay.classList.add('active');
+            overlay.classList.remove('zoomed');
+        });
+
+        // Click overlay image: fit -> zoomed -> close
+        document.getElementById('img-overlay-content').addEventListener('click', function(e) {
+            e.stopPropagation();
+            const overlay = document.getElementById('img-overlay');
+            if (overlay.classList.contains('zoomed')) {
+                closeImgOverlay();
+            } else {
+                overlay.classList.add('zoomed');
+            }
+        });
+
+        // Click overlay background -> close overlay
+        document.getElementById('img-overlay').addEventListener('click', function(e) {
+            if (e.target === this) closeImgOverlay();
+        });
+
+        function openFromHash() {
+            const hash = decodeURIComponent(window.location.hash.slice(1));
+            if (hash && workflowData[hash]) {
+                const w = workflowData[hash];
+                openLightbox(w.src, w.title, w.status, w.duration, w.log, w.hardware);
+            }
+        }
+
+        window.addEventListener('hashchange', openFromHash);
+        window.addEventListener('load', openFromHash);
+
+        // Listen for messages from parent frames
+        window.addEventListener('message', function(e) {
+            if (!e.data || !e.data.type) return;
+            if (e.data.type === 'comfytest-open' && e.data.name) {
+                openLightboxByName(e.data.name);
+            }
+            if (e.data.type === 'comfytest-key') {
+                handleKey(e.data.key);
+            }
+        });
+
+        // Detect iframe: hide header and move meta chips into summary
+        if (inIframe) {
+            document.body.classList.add('in-iframe');
+            const chips = document.querySelector('.meta-chips');
+            const summary = document.querySelector('.summary');
+            if (chips && summary) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'summary-meta';
+                while (chips.firstChild) wrapper.appendChild(chips.firstChild);
+                summary.insertBefore(wrapper, summary.firstChild);
+            }
+        }
+    </script>
+</body>
+</html>

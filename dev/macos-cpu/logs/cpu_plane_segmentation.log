@@ -1,0 +1,161 @@
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+Capturing execution frames: cpu_plane_segmentation.json
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  Frame 1 saved (frame_000.jpg, t=0.0s)
+  Validating workflow...
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Prompt has 13 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 13 nodes
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "actual_pano_from_real_life.jpg"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "actual_pano_from_real_life.jpg"}
+  [ComfyUI] [32m[INFO][0m   Node 10: DownloadAndLoadMoGe2Model
+  [ComfyUI] [32m[INFO][0m   Node 10: DownloadAndLoadMoGe2Model
+  [ComfyUI] [32m[INFO][0m     Inputs: {"model": "moge-2-vitl-normal.pt", "precision": "auto", "attention": "auto"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"model": "moge-2-vitl-normal.pt", "precision": "auto", "attention": "auto"}
+  [ComfyUI] [32m[INFO][0m   Node 63: MoGe2Inference
+  [ComfyUI] [32m[INFO][0m   Node 63: MoGe2Inference
+  [ComfyUI] [32m[INFO][0m     Inputs: {"resolution_level": 9, "num_tokens": 0, "fov_x_deg": ["66", 3], "force_projection": true, "apply_mask": true, "moge2_model": ["10", 0], "images": ["66", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"resolution_level": 9, "num_tokens": 0, "fov_x_deg": ["66", 3], "force_projection": true, "apply_mask": true, "moge2_model": ["10", 0], "images": ["66", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 65: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 65: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  Validation failed: Prompt outputs failed validation
+Node errors:
+{
+  "1": {
+    "errors": [
+      {
+        "type": "custom_validation_failed",
+        "message": "Custom validation failed for node",
+        "details": "image - Invalid image file: actual_pano_from_real_life.jpg",
+        "extra_info": {
+          "input_name": "image"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "106",
+      "85",
+      "97",
+      "81"
+    ],
+    "class_type": "LoadImage"
+  },
+  "66": {
+    "errors": [
+      {
+        "type": "invalid_input_type",
+        "message": "Failed to convert an input value to a INT value",
+        "details": "resolution, icosahedron_12, invalid literal for int() with base 10: 'icosahedron_12'",
+        "extra_info": {
+          "input_name": "resolution",
+          "input_config": [
+            "INT",
+            {
+              "tooltip": "Square per-crop resolution (icosahedron methods).",
+              "default": 952,
+              "min": 128,
+              "max": 2048,
+              "step": 1
+            }
+          ],
+          "received_value": "icosahedron_12",
+          "exception_message": "invalid literal for int() with base 10: 'icosahedron_12'"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "106",
+      "85",
+      "97",
+      "81"
+    ],
+    "class_type": "PanoramaSplit"
+  }
+}
+  [ComfyUI] [32m[INFO][0m   Node 66: PanoramaSplit
+  [ComfyUI] [32m[INFO][0m   Node 66: PanoramaSplit
+    Status: FAILED
+    Error: Workflow validation failed
+    Details: Prompt outputs failed validation
+Node errors:
+{
+  "1": {
+    "errors": [
+      {
+        "type": "custom_validation_failed",
+        "message": "Custom validation failed for node",
+        "details": "image - Invalid image file: actual_pano_from_real_life.jpg",
+        "extra_info": {
+          "input_name": "image"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "106",
+      "85",
+      "97",
+      "81"
+    ],
+    "class_type": "LoadImage"
+  },
+  "66": {
+    "errors": [
+      {
+        "type": "invalid_input_type",
+        "message": "Failed to convert an input value to a INT value",
+        "details": "resolution, icosahedron_12, invalid literal for int() with base 10: 'icosahedron_12'",
+        "extra_info": {
+          "input_name": "resolution",
+          "input_config": [
+            "INT",
+            {
+              "tooltip": "Square per-crop resolution (icosahedron methods).",
+              "default": 952,
+              "min": 128,
+              "max": 2048,
+              "step": 1
+            }
+          ],
+          "received_value": "icosahedron_12",
+          "exception_message": "invalid literal for int() with base 10: 'icosahedron_12'"
+        }
+      }
+    ],
+    "dependent_outputs": [
+      "106",
+      "85",
+      "97",
+      "81"
+    ],
+    "class_type": "PanoramaSplit"
+  }
+}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"split_method": 512, "resolution": "icosahedron_12", "fov_degrees": 90, "use_gpu": false, "create_masks": false, "fname": "closest_to", "panorama": ["65", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"split_method": 512, "resolution": "icosahedron_12", "fov_degrees": 90, "use_gpu": false, "create_masks": false, "fname": "closest_to", "panorama": ["65", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 81: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 81: PreviewImage
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["66", 5]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["66", 5]}
+  [ComfyUI] [32m[INFO][0m   Node 84: PanoramaFacesPlaneSegment
+  [ComfyUI] [32m[INFO][0m   Node 84: PanoramaFacesPlaneSegment
+  [ComfyUI] [32m[INFO][0m     Inputs: {"use_gpu": false, "ransac_iterations_per_batch": 100, "distance_threshold": 0.02, "max_planes_per_face": 25, "min_inlier_fraction": 0.02, "ransac_iterations": 1000, "dbscan_eps": 0.05, "dbscan_min_po
+  [ComfyUI] [32m[INFO][0m     Inputs: {"use_gpu": false, "ransac_iterations_per_batch": 100, "distance_threshold": 0.02, "max_planes_per_face": 25, "min_inlier_fraction": 0.02, "ransac_iterations": 1000, "dbscan_eps": 0.05, "dbscan_min_po
+  [ComfyUI] [32m[INFO][0m   Node 85: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 85: PreviewImage
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["84", 1]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["84", 1]}
+  [ComfyUI] [32m[INFO][0m   Node 91: GetImageSize
+  [ComfyUI] [32m[INFO][0m   Node 91: GetImageSize
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["96", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["96", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 96: ResizeImageMaskNode
+  [ComfyUI] [32m[INFO][0m   Node 96: ResizeImageMaskNode
