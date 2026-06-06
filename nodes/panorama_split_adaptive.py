@@ -34,6 +34,81 @@ def _p(msg: str) -> None:
     print(f"[PanoramaSplitAdaptive] {msg}", file=sys.stderr, flush=True)
 
 
+def _hue_to_rgb(hue: float, c: float = 0.8, bump: float = 0.2) -> np.ndarray:
+    """HSV-wheel hue (in [0,1)) -> RGB in roughly [bump, c+bump]."""
+    h6 = (hue % 1.0) * 6.0
+    x = c * (1 - abs(h6 % 2 - 1))
+    if h6 < 1:   r, g, b = c, x, 0
+    elif h6 < 2: r, g, b = x, c, 0
+    elif h6 < 3: r, g, b = 0, c, x
+    elif h6 < 4: r, g, b = 0, x, c
+    elif h6 < 5: r, g, b = x, 0, c
+    else:        r, g, b = c, 0, x
+    return np.array([r + bump, g + bump, b + bump], dtype=np.float32)
+
+
+def _adjacency_aware_cell_colors(eq_assignment_2d: np.ndarray, n_cells: int) -> np.ndarray:
+    """Color the Voronoi cells so SPATIALLY-ADJACENT cells never look alike.
+
+    The cell-adjacency graph is planar (dual of a sphere Delaunay triangulation),
+    so by the four-color theorem a DSATUR greedy colors it with a small K (~4-6)
+    classes in O(V+E). Adjacent cells land in DIFFERENT classes; mapping the K
+    classes to K maximally-spread hues then guarantees every touching pair differs
+    by at least one full hue class (worst-case contrast ~1/K, flat in N) -- the
+    cheapest scheme that maximizes the worst adjacent pair (textbook map coloring).
+
+    A small per-cell VALUE (brightness) jitter is layered on so same-class cells
+    that are far apart stay distinguishable; it never crosses a hue band, so the
+    adjacency contrast guarantee is preserved.
+
+    `eq_assignment_2d` is the (H, W) per-pixel cell-index map (longitude wraps in
+    x). Returns (n_cells, 3) float32 RGB.
+    """
+    a = eq_assignment_2d
+    adj = [set() for _ in range(n_cells)]
+
+    def _edges(p, q):
+        d = p != q
+        if not d.any():
+            return
+        # unique (u, v) boundary pairs -- collapses millions of pixels to the
+        # handful of distinct cell adjacencies.
+        pairs = np.unique(np.stack([p[d].ravel(), q[d].ravel()], axis=1), axis=0)
+        for u, v in pairs:
+            u, v = int(u), int(v)
+            adj[u].add(v); adj[v].add(u)
+
+    _edges(a, np.roll(a, -1, axis=1))   # right neighbor (longitude wraps)
+    _edges(a[:-1, :], a[1:, :])         # down neighbor (latitude, no wrap)
+
+    # DSATUR: repeatedly color the uncolored cell with the most distinct colors
+    # among its neighbors (ties broken by degree), giving it the smallest free
+    # color index. Produces K ~ 4-6 proper classes on these planar graphs.
+    color = [-1] * n_cells
+    sat = [set() for _ in range(n_cells)]
+    deg = [len(adj[i]) for i in range(n_cells)]
+    for _ in range(n_cells):
+        i = max((v for v in range(n_cells) if color[v] == -1),
+                key=lambda v: (len(sat[v]), deg[v]))
+        used = {color[n] for n in adj[i] if color[n] != -1}
+        c = 0
+        while c in used:
+            c += 1
+        color[i] = c
+        for n in adj[i]:
+            sat[n].add(c)
+    K = max(color) + 1 if n_cells else 1
+
+    # K classes -> K maximally-spread hues (guaranteed >= 1/K hue gap on every
+    # edge) + a small deterministic brightness jitter for same-class readability.
+    colors = np.zeros((n_cells, 3), dtype=np.float32)
+    for i in range(n_cells):
+        rgb = _hue_to_rgb(color[i] / max(K, 1))
+        value = 0.82 + 0.18 * ((i * 0.6180339887) % 1.0)  # in [0.82, 1.0]
+        colors[i] = np.clip(rgb * value, 0.0, 1.0)
+    return colors
+
+
 def _equirect_ray_dirs(H: int, W: int) -> np.ndarray:
     """Compute unit ray direction for each equirect pixel. Returns (H, W, 3).
     Convention: +Z forward, +Y up, theta=0 at center column."""
@@ -394,21 +469,10 @@ class PanoramaSplitAdaptive(io.ComfyNode):
             eq_dots = rays_flat @ face_dirs.T  # (H*W, N)
             eq_assignment = np.argmax(eq_dots, axis=1)  # (H*W,)
 
-            # HSV color wheel: one distinct hue per face
-            hsv_colors = np.zeros((N, 3), dtype=np.float32)
-            for i in range(N):
-                hue = float(i) / max(N, 1)
-                # HSV to RGB
-                h6 = hue * 6.0
-                c = 0.8
-                x = c * (1 - abs(h6 % 2 - 1))
-                if h6 < 1:   r, g, b = c, x, 0
-                elif h6 < 2: r, g, b = x, c, 0
-                elif h6 < 3: r, g, b = 0, c, x
-                elif h6 < 4: r, g, b = 0, x, c
-                elif h6 < 5: r, g, b = x, 0, c
-                else:        r, g, b = c, 0, x
-                hsv_colors[i] = [r + 0.2, g + 0.2, b + 0.2]
+            # Adjacency-aware coloring: spatially-touching Voronoi cells get
+            # high-contrast colors (no two similar colors end up next to each
+            # other), instead of hue-by-index which ignores layout.
+            hsv_colors = _adjacency_aware_cell_colors(eq_assignment.reshape(H, W), N)
 
             debug_masks_np = hsv_colors[eq_assignment].reshape(H, W, 3)
             # Blend 50/50 with the original panorama for context

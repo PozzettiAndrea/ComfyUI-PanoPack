@@ -1,18 +1,22 @@
-"""PanoramaSplit - equirect panorama -> N rectilinear faces.
+"""PanoramaSplit - equirect panorama -> N rectilinear crops (3 methods).
 
-Lets the user run any rectilinear depth model (MoGe2, DepthAnythingV3, ...)
-on a panorama without that model needing to be panorama-aware: split the
-sphere into N evenly-tiled cube/icosahedron faces, feed each face through
-the depth model, then stitch the per-face depths back via WorldNavDepthMerge.
+One node, three camera layouts via the `split_method` dropdown:
+  - icosahedron_12 : 12 base-icosahedron vertices, square crops (for per-face
+    rectilinear depth, e.g. MoGe2 -> PanoramaDepthMerge).
+  - icosahedron_42 : level-1 subdivided icosahedron (42 dirs), square crops.
+  - cube_split     : fixed pitch x yaw grid (3 pitches x N yaws), RECTANGULAR
+    crops at separate fov_x/fov_y (seeds a WorldStereo memory bank with the
+    crops the model was trained against).
 
-Outputs:
-- face_images IMAGE (B=N, H, W, 3) - rectilinear views, fov_x=fov_y=90deg
-- extrinsics EXTRINSICS [N, 4, 4]
-- intrinsics INTRINSICS [N, 3, 3]
-- fov_x_deg FLOAT (90) - convenience for the rectilinear depth node's fov widget
+All methods share one core: directions -> per-camera extrinsics/intrinsics ->
+sample crops (GPU grid_sample / CPU cv2.remap) -> optional spherical-Voronoi
+masks -> memory-bank entries -> debug overlay. Every output is produced for
+every method (none are method-specific), so downstream pipelines (MoGe depth,
+WorldStereo bank) each just read the sockets they need.
 
-User then wires `face_images -> MoGe2Inference` (or similar) and pipes the
-per-face depths + the extrinsics + intrinsics back into WorldNavDepthMerge.
+Intrinsics conventions: the `intrinsics` output is NORMALIZED (uv in [0,1],
+what PanoramaDepthMerge expects); the `entries` dict carries PIXEL-scale
+intrinsics (the WorldStereo memory-bank convention).
 """
 
 from __future__ import annotations
@@ -44,31 +48,16 @@ def _hsv_color_bgr(idx: int, total: int) -> tuple[int, int, int]:
 def _make_pano_debug_overlay(
     panorama_u8: np.ndarray,
     extrinsics: np.ndarray,
-    fov_rad: float,
+    fov_x_rad: float,
+    fov_y_rad: float,
 ) -> np.ndarray:
-    """Draw each face's frustum edges on the panorama (WorldNav convention).
+    """Draw each crop's 4 frustum edges on the panorama (rectangular frustum).
 
-    For each face: sample N=64 points along each of 4 frustum edges at
-    z=1 in camera space (corners at (+/-tan(fov/2), +/-tan(fov/2), 1)),
-    transform to world via R_c2w = R_w2c^T, normalize, convert to
-    (theta, phi) in WorldNav's spherical convention, then to equirect
-    pixel coords. Draw a polyline per edge with a distinct HSV-wheel hue.
-    Split any edge that crosses the seam into separate segments.
-
-    WorldNav convention (matches `spherical_uv_to_directions` upstream):
-      world up = +Z
-      theta = atan2(ry, rx)            azimuth around Z, in [0, 2pi)
-      phi   = arccos(rz)               polar angle from +Z, in [0, pi]
-      u_erp = (1 - theta / (2pi)) . (W - 1)
-      v_erp = (phi / pi)         . (H - 1)
-
-    Args:
-        panorama_u8: (H, W, 3) uint8 RGB panorama.
-        extrinsics:  (N, 4, 4) world-to-camera (from utils3d look-at).
-        fov_rad:     per-face horizontal+vertical FOV (square views).
-
-    Returns:
-        (H, W, 3) uint8 RGB panorama with N frustums drawn on it.
+    Camera-space corners use separate half-FOVs on x vs y so the frustum
+    matches the crop aspect (square for icosahedron, 832x480-ish for cube).
+    Spherical convention matches `spherical_uv_to_directions`:
+      theta = atan2(ry, rx), phi = arccos(rz),
+      u = (1 - theta/2pi).(W-1), v = (phi/pi).(H-1).
     """
     import cv2
     H, W = panorama_u8.shape[:2]
@@ -77,38 +66,32 @@ def _make_pano_debug_overlay(
     ext_np = np.asarray(extrinsics, dtype=np.float32)
 
     S = 64
-    half = math.tan(fov_rad / 2.0)
+    half_x = math.tan(fov_x_rad / 2.0)
+    half_y = math.tan(fov_y_rad / 2.0)
     edge_corners = [
-        ([-half, -half], [+half, -half]),  # top
-        ([+half, -half], [+half, +half]),  # right
-        ([+half, +half], [-half, +half]),  # bottom
-        ([-half, +half], [-half, -half]),  # left
+        ([-half_x, -half_y], [+half_x, -half_y]),  # top
+        ([+half_x, -half_y], [+half_x, +half_y]),  # right
+        ([+half_x, +half_y], [-half_x, +half_y]),  # bottom
+        ([-half_x, +half_y], [-half_x, -half_y]),  # left
     ]
 
     for i in range(N):
-        # extrinsics is w2c; invert (orthonormal rotation) for c2w.
-        R_c2w = ext_np[i, :3, :3].T
+        R_c2w = ext_np[i, :3, :3].T   # w2c -> c2w (orthonormal)
         color = _hsv_color_bgr(i, N)
         for (p0, p1) in edge_corners:
             t = np.linspace(0.0, 1.0, S, dtype=np.float32)
             xs = p0[0] + t * (p1[0] - p0[0])
             ys = p0[1] + t * (p1[1] - p0[1])
-            cam_dirs = np.stack(
-                [xs, ys, np.ones_like(xs)], axis=-1,
-            )  # (S, 3)
-            world_dirs = cam_dirs @ R_c2w.T   # row * R^T == R @ col
+            cam_dirs = np.stack([xs, ys, np.ones_like(xs)], axis=-1)
+            world_dirs = cam_dirs @ R_c2w.T
             world_dirs /= np.maximum(
-                np.linalg.norm(world_dirs, axis=-1, keepdims=True), 1e-12,
-            )
+                np.linalg.norm(world_dirs, axis=-1, keepdims=True), 1e-12)
             rx, ry, rz = world_dirs[:, 0], world_dirs[:, 1], world_dirs[:, 2]
-            theta = np.arctan2(ry, rx) % (2.0 * np.pi)             # [0, 2pi)
-            phi = np.arccos(np.clip(rz, -1.0, 1.0))                # [0, pi]
+            theta = np.arctan2(ry, rx) % (2.0 * np.pi)
+            phi = np.arccos(np.clip(rz, -1.0, 1.0))
             u = (1.0 - theta / (2.0 * np.pi)) * (W - 1)
             v = (phi / np.pi) * (H - 1)
             pts = np.stack([u, v], axis=-1).astype(np.float32)
-
-            # Split at azimuth wraparound: any consecutive pair with
-            # |Deltau| > W/2 wrapped the seam.
             du = np.abs(np.diff(pts[:, 0]))
             breaks = np.where(du > W * 0.5)[0]
             segments = np.split(pts, breaks + 1) if len(breaks) else [pts]
@@ -116,15 +99,50 @@ def _make_pano_debug_overlay(
                 if len(seg) < 2:
                     continue
                 seg_int = seg.astype(np.int32).reshape(-1, 1, 2)
-                cv2.polylines(
-                    debug, [seg_int], isClosed=False,
-                    color=color, thickness=2, lineType=cv2.LINE_AA,
-                )
+                cv2.polylines(debug, [seg_int], isClosed=False,
+                              color=color, thickness=2, lineType=cv2.LINE_AA)
     return debug
 
 
+def _camera_directions(method, *, resolution, fov_degrees,
+                       image_w, image_h, fov_x_deg, fov_y_deg,
+                       rot_deg, pitch_up, pitch_down):
+    """Return (verts (N,3), crop_h, crop_w, fov_x_rad, fov_y_rad, fov_x_out)
+    for the chosen split method."""
+    import utils3d
+    if method in ("icosahedron_12", "icosahedron_42"):
+        if method == "icosahedron_12":
+            verts, _ = utils3d.np.create_icosahedron_mesh()
+        else:
+            from ._vendor.worldgen.src.panorama_utils import subdivide_icosahedron
+            verts = subdivide_icosahedron(subdivisions=1)
+        verts = np.asarray(verts, dtype=np.float32)
+        r = int(resolution)
+        f = math.radians(float(fov_degrees))
+        return verts, r, r, f, f, float(fov_degrees)
+
+    if method == "cube_split":
+        from ._vendor.worldstereo_cube import rotate_around_z_axis
+        start_points = [
+            np.array([-1.0, 0.0, 0.0], dtype=np.float32),
+            np.array([-1.0, 0.0, float(pitch_up)], dtype=np.float32),
+            np.array([-1.0, 0.0, float(pitch_down)], dtype=np.float32),
+        ]
+        n_view = int(360 / max(1, int(rot_deg)))
+        direct = list(start_points)
+        for sp in start_points:
+            for i in range(1, n_view):
+                direct.append(rotate_around_z_axis(sp.reshape(1, 3), rot_deg * i)[0])
+        verts = np.stack(direct, axis=0).astype(np.float32)
+        return (verts, int(image_h), int(image_w),
+                math.radians(float(fov_x_deg)), math.radians(float(fov_y_deg)),
+                float(fov_x_deg))
+
+    raise ValueError(f"PanoramaSplit: unknown split_method {method!r}")
+
+
 class PanoramaSplit(io.ComfyNode):
-    """Panorama -> N rectilinear face images + per-face extrinsics/intrinsics."""
+    """Panorama -> N rectilinear crops + cameras + masks + memory-bank entries."""
 
     @classmethod
     def define_schema(cls):
@@ -133,156 +151,132 @@ class PanoramaSplit(io.ComfyNode):
             display_name="Panorama Split",
             category="PanoPack",
             description=(
-                "Split an equirectangular panorama into N rectilinear views "
-                "(90deg fov each). Pipe the views through any rectilinear depth "
-                "model (e.g. MoGe2Inference), then merge the per-view depths "
-                "back into an equirect depth map via WorldNavDepthMerge.\n\n"
-                "Mirrors upstream HY-World's pred_pano_depth split step."
+                "Split an equirect panorama into N rectilinear crops. Three "
+                "camera layouts via split_method:\n"
+                "  icosahedron_12 / icosahedron_42 - even sphere tiling, square "
+                "crops at fov_degrees (feed per-crop depth e.g. MoGe2 -> "
+                "PanoramaDepthMerge).\n"
+                "  cube_split - 3 pitch x N yaw grid, rectangular crops at "
+                "fov_x/fov_y (seeds a WorldStereo memory bank).\n\n"
+                "Outputs are produced for every method: face_images, cameras, "
+                "optional Voronoi masks, a debug overlay, and a MEMORY_BANK_"
+                "ENTRIES dict."
             ),
             inputs=[
                 io.Custom(PANORAMA_TYPE).Input(
                     "panorama",
-                    tooltip="Equirectangular RGB panorama (2:1). PANORAMA = "
-                            "IMAGE wrapped in PanoPack's typed socket. Wire "
-                            "from PanoramaWrap or any node that emits a "
-                            "PANORAMA."),
+                    tooltip="Equirectangular RGB panorama (2:1). Wire from "
+                            "PanoramaWrap or any node that emits a PANORAMA."),
+                io.DynamicCombo.Input(
+                    "split_method",
+                    tooltip="Camera layout. icosahedron_* = square crops (depth); "
+                            "cube_split = rectangular pitch/yaw grid (memory bank).",
+                    options=[
+                        io.DynamicCombo.Option("icosahedron_42", []),
+                        io.DynamicCombo.Option("icosahedron_12", []),
+                        io.DynamicCombo.Option("cube_split", [
+                            io.Int.Input("image_w", default=832, min=224, max=2048, step=16,
+                                         tooltip="Crop width (832 = WorldStereo anchor)."),
+                            io.Int.Input("image_h", default=480, min=224, max=2048, step=16,
+                                         tooltip="Crop height (480 = WorldStereo anchor)."),
+                            io.Float.Input("fov_x_deg", default=120.0, min=30.0, max=170.0, step=1.0,
+                                           tooltip="Horizontal FOV (120 matches upstream)."),
+                            io.Float.Input("fov_y_deg", default=90.0, min=30.0, max=170.0, step=1.0,
+                                           tooltip="Vertical FOV (90 matches upstream)."),
+                            io.Float.Input("rot_deg", default=40.0, min=10.0, max=120.0, step=5.0,
+                                           tooltip="Yaw step. 40 -> 9 yaws/pitch -> 27 crops."),
+                            io.Float.Input("pitch_up", default=0.5, min=0.0, max=1.0, step=0.05,
+                                           tooltip="Z of the upper-hemisphere look-at points."),
+                            io.Float.Input("pitch_down", default=-0.5, min=-1.0, max=0.0, step=0.05,
+                                           tooltip="Z of the lower-hemisphere look-at points."),
+                        ]),
+                    ]),
                 io.Int.Input(
                     "resolution", default=952, min=128, max=2048, step=1,
-                    tooltip="Per-face image resolution (square). Any integer."),
-                io.Combo.Input(
-                    "subdivision",
-                    options=["icosahedron_12", "icosahedron_42"],
-                    default="icosahedron_42",
-                    tooltip="Tiling density. 12 = base icosahedron (faster), "
-                            "42 = subdivided (better polar coverage)."),
+                    tooltip="Square per-crop resolution (icosahedron methods)."),
                 io.Float.Input(
                     "fov_degrees", default=90.0, min=30.0, max=170.0, step=1.0,
-                    optional=True,
-                    tooltip="Per-face FOV in degrees (square - same FOV "
-                            "horizontal and vertical). Default 90deg matches "
-                            "upstream HY-World and gives full sphere coverage "
-                            "with icosahedron_42.\n\n"
-                            "Coverage trade-off: narrower FOV (e.g. 60deg) "
-                            "gives sharper per-face content (MoGe2 / other "
-                            "rectilinear depth models stay in-distribution) "
-                            "but may leave sphere gaps with icosahedron_12. "
-                            "Wider FOV (e.g. 120deg) gives more redundancy but "
-                            "per-face image quality drops past ~110deg as "
-                            "rectilinear distortion grows near corners."),
+                    tooltip="Square per-crop FOV in degrees (icosahedron methods). "
+                            "90 matches upstream HY-World; full coverage with "
+                            "icosahedron_42."),
                 io.Boolean.Input(
-                    "use_gpu", default=True,
-                    optional=True,
-                    tooltip="Batched panorama->face resampling via "
-                            "torch.nn.functional.grid_sample (bilinear). "
-                            "All N faces sampled in one kernel launch. "
-                            "Falls back to CPU cv2.remap loop if CUDA "
-                            "isn't available. Math identical within fp32 "
-                            "round-off."),
+                    "use_gpu", default=True, optional=True,
+                    tooltip="Batched panorama->crop resampling via grid_sample "
+                            "(all crops in one kernel). Falls back to CPU "
+                            "cv2.remap if CUDA is unavailable."),
                 io.Boolean.Input(
-                    "create_masks", default=False,
-                    optional=True,
-                    tooltip="Generate per-face masks. Wire into SHARP's "
-                            "mask input to delete overlapping gaussians."),
-                io.Combo.Input(
-                    "mask_method",
-                    options=["closest_to"],
-                    default="closest_to",
-                    optional=True,
-                    tooltip="closest_to: each pixel in a crop is 1 only if "
-                            "it's closer to this crop's center than to any "
-                            "other crop's center (Voronoi on the sphere). "
-                            "Eliminates overlap between adjacent faces."),
+                    "create_masks", default=False, optional=True,
+                    tooltip="Generate per-crop spherical-Voronoi masks (each "
+                            "pixel kept only if its crop center is the nearest "
+                            "of all crop centers) + a colored debug_masks image."),
+                io.String.Input(
+                    "fname", default="pano_bank", multiline=False, optional=True,
+                    tooltip="Provenance tag stored per entry in the "
+                            "MEMORY_BANK_ENTRIES output."),
             ],
             outputs=[
                 io.Image.Output(display_name="face_images"),
                 io.Custom("EXTRINSICS").Output(display_name="extrinsics"),
-                io.Custom("INTRINSICS").Output(display_name="intrinsics"),
+                io.Custom("INTRINSICS").Output(
+                    display_name="intrinsics",
+                    tooltip="NORMALIZED per-crop intrinsics [N,3,3] (uv in [0,1]) "
+                            "- what PanoramaDepthMerge expects."),
                 io.Float.Output(display_name="fov_x_deg"),
                 io.Mask.Output(
                     display_name="face_masks",
-                    tooltip="Per-face masks (N, H, W). Only emitted when "
-                            "create_masks is enabled; otherwise zeros."),
+                    tooltip="Per-crop Voronoi masks (N,H,W). Only when "
+                            "create_masks is on; otherwise zeros."),
                 io.Image.Output(
                     display_name="debug_image",
-                    tooltip=(
-                        "Original panorama with each face's frustum edges "
-                        "drawn on it (HSV-colored polylines, one color per "
-                        "face in icosahedron-vertex order). Useful for "
-                        "visually verifying coverage and per-face "
-                        "orientation."
-                    ),
-                ),
+                    tooltip="Panorama with each crop's frustum edges drawn "
+                            "(one HSV color per crop)."),
                 io.Image.Output(
                     display_name="debug_masks",
-                    tooltip="Equirect image with each pixel colored by its "
-                            "Voronoi cell (which face owns it). Only "
-                            "populated when create_masks is enabled."),
+                    tooltip="Equirect colored by Voronoi cell (adjacency-aware "
+                            "palette so touching cells contrast). Only when "
+                            "create_masks is on."),
+                io.Custom("MEMORY_BANK_ENTRIES").Output(
+                    display_name="entries",
+                    tooltip="frames + extrinsics + PIXEL intrinsics + image_size "
+                            "+ fnames, depths=None. Feed into MemoryBankAdd."),
             ],
         )
 
     @classmethod
-    def execute(cls, panorama, resolution=512, subdivision="icosahedron_42",
-                fov_degrees=90.0, use_gpu=True, create_masks=False,
-                mask_method="closest_to"):
-        from PIL import Image
-        import cv2
-        from ._vendor.moge_panorama import (
-            get_panorama_cameras, split_panorama_image,
-            split_panorama_image_gpu,
-        )
-        from ._vendor.worldgen.src.panorama_utils import subdivide_icosahedron
+    def execute(cls, panorama, split_method=None,
+                resolution=952, fov_degrees=90.0,
+                use_gpu=True, create_masks=False, fname="pano_bank"):
         import utils3d
+        from ._vendor.moge_panorama import split_panorama_image_gpu
+        from ._vendor.worldstereo_cube import split_panorama_image as split_rect
 
         t_total = time.perf_counter()
 
-        # --- panorama -> numpy (H, W, 3), preserving value range ---
-        # Three input cases:
-        #   1. uint8 [0, 255]                     - visual RGB
-        #   2. float32 [0, 1]                     - visual RGB (ComfyUI IMAGE convention)
-        #   3. float32 with values outside [0, 1] - DATA panorama (depth in meters,
-        #      ||point|| ray-distance, scalar field, etc.)
-        # The split helpers (`split_panorama_image` via cv2.remap,
-        # `split_panorama_image_gpu` via grid_sample) handle uint8 and float32
-        # alike; they preserve the input dtype. Previously this node UNCONDITIONALLY
-        # quantized non-uint8 input to uint8 [0, 255] via `np.clip(arr, 0, 1) * 255`
-        # - fine for visual RGB, FATAL for metric depth panoramas (0.5-50 m): values
-        # outside [0, 1] saturate, and the post-split /255 recovers a [0, 1] float
-        # with no magnitude. Symptom: gaussian splat collapses to a sphere because
-        # all gaussians end up at ~uniform distance from the camera.
+        sm = split_method if isinstance(split_method, dict) else {}
+        method = sm.get("split_method", "icosahedron_42")
+
+        # --- panorama -> numpy (H, W, C), preserving value range ---
+        # uint8 visual / float[0,1] visual / float DATA (depth etc., kept raw).
         pano_t = unwrap_panorama_to_image(panorama)
         arr_orig = pano_t.detach().cpu().numpy() if isinstance(pano_t, torch.Tensor) else np.asarray(pano_t)
         if arr_orig.ndim == 4:
             arr_orig = arr_orig[0]
-
         if arr_orig.dtype == np.uint8:
-            # Case 1: visual RGB uint8. Pass straight through; recover [0, 1]
-            # float at the end by dividing by 255.
             arr = arr_orig
             face_norm_divisor = 255.0
             arr_for_overlay_u8 = arr_orig
-            data_panorama = False
         elif np.issubdtype(arr_orig.dtype, np.floating):
             arr = arr_orig.astype(np.float32, copy=False)
-            arr_min = float(arr.min())
-            arr_max = float(arr.max())
-            # 1e-3 slack so a visual panorama at exactly 1.0 doesn't get
-            # mistaken for a data panorama.
-            in_unit_range = arr_min >= -1e-3 and arr_max <= 1.0 + 1e-3
-            if in_unit_range:
-                # Case 2: visual RGB float [0, 1]. Helpers return float [0, 1];
-                # no rescale needed at the end.
+            amin, amax = float(arr.min()), float(arr.max())
+            if amin >= -1e-3 and amax <= 1.0 + 1e-3:
                 face_norm_divisor = 1.0
                 arr_for_overlay_u8 = (np.clip(arr, 0, 1) * 255).astype(np.uint8)
-                data_panorama = False
             else:
-                # Case 3: DATA panorama (depth, etc.). Preserve raw float values
-                # through the split - helpers will return float32 with the same
-                # metric magnitudes. For the debug overlay (which uses cv2 to
-                # draw colored polylines and needs uint8 RGB), build a
-                # min-max-normalized visualization.
+                # DATA panorama: keep raw float through the split; overlay uses
+                # a min-max-normalized visualization.
                 face_norm_divisor = 1.0
-                if arr_max > arr_min:
-                    vis = ((arr - arr_min) / (arr_max - arr_min) * 255.0).clip(0, 255).astype(np.uint8)
+                if amax > amin:
+                    vis = ((arr - amin) / (amax - amin) * 255.0).clip(0, 255).astype(np.uint8)
                 else:
                     vis = np.zeros(arr.shape, dtype=np.uint8)
                 if vis.ndim == 2:
@@ -290,173 +284,117 @@ class PanoramaSplit(io.ComfyNode):
                 elif vis.shape[-1] == 1:
                     vis = np.repeat(vis, 3, axis=-1)
                 arr_for_overlay_u8 = np.ascontiguousarray(vis)
-                data_panorama = True
-                _p(f"  data panorama detected (float, range [{arr_min:.3g}, {arr_max:.3g}]) "
-                   f"-> preserving raw values through split; overlay uses min-max normalize")
+                _p(f"  data panorama (float [{amin:.3g}, {amax:.3g}]) -> raw values preserved")
         else:
-            raise TypeError(
-                f"PanoramaSplit: unsupported panorama dtype {arr_orig.dtype} "
-                f"(expected uint8 or float)"
-            )
+            raise TypeError(f"PanoramaSplit: unsupported panorama dtype {arr_orig.dtype}")
         H, W = arr.shape[:2]
 
-        # --- pick the icosahedron vertices ---
+        # --- camera directions + crop geometry for the chosen method ---
         t_geom = time.perf_counter()
-        if subdivision == "icosahedron_12":
-            vertices, _ = utils3d.np.create_icosahedron_mesh()
-        elif subdivision == "icosahedron_42":
-            vertices = subdivide_icosahedron(subdivisions=1)
-        else:
-            raise ValueError(f"PanoramaSplit: unknown subdivision {subdivision!r}")
-        N = len(vertices)
-
-        # User-selectable square FOV. Default 90deg matches upstream HY-World.
-        fov_rad = math.radians(float(fov_degrees))
-        intrinsics_one = utils3d.np.intrinsics_from_fov(
-            fov_x=fov_rad, fov_y=fov_rad,
+        verts, crop_h, crop_w, fov_x_rad, fov_y_rad, fov_x_out = _camera_directions(
+            method, resolution=resolution, fov_degrees=fov_degrees,
+            image_w=int(sm.get("image_w", 832)), image_h=int(sm.get("image_h", 480)),
+            fov_x_deg=float(sm.get("fov_x_deg", 120.0)), fov_y_deg=float(sm.get("fov_y_deg", 90.0)),
+            rot_deg=float(sm.get("rot_deg", 40.0)),
+            pitch_up=float(sm.get("pitch_up", 0.5)), pitch_down=float(sm.get("pitch_down", -0.5)),
         )
-        # utils3d.np.extrinsics_look_at(eye, target, up=[0,0,1]) silently
-        # produces NaN extrinsics when forward is parallel to up
-        # (cross(forward, up) = 0 -> zero right-vector -> divide by zero).
-        # The level-1 icosahedron has exactly 2 vertices on the +/- Z poles
-        # (edge midpoints of (0,1,phi)<->(0,-1,phi) normalize to (0,0,1)),
-        # so 2 frames come back black. Upstream HY-World has the same bug
-        # in get_panorama_cameras_v2 -- they tolerate it by masking the
-        # garbage MoGe2 outputs downstream, but we'd rather not waste the
-        # compute or trigger utils3d's divide-by-zero warning.
-        #
-        # Fix: pick `up` per vertex. If forward is within ~2.5 deg of the
-        # default up (cos > 0.999), swap to an orthogonal up. Identical to
-        # default for non-pole vertices.
+        N = len(verts)
+
+        intrinsics_one = utils3d.np.intrinsics_from_fov(
+            fov_x=fov_x_rad, fov_y=fov_y_rad).astype(np.float32)   # normalized
+        intrinsics = np.stack([intrinsics_one] * N, axis=0).astype(np.float32)
+
+        # extrinsics_look_at(eye, fwd, up=[0,0,1]) gives NaN when forward || up
+        # (the 2 icosahedron pole vertices). Swap to an orthogonal up there.
         _UP_DEFAULT = np.array([0.0, 0.0, 1.0], dtype=np.float32)
         _UP_FALLBACK = np.array([0.0, 1.0, 0.0], dtype=np.float32)
-        _PARALLEL_COS = 0.999
         eye = np.zeros(3, dtype=np.float32)
-        verts = np.asarray(vertices, dtype=np.float32)
-        forwards = verts - eye
-        forwards = forwards / np.maximum(
-            np.linalg.norm(forwards, axis=-1, keepdims=True), 1e-12)
-        parallel = np.abs(forwards @ _UP_DEFAULT) > _PARALLEL_COS  # (N,) bool
+        fwd = verts / np.maximum(np.linalg.norm(verts, axis=-1, keepdims=True), 1e-12)
+        parallel = np.abs(fwd @ _UP_DEFAULT) > 0.999
         extrinsics = np.empty((N, 4, 4), dtype=np.float32)
-        # Batched call for the non-parallel majority.
         if (~parallel).any():
             extrinsics[~parallel] = utils3d.np.extrinsics_look_at(
-                eye, verts[~parallel], _UP_DEFAULT,
-            ).astype(np.float32)
-        # Per-vertex call with the fallback up for poles.
+                eye, verts[~parallel], _UP_DEFAULT).astype(np.float32)
         if parallel.any():
             extrinsics[parallel] = utils3d.np.extrinsics_look_at(
-                eye, verts[parallel], _UP_FALLBACK,
-            ).astype(np.float32)
-            _p(f"  swapped up=[0,1,0] for {int(parallel.sum())} pole vertices "
-               f"(forward||[0,0,1] within {np.degrees(np.arccos(_PARALLEL_COS)):.1f}deg)")
-        intrinsics = np.stack([intrinsics_one] * N, axis=0).astype(np.float32)
+                eye, verts[parallel], _UP_FALLBACK).astype(np.float32)
+            _p(f"  swapped up=[0,1,0] for {int(parallel.sum())} pole vertices")
         t_geom_done = time.perf_counter()
 
-        # --- rasterize the panorama into N face images ---
+        # --- sample N rectilinear crops (GPU grid_sample / CPU cv2.remap) ---
         t_split = time.perf_counter()
         if use_gpu and torch.cuda.is_available():
-            splitted = split_panorama_image_gpu(arr, extrinsics, intrinsics, resolution)
+            splitted = split_panorama_image_gpu(arr, extrinsics, intrinsics, crop_h, crop_w)
             backend = "grid_sample (GPU)"
         else:
-            splitted = split_panorama_image(arr, extrinsics, intrinsics, resolution)
-            backend = ("cv2.remap (CPU, cuda unavailable)"
-                       if use_gpu else "cv2.remap (CPU, use_gpu=False)")
+            import cv2
+            splitted = split_rect(arr, extrinsics, intrinsics, crop_h, crop_w, cv2.INTER_AREA)
+            backend = "cv2.remap (CPU, cuda unavailable)" if use_gpu else "cv2.remap (CPU)"
         t_split_done = time.perf_counter()
-        # Stack + recover the ComfyUI IMAGE convention (float32, range
-        # depends on input case):
-        #   - uint8 in  -> splitted is uint8 -> /255.0 -> float [0, 1]
-        #   - float [0,1] in -> splitted is float [0, 1] -> /1.0 -> float [0, 1]
-        #   - data panorama in -> splitted is float (metric units) -> /1.0 ->
-        #     PRESERVED magnitudes (this is the whole point of the dtype branching).
-        face_stack = np.stack(splitted, axis=0).astype(np.float32) / face_norm_divisor  # (N, R, R, C)
+        face_stack = np.stack(splitted, axis=0).astype(np.float32) / face_norm_divisor
         face_t = torch.from_numpy(face_stack)
 
-        # --- Debug overlay: original panorama with each face's frustum
-        # edges drawn as a colored polyline. Uses the uint8 RGB
-        # visualization we built above (raw for visual panoramas;
-        # min-max normalized for data panoramas).
-        debug_np = _make_pano_debug_overlay(arr_for_overlay_u8, extrinsics, fov_rad)
-        debug_t = (
-            torch.from_numpy(debug_np.astype(np.float32) / 255.0).unsqueeze(0)
-        )  # [1, H, W, 3]
+        # --- debug overlay ---
+        debug_np = _make_pano_debug_overlay(arr_for_overlay_u8, extrinsics, fov_x_rad, fov_y_rad)
+        debug_t = torch.from_numpy(debug_np.astype(np.float32) / 255.0).unsqueeze(0)
 
-        # --- Per-face masks (Voronoi on sphere) ---
-        if create_masks and mask_method == "closest_to":
+        # --- per-crop spherical-Voronoi masks + adjacency-aware debug image ---
+        if create_masks:
             _p("generating closest_to masks...")
-            t_mask = time.perf_counter()
-            # For each face i, for each pixel (u, v) in that face:
-            #   1. Unproject (u, v) to a 3D direction on the unit sphere
-            #   2. Check which face center (icosahedron vertex) is closest
-            #   3. mask[i, v, u] = 1.0 if face i is the closest, else 0.0
-            R = resolution
-            uv = utils3d.np.uv_map((R, R))  # (R, R, 2) normalized pixel coords
-            face_dirs = verts / np.maximum(
-                np.linalg.norm(verts, axis=-1, keepdims=True), 1e-12
-            )  # (N, 3) unit direction per face center
-
-            masks = np.zeros((N, R, R), dtype=np.float32)
+            face_dirs = verts / np.maximum(np.linalg.norm(verts, axis=-1, keepdims=True), 1e-12)
+            uv = utils3d.np.uv_map((crop_h, crop_w))
+            masks = np.zeros((N, crop_h, crop_w), dtype=np.float32)
             for i in range(N):
-                # Unproject this face's pixel grid to world 3D directions
                 pixel_dirs = utils3d.np.unproject_cv(
                     uv, np.ones_like(uv[..., 0]),
-                    extrinsics=extrinsics[i], intrinsics=intrinsics[i],
-                )  # (R, R, 3)
-                pixel_dirs = pixel_dirs / np.maximum(
-                    np.linalg.norm(pixel_dirs, axis=-1, keepdims=True), 1e-12
-                )
-                # Dot product with all face centers: (R, R, N)
+                    extrinsics=extrinsics[i], intrinsics=intrinsics_one)
+                pixel_dirs /= np.maximum(np.linalg.norm(pixel_dirs, axis=-1, keepdims=True), 1e-12)
                 dots = np.einsum("hwc,nc->hwn", pixel_dirs, face_dirs)
-                # This pixel belongs to face i if face i has the highest dot product
-                closest_face = np.argmax(dots, axis=-1)  # (R, R)
-                masks[i] = (closest_face == i).astype(np.float32)
+                masks[i] = (np.argmax(dots, axis=-1) == i).astype(np.float32)
+            face_masks_t = torch.from_numpy(masks)
 
-            face_masks_t = torch.from_numpy(masks)  # (N, R, R)
-            _p(f"masks done in {time.perf_counter() - t_mask:.3f}s; "
-               f"avg coverage per face: {masks.mean():.1%}")
-
-            # Debug masks: color each equirect pixel by its Voronoi cell
-            _p("generating debug_masks equirect image...")
-            from .panorama_split_adaptive import _equirect_ray_dirs
+            from .panorama_split_adaptive import _equirect_ray_dirs, _adjacency_aware_cell_colors
             eq_rays = _equirect_ray_dirs(H, W).reshape(-1, 3)
-            eq_dots = eq_rays @ face_dirs.T
-            eq_assignment = np.argmax(eq_dots, axis=1)
-
-            hsv_colors = np.zeros((N, 3), dtype=np.float32)
-            for i in range(N):
-                hue = float(i) / max(N, 1)
-                h6 = hue * 6.0
-                c = 0.8
-                x = c * (1 - abs(h6 % 2 - 1))
-                if h6 < 1:   r, g, b = c, x, 0
-                elif h6 < 2: r, g, b = x, c, 0
-                elif h6 < 3: r, g, b = 0, c, x
-                elif h6 < 4: r, g, b = 0, x, c
-                elif h6 < 5: r, g, b = x, 0, c
-                else:        r, g, b = c, 0, x
-                hsv_colors[i] = [r + 0.2, g + 0.2, b + 0.2]
-
-            debug_masks_np = hsv_colors[eq_assignment].reshape(H, W, 3)
+            eq_assignment = np.argmax(eq_rays @ face_dirs.T, axis=1)
+            cell_colors = _adjacency_aware_cell_colors(eq_assignment.reshape(H, W), N)
+            debug_masks_np = cell_colors[eq_assignment].reshape(H, W, 3)
             pano_f = arr_for_overlay_u8[..., :3].astype(np.float32) / 255.0
             debug_masks_np = np.clip(0.5 * debug_masks_np + 0.5 * pano_f, 0, 1)
             debug_masks_t = torch.from_numpy(debug_masks_np.astype(np.float32)).unsqueeze(0)
         else:
-            face_masks_t = torch.zeros(N, resolution, resolution)
+            face_masks_t = torch.zeros(N, crop_h, crop_w)
             debug_masks_t = torch.zeros((1, H, W, 3), dtype=torch.float32)
 
-        _p(f"({W}x{H} RGB) -> {N} faces @ {resolution}x{resolution}, "
-           f"fov={fov_degrees:.1f}deg via {backend}; "
+        # --- memory-bank entries (PIXEL-scale intrinsics) ---
+        K_pixel = intrinsics_one.copy()
+        K_pixel[0] *= float(crop_w)
+        K_pixel[1] *= float(crop_h)
+        Ks_pixel = np.broadcast_to(K_pixel, (N, 3, 3)).astype(np.float32).copy()
+        extrinsics_t = torch.from_numpy(extrinsics)
+        entries = {
+            "frames":     face_t,
+            "extrinsics": extrinsics_t,
+            "intrinsics": torch.from_numpy(Ks_pixel),
+            "depths":     None,
+            "fnames":     [str(fname or "pano_bank")] * N,
+            "frame_idx":  list(range(N)),
+            "image_size": [int(crop_w), int(crop_h)],
+        }
+
+        _p(f"{method}: ({W}x{H}) -> {N} crops @ {crop_w}x{crop_h}, "
+           f"fov=({math.degrees(fov_x_rad):.0f},{math.degrees(fov_y_rad):.0f}) via {backend}; "
            f"cameras {t_geom_done - t_geom:.3f}s, split {t_split_done - t_split:.3f}s, "
            f"total {time.perf_counter() - t_total:.3f}s")
 
         return io.NodeOutput(
             face_t,
-            torch.from_numpy(extrinsics),
-            torch.from_numpy(intrinsics),
-            float(fov_degrees),
+            extrinsics_t,
+            torch.from_numpy(intrinsics),   # normalized
+            float(fov_x_out),
             face_masks_t,
             debug_t,
             debug_masks_t,
+            entries,
         )
 
 

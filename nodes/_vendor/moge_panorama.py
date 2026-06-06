@@ -51,7 +51,7 @@ def split_panorama_image(image: np.ndarray, extrinsics: np.ndarray, intrinsics: 
     return splitted_images
 
 
-def split_panorama_image_gpu(image: np.ndarray, extrinsics: np.ndarray, intrinsics: np.ndarray, resolution: int):
+def split_panorama_image_gpu(image: np.ndarray, extrinsics: np.ndarray, intrinsics: np.ndarray, h: int, w: int = None):
     """Batched-GPU equivalent of `split_panorama_image`.
 
     Same math: for each of N face cameras, build a (resolution, resolution)
@@ -73,19 +73,21 @@ def split_panorama_image_gpu(image: np.ndarray, extrinsics: np.ndarray, intrinsi
 
     Falls back to the CPU implementation if CUDA isn't available.
     """
+    if w is None:
+        w = h  # square back-compat
     if not torch.cuda.is_available():
-        return split_panorama_image(image, extrinsics, intrinsics, resolution)
+        return split_panorama_image(image, extrinsics, intrinsics, h)
 
     height, width = image.shape[:2]
     N = len(extrinsics)
     device = torch.device("cuda")
 
-    # Build the (R, R, 2) UV map once on CPU (cheap, sub-ms).
-    uv = utils3d.np.uv_map((resolution, resolution))
+    # Build the (h, w, 2) UV map once on CPU (cheap, sub-ms).
+    uv = utils3d.np.uv_map((h, w))
 
     # Per-face lookup pixels in panorama pixel coordinates (cv2 convention:
-    # pixel centre = integer). Stack into (N, R, R, 2) before going to GPU.
-    pixel_lookups = np.empty((N, resolution, resolution, 2), dtype=np.float32)
+    # pixel centre = integer). Stack into (N, h, w, 2) before going to GPU.
+    pixel_lookups = np.empty((N, h, w, 2), dtype=np.float32)
     for i in range(N):
         spherical_uv = directions_to_spherical_uv(
             utils3d.np.unproject_cv(
