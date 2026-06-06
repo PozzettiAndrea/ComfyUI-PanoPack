@@ -1,4 +1,4 @@
-[00:00] Crash dump logging enabled: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\PanoPack-1844\dev\windows-cpu\crash_dump.log
+[00:00] Crash dump logging enabled: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\PanoPack-2337\dev\windows-cpu\crash_dump.log
 [00:00] 
 [00:00] [1/5] SYNTAX
 [00:00] ----------------------------------------
@@ -16,494 +16,492 @@
 [DEBUG] server=None, api=None
 [00:00] 
 Setting up ComfyUI...
-[00:00] Creating virtual environment at D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\.venv...
-[00:00] Running: uv venv D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\.venv --python 3.12
+[00:00] Creating virtual environment at D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\.venv...
+[00:00] Running: uv venv D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\.venv --python 3.12
 [00:01] torch_version='2.10.0' -> pinning torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0
-[00:01] Cloning ComfyUI (latest) to D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI...
-[00:01] Running: git clone --depth 1 https://github.com/comfyanonymous/ComfyUI.git D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI
+[00:01] Cloning ComfyUI (latest) to D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI...
+[00:01] Running: git clone --depth 1 https://github.com/comfyanonymous/ComfyUI.git D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI
 [00:02] Pinning torch family from https://download.pytorch.org/whl/cpu: torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0
-[00:02] Running: uv pip install --python D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\.venv\Scripts\python.exe --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple --index-strategy unsafe-best-match torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0
-[00:29] Installing ComfyUI requirements into D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\.venv...
-[00:29]     comfyui-frontend-package==1.45.15
-[00:29]     comfyui-workflow-templates==0.9.98
-[00:29]     comfyui-embedded-docs==0.5.2
-[00:29]     torch
-[00:29]     torchsde
-[00:29]     torchvision
-[00:29]     torchaudio
-[00:29]     numpy>=1.25.0
-[00:29]     einops
-[00:29]     transformers>=4.50.3
-[00:29]     tokenizers>=0.13.3
-[00:29]     sentencepiece
-[00:29]     safetensors>=0.4.2
-[00:29]     aiohttp>=3.11.8
-[00:29]     yarl>=1.18.0
-[00:29]     pyyaml
-[00:29]     Pillow
-[00:29]     scipy
-[00:29]     tqdm
-[00:29]     psutil
-[00:29]     alembic
-[00:29]     SQLAlchemy>=2.0.0
-[00:29]     filelock
-[00:29]     av>=16.0.0
-[00:29]     comfy-kitchen==0.2.10
-[00:29]     comfy-aimdo==0.4.9
-[00:29]     requests
-[00:29]     simpleeval>=1.0.0
-[00:29]     blake3
-[00:29]     
-[00:29]     #non essential dependencies:
-[00:29]     kornia>=0.7.1
-[00:29]     spandrel
-[00:29]     pydantic~=2.0
-[00:29]     pydantic-settings~=2.0
-[00:29]     PyOpenGL
-[00:29]     glfw
-[00:29] Running: uv pip install --python D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\.venv\Scripts\python.exe --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple --index-strategy unsafe-best-match -r D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\requirements.txt
-[01:03] 
+[00:02] Running: uv pip install --python D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\.venv\Scripts\python.exe --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple --index-strategy unsafe-best-match torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0
+[00:24] Installing ComfyUI requirements into D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\.venv...
+[00:24]     comfyui-frontend-package==1.45.15
+[00:24]     comfyui-workflow-templates==0.9.98
+[00:24]     comfyui-embedded-docs==0.5.2
+[00:24]     torch
+[00:24]     torchsde
+[00:24]     torchvision
+[00:24]     torchaudio
+[00:24]     numpy>=1.25.0
+[00:24]     einops
+[00:24]     transformers>=4.50.3
+[00:24]     tokenizers>=0.13.3
+[00:24]     sentencepiece
+[00:24]     safetensors>=0.4.2
+[00:24]     aiohttp>=3.11.8
+[00:24]     yarl>=1.18.0
+[00:24]     pyyaml
+[00:24]     Pillow
+[00:24]     scipy
+[00:24]     tqdm
+[00:24]     psutil
+[00:24]     alembic
+[00:24]     SQLAlchemy>=2.0.0
+[00:24]     filelock
+[00:24]     av>=16.0.0
+[00:24]     comfy-kitchen==0.2.10
+[00:24]     comfy-aimdo==0.4.9
+[00:24]     requests
+[00:24]     simpleeval>=1.0.0
+[00:24]     blake3
+[00:24]     
+[00:24]     #non essential dependencies:
+[00:24]     kornia>=0.7.1
+[00:24]     spandrel
+[00:24]     pydantic~=2.0
+[00:24]     pydantic-settings~=2.0
+[00:24]     PyOpenGL
+[00:24]     glfw
+[00:24] Running: uv pip install --python D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\.venv\Scripts\python.exe --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple --index-strategy unsafe-best-match -r D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\requirements.txt
+[00:59] 
 Installing custom node...
-[01:03] Copying ComfyUI-PanoPack to D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-PanoPack...
-[01:03] Installing node requirements...
-[01:03]     comfy-env==0.4.1
-[01:03]     comfy-3d-viewers==0.2.43
-[01:03] Running: uv pip install --python D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\.venv\Scripts\python.exe --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple --index-strategy unsafe-best-match -r D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-PanoPack\requirements.txt
-[01:09] 
+[00:59] Copying ComfyUI-PanoPack to D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-PanoPack...
+[00:59] Installing node requirements...
+[00:59]     comfy-env==0.4.1
+[00:59]     comfy-3d-viewers==0.2.43
+[00:59] Running: uv pip install --python D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\.venv\Scripts\python.exe --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple --index-strategy unsafe-best-match -r D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-PanoPack\requirements.txt
+[01:01] 
 Running install.py...
-[01:09] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\.venv\Scripts\python.exe D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-PanoPack\install.py
-[01:14]   
-[01:14]   Installing 2 node dependencies...
-[01:14]     Cloning ComfyUI-MoGe2...
-[01:15]     Installing requirements for ComfyUI-MoGe2...
-[01:15]     Running install.py for ComfyUI-MoGe2...
-[01:17]   [comfy-env] _discover: scanning D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes
-[01:17]   [comfy-env] _discover: ComfyUI-MoGe2 -> moge2-nodes (custom_nodes\ComfyUI-MoGe2\nodes\comfy-env.toml)
-[01:17]   [comfy-env] _discover: ComfyUI-PanoPack -> panopack-nodes (custom_nodes\ComfyUI-PanoPack\nodes\comfy-env.toml)
-[01:17]   [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
-[01:17]   [comfy-env] ComfyUI: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI
-[01:17]   [comfy-env] Found 2 node config(s):
-[01:17]     - moge2-nodes <- custom_nodes\ComfyUI-MoGe2\nodes\comfy-env.toml (python=host)
-[01:17]     - panopack-nodes <- custom_nodes\ComfyUI-PanoPack\nodes\comfy-env.toml (python=host)
-[01:17]   [comfy-env] Bootstrap interpreter has python 3.12 + torch 2.10.0 (cpu). Looking for cuda-only wheels matching cpu/torch2.10/cp312.
-[01:22]   [comfy-env] GPU: No GPU detected
-[01:22]   [comfy-env] No CUDA detected -- pinning comfyui torch to CPU index
-[01:22]   [comfy-env] Writing 2 per-env manifest(s):
-[01:22]     - moge2-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\pixi.toml
-[01:22]     - panopack-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\pixi.toml
-[01:22]   [comfy-env] Installing 2 environment(s):
-[01:22]     - moge2-nodes (python=host, 12 pypi deps, 2 cuda wheels)
-[01:22]     - panopack-nodes (python=host, 23 pypi deps)
-[01:22]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\pixi.toml` ...
-[01:46]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
-[01:46]     	- Scripts/.librsvg-pre-unlink.bat
-[01:46]     To enable them, run:
-[01:46]     	pixi config set --local run-post-link-scripts insecure
-[01:46]     More info:
-[01:46]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
-[02:23]     The default environment has been installed.
-[02:23]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\pixi.toml` ...
-[03:17]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
-[03:17]     	- Scripts/.librsvg-pre-unlink.bat
-[03:17]     To enable them, run:
-[03:17]     	pixi config set --local run-post-link-scripts insecure
-[03:17]     More info:
-[03:17]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
-[03:18]     Error:   Ã— Failed to update PyPI packages for environment 'default'
-[03:18]       â”œâ”€â–¶ Failed to prepare distributions
-[03:18]       â”œâ”€â–¶ Failed to download `torch-ransac3d==2.0.0`
-[03:18]       â”œâ”€â–¶ Failed to extract archive: torch_ransac3d-2.0.0-py3-none-any.whl
-[03:18]       â”œâ”€â–¶ I/O operation failed during extraction
-[03:18]       â•°â”€â–¶ failed to create file `C:\Users\stduser\AppData\Local\rattler\cache\uv-
-[03:18]           cache\.tmpcSVqYs\tests/*`: The filename, directory name, or volume label
-[03:18]           syntax is incorrect. (os error 123)
-[03:18]   [comfy-env] panopack-nodes: pixi install FAILED (exit 1). Continuing with remaining envs.
-[03:18]     Warning: ComfyUI-MoGe2 install.py failed (exit code 1)
-[03:18]     Cloning ComfyUI-GeometryPack...
-[03:20]     Installing requirements for ComfyUI-GeometryPack...
-[03:22]     Running install.py for ComfyUI-GeometryPack...
-[03:22]   [comfy-env] _discover: scanning D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes
-[03:22]   [comfy-env] _discover: ComfyUI-GeometryPack -> geometrypack-nodes (custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml)
-[03:22]   [comfy-env] _discover: ComfyUI-MoGe2 -> moge2-nodes (custom_nodes\ComfyUI-MoGe2\nodes\comfy-env.toml)
-[03:22]   [comfy-env] _discover: ComfyUI-PanoPack -> panopack-nodes (custom_nodes\ComfyUI-PanoPack\nodes\comfy-env.toml)
-[03:22]   [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
-[03:22]   [comfy-env] ComfyUI: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI
-[03:22]   [comfy-env] Found 3 node config(s):
-[03:22]     - geometrypack-nodes <- custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml (python=host)
-[03:22]     - moge2-nodes <- custom_nodes\ComfyUI-MoGe2\nodes\comfy-env.toml (python=host)
-[03:22]     - panopack-nodes <- custom_nodes\ComfyUI-PanoPack\nodes\comfy-env.toml (python=host)
-[03:22]   [comfy-env] Bootstrap interpreter has python 3.12 + torch 2.10.0 (cpu). Looking for cuda-only wheels matching cpu/torch2.10/cp312.
-[03:24]   [comfy-env] GPU: No GPU detected
-[03:24]   [comfy-env] No CUDA detected -- pinning comfyui torch to CPU index
-[03:24]   [comfy-env] Writing 3 per-env manifest(s):
-[03:24]     - geometrypack-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\pixi.toml
-[03:24]     - moge2-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\pixi.toml
-[03:24]     - panopack-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\pixi.toml
-[03:24]   [comfy-env] Installing 3 environment(s):
-[03:24]     - geometrypack-nodes (python=host, 14 pypi deps, 1 cuda wheels)
-[03:24]     - moge2-nodes (python=host, 12 pypi deps, 2 cuda wheels)
-[03:24]     - panopack-nodes (python=host, 23 pypi deps)
-[03:24]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\pixi.toml` ...
-[05:04]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
-[05:04]     	- Scripts/.librsvg-pre-unlink.bat
-[05:04]     To enable them, run:
-[05:04]     	pixi config set --local run-post-link-scripts insecure
-[05:04]     More info:
-[05:04]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
-[05:25]     The default environment has been installed.
-[05:25]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\pixi.toml` ...
-[05:25]     The default environment has been installed.
-[05:25]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\pixi.toml` ...
-[05:25]     Error:   Ã— Failed to update PyPI packages for environment 'default'
-[05:25]       â”œâ”€â–¶ Failed to prepare distributions
-[05:25]       â”œâ”€â–¶ Failed to download `torch-ransac3d==2.0.0`
-[05:25]       â”œâ”€â–¶ Failed to extract archive: torch_ransac3d-2.0.0-py3-none-any.whl
-[05:25]       â”œâ”€â–¶ I/O operation failed during extraction
-[05:25]       â•°â”€â–¶ failed to create file `C:\Users\stduser\AppData\Local\rattler\cache\uv-
-[05:25]           cache\.tmpK9CAat\tests/*`: The filename, directory name, or volume label
-[05:25]           syntax is incorrect. (os error 123)
-[05:25]   [comfy-env] panopack-nodes: pixi install FAILED (exit 1). Continuing with remaining envs.
-[05:26]     Warning: ComfyUI-GeometryPack install.py failed (exit code 1)
-[05:26]   
-[05:26]   [requirements] Re-installing main package requirements...
-[05:26]     Installing requirements for ComfyUI-PanoPack...
-[05:26]   [comfy-env] _discover: scanning D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes
-[05:26]   [comfy-env] _discover: ComfyUI-GeometryPack -> geometrypack-nodes (custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml)
-[05:26]   [comfy-env] _discover: ComfyUI-MoGe2 -> moge2-nodes (custom_nodes\ComfyUI-MoGe2\nodes\comfy-env.toml)
-[05:26]   [comfy-env] _discover: ComfyUI-PanoPack -> panopack-nodes (custom_nodes\ComfyUI-PanoPack\nodes\comfy-env.toml)
-[05:26]   [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
-[05:26]   [comfy-env] ComfyUI: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI
-[05:26]   [comfy-env] Found 3 node config(s):
-[05:26]     - geometrypack-nodes <- custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml (python=host)
-[05:26]     - moge2-nodes <- custom_nodes\ComfyUI-MoGe2\nodes\comfy-env.toml (python=host)
-[05:26]     - panopack-nodes <- custom_nodes\ComfyUI-PanoPack\nodes\comfy-env.toml (python=host)
-[05:26]   [comfy-env] Bootstrap interpreter has python 3.12 + torch 2.10.0 (cpu). Looking for cuda-only wheels matching cpu/torch2.10/cp312.
-[05:27]   [comfy-env] GPU: No GPU detected
-[05:27]   [comfy-env] No CUDA detected -- pinning comfyui torch to CPU index
-[05:27]   [comfy-env] Writing 3 per-env manifest(s):
-[05:27]     - geometrypack-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\pixi.toml
-[05:27]     - moge2-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\pixi.toml
-[05:27]     - panopack-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\pixi.toml
-[05:27]   [comfy-env] Installing 3 environment(s):
-[05:27]     - geometrypack-nodes (python=host, 14 pypi deps, 1 cuda wheels)
-[05:27]     - moge2-nodes (python=host, 12 pypi deps, 2 cuda wheels)
-[05:27]     - panopack-nodes (python=host, 23 pypi deps)
-[05:27]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\pixi.toml` ...
-[05:27]     The default environment has been installed.
-[05:27]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\pixi.toml` ...
-[05:28]     The default environment has been installed.
-[05:28]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\pixi.toml` ...
-[05:29]     Error:   Ã— Failed to update PyPI packages for environment 'default'
-[05:29]       â”œâ”€â–¶ Failed to prepare distributions
-[05:29]       â”œâ”€â–¶ Failed to download `torch-ransac3d==2.0.0`
-[05:29]       â”œâ”€â–¶ Failed to extract archive: torch_ransac3d-2.0.0-py3-none-any.whl
-[05:29]       â”œâ”€â–¶ I/O operation failed during extraction
-[05:29]       â•°â”€â–¶ failed to create file `C:\Users\stduser\AppData\Local\rattler\cache\uv-
-[05:29]           cache\.tmpJMiwjL\tests/*`: The filename, directory name, or volume label
-[05:29]           syntax is incorrect. (os error 123)
-[05:29]   [comfy-env] panopack-nodes: pixi install FAILED (exit 1). Continuing with remaining envs.
-[05:29] Warning: install.py failed (exit code 1), continuing...
-[05:29]   [!]     raise RuntimeError(
-[05:29]   [!] RuntimeError: pixi install failed for 1 env(s): panopack-nodes
-[05:29]   [!] [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
-[05:29]   [!] Traceback (most recent call last):
-[05:29]   [!]   File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-GeometryPack\install.py", line 2, in <module>
-[05:29]   [!]     install()
-[05:29]   [!]   File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\.venv\Lib\site-packages\comfy_env\install\__init__.py", line 90, in install
-[05:29]   [!]     install_workspace(comfyui_dir, log=log, dry_run=dry_run)
-[05:29]   [!]   File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\.venv\Lib\site-packages\comfy_env\install\workspace.py", line 692, in install_workspace
-[05:29]   [!]     raise RuntimeError(
-[05:29]   [!] RuntimeError: pixi install failed for 1 env(s): panopack-nodes
-[05:29]   [!] [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
-[05:29]   [!] Traceback (most recent call last):
-[05:29]   [!]   File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-PanoPack\install.py", line 3, in <module>
-[05:29]   [!]     install()
-[05:29]   [!]   File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\.venv\Lib\site-packages\comfy_env\install\__init__.py", line 90, in install
-[05:29]   [!]     install_workspace(comfyui_dir, log=log, dry_run=dry_run)
-[05:29]   [!]   File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\.venv\Lib\site-packages\comfy_env\install\workspace.py", line 692, in install_workspace
-[05:29]   [!]     raise RuntimeError(
-[05:29]   [!] RuntimeError: pixi install failed for 1 env(s): panopack-nodes
-[05:29] Installing 2 node dependency(ies)...
-[05:29]   ComfyUI-MoGe2 from PozzettiAndrea/ComfyUI-MoGe2
-[05:29]   ComfyUI-MoGe2 already exists, skipping...
-[05:29]   ComfyUI-GeometryPack from PozzettiAndrea/ComfyUI-GeometryPack
-[05:29]   ComfyUI-GeometryPack already exists, skipping...
-[05:29] Installing validation endpoint...
-[05:29]   Cloning PozzettiAndrea/ComfyUI-validate-endpoint...
-[05:29] Running: git clone --depth 1 https://x-access-token:***@github.com/PozzettiAndrea/ComfyUI-validate-endpoint.git D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
-[05:30] [INSTALL] PASSED
-[05:30] 
-[05:30] [3/5] REGISTRATION
-[05:30] ----------------------------------------
-[05:30] 
+[01:01] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\.venv\Scripts\python.exe D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-PanoPack\install.py
+[01:03]   
+[01:03]   Installing 2 node dependencies...
+[01:03]     Cloning ComfyUI-MoGe2...
+[01:03]     Installing requirements for ComfyUI-MoGe2...
+[01:03]     Running install.py for ComfyUI-MoGe2...
+[01:05]   [comfy-env] _discover: scanning D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes
+[01:05]   [comfy-env] _discover: ComfyUI-MoGe2 -> moge2-nodes (custom_nodes\ComfyUI-MoGe2\nodes\comfy-env.toml)
+[01:05]   [comfy-env] _discover: ComfyUI-PanoPack -> panopack-nodes (custom_nodes\ComfyUI-PanoPack\nodes\comfy-env.toml)
+[01:05]   [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
+[01:05]   [comfy-env] ComfyUI: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI
+[01:05]   [comfy-env] Found 2 node config(s):
+[01:05]     - moge2-nodes <- custom_nodes\ComfyUI-MoGe2\nodes\comfy-env.toml (python=host)
+[01:05]     - panopack-nodes <- custom_nodes\ComfyUI-PanoPack\nodes\comfy-env.toml (python=host)
+[01:05]   [comfy-env] Bootstrap interpreter has python 3.12 + torch 2.10.0 (cpu). Looking for cuda-only wheels matching cpu/torch2.10/cp312.
+[01:09]   [comfy-env] GPU: No GPU detected
+[01:09]   [comfy-env] No CUDA detected -- pinning comfyui torch to CPU index
+[01:09]   [comfy-env] Writing 2 per-env manifest(s):
+[01:09]     - moge2-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\pixi.toml
+[01:09]     - panopack-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\pixi.toml
+[01:10]   [comfy-env] Installing 2 environment(s):
+[01:10]     - moge2-nodes (python=host, 12 pypi deps, 2 cuda wheels)
+[01:10]     - panopack-nodes (python=host, 23 pypi deps)
+[01:10]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\pixi.toml` ...
+[01:34]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
+[01:34]     	- Scripts/.librsvg-pre-unlink.bat
+[01:34]     To enable them, run:
+[01:34]     	pixi config set --local run-post-link-scripts insecure
+[01:34]     More info:
+[01:34]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
+[02:10]     The default environment has been installed.
+[02:10]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\pixi.toml` ...
+[03:04]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
+[03:04]     	- Scripts/.librsvg-pre-unlink.bat
+[03:04]     To enable them, run:
+[03:04]     	pixi config set --local run-post-link-scripts insecure
+[03:04]     More info:
+[03:04]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
+[03:04]     Error:   Ã— Failed to update PyPI packages for environment 'default'
+[03:04]       â”œâ”€â–¶ Failed to prepare distributions
+[03:04]       â”œâ”€â–¶ Failed to download `torch-ransac3d==2.0.0`
+[03:04]       â”œâ”€â–¶ Failed to extract archive: torch_ransac3d-2.0.0-py3-none-any.whl
+[03:04]       â”œâ”€â–¶ I/O operation failed during extraction
+[03:04]       â•°â”€â–¶ failed to create file `C:\Users\stduser\AppData\Local\rattler\cache\uv-
+[03:04]           cache\.tmp3T8OnX\tests/*`: The filename, directory name, or volume label
+[03:04]           syntax is incorrect. (os error 123)
+[03:04]   [comfy-env] panopack-nodes: pixi install FAILED (exit 1). Continuing with remaining envs.
+[03:05]     Warning: ComfyUI-MoGe2 install.py failed (exit code 1)
+[03:05]     Cloning ComfyUI-GeometryPack...
+[03:07]     Installing requirements for ComfyUI-GeometryPack...
+[03:10]     Running install.py for ComfyUI-GeometryPack...
+[03:10]   [comfy-env] _discover: scanning D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes
+[03:10]   [comfy-env] _discover: ComfyUI-GeometryPack -> geometrypack-nodes (custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml)
+[03:10]   [comfy-env] _discover: ComfyUI-MoGe2 -> moge2-nodes (custom_nodes\ComfyUI-MoGe2\nodes\comfy-env.toml)
+[03:10]   [comfy-env] _discover: ComfyUI-PanoPack -> panopack-nodes (custom_nodes\ComfyUI-PanoPack\nodes\comfy-env.toml)
+[03:10]   [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
+[03:10]   [comfy-env] ComfyUI: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI
+[03:10]   [comfy-env] Found 3 node config(s):
+[03:10]     - geometrypack-nodes <- custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml (python=host)
+[03:10]     - moge2-nodes <- custom_nodes\ComfyUI-MoGe2\nodes\comfy-env.toml (python=host)
+[03:10]     - panopack-nodes <- custom_nodes\ComfyUI-PanoPack\nodes\comfy-env.toml (python=host)
+[03:10]   [comfy-env] Bootstrap interpreter has python 3.12 + torch 2.10.0 (cpu). Looking for cuda-only wheels matching cpu/torch2.10/cp312.
+[03:11]   [comfy-env] GPU: No GPU detected
+[03:11]   [comfy-env] No CUDA detected -- pinning comfyui torch to CPU index
+[03:11]   [comfy-env] Writing 3 per-env manifest(s):
+[03:11]     - geometrypack-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\pixi.toml
+[03:11]     - moge2-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\pixi.toml
+[03:11]     - panopack-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\pixi.toml
+[03:11]   [comfy-env] Installing 3 environment(s):
+[03:11]     - geometrypack-nodes (python=host, 14 pypi deps, 1 cuda wheels)
+[03:11]     - moge2-nodes (python=host, 12 pypi deps, 2 cuda wheels)
+[03:11]     - panopack-nodes (python=host, 23 pypi deps)
+[03:11]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\pixi.toml` ...
+[05:24]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
+[05:24]     	- Scripts/.librsvg-pre-unlink.bat
+[05:24]     To enable them, run:
+[05:24]     	pixi config set --local run-post-link-scripts insecure
+[05:24]     More info:
+[05:24]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
+[05:42]     The default environment has been installed.
+[05:43]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\pixi.toml` ...
+[05:44]     The default environment has been installed.
+[05:44]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\pixi.toml` ...
+[05:44]     Error:   Ã— Failed to update PyPI packages for environment 'default'
+[05:44]       â”œâ”€â–¶ Failed to prepare distributions
+[05:44]       â”œâ”€â–¶ Failed to download `torch-ransac3d==2.0.0`
+[05:44]       â”œâ”€â–¶ Failed to extract archive: torch_ransac3d-2.0.0-py3-none-any.whl
+[05:44]       â”œâ”€â–¶ I/O operation failed during extraction
+[05:44]       â•°â”€â–¶ failed to create file `C:\Users\stduser\AppData\Local\rattler\cache\uv-
+[05:44]           cache\.tmpkuheT2\tests/*`: The filename, directory name, or volume label
+[05:44]           syntax is incorrect. (os error 123)
+[05:44]   [comfy-env] panopack-nodes: pixi install FAILED (exit 1). Continuing with remaining envs.
+[05:44]     Warning: ComfyUI-GeometryPack install.py failed (exit code 1)
+[05:44]   
+[05:44]   [requirements] Re-installing main package requirements...
+[05:44]     Installing requirements for ComfyUI-PanoPack...
+[05:44]   [comfy-env] _discover: scanning D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes
+[05:44]   [comfy-env] _discover: ComfyUI-GeometryPack -> geometrypack-nodes (custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml)
+[05:44]   [comfy-env] _discover: ComfyUI-MoGe2 -> moge2-nodes (custom_nodes\ComfyUI-MoGe2\nodes\comfy-env.toml)
+[05:44]   [comfy-env] _discover: ComfyUI-PanoPack -> panopack-nodes (custom_nodes\ComfyUI-PanoPack\nodes\comfy-env.toml)
+[05:44]   [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
+[05:44]   [comfy-env] ComfyUI: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI
+[05:44]   [comfy-env] Found 3 node config(s):
+[05:44]     - geometrypack-nodes <- custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml (python=host)
+[05:44]     - moge2-nodes <- custom_nodes\ComfyUI-MoGe2\nodes\comfy-env.toml (python=host)
+[05:44]     - panopack-nodes <- custom_nodes\ComfyUI-PanoPack\nodes\comfy-env.toml (python=host)
+[05:44]   [comfy-env] Bootstrap interpreter has python 3.12 + torch 2.10.0 (cpu). Looking for cuda-only wheels matching cpu/torch2.10/cp312.
+[05:46]   [comfy-env] GPU: No GPU detected
+[05:46]   [comfy-env] No CUDA detected -- pinning comfyui torch to CPU index
+[05:46]   [comfy-env] Writing 3 per-env manifest(s):
+[05:46]     - geometrypack-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\pixi.toml
+[05:46]     - moge2-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\pixi.toml
+[05:46]     - panopack-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\pixi.toml
+[05:46]   [comfy-env] Installing 3 environment(s):
+[05:46]     - geometrypack-nodes (python=host, 14 pypi deps, 1 cuda wheels)
+[05:46]     - moge2-nodes (python=host, 12 pypi deps, 2 cuda wheels)
+[05:46]     - panopack-nodes (python=host, 23 pypi deps)
+[05:46]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\pixi.toml` ...
+[05:46]     The default environment has been installed.
+[05:46]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\pixi.toml` ...
+[05:46]     The default environment has been installed.
+[05:46]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\pixi.toml` ...
+[05:46]     Error:   Ã— Failed to update PyPI packages for environment 'default'
+[05:46]       â”œâ”€â–¶ Failed to prepare distributions
+[05:46]       â”œâ”€â–¶ Failed to download `torch-ransac3d==2.0.0`
+[05:46]       â”œâ”€â–¶ Failed to extract archive: torch_ransac3d-2.0.0-py3-none-any.whl
+[05:46]       â”œâ”€â–¶ I/O operation failed during extraction
+[05:46]       â•°â”€â–¶ failed to create file `C:\Users\stduser\AppData\Local\rattler\cache\uv-
+[05:46]           cache\.tmpajtRWS\tests/*`: The filename, directory name, or volume label
+[05:46]           syntax is incorrect. (os error 123)
+[05:46]   [comfy-env] panopack-nodes: pixi install FAILED (exit 1). Continuing with remaining envs.
+[05:47] Warning: install.py failed (exit code 1), continuing...
+[05:47]   [!]     raise RuntimeError(
+[05:47]   [!] RuntimeError: pixi install failed for 1 env(s): panopack-nodes
+[05:47]   [!] [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
+[05:47]   [!] Traceback (most recent call last):
+[05:47]   [!]   File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-GeometryPack\install.py", line 2, in <module>
+[05:47]   [!]     install()
+[05:47]   [!]   File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\.venv\Lib\site-packages\comfy_env\install\__init__.py", line 90, in install
+[05:47]   [!]     install_workspace(comfyui_dir, log=log, dry_run=dry_run)
+[05:47]   [!]   File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\.venv\Lib\site-packages\comfy_env\install\workspace.py", line 692, in install_workspace
+[05:47]   [!]     raise RuntimeError(
+[05:47]   [!] RuntimeError: pixi install failed for 1 env(s): panopack-nodes
+[05:47]   [!] [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
+[05:47]   [!] Traceback (most recent call last):
+[05:47]   [!]   File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-PanoPack\install.py", line 3, in <module>
+[05:47]   [!]     install()
+[05:47]   [!]   File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\.venv\Lib\site-packages\comfy_env\install\__init__.py", line 90, in install
+[05:47]   [!]     install_workspace(comfyui_dir, log=log, dry_run=dry_run)
+[05:47]   [!]   File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\.venv\Lib\site-packages\comfy_env\install\workspace.py", line 692, in install_workspace
+[05:47]   [!]     raise RuntimeError(
+[05:47]   [!] RuntimeError: pixi install failed for 1 env(s): panopack-nodes
+[05:47] Installing 2 node dependency(ies)...
+[05:47]   ComfyUI-MoGe2 from PozzettiAndrea/ComfyUI-MoGe2
+[05:47]   ComfyUI-MoGe2 already exists, skipping...
+[05:47]   ComfyUI-GeometryPack from PozzettiAndrea/ComfyUI-GeometryPack
+[05:47]   ComfyUI-GeometryPack already exists, skipping...
+[05:47] Installing validation endpoint...
+[05:47]   Cloning PozzettiAndrea/ComfyUI-validate-endpoint...
+[05:47] Running: git clone --depth 1 https://x-access-token:***@github.com/PozzettiAndrea/ComfyUI-validate-endpoint.git D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
+[05:48] [INSTALL] PASSED
+[05:48] 
+[05:48] [3/5] REGISTRATION
+[05:48] ----------------------------------------
+[05:48] 
 [DEBUG] server=None, api=None
-[05:30] 
+[05:48] 
 Starting ComfyUI server...
-[05:30] Starting ComfyUI server on port 41899...
-[05:30] Starting ComfyUI server on port 41899...
-[05:30] Waiting for server to be ready (timeout: 600s)...
-[05:32]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.schemas
-[05:32]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.tables
-[05:32]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.types
-[05:32]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.constraints
-[05:32]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.defaults
-[05:32]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.comments
-[05:33]   [ComfyUI] [comfy-env] ComfyUI-GeometryPack: 1 isolation env(s):
-[05:33]   [ComfyUI] [comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-GeometryPack\nodes
-[05:33]   [ComfyUI] [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
-[05:33]   [ComfyUI] [comfy-env]     env: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default  [OK]
-[05:33]   [ComfyUI] [comfy-env] prestartup complete
-[05:33]   [ComfyUI] [comfy-env] ComfyUI-MoGe2: 1 isolation env(s):
-[05:33]   [ComfyUI] [comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-MoGe2\nodes
-[05:33]   [ComfyUI] [comfy-env]     env: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default  [OK]
-[05:33]   [ComfyUI] [comfy-env] prestartup complete
-[05:33]   [ComfyUI] [comfy-env] ComfyUI-PanoPack: 1 isolation env(s):
-[05:33]   [ComfyUI] [comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes
-[05:33]   [ComfyUI] [comfy-env]     env: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default  [OK]
-[05:33]   [ComfyUI] [comfy-env] prestartup complete
-[05:33]   [ComfyUI] [32m[INFO][0m
-[05:33]   [ComfyUI] Prestartup times for custom nodes:
-[05:33]   [ComfyUI] [32m[INFO][0m    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-MoGe2
-[05:33]   [ComfyUI] [32m[INFO][0m    0.1 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-PanoPack
-[05:33]   [ComfyUI] [32m[INFO][0m    0.4 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-GeometryPack
-[05:33]   [ComfyUI] [32m[INFO][0m
-[05:40]   [ComfyUI] [32m[INFO][0m Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'apply_rope_split_half', 'apply_rope_split_half1', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'gemv_awq_w4a16', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'quantize_svdquant_w4a4', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4', 'scaled_mm_svdquant_w4a4', 'stochastic_rounding_fp8']}
-[05:40]   [ComfyUI] [32m[INFO][0m Found comfy_kitchen backend cuda: {'available': False, 'disabled': True, 'unavailable_reason': 'CUDA not available on this system', 'capabilities': []}
-[05:40]   [ComfyUI] [32m[INFO][0m Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': "ImportError: No module named 'triton'", 'capabilities': []}
-[05:40]   [ComfyUI] [32m[INFO][0m Checkpoint files will always be loaded safely.
-[05:40]   [ComfyUI] [32m[INFO][0m Total VRAM 16379 MB, total RAM 16379 MB
-[05:40]   [ComfyUI] [32m[INFO][0m pytorch version: 2.10.0+cpu
-[05:40]   [ComfyUI] [32m[INFO][0m Set vram state to: DISABLED
-[05:40]   [ComfyUI] [32m[INFO][0m Device: cpu
-[05:41]   [ComfyUI] [32m[INFO][0m Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
-[05:50]   [ComfyUI] [32m[INFO][0m Python version: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]
-[05:50]   [ComfyUI] [32m[INFO][0m ComfyUI version: 0.24.0
-[05:50]   [ComfyUI] [32m[INFO][0m comfy-aimdo version: 0.4.9
-[05:50]   [ComfyUI] [32m[INFO][0m comfy-kitchen version: 0.2.10
-[05:50]   [ComfyUI] [1m[33m[WARNING][0m ****** User settings have been changed to be stored on the server instead of browser storage. ******
-[05:50]   [ComfyUI] [1m[33m[WARNING][0m ****** For multi-user setups add the --multi-user CLI argument to enable multiple user profiles. ******
-[05:50]   [ComfyUI] [32m[INFO][0m comfyui-frontend-package version: 1.45.15
-[05:50]   [ComfyUI] [32m[INFO][0m comfyui-workflow-templates version: 0.9.98
-[05:50]   [ComfyUI] [32m[INFO][0m comfyui-embedded-docs version: 0.5.2
-[05:50]   [ComfyUI] [32m[INFO][0m comfy-kitchen version: 0.2.10
-[05:50]   [ComfyUI] [32m[INFO][0m comfy-aimdo version: 0.4.9
-[05:50]   [ComfyUI] [32m[INFO][0m [Prompt Server] web root: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\.venv\Lib\site-packages\comfyui_frontend_package\static
-[05:50]   [ComfyUI] [32m[INFO][0m Asset seeder disabled
-[05:54]   [ComfyUI] [32m[INFO][0m loading...
-[05:54]   [ComfyUI] [32m[INFO][0m calling register_nodes
-[05:54]   [ComfyUI] [comfy-env] Version: 0.4.1
-[05:54]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-GeometryPack
-[05:54]   [ComfyUI] [comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI
-[05:54]   [ComfyUI] [comfy-env] Found 1 isolation env(s)
-[05:54]   [ComfyUI] [comfy-env] Scanning nodes metadata (isolation root)...
-[05:54]   [ComfyUI] [comfy-env] default: Library/bin has 612 DLLs
-[05:54]   [ComfyUI] [comfy-env] Metadata scan: C:\Users\stduser\.pixi\bin\pixi.exe run --as-is --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\pixi.toml -e default python C:\Users\stduser\AppData\Local\Temp\comfy_meta_idgexsp2.py D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-GeometryPack nodes C:\Users\stduser\AppData\Local\Temp\comfy_meta_out_fal4ha4j.pkl
-[05:54]   [ComfyUI] [comfy-env] Scan env PATH for nodes:
-[05:54]   [ComfyUI] [comfy-env]   [0] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default
-[05:54]   [ComfyUI] [comfy-env]   [1] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default\Library\bin
-[05:54]   [ComfyUI] [comfy-env]   [2] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default\Scripts
-[05:54]   [ComfyUI] [comfy-env]   [3] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default\Lib\site-packages\bpy
-[05:54]   [ComfyUI] [comfy-env]   [4] C:\Windows\System32
-[05:54]   [ComfyUI] [comfy-env]   [5] C:\Windows
-[05:54]   [ComfyUI] [comfy-env]   [6] C:\Windows\System32\Wbem
-[06:16]   [ComfyUI] [comfy-env] Metadata scan stderr for nodes:
-[06:16]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-GeometryPack
-[06:16]   [ComfyUI] [comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-[06:16]   [ComfyUI] [comfy-env]   WARNING:root:comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
-[06:16]   [ComfyUI] [comfy-env]   [meta-scan] import OK
-[06:16]   [ComfyUI] [comfy-env] Scanned nodes: 125 nodes (21.8s)
-[06:16]   [ComfyUI] [comfy-env] Scanned nodes root: 125 nodes (21.8s)
-[06:16]   [ComfyUI] [comfy-env] Imported nodes root: 125 nodes (isolation)
-[06:16]   [ComfyUI] [comfy-env] Registered 125 total nodes
-[06:16]   [ComfyUI] [comfy-env] Version: 0.4.1
-[06:16]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-MoGe2
-[06:16]   [ComfyUI] [comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI
-[06:16]   [ComfyUI] [comfy-env] Found 1 isolation env(s)
-[06:16]   [ComfyUI] [comfy-env] Scanning nodes metadata (isolation root)...
-[06:16]   [ComfyUI] [comfy-env] default: Library/bin has 236 DLLs
-[06:16]   [ComfyUI] [comfy-env] Metadata scan: C:\Users\stduser\.pixi\bin\pixi.exe run --as-is --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\pixi.toml -e default python C:\Users\stduser\AppData\Local\Temp\comfy_meta_pkxpy4df.py D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-MoGe2 nodes C:\Users\stduser\AppData\Local\Temp\comfy_meta_out_lcknd6t2.pkl
-[06:16]   [ComfyUI] [comfy-env] Scan env PATH for nodes:
-[06:16]   [ComfyUI] [comfy-env]   [0] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default
-[06:16]   [ComfyUI] [comfy-env]   [1] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default\Library\bin
-[06:16]   [ComfyUI] [comfy-env]   [2] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default\Scripts
-[06:16]   [ComfyUI] [comfy-env]   [3] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default\Lib\site-packages\bpy
-[06:16]   [ComfyUI] [comfy-env]   [4] C:\Windows\System32
-[06:16]   [ComfyUI] [comfy-env]   [5] C:\Windows
-[06:16]   [ComfyUI] [comfy-env]   [6] C:\Windows\System32\Wbem
-[06:23]   [ComfyUI] [comfy-env] Metadata scan stderr for nodes:
-[06:23]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-MoGe2
-[06:23]   [ComfyUI] [comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-[06:23]   [ComfyUI] [comfy-env]   WARNING:root:comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
-[06:23]   [ComfyUI] [comfy-env]   [meta-scan] import OK
-[06:23]   [ComfyUI] [comfy-env] Scanned nodes: 3 nodes (6.7s)
-[06:23]   [ComfyUI] [comfy-env] Scanned nodes root: 3 nodes (6.7s)
-[06:23]   [ComfyUI] [comfy-env] Imported nodes root: 3 nodes (isolation)
-[06:23]   [ComfyUI] [comfy-env] Registered 3 total nodes
-[06:23]   [ComfyUI] [comfy-env] Version: 0.4.1
-[06:23]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-PanoPack
-[06:23]   [ComfyUI] [comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI
-[06:23]   [ComfyUI] [comfy-env] Found 1 isolation env(s)
-[06:23]   [ComfyUI] [comfy-env] Scanning nodes metadata (isolation root)...
-[06:23]   [ComfyUI] [comfy-env] default: Library/bin has 565 DLLs
-[06:23]   [ComfyUI] [comfy-env] Metadata scan: C:\Users\stduser\.pixi\bin\pixi.exe run --as-is --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\pixi.toml -e default python C:\Users\stduser\AppData\Local\Temp\comfy_meta_04vhuhd6.py D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-PanoPack nodes C:\Users\stduser\AppData\Local\Temp\comfy_meta_out_1o9pqifh.pkl
-[06:23]   [ComfyUI] [comfy-env] Scan env PATH for nodes:
-[06:23]   [ComfyUI] [comfy-env]   [0] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default
-[06:23]   [ComfyUI] [comfy-env]   [1] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Library\bin
-[06:23]   [ComfyUI] [comfy-env]   [2] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Scripts
-[06:23]   [ComfyUI] [comfy-env]   [3] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\site-packages\bpy
-[06:23]   [ComfyUI] [comfy-env]   [4] C:\Windows\System32
-[06:23]   [ComfyUI] [comfy-env]   [5] C:\Windows
-[06:23]   [ComfyUI] [comfy-env]   [6] C:\Windows\System32\Wbem
-[06:23]   [ComfyUI] [comfy-env] Metadata scan stderr for nodes:
-[06:23]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-PanoPack
-[06:23]   [ComfyUI] [comfy-env]   Traceback (most recent call last):
-[06:23]   [ComfyUI] [comfy-env]     File "C:\Users\stduser\AppData\Local\Temp\comfy_meta_04vhuhd6.py", line 65, in <module>
-[06:23]   [ComfyUI] [comfy-env]       module = importlib.import_module(package_name)
-[06:23]   [ComfyUI] [comfy-env]                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-[06:23]   [ComfyUI] [comfy-env]     File "C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\importlib\__init__.py", line 90, in import_module
-[06:23]   [ComfyUI] [comfy-env]       return _bootstrap._gcd_import(name[level:], package, level)
-[06:23]   [ComfyUI] [comfy-env]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-[06:23]   [ComfyUI] [comfy-env]     File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
-[06:23]   [ComfyUI] [comfy-env]     File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
-[06:23]   [ComfyUI] [comfy-env]     File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
-[06:23]   [ComfyUI] [comfy-env]     File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
-[06:23]   [ComfyUI] [comfy-env]     File "<frozen importlib._bootstrap_external>", line 999, in exec_module
-[06:23]   [ComfyUI] [comfy-env]     File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
-[06:23]   [ComfyUI] [comfy-env]     File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\__init__.py", line 3, in <module>
-[06:23]   [ComfyUI] [comfy-env]       from .panorama_type import (
-[06:23]   [ComfyUI] [comfy-env]     File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\panorama_type.py", line 5, in <module>
-[06:23]   [ComfyUI] [comfy-env]       from comfy_api.latest import io
-[06:23]   [ComfyUI] [comfy-env]     File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\comfy_api\latest\__init__.py", line 6, in <module>
-[06:23]   [ComfyUI] [comfy-env]       from ._input import ImageInput, AudioInput, MaskInput, LatentInput, VideoInput
-[06:23]   [ComfyUI] [comfy-env]     File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\comfy_api\latest\_input\__init__.py", line 1, in <module>
-[06:23]   [ComfyUI] [comfy-env]       from .basic_types import ImageInput, AudioInput, MaskInput, LatentInput
-[06:23]   [ComfyUI] [comfy-env]     File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\comfy_api\latest\_input\basic_types.py", line 1, in <module>
-[06:23]   [ComfyUI] [comfy-env]       import torch
-[06:23]   [ComfyUI] [comfy-env]   ModuleNotFoundError: No module named 'torch'
-[06:23]   [ComfyUI] [comfy-env] Metadata scan failed for nodes (exit 1, 0.3s):
-[06:23]   [ComfyUI] [comfy-env]       from .panorama_type import (
-[06:23]   [ComfyUI] [comfy-env]     File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\panorama_type.py", line 5, in <module>
-[06:23]   [ComfyUI] [comfy-env]       from comfy_api.latest import io
-[06:23]   [ComfyUI] [comfy-env]     File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\comfy_api\latest\__init__.py", line 6, in <module>
-[06:23]   [ComfyUI] [comfy-env]       from ._input import ImageInput, AudioInput, MaskInput, LatentInput, VideoInput
-[06:23]   [ComfyUI] [comfy-env]     File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\comfy_api\latest\_input\__init__.py", line 1, in <module>
-[06:23]   [ComfyUI] [comfy-env]       from .basic_types import ImageInput, AudioInput, MaskInput, LatentInput
-[06:23]   [ComfyUI] [comfy-env]     File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\comfy_api\latest\_input\basic_types.py", line 1, in <module>
-[06:23]   [ComfyUI] [comfy-env]       import torch
-[06:23]   [ComfyUI] [comfy-env]   ModuleNotFoundError: No module named 'torch'
-[06:23]   [ComfyUI] [comfy-env] Scanned nodes root: 0 nodes (0.3s)
-[06:23]   [ComfyUI] [comfy-env] Imported nodes root: 0 nodes (isolation)
-[06:23]   [ComfyUI] [comfy-env] Registered 0 total nodes
-[06:23]   [ComfyUI] [32m[INFO][0m
-[06:23]   [ComfyUI] Import times for custom nodes:
-[06:23]   [ComfyUI] [32m[INFO][0m    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\websocket_image_save.py
-[06:23]   [ComfyUI] [32m[INFO][0m    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
-[06:23]   [ComfyUI] [32m[INFO][0m    0.3 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-PanoPack
-[06:23]   [ComfyUI] [32m[INFO][0m    6.7 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-MoGe2
-[06:23]   [ComfyUI] [32m[INFO][0m   22.5 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-1844\ComfyUI\custom_nodes\ComfyUI-GeometryPack
-[06:23]   [ComfyUI] [32m[INFO][0m
-[06:23]   [ComfyUI] [32m[INFO][0m Context impl SQLiteImpl.
-[06:23]   [ComfyUI] [32m[INFO][0m Will assume non-transactional DDL.
-[06:23]   [ComfyUI] [32m[INFO][0m Context impl SQLiteImpl.
-[06:23]   [ComfyUI] [32m[INFO][0m Will assume non-transactional DDL.
-[06:23]   [ComfyUI] [32m[INFO][0m Running upgrade  -> 0001_assets, Initial assets schema
-[06:23]   [ComfyUI] Revision ID: 0001_assets
-[06:23]   [ComfyUI] Revises: None
-[06:23]   [ComfyUI] Create Date: 2025-12-10 00:00:00
-[06:23]   [ComfyUI] [32m[INFO][0m Running upgrade 0001_assets -> 0002_merge_to_asset_references, Merge AssetInfo and AssetCacheState into unified asset_references table.
-[06:24]   [ComfyUI] [32m[INFO][0m Running upgrade 0002_merge_to_asset_references -> 0003_add_metadata_job_id, Add system_metadata and job_id columns to asset_references.
-[06:24]   [ComfyUI] Change preview_id FK from assets.id to asset_references.id.
-[06:24]   [ComfyUI] [32m[INFO][0m Database upgraded from None to 0003_add_metadata_job_id
-[06:24]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[06:24]   [ComfyUI] [32m[INFO][0m Starting server
-[06:24]   [ComfyUI] 
-[06:24]   [ComfyUI] [32m[INFO][0m To see the GUI go to: http://127.0.0.1:41899
-[06:25] Server responding, waiting for nodes to load...
-[06:45] Server is ready!
-[06:45] Checking for import errors in server logs...
-[06:45] No import errors detected
-[06:45] Found 899 registered nodes
-[06:45] [REGISTRATION] PASSED
-[06:45] 
-[06:45] [4/5] INSTANTIATION
-[06:45] ----------------------------------------
-[06:45] 
-[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x000001E373F22CD0>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000001E373F3F510>
-[06:45] Testing node constructors...
-[06:48] All 0 node(s) instantiated successfully!
-[06:48] [INSTANTIATION] PASSED
-[06:48] 
-[06:48] [5/5] EXECUTION
-[06:48] ----------------------------------------
-[06:48] 
-[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x000001E373F22CD0>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000001E373F3F510>
-[06:48] CPU runner - will execute 9 workflow(s)
-[06:48] Running 13 workflow(s) (all with videos)...
-[06:48] Installing screenshot dependencies (playwright, pillow)...
-[06:49]   Packages installed, downloading chromium browser...
-[07:08]   Screenshot dependencies installed successfully
-[07:09] Starting headless browser...
-[07:09]   Downloading Mesa llvmpipe for Windows...
-[07:16]   Copied opengl32.dll to Chromium dir
-[07:16]   Copied libgallium_wgl.dll to Chromium dir
-[07:16]   Using Mesa llvmpipe (desktop GL) -- multithreaded CPU rendering
-[07:16]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[07:16] Capturing execution frames: 360_render.json
-[07:17]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[07:27]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[07:27]   Validating workflow...
-[07:27]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 11 nodes, missing class_type: [90,92,94,96], sample: {"inputs":{"file_path":"3d/pano_mesh.vtp"},"class_type":"GeomPackLoadMesh","_meta":{"title":"Load Mesh"}}
-[07:27]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[07:27]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[07:27] Capturing execution frames: cpu_depth_merge_mesh_pointcloud.json
-[07:27]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[07:27]   [ComfyUI] [1m[31m[ERROR][0m Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
-[07:27]   [ComfyUI] handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
-[07:27]   [ComfyUI] Traceback (most recent call last):
-[07:27]   [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\asyncio\events.py", line 88, in _run
-[07:27]   [ComfyUI]     self._context.run(self._callback, *self._args)
-[07:27]   [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
-[07:27]   [ComfyUI]     self._sock.shutdown(socket.SHUT_RDWR)
-[07:27]   [ComfyUI] ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-[07:34]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[07:34]   Validating workflow...
-[07:34]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 17 nodes, missing class_type: [65,69,79,80,85], sample: {"inputs":{"image":"actual_pano_from_real_life.jpg"},"class_type":"LoadImage","_meta":{"title":"Load Image"}}
-[07:34]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[07:34]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[07:34] Capturing execution frames: cpu_depth_normal_conditioned.json
+[05:48] Starting ComfyUI server on port 41898...
+[05:48] Starting ComfyUI server on port 41898...
+[05:48] Waiting for server to be ready (timeout: 600s)...
+[05:50]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.schemas
+[05:50]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.tables
+[05:50]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.types
+[05:50]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.constraints
+[05:50]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.defaults
+[05:50]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.comments
+[05:50]   [ComfyUI] [comfy-env] ComfyUI-GeometryPack: 1 isolation env(s):
+[05:50]   [ComfyUI] [comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-GeometryPack\nodes
+[05:50]   [ComfyUI] [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
+[05:50]   [ComfyUI] [comfy-env]     env: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default  [OK]
+[05:50]   [ComfyUI] [comfy-env] prestartup complete
+[05:50]   [ComfyUI] [comfy-env] ComfyUI-MoGe2: 1 isolation env(s):
+[05:50]   [ComfyUI] [comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-MoGe2\nodes
+[05:50]   [ComfyUI] [comfy-env]     env: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default  [OK]
+[05:50]   [ComfyUI] [comfy-env] prestartup complete
+[05:50]   [ComfyUI] [comfy-env] ComfyUI-PanoPack: 1 isolation env(s):
+[05:50]   [ComfyUI] [comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes
+[05:50]   [ComfyUI] [comfy-env]     env: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default  [OK]
+[05:50]   [ComfyUI] [comfy-env] prestartup complete
+[05:50]   [ComfyUI] [32m[INFO][0m
+[05:50]   [ComfyUI] Prestartup times for custom nodes:
+[05:50]   [ComfyUI] [32m[INFO][0m    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-MoGe2
+[05:50]   [ComfyUI] [32m[INFO][0m    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-PanoPack
+[05:50]   [ComfyUI] [32m[INFO][0m    0.3 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-GeometryPack
+[05:50]   [ComfyUI] [32m[INFO][0m
+[05:57]   [ComfyUI] [32m[INFO][0m Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': "ImportError: No module named 'triton'", 'capabilities': []}
+[05:57]   [ComfyUI] [32m[INFO][0m Found comfy_kitchen backend cuda: {'available': False, 'disabled': True, 'unavailable_reason': 'CUDA not available on this system', 'capabilities': []}
+[05:57]   [ComfyUI] [32m[INFO][0m Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'apply_rope_split_half', 'apply_rope_split_half1', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'gemv_awq_w4a16', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'quantize_svdquant_w4a4', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4', 'scaled_mm_svdquant_w4a4', 'stochastic_rounding_fp8']}
+[05:57]   [ComfyUI] [32m[INFO][0m Checkpoint files will always be loaded safely.
+[05:57]   [ComfyUI] [32m[INFO][0m Total VRAM 16379 MB, total RAM 16379 MB
+[05:57]   [ComfyUI] [32m[INFO][0m pytorch version: 2.10.0+cpu
+[05:57]   [ComfyUI] [32m[INFO][0m Set vram state to: DISABLED
+[05:57]   [ComfyUI] [32m[INFO][0m Device: cpu
+[05:58]   [ComfyUI] [32m[INFO][0m Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
+[06:06]   [ComfyUI] [32m[INFO][0m Python version: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]
+[06:06]   [ComfyUI] [32m[INFO][0m ComfyUI version: 0.24.0
+[06:06]   [ComfyUI] [32m[INFO][0m comfy-aimdo version: 0.4.9
+[06:06]   [ComfyUI] [32m[INFO][0m comfy-kitchen version: 0.2.10
+[06:06]   [ComfyUI] [1m[33m[WARNING][0m ****** User settings have been changed to be stored on the server instead of browser storage. ******
+[06:06]   [ComfyUI] [1m[33m[WARNING][0m ****** For multi-user setups add the --multi-user CLI argument to enable multiple user profiles. ******
+[06:06]   [ComfyUI] [32m[INFO][0m comfyui-frontend-package version: 1.45.15
+[06:06]   [ComfyUI] [32m[INFO][0m comfyui-workflow-templates version: 0.9.98
+[06:06]   [ComfyUI] [32m[INFO][0m comfyui-embedded-docs version: 0.5.2
+[06:06]   [ComfyUI] [32m[INFO][0m comfy-kitchen version: 0.2.10
+[06:06]   [ComfyUI] [32m[INFO][0m comfy-aimdo version: 0.4.9
+[06:06]   [ComfyUI] [32m[INFO][0m [Prompt Server] web root: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\.venv\Lib\site-packages\comfyui_frontend_package\static
+[06:06]   [ComfyUI] [32m[INFO][0m Asset seeder disabled
+[06:10]   [ComfyUI] [32m[INFO][0m loading...
+[06:10]   [ComfyUI] [32m[INFO][0m calling register_nodes
+[06:10]   [ComfyUI] [comfy-env] Version: 0.4.1
+[06:10]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-GeometryPack
+[06:10]   [ComfyUI] [comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI
+[06:10]   [ComfyUI] [comfy-env] Found 1 isolation env(s)
+[06:10]   [ComfyUI] [comfy-env] Scanning nodes metadata (isolation root)...
+[06:10]   [ComfyUI] [comfy-env] default: Library/bin has 612 DLLs
+[06:10]   [ComfyUI] [comfy-env] Metadata scan: C:\Users\stduser\.pixi\bin\pixi.exe run --as-is --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\pixi.toml -e default python C:\Users\stduser\AppData\Local\Temp\comfy_meta_9246wxvv.py D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-GeometryPack nodes C:\Users\stduser\AppData\Local\Temp\comfy_meta_out_5g_yd2i5.pkl
+[06:10]   [ComfyUI] [comfy-env] Scan env PATH for nodes:
+[06:10]   [ComfyUI] [comfy-env]   [0] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default
+[06:10]   [ComfyUI] [comfy-env]   [1] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default\Library\bin
+[06:10]   [ComfyUI] [comfy-env]   [2] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default\Scripts
+[06:10]   [ComfyUI] [comfy-env]   [3] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default\Lib\site-packages\bpy
+[06:10]   [ComfyUI] [comfy-env]   [4] C:\Windows\System32
+[06:10]   [ComfyUI] [comfy-env]   [5] C:\Windows
+[06:10]   [ComfyUI] [comfy-env]   [6] C:\Windows\System32\Wbem
+[06:25]   [ComfyUI] [comfy-env] Metadata scan stderr for nodes:
+[06:25]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-GeometryPack
+[06:25]   [ComfyUI] [comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[06:25]   [ComfyUI] [comfy-env]   WARNING:root:comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+[06:25]   [ComfyUI] [comfy-env]   [meta-scan] import OK
+[06:25]   [ComfyUI] [comfy-env] Scanned nodes: 125 nodes (14.7s)
+[06:25]   [ComfyUI] [comfy-env] Scanned nodes root: 125 nodes (14.7s)
+[06:25]   [ComfyUI] [comfy-env] Imported nodes root: 125 nodes (isolation)
+[06:25]   [ComfyUI] [comfy-env] Registered 125 total nodes
+[06:25]   [ComfyUI] [comfy-env] Version: 0.4.1
+[06:25]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-MoGe2
+[06:25]   [ComfyUI] [comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI
+[06:25]   [ComfyUI] [comfy-env] Found 1 isolation env(s)
+[06:25]   [ComfyUI] [comfy-env] Scanning nodes metadata (isolation root)...
+[06:25]   [ComfyUI] [comfy-env] default: Library/bin has 236 DLLs
+[06:25]   [ComfyUI] [comfy-env] Metadata scan: C:\Users\stduser\.pixi\bin\pixi.exe run --as-is --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\pixi.toml -e default python C:\Users\stduser\AppData\Local\Temp\comfy_meta_6rl0r10b.py D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-MoGe2 nodes C:\Users\stduser\AppData\Local\Temp\comfy_meta_out_oxi11h_8.pkl
+[06:25]   [ComfyUI] [comfy-env] Scan env PATH for nodes:
+[06:25]   [ComfyUI] [comfy-env]   [0] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default
+[06:25]   [ComfyUI] [comfy-env]   [1] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default\Library\bin
+[06:25]   [ComfyUI] [comfy-env]   [2] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default\Scripts
+[06:25]   [ComfyUI] [comfy-env]   [3] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default\Lib\site-packages\bpy
+[06:25]   [ComfyUI] [comfy-env]   [4] C:\Windows\System32
+[06:25]   [ComfyUI] [comfy-env]   [5] C:\Windows
+[06:25]   [ComfyUI] [comfy-env]   [6] C:\Windows\System32\Wbem
+[06:32]   [ComfyUI] [comfy-env] Metadata scan stderr for nodes:
+[06:32]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-MoGe2
+[06:32]   [ComfyUI] [comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[06:32]   [ComfyUI] [comfy-env]   WARNING:root:comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+[06:32]   [ComfyUI] [comfy-env]   [meta-scan] import OK
+[06:32]   [ComfyUI] [comfy-env] Scanned nodes: 3 nodes (6.7s)
+[06:32]   [ComfyUI] [comfy-env] Scanned nodes root: 3 nodes (6.7s)
+[06:32]   [ComfyUI] [comfy-env] Imported nodes root: 3 nodes (isolation)
+[06:32]   [ComfyUI] [comfy-env] Registered 3 total nodes
+[06:32]   [ComfyUI] [comfy-env] Version: 0.4.1
+[06:32]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-PanoPack
+[06:32]   [ComfyUI] [comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI
+[06:32]   [ComfyUI] [comfy-env] Found 1 isolation env(s)
+[06:32]   [ComfyUI] [comfy-env] Scanning nodes metadata (isolation root)...
+[06:32]   [ComfyUI] [comfy-env] default: Library/bin has 565 DLLs
+[06:32]   [ComfyUI] [comfy-env] Metadata scan: C:\Users\stduser\.pixi\bin\pixi.exe run --as-is --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\pixi.toml -e default python C:\Users\stduser\AppData\Local\Temp\comfy_meta_cffm01e4.py D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-PanoPack nodes C:\Users\stduser\AppData\Local\Temp\comfy_meta_out_gizrxnez.pkl
+[06:32]   [ComfyUI] [comfy-env] Scan env PATH for nodes:
+[06:32]   [ComfyUI] [comfy-env]   [0] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default
+[06:32]   [ComfyUI] [comfy-env]   [1] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Library\bin
+[06:32]   [ComfyUI] [comfy-env]   [2] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Scripts
+[06:32]   [ComfyUI] [comfy-env]   [3] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\site-packages\bpy
+[06:32]   [ComfyUI] [comfy-env]   [4] C:\Windows\System32
+[06:32]   [ComfyUI] [comfy-env]   [5] C:\Windows
+[06:32]   [ComfyUI] [comfy-env]   [6] C:\Windows\System32\Wbem
+[06:32]   [ComfyUI] [comfy-env] Metadata scan stderr for nodes:
+[06:32]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-PanoPack
+[06:32]   [ComfyUI] [comfy-env]   Traceback (most recent call last):
+[06:32]   [ComfyUI] [comfy-env]     File "C:\Users\stduser\AppData\Local\Temp\comfy_meta_cffm01e4.py", line 65, in <module>
+[06:32]   [ComfyUI] [comfy-env]       module = importlib.import_module(package_name)
+[06:32]   [ComfyUI] [comfy-env]                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[06:32]   [ComfyUI] [comfy-env]     File "C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\importlib\__init__.py", line 90, in import_module
+[06:32]   [ComfyUI] [comfy-env]       return _bootstrap._gcd_import(name[level:], package, level)
+[06:32]   [ComfyUI] [comfy-env]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[06:32]   [ComfyUI] [comfy-env]     File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+[06:32]   [ComfyUI] [comfy-env]     File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+[06:32]   [ComfyUI] [comfy-env]     File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+[06:32]   [ComfyUI] [comfy-env]     File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+[06:32]   [ComfyUI] [comfy-env]     File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+[06:32]   [ComfyUI] [comfy-env]     File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+[06:32]   [ComfyUI] [comfy-env]     File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\__init__.py", line 3, in <module>
+[06:32]   [ComfyUI] [comfy-env]       from .panorama_type import (
+[06:32]   [ComfyUI] [comfy-env]     File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\panorama_type.py", line 5, in <module>
+[06:32]   [ComfyUI] [comfy-env]       from comfy_api.latest import io
+[06:32]   [ComfyUI] [comfy-env]     File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\comfy_api\latest\__init__.py", line 6, in <module>
+[06:32]   [ComfyUI] [comfy-env]       from ._input import ImageInput, AudioInput, MaskInput, LatentInput, VideoInput
+[06:32]   [ComfyUI] [comfy-env]     File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\comfy_api\latest\_input\__init__.py", line 1, in <module>
+[06:32]   [ComfyUI] [comfy-env]       from .basic_types import ImageInput, AudioInput, MaskInput, LatentInput
+[06:32]   [ComfyUI] [comfy-env]     File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\comfy_api\latest\_input\basic_types.py", line 1, in <module>
+[06:32]   [ComfyUI] [comfy-env]       import torch
+[06:32]   [ComfyUI] [comfy-env]   ModuleNotFoundError: No module named 'torch'
+[06:32]   [ComfyUI] [comfy-env] Metadata scan failed for nodes (exit 1, 0.3s):
+[06:32]   [ComfyUI] [comfy-env]       from .panorama_type import (
+[06:32]   [ComfyUI] [comfy-env]     File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\panorama_type.py", line 5, in <module>
+[06:32]   [ComfyUI] [comfy-env]       from comfy_api.latest import io
+[06:32]   [ComfyUI] [comfy-env]     File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\comfy_api\latest\__init__.py", line 6, in <module>
+[06:32]   [ComfyUI] [comfy-env]       from ._input import ImageInput, AudioInput, MaskInput, LatentInput, VideoInput
+[06:32]   [ComfyUI] [comfy-env]     File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\comfy_api\latest\_input\__init__.py", line 1, in <module>
+[06:32]   [ComfyUI] [comfy-env]       from .basic_types import ImageInput, AudioInput, MaskInput, LatentInput
+[06:32]   [ComfyUI] [comfy-env]     File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\comfy_api\latest\_input\basic_types.py", line 1, in <module>
+[06:32]   [ComfyUI] [comfy-env]       import torch
+[06:32]   [ComfyUI] [comfy-env]   ModuleNotFoundError: No module named 'torch'
+[06:32]   [ComfyUI] [comfy-env] Scanned nodes root: 0 nodes (0.3s)
+[06:32]   [ComfyUI] [comfy-env] Imported nodes root: 0 nodes (isolation)
+[06:32]   [ComfyUI] [comfy-env] Registered 0 total nodes
+[06:32]   [ComfyUI] [32m[INFO][0m
+[06:32]   [ComfyUI] Import times for custom nodes:
+[06:32]   [ComfyUI] [32m[INFO][0m    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\websocket_image_save.py
+[06:32]   [ComfyUI] [32m[INFO][0m    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
+[06:32]   [ComfyUI] [32m[INFO][0m    0.3 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-PanoPack
+[06:32]   [ComfyUI] [32m[INFO][0m    6.7 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-MoGe2
+[06:32]   [ComfyUI] [32m[INFO][0m   15.3 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\PanoPack-2337\ComfyUI\custom_nodes\ComfyUI-GeometryPack
+[06:32]   [ComfyUI] [32m[INFO][0m
+[06:33]   [ComfyUI] [32m[INFO][0m Context impl SQLiteImpl.
+[06:33]   [ComfyUI] [32m[INFO][0m Will assume non-transactional DDL.
+[06:33]   [ComfyUI] [32m[INFO][0m Context impl SQLiteImpl.
+[06:33]   [ComfyUI] [32m[INFO][0m Will assume non-transactional DDL.
+[06:33]   [ComfyUI] [32m[INFO][0m Running upgrade  -> 0001_assets, Initial assets schema
+[06:33]   [ComfyUI] Revision ID: 0001_assets
+[06:33]   [ComfyUI] Revises: None
+[06:33]   [ComfyUI] Create Date: 2025-12-10 00:00:00
+[06:33]   [ComfyUI] [32m[INFO][0m Running upgrade 0001_assets -> 0002_merge_to_asset_references, Merge AssetInfo and AssetCacheState into unified asset_references table.
+[06:33]   [ComfyUI] [32m[INFO][0m Running upgrade 0002_merge_to_asset_references -> 0003_add_metadata_job_id, Add system_metadata and job_id columns to asset_references.
+[06:33]   [ComfyUI] Change preview_id FK from assets.id to asset_references.id.
+[06:33]   [ComfyUI] [32m[INFO][0m Database upgraded from None to 0003_add_metadata_job_id
+[06:33]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[06:33]   [ComfyUI] [32m[INFO][0m Starting server
+[06:33]   [ComfyUI] 
+[06:33]   [ComfyUI] [32m[INFO][0m To see the GUI go to: http://127.0.0.1:41898
+[06:33] Server responding, waiting for nodes to load...
+[06:53] Server is ready!
+[06:53] Checking for import errors in server logs...
+[06:53] No import errors detected
+[06:54] Found 899 registered nodes
+[06:54] [REGISTRATION] PASSED
+[06:54] 
+[06:54] [4/5] INSTANTIATION
+[06:54] ----------------------------------------
+[06:54] 
+[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x000002515FF61D80>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000002515FF8D3C0>
+[06:54] Testing node constructors...
+[06:56] All 0 node(s) instantiated successfully!
+[06:56] [INSTANTIATION] PASSED
+[06:56] 
+[06:56] [5/5] EXECUTION
+[06:56] ----------------------------------------
+[06:56] 
+[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x000002515FF61D80>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000002515FF8D3C0>
+[06:56] CPU runner - will execute 9 workflow(s)
+[06:56] Running 13 workflow(s) (all with videos)...
+[06:56] Installing screenshot dependencies (playwright, pillow)...
+[06:58]   Packages installed, downloading chromium browser...
+[07:13]   Screenshot dependencies installed successfully
+[07:13] Starting headless browser...
+[07:14]   Downloading Mesa llvmpipe for Windows...
+[07:18]   Copied opengl32.dll to Chromium dir
+[07:18]   Copied libgallium_wgl.dll to Chromium dir
+[07:18]   Using Mesa llvmpipe (desktop GL) -- multithreaded CPU rendering
+[07:19]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:19] Capturing execution frames: 360_render.json
+[07:20]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:29]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[07:29]   Validating workflow...
+[07:29]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 11 nodes, missing class_type: [90,92,94,96], sample: {"inputs":{"file_path":"3d/pano_mesh.vtp"},"class_type":"GeomPackLoadMesh","_meta":{"title":"Load Mesh"}}
+[07:29]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:29] Capturing execution frames: cpu_depth_merge_mesh_pointcloud.json
+[07:29]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:29]   [ComfyUI] [1m[31m[ERROR][0m Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+[07:29]   [ComfyUI] handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+[07:29]   [ComfyUI] Traceback (most recent call last):
+[07:29]   [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\asyncio\events.py", line 88, in _run
+[07:29]   [ComfyUI]     self._context.run(self._callback, *self._args)
+[07:29]   [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+[07:29]   [ComfyUI]     self._sock.shutdown(socket.SHUT_RDWR)
+[07:29]   [ComfyUI] ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+[07:35]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[07:35]   Validating workflow...
+[07:35]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 17 nodes, missing class_type: [65,69,79,80,85], sample: {"inputs":{"image":"actual_pano_from_real_life.jpg"},"class_type":"LoadImage","_meta":{"title":"Load Image"}}
 [07:35]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:36]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:36] Capturing execution frames: cpu_depth_normal_conditioned.json
+[07:36]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
 [07:42]   Frame 1 saved (frame_000.jpg, t=0.0s)
 [07:42]   Validating workflow...
 [07:42]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 15 nodes, missing class_type: [58,59,60,87], sample: {"inputs":{"image":"pano.png"},"class_type":"LoadImage","_meta":{"title":"Load Image"}}
 [07:42]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
 [07:42]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[07:42] Capturing execution frames: cpu_plane_segmentation.json
-[07:42]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[07:42]   [ComfyUI] [1m[31m[ERROR][0m Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
-[07:42]   [ComfyUI] handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
-[07:42]   [ComfyUI] Traceback (most recent call last):
-[07:42]   [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\asyncio\events.py", line 88, in _run
-[07:42]   [ComfyUI]     self._context.run(self._callback, *self._args)
-[07:42]   [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
-[07:42]   [ComfyUI]     self._sock.shutdown(socket.SHUT_RDWR)
-[07:42]   [ComfyUI] ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+[07:43] Capturing execution frames: cpu_plane_segmentation.json
+[07:43]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:43]   [ComfyUI] [1m[31m[ERROR][0m Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+[07:43]   [ComfyUI] handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+[07:43]   [ComfyUI] Traceback (most recent call last):
+[07:43]   [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\asyncio\events.py", line 88, in _run
+[07:43]   [ComfyUI]     self._context.run(self._callback, *self._args)
+[07:43]   [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+[07:43]   [ComfyUI]     self._sock.shutdown(socket.SHUT_RDWR)
+[07:43]   [ComfyUI] ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
 [07:49]   Frame 1 saved (frame_000.jpg, t=0.0s)
 [07:49]   Validating workflow...
 [07:49]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 13 nodes, missing class_type: [65,84,103,107], sample: {"inputs":{"image":"actual_pano_from_real_life.jpg"},"class_type":"LoadImage","_meta":{"title":"Load Image"}}
 [07:49]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[07:49]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
 [07:49]   [5/13] SKIPPED (not in cpu list) depth_merge_mesh_pointcloud.json
-[07:49]   [6/13] SKIPPED (not in cpu list) gpu_depth_merge_mesh_pointcloud.json
-[07:49]   [7/13] SKIPPED (not in cpu list) gpu_depth_normal_conditioned.json
-[07:49]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:50]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:50]   [6/13] SKIPPED (not in cpu list) gpu_depth_merge_mesh_pointcloud.json
+[07:50]   [7/13] SKIPPED (not in cpu list) gpu_depth_normal_conditioned.json
 [07:50]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
 [07:50]   [8/13] SKIPPED (not in cpu list) gpu_plane_segmentation.json
-[07:50]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[07:50] Capturing execution frames: pano_crop.json
-[07:50]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[07:56]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[07:56]   Validating workflow...
-[07:56]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [65,87], sample: {"inputs":{"image":"actual_pano_from_real_life.jpg"},"class_type":"LoadImage","_meta":{"title":"Load Image"}}
+[07:51]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:51] Capturing execution frames: pano_crop.json
+[07:51]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[07:57]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[07:57]   Validating workflow...
+[07:57]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [65,87], sample: {"inputs":{"image":"actual_pano_from_real_life.jpg"},"class_type":"LoadImage","_meta":{"title":"Load Image"}}
 [07:57]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
 [07:57]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
 [07:57] Capturing execution frames: pano_info.json
@@ -512,33 +510,33 @@ Starting ComfyUI server...
 [08:03]   Validating workflow...
 [08:03]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 3 nodes, missing class_type: [2,3], sample: {"inputs":{"image":"pano.png"},"class_type":"LoadImage","_meta":{"title":"Load Image"}}
 [08:03]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[08:04]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[08:04] Capturing execution frames: panorama_shift.json
+[08:03]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[08:03] Capturing execution frames: panorama_shift.json
 [08:04]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
 [08:10]   Frame 1 saved (frame_000.jpg, t=0.0s)
 [08:10]   Validating workflow...
 [08:10]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 8 nodes, missing class_type: [2,3,4,7,8], sample: {"inputs":{"image":"pano.png"},"class_type":"LoadImage","_meta":{"title":"Load Image"}}
 [08:10]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[08:11]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[08:11] Capturing execution frames: preview_panorama.json
-[08:11]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[08:17]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[08:17]   Validating workflow...
-[08:17]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [2,4], sample: {"inputs":{"image":"pano.png"},"class_type":"LoadImage","_meta":{"title":"Load Image"}}
+[08:10]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[08:10] Capturing execution frames: preview_panorama.json
+[08:10]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[08:16]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[08:16]   Validating workflow...
+[08:16]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [2,4], sample: {"inputs":{"image":"pano.png"},"class_type":"LoadImage","_meta":{"title":"Load Image"}}
+[08:16]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
 [08:17]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[08:18]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[08:18] Capturing execution frames: test_wrap_unwrap.json
-[08:18]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[08:25]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[08:25]   Validating workflow...
-[08:25]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [2,3], sample: {"inputs":{"image":"pano.png"},"class_type":"LoadImage","_meta":{"title":"Load Image"}}
-[08:25]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[08:25] Results saved to D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\PanoPack-1844\dev\windows-cpu\results.json
-[08:25] Saved: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\PanoPack-1844\dev\windows-cpu\index.html
-[08:25] 
+[08:17] Capturing execution frames: test_wrap_unwrap.json
+[08:17]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[08:23]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[08:23]   Validating workflow...
+[08:23]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [2,3], sample: {"inputs":{"image":"pano.png"},"class_type":"LoadImage","_meta":{"title":"Load Image"}}
+[08:23]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[08:23] Results saved to D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\PanoPack-2337\dev\windows-cpu\results.json
+[08:23] Saved: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\PanoPack-2337\dev\windows-cpu\index.html
+[08:23] 
 windows: FAILED
-[08:25] Error: Workflow execution failed (9 error(s))
-[08:25] Details: 360_render.json: Workflow validation failed
+[08:23] Error: Workflow execution failed (9 error(s))
+[08:23] Details: 360_render.json: Workflow validation failed
 
 Details:
 graphToPrompt produced nodes without class_type: graphToPrompt: 11 nodes, missing class_type: [90,92,94,96], sample: {"inputs":{"file_path":"3d/pano_mesh.vtp"},"class_type":"GeomPackLoadMesh","_meta":{"title":"Load Mesh"}}
@@ -574,4 +572,4 @@ test_wrap_unwrap.json: Workflow validation failed
 
 Details:
 graphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [2,3], sample: {"inputs":{"image":"pano.png"},"class_type":"LoadImage","_meta":{"title":"Load Image"}}
-[08:25] Stopping ComfyUI server...
+[08:23] Stopping ComfyUI server...
