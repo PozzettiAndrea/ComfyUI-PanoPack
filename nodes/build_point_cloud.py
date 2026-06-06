@@ -80,13 +80,13 @@ class PanoramaBuildPointCloud(io.ComfyNode):
                 io.Boolean.Input(
                     "contract", default=False,
                     tooltip="Enable depth contraction: clip far depth to "
-                            "median × contract_beyond. Useful for outdoor "
+                            "median x contract_beyond. Useful for outdoor "
                             "scenes to cap distant background."),
                 io.Float.Input(
                     "contract_beyond",
                     default=8.0, min=1.0, max=64.0, step=0.5,
                     optional=True,
-                    tooltip="Clip far depth to median × this value. Only "
+                    tooltip="Clip far depth to median x this value. Only "
                             "used when 'contract' is enabled. Default 8.0 "
                             "matches upstream HY-World."),
                 io.Float.Input(

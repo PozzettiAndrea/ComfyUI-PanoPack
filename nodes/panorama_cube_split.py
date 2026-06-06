@@ -2,7 +2,7 @@
 
 Mirrors upstream `traj_generate.py:464-501` which generates the `pano_bank/`
 seed for PanoramaMemoryBank: 3 pitch levels (horizontal, +0.5z, -0.5z)
-× 9 yaw steps (40 deg) at 120 deg horizontal × 90 deg vertical FOV, all
+x 9 yaw steps (40 deg) at 120 deg horizontal x 90 deg vertical FOV, all
 from world origin with +Z up.
 
 Different from `ComfyUI-WorldNav.WorldNavPanoramaSplit`:
@@ -63,9 +63,9 @@ def _make_pano_debug_overlay_rect(
     """Rectangular-frustum version of PanoramaSplit's debug overlay.
 
     Draws each face's 4 frustum edges on the equirect panorama. Same
-    spherical convention as `panorama_split._make_pano_debug_overlay` —
+    spherical convention as `panorama_split._make_pano_debug_overlay` -
     only difference is the camera-space corners use separate half-FOVs
-    on x vs y so the rendered frustum matches the 832×480-ish aspect of
+    on x vs y so the rendered frustum matches the 832x480-ish aspect of
     the cube split (vs the square aspect of the icosahedron split).
     """
     import math
@@ -195,7 +195,7 @@ class PanoramaCubeSplit(io.ComfyNode):
                     display_name="extrinsics",
                     tooltip="Per-crop world-to-camera matrices [N, 4, 4] "
                             "(float32). Same N and ordering as face_images "
-                            "(3 pitches × N_view yaws). All cameras share "
+                            "(3 pitches x N_view yaws). All cameras share "
                             "the world origin (look-at from [0,0,0])."),
                 io.Custom("INTRINSICS").Output(
                     display_name="intrinsics",
@@ -208,7 +208,7 @@ class PanoramaCubeSplit(io.ComfyNode):
                     tooltip=(
                         "Original panorama with each crop's frustum edges "
                         "drawn on it (HSV-colored polylines, one color per "
-                        "crop in pitch×yaw order). Rectangular frustum "
+                        "crop in pitchxyaw order). Rectangular frustum "
                         "matches the cube split's separate fov_x / fov_y. "
                         "Visually confirms coverage of the sphere by the "
                         "27-crop grid and surfaces any rotation / look-at "
@@ -309,7 +309,7 @@ class PanoramaCubeSplit(io.ComfyNode):
             .unsqueeze(0).contiguous()
         )
 
-        # face_images output is the same tensor as entries["frames"] — exposed
+        # face_images output is the same tensor as entries["frames"] - exposed
         # separately so downstream depth nodes (MoGe2Inference) can wire in
         # without the entries dict in scope.
         return io.NodeOutput(

@@ -1,8 +1,8 @@
 """Stitch 6 cube-map faces into an equirectangular panorama via grid_sample.
 
-Faces are rendered with a FOV slightly wider than 90° so neighbouring faces
+Faces are rendered with a FOV slightly wider than 90deg so neighbouring faces
 overlap, and the overlap is blended with a smooth feather weight. This removes
-the visible seams you get from hard-cutting each face at exactly its 90° edge
+the visible seams you get from hard-cutting each face at exactly its 90deg edge
 (where antialiased face-vs-background pixels otherwise leave stitch lines).
 """
 
@@ -15,14 +15,14 @@ import torch
 import torch.nn.functional as F
 
 
-# Render each cube face at this FOV (degrees). >90° gives an overlap margin of
+# Render each cube face at this FOV (degrees). >90deg gives an overlap margin of
 # (FACE_FOV_DEG - 90)/2 degrees on every side for the feather blend to work in.
 # Renderers import this so the render FOV and the stitch geometry stay in sync.
 FACE_FOV_DEG = 100.0
 
 
 # Cube face order: +X, -X, +Y, -Y, +Z, -Z
-# Each entry: (right, up, forward) as unit vectors — defines the camera
+# Each entry: (right, up, forward) as unit vectors - defines the camera
 # basis for each cube face, looking INWARD from origin.
 _CUBE_FACES = [
     # +X: look right

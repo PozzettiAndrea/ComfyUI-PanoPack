@@ -65,19 +65,19 @@ def normalize_pano_tensor(image: torch.Tensor) -> torch.Tensor:
 def wrap_image_as_panorama(
     image: torch.Tensor, meta: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """IMAGE → PANORAMA. Validates 2:1 aspect; raises otherwise."""
+    """IMAGE -> PANORAMA. Validates 2:1 aspect; raises otherwise."""
     img = normalize_pano_tensor(image)
     if not is_two_to_one(img):
         _, h, w, _ = img.shape
         raise ValueError(
-            f"PANORAMA expects 2:1 equirect (W == 2·H), got {w}x{h} "
+            f"PANORAMA expects 2:1 equirect (W == 2.H), got {w}x{h} "
             f"(aspect {w/max(h,1):.3f}). Crop / pad the input to 2:1 first."
         )
     return {"image": img, "meta": dict(meta) if meta else {}}
 
 
 def unwrap_panorama_to_image(pano: dict[str, Any] | torch.Tensor) -> torch.Tensor:
-    """PANORAMA → IMAGE. Accepts either the dict payload or a raw tensor
+    """PANORAMA -> IMAGE. Accepts either the dict payload or a raw tensor
     (passthrough convenience for upstream nodes that emit IMAGE directly).
     """
     if isinstance(pano, dict):
@@ -104,8 +104,8 @@ def panorama_shift_horizontal(
     and smooth for fractional ones.
 
     Sign convention: positive yaw rotates the scene RIGHT (camera turns
-    LEFT) — i.e. content at u_pixel=0 moves toward u_pixel=+shift_pixels.
-    This matches the visual expectation when you say "rotate +90°".
+    LEFT) - i.e. content at u_pixel=0 moves toward u_pixel=+shift_pixels.
+    This matches the visual expectation when you say "rotate +90deg".
     """
     import torch.nn.functional as F
 
@@ -125,7 +125,7 @@ def panorama_shift_horizontal(
         return img.contiguous()
 
     # Sub-pixel residual via grid_sample. Build a sampling grid that maps
-    # output pixel (x, y) → input pixel (x − frac_shift, y), with x
+    # output pixel (x, y) -> input pixel (x - frac_shift, y), with x
     # wrapping around the seam via padding_mode='zeros' + an explicit
     # circular pad along W.
     # Wrap input along W by 1 pixel on each side so the bilinear sample
@@ -137,7 +137,7 @@ def panorama_shift_horizontal(
     ys = torch.arange(h, dtype=torch.float32, device=device)
     xs = torch.arange(w, dtype=torch.float32, device=device)
     # In sampling-grid coords, +frac_shift content-right means we sample
-    # from a position to the LEFT in the input → subtract.
+    # from a position to the LEFT in the input -> subtract.
     xs_sample = xs - frac_shift + 1.0  # +1 accounts for the leading wrap pixel
     # Normalize to [-1, +1] for grid_sample with align_corners=True over
     # the wrapped width of (W + 2) input pixels.
@@ -186,7 +186,7 @@ def panorama_shift_pitch(
     v = torch.linspace(0.5, h - 0.5, h, device=device)  # [0, H)
     grid_v, grid_u = torch.meshgrid(v, u, indexing="ij")  # (H, W)
 
-    # Output pixel → spherical angles (longitude, latitude)
+    # Output pixel -> spherical angles (longitude, latitude)
     lon = (grid_u / w) * 2.0 * math.pi - math.pi       # [-pi, pi]
     lat = (grid_v / h) * math.pi - (math.pi / 2.0)      # [-pi/2, pi/2] (top=-pi/2, bottom=pi/2)
 
@@ -203,7 +203,7 @@ def panorama_shift_pitch(
     lon_src = torch.atan2(x, z)
     lat_src = torch.asin(y.clamp(-1.0, 1.0))
 
-    # Spherical angles → input pixel coordinates, normalized to [-1, 1]
+    # Spherical angles -> input pixel coordinates, normalized to [-1, 1]
     u_src = (lon_src + math.pi) / (2.0 * math.pi)   # [0, 1]
     v_src = (lat_src + math.pi / 2.0) / math.pi      # [0, 1]
     norm_x = u_src * 2.0 - 1.0   # [-1, 1]
@@ -221,18 +221,18 @@ def panorama_shift_pitch(
 
 
 def border_continuity_score(image: torch.Tensor) -> dict[str, float]:
-    """Quantify how seamless an equirect is at its ±π wrap and ±π/2 poles.
+    """Quantify how seamless an equirect is at its +/-pi wrap and +/-pi/2 poles.
 
     Returns a dict of per-axis scores in [0, 1] where 1.0 = perfectly
     continuous, 0 = fully discontinuous.
 
     - `seam`: similarity between leftmost and rightmost columns
-      (E[1 − |L − R|] across all channels and rows). Penalises
+      (E[1 - |L - R|] across all channels and rows). Penalises
       generative wraparound seams.
     - `north_pole_var`, `south_pole_var`: how uniform the top / bottom
       rows are. At a true pole, all pixels along a row image the SAME
       world point (a singularity); good panoramas have near-constant
-      polar rows. Reported as 1 − clip(std, 0, 1).
+      polar rows. Reported as 1 - clip(std, 0, 1).
     - `aspect_ratio`: the actual W/H of the input (informational).
     """
     img = normalize_pano_tensor(image)

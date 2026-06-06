@@ -1,8 +1,8 @@
-"""PanoramaFacesPlaneSegment — per-face plane-instance segmentation via
+"""PanoramaFacesPlaneSegment - per-face plane-instance segmentation via
 Open3D RANSAC on a backprojected point cloud.
 
 Algorithm (per face, independent):
-  1. Backproject MoGe-2 depth → 3D point cloud (or consume `points_raw`
+  1. Backproject MoGe-2 depth -> 3D point cloud (or consume `points_raw`
      directly). Attach normals if provided so RANSAC scores inlier
      consistency by point-to-plane distance AND normal alignment.
   2. Iteratively call `pcd.segment_plane(distance_threshold, ransac_n=3,
@@ -13,16 +13,16 @@ Algorithm (per face, independent):
   4. DBSCAN cluster inliers to split disconnected coplanar pieces
      (e.g. two parallel walls behind / in front of the camera).
   5. Project per-cluster labels back to the image grid via the
-     pixel→point-index map.
+     pixel->point-index map.
 
 Output: per-face plane-instance MASK + RGB visualization.
 
 Each face gets its own LOCAL plane IDs (1, 2, 3, ...; 0 = background /
-no plane). Cross-face consistency is NOT enforced here — feed the
+no plane). Cross-face consistency is NOT enforced here - feed the
 output into MeshSegmenter's `Lift2DTo3DLabels` (samesh algorithm) to
 unify labels across views via a mesh.
 
-Per-face inference: ~30-100 ms on CPU at 512×512.
+Per-face inference: ~30-100 ms on CPU at 512x512.
 """
 
 from __future__ import annotations
@@ -80,11 +80,11 @@ def _segment_planes_one_face(
     callers can identify which face the line belongs to (e.g. "5/42").
 
     `use_gpu=True` routes the RANSAC plane fit through
-    `torch_ransac3d.plane.plane_fit` on CUDA (typical ~30-50× speedup
+    `torch_ransac3d.plane.plane_fit` on CUDA (typical ~30-50x speedup
     on 2.4M-point faces). Falls back to Open3D's CPU `segment_plane`
     if `torch-ransac3d` isn't installed or CUDA isn't available.
-    DBSCAN clustering stays on CPU regardless — only the plane fit
-    moves to GPU (it's the dominant cost at 1536² resolution).
+    DBSCAN clustering stays on CPU regardless - only the plane fit
+    moves to GPU (it's the dominant cost at 1536^2 resolution).
     """
     import open3d as o3d
 
@@ -92,7 +92,7 @@ def _segment_planes_one_face(
     H, W = points.shape[:2]
     label_map = np.zeros((H, W), dtype=np.int32)
 
-    # Flatten + mask. Track pixel-index ↔ point-index correspondence.
+    # Flatten + mask. Track pixel-index <-> point-index correspondence.
     pts_flat = points.reshape(-1, 3).astype(np.float64)
     valid_flat = valid.reshape(-1).astype(bool)
     pixel_indices = np.where(valid_flat)[0]
@@ -136,7 +136,7 @@ def _segment_planes_one_face(
     remaining = np.arange(n_total)
     plane_id = 1
     n_skipped_normal = 0
-    # GPU RANSAC batch — auto-shrunk on OOM (the (N x per_batch) distance tensor
+    # GPU RANSAC batch - auto-shrunk on OOM (the (N x per_batch) distance tensor
     # is the VRAM hog on full-panorama point counts) before any CPU fallback.
     cur_per_batch = int(ransac_iterations_per_batch)
     attempt = 0
@@ -162,7 +162,7 @@ def _segment_planes_one_face(
                     device=pts_gpu.device,
                 )
             except RuntimeError as e:
-                # OOM (or any CUDA runtime error) — common when a single face is
+                # OOM (or any CUDA runtime error) - common when a single face is
                 # a full equirect panorama (~7M pts): the (N x per_batch) distance
                 # tensor blows up VRAM. First shrink the batch (keeps the GPU
                 # speedup); only fall back to Open3D CPU once it can't shrink.
@@ -233,15 +233,15 @@ def _segment_planes_one_face(
             n_kept = int(consistent.sum())
             if n_kept < dbscan_min_points:
                 _p(f"    {tag}normal-filter REJECT: only {n_kept}/{n_inliers_raw} "
-                   f"inliers have |cos|≥{normal_consistency_threshold:.2f} "
+                   f"inliers have |cos|>={normal_consistency_threshold:.2f} "
                    f"(< dbscan_min_points={dbscan_min_points})")
-                # Plane doesn't pass the normal sanity check — strip those
+                # Plane doesn't pass the normal sanity check - strip those
                 # inliers from contention and try the next one.
                 remaining = np.setdiff1d(remaining, global_inliers, assume_unique=False)
                 n_skipped_normal += 1
                 continue
             _p(f"    {tag}normal-filter: kept {n_kept}/{n_inliers_raw} inliers "
-               f"(|cos|≥{normal_consistency_threshold:.2f})")
+               f"(|cos|>={normal_consistency_threshold:.2f})")
             # Keep only the normal-consistent subset.
             global_inliers = global_inliers[consistent]
 
@@ -277,28 +277,28 @@ def _segment_planes_one_face(
             ys = pix_idx // W
             xs = pix_idx % W
             label_map[ys, xs] = plane_id
-            _p(f"      {tag}→ label_id={plane_id}, {csize} px")
+            _p(f"      {tag}-> label_id={plane_id}, {csize} px")
             plane_id += 1
             any_accepted = True
             if plane_id > max_planes:
                 break
 
         # Remove this plane's inliers from contention regardless of
-        # whether any cluster was kept — we don't want to refit them.
+        # whether any cluster was kept - we don't want to refit them.
         remaining = np.setdiff1d(remaining, global_inliers, assume_unique=False)
 
         if not any_accepted:
             # All clusters too small; treat as ineffective attempt but
             # keep iterating until budgets run out.
-            _p(f"    {tag}(no cluster ≥ dbscan_min_points; inliers retired)")
+            _p(f"    {tag}(no cluster >= dbscan_min_points; inliers retired)")
 
     else:
-        # `while` exited normally on its condition — figure out which.
+        # `while` exited normally on its condition - figure out which.
         if plane_id > max_planes:
             exit_reason = f"max_planes_per_face={max_planes} hit"
         elif len(remaining) <= min_remaining:
             exit_reason = (
-                f"remaining={len(remaining)} ≤ min_remaining={min_remaining} "
+                f"remaining={len(remaining)} <= min_remaining={min_remaining} "
                 f"(min_inlier_fraction={min_inlier_fraction:.3f} of {n_total})"
             )
 
@@ -325,9 +325,9 @@ class PanoramaFacesPlaneSegment(io.ComfyNode):
                 "normal map; returns per-face per-pixel plane-instance "
                 "labels via iterative Open3D RANSAC + DBSCAN-split + "
                 "optional normal-consistency filtering.\n\n"
-                "Each face gets independent LOCAL plane IDs (1, 2, 3, …; "
+                "Each face gets independent LOCAL plane IDs (1, 2, 3, ...; "
                 "0 = no plane). Cross-face consistency is NOT enforced "
-                "here — feed the output into MeshSegmenter's "
+                "here - feed the output into MeshSegmenter's "
                 "`Lift2DTo3DLabels` (samesh algorithm) to unify labels "
                 "globally via the merged mesh."
             ),
@@ -340,7 +340,7 @@ class PanoramaFacesPlaneSegment(io.ComfyNode):
                             "from a panorama split."),
                 io.Image.Input(
                     "face_normals", optional=True,
-                    tooltip="Per-face surface normals (B, H, W, 3) — "
+                    tooltip="Per-face surface normals (B, H, W, 3) - "
                             "MoGe-2's `normal` output. Used for the "
                             "normal-consistency filter: planes whose "
                             "RANSAC normal disagrees with the inlier "
@@ -356,14 +356,14 @@ class PanoramaFacesPlaneSegment(io.ComfyNode):
                     "use_gpu", default=True, optional=True,
                     tooltip="Run the RANSAC plane fit on CUDA via "
                             "`torch-ransac3d.plane.plane_fit` instead of "
-                            "Open3D's CPU `segment_plane`. ~30-50× faster "
-                            "on 2.4M-point faces (1536²) at typical "
+                            "Open3D's CPU `segment_plane`. ~30-50x faster "
+                            "on 2.4M-point faces (1536^2) at typical "
                             "ransac_iterations=1000. Falls back to CPU "
                             "Open3D automatically if `torch-ransac3d` "
                             "isn't installed or CUDA isn't available "
                             "(prints a fallback line per face).\n\n"
                             "DBSCAN clustering stays on Open3D CPU "
-                            "regardless — it's the smaller cost at this "
+                            "regardless - it's the smaller cost at this "
                             "scale."),
                 io.Int.Input(
                     "ransac_iterations_per_batch", default=200, min=50,
@@ -371,8 +371,8 @@ class PanoramaFacesPlaneSegment(io.ComfyNode):
                     tooltip="GPU-only: number of RANSAC iterations "
                             "processed per parallel batch in "
                             "`torch_ransac3d`. The (N, K) distance "
-                            "tensor scales as `points × batch`; with "
-                            "200 batch × 2.4M points × 4B = ~1.9 GB "
+                            "tensor scales as `points x batch`; with "
+                            "200 batch x 2.4M points x 4B = ~1.9 GB "
                             "peak. Lower if you OOM, raise if you have "
                             "VRAM headroom (faster, fewer kernel "
                             "launches). Ignored when use_gpu=False."),
@@ -397,7 +397,7 @@ class PanoramaFacesPlaneSegment(io.ComfyNode):
                     max=0.5, step=0.001, optional=True,
                     tooltip="Stop iterating once remaining unsegmented "
                             "fraction falls below this. 0.02 = stop "
-                            "when ≤ 2% of the point cloud is still "
+                            "when <= 2% of the point cloud is still "
                             "unsegmented."),
                 io.Int.Input(
                     "ransac_iterations", default=1000, min=100, max=10000,
@@ -405,7 +405,7 @@ class PanoramaFacesPlaneSegment(io.ComfyNode):
                     tooltip="Open3D RANSAC iterations per plane fit. "
                             "1000 is fast (~5-15 ms per plane); bump to "
                             "5000 for higher robustness on noisy point "
-                            "clouds at a ~3-5× speed cost."),
+                            "clouds at a ~3-5x speed cost."),
                 io.Float.Input(
                     "dbscan_eps", default=0.05, min=0.001, max=2.0,
                     step=0.001, optional=True,
@@ -425,12 +425,12 @@ class PanoramaFacesPlaneSegment(io.ComfyNode):
                     min=0.0, max=1.0, step=0.01, optional=True,
                     tooltip="Cosine-similarity threshold between the "
                             "RANSAC plane normal and per-pixel inlier "
-                            "normals. Pixels with |n_pixel · n_plane| < "
+                            "normals. Pixels with |n_pixel . n_plane| < "
                             "threshold are stripped from the plane's "
                             "inlier set. If too few survive, the plane "
                             "is rejected entirely.\n\n"
-                            "0.85 ≈ 30° tolerance (reasonable default). "
-                            "0.95 ≈ 18° (strict). 0.0 disables the "
+                            "0.85 ~= 30deg tolerance (reasonable default). "
+                            "0.95 ~= 18deg (strict). 0.0 disables the "
                             "filter. Requires `face_normals` to be "
                             "wired; otherwise this parameter has no "
                             "effect."),
@@ -439,9 +439,9 @@ class PanoramaFacesPlaneSegment(io.ComfyNode):
                 io.Mask.Output(
                     display_name="plane_labels",
                     tooltip="(B, H, W) per-face plane-instance MASK. "
-                            "Pixel value = plane ID (1, 2, 3, …) within "
+                            "Pixel value = plane ID (1, 2, 3, ...) within "
                             "the face. 0 = no plane / background. IDs "
-                            "are LOCAL to each face — face 0 and face 1 "
+                            "are LOCAL to each face - face 0 and face 1 "
                             "both use IDs 1..N, NOT shared."),
                 io.Image.Output(
                     display_name="plane_visualization",
@@ -497,21 +497,21 @@ class PanoramaFacesPlaneSegment(io.ComfyNode):
             n = n.astype(np.float32, copy=False)
             # Auto-detect normal encoding. MoGe-2's ComfyUI `normal` output
             # is RGB-encoded `(n + 1) / 2` so it can flow on the IMAGE
-            # socket — range [0, 1], NOT [-1, +1]. Some other models emit
-            # raw signed normals. Heuristic: if the global min ≥ -0.05,
+            # socket - range [0, 1], NOT [-1, +1]. Some other models emit
+            # raw signed normals. Heuristic: if the global min >= -0.05,
             # treat as RGB-encoded and decode. Otherwise treat as raw.
             n_min = float(n.min())
             n_max = float(n.max())
             if n_min >= -0.05:
                 _p(
                     f"normals: RGB-encoded detected (range "
-                    f"[{n_min:.3f}, {n_max:.3f}] ⊂ [0, 1]) → decoding via 2·x−1"
+                    f"[{n_min:.3f}, {n_max:.3f}]  subset of  [0, 1]) -> decoding via 2.x-1"
                 )
                 n = 2.0 * n - 1.0
             else:
                 _p(
                     f"normals: signed range detected "
-                    f"[{n_min:.3f}, {n_max:.3f}] → using as-is"
+                    f"[{n_min:.3f}, {n_max:.3f}] -> using as-is"
                 )
         else:
             n = None
@@ -554,7 +554,7 @@ class PanoramaFacesPlaneSegment(io.ComfyNode):
             f"normal_cos_thresh={normal_consistency_threshold:.2f}"
         )
 
-        # ComfyUI progress bar (best-effort — not available in some test envs).
+        # ComfyUI progress bar (best-effort - not available in some test envs).
         try:
             import comfy.utils
             pbar = comfy.utils.ProgressBar(N)
@@ -657,7 +657,7 @@ class PanoramaFacesPlaneSegment(io.ComfyNode):
         info = "\n".join(info_lines)
 
         _p(
-            f"DONE: {N} faces → {total_planes} total planes "
+            f"DONE: {N} faces -> {total_planes} total planes "
             f"in {dt_total:.2f}s "
             f"(min={cnt_min}/med={cnt_med}/max={cnt_max} planes/face, "
             f"zero-plane faces: {cnt_zero})"

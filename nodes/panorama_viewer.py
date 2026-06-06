@@ -1,4 +1,4 @@
-"""PanoramaViewer — save the equirect + interactive 360° viewer in ComfyUI."""
+"""PanoramaViewer - save the equirect + interactive 360deg viewer in ComfyUI."""
 
 from __future__ import annotations
 
@@ -56,7 +56,7 @@ def _crop_perspective(np_img, center_u, center_v, fov_h, fov_v, out_w, out_h):
 
 
 class PanoramaViewer(io.ComfyNode):
-    """Save a panorama as PNG, display in 360° viewer, and output a perspective crop."""
+    """Save a panorama as PNG, display in 360deg viewer, and output a perspective crop."""
 
     @classmethod
     def define_schema(cls):
@@ -67,7 +67,7 @@ class PanoramaViewer(io.ComfyNode):
             is_output_node=True,
             description=(
                 "Save the input panorama to ComfyUI/output/ and display it "
-                "in an interactive 360° viewer.\n\n"
+                "in an interactive 360deg viewer.\n\n"
                 "Also outputs a perspective crop of the current view "
                 "(based on initial_yaw / initial_pitch and crop_fov). "
                 "Use this to preview what a camera at that angle sees.\n\n"
@@ -81,10 +81,10 @@ class PanoramaViewer(io.ComfyNode):
                     tooltip="The panorama to display."),
                 io.Int.Input(
                     "viewer_width", default=512, min=128, max=4096, step=64,
-                    tooltip="Width of the 360° viewer widget in pixels."),
+                    tooltip="Width of the 360deg viewer widget in pixels."),
                 io.Int.Input(
                     "viewer_height", default=512, min=128, max=4096, step=64,
-                    tooltip="Height of the 360° viewer widget in pixels."),
+                    tooltip="Height of the 360deg viewer widget in pixels."),
                 io.Float.Input(
                     "initial_yaw", default=0.0, min=-180.0, max=180.0, step=1.0,
                     tooltip="Initial yaw (longitude) in degrees for the "
@@ -149,8 +149,8 @@ class PanoramaViewer(io.ComfyNode):
         )
         crop_t = torch.from_numpy(crop_np).unsqueeze(0).clamp(0, 1)
 
-        # Note: intentionally NOT including an "images" key here — that would
-        # make ComfyUI render a full-size preview below the node. The 360°
+        # Note: intentionally NOT including an "images" key here - that would
+        # make ComfyUI render a full-size preview below the node. The 360deg
         # viewer is driven entirely by the "panorama" payload below.
         ui_payload = {
             "panorama": [{

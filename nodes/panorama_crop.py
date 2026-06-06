@@ -1,4 +1,4 @@
-"""PanoCrop — extract a perspective (rectilinear) crop from an equirect."""
+"""PanoCrop - extract a perspective (rectilinear) crop from an equirect."""
 
 from __future__ import annotations
 

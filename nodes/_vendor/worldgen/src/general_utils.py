@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 from PIL import Image
-# decord is lazy-imported inside load_video() — not in WorldNav's comfy-env,
+# decord is lazy-imported inside load_video() - not in WorldNav's comfy-env,
 # and the trajectory-planning path doesn't call load_video anyway.
 from matplotlib.colors import Normalize
 
@@ -108,7 +108,7 @@ def load_video(video_path):
 
 def get_last_video_frame(video_path):
     """decord supports random access, so read the last frame directly by index."""
-    from decord import VideoReader, cpu  # lazy import — see top of file
+    from decord import VideoReader, cpu  # lazy import - see top of file
     vr = VideoReader(video_path, ctx=cpu(0))
     last_frame = vr[-1].asnumpy()  # Directly index the last frame; decord seeks internally
     return last_frame
@@ -133,10 +133,10 @@ def save_video(
     """
     # 1. Validate input shape
     if len(frames.shape) != 4:
-        raise ValueError(f"输入帧形状必须为 (f, h, w, c)，当前形状：{frames.shape}")
+        raise ValueError(f"Input frame shape must be (f, h, w, c); got {frames.shape}")
     f, h, w, c = frames.shape
     if c not in [1, 3]:
-        raise ValueError(f"通道数必须为1（灰度）或3（彩色），当前通道数：{c}")
+        raise ValueError(f"Channel count must be 1 (grayscale) or 3 (color); got {c}")
 
     # 2. Convert uniformly to uint8 (0-255)
     processed_frames = frames.copy()
@@ -148,11 +148,11 @@ def save_video(
         # Clip uint8 outliers directly to 0-255
         processed_frames = np.clip(processed_frames, 0, 255)
     else:
-        raise TypeError(f"仅支持 float32/uint8 类型，当前类型：{processed_frames.dtype}")
+        raise TypeError(f"Only float32/uint8 types supported; got {processed_frames.dtype}")
 
     # 3. Expand single-channel grayscale to 3 channels for codec compatibility
     if c == 1:
-        processed_frames = np.repeat(processed_frames, 3, axis=-1)  # (f,h,w,1) → (f,h,w,3)
+        processed_frames = np.repeat(processed_frames, 3, axis=-1)  # (f,h,w,1) -> (f,h,w,3)
 
     # 4. Write the video at the specified FPS
     with imageio.get_writer(output_path, fps=fps, codec=codec) as writer:

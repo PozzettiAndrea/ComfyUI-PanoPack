@@ -1,4 +1,4 @@
-"""PanoramaInfo — diagnostics + quality scoring for an equirect."""
+"""PanoramaInfo - diagnostics + quality scoring for an equirect."""
 
 from __future__ import annotations
 
@@ -26,12 +26,12 @@ class PanoramaInfo(io.ComfyNode):
             description=(
                 "Inspect an equirect panorama: resolution, aspect, value "
                 "range, and a border-continuity quality score.\n\n"
-                "  seam ∈ [0, 1]: 1.0 = pixel-perfect ±π wraparound, "
-                "0 = visible seam. Computed as 1 − mean(|left_col − "
+                "  seam  in  [0, 1]: 1.0 = pixel-perfect +/-pi wraparound, "
+                "0 = visible seam. Computed as 1 - mean(|left_col - "
                 "right_col|) across all channels.\n"
-                "  north_pole_var / south_pole_var ∈ [0, 1]: 1.0 = "
+                "  north_pole_var / south_pole_var  in  [0, 1]: 1.0 = "
                 "perfectly uniform polar row (a true pole is a "
-                "singularity — all pixels image the same world point). "
+                "singularity - all pixels image the same world point). "
                 "Lower scores indicate the panorama wasn't generated / "
                 "captured with pole-awareness."
             ),
@@ -64,13 +64,13 @@ class PanoramaInfo(io.ComfyNode):
         info = (
             f"Panorama Info\n"
             f"=============\n"
-            f"Shape:          {b} × {h} × {w} × {c}\n"
+            f"Shape:          {b} x {h} x {w} x {c}\n"
             f"Aspect ratio:   {scores['aspect_ratio']:.4f}  (2.0 = perfect equirect)\n"
             f"Value range:    min={vmin:.4f}  median={vmed:.4f}  max={vmax:.4f}\n"
             f"\n"
             f"Border continuity\n"
             f"-----------------\n"
-            f"  ±π seam        : {scores['seam']:.4f}   "
+            f"  +/-pi seam        : {scores['seam']:.4f}   "
             f"({'seamless' if scores['seam'] > 0.95 else 'visible seam' if scores['seam'] < 0.7 else 'mild seam'})\n"
             f"  north pole var : {scores['north_pole_var']:.4f}   "
             f"({'uniform' if scores['north_pole_var'] > 0.95 else 'not pole-aware' if scores['north_pole_var'] < 0.7 else 'mild'})\n"

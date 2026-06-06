@@ -1,7 +1,7 @@
 from collections import defaultdict
 from typing import Optional, Literal, List
 
-# cupy stripped — see solve_lsmr_gpu below (now CPU via scipy).
+# cupy stripped - see solve_lsmr_gpu below (now CPU via scipy).
 import cv2
 import numpy as np
 import open3d as o3d
@@ -13,11 +13,11 @@ from PIL import Image
 from scipy.sparse import csr_matrix as cp_csr_matrix
 from scipy.sparse.linalg import lsmr as cp_lsmr
 # `convolve`, `vstack`, `grad_equation`, `poisson_equation` are lazy-imported
-# inside merge_panorama_depth_gpu — that function is the cube-face stitcher
+# inside merge_panorama_depth_gpu - that function is the cube-face stitcher
 # used by upstream's pred_pano_depth, which WorldNav doesn't call (MoGe is
 # externalized to a sibling ComfyUI node). The moge dep stays optional.
 # `List` was imported from moge.utils.panorama but is actually re-exported
-# from typing — sourcing directly from typing above.
+# from typing - sourcing directly from typing above.
 from scipy.sparse import csr_array
 from tqdm import tqdm
 
@@ -37,7 +37,7 @@ def subdivide_icosahedron(subdivisions: int = 1) -> np.ndarray:
     Returns:
         vertices: (N, 3) Subdivided vertex coordinates on the unit sphere.
     """
-    # utils3d renamed `icosahedron()` → `create_icosahedron_mesh()`.
+    # utils3d renamed `icosahedron()` -> `create_icosahedron_mesh()`.
     vertices, faces = utils3d.numpy.create_icosahedron_mesh()
 
     # Convert to a list so new vertices can be appended dynamically.
@@ -290,12 +290,12 @@ def solve_lsmr_gpu(A, b, x0=None, atol=1e-5, btol=1e-5, conlim=0.0,
 
     Same Golub-Kahan bidiagonalization + Givens-rotation update steps as
     scipy.sparse.linalg.lsmr (Fong & Saunders 2011), but the entire iteration
-    runs through torch tensors — the big work vectors u, v, h, hbar, x live
+    runs through torch tensors - the big work vectors u, v, h, hbar, x live
     on the GPU; only the ~6 scalar Givens reductions per iteration come back
-    to the host. Eliminates the per-iteration host↔device round-trip that
-    the old `_TorchSparseLinearOperator` paid (matvec → .cpu().numpy() →
-    scipy numpy ops → as_tensor → next matvec). For a 1920×960 panorama
-    solve that's ~600 iterations × 4 transfers × 7 MB ≈ 30 GB of avoided
+    to the host. Eliminates the per-iteration host<->device round-trip that
+    the old `_TorchSparseLinearOperator` paid (matvec -> .cpu().numpy() ->
+    scipy numpy ops -> as_tensor -> next matvec). For a 1920x960 panorama
+    solve that's ~600 iterations x 4 transfers x 7 MB ~= 30 GB of avoided
     PCIe traffic.
 
     Numerical behaviour vs scipy fp64 CPU: SpMV runs in fp32 on cuSPARSE
@@ -309,11 +309,11 @@ def solve_lsmr_gpu(A, b, x0=None, atol=1e-5, btol=1e-5, conlim=0.0,
                  anything `csr_matrix(...)` accepts).
         b:       numpy 1-D vector, length A.shape[0].
         x0:      optional initial guess, length A.shape[1].
-        atol,    stopping tolerances — same semantics as scipy.sparse.linalg.lsmr.
+        atol,    stopping tolerances - same semantics as scipy.sparse.linalg.lsmr.
         btol:    `atol` controls ||A^T r||/(||A|| ||r||) test, `btol` the
                  ||r||/||b|| test.
         conlim:  if > 0, also stop when an estimate of cond(A) exceeds
-                 conlim. Default 0 = disabled — the old GPU path with a
+                 conlim. Default 0 = disabled - the old GPU path with a
                  host-side LinearOperator triggered scipy's `condA` cast
                  to overflow at lsmr.py:407 because fp32 SpMV outputs
                  didn't match scipy's fp64 expectations; skipping the
@@ -360,10 +360,10 @@ def solve_lsmr_gpu(A, b, x0=None, atol=1e-5, btol=1e-5, conlim=0.0,
         size=AT_csr.shape,
     )
 
-    def _matvec(vec):  # vec: (n,) → (m,)
+    def _matvec(vec):  # vec: (n,) -> (m,)
         return torch.sparse.mm(A_gpu, vec.unsqueeze(-1)).squeeze(-1)
 
-    def _rmatvec(vec):  # vec: (m,) → (n,)
+    def _rmatvec(vec):  # vec: (m,) -> (n,)
         return torch.sparse.mm(AT_gpu, vec.unsqueeze(-1)).squeeze(-1)
 
     # --- Upload b (and x0 if given). ---
@@ -458,7 +458,7 @@ def solve_lsmr_gpu(A, b, x0=None, atol=1e-5, btol=1e-5, conlim=0.0,
         zeta = cbar * zetabar
         zetabar = -sbar * zetabar
 
-        # Update h, hbar, x — fused in-place AXPYs on GPU.
+        # Update h, hbar, x - fused in-place AXPYs on GPU.
         hbar.mul_(-(thetabar * rho / (rhoold * rhobarold))).add_(h)
         x.add_(hbar, alpha=(zeta / (rho * rhobar)))
         h.mul_(-(thetanew / rho)).add_(v)
@@ -485,7 +485,7 @@ def solve_lsmr_gpu(A, b, x0=None, atol=1e-5, btol=1e-5, conlim=0.0,
         normA = sqrt(normA2)
         normA2 = normA2 + alpha * alpha
 
-        # Estimate cond(A) — only if user asked (conlim > 0). Skipping the
+        # Estimate cond(A) - only if user asked (conlim > 0). Skipping the
         # whole block saves a handful of host ops AND avoids scipy's
         # `condA = max(...)/min(...)` fp32 cast overflow that polluted the
         # old GPU log with RuntimeWarnings.
@@ -531,7 +531,7 @@ def solve_lsmr_gpu(A, b, x0=None, atol=1e-5, btol=1e-5, conlim=0.0,
 
 
 def merge_panorama_depth_gpu(width: int, height: int, distance_maps: List[np.ndarray], pred_masks: List[np.ndarray], extrinsics: List[np.ndarray], intrinsics: List[np.ndarray], chunk_size: int = 8, center_weight_power: float = 0.0, scale_anchor: bool = True):
-    # `grad_equation` / `poisson_equation` defined in moge_panorama.py — pure
+    # `grad_equation` / `poisson_equation` defined in moge_panorama.py - pure
     # geometry sparse skeletons; cheap to rebuild per level (sub-0.4s at top
     # res). `vstack` stacks them after the per-face validity rows are
     # selected.
@@ -555,7 +555,7 @@ def merge_panorama_depth_gpu(width: int, height: int, distance_maps: List[np.nda
     # Force the caching allocator to return cached-but-unreferenced blocks
     # to CUDA *before* this level allocates its (potentially much larger)
     # working set. Without this, a 4x size jump from the recursive child
-    # level to the parent level (e.g. 1920x960 → 3840x1920, N=42) can OOM
+    # level to the parent level (e.g. 1920x960 -> 3840x1920, N=42) can OOM
     # on a 24 GB card even though Python has dropped every reference --
     # PyTorch's caching allocator holds the freed blocks at the child
     # level's size and the parent's bigger contiguous request fragments
@@ -586,25 +586,25 @@ def merge_panorama_depth_gpu(width: int, height: int, distance_maps: List[np.nda
     fh, fw = distance_maps[0].shape
 
     # Sphere ray directions for the equirect grid. Tiny (~7 MB at 1920x960),
-    # CPU build is fine — utils3d.np.uv_map + spherical_uv_to_directions is
+    # CPU build is fine - utils3d.np.uv_map + spherical_uv_to_directions is
     # vectorized numpy.
     uv = utils3d.np.uv_map((height, width))
     spherical_directions_np = spherical_uv_to_directions(uv).astype(np.float32)
 
     # --- Chunked per-face processing to bound peak memory. ---
     # Previously this block materialized ~10 simultaneous (N, H, W) fp32 /
-    # bool tensors per pyramid level — at top-level 4096x2048 with N=42
+    # bool tensors per pyramid level - at top-level 4096x2048 with N=42
     # that's ~14 GB of intermediates and OOMs on consumer GPUs. The
     # reductions consumed downstream are `(grad * mask).sum(0)`,
-    # `mask.sum(0)`, and `mask.any(0)` — all ASSOCIATIVE across the face
-    # dim — so we can chunk the face axis without changing the math.
-    # Per-chunk peak is K*H*W*4B*~10 ≈ chunk_size/N times the full-batch
+    # `mask.sum(0)`, and `mask.any(0)` - all ASSOCIATIVE across the face
+    # dim - so we can chunk the face axis without changing the math.
+    # Per-chunk peak is K*H*W*4B*~10 ~= chunk_size/N times the full-batch
     # peak. With default chunk_size=8 and N=42 that's a ~5x memory cut at
     # the cost of a few extra Python-level iterations.
     t_warp = time.perf_counter()
 
     dirs = torch.from_numpy(spherical_directions_np).to(device).reshape(-1, 3)         # (H*W, 3)
-    # Per-face inputs uploaded once at full size — these are (N, fh, fw),
+    # Per-face inputs uploaded once at full size - these are (N, fh, fw),
     # NOT (N, H, W), so they're not the dominant tensor here. At 42 x 1024^2
     # x 4B = 168 MB they fit comfortably.
     dist_stack = np.stack([d.astype(np.float32, copy=False) for d in distance_maps])    # (N, fh, fw)
@@ -649,7 +649,7 @@ def merge_panorama_depth_gpu(width: int, height: int, distance_maps: List[np.nda
         t = ext_gpu[chunk_start:chunk_end, :3, 3]                     # (Nc, 3)
         K_intr = intr_gpu[chunk_start:chunk_end]                       # (Nc, 3, 3)
 
-        # --- Batched projection: equirect rays → per-face image plane. ---
+        # --- Batched projection: equirect rays -> per-face image plane. ---
         # p_cam = R @ dirs + t. Then K @ p_cam, perspective divide.
         p_cam = torch.einsum('nij,pj->npi', R, dirs) + t.unsqueeze(1)  # (Nc, H*W, 3)
         p_proj = torch.einsum('nij,npj->npi', K_intr, p_cam)           # (Nc, H*W, 3)
@@ -687,10 +687,10 @@ def merge_panorama_depth_gpu(width: int, height: int, distance_maps: List[np.nda
             grid,
             mode='bilinear', padding_mode='border', align_corners=False,
         ).squeeze(1)                                                   # (Nc, H, W)
-        # Nearest-neighbour resample of the per-face weight — preserves
+        # Nearest-neighbour resample of the per-face weight - preserves
         # bool-input bit-equivalence (0/1 stay 0/1) AND keeps continuous
         # confidence values intact within a face. NO `> 0.5` threshold
-        # here anymore — that was the path that destroyed the continuous
+        # here anymore - that was the path that destroyed the continuous
         # confidence signal.
         sampled_pred_mask = F.grid_sample(
             pred_mask_gpu.unsqueeze(1),
@@ -710,11 +710,11 @@ def merge_panorama_depth_gpu(width: int, height: int, distance_maps: List[np.nda
         panorama_pred_mask_per_face = projection_valid.float() * sampled_pred_mask   # (Nc, H, W) float
         del sampled_log_dist, sampled_pred_mask, projection_valid
 
-        # Apply optional center weighting — down-weight face corners
+        # Apply optional center weighting - down-weight face corners
         # (high obliquity from optical axis) where MoGe-2 is less
         # reliable due to rectilinear distortion + training-data bias
         # toward image centers. cos_axis is already in [0, 1].
-        # Power=1 → cosine (corner ~0.577 at 90° fov), power=2 → cos²
+        # Power=1 -> cosine (corner ~0.577 at 90deg fov), power=2 -> cos^2
         # (~0.333 at corner), higher = sharper falloff.
         if cos_axis is not None:
             panorama_pred_mask_per_face = panorama_pred_mask_per_face * (cos_axis ** center_weight_power)
@@ -771,7 +771,7 @@ def merge_panorama_depth_gpu(width: int, height: int, distance_maps: List[np.nda
         # buffers. Sum is associative: chunked partial sums combine
         # cleanly into the same final aggregate the old single-batch
         # path produced. mask_x / mask_y / mask_laplacian are already
-        # float [0, 1] now — no `.float()` cast needed.
+        # float [0, 1] now - no `.float()` cast needed.
         num_grad_x.add_((grad_x * mask_x).sum(0))
         den_grad_x.add_(mask_x.sum(0))
         num_grad_y.add_((grad_y * mask_y).sum(0))
@@ -782,7 +782,7 @@ def merge_panorama_depth_gpu(width: int, height: int, distance_maps: List[np.nda
         # Inclusion test for the LSMR row-selection masks: include a row
         # if any face contributed appreciable weight at that pixel.
         # `> 1e-3` matches the existing `clamp(min=1e-3)` floor used in
-        # the divide step. For bool→float inputs (0/1) this is
+        # the divide step. For bool->float inputs (0/1) this is
         # bit-equivalent to the old `.any(0)`.
         any_mask_x.logical_or_((mask_x > 1e-3).any(0))
         any_mask_y.logical_or_((mask_y > 1e-3).any(0))
@@ -800,7 +800,7 @@ def merge_panorama_depth_gpu(width: int, height: int, distance_maps: List[np.nda
     avg_grad_y = num_grad_y / den_grad_y.clamp(min=1e-3)
     avg_lap = num_lap / den_lap.clamp(min=1e-3)
 
-    # --- Single device→host transfer of the data we need on CPU for the
+    # --- Single device->host transfer of the data we need on CPU for the
     # sparse-system build below. ---
     avg_grad_x_np = avg_grad_x.cpu().numpy()
     avg_grad_y_np = avg_grad_y.cpu().numpy()
@@ -846,10 +846,10 @@ def merge_panorama_depth_gpu(width: int, height: int, distance_maps: List[np.nda
 
     # Fix the LSMR rank-1 scale ambiguity (post-hoc shift). The gradient +
     # Laplacian operators are translation-invariant in log(d), so `1` lies
-    # in null(A); LSMR's min-norm pick biases x toward 0 → d ≈ 1m. We
+    # in null(A); LSMR's min-norm pick biases x toward 0 -> d ~= 1m. We
     # solve this only at the BOTTOM pyramid level (where x0=None and the
     # bias is set); upper levels inherit the corrected scale via x0.
-    # Math is exact: the shift `c = median(log d_input) − median(x_solved)`
+    # Math is exact: the shift `c = median(log d_input) - median(x_solved)`
     # restores the input-scale median while leaving every gradient /
     # Laplacian residual untouched (because the operator nullspace IS the
     # 1-vector).
@@ -872,7 +872,7 @@ def merge_panorama_depth_gpu(width: int, height: int, distance_maps: List[np.nda
     panorama_mask = panorama_pred_mask_final_np
 
     anchor_str = (
-        f"scale_shift={scale_shift:+.4f} (exp≈{float(np.exp(scale_shift)):.3f}); "
+        f"scale_shift={scale_shift:+.4f} (exp~={float(np.exp(scale_shift)):.3f}); "
         if (scale_anchor and panorama_depth_init is None) else ""
     )
     _p(f"done {time.perf_counter() - t_lvl_start:.2f}s "
@@ -887,117 +887,6 @@ def merge_panorama_depth_gpu(width: int, height: int, distance_maps: List[np.nda
     return panorama_depth, panorama_mask
 
 
-def pred_pano_depth(model, image: Image.Image, scale=1.0, resize_to=1920, remove_pano_depth_nan=True):
-    """
-    last_layer_mask: Previous-layer object mask.
-    last_layer_depth: Previous-layer depth.
-    """
-    print("\t - Predicting pano depth with moge")
-    image_origin = np.array(image)
-    height_origin, width_origin = image_origin.shape[:2]
-
-    image, height, width = image_origin, height_origin, width_origin
-    if resize_to is not None:
-        _height, _width = min(resize_to, int(resize_to * height_origin / width_origin)), min(resize_to, int(resize_to * width_origin / height_origin))
-        if _height < height_origin:
-            print(f"\t - Resizing image from {width_origin}x{height_origin} to {_width}x{_height} for pano depth prediction")
-            image = cv2.resize(image_origin, (_width, _height), cv2.INTER_AREA)
-            height, width = _height, _width
-
-    splitted_extrinsics, splitted_intriniscs = get_panorama_cameras_v2(subdivisions=1)
-    splitted_resolution = 512
-    splitted_images = split_panorama_image(image, splitted_extrinsics, splitted_intriniscs, splitted_resolution, splitted_resolution, interp=cv2.INTER_AREA)
-
-    # infer moge depth
-    num_splitted_images = len(splitted_images)
-    splitted_distance_maps = [None] * num_splitted_images
-    splitted_masks = [None] * num_splitted_images
-
-    indices_to_process_model = []
-    skipped_count = 0
-
-    for i in range(num_splitted_images):
-        indices_to_process_model.append(i)
-
-    pred_count = 0
-    # Process images that require model inference in batches
-    inference_batch_size = 1
-    for i in range(0, len(indices_to_process_model), inference_batch_size):
-        batch_indices = indices_to_process_model[i: i + inference_batch_size]
-        if not batch_indices:
-            continue
-
-        current_batch_images = [splitted_images[k] for k in batch_indices]
-        current_batch_intrinsics = [splitted_intriniscs[k] for k in batch_indices]
-
-        image_tensor = torch.tensor(
-            np.stack(current_batch_images) / 255,
-            dtype=torch.float32,
-            device=next(model.parameters()).device,
-        ).permute(0, 3, 1, 2)
-
-        fov_x, _ = np.rad2deg(  # fov_y is not used by model.infer
-            utils3d.numpy.intrinsics_to_fov(np.array(current_batch_intrinsics))
-        )
-        fov_x_tensor = torch.tensor(
-            fov_x, dtype=torch.float32, device=next(model.parameters()).device
-        )
-
-        with torch.no_grad(), torch.amp.autocast("cuda", enabled=True, dtype=torch.bfloat16):
-            output = model.infer(image_tensor, fov_x=fov_x_tensor, apply_mask=False)
-
-        batch_distance_maps = output["points"].norm(dim=-1).cpu().numpy()
-        batch_masks = output["mask"].cpu().numpy()
-
-        for batch_idx, original_idx in enumerate(batch_indices):
-            splitted_distance_maps[original_idx] = batch_distance_maps[batch_idx]
-            splitted_masks[original_idx] = batch_masks[batch_idx]
-            pred_count += 1
-
-    if (pred_count + skipped_count) == 0:  # Avoid division by zero if num_splitted_images is 0
-        skip_ratio_info = "N/A (no images to process)"
-    else:
-        skip_ratio_info = f"{skipped_count / (pred_count + skipped_count):.2%}"
-
-    print(f"\t 🔍 Predicted {pred_count} splitted images, skipped {skipped_count} splitted images. Skip ratio: {skip_ratio_info}")
-
-    # merge moge depth
-    merging_width, merging_height = width, height
-    panorama_depth, panorama_mask = merge_panorama_depth_gpu(
-        merging_width,
-        merging_height,
-        splitted_distance_maps,
-        splitted_masks,
-        splitted_extrinsics,
-        splitted_intriniscs,
-    )
-
-    panorama_depth = panorama_depth.astype(np.float32)
-    # Align the left and right depths in the bottom region of pano depth.
-    if remove_pano_depth_nan:
-        # for depth inpainting, remove nan
-        panorama_depth[~panorama_mask] = 1.0 * np.nanquantile(panorama_depth, 0.999)  # Sky depth.
-    panorama_depth = cv2.resize(panorama_depth, (width_origin, height_origin), cv2.INTER_LINEAR)
-    panorama_mask = cv2.resize(panorama_mask.astype(np.uint8), (width_origin, height_origin), cv2.INTER_NEAREST) > 0
-
-    # Smooth south-pole (bottom region) depth to fix left-right inconsistencies.
-    print("\t - Smoothing south pole depth for consistency")
-    panorama_depth = smooth_south_pole_depth(panorama_depth, smooth_height_ratio=0.05)
-
-    rays = torch.from_numpy(spherical_uv_to_directions(utils3d.numpy.image_uv(width=width_origin, height=height_origin))).to(next(model.parameters()).device)
-
-    panorama_depth = (
-            torch.from_numpy(panorama_depth).to(next(model.parameters()).device) * scale
-    )
-
-    return {
-        "rgb": torch.from_numpy(image_origin).to(next(model.parameters()).device),
-        "distance": panorama_depth,
-        "rays": rays,
-        "mask": panorama_mask,
-        "splitted_masks": splitted_masks,
-        "splitted_distance_maps": splitted_distance_maps,
-    }
 
 
 # Panorama depth stitching based on normal constraints.
@@ -1019,7 +908,7 @@ def compute_spherical_ray_derivatives(spherical_directions: np.ndarray):
     ray = spherical_directions
 
     # Azimuth theta and elevation phi.
-    # ray = (cos(φ)sin(θ), sin(φ), cos(φ)cos(θ))
+    # ray = (cos(phi)sin(theta), sin(phi), cos(phi)cos(theta))
     # Or adapt to the coordinate-system definition in use.
 
     # Method 1: numerical computation, which is more robust.
@@ -1027,15 +916,15 @@ def compute_spherical_ray_derivatives(spherical_directions: np.ndarray):
     v = (np.arange(H) + 0.5) / H  # [0, 1]
     u_grid, v_grid = np.meshgrid(u, v)
 
-    theta = (u_grid - 0.5) * 2 * np.pi  # [-π, π]
-    phi = (0.5 - v_grid) * np.pi  # [π/2, -π/2]
+    theta = (u_grid - 0.5) * 2 * np.pi  # [-pi, pi]
+    phi = (0.5 - v_grid) * np.pi  # [pi/2, -pi/2]
 
     cos_phi = np.cos(phi)
     sin_phi = np.sin(phi)
     cos_theta = np.cos(theta)
     sin_theta = np.sin(theta)
 
-    # ∂ray/∂θ, assuming standard equirectangular mapping.
+    # dray/dtheta, assuming standard equirectangular mapping.
     # Adjust according to how spherical_directions is actually computed.
     dray_dtheta = np.stack([
         cos_phi * cos_theta,
@@ -1043,7 +932,7 @@ def compute_spherical_ray_derivatives(spherical_directions: np.ndarray):
         -cos_phi * sin_theta
     ], axis=-1)
 
-    # ∂ray/∂φ
+    # dray/dphi
     dray_dphi = np.stack([
         -sin_phi * sin_theta,
         cos_phi,
@@ -1064,9 +953,9 @@ def normal_to_log_distance_gradient(
 
     Derivation:
         Surface point P = d * ray
-        Tangent vector ∂P/∂θ = (∂d/∂θ) * ray + d * (∂ray/∂θ)
-        The normal is perpendicular to the tangent: n · ∂P/∂θ = 0
-        => ∂(log d)/∂θ = -(n · ∂ray/∂θ) / (n · ray)
+        Tangent vector dP/dtheta = (dd/dtheta) * ray + d * (dray/dtheta)
+        The normal is perpendicular to the tangent: n . dP/dtheta = 0
+        => d(log d)/dtheta = -(n . dray/dtheta) / (n . ray)
 
     Args:
         panorama_normal: (H, W, 3) Panorama normal map in world coordinates.
@@ -1096,14 +985,14 @@ def normal_to_log_distance_gradient(
     n_dot_ray_safe = np.where(valid_mask, n_dot_ray, 1.0)
 
     # Continuous-space log(d) gradients with respect to angles.
-    # ∂(log d)/∂θ = -(n · ∂ray/∂θ) / (n · ray)
+    # d(log d)/dtheta = -(n . dray/dtheta) / (n . ray)
     dlogd_dtheta = -n_dot_dray_dtheta / n_dot_ray_safe  # (H, W)
     dlogd_dphi = -n_dot_dray_dphi / n_dot_ray_safe  # (H, W)
 
     # Convert to discrete pixel gradients.
-    # In this code, grad_x = log_d[j] - log_d[j+1] = -∂(log d)/∂θ * Δθ.
-    # Δθ = 2π / W, the θ change per pixel.
-    # grad_y = log_d[i] - log_d[i+1] = -∂(log d)/∂φ * Δφ = ∂(log d)/∂φ * (π/H)
+    # In this code, grad_x = log_d[j] - log_d[j+1] = -d(log d)/dtheta * Deltatheta.
+    # Deltatheta = 2pi / W, the theta change per pixel.
+    # grad_y = log_d[i] - log_d[i+1] = -d(log d)/dphi * Deltaphi = d(log d)/dphi * (pi/H)
 
     delta_theta = 2 * np.pi / W
     delta_phi = np.pi / H
@@ -1380,7 +1269,7 @@ def convert_rgbd2pcd_multi_scale_panorama(
         else:
             interval_mask = ((median_distance * depth_intervals[i - 1]) < distance_nchw) & (distance_nchw <= (median_distance * depth_intervals[i]))
 
-        # pointclouds number ∝ depth^2
+        # pointclouds number ~ depth^2
         resize_scale = depth_intervals[i]
         if interval_mask.sum() == 0:
             continue
@@ -2167,7 +2056,7 @@ def erp_distance_ray_to_normal(distance_map, ray_directions,
     Tv_y[-1, :] = y[-1, :] - y[-2, :]
     Tv_z[-1, :] = z[-1, :] - z[-2, :]
 
-    # 3. Compute normals with a cross product: N = Tu × Tv.
+    # 3. Compute normals with a cross product: N = Tu x Tv.
     normal_x = Tu_y * Tv_z - Tu_z * Tv_y
     normal_y = Tu_z * Tv_x - Tu_x * Tv_z
     normal_z = Tu_x * Tv_y - Tu_y * Tv_x
@@ -2198,7 +2087,7 @@ def erp_distance_ray_to_normal(distance_map, ray_directions,
     normal_map = np.stack([normal_x, normal_y, normal_z], axis=-1)
 
     # 7. Convert to an RGB visualization.
-    # [-1, 1] → [0, 255]
+    # [-1, 1] -> [0, 255]
     normal_rgb = ((normal_map + 1.0) / 2.0 * 255).astype(np.uint8)
 
     return normal_map, normal_rgb

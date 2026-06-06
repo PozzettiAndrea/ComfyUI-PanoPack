@@ -1,9 +1,9 @@
-"""PanoramaBuildMesh — depth + masks → 3D mesh (pure geometry, no models).
+"""PanoramaBuildMesh - depth + masks -> 3D mesh (pure geometry, no models).
 
 Stage 2 of WorldNav. Consumes panorama + depth + sky_mask + (optional) valid_mask
 and produces an equirect-derived triangle mesh.
 
-Bonus output: a `mesh_preview` IMAGE — three orthographic wireframe viewports
+Bonus output: a `mesh_preview` IMAGE - three orthographic wireframe viewports
 (top-down XZ, side XY, front ZY) so the user can sanity-check the mesh before
 committing to the navmesh build.
 """
@@ -26,7 +26,7 @@ def _p(msg: str) -> None:
 
 
 # ----------------------------------------------------------------------
-# Mesh preview rendering (pyvista — 3 axis-plane cross-sections)
+# Mesh preview rendering (pyvista - 3 axis-plane cross-sections)
 # ----------------------------------------------------------------------
 
 def _render_mesh_preview(
@@ -39,7 +39,7 @@ def _render_mesh_preview(
     """Render the mesh sliced through each axis plane (YZ at x=0, XZ at y=0,
     XY at z=0). For each cut we keep one half of the mesh and orient the
     camera on the discarded-half side, looking at the cut face. Combined
-    into a single H×W×3 uint8 image with the three cross-sections side by
+    into a single HxWx3 uint8 image with the three cross-sections side by
     side. Uses pyvista off-screen rendering (VTK OSMesa under the hood).
     """
     # Lazy import: pyvista is heavy and only this function needs it. Lets
@@ -50,14 +50,14 @@ def _render_mesh_preview(
         _os.environ.setdefault("PYVISTA_OFF_SCREEN", "true")
         import pyvista as pv
     except Exception as e:
-        _p(f"pyvista import failed: {e!r} — falling back to a placeholder preview")
+        _p(f"pyvista import failed: {e!r} - falling back to a placeholder preview")
         ph = Image.new("RGB", (width, height), (24, 24, 28))
         d = ImageDraw.Draw(ph)
         d.text((20, 20), f"pyvista not installed: {e}\nRun `cds install` to pick up "
                f"the new dep.", fill=(220, 220, 220))
         return np.array(ph, dtype=np.uint8)
 
-    # trimesh / open3d-style (V, 3) verts + (F, 3) faces → pv.PolyData faces array
+    # trimesh / open3d-style (V, 3) verts + (F, 3) faces -> pv.PolyData faces array
     # ([3, i0, i1, i2, 3, j0, j1, j2, ...]).
     F = int(triangles.shape[0])
     faces_flat = np.concatenate(
@@ -96,8 +96,8 @@ def _render_mesh_preview(
         # pv.PolyData.clip(normal, origin, invert=True): keeps cells where
         # (p - origin) . normal < 0, i.e. the half OPPOSITE the camera (which
         # sits at +normal * R). That way the camera looks ACROSS the cut
-        # plane at the cut face of the retained half — the juicy interior
-        # cross-section — rather than at the outer surface of the half
+        # plane at the cut face of the retained half - the juicy interior
+        # cross-section - rather than at the outer surface of the half
         # nearest the camera.
         clipped = poly.clip(normal=normal, origin=(0.0, 0.0, 0.0), invert=True)
         if clipped.n_cells > 0:
@@ -136,7 +136,7 @@ def _render_mesh_preview(
 # ----------------------------------------------------------------------
 
 class PanoramaBuildMesh(io.ComfyNode):
-    """Stage 2: panorama + depth + sky_mask → 3D triangle mesh + preview IMAGE."""
+    """Stage 2: panorama + depth + sky_mask -> 3D triangle mesh + preview IMAGE."""
 
     @classmethod
     def define_schema(cls):
@@ -171,13 +171,13 @@ class PanoramaBuildMesh(io.ComfyNode):
                 io.Boolean.Input(
                     "contract", default=False,
                     tooltip="Enable depth contraction: clip far depth to "
-                            "median × contract_beyond. Useful for outdoor "
+                            "median x contract_beyond. Useful for outdoor "
                             "scenes to cap distant background."),
                 io.Float.Input(
                     "contract_beyond",
                     default=8.0, min=1.0, max=64.0, step=0.5,
                     optional=True,
-                    tooltip="Clip far depth to median × this value. Only "
+                    tooltip="Clip far depth to median x this value. Only "
                             "used when 'contract' is enabled. Default 8.0 "
                             "matches upstream HY-World."),
                 io.Float.Input(
@@ -185,7 +185,7 @@ class PanoramaBuildMesh(io.ComfyNode):
                     optional=True,
                     tooltip="Relative-tolerance for depth-edge detection in "
                             "the mesh build's depth post-process. Pixels "
-                            "where the depth gradient exceeds rtol × local "
+                            "where the depth gradient exceeds rtol x local "
                             "depth get masked out (drops silhouettes / "
                             "depth discontinuities before triangulation, "
                             "preventing 'stretched' faces). Smaller = "
@@ -197,13 +197,13 @@ class PanoramaBuildMesh(io.ComfyNode):
                     optional=True,
                     tooltip="Far-depth clip percentile applied before "
                             "triangulation. Caps hallucinated far depth "
-                            "(windows/open doors) — BUT also clamps real room "
+                            "(windows/open doors) - BUT also clamps real room "
                             "CORNERS (the farthest points), flattening "
                             "trihedral wall corners into a rounded cap (a "
                             "visible chamfer).\n\n"
-                            "1.0 (default): DISABLED — corners preserved crisp. "
+                            "1.0 (default): DISABLED - corners preserved crisp. "
                             "Best for clean indoor scans with no far outliers.\n"
-                            "0.99: legacy behavior — clips the farthest 1%, "
+                            "0.99: legacy behavior - clips the farthest 1%, "
                             "smushes corners.\n"
                             "0.999: clip only extreme outliers, keep corners."),
             ],
@@ -218,7 +218,7 @@ class PanoramaBuildMesh(io.ComfyNode):
     def execute(cls, panorama, depth, sky_mask=None, valid_mask=None,
                 contract=False, contract_beyond=8.0, edge_rtol=0.1,
                 clip_quantile=1.0):
-        # --- panorama → PIL ---
+        # --- panorama -> PIL ---
         pano_t = unwrap_panorama_to_image(panorama)
         arr = pano_t.detach().cpu().numpy() if isinstance(pano_t, torch.Tensor) else np.asarray(pano_t)
         if arr.ndim == 4:
@@ -227,7 +227,7 @@ class PanoramaBuildMesh(io.ComfyNode):
             arr = (np.clip(arr, 0, 1) * 255).astype(np.uint8)
         pil = Image.fromarray(arr)
 
-        # --- depth → [H, W] float ---
+        # --- depth -> [H, W] float ---
         d = depth.detach().cpu().numpy() if isinstance(depth, torch.Tensor) else np.asarray(depth)
         if d.ndim == 4:
             d = d[0]
@@ -235,7 +235,7 @@ class PanoramaBuildMesh(io.ComfyNode):
             d = d[..., 0]
         depth_np = d.astype(np.float32)
 
-        # --- sky_mask → [H, W] bool ---
+        # --- sky_mask -> [H, W] bool ---
         sky_mask_np = None
         if sky_mask is not None:
             sm = sky_mask.detach().cpu().numpy() if isinstance(sky_mask, torch.Tensor) else np.asarray(sky_mask)
@@ -243,7 +243,7 @@ class PanoramaBuildMesh(io.ComfyNode):
                 sm = sm[0]
             sky_mask_np = (sm > 0.5).astype(bool)
 
-        # --- valid_mask → [H, W] bool ---
+        # --- valid_mask -> [H, W] bool ---
         valid_mask_np = None
         if valid_mask is not None:
             vm = valid_mask.detach().cpu().numpy() if isinstance(valid_mask, torch.Tensor) else np.asarray(valid_mask)
@@ -271,7 +271,7 @@ class PanoramaBuildMesh(io.ComfyNode):
         )
 
         # --- Mesh preview (PIL wireframe) ---
-        _p("rendering mesh_preview wireframe…")
+        _p("rendering mesh_preview wireframe...")
         preview_np = _render_mesh_preview(
             np.asarray(mesh.vertices, dtype=np.float32),
             np.asarray(mesh.faces, dtype=np.int32),

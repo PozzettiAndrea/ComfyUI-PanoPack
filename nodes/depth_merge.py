@@ -1,8 +1,8 @@
-"""PanoramaDepthMerge — per-face rectilinear point maps → equirect depth.
+"""PanoramaDepthMerge - per-face rectilinear point maps -> equirect depth.
 
 Stitches per-face 3D POINT MAPS (e.g. MoGe-2's `points_raw` output) back
 into a single equirect distance map. Uses upstream MoGe's sparse LSMR
-formulation (Laplacian + gradient terms in log-distance space) — vendored
+formulation (Laplacian + gradient terms in log-distance space) - vendored
 under `_vendor/moge_panorama.py`.
 
 CONVENTION: consumes 3D POINT MAPS, not raw depth, because the merger
@@ -10,7 +10,7 @@ operates in EUCLIDEAN RAY DISTANCE (`||points||`), which is invariant
 across overlapping faces. Per-face PLANAR Z (depth_raw / points[..., 2])
 is face-axis-dependent and produces face-shaped seam facets when fused
 across overlapping views. The node computes `np.linalg.norm(points,
-axis=-1)` internally before LSMR — mirroring upstream MoGe
+axis=-1)` internally before LSMR - mirroring upstream MoGe
 `infer_panorama.py` and HY-World 2.0's `pred_pano_depth`.
 """
 
@@ -89,7 +89,7 @@ def _build_debug_image(
 
     For each equirect pixel, reproject every face's input distance back to
     that pixel via the merger's same projection (`p_cam = R @ dir + t`,
-    `K @ p_cam`, perspective divide). Pixels covered by ≥2 faces get a
+    `K @ p_cam`, perspective divide). Pixels covered by >=2 faces get a
     std across faces, normalized to a percentage of the merged depth.
     """
     import cv2
@@ -101,15 +101,15 @@ def _build_debug_image(
     H, W = int(out_height), int(out_width)
     N = len(distance_maps)
 
-    # Equirect uv grid → unit world directions (same as the GPU merger).
+    # Equirect uv grid -> unit world directions (same as the GPU merger).
     uv = utils3d.np.uv_map((H, W))
     dirs = spherical_uv_to_directions(uv).astype(np.float32).reshape(-1, 3)  # (H*W, 3)
 
     # Disagreement is measured in LOG-DISTANCE space, the same space the
     # LSMR merger minimizes in. Rationale (Bregman / Fisher-Rao geometry on
-    # ℝ⁺, plus monocular-depth noise being multiplicative): std(log d) is
+    # R+, plus monocular-depth noise being multiplicative): std(log d) is
     # scale-invariant and matches the solver's loss. Reported as a
-    # multiplicative disagreement percentage via `100·(exp(std) − 1)`.
+    # multiplicative disagreement percentage via `100.(exp(std) - 1)`.
     sum_ld = np.zeros(H * W, dtype=np.float64)
     sum_ld2 = np.zeros(H * W, dtype=np.float64)
     n_cov = np.zeros(H * W, dtype=np.int32)
@@ -137,7 +137,7 @@ def _build_debug_image(
             & (uv_face[:, 1] >= 0) & (uv_face[:, 1] <= 1)
         )
 
-        # cv2.remap for the actual sampling — bilinear, BORDER_REPLICATE.
+        # cv2.remap for the actual sampling - bilinear, BORDER_REPLICATE.
         px = (uv_face[:, 0] * fw - 0.5).astype(np.float32).reshape(H, W)
         py = (uv_face[:, 1] * fh - 0.5).astype(np.float32).reshape(H, W)
         sampled = cv2.remap(d_face, px, py, cv2.INTER_LINEAR,
@@ -157,14 +157,14 @@ def _build_debug_image(
     var_ld = np.maximum(sum_ld2 / n_safe - mean_ld ** 2, 0.0)
     std_ld = np.sqrt(var_ld).astype(np.float32)               # std(log d_i) per pixel
     std_ld[~has_overlap] = 0.0
-    # Per-pixel multiplicative % disagreement: `100·(exp(σ_log) − 1)`. For
-    # small σ this ≈ 100·σ ≈ coefficient of variation; for larger σ it
+    # Per-pixel multiplicative % disagreement: `100.(exp(sigma_log) - 1)`. For
+    # small sigma this ~= 100.sigma ~= coefficient of variation; for larger sigma it
     # reflects the actual geometric spread of overlapping predictions.
     pct_per_pixel = 100.0 * (np.exp(std_ld) - 1.0).astype(np.float32)
     pct_per_pixel[~has_overlap] = 0.0
 
-    # Solid-angle weights: dΩ = sin(φ) dφ dθ. v ∈ [0, H-1] maps to
-    # φ = (v + 0.5) / H · π. Without sin(φ) the equirect pole rows
+    # Solid-angle weights: dOmega = sin(phi) dphi dtheta. v  in  [0, H-1] maps to
+    # phi = (v + 0.5) / H . pi. Without sin(phi) the equirect pole rows
     # (which collapse to a single sphere point) would bias the mean.
     v_idx = np.arange(H, dtype=np.float64)
     sin_phi = np.sin((v_idx + 0.5) / float(H) * np.pi)
@@ -174,10 +174,10 @@ def _build_debug_image(
 
     global_median = float(np.median(depth_np))
     if overlap_w_sum > 0:
-        # Sphere-uniform mean std(log d) → exp-1 → multiplicative %.
+        # Sphere-uniform mean std(log d) -> exp-1 -> multiplicative %.
         mean_std_ld = float((std_ld * overlap_w).sum() / overlap_w_sum)
         mean_pct = 100.0 * (np.exp(mean_std_ld) - 1.0)
-        # sin(φ)-weighted percentile for the colormap clip and the p99 stat.
+        # sin(phi)-weighted percentile for the colormap clip and the p99 stat.
         order = np.argsort(pct_per_pixel * has_overlap.astype(np.float32))
         sorted_pct = pct_per_pixel[order]
         sorted_w = overlap_w[order]
@@ -253,11 +253,11 @@ def _render_xyz_views(
     of the equirect-unprojected 3D point cloud via PyVista offscreen.
 
     Each panel shows:
-      • the point cloud scattered (subsampled to `max_points` for speed)
-      • an axes triad
-      • a caption strip with bounding-box dimensions in metric units
+      - the point cloud scattered (subsampled to `max_points` for speed)
+      - an axes triad
+      - a caption strip with bounding-box dimensions in metric units
 
-    Returns a [1, H, panel_w × 3, 3] IMAGE tensor (3 panels side-by-side).
+    Returns a [1, H, panel_w x 3, 3] IMAGE tensor (3 panels side-by-side).
     Falls back to a small zero tensor + a stderr log if PyVista's
     offscreen rasterizer isn't available in the worker.
     """
@@ -267,7 +267,7 @@ def _render_xyz_views(
         _p("xyz_views: pyvista not installed; returning empty image")
         return torch.zeros((1, 1, 1, 3), dtype=torch.float32)
 
-    # --- Equirect → 3D point cloud (ray distance × spherical direction). ---
+    # --- Equirect -> 3D point cloud (ray distance x spherical direction). ---
     H, W = depth_np.shape
     try:
         from utils3d.numpy.maps import uv_map as _uv_map
@@ -301,7 +301,7 @@ def _render_xyz_views(
     bb_center = (bb_min + bb_max) / 2.0
     _p(f"xyz_views: cloud bbox center=({bb_center[0]:+.2f}, "
        f"{bb_center[1]:+.2f}, {bb_center[2]:+.2f}) m, "
-       f"size=({bb_size[0]:.2f} × {bb_size[1]:.2f} × {bb_size[2]:.2f}) m, "
+       f"size=({bb_size[0]:.2f} x {bb_size[1]:.2f} x {bb_size[2]:.2f}) m, "
        f"N={flat.shape[0]} (subsampled)")
 
     # --- Render the 3 orthographic views with PyVista. ---
@@ -312,9 +312,9 @@ def _render_xyz_views(
 
     views = [
         # (label, camera position offset from center, view-up axis, axis labels)
-        ("TOP (XY, look -Y)",  np.array([0.0,  1.0, 0.0]), np.array([0.0, 0.0, 1.0]),  "X→ right, Z→ up"),
-        ("FRONT (XZ, look -Z)", np.array([0.0, 0.0,  1.0]), np.array([0.0, 1.0, 0.0]),  "X→ right, Y→ up"),
-        ("SIDE (YZ, look -X)",  np.array([1.0, 0.0,  0.0]), np.array([0.0, 1.0, 0.0]),  "Z→ right, Y→ up"),
+        ("TOP (XY, look -Y)",  np.array([0.0,  1.0, 0.0]), np.array([0.0, 0.0, 1.0]),  "X-> right, Z-> up"),
+        ("FRONT (XZ, look -Z)", np.array([0.0, 0.0,  1.0]), np.array([0.0, 1.0, 0.0]),  "X-> right, Y-> up"),
+        ("SIDE (YZ, look -X)",  np.array([1.0, 0.0,  0.0]), np.array([0.0, 1.0, 0.0]),  "Z-> right, Y-> up"),
     ]
     bg = (0.08, 0.08, 0.10)
     fg_pt = (0.95, 0.95, 0.95)
@@ -393,8 +393,8 @@ def _merge_world_normals(fn, extr_list, intr_list, weights, N, H_out, W_out, fh,
     """Reproject per-face camera-space normals to a world-space equirect map.
 
     `fn` is the DECODED (raw signed) per-face normals (N, fh, fw, 3). Uses the
-    same per-face projection + weights as the depth merger; rotates camera→world
-    via R^T (extrinsics R is world→camera). Returns (H_out, W_out, 3) float32
+    same per-face projection + weights as the depth merger; rotates camera->world
+    via R^T (extrinsics R is world->camera). Returns (H_out, W_out, 3) float32
     unit world normals.
     """
     import cv2
@@ -414,7 +414,7 @@ def _merge_world_normals(fn, extr_list, intr_list, weights, N, H_out, W_out, fh,
         w_face = weights[i]
 
         n_cam = fn[i]  # (fh, fw, 3)
-        n_world = np.einsum("hwc,cd->hwd", n_cam, R)  # R^T @ n_cam (camera→world)
+        n_world = np.einsum("hwc,cd->hwd", n_cam, R)  # R^T @ n_cam (camera->world)
         n_world = n_world / np.maximum(np.linalg.norm(n_world, axis=-1, keepdims=True), 1e-12)
 
         p_cam = dirs_eq @ R.T + t
@@ -446,7 +446,7 @@ def _merge_world_normals(fn, extr_list, intr_list, weights, N, H_out, W_out, fh,
 
 
 class PanoramaDepthMerge(io.ComfyNode):
-    """Per-face depth maps + per-face extrinsics/intrinsics → equirect depth IMAGE."""
+    """Per-face depth maps + per-face extrinsics/intrinsics -> equirect depth IMAGE."""
 
     @classmethod
     def define_schema(cls):
@@ -471,11 +471,11 @@ class PanoramaDepthMerge(io.ComfyNode):
                             "on the face_images from WorldNavPanoramaSplit). "
                             "Shape (N, h, w, 3) with channels (X, Y, Z) in "
                             "the face's camera frame.\n\n"
-                            "DO NOT wire MoGe2's `depth_raw` here — that's "
+                            "DO NOT wire MoGe2's `depth_raw` here - that's "
                             "planar Z (camera-axis depth), face-axis-"
                             "dependent and incompatible with the merger's "
                             "ray-distance assumption. This node computes "
-                            "`||points||` internally — the rotation-"
+                            "`||points||` internally - the rotation-"
                             "invariant Euclidean distance from camera "
                             "origin to surface, which is what the LSMR "
                             "merger needs. Matches upstream MoGe + HY-"
@@ -498,12 +498,12 @@ class PanoramaDepthMerge(io.ComfyNode):
                     optional=True,
                     tooltip="Per-face CONTINUOUS confidence weights in "
                             "[0, 1] (e.g. MoGe2 Inference's new "
-                            "`confidence` output — the soft sigmoid of "
+                            "`confidence` output - the soft sigmoid of "
                             "the mask head, before the 0.5 binarization). "
                             "Shape (N, h, w) MASK. When provided, the "
                             "LSMR residuals get weighted by confidence so "
                             "low-confidence pixels contribute "
-                            "proportionally less to the merged depth — "
+                            "proportionally less to the merged depth - "
                             "useful for handling soft transitions at "
                             "sky / silhouette boundaries.\n\n"
                             "If both face_valid_masks and "
@@ -512,7 +512,7 @@ class PanoramaDepthMerge(io.ComfyNode):
                             "only confidence is wired, it acts as both "
                             "validity (any pixel with weight > 1e-3 is "
                             "considered observed) and weight.\n\n"
-                            "GPU path only — on use_gpu=False the "
+                            "GPU path only - on use_gpu=False the "
                             "confidence is thresholded at 0.5 and treated "
                             "as a binary mask (continuous weighting is "
                             "lost). A warning is printed in that case."),
@@ -521,7 +521,7 @@ class PanoramaDepthMerge(io.ComfyNode):
                     optional=True,
                     tooltip="Per-face camera-space surface normals from "
                             "MoGe-2 Inference's `normal` output. Shape "
-                            "(N, h, w, 3) — unit-length normals in each "
+                            "(N, h, w, 3) - unit-length normals in each "
                             "face's local camera frame. When wired, "
                             "enables two normal-based per-face weight "
                             "modifiers: normal-jump edge-floater removal "
@@ -544,9 +544,9 @@ class PanoramaDepthMerge(io.ComfyNode):
                         "post-hoc-matching the solved depth's median to "
                         "the input-faces' median.\n\n"
                         "The gradient + Laplacian operators are "
-                        "translation-invariant in log(d) — the solver "
+                        "translation-invariant in log(d) - the solver "
                         "recovers shape but not absolute scale, and its "
-                        "min-norm pick biases output toward d ≈ 1m. "
+                        "min-norm pick biases output toward d ~= 1m. "
                         "This shift fixes that without touching the "
                         "shape fit.\n\n"
                         "On (default): median(log d) matched to input "
@@ -568,9 +568,9 @@ class PanoramaDepthMerge(io.ComfyNode):
                         "GPU merger. Lower = less peak GPU memory, slightly "
                         "more launch overhead. The face-axis reductions "
                         "(sum, any) are associative so chunking is "
-                        "math-preserving — output is identical (modulo "
+                        "math-preserving - output is identical (modulo "
                         "fp32 sum-order round-off).\n\n"
-                        "Default 8 keeps peak under ~3 GB at 4096×2048 "
+                        "Default 8 keeps peak under ~3 GB at 4096x2048 "
                         "equirect with 42 faces. Bump to 16-32 on big GPUs "
                         "for marginally faster runs; drop to 2-4 if you're "
                         "still OOMing.\n\n"
@@ -586,9 +586,9 @@ class PanoramaDepthMerge(io.ComfyNode):
                         "multiplied by `cos(angle_from_axis)^power`.\n\n"
                         "  0.0 (default): off, every face pixel weighted "
                         "uniformly.\n"
-                        "  1.0: cosine fall-off — at a 90° face corner, "
-                        "weight ≈ 0.577.\n"
-                        "  2.0: cos² fall-off (recommended) — corner ≈ "
+                        "  1.0: cosine fall-off - at a 90deg face corner, "
+                        "weight ~= 0.577.\n"
+                        "  2.0: cos^2 fall-off (recommended) - corner ~= "
                         "0.333. Matches the natural solid-angle weighting "
                         "and is a good trust-the-center prior for "
                         "monocular depth models like MoGe-2 which are "
@@ -596,7 +596,7 @@ class PanoramaDepthMerge(io.ComfyNode):
                         "distribution + rectilinear distortion).\n"
                         "  3.0-4.0: sharper falloff; effectively discards "
                         "corners.\n\n"
-                        "Multiplies into the existing face_valid_masks × "
+                        "Multiplies into the existing face_valid_masks x "
                         "face_confidences weight; all three combine "
                         "freely. GPU path only."
                     )),
@@ -614,11 +614,11 @@ class PanoramaDepthMerge(io.ComfyNode):
                         "(silhouette / depth edge / floater) and gets "
                         "weight=0 in the LSMR.\n\n"
                         "  0.0 (default): off.\n"
-                        "  30-45°: aggressive; drops most edges, keeps "
+                        "  30-45deg: aggressive; drops most edges, keeps "
                         "only flat regions. Good for clean CAD-like prep.\n"
-                        "  60-75°: balanced. Drops sharp silhouettes but "
+                        "  60-75deg: balanced. Drops sharp silhouettes but "
                         "preserves curved surfaces.\n"
-                        "  90-120°: only drops the very sharpest jumps "
+                        "  90-120deg: only drops the very sharpest jumps "
                         "(near-perpendicular adjacent surfaces).\n\n"
                         "Implements HY-World 2.0 paper's 'removing depth "
                         "discontinuities' filter via the more robust "
@@ -634,7 +634,7 @@ class PanoramaDepthMerge(io.ComfyNode):
                         "`face_normals` to be wired.\n\n"
                         "Strengthens the LSMR's trust in pixels lying on "
                         "smooth surfaces (where neighbor normals all "
-                        "agree → boost ≈ 1.0) and weakens it on textured "
+                        "agree -> boost ~= 1.0) and weakens it on textured "
                         "/ noisy regions (boost < 1.0). Independent of "
                         "the normal_edge_threshold filter: the filter is "
                         "a HARD binary cutoff, this is a SOFT continuous "
@@ -651,15 +651,15 @@ class PanoramaDepthMerge(io.ComfyNode):
                         "from camera) exceeds this threshold, BEFORE the "
                         "LSMR build. 0 = disabled.\n\n"
                         "Use when the depth model hallucinates extreme "
-                        "depths through windows / glass / open doors — "
+                        "depths through windows / glass / open doors - "
                         "those outliers blow up the log-depth median + "
                         "residuals and make the rest of the scene merge "
-                        "incorrectly. Pick ~1.5–2× the longest dimension "
+                        "incorrectly. Pick ~1.5-2x the longest dimension "
                         "of the room you actually want reconstructed; "
                         "e.g. 20 for a typical interior, 100 for an "
                         "outdoor courtyard.\n\n"
-                        "Multiplies into the existing face_valid_masks × "
-                        "face_confidences × center_weight × normal-filter "
+                        "Multiplies into the existing face_valid_masks x "
+                        "face_confidences x center_weight x normal-filter "
                         "weight chain (it's just another mask term)."
                     )),
             ],
@@ -671,9 +671,9 @@ class PanoramaDepthMerge(io.ComfyNode):
                     tooltip=(
                         "Per-pixel multiplicative-disagreement viridis "
                         "colormap on the equirect grid. For each pixel "
-                        "covered by ≥2 faces, computes std of log-"
+                        "covered by >=2 faces, computes std of log-"
                         "distance across the reprojected per-face "
-                        "predictions, then `100·(exp(σ_log) − 1)` — the "
+                        "predictions, then `100.(exp(sigma_log) - 1)` - the "
                         "multiplicative percentage spread of overlapping "
                         "predictions at that direction. Log-distance "
                         "matches the LSMR merger's own objective (it "
@@ -682,7 +682,7 @@ class PanoramaDepthMerge(io.ComfyNode):
                         "in.\n\nDark = strong consensus, bright = high "
                         "disagreement (typically silhouettes / depth "
                         "edges). The caption strip reports the sphere-"
-                        "uniform mean, p99, and max — sin(φ)-weighted so "
+                        "uniform mean, p99, and max - sin(phi)-weighted so "
                         "the pole rows of the equirect don't dominate. "
                         "Global median depth printed for unit context."
                     )),
@@ -716,7 +716,7 @@ class PanoramaDepthMerge(io.ComfyNode):
                     display_name="points",
                     tooltip=(
                         "Merged equirect world-space 3D point map "
-                        "(1, H, W, 3) = merged ray-distance × per-pixel "
+                        "(1, H, W, 3) = merged ray-distance x per-pixel "
                         "spherical ray direction. Same grid and world frame "
                         "as the `normals` output. Wire this (plus `normals`) "
                         "straight into PanoramaFacesPlaneSegment to plane-"
@@ -739,7 +739,7 @@ class PanoramaDepthMerge(io.ComfyNode):
                 scale_anchor=True):
         from ._vendor.moge_panorama import merge_panorama_depth
 
-        # --- face_points: (N, h, w, 3) point map → list of (h, w) ray distance.
+        # --- face_points: (N, h, w, 3) point map -> list of (h, w) ray distance.
         # Per-face Euclidean ||points|| is rotation-invariant: the same
         # world point projected into two overlapping faces gives the same
         # scalar, which is what the LSMR merger needs. Planar Z (=
@@ -747,9 +747,9 @@ class PanoramaDepthMerge(io.ComfyNode):
         p = face_points.detach().cpu().numpy() if isinstance(face_points, torch.Tensor) else np.asarray(face_points)
         if p.ndim != 4 or p.shape[-1] != 3:
             raise ValueError(
-                f"PanoramaDepthMerge: face_points must be (N, h, w, 3) — the 3D point "
+                f"PanoramaDepthMerge: face_points must be (N, h, w, 3) - the 3D point "
                 f"map from MoGe2Inference's `points_raw` output. Got {p.shape}. "
-                f"(If you wired MoGe-2's depth_raw by mistake, switch to points_raw — "
+                f"(If you wired MoGe-2's depth_raw by mistake, switch to points_raw - "
                 f"depth_raw is planar Z and produces face-shaped seam artifacts here.)"
             )
         N, fh, fw, _ = p.shape
@@ -761,7 +761,7 @@ class PanoramaDepthMerge(io.ComfyNode):
         intr = intrinsics.detach().cpu().numpy() if isinstance(intrinsics, torch.Tensor) else np.asarray(intrinsics)
         if ex.shape != (N, 4, 4) or intr.shape != (N, 3, 3):
             raise ValueError(
-                f"PanoramaDepthMerge: shape mismatch — extrinsics {ex.shape}, "
+                f"PanoramaDepthMerge: shape mismatch - extrinsics {ex.shape}, "
                 f"intrinsics {intr.shape}, expected ({N},4,4) and ({N},3,3)"
             )
         extr_list = [ex[i].astype(np.float32) for i in range(N)]
@@ -793,7 +793,7 @@ class PanoramaDepthMerge(io.ComfyNode):
             np.clip(c, 0.0, 1.0, out=c)
             weights *= c
 
-        # Max ray-distance pre-filter — drop outlier far-points that
+        # Max ray-distance pre-filter - drop outlier far-points that
         # blow up the LSMR log-d objective. Distance maps are already
         # computed above as np.linalg.norm(p_f32[i]) per face.
         if max_ray_distance_m > 0.0:
@@ -806,7 +806,7 @@ class PanoramaDepthMerge(io.ComfyNode):
                 weights[i] *= keep
             total_px = N * fh * fw
             _p(
-                f"max_ray_distance_m={max_ray_distance_m:.2f} m → "
+                f"max_ray_distance_m={max_ray_distance_m:.2f} m -> "
                 f"dropped {dropped_total}/{total_px} pixels "
                 f"({100.0 * dropped_total / max(total_px, 1):.1f}%) "
                 f"with ||point|| above the threshold"
@@ -851,15 +851,15 @@ class PanoramaDepthMerge(io.ComfyNode):
                 cos_thresh = float(np.cos(np.deg2rad(float(normal_edge_threshold_deg))))
                 edge_keep = (cos_min >= cos_thresh).astype(np.float32)
                 dropped = int(N * fh * fw - edge_keep.sum())
-                _p(f"normal-edge filter: threshold={normal_edge_threshold_deg:.1f}° "
-                   f"(cos≥{cos_thresh:.3f}); dropped {dropped}/{N*fh*fw} pixels "
+                _p(f"normal-edge filter: threshold={normal_edge_threshold_deg:.1f}deg "
+                   f"(cos>={cos_thresh:.3f}); dropped {dropped}/{N*fh*fw} pixels "
                    f"({100.0 * dropped / max(N*fh*fw, 1):.1f}%)")
                 weights *= edge_keep
 
             if use_consistency_boost:
                 # Soft multiplier: mean cos-similarity to 4 neighbors,
-                # clamped to [0, 1]. On smooth surfaces all 4 cos ≈ 1 so
-                # boost ≈ 1; on rough / textured regions boost drops.
+                # clamped to [0, 1]. On smooth surfaces all 4 cos ~= 1 so
+                # boost ~= 1; on rough / textured regions boost drops.
                 cos_mean = (cos_up + cos_dn + cos_lf + cos_rt) * 0.25
                 consistency = np.clip(cos_mean, 0.0, 1.0).astype(np.float32)
                 _p(f"normal-consistency boost: mean={float(consistency.mean()):.3f} "
@@ -872,7 +872,7 @@ class PanoramaDepthMerge(io.ComfyNode):
         # confidence was wired since the gradation is lost.
         if not use_gpu:
             if face_confidences is not None:
-                _p("WARN: face_confidences wired but use_gpu=False — "
+                _p("WARN: face_confidences wired but use_gpu=False - "
                    "continuous confidence is lost; thresholding at 0.5.")
             pred_masks = [(weights[i] > 0.5).astype(bool) for i in range(N)]
         else:
@@ -890,12 +890,12 @@ class PanoramaDepthMerge(io.ComfyNode):
                 _fn = _decode_moge_normal(_fn)
                 world_normals_np = _merge_world_normals(
                     _fn, extr_list, intr_list, weights, N, H_out, W_out, fh, fw)
-                _p(f"normals merged: {H_out}×{W_out}")
+                _p(f"normals merged: {H_out}x{W_out}")
             else:
                 _p(f"WARN: face_normals shape {_fn.shape} unexpected; skipping normals")
 
-        _p(f"merging {N} faces @ {fh}×{fw} → equirect {out_height}×{out_width} "
-           f"(use_gpu={use_gpu}); input = points (||·|| → ray distance)")
+        _p(f"merging {N} faces @ {fh}x{fw} -> equirect {out_height}x{out_width} "
+           f"(use_gpu={use_gpu}); input = points (||.|| -> ray distance)")
 
         try:
             import comfy.utils
@@ -910,20 +910,20 @@ class PanoramaDepthMerge(io.ComfyNode):
             # Ask ComfyUI's model manager (across all comfy-env worker
             # subprocesses, via comfy_worker.call_parent) to free VRAM
             # before we hit the top pyramid level. The top-level einsum
-            # at large output resolutions (3840×1920 with N=42) needs
+            # at large output resolutions (3840x1920 with N=42) needs
             # several GB of contiguous CUDA memory; if a sibling worker
             # is still holding a model (HYWM2's DiT, SHARP's UNet) the
             # allocation can OOM even when the totals would fit. Native
             # samplers do the same thing via `mm.load_models_gpu(...,
             # memory_required=N)`; ours is the transient-tensor analog.
             #
-            # Peak estimate: per-chunk float32 working tensors ≈ 12
+            # Peak estimate: per-chunk float32 working tensors ~= 12
             # channels per output pixel per face in flight (p_cam +
             # p_proj + projected_uv + safe_w + sampled_log_dist +
             # sampled_pred_mask + grid xy + grad/lap intermediates),
             # summed over `chunk_size` faces. Plus a handful of
             # accumulators at full output resolution (six float + three
-            # bool buffers ≈ 7 floats' worth). 10% headroom is added by
+            # bool buffers ~= 7 floats' worth). 10% headroom is added by
             # the parent's _handle_vram_budget. Estimate is approximate
             # but a generous overestimate helps -- worst case is we
             # evict more models than strictly needed; best case we
@@ -934,7 +934,7 @@ class PanoramaDepthMerge(io.ComfyNode):
             accum_bytes = int(out_height) * int(out_width) * 4 * 7
             peak_estimate = per_chunk_bytes + accum_bytes
             _p(f"top-level peak VRAM estimate: "
-               f"{peak_estimate / 1e9:.2f} GB ({out_width}×{out_height}, "
+               f"{peak_estimate / 1e9:.2f} GB ({out_width}x{out_height}, "
                f"N={N_f}, chunk_size={Nc})")
             _request_vram_eviction(peak_estimate)
 
@@ -942,7 +942,7 @@ class PanoramaDepthMerge(io.ComfyNode):
             # under the hood). The vendored merge_panorama_depth_gpu calls
             # solve_lsmr_gpu internally, which routes to the GPU operator when
             # CUDA is available and falls back to CPU scipy otherwise. The
-            # GPU function doesn't accept a pbar — it's fast enough that
+            # GPU function doesn't accept a pbar - it's fast enough that
             # the progress bar just sits at 1% then jumps to 100% on completion.
             from ._vendor.worldgen.src.panorama_utils import merge_panorama_depth_gpu
             depth_np, mask_np = merge_panorama_depth_gpu(
@@ -1003,9 +1003,9 @@ class PanoramaDepthMerge(io.ComfyNode):
         # ----- Debug image: per-pixel disagreement among overlapping faces -----
         # Re-project each face's per-pixel ray distance to the equirect grid
         # using the same projection the LSMR uses internally, then compute the
-        # std across the faces that cover each pixel. Strong consensus →
-        # std ≈ 0 (dark); silhouette / depth-edge regions where the merger had
-        # to compromise → std spikes (bright).
+        # std across the faces that cover each pixel. Strong consensus ->
+        # std ~= 0 (dark); silhouette / depth-edge regions where the merger had
+        # to compromise -> std spikes (bright).
         debug_img = _build_debug_image(
             distance_maps=distance_maps,
             weights=weights,
@@ -1039,7 +1039,7 @@ class PanoramaDepthMerge(io.ComfyNode):
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
 
-        # --- points: merged equirect world-space point map (depth × ray dir),
+        # --- points: merged equirect world-space point map (depth x ray dir),
         #     same grid/frame as `normals`. For PlaneSegment / 3D consumers. ---
         try:
             from utils3d.numpy.maps import uv_map as _uv_map
@@ -1057,7 +1057,7 @@ class PanoramaDepthMerge(io.ComfyNode):
 
         pbar.update_absolute(100, 100)
         # NOTE: declared output order is depth, valid_mask, debug_image, normals,
-        # xyz_views, points — debug_img and normals_img were previously returned
+        # xyz_views, points - debug_img and normals_img were previously returned
         # swapped relative to the schema; fixed here.
         return io.NodeOutput(depth_img, valid_mask, debug_img, normals_img,
                              xyz_views_img, points_img)

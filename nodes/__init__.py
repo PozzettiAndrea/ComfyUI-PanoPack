@@ -1,4 +1,4 @@
-"""ComfyUI-PanoPack — aggregated node registry."""
+"""ComfyUI-PanoPack - aggregated node registry."""
 
 from .panorama_type import (
     NODE_CLASS_MAPPINGS as TYPE_MAPS,

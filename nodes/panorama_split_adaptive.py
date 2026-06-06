@@ -1,4 +1,4 @@
-"""PanoramaSplitAdaptive — depth+normals-conditioned adaptive panorama split.
+"""PanoramaSplitAdaptive - depth+normals-conditioned adaptive panorama split.
 
 Instead of uniform icosahedron tiling, places cameras adaptively so each
 crop captures approximately equal world-space surface area. Areas with
@@ -7,7 +7,7 @@ crops; nearby frontal surfaces get fewer.
 
 Algorithm:
   1. Compute per-pixel world-space area weight from depth + normals:
-     weight = depth² / max(cos(θ), ε) where θ = angle(normal, view_ray)
+     weight = depth^2 / max(cos(theta), eps) where theta = angle(normal, view_ray)
   2. Start with icosahedron_12 directions as initial Voronoi seeds
   3. Assign each equirect pixel to its nearest seed (spherical Voronoi)
   4. Compute total area-weight per cell
@@ -41,8 +41,8 @@ def _equirect_ray_dirs(H: int, W: int) -> np.ndarray:
     v = np.linspace(0.5, H - 0.5, H, dtype=np.float32) / H  # [0, 1]
     vv, uu = np.meshgrid(v, u, indexing="ij")
 
-    theta = (1.0 - uu) * 2.0 * np.pi  # azimuth [0, 2π], right-to-left
-    phi = vv * np.pi                    # polar [0, π], top-to-bottom
+    theta = (1.0 - uu) * 2.0 * np.pi  # azimuth [0, 2pi], right-to-left
+    phi = vv * np.pi                    # polar [0, pi], top-to-bottom
 
     x = np.sin(phi) * np.cos(theta)
     y = np.cos(phi)                     # +Y = up (north pole)
@@ -56,11 +56,11 @@ def _compute_area_weights(
 ) -> np.ndarray:
     """Per-pixel world-space area weight. (H, W) float32.
 
-    weight ∝ depth² / cos(θ) where θ = angle between surface normal
+    weight ~ depth^2 / cos(theta) where theta = angle between surface normal
     and the viewing ray. Pixels with normals facing away or zero depth
     get weight 0.
     """
-    # cos(θ) = dot(normal, -ray) (ray points outward, normal points toward camera)
+    # cos(theta) = dot(normal, -ray) (ray points outward, normal points toward camera)
     cos_theta = np.sum(normals * (-rays), axis=-1)  # (H, W)
     cos_theta = np.clip(cos_theta, 0.05, 1.0)       # clamp grazing to avoid infinity
 
@@ -76,9 +76,9 @@ def _spherical_voronoi_assign(
 
     rays: (H, W, 3) unit directions
     seeds: (K, 3) unit directions
-    Returns: (H, W) int32 — index of nearest seed per pixel.
+    Returns: (H, W) int32 - index of nearest seed per pixel.
     """
-    # dots: (H, W, K) = rays · seeds^T
+    # dots: (H, W, K) = rays . seeds^T
     dots = np.einsum("hwc,kc->hwk", rays, seeds)
     return np.argmax(dots, axis=-1).astype(np.int32)
 
@@ -141,7 +141,7 @@ def _adaptive_split(
 
         # Split: two new seeds offset along the principal axis
         # Replace the heaviest seed with two children
-        offset = split_axis * 0.15  # ~8.5° offset
+        offset = split_axis * 0.15  # ~8.5deg offset
         child_a = centroid + offset
         child_a /= np.linalg.norm(child_a)
         child_b = centroid - offset
@@ -174,7 +174,7 @@ class PanoramaSplitAdaptive(io.ComfyNode):
                 "angles) get more crops; nearby frontal surfaces get "
                 "fewer.\n\n"
                 "Requires a depth panorama and normals panorama from "
-                "a first pass (e.g. MoGe2 → DepthMerge)."
+                "a first pass (e.g. MoGe2 -> DepthMerge)."
             ),
             inputs=[
                 io.Custom(PANORAMA_TYPE).Input(
@@ -293,7 +293,7 @@ class PanoramaSplitAdaptive(io.ComfyNode):
         normals_np = normals_np / np.maximum(norms, 1e-8)
 
         # --- Compute ray directions and area weights ---
-        _p(f"computing area weights from depth ({H}×{W}) + normals...")
+        _p(f"computing area weights from depth ({H}x{W}) + normals...")
         rays = _equirect_ray_dirs(H, W)
         weights = _compute_area_weights(depth_np, normals_np, rays)
         _p(f"  weight range: [{weights.min():.3g}, {weights.max():.3g}], "
@@ -306,7 +306,7 @@ class PanoramaSplitAdaptive(io.ComfyNode):
             np.linalg.norm(initial_seeds, axis=-1, keepdims=True), 1e-12)
 
         # --- Adaptive splitting ---
-        _p(f"adaptive split: 12 → {target_faces} faces...")
+        _p(f"adaptive split: 12 -> {target_faces} faces...")
         t_split_start = time.perf_counter()
         seeds = _adaptive_split(rays, weights, initial_seeds, target_faces)
         N = len(seeds)
@@ -332,7 +332,7 @@ class PanoramaSplitAdaptive(io.ComfyNode):
         intrinsics = np.stack([intrinsics_one] * N, axis=0).astype(np.float32)
 
         # --- Rasterize crops ---
-        _p(f"rasterizing {N} faces @ {resolution}×{resolution}...")
+        _p(f"rasterizing {N} faces @ {resolution}x{resolution}...")
         t_raster = time.perf_counter()
         if use_gpu and torch.cuda.is_available():
             splitted = split_panorama_image_gpu(arr, extrinsics, intrinsics, resolution)

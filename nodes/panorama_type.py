@@ -1,4 +1,4 @@
-"""PanoramaWrap / PanoramaUnwrap — IMAGE ↔ PANORAMA conversion nodes."""
+"""PanoramaWrap / PanoramaUnwrap - IMAGE <-> PANORAMA conversion nodes."""
 
 from __future__ import annotations
 
@@ -24,7 +24,7 @@ class PanoramaWrap(io.ComfyNode):
             display_name="Panorama Wrap (IMAGE -> PANORAMA)",
             category="PanoPack",
             description=(
-                "Tag an IMAGE as a PANORAMA — a typed socket for "
+                "Tag an IMAGE as a PANORAMA - a typed socket for "
                 "equirectangular 2:1 panoramas. Downstream PanoPack "
                 "nodes accept this type. Raises if the input isn't 2:1 "
                 "(W must be exactly twice H, within 1% tolerance)."
@@ -33,7 +33,7 @@ class PanoramaWrap(io.ComfyNode):
                 io.Image.Input(
                     "image",
                     tooltip="Equirectangular image, shape [B, H, W, C] "
-                            "or [H, W, C]. Must satisfy W = 2·H."),
+                            "or [H, W, C]. Must satisfy W = 2.H."),
             ],
             outputs=[
                 io.Custom(PANORAMA_TYPE).Output(display_name="panorama"),

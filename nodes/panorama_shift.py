@@ -1,4 +1,4 @@
-"""PanoramaShift — rotate an equirect by yaw and pitch angles in degrees."""
+"""PanoramaShift - rotate an equirect by yaw and pitch angles in degrees."""
 
 from __future__ import annotations
 
@@ -29,7 +29,7 @@ class PanoramaShift(io.ComfyNode):
                 "Implementation uses integer-pixel torch.roll along the W "
                 "axis (lossless for whole-pixel shifts) plus a sub-pixel "
                 "bilinear residual via grid_sample. Wraps cleanly across "
-                "the ±π seam.\n\n"
+                "the +/-pi seam.\n\n"
                 "Pitch: rotation around the horizontal axis. "
                 "Implementation uses a spherical-coordinate remap via "
                 "grid_sample.\n\n"

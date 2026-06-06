@@ -106,10 +106,10 @@ def split_panorama_image_gpu(image: np.ndarray, extrinsics: np.ndarray, intrinsi
 
     grid_t = torch.from_numpy(grid).to(device)  # (N, R, R, 2) fp32
 
-    # Image to (1, C, H, W) → broadcast to (N, C, H, W) for batched sample.
+    # Image to (1, C, H, W) -> broadcast to (N, C, H, W) for batched sample.
     img_chw = torch.from_numpy(np.ascontiguousarray(image)).to(device)
     if img_chw.ndim == 2:
-        img_chw = img_chw.unsqueeze(-1)   # (H, W) → (H, W, 1)
+        img_chw = img_chw.unsqueeze(-1)   # (H, W) -> (H, W, 1)
     img_chw = img_chw.permute(2, 0, 1).contiguous().to(torch.float32)  # (C, H, W)
     img_batched = img_chw.unsqueeze(0).expand(N, -1, -1, -1)            # (N, C, H, W)
 
@@ -185,11 +185,11 @@ def grad_equation(width: int, height: int, wrap_x: bool = False, wrap_y: bool = 
 
 
 def merge_panorama_depth(width: int, height: int, distance_maps: List[np.ndarray], pred_masks: List[np.ndarray], extrinsics: List[np.ndarray], intrinsics: List[np.ndarray], *, pbar=None, _top_size=None):
-    """Recursive multi-resolution merge of N rectilinear face depth maps → equirect depth.
+    """Recursive multi-resolution merge of N rectilinear face depth maps -> equirect depth.
 
     Optional `pbar` is a ComfyUI ProgressBar-like object (any obj with
     `update_absolute(value, total)`). Progress is weighted by `pixels^1.5`
-    per level to match LSMR's asymptotic cost — the top level dominates,
+    per level to match LSMR's asymptotic cost - the top level dominates,
     so the bar advances slowly until the unwind reaches it.
     """
     import sys
@@ -209,15 +209,15 @@ def merge_panorama_depth(width: int, height: int, distance_maps: List[np.ndarray
             if max(w_, h_) <= 256:
                 break
             w_, h_ = w_ // 2, h_ // 2
-        levels.reverse()  # smallest → largest, matches recursion unwind order
+        levels.reverse()  # smallest -> largest, matches recursion unwind order
         weights = np.array([(lw * lh) ** 1.5 for lw, lh in levels], dtype=np.float64)
         weights = weights / weights.sum()
         pbar._wn_levels = levels
         pbar._wn_weights = weights
-        _p(f"progress bar: {len(levels)} levels — weights {[f'{x:.1%}' for x in weights]}")
+        _p(f"progress bar: {len(levels)} levels - weights {[f'{x:.1%}' for x in weights]}")
 
     def _bump(level_frac: float):
-        """Advance the global progress bar to (cum % of prior levels) + (level_frac × this level's share)."""
+        """Advance the global progress bar to (cum % of prior levels) + (level_frac x this level's share)."""
         if pbar is None or not hasattr(pbar, "_wn_levels"):
             return
         try:
@@ -233,24 +233,24 @@ def merge_panorama_depth(width: int, height: int, distance_maps: List[np.ndarray
     _bump(0.0)
 
     if max(width, height) > 256:
-        _p(f"recurse into {width // 2}x{height // 2}…")
+        _p(f"recurse into {width // 2}x{height // 2}...")
         panorama_depth_init, _ = merge_panorama_depth(
             width // 2, height // 2, distance_maps, pred_masks, extrinsics, intrinsics,
             pbar=pbar, _top_size=_top_size,
         )
-        _p(f"recursion returned; upsampling {width // 2}x{height // 2} → {width}x{height}")
+        _p(f"recursion returned; upsampling {width // 2}x{height // 2} -> {width}x{height}")
         panorama_depth_init = cv2.resize(panorama_depth_init, (width, height), cv2.INTER_LINEAR)
     else:
-        _p(f"base case (≤256 on each side) → no recursion, no init x0 for LSMR")
+        _p(f"base case (<=256 on each side) -> no recursion, no init x0 for LSMR")
         panorama_depth_init = None
     _bump(0.05)
 
-    _p(f"building sphere uv + ray directions ({width}×{height})…")
+    _p(f"building sphere uv + ray directions ({width}x{height})...")
     uv = utils3d.np.uv_map(height, width)
     spherical_directions = spherical_uv_to_directions(uv)
 
     # Warp each view to the panorama
-    _p(f"warping {len(distance_maps)} face depth maps onto the equirect…")
+    _p(f"warping {len(distance_maps)} face depth maps onto the equirect...")
     t_warp_start = time.perf_counter()
     panorama_log_distance_grad_maps, panorama_grad_masks = [], []
     panorama_log_distance_laplacian_maps, panorama_laplacian_masks = [], []
@@ -293,7 +293,7 @@ def merge_panorama_depth(width: int, height: int, distance_maps: List[np.ndarray
 
     _bump(0.45)
     _p(f"warp stage done in {time.perf_counter() - t_warp_start:.2f}s; "
-       f"stacking + averaging gradient/laplacian maps…")
+       f"stacking + averaging gradient/laplacian maps...")
     panorama_log_distance_grad_x = np.stack([grad_map[0] for grad_map in panorama_log_distance_grad_maps], axis=0)
     panorama_log_distance_grad_y = np.stack([grad_map[1] for grad_map in panorama_log_distance_grad_maps], axis=0)
     panorama_grad_mask_x = np.stack([mask_map[0] for mask_map in panorama_grad_masks], axis=0)
@@ -313,7 +313,7 @@ def merge_panorama_depth(width: int, height: int, distance_maps: List[np.ndarray
 
     _bump(0.55)
     # Solve overdetermined system
-    _p(f"building sparse linear system (grad_equation + poisson_equation)…")
+    _p(f"building sparse linear system (grad_equation + poisson_equation)...")
     t_build = time.perf_counter()
     A = vstack([
         grad_equation(width, height, wrap_x=True, wrap_y=False)[grad_mask],
@@ -324,12 +324,12 @@ def merge_panorama_depth(width: int, height: int, distance_maps: List[np.ndarray
         panorama_log_distance_grad_y.reshape(-1)[grad_y_mask],
         panorama_laplacian_map.reshape(-1)[laplacian_mask]
     ])
-    _p(f"linear system: A {A.shape} ({A.nnz} nnz), b {b.shape} — built in "
+    _p(f"linear system: A {A.shape} ({A.nnz} nnz), b {b.shape} - built in "
        f"{time.perf_counter() - t_build:.2f}s")
     _bump(0.65)
 
     _p(f"LSMR solve (atol=1e-5, btol=1e-5, "
-       f"x0={'provided' if panorama_depth_init is not None else 'None'})…")
+       f"x0={'provided' if panorama_depth_init is not None else 'None'})...")
     t_solve = time.perf_counter()
     x, istop, itn, normr, normar, norma, conda, normx = lsmr(
         A, b,

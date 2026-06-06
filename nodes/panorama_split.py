@@ -1,17 +1,17 @@
-"""PanoramaSplit — equirect panorama → N rectilinear faces.
+"""PanoramaSplit - equirect panorama -> N rectilinear faces.
 
-Lets the user run any rectilinear depth model (MoGe2, DepthAnythingV3, …)
+Lets the user run any rectilinear depth model (MoGe2, DepthAnythingV3, ...)
 on a panorama without that model needing to be panorama-aware: split the
 sphere into N evenly-tiled cube/icosahedron faces, feed each face through
 the depth model, then stitch the per-face depths back via WorldNavDepthMerge.
 
 Outputs:
-- face_images IMAGE (B=N, H, W, 3) — rectilinear views, fov_x=fov_y=90°
+- face_images IMAGE (B=N, H, W, 3) - rectilinear views, fov_x=fov_y=90deg
 - extrinsics EXTRINSICS [N, 4, 4]
 - intrinsics INTRINSICS [N, 3, 3]
-- fov_x_deg FLOAT (90) — convenience for the rectilinear depth node's fov widget
+- fov_x_deg FLOAT (90) - convenience for the rectilinear depth node's fov widget
 
-User then wires `face_images → MoGe2Inference` (or similar) and pipes the
+User then wires `face_images -> MoGe2Inference` (or similar) and pipes the
 per-face depths + the extrinsics + intrinsics back into WorldNavDepthMerge.
 """
 
@@ -49,7 +49,7 @@ def _make_pano_debug_overlay(
     """Draw each face's frustum edges on the panorama (WorldNav convention).
 
     For each face: sample N=64 points along each of 4 frustum edges at
-    z=1 in camera space (corners at (±tan(fov/2), ±tan(fov/2), 1)),
+    z=1 in camera space (corners at (+/-tan(fov/2), +/-tan(fov/2), 1)),
     transform to world via R_c2w = R_w2c^T, normalize, convert to
     (theta, phi) in WorldNav's spherical convention, then to equirect
     pixel coords. Draw a polyline per edge with a distinct HSV-wheel hue.
@@ -57,10 +57,10 @@ def _make_pano_debug_overlay(
 
     WorldNav convention (matches `spherical_uv_to_directions` upstream):
       world up = +Z
-      theta = atan2(ry, rx)            azimuth around Z, in [0, 2π)
-      phi   = arccos(rz)               polar angle from +Z, in [0, π]
-      u_erp = (1 - theta / (2π)) · (W - 1)
-      v_erp = (phi / π)         · (H - 1)
+      theta = atan2(ry, rx)            azimuth around Z, in [0, 2pi)
+      phi   = arccos(rz)               polar angle from +Z, in [0, pi]
+      u_erp = (1 - theta / (2pi)) . (W - 1)
+      v_erp = (phi / pi)         . (H - 1)
 
     Args:
         panorama_u8: (H, W, 3) uint8 RGB panorama.
@@ -101,14 +101,14 @@ def _make_pano_debug_overlay(
                 np.linalg.norm(world_dirs, axis=-1, keepdims=True), 1e-12,
             )
             rx, ry, rz = world_dirs[:, 0], world_dirs[:, 1], world_dirs[:, 2]
-            theta = np.arctan2(ry, rx) % (2.0 * np.pi)             # [0, 2π)
-            phi = np.arccos(np.clip(rz, -1.0, 1.0))                # [0, π]
+            theta = np.arctan2(ry, rx) % (2.0 * np.pi)             # [0, 2pi)
+            phi = np.arccos(np.clip(rz, -1.0, 1.0))                # [0, pi]
             u = (1.0 - theta / (2.0 * np.pi)) * (W - 1)
             v = (phi / np.pi) * (H - 1)
             pts = np.stack([u, v], axis=-1).astype(np.float32)
 
             # Split at azimuth wraparound: any consecutive pair with
-            # |Δu| > W/2 wrapped the seam.
+            # |Deltau| > W/2 wrapped the seam.
             du = np.abs(np.diff(pts[:, 0]))
             breaks = np.where(du > W * 0.5)[0]
             segments = np.split(pts, breaks + 1) if len(breaks) else [pts]
@@ -124,7 +124,7 @@ def _make_pano_debug_overlay(
 
 
 class PanoramaSplit(io.ComfyNode):
-    """Panorama → N rectilinear face images + per-face extrinsics/intrinsics."""
+    """Panorama -> N rectilinear face images + per-face extrinsics/intrinsics."""
 
     @classmethod
     def define_schema(cls):
@@ -134,7 +134,7 @@ class PanoramaSplit(io.ComfyNode):
             category="PanoPack",
             description=(
                 "Split an equirectangular panorama into N rectilinear views "
-                "(90° fov each). Pipe the views through any rectilinear depth "
+                "(90deg fov each). Pipe the views through any rectilinear depth "
                 "model (e.g. MoGe2Inference), then merge the per-view depths "
                 "back into an equirect depth map via WorldNavDepthMerge.\n\n"
                 "Mirrors upstream HY-World's pred_pano_depth split step."
@@ -158,21 +158,21 @@ class PanoramaSplit(io.ComfyNode):
                 io.Float.Input(
                     "fov_degrees", default=90.0, min=30.0, max=170.0, step=1.0,
                     optional=True,
-                    tooltip="Per-face FOV in degrees (square — same FOV "
-                            "horizontal and vertical). Default 90° matches "
+                    tooltip="Per-face FOV in degrees (square - same FOV "
+                            "horizontal and vertical). Default 90deg matches "
                             "upstream HY-World and gives full sphere coverage "
                             "with icosahedron_42.\n\n"
-                            "Coverage trade-off: narrower FOV (e.g. 60°) "
+                            "Coverage trade-off: narrower FOV (e.g. 60deg) "
                             "gives sharper per-face content (MoGe2 / other "
                             "rectilinear depth models stay in-distribution) "
                             "but may leave sphere gaps with icosahedron_12. "
-                            "Wider FOV (e.g. 120°) gives more redundancy but "
-                            "per-face image quality drops past ~110° as "
+                            "Wider FOV (e.g. 120deg) gives more redundancy but "
+                            "per-face image quality drops past ~110deg as "
                             "rectilinear distortion grows near corners."),
                 io.Boolean.Input(
                     "use_gpu", default=True,
                     optional=True,
-                    tooltip="Batched panorama→face resampling via "
+                    tooltip="Batched panorama->face resampling via "
                             "torch.nn.functional.grid_sample (bilinear). "
                             "All N faces sampled in one kernel launch. "
                             "Falls back to CPU cv2.remap loop if CUDA "
@@ -235,17 +235,17 @@ class PanoramaSplit(io.ComfyNode):
 
         t_total = time.perf_counter()
 
-        # --- panorama → numpy (H, W, 3), preserving value range ---
+        # --- panorama -> numpy (H, W, 3), preserving value range ---
         # Three input cases:
-        #   1. uint8 [0, 255]                     — visual RGB
-        #   2. float32 [0, 1]                     — visual RGB (ComfyUI IMAGE convention)
-        #   3. float32 with values outside [0, 1] — DATA panorama (depth in meters,
+        #   1. uint8 [0, 255]                     - visual RGB
+        #   2. float32 [0, 1]                     - visual RGB (ComfyUI IMAGE convention)
+        #   3. float32 with values outside [0, 1] - DATA panorama (depth in meters,
         #      ||point|| ray-distance, scalar field, etc.)
         # The split helpers (`split_panorama_image` via cv2.remap,
         # `split_panorama_image_gpu` via grid_sample) handle uint8 and float32
         # alike; they preserve the input dtype. Previously this node UNCONDITIONALLY
         # quantized non-uint8 input to uint8 [0, 255] via `np.clip(arr, 0, 1) * 255`
-        # — fine for visual RGB, FATAL for metric depth panoramas (0.5–50 m): values
+        # - fine for visual RGB, FATAL for metric depth panoramas (0.5-50 m): values
         # outside [0, 1] saturate, and the post-split /255 recovers a [0, 1] float
         # with no magnitude. Symptom: gaussian splat collapses to a sphere because
         # all gaussians end up at ~uniform distance from the camera.
@@ -276,7 +276,7 @@ class PanoramaSplit(io.ComfyNode):
                 data_panorama = False
             else:
                 # Case 3: DATA panorama (depth, etc.). Preserve raw float values
-                # through the split — helpers will return float32 with the same
+                # through the split - helpers will return float32 with the same
                 # metric magnitudes. For the debug overlay (which uses cv2 to
                 # draw colored polylines and needs uint8 RGB), build a
                 # min-max-normalized visualization.
@@ -292,7 +292,7 @@ class PanoramaSplit(io.ComfyNode):
                 arr_for_overlay_u8 = np.ascontiguousarray(vis)
                 data_panorama = True
                 _p(f"  data panorama detected (float, range [{arr_min:.3g}, {arr_max:.3g}]) "
-                   f"→ preserving raw values through split; overlay uses min-max normalize")
+                   f"-> preserving raw values through split; overlay uses min-max normalize")
         else:
             raise TypeError(
                 f"PanoramaSplit: unsupported panorama dtype {arr_orig.dtype} "
@@ -310,7 +310,7 @@ class PanoramaSplit(io.ComfyNode):
             raise ValueError(f"PanoramaSplit: unknown subdivision {subdivision!r}")
         N = len(vertices)
 
-        # User-selectable square FOV. Default 90° matches upstream HY-World.
+        # User-selectable square FOV. Default 90deg matches upstream HY-World.
         fov_rad = math.radians(float(fov_degrees))
         intrinsics_one = utils3d.np.intrinsics_from_fov(
             fov_x=fov_rad, fov_y=fov_rad,
@@ -349,7 +349,7 @@ class PanoramaSplit(io.ComfyNode):
                 eye, verts[parallel], _UP_FALLBACK,
             ).astype(np.float32)
             _p(f"  swapped up=[0,1,0] for {int(parallel.sum())} pole vertices "
-               f"(forward||[0,0,1] within {np.degrees(np.arccos(_PARALLEL_COS)):.1f}°)")
+               f"(forward||[0,0,1] within {np.degrees(np.arccos(_PARALLEL_COS)):.1f}deg)")
         intrinsics = np.stack([intrinsics_one] * N, axis=0).astype(np.float32)
         t_geom_done = time.perf_counter()
 
@@ -365,9 +365,9 @@ class PanoramaSplit(io.ComfyNode):
         t_split_done = time.perf_counter()
         # Stack + recover the ComfyUI IMAGE convention (float32, range
         # depends on input case):
-        #   - uint8 in  → splitted is uint8 → /255.0 → float [0, 1]
-        #   - float [0,1] in → splitted is float [0, 1] → /1.0 → float [0, 1]
-        #   - data panorama in → splitted is float (metric units) → /1.0 →
+        #   - uint8 in  -> splitted is uint8 -> /255.0 -> float [0, 1]
+        #   - float [0,1] in -> splitted is float [0, 1] -> /1.0 -> float [0, 1]
+        #   - data panorama in -> splitted is float (metric units) -> /1.0 ->
         #     PRESERVED magnitudes (this is the whole point of the dtype branching).
         face_stack = np.stack(splitted, axis=0).astype(np.float32) / face_norm_divisor  # (N, R, R, C)
         face_t = torch.from_numpy(face_stack)
@@ -444,8 +444,8 @@ class PanoramaSplit(io.ComfyNode):
             face_masks_t = torch.zeros(N, resolution, resolution)
             debug_masks_t = torch.zeros((1, H, W, 3), dtype=torch.float32)
 
-        _p(f"({W}×{H} RGB) → {N} faces @ {resolution}×{resolution}, "
-           f"fov={fov_degrees:.1f}° via {backend}; "
+        _p(f"({W}x{H} RGB) -> {N} faces @ {resolution}x{resolution}, "
+           f"fov={fov_degrees:.1f}deg via {backend}; "
            f"cameras {t_geom_done - t_geom:.3f}s, split {t_split_done - t_split:.3f}s, "
            f"total {time.perf_counter() - t_total:.3f}s")
 

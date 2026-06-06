@@ -1,4 +1,4 @@
-"""PanoRenderGaussians — render a gaussian splat PLY as an ERP panorama."""
+"""PanoRenderGaussians - render a gaussian splat PLY as an ERP panorama."""
 
 from __future__ import annotations
 

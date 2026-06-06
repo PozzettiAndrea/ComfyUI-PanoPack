@@ -1,5 +1,5 @@
-"""PanoRenderMesh — render a trimesh/pointcloud as an ERP panorama (color).
-PanoRenderMeshDepth — same but outputs an ERP depth map.
+"""PanoRenderMesh - render a trimesh/pointcloud as an ERP panorama (color).
+PanoRenderMeshDepth - same but outputs an ERP depth map.
 
 Both use PyVista offscreen rendering of 6 cube faces stitched to equirect.
 """
@@ -48,7 +48,7 @@ def _log_mesh_info(mesh, label="mesh") -> None:
            f"max={dist.max():.3f}")
 
 
-# 6 cube face cameras from origin, 90° FOV each.
+# 6 cube face cameras from origin, 90deg FOV each.
 # (camera_position, focal_point, view_up)
 _CUBE_CAMERAS = [
     ((0, 0, 0), (1, 0, 0), (0, 1, 0)),
