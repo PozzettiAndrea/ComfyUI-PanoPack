@@ -1,20 +1,21 @@
 """PanoramaSplitAdaptive - depth+normals-conditioned adaptive panorama split.
 
-Instead of uniform icosahedron tiling, places cameras adaptively so each
-crop captures approximately equal world-space surface area. Areas with
-distant/grazing surfaces (walls at steep angles, far ceilings) get more
-crops; nearby frontal surfaces get fewer.
+Keeps a FIXED number of cameras (the chosen seed layout: icosahedron_12 = 12,
+icosahedron_42 = 42, cube_split = 27) but RELOCATES them so they cluster on
+high-world-area regions. Distant/grazing surfaces (far walls, steep ceilings)
+end up covered by more, smaller cells -> more crop pixels there -> more
+gaussians downstream; the camera count never changes.
 
 Algorithm:
   1. Compute per-pixel world-space area weight from depth + normals:
      weight = depth^2 / max(cos(theta), eps) where theta = angle(normal, view_ray)
-  2. Start with icosahedron_12 directions as initial Voronoi seeds
-  3. Assign each equirect pixel to its nearest seed (spherical Voronoi)
-  4. Compute total area-weight per cell
-  5. Repeatedly split the highest-weight cell (bisect along its
-     principal axis) until target_faces is reached
-  6. Recompute Voronoi assignments after each split
-  7. Generate rectilinear crops from the final camera directions
+  2. Initial Voronoi seeds = the chosen layout (icosahedron_12 / _42 / cube).
+  3. Weighted spherical Lloyd relaxation (centroidal Voronoi tessellation):
+     assign each equirect pixel to its nearest seed, move each seed to the
+     area-weight-weighted centroid of its cell (re-normalized to the sphere),
+     iterate to convergence. Count stays fixed; seeds migrate toward high
+     weight, balancing total area-weight per cell.
+  4. Generate rectilinear crops from the relaxed camera directions.
 """
 
 from __future__ import annotations
@@ -158,78 +159,95 @@ def _spherical_voronoi_assign(
     return np.argmax(dots, axis=-1).astype(np.int32)
 
 
-def _adaptive_split(
+def _initial_seeds(method: str) -> np.ndarray:
+    """Initial Voronoi seed directions for the chosen layout. (N, 3) unit.
+
+    The layout fixes the camera COUNT (icosahedron_12 -> 12, icosahedron_42 ->
+    42, cube_split -> 27); Lloyd relaxation then moves these seeds without
+    changing the count.
+    """
+    import utils3d
+    if method == "icosahedron_12":
+        verts, _ = utils3d.np.create_icosahedron_mesh()
+    elif method == "icosahedron_42":
+        from ._vendor.worldgen.src.panorama_utils import subdivide_icosahedron
+        verts = subdivide_icosahedron(subdivisions=1)
+    elif method == "cube_split":
+        from ._vendor.worldstereo_cube import rotate_around_z_axis
+        start = [np.array([-1.0, 0.0, 0.0], np.float32),
+                 np.array([-1.0, 0.0, 0.5], np.float32),
+                 np.array([-1.0, 0.0, -0.5], np.float32)]
+        n_view = 9  # 40deg yaw step -> 9 yaws/pitch -> 27 total
+        d = list(start)
+        for sp in start:
+            for i in range(1, n_view):
+                d.append(rotate_around_z_axis(sp.reshape(1, 3), 40.0 * i)[0])
+        verts = np.stack(d, axis=0)
+    else:
+        raise ValueError(f"PanoramaSplitAdaptive: unknown split_method {method!r}")
+    verts = np.asarray(verts, dtype=np.float32)
+    return verts / np.maximum(np.linalg.norm(verts, axis=-1, keepdims=True), 1e-12)
+
+
+def _cell_pixels_per_area(seeds, rays, weights, pixels_per_face):
+    """Per-cell pixels-per-(world-area-weight). Each crop has a fixed
+    `pixels_per_face` budget covering its Voronoi cell, whose total area weight
+    is W_k, so pixels/area = pixels_per_face / W_k. Low value = under-sampled
+    (a large-world-area cell starved of pixels). Returns (K,) float64."""
+    a = np.argmax(rays.reshape(-1, 3) @ seeds.T, axis=1)
+    cw = np.zeros(len(seeds), dtype=np.float64)
+    np.add.at(cw, a, weights.flatten().astype(np.float64))
+    return float(pixels_per_face) / np.maximum(cw, 1e-9)
+
+
+def _lloyd_relax(
     rays: np.ndarray,
     weights: np.ndarray,
     initial_seeds: np.ndarray,
-    target_faces: int,
+    n_iters: int = 24,
+    tag: str = "",
 ) -> np.ndarray:
-    """Iteratively split the highest-area Voronoi cell until target_faces.
+    """Weighted spherical Lloyd relaxation (centroidal Voronoi tessellation).
 
-    Returns (target_faces, 3) unit direction seeds.
+    Keeps the seed COUNT fixed. Each iteration assigns every pixel (by ray) to
+    its nearest seed, then moves each seed to the area-weight-weighted centroid
+    of its Voronoi cell (re-normalized to the sphere). Seeds migrate toward
+    high-weight (large world-area) regions, so those regions end up covered by
+    more, smaller cells -> more crop pixels there -> more gaussians downstream,
+    while the total camera count stays equal to the seed layout.
+
+    Returns (K, 3) unit seeds (K == len(initial_seeds)).
     """
-    seeds = initial_seeds.copy()
+    seeds = initial_seeds.astype(np.float32).copy()
+    seeds /= np.maximum(np.linalg.norm(seeds, axis=1, keepdims=True), 1e-12)
     K = len(seeds)
+    rays_flat = rays.reshape(-1, 3).astype(np.float32)
+    w_flat = weights.flatten().astype(np.float64)
 
-    if K >= target_faces:
-        return seeds[:target_faces]
-
-    H, W = rays.shape[:2]
-    rays_flat = rays.reshape(-1, 3)       # (H*W, 3)
-    weights_flat = weights.flatten()       # (H*W,)
-
-    for iteration in range(target_faces - K):
-        # Assign pixels to nearest seed
-        dots = rays_flat @ seeds.T  # (H*W, K_current)
-        assignment = np.argmax(dots, axis=1)  # (H*W,)
-
-        # Compute total weight per cell
-        K_cur = len(seeds)
-        cell_weights = np.zeros(K_cur, dtype=np.float64)
-        np.add.at(cell_weights, assignment, weights_flat)
-
-        # Find the heaviest cell
-        heaviest = int(np.argmax(cell_weights))
-
-        # Find pixels in this cell
-        cell_mask = (assignment == heaviest)
-        cell_rays = rays_flat[cell_mask]     # (M, 3)
-        cell_w = weights_flat[cell_mask]      # (M,)
-
-        if cell_rays.shape[0] < 2:
-            # Degenerate: duplicate the seed with a small offset
-            perturb = np.random.randn(3).astype(np.float32) * 0.01
-            new_seed = seeds[heaviest] + perturb
-            new_seed /= np.linalg.norm(new_seed)
-            seeds = np.vstack([seeds, new_seed[None]])
-            continue
-
-        # Weighted centroid of the cell (on the sphere)
-        centroid = (cell_rays * cell_w[:, None]).sum(axis=0)
-        centroid /= max(np.linalg.norm(centroid), 1e-12)
-
-        # PCA on weighted cell rays to find principal spread axis
-        centered = cell_rays - centroid[None]
-        cov = (centered * cell_w[:, None]).T @ centered  # (3, 3)
-        _, _, Vt = np.linalg.svd(cov)
-        split_axis = Vt[0]  # direction of maximum spread
-
-        # Split: two new seeds offset along the principal axis
-        # Replace the heaviest seed with two children
-        offset = split_axis * 0.15  # ~8.5deg offset
-        child_a = centroid + offset
-        child_a /= np.linalg.norm(child_a)
-        child_b = centroid - offset
-        child_b /= np.linalg.norm(child_b)
-
-        seeds[heaviest] = child_a
-        seeds = np.vstack([seeds, child_b[None]])
-
-        if (iteration + 1) % 10 == 0 or (iteration + 1) == target_faces - K:
-            _p(f"  split {iteration + 1}/{target_faces - K}: "
-               f"{len(seeds)} seeds, heaviest cell weight ratio: "
-               f"{cell_weights[heaviest] / max(cell_weights.sum(), 1e-12):.1%}")
-
+    for it in range(n_iters):
+        assignment = np.argmax(rays_flat @ seeds.T, axis=1)
+        new_seeds = seeds.copy()
+        max_move = 0.0
+        for k in range(K):
+            m = assignment == k
+            if not m.any():
+                continue  # empty cell: leave the seed where it is
+            wk = w_flat[m]
+            if wk.sum() < 1e-9:
+                continue
+            c = (rays_flat[m] * wk[:, None]).sum(axis=0)
+            nrm = np.linalg.norm(c)
+            if nrm < 1e-12:
+                continue
+            c = (c / nrm).astype(np.float32)
+            max_move = max(max_move, float(np.linalg.norm(c - seeds[k])))
+            new_seeds[k] = c
+        seeds = new_seeds
+        if max_move < 1e-4:
+            _p(f"  {tag}Lloyd converged at iter {it + 1} (max move {max_move:.2e})")
+            break
+    else:
+        _p(f"  {tag}Lloyd ran {n_iters} iters (max move {max_move:.2e})")
     return seeds
 
 
@@ -264,13 +282,19 @@ class PanoramaSplitAdaptive(io.ComfyNode):
                     tooltip="Equirectangular surface normals (3-channel, "
                             "world-space, normalized). From a normals "
                             "estimation pass or from MoGe2's normals output."),
-                io.Int.Input(
-                    "target_faces", default=42, min=12, max=200, step=1,
-                    tooltip="Target number of output crops. The algorithm "
-                            "starts from icosahedron_12 and subdivides the "
-                            "highest-area cells until this count is reached. "
-                            "42 matches icosahedron_42; higher values give "
-                            "denser coverage of complex areas."),
+                io.Combo.Input(
+                    "split_method",
+                    options=["icosahedron_42", "icosahedron_12", "cube_split"],
+                    default="icosahedron_42",
+                    tooltip="Initial camera layout (same set as PanoramaSplit). "
+                            "Fixes the camera COUNT: icosahedron_12 = 12, "
+                            "icosahedron_42 = 42, cube_split = 27. The count "
+                            "does NOT change - the cameras are RELOCATED via "
+                            "weighted Lloyd relaxation so they cluster on "
+                            "high-area (far/grazing) regions, giving those "
+                            "regions more crops' pixels -> more gaussians, "
+                            "while keeping the same number of cameras as the "
+                            "chosen layout."),
                 io.Int.Input(
                     "resolution", default=952, min=128, max=2048, step=1,
                     tooltip="Per-face image resolution (square)."),
@@ -320,7 +344,7 @@ class PanoramaSplitAdaptive(io.ComfyNode):
 
     @classmethod
     def execute(cls, panorama, depth_panorama, normals_panorama,
-                target_faces=42, resolution=952, fov_degrees=90.0,
+                split_method="icosahedron_42", resolution=952, fov_degrees=90.0,
                 use_gpu=True, create_masks=False, mask_method="closest_to"):
         import cv2
         import utils3d
@@ -374,18 +398,15 @@ class PanoramaSplitAdaptive(io.ComfyNode):
         _p(f"  weight range: [{weights.min():.3g}, {weights.max():.3g}], "
            f"mean={weights.mean():.3g}")
 
-        # --- Initial seeds: icosahedron_12 ---
-        initial_verts, _ = utils3d.np.create_icosahedron_mesh()
-        initial_seeds = initial_verts.astype(np.float32)
-        initial_seeds /= np.maximum(
-            np.linalg.norm(initial_seeds, axis=-1, keepdims=True), 1e-12)
+        # --- Initial seeds from the chosen layout (fixes the camera count) ---
+        initial_seeds = _initial_seeds(split_method)
+        N = len(initial_seeds)
 
-        # --- Adaptive splitting ---
-        _p(f"adaptive split: 12 -> {target_faces} faces...")
+        # --- Adaptive RELOCATION: weighted Lloyd relaxation (count stays N) ---
+        _p(f"adaptive relax: {split_method} ({N} cameras), weighted Lloyd...")
         t_split_start = time.perf_counter()
-        seeds = _adaptive_split(rays, weights, initial_seeds, target_faces)
-        N = len(seeds)
-        _p(f"  adaptive split done: {N} camera directions in "
+        seeds = _lloyd_relax(rays, weights, initial_seeds, tag="")
+        _p(f"  Lloyd relaxation done: {N} camera directions in "
            f"{time.perf_counter() - t_split_start:.3f}s")
 
         # --- Build extrinsics/intrinsics from adaptive seeds ---
@@ -485,6 +506,16 @@ class PanoramaSplitAdaptive(io.ComfyNode):
             face_masks_t = torch.zeros(N, resolution, resolution)
             debug_masks_t = torch.zeros((1, H, W, 3), dtype=torch.float32)
 
+        # Final summary: how much the relaxation balanced per-camera pixel
+        # budget (resolution^2 each) against world area, before vs after.
+        _ppf = float(resolution) ** 2
+        _ppa0 = _cell_pixels_per_area(initial_seeds, rays, weights, _ppf)
+        _ppa1 = _cell_pixels_per_area(seeds, rays, weights, _ppf)
+        _p(f"pixels/area: lowest {_ppa0.min():.3g} -> {_ppa1.min():.3g} "
+           f"(+{(_ppa1.min() / max(_ppa0.min(), 1e-9) - 1) * 100:.0f}% on the "
+           f"worst-sampled cell), highest {_ppa0.max():.3g} -> {_ppa1.max():.3g}; "
+           f"spread max/min {_ppa0.max() / max(_ppa0.min(), 1e-9):.1f}x -> "
+           f"{_ppa1.max() / max(_ppa1.min(), 1e-9):.1f}x")
         _p(f"done: {N} adaptive faces, {time.perf_counter() - t_total:.3f}s total")
 
         return io.NodeOutput(

@@ -49,17 +49,20 @@ def _make_pano_debug_overlay(
     panorama_u8: np.ndarray,
     extrinsics: np.ndarray,
     fov_x_rad: float,
-    fov_y_rad: float,
+    fov_y_rad: float = None,
 ) -> np.ndarray:
     """Draw each crop's 4 frustum edges on the panorama (rectangular frustum).
 
     Camera-space corners use separate half-FOVs on x vs y so the frustum
     matches the crop aspect (square for icosahedron, 832x480-ish for cube).
+    `fov_y_rad` defaults to `fov_x_rad` (square) so 3-arg callers still work.
     Spherical convention matches `spherical_uv_to_directions`:
       theta = atan2(ry, rx), phi = arccos(rz),
       u = (1 - theta/2pi).(W-1), v = (phi/pi).(H-1).
     """
     import cv2
+    if fov_y_rad is None:
+        fov_y_rad = fov_x_rad
     H, W = panorama_u8.shape[:2]
     debug = panorama_u8.copy()
     N = int(extrinsics.shape[0])
