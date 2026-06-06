@@ -13,11 +13,39 @@ import torch
 from comfy_api.latest import io
 
 from .utils import PANORAMA_TYPE, wrap_image_as_panorama
-from .utils.cube_to_equirect import cube_faces_to_equirect
+from .utils.cube_to_equirect import FACE_FOV_DEG, cube_faces_to_equirect
 
 
 def _p(msg: str) -> None:
     print(f"[PanoRenderMesh] {msg}", file=sys.stderr, flush=True)
+
+
+def _log_face_stats(faces, label="faces") -> None:
+    """Log per-face coverage/intensity so a black or empty render is obvious."""
+    names = ["+X", "-X", "+Y", "-Y", "+Z", "-Z"]
+    for i, f in enumerate(faces):
+        flat = f.reshape(-1, f.shape[-1])
+        nz = int((flat.max(-1) > 1e-4).sum())
+        _p(f"  {label} face {names[i]:>2} {f.shape}: nonblack={nz}/{flat.shape[0]} "
+           f"({100.0 * nz / max(flat.shape[0], 1):.1f}%) "
+           f"min={float(f.min()):.3f} mean={float(f.mean()):.3f} max={float(f.max()):.3f}")
+
+
+def _log_mesh_info(mesh, label="mesh") -> None:
+    """Log vertex/face counts, colors, and bbox of the incoming geometry."""
+    verts = np.asarray(getattr(mesh, "vertices", []), dtype=np.float32)
+    faces_attr = getattr(mesh, "faces", None)
+    n_faces = len(faces_attr) if faces_attr is not None else 0
+    has_vc = hasattr(mesh, "visual") and hasattr(getattr(mesh, "visual", None), "vertex_colors")
+    has_c = getattr(mesh, "colors", None) is not None
+    _p(f"  {label}: type={type(mesh).__name__} verts={len(verts)} faces={n_faces} "
+       f"vertex_colors={has_vc} colors={has_c}")
+    if len(verts):
+        lo, hi = verts.min(0), verts.max(0)
+        dist = np.linalg.norm(verts, axis=1)
+        _p(f"  {label}: bbox min={lo.round(3).tolist()} max={hi.round(3).tolist()}")
+        _p(f"  {label}: |v| from origin min={dist.min():.3f} med={np.median(dist):.3f} "
+           f"max={dist.max():.3f}")
 
 
 # 6 cube face cameras from origin, 90° FOV each.
@@ -91,14 +119,23 @@ def _render_cube_faces_color(mesh, face_size, mode_params):
     poly = _trimesh_to_pyvista(mesh)
     has_colors = "RGB" in poly.array_names
     mode = mode_params.get("mode", "mesh")
+    _p(f"  pyvista poly: n_points={poly.n_points} n_cells={poly.n_cells} "
+       f"has_RGB={has_colors} mode={mode}")
+
+    # Screen-space point size is resolution-dependent: a 2px dot on a 1024px face
+    # is nearly invisible. Scale the user's point_size by the face resolution
+    # (relative to a 512px reference) so points stay visibly thick as you go up.
+    base_pt = float(mode_params.get("point_size", 2.0))
+    pt_size = max(base_pt * (face_size / 512.0), base_pt)
+    if mode == "pointcloud":
+        _p(f"  pointcloud: base_point_size={base_pt} -> effective={pt_size:.1f}px @ {face_size}px face")
 
     faces = []
-    for cam_pos, focal, view_up in _CUBE_CAMERAS:
+    for idx, (cam_pos, focal, view_up) in enumerate(_CUBE_CAMERAS):
         plotter = pv.Plotter(off_screen=True, window_size=(face_size, face_size))
         plotter.set_background((0, 0, 0))
 
         if mode == "pointcloud":
-            pt_size = float(mode_params.get("point_size", 2.0))
             if has_colors:
                 plotter.add_points(poly, scalars="RGB", rgb=True,
                                    point_size=pt_size,
@@ -109,7 +146,7 @@ def _render_cube_faces_color(mesh, face_size, mode_params):
                                    render_points_as_spheres=True)
         else:
             kwargs = dict(lighting=True, ambient=0.3, diffuse=0.7)
-            show_edges = str(mode_params.get("show_edges", "false")).lower() == "true"
+            show_edges = str(mode_params.get("show_edges", "off")).lower() == "on"
             if show_edges:
                 kwargs["show_edges"] = True
                 kwargs["edge_color"] = (0.18, 0.28, 0.45)
@@ -122,12 +159,15 @@ def _render_cube_faces_color(mesh, face_size, mode_params):
         plotter.camera.position = cam_pos
         plotter.camera.focal_point = focal
         plotter.camera.up = view_up
-        plotter.camera.view_angle = 90.0
+        plotter.camera.view_angle = FACE_FOV_DEG
         plotter.camera.clipping_range = (0.001, 1000.0)
 
         img = plotter.screenshot(return_img=True)
         plotter.close()
-        faces.append(img.astype(np.float32) / 255.0)
+        face = img.astype(np.float32) / 255.0
+        nz = int((face.reshape(-1, face.shape[-1]).max(-1) > 1e-4).sum())
+        _p(f"  color face {idx} focal={focal}: nonblack={nz} max={float(face.max()):.3f}")
+        faces.append(face)
 
     return faces
 
@@ -139,9 +179,10 @@ def _render_cube_faces_depth(mesh, face_size):
     import pyvista as pv
 
     poly = _trimesh_to_pyvista(mesh)
+    _p(f"  depth pyvista poly: n_points={poly.n_points} n_cells={poly.n_cells}")
 
     faces = []
-    for cam_pos, focal, view_up in _CUBE_CAMERAS:
+    for idx, (cam_pos, focal, view_up) in enumerate(_CUBE_CAMERAS):
         plotter = pv.Plotter(off_screen=True, window_size=(face_size, face_size))
         plotter.set_background((0, 0, 0))
         plotter.add_mesh(poly, color="white", lighting=False)
@@ -149,13 +190,17 @@ def _render_cube_faces_depth(mesh, face_size):
         plotter.camera.position = cam_pos
         plotter.camera.focal_point = focal
         plotter.camera.up = view_up
-        plotter.camera.view_angle = 90.0
+        plotter.camera.view_angle = FACE_FOV_DEG
         plotter.camera.clipping_range = (0.001, 1000.0)
 
         plotter.render()
         zbuf = plotter.get_image_depth(fill_value=0.0)
         plotter.close()
 
+        zbuf = np.asarray(zbuf, dtype=np.float32)
+        hit = int((zbuf > 0).sum())
+        _p(f"  depth face {idx} focal={focal}: hit_px={hit} "
+           f"range=[{float(zbuf.min()):.3f},{float(zbuf.max()):.3f}]")
         depth_3ch = np.stack([zbuf, zbuf, zbuf], axis=-1).astype(np.float32)
         faces.append(depth_3ch)
 
@@ -187,13 +232,17 @@ class PanoRenderMesh(io.ComfyNode):
                     tooltip="Render mode.",
                     options=[
                         io.DynamicCombo.Option("mesh", [
-                            io.Combo.Input("show_edges",
-                                options=["false", "true"], default="false",
-                                tooltip="Show triangle wireframe edges."),
-                            io.Float.Input("edge_thickness",
-                                default=1.0, min=0.1, max=10.0, step=0.1,
-                                tooltip="Wireframe edge line width "
-                                        "(only used when show_edges is true)."),
+                            io.DynamicCombo.Input("show_edges",
+                                tooltip="Show triangle wireframe edges. "
+                                        "Set 'on' to reveal edge thickness.",
+                                options=[
+                                    io.DynamicCombo.Option("off", []),
+                                    io.DynamicCombo.Option("on", [
+                                        io.Float.Input("edge_thickness",
+                                            default=1.0, min=0.1, max=10.0, step=0.1,
+                                            tooltip="Wireframe edge line width."),
+                                    ]),
+                                ]),
                         ]),
                         io.DynamicCombo.Option("pointcloud", [
                             io.Float.Input("point_size",
@@ -229,8 +278,11 @@ class PanoRenderMesh(io.ComfyNode):
         import time
         t0 = time.perf_counter()
 
+        _p(f"=== PanoRenderMesh: yz_flip={yz_flip} width={width} face_res={face_resolution} ===")
+        _log_mesh_info(mesh, "input")
         if yz_flip:
             mesh = _apply_yz_flip(mesh)
+            _log_mesh_info(mesh, "yz_flipped")
 
         erp_w = int(width)
         erp_h = erp_w // 2
@@ -239,10 +291,14 @@ class PanoRenderMesh(io.ComfyNode):
 
         _p(f"rendering 6 cube faces @ {face_size}px (color, mode={selected_mode})")
         faces = _render_cube_faces_color(mesh, face_size, mode_params=mode)
+        _log_face_stats(faces, "color")
 
-        _p(f"stitching to {erp_w}x{erp_h} equirect")
+        _p(f"stitching to {erp_w}x{erp_h} equirect (FOV={FACE_FOV_DEG})")
         erp = cube_faces_to_equirect(faces, erp_w, erp_h)
         erp = np.clip(erp, 0, 1).astype(np.float32)
+        nz = int((erp.reshape(-1, 3).max(-1) > 1e-4).sum())
+        _p(f"  ERP: nonblack={nz}/{erp_w * erp_h} ({100.0 * nz / (erp_w * erp_h):.1f}%) "
+           f"min={float(erp.min()):.3f} mean={float(erp.mean()):.3f} max={float(erp.max()):.3f}")
 
         _p(f"done in {time.perf_counter() - t0:.2f}s")
 
@@ -296,8 +352,11 @@ class PanoRenderMeshDepth(io.ComfyNode):
         import time
         t0 = time.perf_counter()
 
+        _p(f"=== PanoRenderMeshDepth: yz_flip={yz_flip} width={width} face_res={face_resolution} ===")
+        _log_mesh_info(mesh, "input")
         if yz_flip:
             mesh = _apply_yz_flip(mesh)
+            _log_mesh_info(mesh, "yz_flipped")
 
         erp_w = int(width)
         erp_h = erp_w // 2
@@ -305,8 +364,9 @@ class PanoRenderMeshDepth(io.ComfyNode):
 
         _p(f"rendering 6 cube faces @ {face_size}px (depth)")
         faces = _render_cube_faces_depth(mesh, face_size)
+        _log_face_stats(faces, "depth")
 
-        _p(f"stitching to {erp_w}x{erp_h} equirect")
+        _p(f"stitching to {erp_w}x{erp_h} equirect (FOV={FACE_FOV_DEG})")
         erp = cube_faces_to_equirect(faces, erp_w, erp_h)
 
         depth = erp[..., 0]

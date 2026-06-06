@@ -232,6 +232,16 @@ class PanoramaBuildPointCloud(io.ComfyNode):
 
         # --- RGBD -> point cloud ---
         rgb_t = torch.from_numpy(np.asarray(pil) / 255.0).float()
+
+        # Color sanity: per-point colors are sampled straight from this panorama.
+        # A (near-)constant panorama yields a flat-gray cloud -- almost always the
+        # color socket being unconnected or fed a non-color image (depth/normal/mask).
+        _p(f"panorama rgb: min={float(rgb_t.min()):.3f} max={float(rgb_t.max()):.3f} "
+           f"mean={float(rgb_t.mean()):.3f} std={float(rgb_t.std()):.3f}")
+        if float(rgb_t.std()) < 1e-3:
+            _p(f"WARNING: panorama is (near-)constant {float(rgb_t.mean()):.3f} gray -- "
+               f"the resulting point cloud will have no real color. The color socket "
+               f"is likely unconnected or fed a non-color image (depth/normal/mask).")
         dist_t = torch.from_numpy(depth_np).float()
         rays_t = torch.from_numpy(rays_np).float()
         excluded_t = torch.from_numpy(full_mask_np).bool()
