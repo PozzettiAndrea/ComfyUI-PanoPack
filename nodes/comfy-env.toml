@@ -25,3 +25,4 @@ utils3d = { git = "https://github.com/EasternJournalist/utils3d.git", rev = "3fa
 torch-ransac3d = "*"
 pyyaml = "*"
 transformers = "*"
+sqlalchemy = "*"
