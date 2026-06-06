@@ -7,7 +7,6 @@ import os
 import sys
 
 import numpy as np
-import torch
 from comfy_api.latest import io
 
 from .utils import PANORAMA_TYPE, wrap_image_as_panorama
@@ -120,6 +119,7 @@ def _render_6_faces_cpu(xyz, rgb, scale, opacity, face_size, gain=2.0, max_px=40
 
 def _render_6_faces_gpu(xyz, rgb, scale, opacity, rot, face_size):
     """Render 6 cube faces using the GPU gaussian rasterizer."""
+    import torch
     import comfy.model_management
     from comfy_extras.nodes_gaussian_splat import (
         _render_gaussian,
@@ -207,6 +207,7 @@ class PanoRenderGaussians(io.ComfyNode):
     @classmethod
     def execute(cls, gaussian_ply_path, width=2048, face_resolution=1024,
                 gain=2.0, backend="cpu"):
+        import torch
         import time
         t0 = time.perf_counter()
 

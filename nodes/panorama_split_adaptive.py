@@ -25,7 +25,6 @@ import sys
 import time
 
 import numpy as np
-import torch
 from comfy_api.latest import io
 
 from .utils import PANORAMA_TYPE, unwrap_panorama_to_image
@@ -346,6 +345,7 @@ class PanoramaSplitAdaptive(io.ComfyNode):
     def execute(cls, panorama, depth_panorama, normals_panorama,
                 split_method="icosahedron_42", resolution=952, fov_degrees=90.0,
                 use_gpu=True, create_masks=False, mask_method="closest_to"):
+        import torch
         import cv2
         import utils3d
         from ._vendor.moge_panorama import (

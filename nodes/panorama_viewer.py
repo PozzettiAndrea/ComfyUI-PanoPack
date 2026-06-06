@@ -8,7 +8,6 @@ import time
 
 import cv2
 import numpy as np
-import torch
 import utils3d
 from comfy_api.latest import io
 
@@ -118,6 +117,7 @@ class PanoramaViewer(io.ComfyNode):
         crop_fov: float = 90.0,
         filename_prefix: str = "panorama",
     ):
+        import torch
         from PIL import Image as PILImage
 
         img = unwrap_panorama_to_image(panorama)

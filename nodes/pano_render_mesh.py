@@ -9,7 +9,6 @@ from __future__ import annotations
 import sys
 
 import numpy as np
-import torch
 from comfy_api.latest import io
 
 from .utils import PANORAMA_TYPE, wrap_image_as_panorama
@@ -291,6 +290,7 @@ class PanoRenderMesh(io.ComfyNode):
 
     @classmethod
     def execute(cls, mesh, mode, yz_flip=True, width=2048, face_resolution=1024):
+        import torch
         import time
         t0 = time.perf_counter()
 
@@ -365,6 +365,7 @@ class PanoRenderMeshDepth(io.ComfyNode):
 
     @classmethod
     def execute(cls, mesh, yz_flip=True, width=2048, face_resolution=1024):
+        import torch
         import time
         t0 = time.perf_counter()
 

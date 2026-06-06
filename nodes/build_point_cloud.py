@@ -28,7 +28,6 @@ from __future__ import annotations
 import sys
 
 import numpy as np
-import torch
 from PIL import Image
 from comfy_api.latest import io
 
@@ -128,6 +127,7 @@ class PanoramaBuildPointCloud(io.ComfyNode):
                 edge_rtol: float = 0.1,
                 max_size: int = 4096,
                 dropout_pcd: bool = False):
+        import torch
         import torch.nn.functional as F
         from utils3d.numpy.maps import uv_map as _uv_map, depth_map_edge as _depth_map_edge
 

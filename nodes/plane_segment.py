@@ -31,7 +31,6 @@ import sys
 import time
 
 import numpy as np
-import torch
 from comfy_api.latest import io
 
 
@@ -86,6 +85,7 @@ def _segment_planes_one_face(
     DBSCAN clustering stays on CPU regardless - only the plane fit
     moves to GPU (it's the dominant cost at 1536^2 resolution).
     """
+    import torch
     import open3d as o3d
 
     tag = f"{face_tag} " if face_tag else ""
@@ -471,6 +471,7 @@ class PanoramaFacesPlaneSegment(io.ComfyNode):
         normal_consistency_threshold: float = 0.85,
     ):
         # --- Coerce inputs to numpy with consistent shapes. ---
+        import torch
         p = (
             face_points.detach().cpu().numpy()
             if isinstance(face_points, torch.Tensor)

@@ -19,7 +19,6 @@ from __future__ import annotations
 import sys
 
 import numpy as np
-import torch
 from comfy_api.latest import io
 
 
@@ -49,6 +48,7 @@ def _request_vram_eviction(needed_bytes: int) -> None:
     No-ops gracefully outside a comfy-env worker (e.g. unit tests running
     in plain Python).
     """
+    import torch
     # Cross-worker eviction via comfy-env's IPC bridge.
     try:
         import comfy_worker  # noqa: F401 - injected by comfy-env at worker startup
@@ -92,6 +92,7 @@ def _build_debug_image(
     `K @ p_cam`, perspective divide). Pixels covered by >=2 faces get a
     std across faces, normalized to a percentage of the merged depth.
     """
+    import torch
     import cv2
     from PIL import Image, ImageDraw, ImageFont
     from ._vendor.worldgen.src.panorama_utils import spherical_uv_to_directions
@@ -261,6 +262,7 @@ def _render_xyz_views(
     Falls back to a small zero tensor + a stderr log if PyVista's
     offscreen rasterizer isn't available in the worker.
     """
+    import torch
     try:
         import pyvista as pv
     except ImportError:
@@ -737,6 +739,7 @@ class PanoramaDepthMerge(io.ComfyNode):
                 normal_consistency_boost=False,
                 max_ray_distance_m=0.0,
                 scale_anchor=True):
+        import torch
         from ._vendor.moge_panorama import merge_panorama_depth
 
         # --- face_points: (N, h, w, 3) point map -> list of (h, w) ray distance.

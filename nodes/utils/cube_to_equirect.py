@@ -11,8 +11,6 @@ from __future__ import annotations
 import math
 
 import numpy as np
-import torch
-import torch.nn.functional as F
 
 
 # Render each cube face at this FOV (degrees). >90deg gives an overlap margin of
@@ -56,6 +54,8 @@ def cube_faces_to_equirect(
     which its contribution ramps from 0 to 1. Overlapping faces are combined as a
     weighted average, so the ramps form a smooth partition of unity across seams.
     """
+    import torch
+    import torch.nn.functional as F
     assert len(faces) == 6
     C = faces[0].shape[2]
 

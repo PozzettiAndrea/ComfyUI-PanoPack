@@ -14,7 +14,6 @@ import json
 import sys
 
 import numpy as np
-import torch
 from PIL import Image, ImageDraw
 from comfy_api.latest import io
 
@@ -219,6 +218,7 @@ class PanoramaBuildMesh(io.ComfyNode):
                 contract=False, contract_beyond=8.0, edge_rtol=0.1,
                 clip_quantile=1.0):
         # --- panorama -> PIL ---
+        import torch
         pano_t = unwrap_panorama_to_image(panorama)
         arr = pano_t.detach().cpu().numpy() if isinstance(pano_t, torch.Tensor) else np.asarray(pano_t)
         if arr.ndim == 4:

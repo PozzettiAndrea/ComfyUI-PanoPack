@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import torch
 from comfy_api.latest import io
 
 from .utils import (
@@ -42,6 +41,7 @@ class PanoramaWrap(io.ComfyNode):
 
     @classmethod
     def execute(cls, image: torch.Tensor):
+        import torch
         pano = wrap_image_as_panorama(image)
         return io.NodeOutput(pano)
 

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import torch
 from comfy_api.latest import io
 
 from .utils import (

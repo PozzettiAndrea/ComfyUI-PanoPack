@@ -16,7 +16,6 @@ from __future__ import annotations
 
 from typing import Any
 
-import torch
 
 # String tag used at ComfyUI socket-type level. Any node that wants to
 # emit / accept a panorama should call `io.Custom(PANORAMA_TYPE).Input/Output(...)`.
@@ -29,6 +28,7 @@ def is_two_to_one(image: torch.Tensor, tolerance: float = 0.01) -> bool:
     Accepts shapes [H, W, C], [B, H, W, C], or [H, W]. The aspect check
     compares W / H to 2.0 within `tolerance` (default 1%).
     """
+    import torch
     if image.dim() == 4:
         _, h, w, _ = image.shape
     elif image.dim() == 3:
@@ -48,6 +48,7 @@ def normalize_pano_tensor(image: torch.Tensor) -> torch.Tensor:
     - Replicates a single-channel input to 3 channels (so downstream
       consumers can treat depth panoramas as IMAGE).
     """
+    import torch
     img = image
     if img.dim() == 2:
         img = img.unsqueeze(-1)
@@ -66,6 +67,7 @@ def wrap_image_as_panorama(
     image: torch.Tensor, meta: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """IMAGE -> PANORAMA. Validates 2:1 aspect; raises otherwise."""
+    import torch
     img = normalize_pano_tensor(image)
     if not is_two_to_one(img):
         _, h, w, _ = img.shape
@@ -80,6 +82,7 @@ def unwrap_panorama_to_image(pano: dict[str, Any] | torch.Tensor) -> torch.Tenso
     """PANORAMA -> IMAGE. Accepts either the dict payload or a raw tensor
     (passthrough convenience for upstream nodes that emit IMAGE directly).
     """
+    import torch
     if isinstance(pano, dict):
         img = pano.get("image")
         if not isinstance(img, torch.Tensor):
@@ -235,6 +238,7 @@ def border_continuity_score(image: torch.Tensor) -> dict[str, float]:
       polar rows. Reported as 1 - clip(std, 0, 1).
     - `aspect_ratio`: the actual W/H of the input (informational).
     """
+    import torch
     img = normalize_pano_tensor(image)
     b, h, w, c = img.shape
     # Average across batch if more than 1; single-pano case is typical.

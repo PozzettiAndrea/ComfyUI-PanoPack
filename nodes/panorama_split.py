@@ -26,7 +26,6 @@ import sys
 import time
 
 import numpy as np
-import torch
 from comfy_api.latest import io
 
 from .utils import PANORAMA_TYPE, unwrap_panorama_to_image
@@ -249,6 +248,7 @@ class PanoramaSplit(io.ComfyNode):
     def execute(cls, panorama, split_method=None,
                 resolution=952, fov_degrees=90.0,
                 use_gpu=True, create_masks=False, fname="pano_bank"):
+        import torch
         import utils3d
         from ._vendor.moge_panorama import split_panorama_image_gpu
         from ._vendor.worldstereo_cube import split_panorama_image as split_rect

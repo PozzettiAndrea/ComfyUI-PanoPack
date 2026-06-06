@@ -6,7 +6,6 @@ import math
 
 import cv2
 import numpy as np
-import torch
 import utils3d
 from comfy_api.latest import io
 
@@ -73,6 +72,7 @@ class PanoCrop(io.ComfyNode):
         height: int = 512,
     ):
         # Panorama to numpy
+        import torch
         img_t = unwrap_panorama_to_image(panorama)
         img_t = normalize_pano_tensor(img_t)
         np_img = img_t[0].cpu().numpy()  # (H, W, C) float32 [0, 1]
