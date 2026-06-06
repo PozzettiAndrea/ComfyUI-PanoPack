@@ -3,6 +3,19 @@ Capturing execution frames: cpu_depth_merge_mesh_pointcloud.json
   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
   Frame 1 saved (frame_000.jpg, t=0.0s)
   Validating workflow...
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Prompt has 17 nodes
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "actual_pano_from_real_life.jpg"}
+  [ComfyUI] [32m[INFO][0m   Node 10: DownloadAndLoadMoGe2Model
+  [ComfyUI] [32m[INFO][0m     Inputs: {"model": "moge-2-vitl-normal.pt", "precision": "auto", "attention": "auto"}
+  [ComfyUI] [32m[INFO][0m   Node 35: GeomPackRemesh
+  [ComfyUI] [32m[INFO][0m     Inputs: {"backend": "pymeshlab_isotropic", "backend.target_edge_length": 0.03, "backend.iterations": 3, "backend.feature_angle": 30, "backend.adaptive": "false", "report_panel": "false", "trimesh": ["80", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 36: GeomPackPreviewMeshVTK
+  [ComfyUI] [32m[INFO][0m     Inputs: {"mode": "fields", "trimesh": ["35", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 63: MoGe2Inference
+  [ComfyUI] [32m[INFO][0m     Inputs: {"resolution_level": 9, "num_tokens": 0, "fov_x_deg": ["85", 3], "force_projection": true, "apply_mask": true, "moge2_model": ["10", 0], "images": ["85", 0]}
   Validation failed: Prompt outputs failed validation
 Node errors:
 {
@@ -18,18 +31,18 @@ Node errors:
       }
     ],
     "dependent_outputs": [
-      "82",
+      "77",
       "76",
-      "36",
-      "81",
+      "82",
       "35",
-      "78",
-      "77"
+      "81",
+      "36",
+      "78"
     ],
     "class_type": "LoadImage"
   }
 }
-  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m   Node 65: PanoramaWrap
     Status: FAILED
     Error: Workflow validation failed
     Details: Prompt outputs failed validation
@@ -47,30 +60,17 @@ Node errors:
       }
     ],
     "dependent_outputs": [
-      "82",
+      "77",
       "76",
-      "36",
-      "81",
+      "82",
       "35",
-      "78",
-      "77"
+      "81",
+      "36",
+      "78"
     ],
     "class_type": "LoadImage"
   }
 }
-  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
-  [ComfyUI] [32m[INFO][0m Prompt has 17 nodes
-  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "actual_pano_from_real_life.jpg"}
-  [ComfyUI] [32m[INFO][0m   Node 10: DownloadAndLoadMoGe2Model
-  [ComfyUI] [32m[INFO][0m     Inputs: {"model": "moge-2-vitl-normal.pt", "precision": "auto", "attention": "auto"}
-  [ComfyUI] [32m[INFO][0m   Node 35: GeomPackRemesh
-  [ComfyUI] [32m[INFO][0m     Inputs: {"backend": "pymeshlab_isotropic", "backend.target_edge_length": 0.03, "backend.iterations": 3, "backend.feature_angle": 30, "backend.adaptive": "false", "report_panel": "false", "trimesh": ["80", 0]}
-  [ComfyUI] [32m[INFO][0m   Node 36: GeomPackPreviewMeshVTK
-  [ComfyUI] [32m[INFO][0m     Inputs: {"mode": "fields", "trimesh": ["35", 0]}
-  [ComfyUI] [32m[INFO][0m   Node 63: MoGe2Inference
-  [ComfyUI] [32m[INFO][0m     Inputs: {"resolution_level": 9, "num_tokens": 0, "fov_x_deg": ["85", 3], "force_projection": true, "apply_mask": true, "moge2_model": ["10", 0], "images": ["85", 0]}
-  [ComfyUI] [32m[INFO][0m   Node 65: PanoramaWrap
   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
   [ComfyUI] [32m[INFO][0m   Node 69: PanoramaDepthMerge
   [ComfyUI] [32m[INFO][0m     Inputs: {"out_width": ["74", 0], "out_height": ["74", 1], "use_gpu": false, "scale_anchor": true, "chunk_size": 8, "center_weight_power": 2, "normal_edge_threshold_deg": 0, "normal_consistency_boost": false,
@@ -94,25 +94,25 @@ Node errors:
   [ComfyUI] [32m[INFO][0m     Inputs: {"method": "random", "target_count": 2100, "seed": 42, "point_cloud": ["79", 0]}
   [ComfyUI] [32m[INFO][0m   Node 85: PanoramaSplit
   [ComfyUI] [32m[INFO][0m     Inputs: {"split_method": "icosahedron_12", "resolution": 512, "fov_degrees": 90, "use_gpu": false, "create_masks": false, "fname": "pano_bank", "panorama": ["65", 0]}
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 451fc131-af16-4ec1-babc-23176b89c8f0
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 1024cda9-730d-4041-902d-0840598b57ea
   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 82:
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 77:
   [ComfyUI] [1m[31m[ERROR][0m * LoadImage 1:
   [ComfyUI] [1m[31m[ERROR][0m   - Custom validation failed for node: image - Invalid image file: actual_pano_from_real_life.jpg
   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 76:
   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
-  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 36:
-  [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
-  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 81:
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 82:
   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
   [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 35:
   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
-  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 78:
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 81:
   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
-  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 77:
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 36:
+  [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
+  [ComfyUI] [1m[31m[ERROR][0m Failed to validate prompt for output 78:
   [ComfyUI] [1m[31m[ERROR][0m Output will be ignored
   [ComfyUI] [32m[INFO][0m Validation result: valid=False
   [ComfyUI] [32m[INFO][0m   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}
-  [ComfyUI] [32m[INFO][0m   Node errors: {"1": {"errors": [{"type": "custom_validation_failed", "message": "Custom validation failed for node", "details": "image - Invalid image file: actual_pano_from_real_life.jpg", "extra_info": {"input_name": "image"}}], "dependent_outputs": ["82", "76", "36", "81", "35", "78", "77"], "class_type": "LoadImage"}}
+  [ComfyUI] [32m[INFO][0m   Node errors: {"1": {"errors": [{"type": "custom_validation_failed", "message": "Custom validation failed for node", "details": "image - Invalid image file: actual_pano_from_real_life.jpg", "extra_info": {"input_name": "image"}}], "dependent_outputs": ["77", "76", "82", "35", "81", "36", "78"], "class_type": "LoadImage"}}
   [ComfyUI] [32m[INFO][0m === Validation FAILED ===
