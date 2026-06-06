@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-06-06T18:15:53.114772+00:00",
+  "timestamp": "2026-06-06T18:26:58.714719+00:00",
   "platform": "windows",
   "hardware": {
     "os": "Windows-10-10.0.26100-SP0",
-    "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
+    "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
   },
-  "commit_hash": "a494c1ec24a02502caacc4ec28819de33ede9b9d",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27069908383",
+  "commit_hash": "edea171c5eb1740a2427684a291844fa722dd3a9",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27070135203",
   "success": false,
   "summary": {
     "total": 13,
@@ -17,34 +17,34 @@
     {
       "name": "360_render",
       "status": "fail",
-      "duration_seconds": 6.01,
+      "duration_seconds": 9.86,
       "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 11 nodes, missing class_type: [90,92,94,96], sample: {\"inputs\":{\"file_path\":\"3d/pano_mesh.vtp\"},\"class_type\":\"GeomPackLoadMesh\",\"_meta\":{\"title\":\"Load Mesh\"}}",
       "hardware": {
         "os": "Windows-10-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
+        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 0.52,
-          "avg": 0.52
+          "peak": 0.53,
+          "avg": 0.53
         },
         "total_ram_gb": 16.0,
-        "samples": 6
+        "samples": 10
       }
     },
     {
       "name": "cpu_depth_merge_mesh_pointcloud",
       "status": "fail",
-      "duration_seconds": 6.38,
+      "duration_seconds": 6.98,
       "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 17 nodes, missing class_type: [65,69,79,80,85], sample: {\"inputs\":{\"image\":\"actual_pano_from_real_life.jpg\"},\"class_type\":\"LoadImage\",\"_meta\":{\"title\":\"Load Image\"}}",
       "hardware": {
         "os": "Windows-10-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
+        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 0.52,
-          "avg": 0.52
+          "peak": 0.53,
+          "avg": 0.53
         },
         "total_ram_gb": 16.0,
         "samples": 7
@@ -53,16 +53,16 @@
     {
       "name": "cpu_depth_normal_conditioned",
       "status": "fail",
-      "duration_seconds": 6.06,
+      "duration_seconds": 6.75,
       "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 15 nodes, missing class_type: [58,59,60,87], sample: {\"inputs\":{\"image\":\"pano.png\"},\"class_type\":\"LoadImage\",\"_meta\":{\"title\":\"Load Image\"}}",
       "hardware": {
         "os": "Windows-10-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
+        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 0.52,
-          "avg": 0.52
+          "peak": 0.53,
+          "avg": 0.53
         },
         "total_ram_gb": 16.0,
         "samples": 7
@@ -71,19 +71,19 @@
     {
       "name": "cpu_plane_segmentation",
       "status": "fail",
-      "duration_seconds": 5.83,
+      "duration_seconds": 6.51,
       "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 13 nodes, missing class_type: [65,84,103,107], sample: {\"inputs\":{\"image\":\"actual_pano_from_real_life.jpg\"},\"class_type\":\"LoadImage\",\"_meta\":{\"title\":\"Load Image\"}}",
       "hardware": {
         "os": "Windows-10-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
+        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 0.52,
-          "avg": 0.52
+          "peak": 0.53,
+          "avg": 0.53
         },
         "total_ram_gb": 16.0,
-        "samples": 6
+        "samples": 7
       }
     },
     {
@@ -117,91 +117,91 @@
     {
       "name": "pano_crop",
       "status": "fail",
-      "duration_seconds": 5.58,
+      "duration_seconds": 6.22,
       "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [65,87], sample: {\"inputs\":{\"image\":\"actual_pano_from_real_life.jpg\"},\"class_type\":\"LoadImage\",\"_meta\":{\"title\":\"Load Image\"}}",
       "hardware": {
         "os": "Windows-10-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
+        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 0.52,
-          "avg": 0.52
+          "peak": 0.53,
+          "avg": 0.53
         },
         "total_ram_gb": 16.0,
-        "samples": 6
+        "samples": 7
       }
     },
     {
       "name": "pano_info",
       "status": "fail",
-      "duration_seconds": 5.75,
+      "duration_seconds": 6.28,
       "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 3 nodes, missing class_type: [2,3], sample: {\"inputs\":{\"image\":\"pano.png\"},\"class_type\":\"LoadImage\",\"_meta\":{\"title\":\"Load Image\"}}",
       "hardware": {
         "os": "Windows-10-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
+        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 0.52,
-          "avg": 0.52
+          "peak": 0.53,
+          "avg": 0.53
         },
         "total_ram_gb": 16.0,
-        "samples": 6
+        "samples": 7
       }
     },
     {
       "name": "panorama_shift",
       "status": "fail",
-      "duration_seconds": 5.74,
+      "duration_seconds": 6.26,
       "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 8 nodes, missing class_type: [2,3,4,7,8], sample: {\"inputs\":{\"image\":\"pano.png\"},\"class_type\":\"LoadImage\",\"_meta\":{\"title\":\"Load Image\"}}",
       "hardware": {
         "os": "Windows-10-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
+        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 0.52,
-          "avg": 0.52
+          "peak": 0.53,
+          "avg": 0.53
         },
         "total_ram_gb": 16.0,
-        "samples": 6
+        "samples": 7
       }
     },
     {
       "name": "preview_panorama",
       "status": "fail",
-      "duration_seconds": 5.58,
+      "duration_seconds": 6.49,
       "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [2,4], sample: {\"inputs\":{\"image\":\"pano.png\"},\"class_type\":\"LoadImage\",\"_meta\":{\"title\":\"Load Image\"}}",
       "hardware": {
         "os": "Windows-10-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
+        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 0.52,
-          "avg": 0.52
+          "peak": 0.53,
+          "avg": 0.53
         },
         "total_ram_gb": 16.0,
-        "samples": 6
+        "samples": 7
       }
     },
     {
       "name": "test_wrap_unwrap",
       "status": "fail",
-      "duration_seconds": 5.37,
+      "duration_seconds": 6.57,
       "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [2,3], sample: {\"inputs\":{\"image\":\"pano.png\"},\"class_type\":\"LoadImage\",\"_meta\":{\"title\":\"Load Image\"}}",
       "hardware": {
         "os": "Windows-10-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
+        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 0.52,
-          "avg": 0.52
+          "peak": 0.53,
+          "avg": 0.53
         },
         "total_ram_gb": 16.0,
-        "samples": 6
+        "samples": 7
       }
     }
   ]
