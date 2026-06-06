@@ -192,6 +192,20 @@ class PanoramaBuildMesh(io.ComfyNode):
                             "stricter (more pixels excluded). Matches "
                             "BuildPointCloud's `edge_rtol`. Default 0.1 "
                             "preserves prior behavior."),
+                io.Float.Input(
+                    "clip_quantile", default=1.0, min=0.5, max=1.0, step=0.005,
+                    optional=True,
+                    tooltip="Far-depth clip percentile applied before "
+                            "triangulation. Caps hallucinated far depth "
+                            "(windows/open doors) — BUT also clamps real room "
+                            "CORNERS (the farthest points), flattening "
+                            "trihedral wall corners into a rounded cap (a "
+                            "visible chamfer).\n\n"
+                            "1.0 (default): DISABLED — corners preserved crisp. "
+                            "Best for clean indoor scans with no far outliers.\n"
+                            "0.99: legacy behavior — clips the farthest 1%, "
+                            "smushes corners.\n"
+                            "0.999: clip only extreme outliers, keep corners."),
             ],
             outputs=[
                 io.Custom("TRIMESH").Output(display_name="mesh"),
@@ -202,7 +216,8 @@ class PanoramaBuildMesh(io.ComfyNode):
 
     @classmethod
     def execute(cls, panorama, depth, sky_mask=None, valid_mask=None,
-                contract=False, contract_beyond=8.0, edge_rtol=0.1):
+                contract=False, contract_beyond=8.0, edge_rtol=0.1,
+                clip_quantile=1.0):
         # --- panorama → PIL ---
         pano_t = unwrap_panorama_to_image(panorama)
         arr = pano_t.detach().cpu().numpy() if isinstance(pano_t, torch.Tensor) else np.asarray(pano_t)
@@ -252,6 +267,7 @@ class PanoramaBuildMesh(io.ComfyNode):
             scene_type=st,
             contract=contract_val,
             edge_rtol=float(edge_rtol),
+            clip_quantile=float(clip_quantile),
         )
 
         # --- Mesh preview (PIL wireframe) ---

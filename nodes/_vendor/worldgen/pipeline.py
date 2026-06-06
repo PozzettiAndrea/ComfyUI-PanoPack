@@ -812,6 +812,7 @@ def build_mesh(
     edge_rtol: float = 0.1,
     seed: int = 1024,
     device: str = "cuda",
+    clip_quantile: float = 0.99,
 ):
     """Stage 2: depth post-process + RGBD → 3D mesh. No models.
 
@@ -882,22 +883,30 @@ def build_mesh(
             )[0, 0].bool()
         full_mask = (sky_mask_for_depth | edge_mask | invalid_init.to(edge_mask.device)).to(dev)
         unmasked = full_depth["distance"][~full_mask]
-        if unmasked.numel() == 0:
-            # Degenerate case: sky + edge + invalid covers every pixel. Usually
-            # means WorldNavPerceive's sky_mask misfired (whole-image sky on an
-            # indoor scene). Don't crash — fall back to q99 over the full depth
-            # map without exclusion. The downstream clip is still applied,
-            # just relative to the full distribution.
-            n_masked = int(full_mask.sum().item())
-            print(f"[WorldNavBuildMesh]   WARN: sky+edge+invalid mask covers all "
-                  f"{n_masked}/{full_mask.numel()} pixels (likely Perceive "
-                  f"sky-mask misfire); falling back to q99 over the full depth.",
-                  flush=True)
-            max_d = torch.quantile(full_depth["distance"].flatten(), q=0.99).item()
+        # Far-depth clip at the `clip_quantile` percentile. This caps hallucinated
+        # far depth (windows / open doors) but ALSO clamps real room corners — the
+        # farthest points in a room — flattening trihedral wall corners into a
+        # spherical cap (a visible chamfer). Set clip_quantile >= 1.0 to disable
+        # entirely (keeps corners crisp; only safe when there are no far outliers).
+        if clip_quantile is not None and float(clip_quantile) < 1.0:
+            q = float(clip_quantile)
+            if unmasked.numel() == 0:
+                # Degenerate: sky+edge+invalid covers every pixel (usually a
+                # Perceive sky-mask misfire). Fall back to the quantile over the
+                # full depth without exclusion.
+                n_masked = int(full_mask.sum().item())
+                print(f"[WorldNavBuildMesh]   WARN: sky+edge+invalid mask covers all "
+                      f"{n_masked}/{full_mask.numel()} pixels (likely Perceive "
+                      f"sky-mask misfire); falling back to q{q:.3f} over the full depth.",
+                      flush=True)
+                max_d = torch.quantile(full_depth["distance"].flatten(), q=q).item()
+            else:
+                max_d = torch.quantile(unmasked, q=q).item()
+            print(f"[WorldNavBuildMesh]   q{q:.3f} depth = {max_d:.3f}, clipping distance to [0, {max_d:.3f}]", flush=True)
+            full_depth["distance"] = torch.clip(full_depth["distance"], 0, max_d)
         else:
-            max_d = torch.quantile(unmasked, q=0.99).item()
-        print(f"[WorldNavBuildMesh]   q99 depth = {max_d:.3f}, clipping distance to [0, {max_d:.3f}]", flush=True)
-        full_depth["distance"] = torch.clip(full_depth["distance"], 0, max_d)
+            print(f"[WorldNavBuildMesh]   far-depth clip DISABLED (clip_quantile={clip_quantile}); "
+                  f"corners preserved", flush=True)
 
         # Outdoor-only `contract` step (mirrors upstream HY-World 2.0
         # traj_generate.py:316-317). When scene_type=="outdoor", clip far

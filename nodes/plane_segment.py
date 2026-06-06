@@ -136,6 +136,9 @@ def _segment_planes_one_face(
     remaining = np.arange(n_total)
     plane_id = 1
     n_skipped_normal = 0
+    # GPU RANSAC batch — auto-shrunk on OOM (the (N x per_batch) distance tensor
+    # is the VRAM hog on full-panorama point counts) before any CPU fallback.
+    cur_per_batch = int(ransac_iterations_per_batch)
     attempt = 0
     exit_reason = "max_planes_per_face hit"
     min_remaining = max(int(min_inlier_fraction * n_total), dbscan_min_points)
@@ -154,13 +157,33 @@ def _segment_planes_one_face(
                     pts=sub_pts,
                     thresh=float(distance_threshold),
                     max_iterations=int(ransac_iterations),
-                    iterations_per_batch=int(ransac_iterations_per_batch),
+                    iterations_per_batch=int(cur_per_batch),
                     epsilon=1e-8,
                     device=pts_gpu.device,
                 )
             except RuntimeError as e:
-                exit_reason = f"torch_ransac3d.plane_fit raised RuntimeError: {e}"
-                break
+                # OOM (or any CUDA runtime error) — common when a single face is
+                # a full equirect panorama (~7M pts): the (N x per_batch) distance
+                # tensor blows up VRAM. First shrink the batch (keeps the GPU
+                # speedup); only fall back to Open3D CPU once it can't shrink.
+                try:
+                    del sub_pts, rem_idx
+                except Exception:
+                    pass
+                if torch.cuda.is_available():
+                    torch.cuda.empty_cache()
+                if cur_per_batch > 10:
+                    cur_per_batch = max(10, cur_per_batch // 4)
+                    _p(f"  {tag}GPU RANSAC OOM ({e}); retrying on GPU with "
+                       f"iterations_per_batch={cur_per_batch}")
+                else:
+                    _p(f"  {tag}GPU RANSAC still OOM at per_batch={cur_per_batch} "
+                       f"({e}); falling back to Open3D CPU for remaining planes")
+                    gpu_plane_fit = None
+                    pts_gpu = None
+                    ransac_backend = "Open3D (CPU, GPU fallback)"
+                attempt -= 1   # this attempt didn't complete; retry it
+                continue
             plane_eq = np.asarray(
                 result.equation.detach().cpu().numpy() if hasattr(result.equation, "detach")
                 else np.asarray(result.equation),
