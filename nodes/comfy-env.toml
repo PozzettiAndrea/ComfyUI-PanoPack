@@ -23,3 +23,4 @@ loguru = "*"
 pyvista = ">=0.45"
 utils3d = { git = "https://github.com/EasternJournalist/utils3d.git", rev = "3fab839f0be9931dac7c8488eb0e1600c236e183" }
 torch-ransac3d = "*"
+pyyaml = "*"
