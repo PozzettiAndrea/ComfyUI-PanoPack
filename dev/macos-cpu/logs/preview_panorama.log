@@ -73,71 +73,71 @@ Capturing execution frames: preview_panorama.json
   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
-  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
-  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
-  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
-  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
-  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
-  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
-  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
-  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
-  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
-  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
-  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
-  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
-  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
-  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
-  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
-  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: c0708991-d86a-43eb-a2eb-20ba4cd5f280
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: c0708991-d86a-43eb-a2eb-20ba4cd5f280
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: c0708991-d86a-43eb-a2eb-20ba4cd5f280
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: c0708991-d86a-43eb-a2eb-20ba4cd5f280
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: c0708991-d86a-43eb-a2eb-20ba4cd5f280
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: c0708991-d86a-43eb-a2eb-20ba4cd5f280
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: c0708991-d86a-43eb-a2eb-20ba4cd5f280
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: c0708991-d86a-43eb-a2eb-20ba4cd5f280
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
   Queuing workflow for execution...
+  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
+  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
+  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
+  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
+  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
+  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
+  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
+  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaViewer
+  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"viewer_width": 512, "viewer_height": 512, "initial_yaw": 8, "initial_pitch": -54, "crop_fov": 90, "filename_prefix": "panorama", "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: b67e9011-a85f-4f0f-a515-7f7b86302c61
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: b67e9011-a85f-4f0f-a515-7f7b86302c61
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: b67e9011-a85f-4f0f-a515-7f7b86302c61
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: b67e9011-a85f-4f0f-a515-7f7b86302c61
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: b67e9011-a85f-4f0f-a515-7f7b86302c61
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: b67e9011-a85f-4f0f-a515-7f7b86302c61
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: b67e9011-a85f-4f0f-a515-7f7b86302c61
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: b67e9011-a85f-4f0f-a515-7f7b86302c61
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
   [ComfyUI] [32m[INFO][0m got prompt
   [ComfyUI] [32m[INFO][0m got prompt
   [ComfyUI] [32m[INFO][0m got prompt
@@ -266,14 +266,14 @@ Capturing execution frames: preview_panorama.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.05s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.05s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.05s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.05s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.05s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.05s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.05s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.05s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.02s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.02s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.02s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.02s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.02s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.02s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.02s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.02s): result: NodeOutput
   [ComfyUI] [comfy-env] Running PanoramaViewer: viewer_width: 512, viewer_height: 512, initial_yaw: 8.0, initial_pitch: -54.0, crop_fov: 90.0, filename_prefix: 'panorama', panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaViewer: viewer_width: 512, viewer_height: 512, initial_yaw: 8.0, initial_pitch: -54.0, crop_fov: 90.0, filename_prefix: 'panorama', panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaViewer: viewer_width: 512, viewer_height: 512, initial_yaw: 8.0, initial_pitch: -54.0, crop_fov: 90.0, filename_prefix: 'panorama', panorama: dict
@@ -386,29 +386,29 @@ Capturing execution frames: preview_panorama.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaViewer done (1.00s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaViewer done (1.00s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaViewer done (1.00s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaViewer done (1.00s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaViewer done (1.00s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaViewer done (1.00s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaViewer done (1.00s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaViewer done (1.00s): result: NodeOutput
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.49 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.49 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.49 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.49 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.49 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.49 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.49 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.49 seconds[0m
+  [ComfyUI] [comfy-env] PanoramaViewer done (0.82s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaViewer done (0.82s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaViewer done (0.82s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaViewer done (0.82s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaViewer done (0.82s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaViewer done (0.82s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaViewer done (0.82s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaViewer done (0.82s): result: NodeOutput
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.08 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.08 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.08 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.08 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.08 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.08 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.08 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.08 seconds[0m
   Node executed (2 total), capturing...
-  Frame 2 saved (frame_001.jpg, t=2.5s)
-  [capture-node] freeze=4ms shot=126ms unfreeze=0ms saved=True
-  Execution complete (t=2.5s)
-  Captured 2 unique frames over 2.71s
+  Frame 2 saved (frame_001.jpg, t=2.3s)
+  [capture-node] freeze=3ms shot=129ms unfreeze=0ms saved=True
+  Execution complete (t=2.3s)
+  Captured 2 unique frames over 2.49s
   [debug] iframes: 1
-  [debug]   iframe[0]: src=http://127.0.0.1:41887/extensions/ComfyUI-PanoPack/js/viewer/panorama_viewer.htm, canvas=516x350, rafFrozen=True
+  [debug]   iframe[0]: src=http://127.0.0.1:41885/extensions/ComfyUI-PanoPack/js/viewer/panorama_viewer.htm, canvas=516x350, rafFrozen=True
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: preview_panorama_executed.png
   [timing] final_screenshot: 0.2s
