@@ -32,11 +32,11 @@ Capturing execution frames: cpu_plane_segmentation.json
   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["103", 4]}
   [ComfyUI] [32m[INFO][0m   Node 107: PanoramaSplit
   [ComfyUI] [32m[INFO][0m     Inputs: {"split_method": "icosahedron_12", "resolution": 512, "fov_degrees": 90, "use_gpu": false, "create_masks": false, "fname": "pano_bank", "panorama": ["65", 0]}
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 76dd5a83-81cd-4ca0-9e5f-dcdab716d283
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 95c6bbe9-7af0-4b6a-a425-86646a31c31f
+  Queuing workflow for execution...
   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
   [ComfyUI] [32m[INFO][0m Validation result: valid=True
   [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  Queuing workflow for execution...
   [ComfyUI] [32m[INFO][0m got prompt
   [ComfyUI] [comfy-env] Running DownloadAndLoadMoGe2Model: model: 'moge-2-vitl-normal.pt', precision: 'auto', attention: 'auto'
   [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.DownloadAndLoadMoGe2Model.EXECUTE_NORMALIZED
@@ -45,12 +45,12 @@ Capturing execution frames: cpu_plane_segmentation.json
   [ComfyUI] [ComfyUI-MoGe2] Health check: failed
   [ComfyUI] [ComfyUI-MoGe2] Socket unhealthy, restarting worker...
   [ComfyUI] [ComfyUI-MoGe2] python: /Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [ComfyUI-MoGe2] sys_path sent to worker: ['/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-MoGe2', '/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.1/site-packages', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-MoGe2']
+  [ComfyUI] [ComfyUI-MoGe2] sys_path sent to worker: ['/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2352/ComfyUI', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2352/ComfyUI/custom_nodes/ComfyUI-MoGe2', '/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.13/site-packages', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2352/ComfyUI/custom_nodes/ComfyUI-MoGe2']
   [ComfyUI] [SubprocessWorker] is_pixi=True, python=/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [SubprocessWorker] launching cmd=['/Users/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/Users/runner/.ce/envs/moge2-nodes/pixi.toml', '-e', 'default', 'python', '/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_7b7qsbc1/persistent_worker.py', 'unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_13f8b78d6582.sock']...
-  [ComfyUI] [SubprocessWorker] socket_addr=unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_13f8b78d6582.sock exists=True
-  Frame 2 saved (frame_001.jpg, t=2.3s)
-  [capture-periodic] freeze=2ms shot=163ms unfreeze=2ms saved=True
+  [ComfyUI] [SubprocessWorker] launching cmd=['/Users/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/Users/runner/.ce/envs/moge2-nodes/pixi.toml', '-e', 'default', 'python', '/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_rt5kecm_/persistent_worker.py', 'unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_dc51c464be0d.sock']...
+  [ComfyUI] [SubprocessWorker] socket_addr=unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_dc51c464be0d.sock exists=True
+  Frame 2 saved (frame_001.jpg, t=2.2s)
+  [capture-periodic] freeze=2ms shot=115ms unfreeze=3ms saved=True
   [ComfyUI] [worker:ComfyUI-MoGe2] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
   [ComfyUI] [worker:ComfyUI-MoGe2] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
   [ComfyUI] [SubprocessWorker] worker started/confirmed
@@ -58,24 +58,13 @@ Capturing execution frames: cpu_plane_segmentation.json
   [ComfyUI] [SubprocessWorker] created 0 shm blocks
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] call_id=5 sending call_method
-  Frame 3 saved (frame_002.jpg, t=4.6s)
-  [capture-periodic] freeze=1ms shot=107ms unfreeze=3ms saved=True
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] DownloadAndLoadMoGe2Model done (4.64s): result: NodeOutput
+  [ComfyUI] [comfy-env] DownloadAndLoadMoGe2Model done (3.19s): result: NodeOutput
   [ComfyUI] [comfy-env] Running PanoramaWrap: image: torch.float32 [1,1920,3840,3] cpu
   [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_type.PanoramaWrap.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
   [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
-  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
-  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
-  [ComfyUI] [ComfyUI-PanoPack] python: /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-PanoPack', '/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.1/site-packages', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-PanoPack']
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [SubprocessWorker] launching cmd=['/Users/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/Users/runner/.ce/envs/panopack-nodes/pixi.toml', '-e', 'default', 'python', '/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_rt5gwekg/persistent_worker.py', 'unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_d253a9cc48c0.sock']...
-  [ComfyUI] [SubprocessWorker] socket_addr=unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_d253a9cc48c0.sock exists=True
-  [capture-loop] iter=50 t=6.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=2.8/7.0GB (49%) swap=0.9/2.0GB (44%) cpu=74% browser_rss=0.54GB
-  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [comfy-env] PRE-SERIALIZE 'image' shape: torch.Size([1, 1920, 3840, 3])
   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
@@ -85,12 +74,8 @@ Capturing execution frames: cpu_plane_segmentation.json
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1920, 3840, 3]
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
-  Frame 4 saved (frame_003.jpg, t=6.8s)
-  [capture-periodic] freeze=2ms shot=136ms unfreeze=3ms saved=True
-  [ComfyUI] objc[35302]: Class AVFFrameReceiver is implemented in both /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x1107f07a8) and /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12767c3a8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
-  [ComfyUI] objc[35302]: Class AVFAudioReceiver is implemented in both /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x1107f07f8) and /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12767c3f8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaWrap done (2.57s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.04s): result: NodeOutput
   [ComfyUI] [comfy-env] Running PanoramaSplit: split_method: dict, resolution: 512, fov_degrees: 90.0, use_gpu: False, create_masks: False, fname: 'pano_bank', panorama: dict
   [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_split.PanoramaSplit.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
@@ -104,11 +89,11 @@ Capturing execution frames: cpu_plane_segmentation.json
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1920, 3840, 3]
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
-  Frame 5 saved (frame_004.jpg, t=9.1s)
-  [capture-periodic] freeze=4ms shot=162ms unfreeze=3ms saved=True
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaSplit] icosahedron_12: (3840x1920) -> 12 crops @ 512x512, fov=(90,90) via cv2.remap (CPU); cameras 0.009s, split 1.277s, total 1.515s
+  Frame 3 saved (frame_002.jpg, t=4.4s)
+  [capture-periodic] freeze=2ms shot=91ms unfreeze=2ms saved=True
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaSplit] icosahedron_12: (3840x1920) -> 12 crops @ 512x512, fov=(90,90) via cv2.remap (CPU); cameras 0.001s, split 0.964s, total 1.106s
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaSplit done (2.62s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaSplit done (1.15s): result: NodeOutput
   [ComfyUI] [comfy-env] Running MoGe2Inference: resolution_level: 9, num_tokens: 0, fov_x_deg: 90.0, force_projection: True, apply_mask: True, moge2_model: dict, images: torch.float32 [12,512,512,3] cpu
   [ComfyUI] [SubprocessWorker] call_method: nodes.nodes_inference.MoGe2Inference.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
@@ -124,145 +109,114 @@ Capturing execution frames: cpu_plane_segmentation.json
   [ComfyUI] [worker:ComfyUI-MoGe2] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 512, 512, 3]
   [ComfyUI] [worker:ComfyUI-MoGe2] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 512, 512, 3])
   Node executed (1 total), capturing...
-  Frame 6 saved (frame_005.jpg, t=11.2s)
-  [capture-node] freeze=16ms shot=177ms unfreeze=3ms saved=True
-  [capture-loop] iter=100 t=12.6s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=2 ram=3.4/7.0GB (58%) swap=0.9/2.0GB (44%) cpu=69% browser_rss=0.54GB
-  [ComfyUI] objc[35058]: Class AVFFrameReceiver is implemented in both /Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x1124f07a8) and /Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12edc83a8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
-  [ComfyUI] objc[35058]: Class AVFAudioReceiver is implemented in both /Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x1124f07f8) and /Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12edc83f8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
-  Frame 7 saved (frame_006.jpg, t=13.4s)
-  [capture-periodic] freeze=2ms shot=143ms unfreeze=3ms saved=True
-  Frame 8 saved (frame_007.jpg, t=15.7s)
-  [capture-periodic] freeze=2ms shot=122ms unfreeze=2ms saved=True
-  Frame 9 saved (frame_008.jpg, t=17.9s)
-  [capture-periodic] freeze=8ms shot=706ms unfreeze=4ms saved=True
-  [capture-loop] iter=150 t=19.1s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=20 ram=3.2/7.0GB (68%) swap=0.9/2.0GB (44%) cpu=57% browser_rss=0.46GB
-  Frame 10 saved (frame_009.jpg, t=20.6s)
-  [capture-periodic] freeze=4ms shot=260ms unfreeze=4ms saved=True
-  Frame 11 saved (frame_010.jpg, t=23.0s)
-  [capture-periodic] freeze=2ms shot=151ms unfreeze=2ms saved=True
-  Frame 12 saved (frame_011.jpg, t=25.3s)
-  [capture-periodic] freeze=2ms shot=169ms unfreeze=9ms saved=True
-  [capture-loop] iter=200 t=25.7s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=6 ram=2.7/7.0GB (75%) swap=0.9/2.0GB (44%) cpu=93% browser_rss=0.44GB
-  Frame 13 saved (frame_012.jpg, t=27.6s)
-  [capture-periodic] freeze=3ms shot=254ms unfreeze=4ms saved=True
-  Frame 14 saved (frame_013.jpg, t=30.0s)
-  [capture-periodic] freeze=2ms shot=135ms unfreeze=4ms saved=True
+  Frame 4 saved (frame_003.jpg, t=5.2s)
+  [capture-node] freeze=2ms shot=132ms unfreeze=2ms saved=True
+  [capture-loop] iter=50 t=6.0s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=2 ram=3.6/7.0GB (57%) swap=0.9/2.0GB (46%) cpu=34% browser_rss=0.67GB
+  [ComfyUI] objc[40809]: Class AVFFrameReceiver is implemented in both /Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x11466c7a8) and /Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.13/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12fe743a8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+  [ComfyUI] objc[40809]: Class AVFAudioReceiver is implemented in both /Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x11466c7f8) and /Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.13/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12fe743f8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+  Frame 5 saved (frame_004.jpg, t=7.3s)
+  [capture-periodic] freeze=2ms shot=106ms unfreeze=2ms saved=True
+  Frame 6 saved (frame_005.jpg, t=9.6s)
+  [capture-periodic] freeze=15ms shot=415ms unfreeze=5ms saved=True
+  [capture-loop] iter=100 t=12.2s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=11 ram=3.1/7.0GB (70%) swap=0.9/2.0GB (46%) cpu=41% browser_rss=0.51GB
+  Frame 7 saved (frame_006.jpg, t=16.8s)
+  [capture-periodic] freeze=1ms shot=162ms unfreeze=3ms saved=True
+  [capture-loop] iter=150 t=18.8s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=2 ram=2.7/7.0GB (75%) swap=0.9/2.0GB (46%) cpu=88% browser_rss=0.49GB
   [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=6
-  [ComfyUI] [comfy-env] VRAM request: 0.66GB, free before eviction: 3.98GB
-  [ComfyUI] [comfy-env] VRAM after eviction: 3.98GB
-  [capture-loop] iter=250 t=31.9s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=2 ram=4.1/7.0GB (76%) swap=0.9/2.0GB (44%) cpu=92% browser_rss=0.33GB
-  Frame 15 saved (frame_014.jpg, t=32.3s)
-  [capture-periodic] freeze=6ms shot=1818ms unfreeze=18ms saved=True
-  Frame 16 saved (frame_015.jpg, t=36.2s)
-  [capture-periodic] freeze=3ms shot=3582ms unfreeze=3ms saved=True
-  Frame 17 saved (frame_016.jpg, t=41.9s)
-  [capture-periodic] freeze=4ms shot=142ms unfreeze=3ms saved=True
-  [ComfyUI] /Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.1/site-packages/utils3d/torch/transforms.py:695: UserWarning: An output with one or more elements was resized since it had shape [1, 1, 4, 4], which does not match the required output shape [1, 4, 4]. This behavior is deprecated, and in a future PyTorch release outputs will not be resized unless they have zero elements. You can explicitly reuse an out tensor t by resizing it, inplace, to zero elements with t.resize_(0). (Triggered internally at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/native/Resize.cpp:38.)
+  [ComfyUI] [comfy-env] VRAM request: 0.66GB, free before eviction: 4.18GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 4.17GB
+  Frame 8 saved (frame_007.jpg, t=23.5s)
+  [capture-periodic] freeze=3ms shot=1480ms unfreeze=4ms saved=True
+  [capture-loop] iter=200 t=26.1s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=2 ram=4.8/7.0GB (90%) swap=0.9/2.0GB (47%) cpu=50% browser_rss=0.32GB
+  Frame 9 saved (frame_008.jpg, t=27.0s)
+  [capture-periodic] freeze=7ms shot=3417ms unfreeze=3ms saved=True
+  [ComfyUI] /Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.13/site-packages/utils3d/torch/transforms.py:695: UserWarning: An output with one or more elements was resized since it had shape [1, 1, 4, 4], which does not match the required output shape [1, 4, 4]. This behavior is deprecated, and in a future PyTorch release outputs will not be resized unless they have zero elements. You can explicitly reuse an out tensor t by resizing it, inplace, to zero elements with t.resize_(0). (Triggered internally at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/native/Resize.cpp:38.)
   [ComfyUI]   points = points @ torch.linalg.inv(transform).mT
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=6
-  [capture-loop] iter=300 t=43.2s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=3 ram=3.5/7.0GB (74%) swap=0.9/2.0GB (45%) cpu=78% browser_rss=0.30GB
-  Frame 18 saved (frame_017.jpg, t=44.2s)
-  [capture-periodic] freeze=28ms shot=3812ms unfreeze=34ms saved=True
-  Frame 19 saved (frame_018.jpg, t=50.2s)
-  [capture-periodic] freeze=3ms shot=2926ms unfreeze=4ms saved=True
-  [ComfyUI] /Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.1/site-packages/utils3d/torch/transforms.py:695: UserWarning: An output with one or more elements was resized since it had shape [1, 1, 4, 4], which does not match the required output shape [1, 4, 4]. This behavior is deprecated, and in a future PyTorch release outputs will not be resized unless they have zero elements. You can explicitly reuse an out tensor t by resizing it, inplace, to zero elements with t.resize_(0). (Triggered internally at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/native/Resize.cpp:38.)
+  Frame 10 saved (frame_009.jpg, t=35.5s)
+  [capture-periodic] freeze=75ms shot=1329ms unfreeze=4ms saved=True
+  [capture-loop] iter=250 t=38.3s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=3 ram=5.6/7.0GB (92%) swap=1.6/2.0GB (78%) cpu=39% browser_rss=0.25GB
+  Frame 11 saved (frame_010.jpg, t=39.0s)
+  [capture-periodic] freeze=3ms shot=2628ms unfreeze=37ms saved=True
+  [ComfyUI] /Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.13/site-packages/utils3d/torch/transforms.py:695: UserWarning: An output with one or more elements was resized since it had shape [1, 1, 4, 4], which does not match the required output shape [1, 4, 4]. This behavior is deprecated, and in a future PyTorch release outputs will not be resized unless they have zero elements. You can explicitly reuse an out tensor t by resizing it, inplace, to zero elements with t.resize_(0). (Triggered internally at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/native/Resize.cpp:38.)
   [ComfyUI]   points = points @ torch.linalg.inv(transform).mT
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=6
-  Frame 20 saved (frame_019.jpg, t=55.2s)
-  [capture-periodic] freeze=4ms shot=2289ms unfreeze=3ms saved=True
-  [capture-loop] iter=350 t=58.1s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=6 ram=5.6/7.0GB (93%) swap=1.5/2.0GB (76%) cpu=68% browser_rss=0.20GB
-  Frame 21 saved (frame_020.jpg, t=59.6s)
-  [capture-periodic] freeze=4ms shot=1344ms unfreeze=17ms saved=True
+  Frame 12 saved (frame_011.jpg, t=43.9s)
+  [capture-periodic] freeze=3ms shot=4752ms unfreeze=12ms saved=True
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=6
+  Frame 13 saved (frame_012.jpg, t=50.8s)
+  [capture-periodic] freeze=2ms shot=2427ms unfreeze=24ms saved=True
+  [capture-loop] iter=300 t=55.2s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=4 ram=5.4/7.0GB (93%) swap=1.5/2.0GB (77%) cpu=39% browser_rss=0.17GB
+  Frame 14 saved (frame_013.jpg, t=55.5s)
+  [capture-periodic] freeze=3ms shot=673ms unfreeze=3ms saved=True
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=6
   [ComfyUI] [worker:ComfyUI-MoGe2]
   [ComfyUI] === WATCHDOG TICK 1 ===
-  [ComfyUI] [worker:ComfyUI-MoGe2] Current thread 0x000000016e65f000 (most recent call first):
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_7b7qsbc1/persistent_worker.py", line 52 in _watchdog
-  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.12/threading.py", line 1012 in run
-  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.12/threading.py", line 1075 in _bootstrap_inner
-  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.12/threading.py", line 1032 in _bootstrap
+  [ComfyUI] [worker:ComfyUI-MoGe2] Current thread 0x000000016c45f000 (most recent call first):
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_rt5kecm_/persistent_worker.py", line 52 in _watchdog
+  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.13/threading.py", line 995 in run
+  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.13/threading.py", line 1044 in _bootstrap_inner
+  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.13/threading.py", line 1015 in _bootstrap
   [ComfyUI] 
-  [ComfyUI] Thread 0x00000001f79e62c0 (most recent call first):
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes/moge_pkg/utils/vis.py", line 53 in colorize_normal
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes/nodes_inference.py", line 33 in _colorize_normal_tensor
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes/nodes_inference.py", line 166 in execute
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/comfy_api/latest/_io.py", line 1892 in EXECUTE_NORMALIZED
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_7b7qsbc1/persistent_worker.py", line 1762 in main
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_7b7qsbc1/persistent_worker.py", line 1807 in <module>
-  [ComfyUI] 
-  [ComfyUI] [worker:ComfyUI-MoGe2] === END ===
-  [ComfyUI] 
-  Frame 22 saved (frame_021.jpg, t=64.4s)
-  [capture-periodic] freeze=571ms shot=3107ms unfreeze=33ms saved=True
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=6
-  Frame 23 saved (frame_022.jpg, t=70.2s)
-  [capture-periodic] freeze=18ms shot=2885ms unfreeze=4ms saved=True
-  [capture-loop] iter=400 t=73.6s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=3 ram=5.4/7.0GB (94%) swap=1.5/2.0GB (74%) cpu=56% browser_rss=0.17GB
-  Frame 24 saved (frame_023.jpg, t=75.3s)
-  [capture-periodic] freeze=13ms shot=219ms unfreeze=4ms saved=True
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=6
-  Frame 25 saved (frame_024.jpg, t=77.6s)
-  [capture-periodic] freeze=4ms shot=3768ms unfreeze=16ms saved=True
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=6
-  Frame 26 saved (frame_025.jpg, t=83.6s)
-  [capture-periodic] freeze=5ms shot=3309ms unfreeze=7ms saved=True
-  [capture-loop] iter=450 t=87.2s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=4 ram=5.5/7.0GB (94%) swap=1.5/2.0GB (76%) cpu=49% browser_rss=0.16GB
-  Frame 27 saved (frame_026.jpg, t=89.0s)
-  [capture-periodic] freeze=2ms shot=594ms unfreeze=5ms saved=True
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=6
-  Frame 28 saved (frame_027.jpg, t=91.7s)
-  [capture-periodic] freeze=3ms shot=3530ms unfreeze=10ms saved=True
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=6
-  [capture-loop] iter=500 t=97.3s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=7 ram=5.5/7.0GB (93%) swap=1.6/2.0GB (78%) cpu=50% browser_rss=0.19GB
-  Frame 29 saved (frame_028.jpg, t=97.3s)
-  [capture-periodic] freeze=4ms shot=4557ms unfreeze=18ms saved=True
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=6
-  Frame 30 saved (frame_029.jpg, t=104.0s)
-  [capture-periodic] freeze=16ms shot=6043ms unfreeze=58ms saved=True
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=6
-  Frame 31 saved (frame_030.jpg, t=112.2s)
-  [capture-periodic] freeze=6ms shot=4233ms unfreeze=22ms saved=True
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=6
-  [ComfyUI] [worker:ComfyUI-MoGe2]
-  [ComfyUI] === WATCHDOG TICK 2 ===
-  [ComfyUI] [worker:ComfyUI-MoGe2] Current thread 0x000000016e65f000 (most recent call first):
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_7b7qsbc1/persistent_worker.py", line 52 in _watchdog
-  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.12/threading.py", line 1012 in run
-  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.12/threading.py", line 1075 in _bootstrap_inner
-  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.12/threading.py", line 1032 in _bootstrap
-  [ComfyUI] 
-  [ComfyUI] Thread 0x00000001f79e62c0 (most recent call first):
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes/moge_pkg/model/dinov2/layers/attention.py", line 81 in forward
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes/moge_pkg/model/dinov2/layers/attention.py", line 93 in forward
-  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787 in _call_impl
-  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776 in _wrapped_call_impl
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes/moge_pkg/model/dinov2/layers/block.py", line 105 in attn_residual_func
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes/moge_pkg/model/dinov2/layers/block.py", line 126 in forward
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes/moge_pkg/model/dinov2/layers/block.py", line 268 in forward
-  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787 in _call_impl
-  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776 in _wrapped_call_impl
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes/moge_pkg/model/dinov2/models/vision_transformer.py", line 300 in _get_intermediate_layers_not_chunked
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes/moge_pkg/model/dinov2/models/vision_transformer.py", line 331 in get_intermediate_layers
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes/moge_pkg/model/modules.py", line 133 in forward
-  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787 in _call_impl
-  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776 in _wrapped_call_impl
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes/moge_pkg/model/v2.py", line 160 in forward
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes/moge_pkg/model/v2.py", line 256 in infer
-  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124 in decorate_context
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes/load_model.py", line 81 in infer
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes/nodes_inference.py", line 138 in execute
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/comfy_api/latest/_io.py", line 1892 in EXECUTE_NORMALIZED
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_7b7qsbc1/persistent_worker.py", line 1762 in main
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_7b7qsbc1/persistent_worker.py", line 1807 in <module>
+  [ComfyUI] Thread 0x00000001fb1fe2c0 (most recent call first):
+  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 548 in _conv_forward
+  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 553 in forward
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2352/ComfyUI/comfy/ops.py", line 537 in forward
+  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1787 in _call_impl
+  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1776 in _wrapped_call_impl
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2352/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes/moge_pkg/model/modules.py", line 260 in forward
+  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1787 in _call_impl
+  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1776 in _wrapped_call_impl
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2352/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes/moge_pkg/model/v2.py", line 176 in <genexpr>
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2352/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes/moge_pkg/model/v2.py", line 176 in forward
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2352/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes/moge_pkg/model/v2.py", line 256 in infer
+  [ComfyUI]   File "/Users/runner/.ce/envs/moge2-nodes/.pixi/envs/default/lib/python3.13/site-packages/torch/utils/_contextlib.py", line 124 in decorate_context
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2352/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes/load_model.py", line 81 in infer
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2352/ComfyUI/custom_nodes/ComfyUI-MoGe2/nodes/nodes_inference.py", line 138 in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2352/ComfyUI/comfy_api/latest/_io.py", line 1892 in EXECUTE_NORMALIZED
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_rt5kecm_/persistent_worker.py", line 1762 in main
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_rt5kecm_/persistent_worker.py", line 1807 in <module>
   [ComfyUI] 
   [ComfyUI] [worker:ComfyUI-MoGe2] === END ===
   [ComfyUI] 
-  Frame 32 saved (frame_031.jpg, t=118.5s)
-  [capture-periodic] freeze=3ms shot=4399ms unfreeze=46ms saved=True
-  [capture-loop] iter=550 t=123.9s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=6 ram=5.4/7.0GB (93%) swap=1.6/2.0GB (78%) cpu=50% browser_rss=0.15GB
+  Frame 15 saved (frame_014.jpg, t=58.4s)
+  [capture-periodic] freeze=2ms shot=3353ms unfreeze=28ms saved=True
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=6
+  Frame 16 saved (frame_015.jpg, t=63.9s)
+  [capture-periodic] freeze=2ms shot=3427ms unfreeze=2ms saved=True
+  [capture-loop] iter=350 t=68.4s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=2 ram=5.5/7.0GB (93%) swap=1.6/2.0GB (79%) cpu=30% browser_rss=0.19GB
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=6
+  Frame 17 saved (frame_016.jpg, t=69.4s)
+  [capture-periodic] freeze=4ms shot=210ms unfreeze=6ms saved=True
+  Frame 18 saved (frame_017.jpg, t=73.0s)
+  [capture-periodic] freeze=660ms shot=2657ms unfreeze=10ms saved=True
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=6
+  Frame 19 saved (frame_018.jpg, t=78.4s)
+  [capture-periodic] freeze=3ms shot=1527ms unfreeze=13ms saved=True
+  [capture-loop] iter=400 t=80.7s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=13 ram=5.6/7.0GB (93%) swap=1.6/2.0GB (82%) cpu=49% browser_rss=0.16GB
+  Frame 20 saved (frame_019.jpg, t=82.0s)
+  [capture-periodic] freeze=3ms shot=765ms unfreeze=6ms saved=True
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=6
+  Frame 21 saved (frame_020.jpg, t=84.9s)
+  [capture-periodic] freeze=2ms shot=4223ms unfreeze=3ms saved=True
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=6
+  Frame 22 saved (frame_021.jpg, t=91.2s)
+  [capture-periodic] freeze=6ms shot=2507ms unfreeze=4ms saved=True
+  [capture-loop] iter=450 t=93.9s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=3 ram=5.6/7.0GB (94%) swap=1.6/2.0GB (82%) cpu=29% browser_rss=0.17GB
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=6
+  Frame 23 saved (frame_022.jpg, t=95.8s)
+  [capture-periodic] freeze=169ms shot=2286ms unfreeze=21ms saved=True
+  Frame 24 saved (frame_023.jpg, t=100.4s)
+  [capture-periodic] freeze=3ms shot=3118ms unfreeze=10ms saved=True
+  [capture-loop] iter=500 t=105.2s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=2 ram=5.5/7.0GB (94%) swap=1.7/2.0GB (86%) cpu=38% browser_rss=0.15GB
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=6
+  Frame 25 saved (frame_024.jpg, t=105.6s)
+  [capture-periodic] freeze=5ms shot=390ms unfreeze=7ms saved=True
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=6
+  Frame 26 saved (frame_025.jpg, t=108.1s)
+  [capture-periodic] freeze=6ms shot=4270ms unfreeze=84ms saved=True
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] MoGe2Inference done (114.85s): result: NodeOutput
+  [ComfyUI] [comfy-env] MoGe2Inference done (108.04s): result: NodeOutput
   [ComfyUI] [comfy-env] Running PanoramaDepthMerge: out_width: 1920, out_height: 960, use_gpu: False, scale_anchor: True, chunk_size: 8, center_weight_power: 2.0, normal_edge_threshold_deg: 0.0, normal_consistency_boost: True, max_ray_distance_m: 0.0, face_points: torch.float32 [12,512,512,3] cpu, extrinsics: torch.float32 [12,4,4] cpu, intrinsics: torch.float32 [12,3,3] cpu, face_normals: torch.float32 [12,512,512,3] cpu
   [ComfyUI] [SubprocessWorker] call_method: nodes.depth_merge.PanoramaDepthMerge.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
@@ -270,17 +224,16 @@ Capturing execution frames: cpu_plane_segmentation.json
   [ComfyUI] [ComfyUI-PanoPack] Health check: failed
   [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
   [ComfyUI] [ComfyUI-PanoPack] python: /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-PanoPack', '/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.1/site-packages', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-PanoPack']
+  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2352/ComfyUI', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2352/ComfyUI/custom_nodes/ComfyUI-PanoPack', '/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.13/site-packages', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2352/ComfyUI/custom_nodes/ComfyUI-PanoPack']
   [ComfyUI] [SubprocessWorker] is_pixi=True, python=/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [SubprocessWorker] launching cmd=['/Users/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/Users/runner/.ce/envs/panopack-nodes/pixi.toml', '-e', 'default', 'python', '/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_rt5gwekg/persistent_worker.py', 'unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_0fc9ddf922dd.sock']...
-  [ComfyUI] [SubprocessWorker] socket_addr=unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_0fc9ddf922dd.sock exists=True
-  Frame 33 saved (frame_032.jpg, t=125.7s)
-  [capture-periodic] freeze=8ms shot=474ms unfreeze=29ms saved=True
+  [ComfyUI] [SubprocessWorker] launching cmd=['/Users/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/Users/runner/.ce/envs/panopack-nodes/pixi.toml', '-e', 'default', 'python', '/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_evzscdwg/persistent_worker.py', 'unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_66e273966013.sock']...
+  [ComfyUI] [SubprocessWorker] socket_addr=unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_66e273966013.sock exists=True
   Node executed (2 total), capturing...
-  Frame 34 saved (frame_033.jpg, t=126.6s)
-  [capture-node] freeze=4ms shot=142ms unfreeze=21ms saved=True
-  Frame 35 saved (frame_034.jpg, t=128.9s)
-  [capture-periodic] freeze=2ms shot=127ms unfreeze=12ms saved=True
+  Frame 27 saved (frame_026.jpg, t=113.4s)
+  [capture-node] freeze=2ms shot=101ms unfreeze=2ms saved=True
+  Frame 28 saved (frame_027.jpg, t=115.6s)
+  [capture-periodic] freeze=1ms shot=116ms unfreeze=2ms saved=True
+  [capture-loop] iter=550 t=116.0s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=3 ram=3.3/7.0GB (62%) swap=1.6/2.0GB (80%) cpu=36% browser_rss=0.24GB
   [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
   [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
   [ComfyUI] [SubprocessWorker] worker started/confirmed
@@ -304,18 +257,14 @@ Capturing execution frames: cpu_plane_segmentation.json
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 512, 512, 3]
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 512, 512, 3])
-  [capture-loop] iter=600 t=131.0s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=3 ram=3.1/7.0GB (59%) swap=1.5/2.0GB (77%) cpu=54% browser_rss=0.24GB
-  [ComfyUI] objc[37986]: Class AVFFrameReceiver is implemented in both /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x112c347a8) and /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12d5b03a8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
-  [ComfyUI] objc[37986]: Class AVFAudioReceiver is implemented in both /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x112c347f8) and /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12d5b03f8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
-  Frame 36 saved (frame_035.jpg, t=131.3s)
-  [capture-periodic] freeze=3ms shot=152ms unfreeze=5ms saved=True
+  [ComfyUI] objc[42916]: Class AVFFrameReceiver is implemented in both /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x1128547a8) and /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.13/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x1317f43a8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+  [ComfyUI] objc[42916]: Class AVFAudioReceiver is implemented in both /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x1128547f8) and /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.13/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x1317f43f8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+  Frame 29 saved (frame_028.jpg, t=117.7s)
+  [capture-periodic] freeze=2ms shot=181ms unfreeze=4ms saved=True
   [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] normal-consistency boost: mean=0.992 min=0.401 max=1.000
-  Frame 37 saved (frame_036.jpg, t=133.5s)
-  [capture-periodic] freeze=3ms shot=160ms unfreeze=5ms saved=True
-  Frame 38 saved (frame_037.jpg, t=135.8s)
-  [capture-periodic] freeze=2ms shot=301ms unfreeze=5ms saved=True
+  Frame 30 saved (frame_029.jpg, t=120.0s)
+  [capture-periodic] freeze=2ms shot=114ms unfreeze=4ms saved=True
   [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] normals merged: 960x1920
-  [capture-loop] iter=650 t=137.2s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=5 ram=3.4/7.0GB (64%) swap=1.5/2.0GB (77%) cpu=63% browser_rss=0.24GB
   [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] merging 12 faces @ 512x512 -> equirect 960x1920 (use_gpu=False); input = points (||.|| -> ray distance)
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=15
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth 1920x960 ] progress bar: 4 levels - weights ['0.2%', '1.4%', '10.9%', '87.5%']
@@ -327,130 +276,98 @@ Capturing execution frames: cpu_plane_segmentation.json
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  240x120 ] warping 12 face depth maps onto the equirect...
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  240x120 ]   warped 10/12 faces
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  240x120 ]   warped 12/12 faces
-  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  240x120 ] warp stage done in 0.07s; stacking + averaging gradient/laplacian maps...
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  240x120 ] warp stage done in 0.04s; stacking + averaging gradient/laplacian maps...
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  240x120 ] building sparse linear system (grad_equation + poisson_equation)...
-  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  240x120 ] linear system: A (86279, 28800) (258958 nnz), b (86279,) - built in 0.01s
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  240x120 ] linear system: A (86279, 28800) (258958 nnz), b (86279,) - built in 0.00s
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  240x120 ] LSMR solve (atol=1e-5, btol=1e-5, x0=None)...
-  Frame 39 saved (frame_038.jpg, t=138.2s)
-  [capture-periodic] freeze=5ms shot=211ms unfreeze=9ms saved=True
-  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  240x120 ] LSMR done in 2.87s: 778 iterations, residual=0.2855, istop=2
-  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  240x120 ] level done in 2.96s; depth: min=0.679, median=1.002, max=1.831; valid pixels: 28800/28800
+  [capture-loop] iter=600 t=121.7s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2 ram=3.4/7.0GB (65%) swap=1.6/2.0GB (80%) cpu=46% browser_rss=0.24GB
+  Frame 31 saved (frame_030.jpg, t=122.1s)
+  [capture-periodic] freeze=2ms shot=104ms unfreeze=2ms saved=True
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  240x120 ] LSMR done in 1.58s: 778 iterations, residual=0.2855, istop=2
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  240x120 ] level done in 1.63s; depth: min=0.679, median=1.002, max=1.831; valid pixels: 28800/28800
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  480x240 ] recursion returned; upsampling 240x120 -> 480x240
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  480x240 ] building sphere uv + ray directions (480x240)...
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  480x240 ] warping 12 face depth maps onto the equirect...
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  480x240 ]   warped 10/12 faces
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  480x240 ]   warped 12/12 faces
-  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  480x240 ] warp stage done in 0.13s; stacking + averaging gradient/laplacian maps...
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  480x240 ] warp stage done in 0.10s; stacking + averaging gradient/laplacian maps...
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  480x240 ] building sparse linear system (grad_equation + poisson_equation)...
-  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  480x240 ] linear system: A (345343, 115200) (1036262 nnz), b (345343,) - built in 0.02s
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  480x240 ] linear system: A (345343, 115200) (1036262 nnz), b (345343,) - built in 0.01s
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  480x240 ] LSMR solve (atol=1e-5, btol=1e-5, x0=provided)...
-  Frame 40 saved (frame_039.jpg, t=142.8s)
-  [capture-periodic] freeze=4ms shot=198ms unfreeze=4ms saved=True
-  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  480x240 ] LSMR done in 2.89s: 319 iterations, residual=0.3237, istop=2
-  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  480x240 ] level done in 6.03s; depth: min=0.680, median=1.002, max=1.846; valid pixels: 115198/115200
+  Frame 32 saved (frame_031.jpg, t=124.3s)
+  [capture-periodic] freeze=2ms shot=111ms unfreeze=4ms saved=True
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  480x240 ] LSMR done in 1.89s: 319 iterations, residual=0.3237, istop=2
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  480x240 ] level done in 3.65s; depth: min=0.680, median=1.002, max=1.846; valid pixels: 115198/115200
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  960x480 ] recursion returned; upsampling 480x240 -> 960x480
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=15
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  960x480 ] building sphere uv + ray directions (960x480)...
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  960x480 ] warping 12 face depth maps onto the equirect...
-  [capture-loop] iter=700 t=143.6s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2 ram=2.9/7.0GB (71%) swap=1.5/2.0GB (76%) cpu=87% browser_rss=0.24GB
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  960x480 ]   warped 10/12 faces
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  960x480 ]   warped 12/12 faces
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=15
-  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  960x480 ] warp stage done in 0.47s; stacking + averaging gradient/laplacian maps...
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  960x480 ] warp stage done in 0.34s; stacking + averaging gradient/laplacian maps...
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  960x480 ] building sparse linear system (grad_equation + poisson_equation)...
-  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  960x480 ] linear system: A (1381910, 460800) (4146205 nnz), b (1381910,) - built in 0.41s
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=15
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  960x480 ] linear system: A (1381910, 460800) (4146205 nnz), b (1381910,) - built in 0.06s
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  960x480 ] LSMR solve (atol=1e-5, btol=1e-5, x0=provided)...
-  Frame 41 saved (frame_040.jpg, t=145.1s)
-  [capture-periodic] freeze=6ms shot=146ms unfreeze=7ms saved=True
-  Frame 42 saved (frame_041.jpg, t=147.4s)
-  [capture-periodic] freeze=7ms shot=207ms unfreeze=14ms saved=True
-  [capture-loop] iter=750 t=150.2s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=3 ram=2.8/7.0GB (73%) swap=1.5/2.0GB (76%) cpu=90% browser_rss=0.30GB
-  Frame 43 saved (frame_042.jpg, t=154.2s)
-  [capture-periodic] freeze=4ms shot=326ms unfreeze=17ms saved=True
-  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  960x480 ] LSMR done in 11.08s: 277 iterations, residual=0.3582, istop=2
+  Frame 33 saved (frame_032.jpg, t=126.5s)
+  [capture-periodic] freeze=3ms shot=110ms unfreeze=2ms saved=True
+  [capture-loop] iter=650 t=127.5s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=3 ram=3.4/7.0GB (66%) swap=1.6/2.0GB (80%) cpu=45% browser_rss=0.25GB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  960x480 ] LSMR done in 6.08s: 277 iterations, residual=0.3582, istop=2
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=15
-  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  960x480 ] level done in 18.21s; depth: min=0.680, median=1.002, max=1.852; valid pixels: 460799/460800
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth  960x480 ] level done in 10.19s; depth: min=0.680, median=1.002, max=1.852; valid pixels: 460799/460800
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth 1920x960 ] recursion returned; upsampling 960x480 -> 1920x960
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=15
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth 1920x960 ] building sphere uv + ray directions (1920x960)...
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth 1920x960 ] warping 12 face depth maps onto the equirect...
-  Frame 44 saved (frame_043.jpg, t=156.7s)
-  [capture-periodic] freeze=2ms shot=207ms unfreeze=7ms saved=True
+  Frame 34 saved (frame_033.jpg, t=133.0s)
+  [capture-periodic] freeze=2ms shot=510ms unfreeze=10ms saved=True
+  [capture-loop] iter=700 t=133.9s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2 ram=2.9/7.0GB (73%) swap=1.6/2.0GB (80%) cpu=51% browser_rss=0.30GB
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth 1920x960 ]   warped 10/12 faces
-  [capture-loop] iter=800 t=158.5s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=10 ram=2.6/7.0GB (76%) swap=1.5/2.0GB (76%) cpu=92% browser_rss=0.29GB
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth 1920x960 ]   warped 12/12 faces
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=15
-  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth 1920x960 ] warp stage done in 3.19s; stacking + averaging gradient/laplacian maps...
-  Frame 45 saved (frame_044.jpg, t=159.1s)
-  [capture-periodic] freeze=45ms shot=483ms unfreeze=9ms saved=True
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth 1920x960 ] warp stage done in 2.72s; stacking + averaging gradient/laplacian maps...
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=15
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth 1920x960 ] building sparse linear system (grad_equation + poisson_equation)...
-  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth 1920x960 ] linear system: A (5528603, 1843200) (16586755 nnz), b (5528603,) - built in 1.70s
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth 1920x960 ] linear system: A (5528603, 1843200) (16586755 nnz), b (5528603,) - built in 0.34s
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=15
   [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth 1920x960 ] LSMR solve (atol=1e-5, btol=1e-5, x0=provided)...
-  Frame 46 saved (frame_045.jpg, t=161.7s)
-  [capture-periodic] freeze=23ms shot=498ms unfreeze=168ms saved=True
-  Frame 47 saved (frame_046.jpg, t=164.6s)
-  [capture-periodic] freeze=7ms shot=294ms unfreeze=3ms saved=True
-  [capture-loop] iter=850 t=166.3s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=2.3/7.0GB (80%) swap=1.5/2.0GB (76%) cpu=94% browser_rss=0.22GB
-  Frame 48 saved (frame_047.jpg, t=166.9s)
-  [capture-periodic] freeze=7ms shot=258ms unfreeze=5ms saved=True
-  [capture-loop] iter=900 t=172.8s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=3 ram=2.3/7.0GB (80%) swap=1.5/2.0GB (76%) cpu=90% browser_rss=0.21GB
-  Frame 49 saved (frame_048.jpg, t=178.4s)
-  [capture-periodic] freeze=5ms shot=206ms unfreeze=2ms saved=True
-  [capture-loop] iter=950 t=179.2s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=3 ram=2.3/7.0GB (80%) swap=1.5/2.0GB (76%) cpu=95% browser_rss=0.21GB
-  Frame 50 saved (frame_049.jpg, t=180.7s)
-  [capture-periodic] freeze=5ms shot=183ms unfreeze=5ms saved=True
-  [capture-loop] iter=1000 t=185.2s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (80%) swap=1.5/2.0GB (76%) cpu=92% browser_rss=0.20GB
-  [ComfyUI] [worker:ComfyUI-PanoPack]
-  [ComfyUI] === WATCHDOG TICK 1 ===
-  [ComfyUI] [worker:ComfyUI-PanoPack] Current thread 0x000000016df1b000 (most recent call first):
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_rt5gwekg/persistent_worker.py", line 52 in _watchdog
-  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.12/threading.py", line 1012 in run
-  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.12/threading.py", line 1075 in _bootstrap_inner
-  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.12/threading.py", line 1032 in _bootstrap
-  [ComfyUI] 
-  [ComfyUI] Thread 0x00000001f79e62c0 (most recent call first):
-  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.1/site-packages/scipy/sparse/_compressed.py", line 395 in _matmul_vector
-  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.1/site-packages/scipy/sparse/_base.py", line 810 in _matmul_dispatch
-  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.1/site-packages/scipy/sparse/_base.py", line 923 in __matmul__
-  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.1/site-packages/scipy/sparse/_base.py", line 603 in dot
-  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.1/site-packages/scipy/sparse/linalg/_interface.py", line 828 in _matmat
-  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.1/site-packages/scipy/sparse/linalg/_interface.py", line 370 in matmat
-  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.1/site-packages/scipy/sparse/linalg/_interface.py", line 229 in _matvec
-  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.1/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
-  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.1/site-packages/scipy/sparse/linalg/_isolve/lsmr.py", line 329 in lsmr
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/_vendor/moge_panorama.py", line 336 in merge_panorama_depth
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/depth_merge.py", line 964 in execute
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/comfy_api/latest/_io.py", line 1892 in EXECUTE_NORMALIZED
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_rt5gwekg/persistent_worker.py", line 1762 in main
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_rt5gwekg/persistent_worker.py", line 1807 in <module>
-  [ComfyUI] 
-  [ComfyUI] [worker:ComfyUI-PanoPack] === END ===
-  [ComfyUI] 
-  [capture-loop] iter=1050 t=191.6s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=3 ram=2.3/7.0GB (80%) swap=1.5/2.0GB (76%) cpu=93% browser_rss=0.22GB
-  [capture-loop] iter=1100 t=198.8s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=5 ram=2.3/7.0GB (80%) swap=1.5/2.0GB (75%) cpu=93% browser_rss=0.22GB
-  Frame 51 saved (frame_050.jpg, t=202.0s)
-  [capture-periodic] freeze=2ms shot=201ms unfreeze=6ms saved=True
-  [capture-loop] iter=1150 t=205.2s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=3 ram=2.3/7.0GB (80%) swap=1.5/2.0GB (75%) cpu=94% browser_rss=0.22GB
-  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth 1920x960 ] LSMR done in 43.59s: 276 iterations, residual=0.3337, istop=1
+  Frame 35 saved (frame_034.jpg, t=135.7s)
+  [capture-periodic] freeze=2ms shot=245ms unfreeze=5ms saved=True
+  Frame 36 saved (frame_035.jpg, t=138.0s)
+  [capture-periodic] freeze=3ms shot=131ms unfreeze=6ms saved=True
+  [capture-loop] iter=750 t=139.8s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2 ram=2.6/7.0GB (77%) swap=1.6/2.0GB (80%) cpu=50% browser_rss=0.29GB
+  Frame 37 saved (frame_036.jpg, t=142.4s)
+  [capture-periodic] freeze=3ms shot=118ms unfreeze=3ms saved=True
+  Frame 38 saved (frame_037.jpg, t=144.6s)
+  [capture-periodic] freeze=2ms shot=98ms unfreeze=2ms saved=True
+  [capture-loop] iter=800 t=145.6s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2 ram=2.6/7.0GB (77%) swap=1.6/2.0GB (80%) cpu=43% browser_rss=0.29GB
+  Frame 39 saved (frame_038.jpg, t=146.7s)
+  [capture-periodic] freeze=4ms shot=123ms unfreeze=3ms saved=True
+  Frame 40 saved (frame_039.jpg, t=148.9s)
+  [capture-periodic] freeze=3ms shot=128ms unfreeze=4ms saved=True
+  [capture-loop] iter=850 t=151.4s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=3 ram=2.6/7.0GB (77%) swap=1.6/2.0GB (79%) cpu=47% browser_rss=0.30GB
+  Frame 41 saved (frame_040.jpg, t=153.3s)
+  [capture-periodic] freeze=2ms shot=121ms unfreeze=11ms saved=True
+  [capture-loop] iter=900 t=157.1s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2 ram=2.6/7.0GB (77%) swap=1.6/2.0GB (79%) cpu=42% browser_rss=0.30GB
+  Frame 42 saved (frame_041.jpg, t=157.7s)
+  [capture-periodic] freeze=3ms shot=142ms unfreeze=5ms saved=True
+  Frame 43 saved (frame_042.jpg, t=159.9s)
+  [capture-periodic] freeze=2ms shot=119ms unfreeze=2ms saved=True
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth 1920x960 ] LSMR done in 25.75s: 276 iterations, residual=0.3337, istop=1
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=15
-  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth 1920x960 ] level done in 68.09s; depth: min=0.680, median=1.002, max=1.853; valid pixels: 1843195/1843200
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=15
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth 1920x960 ] level done in 39.56s; depth: min=0.680, median=1.002, max=1.853; valid pixels: 1843195/1843200
   [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge]   inpainted 5 invalid pixels with sky_depth=1.754
   [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] merged depth: shape (960, 1920), min=0.684, median=1.002, max=1.853; valid pixels: 1843195 / 1843200
-  Frame 52 saved (frame_051.jpg, t=206.5s)
-  [capture-periodic] freeze=11ms shot=173ms unfreeze=3ms saved=True
   [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] debug_image: H=960+48, mult_disagreement (log-d, sphere-uniform): mean=6.63%, p99=18.70%, max=26.89%; overlap_pixels=1422068
+  Frame 44 saved (frame_043.jpg, t=162.1s)
+  [capture-periodic] freeze=2ms shot=106ms unfreeze=2ms saved=True
   [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] xyz_views: cloud bbox center=(+0.11, +0.15, +0.07) m, size=(2.45 x 2.41 x 1.57) m, N=80000 (subsampled)
-  Frame 53 saved (frame_052.jpg, t=208.8s)
-  [capture-periodic] freeze=5ms shot=178ms unfreeze=4ms saved=True
-  [capture-loop] iter=1200 t=211.4s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2 ram=2.5/7.0GB (78%) swap=1.5/2.0GB (75%) cpu=68% browser_rss=0.24GB
+  [capture-loop] iter=950 t=162.9s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (72%) swap=1.6/2.0GB (79%) cpu=47% browser_rss=0.31GB
+  Frame 45 saved (frame_044.jpg, t=164.3s)
+  [capture-periodic] freeze=1ms shot=100ms unfreeze=2ms saved=True
   [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] points: merged equirect point map (1, 960, 1920, 3)
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=15
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaDepthMerge done (86.48s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaDepthMerge done (52.00s): result: NodeOutput
   [ComfyUI] [comfy-env] Running PanoramaFacesPlaneSegment: use_gpu: False, ransac_iterations_per_batch: 100, distance_threshold: 0.02, max_planes_per_face: 25, min_inlier_fraction: 0.02, ransac_iterations: 1000, dbscan_eps: 0.05, dbscan_min_points: 100, normal_consistency_threshold: 0.85, face_points: torch.float32 [1,960,1920,3] cpu, face_normals: torch.float32 [1,960,1920,3] cpu, face_valid_masks: torch.float32 [1,960,1920] cpu
   [ComfyUI] [SubprocessWorker] call_method: nodes.plane_segment.PanoramaFacesPlaneSegment.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
@@ -479,225 +396,278 @@ Capturing execution frames: cpu_plane_segmentation.json
   [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] face 1/1: valid=1843195/1843200 (100.0%)
   Node executed (3 total), capturing...
   [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 RANSAC backend: Open3D (CPU)
-  Frame 54 saved (frame_053.jpg, t=212.9s)
-  [capture-node] freeze=3ms shot=185ms unfreeze=4ms saved=True
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #1: |a,b,c,d|=[-0.008,-0.006,+1.000,+0.688], inliers=586312/1843195
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 576530/586312 inliers (|cos|>=0.85)
-  Frame 55 saved (frame_054.jpg, t=215.1s)
-  [capture-periodic] freeze=24ms shot=286ms unfreeze=4ms saved=True
-  Frame 56 saved (frame_055.jpg, t=217.5s)
-  [capture-periodic] freeze=2ms shot=204ms unfreeze=4ms saved=True
-  [capture-loop] iter=1250 t=218.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (81%) swap=1.5/2.0GB (75%) cpu=95% browser_rss=0.25GB
-  [capture-loop] iter=1300 t=227.1s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=13 ram=2.2/7.0GB (82%) swap=2.0/3.0GB (65%) cpu=100% browser_rss=0.22GB
-  [capture-loop] iter=1350 t=234.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=5 ram=2.1/7.0GB (83%) swap=2.3/3.0GB (77%) cpu=98% browser_rss=0.22GB
-  Frame 57 saved (frame_056.jpg, t=237.6s)
-  [capture-periodic] freeze=2ms shot=228ms unfreeze=3ms saved=True
-  [capture-loop] iter=1400 t=241.4s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=5 ram=2.0/7.0GB (84%) swap=2.9/4.0GB (73%) cpu=98% browser_rss=0.22GB
-  Frame 58 saved (frame_057.jpg, t=242.1s)
-  [capture-periodic] freeze=7ms shot=313ms unfreeze=5ms saved=True
-  [capture-loop] iter=1450 t=248.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=54 ram=2.2/7.0GB (83%) swap=3.6/4.0GB (89%) cpu=99% browser_rss=0.22GB
-  Frame 59 saved (frame_058.jpg, t=249.3s)
-  [capture-periodic] freeze=7ms shot=237ms unfreeze=9ms saved=True
-  [capture-loop] iter=1500 t=255.1s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.1/7.0GB (82%) swap=4.2/5.0GB (84%) cpu=99% browser_rss=0.22GB
-  [capture-loop] iter=1550 t=261.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=2.1/7.0GB (82%) swap=4.8/6.0GB (80%) cpu=82% browser_rss=0.22GB
-  [capture-loop] iter=1600 t=267.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.1/7.0GB (82%) swap=5.1/6.0GB (85%) cpu=74% browser_rss=0.27GB
-  [capture-loop] iter=1650 t=274.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=2.1/7.0GB (82%) swap=5.6/6.0GB (93%) cpu=74% browser_rss=0.28GB
-  [capture-loop] iter=1700 t=280.4s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=2.1/7.0GB (82%) swap=6.1/7.0GB (88%) cpu=78% browser_rss=0.28GB
-  [capture-loop] iter=1750 t=286.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=9 ram=1.9/7.0GB (80%) swap=6.7/7.0GB (96%) cpu=66% browser_rss=0.27GB
-  [capture-loop] iter=1800 t=292.4s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=17 ram=2.1/7.0GB (82%) swap=7.0/8.0GB (87%) cpu=60% browser_rss=0.31GB
-  [capture-loop] iter=1850 t=300.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=5 ram=2.1/7.0GB (82%) swap=7.5/8.0GB (94%) cpu=67% browser_rss=0.30GB
-  [capture-loop] iter=1900 t=306.9s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=2.1/7.0GB (82%) swap=8.2/9.0GB (91%) cpu=72% browser_rss=0.30GB
-  [capture-loop] iter=1950 t=313.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (82%) swap=8.5/9.0GB (94%) cpu=61% browser_rss=0.30GB
-  [capture-loop] iter=2000 t=319.6s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=5 ram=2.1/7.0GB (82%) swap=9.1/10.0GB (91%) cpu=82% browser_rss=0.24GB
-  [capture-loop] iter=2050 t=325.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.1/7.0GB (82%) swap=9.4/10.0GB (94%) cpu=82% browser_rss=0.23GB
-  [capture-loop] iter=2100 t=332.7s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=6 ram=2.2/7.0GB (82%) swap=9.7/10.0GB (97%) cpu=84% browser_rss=0.21GB
-  [capture-loop] iter=2150 t=339.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.2/7.0GB (82%) swap=10.0/11.0GB (91%) cpu=79% browser_rss=0.21GB
-  [capture-loop] iter=2200 t=345.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=6 ram=2.2/7.0GB (83%) swap=10.4/11.0GB (94%) cpu=78% browser_rss=0.22GB
-  [capture-loop] iter=2250 t=351.6s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.1/7.0GB (83%) swap=10.7/11.0GB (97%) cpu=74% browser_rss=0.22GB
-  [capture-loop] iter=2300 t=358.1s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=2.1/7.0GB (82%) swap=11.2/12.0GB (93%) cpu=76% browser_rss=0.22GB
-  [capture-loop] iter=2350 t=364.4s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.1/7.0GB (84%) swap=11.4/12.0GB (95%) cpu=71% browser_rss=0.20GB
-  [capture-loop] iter=2400 t=370.6s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=20 ram=2.1/7.0GB (81%) swap=11.9/13.0GB (91%) cpu=76% browser_rss=0.20GB
-  [capture-loop] iter=2450 t=377.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=9 ram=2.0/7.0GB (85%) swap=12.1/13.0GB (93%) cpu=63% browser_rss=0.21GB
-  [capture-loop] iter=2500 t=383.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=2.2/7.0GB (82%) swap=12.5/13.0GB (96%) cpu=53% browser_rss=0.21GB
-  [capture-loop] iter=2550 t=389.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=9 ram=2.1/7.0GB (82%) swap=13.0/14.0GB (93%) cpu=63% browser_rss=0.23GB
-  [capture-loop] iter=2600 t=396.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=5 ram=2.2/7.0GB (83%) swap=13.5/14.0GB (97%) cpu=76% browser_rss=0.22GB
-  [capture-loop] iter=2650 t=402.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=5 ram=2.2/7.0GB (82%) swap=13.9/15.0GB (92%) cpu=78% browser_rss=0.20GB
-  [capture-loop] iter=2700 t=408.6s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=6 ram=2.2/7.0GB (82%) swap=14.2/15.0GB (95%) cpu=57% browser_rss=0.21GB
-  [capture-loop] iter=2750 t=414.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=2.2/7.0GB (83%) swap=14.6/15.0GB (97%) cpu=54% browser_rss=0.21GB
-  [capture-loop] iter=2800 t=421.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.1/7.0GB (83%) swap=14.9/16.0GB (93%) cpu=61% browser_rss=0.23GB
-  [capture-loop] iter=2850 t=427.4s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.1/7.0GB (82%) swap=15.3/16.0GB (96%) cpu=58% browser_rss=0.23GB
-  [capture-loop] iter=2900 t=434.1s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=5 ram=2.1/7.0GB (82%) swap=15.3/16.0GB (95%) cpu=47% browser_rss=0.23GB
-  [capture-loop] iter=2950 t=440.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (83%) swap=15.2/16.0GB (95%) cpu=49% browser_rss=0.23GB
-  [capture-loop] iter=3000 t=446.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.1/7.0GB (82%) swap=15.0/16.0GB (94%) cpu=39% browser_rss=0.18GB
-  [capture-loop] iter=3050 t=452.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.1/7.0GB (82%) swap=15.1/16.0GB (94%) cpu=50% browser_rss=0.21GB
-  [capture-loop] iter=3100 t=459.1s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.2/7.0GB (82%) swap=15.1/16.0GB (95%) cpu=56% browser_rss=0.21GB
-  [capture-loop] iter=3150 t=465.4s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=2.1/7.0GB (83%) swap=15.2/16.0GB (95%) cpu=49% browser_rss=0.21GB
-  [capture-loop] iter=3200 t=471.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.1/7.0GB (82%) swap=15.1/16.0GB (95%) cpu=45% browser_rss=0.20GB
-  [capture-loop] iter=3250 t=478.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=5 ram=2.0/7.0GB (84%) swap=15.1/16.0GB (94%) cpu=51% browser_rss=0.28GB
-  [capture-loop] iter=3300 t=484.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=5 ram=2.0/7.0GB (84%) swap=15.1/16.0GB (94%) cpu=53% browser_rss=0.28GB
-  [capture-loop] iter=3350 t=491.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=5 ram=2.1/7.0GB (82%) swap=15.3/16.0GB (96%) cpu=53% browser_rss=0.28GB
-  [capture-loop] iter=3400 t=497.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=2.1/7.0GB (82%) swap=15.1/16.0GB (94%) cpu=43% browser_rss=0.22GB
-  [capture-loop] iter=3450 t=504.1s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.2/7.0GB (82%) swap=15.3/16.0GB (96%) cpu=64% browser_rss=0.19GB
-  [capture-loop] iter=3500 t=511.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.2/7.0GB (82%) swap=15.3/16.0GB (96%) cpu=64% browser_rss=0.19GB
-  [capture-loop] iter=3550 t=517.7s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.2/7.0GB (82%) swap=15.2/16.0GB (95%) cpu=49% browser_rss=0.21GB
-  [capture-loop] iter=3600 t=523.9s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=11 ram=2.2/7.0GB (83%) swap=15.1/16.0GB (94%) cpu=47% browser_rss=0.21GB
-  [capture-loop] iter=3650 t=529.9s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=5 ram=2.2/7.0GB (83%) swap=15.1/16.0GB (94%) cpu=50% browser_rss=0.21GB
-  [capture-loop] iter=3700 t=536.4s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=2.2/7.0GB (83%) swap=15.1/16.0GB (94%) cpu=51% browser_rss=0.20GB
-  [capture-loop] iter=3750 t=542.7s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=8 ram=2.2/7.0GB (82%) swap=15.1/16.0GB (94%) cpu=48% browser_rss=0.19GB
-  [capture-loop] iter=3800 t=548.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (82%) swap=15.1/16.0GB (94%) cpu=55% browser_rss=0.20GB
-  [capture-loop] iter=3850 t=555.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=2.1/7.0GB (82%) swap=15.1/16.0GB (94%) cpu=49% browser_rss=0.21GB
-  [capture-loop] iter=3900 t=562.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=10 ram=2.2/7.0GB (82%) swap=15.1/16.0GB (94%) cpu=56% browser_rss=0.21GB
-  [capture-loop] iter=3950 t=568.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=2.1/7.0GB (82%) swap=15.1/16.0GB (94%) cpu=51% browser_rss=0.20GB
-  [capture-loop] iter=4000 t=574.4s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.1/7.0GB (82%) swap=15.1/16.0GB (94%) cpu=51% browser_rss=0.19GB
-  [capture-loop] iter=4050 t=580.4s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.1/7.0GB (82%) swap=15.2/16.0GB (95%) cpu=55% browser_rss=0.21GB
-  [capture-loop] iter=4100 t=586.1s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.1/7.0GB (82%) swap=15.2/16.0GB (95%) cpu=37% browser_rss=0.21GB
-  [capture-loop] iter=4150 t=592.1s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (82%) swap=15.2/16.0GB (95%) cpu=41% browser_rss=0.20GB
-  [capture-loop] iter=4200 t=597.9s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.1/7.0GB (82%) swap=15.2/16.0GB (95%) cpu=30% browser_rss=0.19GB
-  [capture-loop] iter=4250 t=603.4s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.1/7.0GB (82%) swap=15.0/16.0GB (94%) cpu=31% browser_rss=0.19GB
-  [capture-loop] iter=4300 t=609.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.1/7.0GB (83%) swap=14.9/16.0GB (93%) cpu=33% browser_rss=0.19GB
-  [capture-loop] iter=4350 t=615.6s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (83%) swap=15.0/16.0GB (94%) cpu=34% browser_rss=0.21GB
-  [capture-loop] iter=4400 t=621.9s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.1/7.0GB (82%) swap=14.9/16.0GB (93%) cpu=34% browser_rss=0.20GB
-  [capture-loop] iter=4450 t=628.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.1/7.0GB (82%) swap=15.2/16.0GB (95%) cpu=48% browser_rss=0.19GB
-  [capture-loop] iter=4500 t=634.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.1/7.0GB (83%) swap=15.1/16.0GB (94%) cpu=38% browser_rss=0.19GB
-  [capture-loop] iter=4550 t=639.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.1/7.0GB (82%) swap=15.0/16.0GB (94%) cpu=28% browser_rss=0.19GB
-  [capture-loop] iter=4600 t=645.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.0/7.0GB (84%) swap=15.0/16.0GB (94%) cpu=36% browser_rss=0.20GB
-  [capture-loop] iter=4650 t=651.6s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.1/7.0GB (84%) swap=14.9/16.0GB (93%) cpu=33% browser_rss=0.20GB
-  [capture-loop] iter=4700 t=657.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.1/7.0GB (82%) swap=14.9/16.0GB (93%) cpu=29% browser_rss=0.21GB
-  [capture-loop] iter=4750 t=662.9s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.0/7.0GB (85%) swap=14.9/16.0GB (93%) cpu=32% browser_rss=0.19GB
-  [capture-loop] iter=4800 t=668.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.0/7.0GB (83%) swap=14.9/16.0GB (93%) cpu=33% browser_rss=0.19GB
-  [capture-loop] iter=4850 t=674.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.1/7.0GB (82%) swap=14.9/16.0GB (93%) cpu=26% browser_rss=0.18GB
-  [capture-loop] iter=4900 t=680.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=1.9/7.0GB (80%) swap=15.2/16.0GB (95%) cpu=37% browser_rss=0.20GB
-  [capture-loop] iter=4950 t=685.6s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=5 ram=2.1/7.0GB (82%) swap=14.9/16.0GB (93%) cpu=21% browser_rss=0.20GB
-  [capture-loop] iter=5000 t=691.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=7 ram=2.1/7.0GB (82%) swap=14.9/16.0GB (93%) cpu=36% browser_rss=0.21GB
-  [capture-loop] iter=5050 t=697.7s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.0/7.0GB (85%) swap=15.0/16.0GB (94%) cpu=40% browser_rss=0.19GB
-  [capture-loop] iter=5100 t=704.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=1.7/7.0GB (45%) swap=14.9/16.0GB (93%) cpu=27% browser_rss=0.20GB
-  [capture-loop] iter=5150 t=709.6s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.0/7.0GB (53%) swap=14.0/16.0GB (87%) cpu=20% browser_rss=0.22GB
-  [capture-loop] iter=5200 t=715.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (60%) swap=13.5/16.0GB (84%) cpu=20% browser_rss=0.22GB
-  [capture-loop] iter=5250 t=721.6s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.5/7.0GB (62%) swap=10.4/16.0GB (65%) cpu=26% browser_rss=0.22GB
-  [capture-loop] iter=5300 t=727.6s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=9 ram=2.2/7.0GB (50%) swap=6.0/15.0GB (40%) cpu=36% browser_rss=0.23GB
-  [capture-loop] iter=5350 t=733.4s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=1.9/7.0GB (34%) swap=4.5/7.0GB (65%) cpu=35% browser_rss=0.23GB
+  Frame 46 saved (frame_045.jpg, t=165.4s)
+  [capture-node] freeze=2ms shot=139ms unfreeze=3ms saved=True
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #1: |a,b,c,d|=[-0.008,-0.006,+1.000,+0.688], inliers=586591/1843195
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 577488/586591 inliers (|cos|>=0.85)
+  Frame 47 saved (frame_046.jpg, t=167.7s)
+  [capture-periodic] freeze=2ms shot=141ms unfreeze=2ms saved=True
+  [capture-loop] iter=1000 t=169.4s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.5/7.0GB (78%) swap=1.6/2.0GB (79%) cpu=73% browser_rss=0.26GB
+  Frame 48 saved (frame_047.jpg, t=170.0s)
+  [capture-periodic] freeze=3ms shot=295ms unfreeze=2ms saved=True
+  Frame 49 saved (frame_048.jpg, t=172.4s)
+  [capture-periodic] freeze=1ms shot=141ms unfreeze=2ms saved=True
+  [capture-loop] iter=1050 t=176.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.2/7.0GB (82%) swap=2.1/3.0GB (72%) cpu=98% browser_rss=0.26GB
+  [capture-loop] iter=1100 t=183.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=42 ram=2.2/7.0GB (83%) swap=2.8/4.0GB (71%) cpu=93% browser_rss=0.26GB
+  Frame 50 saved (frame_049.jpg, t=183.8s)
+  [capture-periodic] freeze=1ms shot=274ms unfreeze=2ms saved=True
+  Frame 51 saved (frame_050.jpg, t=186.2s)
+  [capture-periodic] freeze=5ms shot=124ms unfreeze=4ms saved=True
+  [capture-loop] iter=1150 t=189.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=43 ram=2.1/7.0GB (83%) swap=3.6/4.0GB (91%) cpu=91% browser_rss=0.24GB
+  [capture-loop] iter=1200 t=196.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (83%) swap=4.2/5.0GB (85%) cpu=72% browser_rss=0.25GB
+  Frame 52 saved (frame_051.jpg, t=198.0s)
+  [capture-periodic] freeze=2ms shot=233ms unfreeze=2ms saved=True
+  [capture-loop] iter=1250 t=202.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.1/7.0GB (81%) swap=5.0/6.0GB (83%) cpu=59% browser_rss=0.22GB
+  Frame 53 saved (frame_052.jpg, t=207.0s)
+  [capture-periodic] freeze=2ms shot=137ms unfreeze=3ms saved=True
+  [capture-loop] iter=1300 t=208.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.1/7.0GB (81%) swap=5.8/7.0GB (82%) cpu=67% browser_rss=0.23GB
+  [capture-loop] iter=1350 t=214.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=5 ram=2.1/7.0GB (84%) swap=6.1/7.0GB (88%) cpu=71% browser_rss=0.23GB
+  [capture-loop] iter=1400 t=220.9s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (83%) swap=6.8/8.0GB (85%) cpu=74% browser_rss=0.22GB
+  [capture-loop] iter=1450 t=226.7s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (83%) swap=7.3/8.0GB (91%) cpu=64% browser_rss=0.23GB
+  Frame 54 saved (frame_053.jpg, t=227.6s)
+  [capture-periodic] freeze=2ms shot=116ms unfreeze=2ms saved=True
+  Frame 55 saved (frame_054.jpg, t=229.8s)
+  [capture-periodic] freeze=1ms shot=110ms unfreeze=2ms saved=True
+  [capture-loop] iter=1500 t=232.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (83%) swap=7.7/8.0GB (96%) cpu=52% browser_rss=0.23GB
+  Frame 56 saved (frame_055.jpg, t=234.1s)
+  [capture-periodic] freeze=2ms shot=125ms unfreeze=7ms saved=True
+  [capture-loop] iter=1550 t=238.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (83%) swap=8.2/9.0GB (91%) cpu=52% browser_rss=0.21GB
+  Frame 57 saved (frame_056.jpg, t=238.6s)
+  [capture-periodic] freeze=2ms shot=200ms unfreeze=6ms saved=True
+  [capture-loop] iter=1600 t=244.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.1/7.0GB (81%) swap=8.9/10.0GB (89%) cpu=58% browser_rss=0.21GB
+  Frame 58 saved (frame_057.jpg, t=247.4s)
+  [capture-periodic] freeze=2ms shot=336ms unfreeze=16ms saved=True
+  [capture-loop] iter=1650 t=250.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (83%) swap=9.1/10.0GB (91%) cpu=57% browser_rss=0.21GB
+  [capture-loop] iter=1700 t=256.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=2.0/7.0GB (79%) swap=9.9/11.0GB (90%) cpu=58% browser_rss=0.22GB
+  Frame 59 saved (frame_058.jpg, t=256.4s)
+  [capture-periodic] freeze=2ms shot=190ms unfreeze=2ms saved=True
+  [capture-loop] iter=1750 t=261.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (83%) swap=9.9/11.0GB (90%) cpu=43% browser_rss=0.23GB
+  Frame 60 saved (frame_059.jpg, t=263.0s)
+  [capture-periodic] freeze=2ms shot=429ms unfreeze=2ms saved=True
+  [capture-loop] iter=1800 t=268.1s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (82%) swap=10.6/11.0GB (97%) cpu=59% browser_rss=0.23GB
+  Frame 61 saved (frame_060.jpg, t=272.5s)
+  [capture-periodic] freeze=2ms shot=130ms unfreeze=3ms saved=True
+  [capture-loop] iter=1850 t=274.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.0/7.0GB (81%) swap=11.0/12.0GB (92%) cpu=47% browser_rss=0.22GB
+  Frame 62 saved (frame_061.jpg, t=276.9s)
+  [capture-periodic] freeze=2ms shot=135ms unfreeze=2ms saved=True
+  [capture-loop] iter=1900 t=280.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (82%) swap=11.0/12.0GB (91%) cpu=39% browser_rss=0.30GB
+  [capture-loop] iter=1950 t=286.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.2/7.0GB (82%) swap=11.3/12.0GB (94%) cpu=48% browser_rss=0.27GB
+  Frame 63 saved (frame_062.jpg, t=286.1s)
+  [capture-periodic] freeze=5ms shot=128ms unfreeze=2ms saved=True
+  [capture-loop] iter=2000 t=292.1s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (82%) swap=11.9/13.0GB (92%) cpu=67% browser_rss=0.30GB
+  Frame 64 saved (frame_063.jpg, t=295.2s)
+  [capture-periodic] freeze=1ms shot=111ms unfreeze=2ms saved=True
+  [capture-loop] iter=2050 t=298.1s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (82%) swap=12.4/13.0GB (95%) cpu=61% browser_rss=0.30GB
+  Frame 65 saved (frame_064.jpg, t=299.6s)
+  [capture-periodic] freeze=2ms shot=125ms unfreeze=2ms saved=True
+  Frame 66 saved (frame_065.jpg, t=304.2s)
+  [capture-periodic] freeze=1ms shot=182ms unfreeze=3ms saved=True
+  [capture-loop] iter=2100 t=304.6s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=12.9/14.0GB (92%) cpu=75% browser_rss=0.23GB
+  [capture-loop] iter=2150 t=310.4s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=13.3/14.0GB (95%) cpu=64% browser_rss=0.24GB
+  [capture-loop] iter=2200 t=316.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=13.7/14.0GB (98%) cpu=51% browser_rss=0.22GB
+  Frame 67 saved (frame_066.jpg, t=317.6s)
+  [capture-periodic] freeze=2ms shot=103ms unfreeze=3ms saved=True
+  [capture-loop] iter=2250 t=322.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=14.2/15.0GB (95%) cpu=69% browser_rss=0.22GB
+  [capture-loop] iter=2300 t=327.9s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=14.6/15.0GB (97%) cpu=52% browser_rss=0.24GB
+  Frame 68 saved (frame_067.jpg, t=328.6s)
+  [capture-periodic] freeze=2ms shot=193ms unfreeze=29ms saved=True
+  Frame 69 saved (frame_068.jpg, t=330.9s)
+  [capture-periodic] freeze=2ms shot=161ms unfreeze=4ms saved=True
+  [capture-loop] iter=2350 t=334.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=15.0/16.0GB (94%) cpu=54% browser_rss=0.23GB
+  Frame 70 saved (frame_069.jpg, t=335.4s)
+  [capture-periodic] freeze=3ms shot=136ms unfreeze=6ms saved=True
+  [capture-loop] iter=2400 t=339.7s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=15.4/16.0GB (96%) cpu=54% browser_rss=0.21GB
+  Frame 71 saved (frame_070.jpg, t=339.8s)
+  [capture-periodic] freeze=2ms shot=110ms unfreeze=8ms saved=True
+  [capture-loop] iter=2450 t=345.6s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=15.3/16.0GB (96%) cpu=30% browser_rss=0.22GB
+  Frame 72 saved (frame_071.jpg, t=348.6s)
+  [capture-periodic] freeze=2ms shot=105ms unfreeze=7ms saved=True
+  Frame 73 saved (frame_072.jpg, t=350.8s)
+  [capture-periodic] freeze=2ms shot=128ms unfreeze=4ms saved=True
+  [capture-loop] iter=2500 t=351.4s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=15.2/16.0GB (95%) cpu=30% browser_rss=0.20GB
+  Frame 74 saved (frame_073.jpg, t=355.1s)
+  [capture-periodic] freeze=2ms shot=247ms unfreeze=2ms saved=True
+  [capture-loop] iter=2550 t=357.1s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=1.9/7.0GB (88%) swap=14.9/16.0GB (93%) cpu=38% browser_rss=0.20GB
+  Frame 75 saved (frame_074.jpg, t=357.5s)
+  [capture-periodic] freeze=3ms shot=137ms unfreeze=3ms saved=True
+  Frame 76 saved (frame_075.jpg, t=361.9s)
+  [capture-periodic] freeze=2ms shot=155ms unfreeze=13ms saved=True
+  [capture-loop] iter=2600 t=363.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=15.3/16.0GB (95%) cpu=39% browser_rss=0.22GB
+  Frame 77 saved (frame_076.jpg, t=368.6s)
+  [capture-periodic] freeze=1ms shot=115ms unfreeze=4ms saved=True
+  [capture-loop] iter=2650 t=369.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=15.3/16.0GB (95%) cpu=38% browser_rss=0.22GB
+  [capture-loop] iter=2700 t=374.9s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=15.1/16.0GB (94%) cpu=37% browser_rss=0.20GB
+  Frame 78 saved (frame_077.jpg, t=377.6s)
+  [capture-periodic] freeze=2ms shot=109ms unfreeze=7ms saved=True
+  [capture-loop] iter=2750 t=381.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=15.1/16.0GB (94%) cpu=30% browser_rss=0.20GB
+  Frame 79 saved (frame_078.jpg, t=382.0s)
+  [capture-periodic] freeze=2ms shot=228ms unfreeze=2ms saved=True
+  [capture-loop] iter=2800 t=387.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (82%) swap=15.2/16.0GB (95%) cpu=41% browser_rss=0.22GB
+  [capture-loop] iter=2850 t=393.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (82%) swap=15.1/16.0GB (94%) cpu=51% browser_rss=0.20GB
+  [capture-loop] iter=2900 t=398.7s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (82%) swap=15.0/16.0GB (94%) cpu=31% browser_rss=0.22GB
+  [capture-loop] iter=2950 t=405.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.1/7.0GB (81%) swap=15.2/16.0GB (95%) cpu=39% browser_rss=0.19GB
+  [capture-loop] iter=3000 t=410.6s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=6 ram=2.1/7.0GB (83%) swap=15.0/16.0GB (94%) cpu=34% browser_rss=0.19GB
+  [capture-loop] iter=3050 t=417.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=15.3/16.0GB (96%) cpu=57% browser_rss=0.20GB
+  [capture-loop] iter=3100 t=423.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (84%) swap=15.3/16.0GB (96%) cpu=34% browser_rss=0.21GB
+  [capture-loop] iter=3150 t=429.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=15.2/16.0GB (95%) cpu=36% browser_rss=0.21GB
+  [capture-loop] iter=3200 t=435.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (82%) swap=15.3/16.0GB (96%) cpu=44% browser_rss=0.20GB
+  [capture-loop] iter=3250 t=441.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.2/7.0GB (84%) swap=15.2/16.0GB (95%) cpu=34% browser_rss=0.19GB
+  [capture-loop] iter=3300 t=447.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=5 ram=2.3/7.0GB (83%) swap=15.3/16.0GB (96%) cpu=42% browser_rss=0.20GB
+  [capture-loop] iter=3350 t=452.9s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.2/7.0GB (82%) swap=15.3/16.0GB (96%) cpu=37% browser_rss=0.21GB
+  [capture-loop] iter=3400 t=458.7s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=2.2/7.0GB (84%) swap=15.2/16.0GB (95%) cpu=37% browser_rss=0.21GB
+  [capture-loop] iter=3450 t=468.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=15.6/16.0GB (97%) cpu=68% browser_rss=0.19GB
+  [capture-loop] iter=3500 t=474.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=15.6/16.0GB (97%) cpu=38% browser_rss=0.19GB
+  [capture-loop] iter=3550 t=479.9s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=2.3/7.0GB (83%) swap=15.5/16.0GB (97%) cpu=37% browser_rss=0.20GB
+  [capture-loop] iter=3600 t=485.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.3/7.0GB (83%) swap=15.4/16.0GB (96%) cpu=34% browser_rss=0.21GB
+  [capture-loop] iter=3650 t=491.9s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=15.3/16.0GB (96%) cpu=31% browser_rss=0.21GB
+  [capture-loop] iter=3700 t=498.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=101 ram=2.2/7.0GB (85%) swap=15.2/16.0GB (95%) cpu=38% browser_rss=0.28GB
+  [capture-loop] iter=3750 t=505.1s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=15.4/16.0GB (96%) cpu=41% browser_rss=0.29GB
+  [capture-loop] iter=3800 t=510.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=15.3/16.0GB (95%) cpu=32% browser_rss=0.29GB
+  [capture-loop] iter=3850 t=516.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (85%) swap=15.1/16.0GB (94%) cpu=35% browser_rss=0.22GB
+  [capture-loop] iter=3900 t=522.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=15.2/16.0GB (95%) cpu=32% browser_rss=0.23GB
+  [capture-loop] iter=3950 t=528.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=15.2/16.0GB (95%) cpu=35% browser_rss=0.22GB
+  [capture-loop] iter=4000 t=533.9s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=2.3/7.0GB (82%) swap=15.4/16.0GB (96%) cpu=51% browser_rss=0.20GB
+  [capture-loop] iter=4050 t=539.7s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (84%) swap=15.1/16.0GB (95%) cpu=36% browser_rss=0.20GB
+  [capture-loop] iter=4100 t=545.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=15.1/16.0GB (94%) cpu=29% browser_rss=0.20GB
+  [capture-loop] iter=4150 t=551.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=15.1/16.0GB (94%) cpu=33% browser_rss=0.22GB
+  [capture-loop] iter=4200 t=556.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.1/7.0GB (82%) swap=15.3/16.0GB (96%) cpu=37% browser_rss=0.20GB
+  [capture-loop] iter=4250 t=562.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.2/7.0GB (83%) swap=15.3/16.0GB (96%) cpu=34% browser_rss=0.20GB
+  [capture-loop] iter=4300 t=568.6s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.3/7.0GB (83%) swap=15.2/16.0GB (95%) cpu=29% browser_rss=0.20GB
+  [capture-loop] iter=4350 t=574.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=2.3/7.0GB (83%) swap=15.1/16.0GB (94%) cpu=25% browser_rss=0.20GB
+  [capture-loop] iter=4400 t=580.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.3/7.0GB (83%) swap=15.1/16.0GB (94%) cpu=28% browser_rss=0.22GB
+  [capture-loop] iter=4450 t=587.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (85%) swap=15.1/16.0GB (94%) cpu=37% browser_rss=0.22GB
+  [capture-loop] iter=4500 t=592.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=1.9/7.0GB (45%) swap=14.8/16.0GB (92%) cpu=24% browser_rss=0.23GB
+  [capture-loop] iter=4550 t=598.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.1/7.0GB (52%) swap=13.9/16.0GB (87%) cpu=22% browser_rss=0.23GB
+  [capture-loop] iter=4600 t=604.7s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=7 ram=2.4/7.0GB (59%) swap=13.0/16.0GB (81%) cpu=35% browser_rss=0.23GB
+  [capture-loop] iter=4650 t=610.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.7/7.0GB (63%) swap=10.8/16.0GB (67%) cpu=35% browser_rss=0.23GB
+  [capture-loop] iter=4700 t=615.9s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (49%) swap=8.4/16.0GB (52%) cpu=24% browser_rss=0.24GB
+  [ComfyUI] [worker:ComfyUI-PanoPack]
+  [ComfyUI] === WATCHDOG TICK 1 ===
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[577372]
+  [ComfyUI] [worker:ComfyUI-PanoPack] Current thread 0x000000016e273000 (most recent call first):
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_evzscdwg/persistent_worker.py", line 52 in _watchdog
+  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.13/threading.py", line 995 in run
+  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.13/threading.py", line 1044 in _bootstrap_inner
+  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.13/threading.py", line 1015 in _bootstrap
+  [ComfyUI] 
+  [ComfyUI] Thread 0x00000001fb1fe2c0 (most recent call first):
+  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.13/site-packages/numpy/lib/_arraysetops_impl.py", line 373 in _unique1d
+  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.13/site-packages/numpy/lib/_arraysetops_impl.py", line 296 in unique
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2352/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/plane_segment.py", line 260 in _segment_planes_one_face
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2352/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/plane_segment.py", line 598 in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2352/ComfyUI/comfy_api/latest/_io.py", line 1892 in EXECUTE_NORMALIZED
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_evzscdwg/persistent_worker.py", line 1762 in main
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_evzscdwg/persistent_worker.py", line 1807 in <module>
+  [ComfyUI] 
+  [ComfyUI] [worker:ComfyUI-PanoPack] === END ===
+  [ComfyUI] 
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=1, 577372 px
+  [capture-loop] iter=4750 t=622.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=1.9/7.0GB (32%) swap=4.8/15.0GB (32%) cpu=26% browser_rss=0.24GB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #2: |a,b,c,d|=[-0.010,-0.030,+0.999,-0.813], inliers=381926/1265707
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 373021/381926 inliers (|cos|>=0.85)
+  [capture-loop] iter=4800 t=628.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.8/7.0GB (45%) swap=4.3/5.0GB (85%) cpu=81% browser_rss=0.23GB
+  [capture-loop] iter=4850 t=634.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=3.2/7.0GB (50%) swap=4.3/5.0GB (85%) cpu=48% browser_rss=0.24GB
+  [capture-loop] iter=4900 t=639.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=3.4/7.0GB (53%) swap=4.3/5.0GB (85%) cpu=43% browser_rss=0.24GB
+  [capture-loop] iter=4950 t=645.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=3.7/7.0GB (57%) swap=4.3/5.0GB (85%) cpu=39% browser_rss=0.24GB
+  [capture-loop] iter=5000 t=651.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=3.9/7.0GB (60%) swap=4.3/5.0GB (85%) cpu=43% browser_rss=0.25GB
+  [capture-loop] iter=5050 t=657.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=3.4/7.0GB (68%) swap=4.3/5.0GB (85%) cpu=47% browser_rss=0.24GB
+  [capture-loop] iter=5100 t=663.7s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=4.4/5.0GB (87%) cpu=60% browser_rss=0.24GB
+  [capture-loop] iter=5150 t=669.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=4.7/5.0GB (95%) cpu=54% browser_rss=0.24GB
+  [capture-loop] iter=5200 t=675.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=5.1/6.0GB (86%) cpu=50% browser_rss=0.24GB
+  [capture-loop] iter=5250 t=681.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (80%) swap=5.5/6.0GB (92%) cpu=59% browser_rss=0.24GB
+  [capture-loop] iter=5300 t=686.7s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.9/7.0GB (74%) swap=5.3/6.0GB (89%) cpu=44% browser_rss=0.22GB
+  [capture-loop] iter=5350 t=692.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.4/7.0GB (82%) swap=5.1/6.0GB (84%) cpu=56% browser_rss=0.19GB
+  [capture-loop] iter=5400 t=699.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.3/7.0GB (83%) swap=5.2/6.0GB (86%) cpu=38% browser_rss=0.20GB
+  [capture-loop] iter=5450 t=705.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (81%) swap=5.4/6.0GB (90%) cpu=45% browser_rss=0.20GB
+  [capture-loop] iter=5500 t=713.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.3/7.0GB (83%) swap=5.4/6.0GB (91%) cpu=39% browser_rss=0.22GB
+  [capture-loop] iter=5550 t=719.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.1/7.0GB (76%) swap=5.0/6.0GB (84%) cpu=36% browser_rss=0.28GB
   [ComfyUI] [worker:ComfyUI-PanoPack]
   [ComfyUI] === WATCHDOG TICK 2 ===
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[576304]
-  [ComfyUI] [worker:ComfyUI-PanoPack] Current thread 0x000000016df1b000 (most recent call first):
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_rt5gwekg/persistent_worker.py", line 52 in _watchdog
-  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.12/threading.py", line 1012 in run
-  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.12/threading.py", line 1075 in _bootstrap_inner
-  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.12/threading.py", line 1032 in _bootstrap
+  [ComfyUI] [worker:ComfyUI-PanoPack] Current thread 0x000000016e273000 (most recent call first):
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_evzscdwg/persistent_worker.py", line 52 in _watchdog
+  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.13/threading.py", line 995 in run
+  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.13/threading.py", line 1044 in _bootstrap_inner
+  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.13/threading.py", line 1015 in _bootstrap
   [ComfyUI] 
-  [ComfyUI] Thread 0x00000001f79e62c0 (most recent call first):
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/plane_segment.py", line 250 in _segment_planes_one_face
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/plane_segment.py", line 598 in execute
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/comfy_api/latest/_io.py", line 1892 in EXECUTE_NORMALIZED
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_rt5gwekg/persistent_worker.py", line 1762 in main
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_rt5gwekg/persistent_worker.py", line 1807 in <module>
-  [ComfyUI] 
-  [ComfyUI] [worker:ComfyUI-PanoPack] === END ===
-  [ComfyUI] 
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=1, 576304 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #2: |a,b,c,d|=[-0.010,-0.030,+1.000,-0.814], inliers=383363/1266665
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 376020/383363 inliers (|cos|>=0.85)
-  [capture-loop] iter=5400 t=740.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.5/7.0GB (41%) swap=4.4/6.0GB (73%) cpu=81% browser_rss=0.23GB
-  [capture-loop] iter=5450 t=746.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=3.1/7.0GB (50%) swap=4.4/6.0GB (73%) cpu=97% browser_rss=0.23GB
-  [capture-loop] iter=5500 t=751.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=3.4/7.0GB (54%) swap=4.4/6.0GB (73%) cpu=46% browser_rss=0.23GB
-  [capture-loop] iter=5550 t=757.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=3.7/7.0GB (58%) swap=4.4/6.0GB (73%) cpu=46% browser_rss=0.23GB
-  [capture-loop] iter=5600 t=764.1s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=3.9/7.0GB (59%) swap=4.4/6.0GB (73%) cpu=56% browser_rss=0.23GB
-  [capture-loop] iter=5650 t=770.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=5 ram=3.8/7.0GB (58%) swap=4.4/6.0GB (73%) cpu=48% browser_rss=0.24GB
-  [capture-loop] iter=5700 t=776.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=7 ram=3.6/7.0GB (62%) swap=4.4/6.0GB (73%) cpu=65% browser_rss=0.23GB
-  [capture-loop] iter=5750 t=785.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=10 ram=2.6/7.0GB (78%) swap=4.4/6.0GB (73%) cpu=66% browser_rss=0.23GB
-  [capture-loop] iter=5800 t=792.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.2/7.0GB (82%) swap=4.4/6.0GB (74%) cpu=72% browser_rss=0.23GB
-  [capture-loop] iter=5850 t=798.4s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=2.1/7.0GB (82%) swap=4.6/6.0GB (76%) cpu=68% browser_rss=0.20GB
-  [capture-loop] iter=5900 t=805.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.1/7.0GB (82%) swap=5.0/6.0GB (83%) cpu=59% browser_rss=0.23GB
-  [capture-loop] iter=5950 t=810.9s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.5/7.0GB (78%) swap=5.0/6.0GB (83%) cpu=50% browser_rss=0.23GB
-  [capture-loop] iter=6000 t=816.9s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=5 ram=2.8/7.0GB (73%) swap=4.9/6.0GB (82%) cpu=61% browser_rss=0.20GB
-  [capture-loop] iter=6050 t=823.7s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=5 ram=2.4/7.0GB (78%) swap=4.8/6.0GB (80%) cpu=59% browser_rss=0.18GB
-  [capture-loop] iter=6100 t=833.1s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.1/7.0GB (82%) swap=5.1/6.0GB (85%) cpu=61% browser_rss=0.18GB
-  [capture-loop] iter=6150 t=839.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.1/7.0GB (82%) swap=5.1/6.0GB (84%) cpu=54% browser_rss=0.20GB
-  [ComfyUI] [worker:ComfyUI-PanoPack]
-  [ComfyUI] === WATCHDOG TICK 3 ===
-  [ComfyUI] [worker:ComfyUI-PanoPack] Current thread 0x000000016df1b000 (most recent call first):
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_rt5gwekg/persistent_worker.py", line 52 in _watchdog
-  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.12/threading.py", line 1012 in run
-  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.12/threading.py", line 1075 in _bootstrap_inner
-  [ComfyUI]   File "/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.12/threading.py", line 1032 in _bootstrap
-  [ComfyUI] 
-  [ComfyUI] Thread 0x00000001f79e62c0 (most recent call first):
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/plane_segment.py", line 250 in _segment_planes_one_face
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/plane_segment.py", line 598 in execute
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2344/ComfyUI/comfy_api/latest/_io.py", line 1892 in EXECUTE_NORMALIZED
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_rt5gwekg/persistent_worker.py", line 1762 in main
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_rt5gwekg/persistent_worker.py", line 1807 in <module>
+  [ComfyUI] Thread 0x00000001fb1fe2c0 (most recent call first):
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2352/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/plane_segment.py", line 250 in _segment_planes_one_face
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2352/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/plane_segment.py", line 598 in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2352/ComfyUI/comfy_api/latest/_io.py", line 1892 in EXECUTE_NORMALIZED
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_evzscdwg/persistent_worker.py", line 1762 in main
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_evzscdwg/persistent_worker.py", line 1807 in <module>
   [ComfyUI] 
   [ComfyUI] [worker:ComfyUI-PanoPack] === END ===
   [ComfyUI] 
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[376007]
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=2, 376007 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #3: |a,b,c,d|=[+0.039,+0.023,+0.999,-0.709], inliers=156184/890645
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 141125/156184 inliers (|cos|>=0.85)
-  [capture-loop] iter=6200 t=845.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=25 ram=1.7/7.0GB (29%) swap=4.9/6.0GB (82%) cpu=51% browser_rss=0.20GB
-  [capture-loop] iter=6250 t=851.6s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=2.6/7.0GB (40%) swap=4.9/6.0GB (81%) cpu=90% browser_rss=0.21GB
-  [capture-loop] iter=6300 t=857.4s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.7/7.0GB (42%) swap=4.9/6.0GB (81%) cpu=42% browser_rss=0.22GB
-  [capture-loop] iter=6350 t=863.1s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=2.9/7.0GB (45%) swap=4.9/6.0GB (81%) cpu=47% browser_rss=0.22GB
-  [capture-loop] iter=6400 t=868.9s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=2.9/7.0GB (45%) swap=4.9/6.0GB (81%) cpu=50% browser_rss=0.22GB
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 2 cluster(s), top sizes=[139698, 1367]
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=3, 139698 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=4, 1367 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #4: |a,b,c,d|=[-0.030,+1.000,+0.009,+0.985], inliers=124886/749520
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 119068/124886 inliers (|cos|>=0.85)
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 4 cluster(s), top sizes=[118039, 405, 167, 125]
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=5, 118039 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=6, 405 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=7, 125 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=8, 167 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #5: |a,b,c,d|=[+0.999,+0.033,+0.019,+0.932], inliers=112190/630452
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 91110/112190 inliers (|cos|>=0.85)
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 4 cluster(s), top sizes=[89873, 610, 317, 133]
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=9, 89873 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=10, 133 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=11, 610 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=12, 317 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #6: |a,b,c,d|=[+0.999,+0.040,+0.029,-1.294], inliers=74827/539342
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 73026/74827 inliers (|cos|>=0.85)
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 7 cluster(s), top sizes=[71715, 348, 318, 175, 142] (+2 more)
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=13, 71715 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=14, 175 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=15, 138 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=16, 318 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=17, 142 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=18, 348 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #7: |a,b,c,d|=[-0.481,+0.040,+0.876,-0.690], inliers=48435/466316
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 43293/48435 inliers (|cos|>=0.85)
-  [capture-loop] iter=6450 t=874.9s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=2.0/7.0GB (32%) swap=4.9/6.0GB (81%) cpu=75% browser_rss=0.22GB
-  [capture-loop] iter=6500 t=880.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.4/7.0GB (38%) swap=4.9/6.0GB (81%) cpu=81% browser_rss=0.21GB
-  [capture-loop] iter=6550 t=886.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.6/7.0GB (41%) swap=4.9/6.0GB (81%) cpu=48% browser_rss=0.22GB
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 4 cluster(s), top sizes=[42055, 341, 325, 163]
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=19, 42055 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=20, 341 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=21, 325 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=22, 163 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #8: |a,b,c,d|=[+0.014,+1.000,-0.023,-1.274], inliers=44891/423023
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 41332/44891 inliers (|cos|>=0.85)
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[40918]
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=23, 40918 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #9: |a,b,c,d|=[-0.040,+0.999,-0.000,-1.134], inliers=37907/381691
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 31234/37907 inliers (|cos|>=0.85)
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 7 cluster(s), top sizes=[22507, 5209, 2052, 438, 244] (+2 more)
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=24, 5209 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=25, 22507 px
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 RANSAC done (max_planes_per_face=25 hit); 9 attempt(s), 0 normal-filter rejects, 25 plane(s) accepted
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] face 1/1 done: 25 plane(s), 1487399/1843200 px labeled (80.7%), 678735ms
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[373021]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=2, 373021 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #3: |a,b,c,d|=[+0.059,+0.009,+0.998,-0.704], inliers=157220/892686
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 142103/157220 inliers (|cos|>=0.85)
+  [capture-loop] iter=5600 t=725.6s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.7/7.0GB (41%) swap=4.8/6.0GB (80%) cpu=76% browser_rss=0.29GB
+  [capture-loop] iter=5650 t=731.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=3.1/7.0GB (47%) swap=4.8/6.0GB (80%) cpu=73% browser_rss=0.29GB
+  [capture-loop] iter=5700 t=737.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=3.4/7.0GB (50%) swap=4.8/6.0GB (80%) cpu=50% browser_rss=0.29GB
+  [capture-loop] iter=5750 t=742.6s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=3.5/7.0GB (52%) swap=4.8/6.0GB (80%) cpu=43% browser_rss=0.30GB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 2 cluster(s), top sizes=[138239, 3864]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=3, 138239 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=4, 3864 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #4: |a,b,c,d|=[-0.034,+0.999,+0.014,+0.987], inliers=125979/750583
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 120353/125979 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 4 cluster(s), top sizes=[119256, 408, 170, 150]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=5, 119256 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=6, 408 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=7, 150 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=8, 170 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #5: |a,b,c,d|=[+0.999,+0.035,+0.014,+0.933], inliers=111260/630230
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 90615/111260 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[90458]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=9, 90458 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #6: |a,b,c,d|=[+0.999,+0.039,+0.031,-1.294], inliers=72436/539615
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 70411/72436 inliers (|cos|>=0.85)
+  [capture-loop] iter=5800 t=748.7s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.7/7.0GB (41%) swap=4.8/6.0GB (79%) cpu=74% browser_rss=0.29GB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 7 cluster(s), top sizes=[69272, 308, 177, 173, 142] (+2 more)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=10, 69272 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=11, 173 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=12, 137 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=13, 308 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=14, 142 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=15, 177 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #7: |a,b,c,d|=[-0.123,-0.003,+0.992,-0.771], inliers=55968/469204
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 50217/55968 inliers (|cos|>=0.85)
+  [capture-loop] iter=5850 t=754.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=2.9/7.0GB (44%) swap=4.8/6.0GB (79%) cpu=67% browser_rss=0.30GB
+  [capture-loop] iter=5900 t=760.1s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=2 ram=3.1/7.0GB (46%) swap=4.8/6.0GB (79%) cpu=40% browser_rss=0.30GB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 3 cluster(s), top sizes=[38840, 9878, 1359]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=16, 38840 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=17, 9878 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=18, 1359 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #8: |a,b,c,d|=[+0.014,+1.000,-0.013,-1.279], inliers=49074/418987
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 45558/49074 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[45280]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=19, 45280 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #9: |a,b,c,d|=[-0.001,+0.998,+0.061,-1.145], inliers=42048/373429
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 35726/42048 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 3 cluster(s), top sizes=[21110, 11996, 1920]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=20, 21110 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=21, 11996 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=22, 1920 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #10: |a,b,c,d|=[+0.989,+0.042,+0.139,+0.980], inliers=34227/337703
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 21520/34227 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 7 cluster(s), top sizes=[12385, 4410, 2321, 405, 298] (+2 more)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=23, 12385 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=24, 298 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=25, 405 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 RANSAC done (max_planes_per_face=25 hit); 10 attempt(s), 0 normal-filter rejects, 25 plane(s) accepted
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] face 1/1 done: 25 plane(s), 1516618/1843200 px labeled (82.3%), 598554ms
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=16
-  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] DONE: 1 faces -> 25 total planes in 678.83s (min=25/med=25/max=25 planes/face, zero-plane faces: 0)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] DONE: 1 faces -> 25 total planes in 598.62s (min=25/med=25/max=25 planes/face, zero-plane faces: 0)
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaFacesPlaneSegment done (679.13s): result: NodeOutput
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 00:14:51[0m
+  [ComfyUI] [comfy-env] PanoramaFacesPlaneSegment done (598.88s): result: NodeOutput
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 00:12:44[0m
   Node executed (4 total), capturing...
-  Frame 60 saved (frame_059.jpg, t=892.1s)
-  [capture-node] freeze=3ms shot=147ms unfreeze=2ms saved=True
-  Execution complete (t=892.5s)
-  Captured 60 unique frames over 892.46s
+  Frame 80 saved (frame_079.jpg, t=764.4s)
+  [capture-node] freeze=2ms shot=106ms unfreeze=0ms saved=True
+  Execution complete (t=764.4s)
+  Captured 80 unique frames over 764.6s
   [debug] iframes: 0
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: cpu_plane_segmentation_executed.png
-  [timing] final_screenshot: 0.3s
-    Captured 61 video frames
+  [timing] final_screenshot: 0.2s
+    Captured 81 video frames
