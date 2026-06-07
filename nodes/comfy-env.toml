@@ -3,7 +3,15 @@ open3d = "*"
 av = "*"
 vtk = ">=9.3"
 pyvista = ">=0.45"
+# Headless software GL stack (no GPU, no X display on CI):
+#   mesalib  - Mesa: llvmpipe software rasterizer + the EGL vendor (libEGL_mesa).
+#   libglvnd - the GLVND dispatcher (libEGL.so.1) that VTK loads and that reads
+#              __EGL_VENDOR_LIBRARY_DIRS to discover Mesa's vendor.
+# With the vendor discoverable, Mesa's software EGL device becomes enumerable so
+# VTK's vtkEGLRenderWindow can initialize. The wiring lives in
+# nodes/utils/headless_gl.py (called before every pv.Plotter).
 mesalib = "*"
+libglvnd = "*"
 
 [pypi-dependencies]
 safetensors = ">=0.4.0"
