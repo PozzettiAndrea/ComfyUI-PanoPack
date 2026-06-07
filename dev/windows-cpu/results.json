@@ -1,90 +1,57 @@
 {
-  "timestamp": "2026-06-07T10:49:20.586985+00:00",
+  "timestamp": "2026-06-07T11:42:57.882414+00:00",
   "platform": "windows",
   "hardware": {
-    "os": "Windows-2025Server-10.0.26100-SP0",
+    "os": "Windows-10-10.0.26100-SP0",
     "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
   },
-  "commit_hash": "b24cf3d6418bc07bc7c19dfb17135871631132a7",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27090152732",
+  "commit_hash": "e206e7bf251e72ffded0d88a71b530a05ba2c101",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27091234606",
   "success": false,
   "summary": {
     "total": 13,
-    "passed": 0,
-    "failed": 9
+    "passed": 5,
+    "failed": 1
   },
   "workflows": [
     {
       "name": "360_render",
-      "status": "fail",
-      "duration_seconds": 11.44,
-      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 11 nodes, missing class_type: [90,92,94,96], sample: {\"inputs\":{\"file_path\":\"3d/pano_mesh.vtp\"},\"class_type\":\"GeomPackLoadMesh\",\"_meta\":{\"title\":\"Load Mesh\"}}",
+      "status": "pass",
+      "duration_seconds": 141.55,
+      "error": null,
       "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
+        "os": "Windows-10-10.0.26100-SP0",
         "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 0.52,
-          "avg": 0.52
+          "peak": 6.76,
+          "avg": 1.89
         },
         "total_ram_gb": 16.0,
-        "samples": 12
+        "samples": 141
       }
     },
     {
       "name": "cpu_depth_merge_mesh_pointcloud",
-      "status": "fail",
-      "duration_seconds": 6.83,
-      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 17 nodes, missing class_type: [65,69,79,80,85], sample: {\"inputs\":{\"image\":\"actual_pano_from_real_life.jpg\"},\"class_type\":\"LoadImage\",\"_meta\":{\"title\":\"Load Image\"}}",
-      "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
-      },
-      "resources": {
-        "ram": {
-          "peak": 0.52,
-          "avg": 0.52
-        },
-        "total_ram_gb": 16.0,
-        "samples": 7
-      }
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
     },
     {
       "name": "cpu_depth_normal_conditioned",
-      "status": "fail",
-      "duration_seconds": 6.63,
-      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 15 nodes, missing class_type: [58,59,60,87], sample: {\"inputs\":{\"image\":\"pano.png\"},\"class_type\":\"LoadImage\",\"_meta\":{\"title\":\"Load Image\"}}",
-      "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
-      },
-      "resources": {
-        "ram": {
-          "peak": 0.52,
-          "avg": 0.52
-        },
-        "total_ram_gb": 16.0,
-        "samples": 7
-      }
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
     },
     {
       "name": "cpu_plane_segmentation",
-      "status": "fail",
-      "duration_seconds": 6.45,
-      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 13 nodes, missing class_type: [65,84,103,107], sample: {\"inputs\":{\"image\":\"actual_pano_from_real_life.jpg\"},\"class_type\":\"LoadImage\",\"_meta\":{\"title\":\"Load Image\"}}",
-      "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
-      },
-      "resources": {
-        "ram": {
-          "peak": 0.52,
-          "avg": 0.52
-        },
-        "total_ram_gb": 16.0,
-        "samples": 7
-      }
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
     },
     {
       "name": "depth_merge_mesh_pointcloud",
@@ -116,53 +83,53 @@
     },
     {
       "name": "pano_crop",
-      "status": "fail",
-      "duration_seconds": 6.13,
-      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [65,87], sample: {\"inputs\":{\"image\":\"actual_pano_from_real_life.jpg\"},\"class_type\":\"LoadImage\",\"_meta\":{\"title\":\"Load Image\"}}",
+      "status": "pass",
+      "duration_seconds": 10.31,
+      "error": null,
       "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
+        "os": "Windows-10-10.0.26100-SP0",
         "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 0.52,
-          "avg": 0.52
+          "peak": 1.53,
+          "avg": 1.46
         },
         "total_ram_gb": 16.0,
-        "samples": 7
+        "samples": 11
       }
     },
     {
       "name": "pano_info",
-      "status": "fail",
-      "duration_seconds": 6.28,
-      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 3 nodes, missing class_type: [2,3], sample: {\"inputs\":{\"image\":\"pano.png\"},\"class_type\":\"LoadImage\",\"_meta\":{\"title\":\"Load Image\"}}",
+      "status": "pass",
+      "duration_seconds": 10.18,
+      "error": null,
       "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
+        "os": "Windows-10-10.0.26100-SP0",
         "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 0.52,
-          "avg": 0.52
+          "peak": 1.67,
+          "avg": 1.55
         },
         "total_ram_gb": 16.0,
-        "samples": 7
+        "samples": 11
       }
     },
     {
       "name": "panorama_shift",
       "status": "fail",
-      "duration_seconds": 6.21,
-      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 8 nodes, missing class_type: [2,3,4,7,8], sample: {\"inputs\":{\"image\":\"pano.png\"},\"class_type\":\"LoadImage\",\"_meta\":{\"title\":\"Load Image\"}}",
+      "duration_seconds": 6.86,
+      "error": "Workflow execution failed: {'prompt_id': 'e3aa34a1-6240-4002-b0c0-f200ff84ae9c', 'node_id': '8', 'node_type': 'PanoramaShift', 'executed': ['2', '1'], 'exception_message': 'name \\'torch\\' is not defined\\n\\nWorker traceback:\\nTraceback (most recent call last):\\n  File \"C:\\\\Users\\\\stduser\\\\AppData\\\\Local\\\\Temp\\\\comfyui_pvenv_m_swij6u\\\\persistent_worker.py\", line 1762, in main\\n    result = method(**inputs)\\n  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1130\\\\ComfyUI\\\\comfy_api\\\\latest\\\\_io.py\", line 1892, in EXECUTE_NORMALIZED\\n    to_return = cls.execute(*args, **kwargs)\\n  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1130\\\\ComfyUI\\\\custom_nodes\\\\ComfyUI-PanoPack\\\\nodes\\\\panorama_shift.py\", line 64, in execute\\n    rotated = panorama_shift_pitch(rotated, pitch_degrees)\\n  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1130\\\\ComfyUI\\\\custom_nodes\\\\ComfyUI-PanoPack\\\\nodes\\\\utils\\\\equirect.py\", line 188, in panorama_shift_pitch\\n    u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)\\n        ^^^^^\\nNameError: name \\'torch\\' is not defined\\n\\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1130\\\\ComfyUI\\\\execution.py\", line 536, in execute\\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1130\\\\ComfyUI\\\\execution.py\", line 336, in get_output_data\\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1130\\\\ComfyUI\\\\execution.py\", line 310, in _async_map_node_over_list\\n    await process_inputs(input_dict, i)\\n', '  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1130\\\\ComfyUI\\\\execution.py\", line 298, in process_inputs\\n    result = f(**inputs)\\n', '  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1130\\\\.venv\\\\Lib\\\\site-packages\\\\comfy_env\\\\isolation\\\\metadata.py\", line 560, in proxy\\n    result = worker.call_method(\\n        module_name=mod,\\n    ...<4 lines>...\\n        timeout=600.0,\\n    )\\n', '  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1130\\\\.venv\\\\Lib\\\\site-packages\\\\comfy_env\\\\isolation\\\\workers\\\\subprocess.py\", line 674, in call_method\\n    raise WorkerError(\\n    ...<2 lines>...\\n    )\\n'], 'current_inputs': {'yaw_degrees': [0], 'pitch_degrees': [45], 'panorama': [\"{'image': tensor([[[[0.1647, 0.1020, 0.0745],\\n          [0.1765, 0.1098, 0.0863],\\n          [0.1765, 0.1137, 0.0941],\\n          ...,\\n          [0.1647, 0.1137, 0.0941],\\n          [0.1647, 0.1098, 0.0902],\\n          [0.1333, 0.0784, 0.0667]],\\n\\n         [[0.1922, 0.1255, 0.0902],\\n          [0.1843, 0.1216, 0.0902],\\n          [0.1922, 0.1255, 0.0980],\\n          ...,\\n          [0.1765, 0.1255, 0.0980],\\n          [0.1725, 0.1255, 0.1020],\\n          [0.1647, 0.1059, 0.0824]],\\n\\n         [[0.1882, 0.1216, 0.0980],\\n          [0.1843, 0.1216, 0.0980],\\n          [0.1882, 0.1216, 0.0980],\\n          ...,\\n          [0.1804, 0.1333, 0.1020],\\n          [0.1804, 0.1373, 0.1098],\\n          [0.1569, 0.1059, 0.0863]],\\n\\n         ...,\\n\\n         [[0.1882, 0.1255, 0.1176],\\n          [0.1922, 0.1255, 0.1176],\\n          [0.1922, 0.1255, 0.1176],\\n          ...,\\n          [0.1176, 0.1333, 0.1412],\\n          [0.1686, 0.1529, 0.1451],\\n          [0.1843, 0.1569, 0.1333]],\\n\\n         [[0.1882, 0.1255, 0.1176],\\n          [0.1882, 0.1255, 0.1137],\\n          [0.1922, 0.1255, 0.1176],\\n          ...,\\n          [0.1647, 0.1412, 0.1098],\\n          [0.1922, 0.1529, 0.1176],\\n          [0.2039, 0.1490, 0.1294]],\\n\\n         [[0.1765, 0.1137, 0.1137],\\n          [0.1804, 0.1255, 0.1216],\\n          [0.1765, 0.1216, 0.1137],\\n          ...,\\n          [0.1961, 0.1725, 0.1412],\\n          [0.1647, 0.1451, 0.1333],\\n          [0.1843, 0.1137, 0.1373]]]]), 'meta': {}}\"]}, 'current_outputs': ['2', '4', '1', '3', '8', '5', '6', '7'], 'timestamp': 1780832552743}\n\nDetails:\nWorkflow: C:\\Users\\stduser\\AppData\\Local\\Temp\\comfy-test-run-jttkhkah\\ComfyUI-PanoPack\\workflows\\panorama_shift.json\nNode error: PanoramaShift",
       "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
+        "os": "Windows-10-10.0.26100-SP0",
         "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 0.52,
-          "avg": 0.52
+          "peak": 1.66,
+          "avg": 1.65
         },
         "total_ram_gb": 16.0,
         "samples": 7
@@ -170,38 +137,38 @@
     },
     {
       "name": "preview_panorama",
-      "status": "fail",
-      "duration_seconds": 6.45,
-      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [2,4], sample: {\"inputs\":{\"image\":\"pano.png\"},\"class_type\":\"LoadImage\",\"_meta\":{\"title\":\"Load Image\"}}",
+      "status": "pass",
+      "duration_seconds": 14.09,
+      "error": null,
       "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
+        "os": "Windows-10-10.0.26100-SP0",
         "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 0.52,
-          "avg": 0.52
+          "peak": 2.02,
+          "avg": 1.79
         },
         "total_ram_gb": 16.0,
-        "samples": 7
+        "samples": 14
       }
     },
     {
       "name": "test_wrap_unwrap",
-      "status": "fail",
-      "duration_seconds": 6.26,
-      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [2,3], sample: {\"inputs\":{\"image\":\"pano.png\"},\"class_type\":\"LoadImage\",\"_meta\":{\"title\":\"Load Image\"}}",
+      "status": "pass",
+      "duration_seconds": 9.93,
+      "error": null,
       "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
+        "os": "Windows-10-10.0.26100-SP0",
         "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 0.52,
-          "avg": 0.52
+          "peak": 1.92,
+          "avg": 1.83
         },
         "total_ram_gb": 16.0,
-        "samples": 7
+        "samples": 10
       }
     }
   ]
