@@ -22,7 +22,12 @@ imageio = { version = "*", extras = ["ffmpeg"] }
 loguru = "*"
 pyvista = ">=0.45"
 utils3d = { git = "https://github.com/EasternJournalist/utils3d.git", rev = "3fab839f0be9931dac7c8488eb0e1600c236e183" }
-torch-ransac3d = "*"
+# torch-ransac3d intentionally NOT declared: its 2.0.0 py3-none-any wheel ships an
+# archive member named `tests/*`, an illegal filename on Windows (os error 123 /
+# ERROR_INVALID_NAME) that aborts the whole pixi install. The one function we use
+# (plane_fit) is pure torch with no compiled extension, so it's vendored at
+# nodes/_vendor/torch_ransac3d_plane.py -- GPU RANSAC works on all platforms with
+# no dependency on the broken wheel. See that file's header for details.
 pyyaml = "*"
 transformers = "*"
 sqlalchemy = "*"

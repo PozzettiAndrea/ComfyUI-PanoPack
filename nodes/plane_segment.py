@@ -78,12 +78,12 @@ def _segment_planes_one_face(
     `face_tag` is prepended to each diagnostic print so multi-face
     callers can identify which face the line belongs to (e.g. "5/42").
 
-    `use_gpu=True` routes the RANSAC plane fit through
-    `torch_ransac3d.plane.plane_fit` on CUDA (typical ~30-50x speedup
+    `use_gpu=True` routes the RANSAC plane fit through a vendored,
+    pure-torch batched `plane_fit` on CUDA (typical ~30-50x speedup
     on 2.4M-point faces). Falls back to Open3D's CPU `segment_plane`
-    if `torch-ransac3d` isn't installed or CUDA isn't available.
-    DBSCAN clustering stays on CPU regardless - only the plane fit
-    moves to GPU (it's the dominant cost at 1536^2 resolution).
+    when CUDA isn't available. DBSCAN clustering stays on CPU
+    regardless - only the plane fit moves to GPU (it's the dominant
+    cost at 1536^2 resolution).
     """
     import torch
     import open3d as o3d
@@ -120,16 +120,18 @@ def _segment_planes_one_face(
     pts_gpu = None
     if use_gpu:
         try:
-            from torch_ransac3d.plane import plane_fit as _tr3d_plane_fit
+            # Vendored pure-torch batched RANSAC (see _vendor/torch_ransac3d_plane.py):
+            # avoids torch-ransac3d's Windows-unextractable wheel while keeping the GPU path.
+            from ._vendor.torch_ransac3d_plane import plane_fit as _tr3d_plane_fit
             if torch.cuda.is_available():
                 gpu_device = torch.device("cuda")
                 pts_gpu = torch.from_numpy(valid_pts.astype(np.float32)).to(gpu_device)
                 gpu_plane_fit = _tr3d_plane_fit
             else:
                 _p(f"  {tag}GPU requested but CUDA unavailable; using Open3D CPU RANSAC")
-        except ImportError:
-            _p(f"  {tag}GPU requested but `torch-ransac3d` not installed; using Open3D CPU RANSAC")
-    ransac_backend = "torch_ransac3d (CUDA)" if gpu_plane_fit is not None else "Open3D (CPU)"
+        except Exception as e:
+            _p(f"  {tag}GPU RANSAC unavailable ({e}); using Open3D CPU RANSAC")
+    ransac_backend = "vendored torch RANSAC (CUDA)" if gpu_plane_fit is not None else "Open3D (CPU)"
     _p(f"  {tag}RANSAC backend: {ransac_backend}")
 
     n_total = len(valid_pts)
@@ -354,13 +356,12 @@ class PanoramaFacesPlaneSegment(io.ComfyNode):
                             "(z > 0)` on the point map."),
                 io.Boolean.Input(
                     "use_gpu", default=True, optional=True,
-                    tooltip="Run the RANSAC plane fit on CUDA via "
-                            "`torch-ransac3d.plane.plane_fit` instead of "
-                            "Open3D's CPU `segment_plane`. ~30-50x faster "
+                    tooltip="Run the RANSAC plane fit on CUDA via a "
+                            "vendored pure-torch batched plane_fit instead "
+                            "of Open3D's CPU `segment_plane`. ~30-50x faster "
                             "on 2.4M-point faces (1536^2) at typical "
                             "ransac_iterations=1000. Falls back to CPU "
-                            "Open3D automatically if `torch-ransac3d` "
-                            "isn't installed or CUDA isn't available "
+                            "Open3D automatically if CUDA isn't available "
                             "(prints a fallback line per face).\n\n"
                             "DBSCAN clustering stays on Open3D CPU "
                             "regardless - it's the smaller cost at this "
@@ -369,8 +370,8 @@ class PanoramaFacesPlaneSegment(io.ComfyNode):
                     "ransac_iterations_per_batch", default=200, min=50,
                     max=5000, step=50, optional=True,
                     tooltip="GPU-only: number of RANSAC iterations "
-                            "processed per parallel batch in "
-                            "`torch_ransac3d`. The (N, K) distance "
+                            "processed per parallel batch in the "
+                            "vendored plane_fit. The (N, K) distance "
                             "tensor scales as `points x batch`; with "
                             "200 batch x 2.4M points x 4B = ~1.9 GB "
                             "peak. Lower if you OOM, raise if you have "
