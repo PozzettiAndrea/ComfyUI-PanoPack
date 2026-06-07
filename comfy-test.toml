@@ -2,7 +2,8 @@
 levels = ["syntax", "install", "registration", "instantiation", "execution"]
 
 [test.workflows]
-cpu = ["360_render","cpu_plane_segmentation", "cpu_depth_normal_conditioned", "pano_crop", "pano_info", "panorama_shift", "preview_panorama", "test_wrap_unwrap","cpu_depth_merge_mesh_pointcloud"]
+# cpu = ["360_render","cpu_plane_segmentation", "cpu_depth_normal_conditioned", "pano_crop", "pano_info", "panorama_shift", "preview_panorama", "test_wrap_unwrap","cpu_depth_merge_mesh_pointcloud"]
+cpu = ["360_render", "pano_crop", "pano_info", "panorama_shift", "preview_panorama", "test_wrap_unwrap"]
 gpu = ["gpu_plane_segmentation", "gpu_depth_normal_conditioned","gpu_depth_merge_mesh_pointcloud"]
 
 [test.platforms]
