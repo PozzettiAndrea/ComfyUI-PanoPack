@@ -5,55 +5,60 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 100%; height: 100%; overflow: hidden; background: #000; }
-  #viewport { width: 100%; height: calc(100% - 50px); position: relative; }
+  body { display: flex; flex-direction: column; }
+  /* Clean canvas: every control lives in the bars below it. */
+  #viewport { flex: 1; min-height: 120px; position: relative; }
   #viewport canvas { display: block; }
-  #buttons {
-    position: absolute; top: 6px; right: 6px; display: flex; gap: 3px;
-    flex-wrap: wrap; z-index: 10;
+  /* No flash when the viewer goes fullscreen. */
+  body:fullscreen, body:-webkit-full-screen { background: #000; }
+  body::backdrop { background: #000; }
+
+  /* Info row: live lon/lat/uv readout on the left, key indicator on the right. */
+  #infoRow {
+    display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+    padding: 3px 8px; background: #111; border-top: 1px solid #333;
   }
-  #buttons button {
-    padding: 2px 6px; font-size: 9px; border: 1px solid #555; border-radius: 3px;
-    background: rgba(30,30,50,0.8); color: #ccc; cursor: pointer; line-height: 1.3;
-    backdrop-filter: blur(4px);
-  }
-  #buttons button:hover { background: rgba(60,60,90,0.9); }
   #info {
-    height: 22px; padding: 2px 8px; font-size: 10px; font-family: monospace;
-    color: #aaa; background: #111; border-top: 1px solid #333;
-    display: flex; align-items: center; white-space: nowrap; overflow: hidden;
+    flex: 1; min-width: 0; font-size: 10px; font-family: monospace; color: #aaa;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
-  #controls {
-    height: 28px; padding: 2px 8px; font-size: 10px; font-family: monospace;
-    color: #888; background: #0a0a0a; border-top: 1px solid #222;
-    display: flex; align-items: center; gap: 8px;
-  }
-  #controls span { color: #666; }
-  /* Keep the viewport black (no flash) when it goes fullscreen. */
-  #viewport:fullscreen, #viewport:-webkit-full-screen { background: #000; }
-  #viewport::backdrop { background: #000; }
   /* On-screen key indicator: WASD + arrows that light up as you navigate. */
-  #keypad {
-    position: absolute; left: 8px; bottom: 8px; z-index: 10;
-    display: flex; gap: 10px; align-items: center;
-    padding: 5px 8px; background: rgba(20,20,20,0.55);
-    border: 1px solid #333; border-radius: 5px;
-    backdrop-filter: blur(4px); user-select: none; pointer-events: none;
-  }
-  #keypad .kp-grid { display: grid; grid-template-columns: repeat(3, 18px); gap: 2px; }
+  #keypad { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+  #keypad .kp-grid { display: grid; grid-template-columns: repeat(3, 16px); gap: 2px; }
   #keypad .kp-key {
-    min-width: 18px; height: 18px; line-height: 16px; text-align: center;
-    font-size: 10px; font-family: monospace; color: #aaa;
+    min-width: 16px; height: 16px; line-height: 14px; text-align: center;
+    font-size: 9px; font-family: monospace; color: #aaa;
     background: #2a2a2a; border: 1px solid #444; border-radius: 3px;
     box-sizing: border-box; transition: all 0.04s;
   }
   #keypad .kp-key.on { background: #00e0ff; color: #002b30; border-color: #00e0ff; }
+
+  /* Controls row: hint text + preset / fullscreen buttons, below the canvas. */
+  #controls {
+    display: flex; align-items: center; gap: 8px; flex-shrink: 0;
+    padding: 4px 8px; background: #0a0a0a; border-top: 1px solid #222;
+  }
+  #controls .hint {
+    flex: 1; min-width: 0; color: #666; font-size: 10px; font-family: monospace;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  #buttons { display: flex; gap: 3px; flex-wrap: wrap; flex-shrink: 0; }
+  #buttons button {
+    padding: 2px 6px; font-size: 9px; border: 1px solid #555; border-radius: 3px;
+    background: #2a2a3a; color: #ccc; cursor: pointer; line-height: 1.3;
+  }
+  #buttons button:hover { background: #3a3a55; }
 </style>
 </head>
 <body>
 <div id="viewport"></div>
-<div id="info">lon: --  lat: --  |  u: --  v: --</div>
+<div id="infoRow">
+  <div id="info">lon: --  lat: --  |  u: --  v: --</div>
+  <!-- key indicator (#keypad) appended here by JS -->
+</div>
 <div id="controls">
-  <span>Drag to rotate | Scroll to zoom | WASD / Arrows to navigate</span>
+  <span class="hint">Drag to rotate | Scroll to zoom | WASD / Arrows to navigate</span>
+  <div id="buttons"><!-- preset + fullscreen buttons appended here by JS --></div>
 </div>
 
 <script type="importmap">
@@ -90,21 +95,21 @@ for (const p of PRESETS) {
   b.addEventListener("click", () => { lon = p.lon; lat = p.lat; });
   btnBar.appendChild(b);
 }
-viewport.appendChild(btnBar);
 
-// Fullscreen toggle. Kept in the #buttons cluster so it stays visible (and can
-// toggle back off) while fullscreen. Target the viewport itself: the UA
-// stylesheet stretches a non-:root fullscreen element to fill the screen.
+// Fullscreen toggle. Lives in the controls bar (below the canvas). Fullscreen the
+// whole viewer (document.body, a non-:root element the UA stylesheet stretches to
+// fill the screen) so the bars stay usable while fullscreen.
 const fsBtn = document.createElement("button");
 fsBtn.textContent = "Fullscreen";
 fsBtn.title = "Toggle fullscreen";
 btnBar.appendChild(fsBtn);
-const fsReq = viewport.requestFullscreen || viewport.webkitRequestFullscreen;
+const fsTarget = document.body;
+const fsReq = fsTarget.requestFullscreen || fsTarget.webkitRequestFullscreen;
 const fsExit = document.exitFullscreen || document.webkitExitFullscreen;
 const fsEl = () => document.fullscreenElement || document.webkitFullscreenElement;
 fsBtn.addEventListener("click", () => {
   try {
-    if (!fsEl()) { const p = fsReq.call(viewport); if (p && p.then) p.catch(() => {}); }
+    if (!fsEl()) { const p = fsReq.call(fsTarget); if (p && p.then) p.catch(() => {}); }
     else { fsExit.call(document); }
   } catch (_) {}
 });
@@ -118,7 +123,7 @@ document.addEventListener("fullscreenchange", onFsChange);
 document.addEventListener("webkitfullscreenchange", onFsChange);
 
 // On-screen key indicator: WASD + arrows light up as you navigate (handy for
-// screen recordings). Lives inside the viewport so it shows in fullscreen too.
+// screen recordings). Lives in the info row, to the right of the readout.
 const keyPad = (() => {
   const cells = {};
   const pad = document.createElement("div");
@@ -148,7 +153,7 @@ const keyPad = (() => {
   const reset = () => Object.keys(cells).forEach(c => set(c, false));
   return { el: pad, set, reset };
 })();
-viewport.appendChild(keyPad.el);
+document.getElementById("infoRow").appendChild(keyPad.el);
 
 // Three.js setup
 const scene = new THREE.Scene();
