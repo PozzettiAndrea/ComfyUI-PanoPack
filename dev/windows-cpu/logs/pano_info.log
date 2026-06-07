@@ -65,15 +65,15 @@ Capturing execution frames: pano_info.json
   [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
   [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
   [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
   Queuing workflow for execution...
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
   [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
   [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
   [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
@@ -90,14 +90,14 @@ Capturing execution frames: pano_info.json
   [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 3f1269c3-6ced-4992-89c6-b3ba42df2624
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 3f1269c3-6ced-4992-89c6-b3ba42df2624
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 3f1269c3-6ced-4992-89c6-b3ba42df2624
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 3f1269c3-6ced-4992-89c6-b3ba42df2624
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 3f1269c3-6ced-4992-89c6-b3ba42df2624
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 3f1269c3-6ced-4992-89c6-b3ba42df2624
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 3f1269c3-6ced-4992-89c6-b3ba42df2624
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 3f1269c3-6ced-4992-89c6-b3ba42df2624
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: a277b322-36c2-41f6-88d0-2a1f37308174
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: a277b322-36c2-41f6-88d0-2a1f37308174
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: a277b322-36c2-41f6-88d0-2a1f37308174
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: a277b322-36c2-41f6-88d0-2a1f37308174
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: a277b322-36c2-41f6-88d0-2a1f37308174
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: a277b322-36c2-41f6-88d0-2a1f37308174
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: a277b322-36c2-41f6-88d0-2a1f37308174
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: a277b322-36c2-41f6-88d0-2a1f37308174
   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
@@ -250,14 +250,14 @@ Capturing execution frames: pano_info.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.18s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.18s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.18s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.18s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.18s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.18s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.18s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.18s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.43s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.43s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.43s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.43s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.43s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.43s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.43s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.43s): result: NodeOutput
   [ComfyUI] [comfy-env] Running PanoramaInfo: panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaInfo: panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaInfo: panorama: dict
@@ -370,27 +370,27 @@ Capturing execution frames: pano_info.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaInfo done (0.76s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaInfo done (0.76s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaInfo done (0.76s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaInfo done (0.76s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaInfo done (0.76s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaInfo done (0.76s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaInfo done (0.76s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaInfo done (0.76s): result: NodeOutput
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.34 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.34 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.34 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.34 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.34 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.34 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.34 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.34 seconds[0m
+  [ComfyUI] [comfy-env] PanoramaInfo done (1.00s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaInfo done (1.00s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaInfo done (1.00s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaInfo done (1.00s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaInfo done (1.00s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaInfo done (1.00s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaInfo done (1.00s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaInfo done (1.00s): result: NodeOutput
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.88 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.88 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.88 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.88 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.88 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.88 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.88 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.88 seconds[0m
   Node executed (1 total), capturing...
-  Frame 2 saved (frame_001.jpg, t=1.7s)
-  [capture-node] freeze=3ms shot=70ms unfreeze=0ms saved=True
-  Execution complete (t=1.7s)
-  Captured 2 unique frames over 1.81s
+  Frame 2 saved (frame_001.jpg, t=2.2s)
+  [capture-node] freeze=3ms shot=83ms unfreeze=0ms saved=True
+  Execution complete (t=2.2s)
+  Captured 2 unique frames over 2.33s
   [debug] iframes: 0
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: pano_info_executed.png
