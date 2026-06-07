@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-06-07T13:05:34.006215+00:00",
+  "timestamp": "2026-06-07T14:03:31.587437+00:00",
   "platform": "linux",
   "hardware": {
     "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
     "cpu": "AMD EPYC 9V74 80-Core Processor"
   },
   "commit_hash": "b566bcec0a25350943b57e2796ccaf94b832a46b",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27093307460",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27094638002",
   "success": true,
   "summary": {
     "total": 13,
@@ -17,7 +17,7 @@
     {
       "name": "360_render",
       "status": "pass",
-      "duration_seconds": 56.34,
+      "duration_seconds": 53.35,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
@@ -25,11 +25,11 @@
       },
       "resources": {
         "ram": {
-          "peak": 5.08,
-          "avg": 2.02
+          "peak": 5.21,
+          "avg": 1.96
         },
         "total_ram_gb": 15.6,
-        "samples": 56
+        "samples": 54
       }
     },
     {
@@ -84,7 +84,7 @@
     {
       "name": "pano_crop",
       "status": "pass",
-      "duration_seconds": 8.9,
+      "duration_seconds": 9.05,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
@@ -92,17 +92,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 2.93,
-          "avg": 2.65
+          "peak": 2.69,
+          "avg": 2.43
         },
         "total_ram_gb": 15.6,
-        "samples": 9
+        "samples": 10
       }
     },
     {
       "name": "pano_info",
       "status": "pass",
-      "duration_seconds": 10.44,
+      "duration_seconds": 10.68,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
@@ -110,8 +110,8 @@
       },
       "resources": {
         "ram": {
-          "peak": 2.92,
-          "avg": 2.58
+          "peak": 2.69,
+          "avg": 2.42
         },
         "total_ram_gb": 15.6,
         "samples": 11
@@ -120,7 +120,7 @@
     {
       "name": "panorama_shift",
       "status": "pass",
-      "duration_seconds": 11.86,
+      "duration_seconds": 11.85,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
@@ -128,8 +128,8 @@
       },
       "resources": {
         "ram": {
-          "peak": 3.8,
-          "avg": 2.92
+          "peak": 3.7,
+          "avg": 2.79
         },
         "total_ram_gb": 15.6,
         "samples": 12
@@ -138,7 +138,7 @@
     {
       "name": "preview_panorama",
       "status": "pass",
-      "duration_seconds": 13.46,
+      "duration_seconds": 13.21,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
@@ -146,8 +146,8 @@
       },
       "resources": {
         "ram": {
-          "peak": 4.18,
-          "avg": 3.75
+          "peak": 3.95,
+          "avg": 3.6
         },
         "total_ram_gb": 15.6,
         "samples": 14
@@ -156,7 +156,7 @@
     {
       "name": "test_wrap_unwrap",
       "status": "pass",
-      "duration_seconds": 10.24,
+      "duration_seconds": 10.32,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
@@ -164,8 +164,8 @@
       },
       "resources": {
         "ram": {
-          "peak": 4.32,
-          "avg": 4.0
+          "peak": 4.22,
+          "avg": 3.9
         },
         "total_ram_gb": 15.6,
         "samples": 11
