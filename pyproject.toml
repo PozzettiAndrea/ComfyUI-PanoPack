@@ -7,7 +7,7 @@ license = {file = "LICENSE"}
 [tool.comfy]
 PublisherId = "pozzettiandrea"
 DisplayName = "ComfyUI PanoPack"
-Icon = ""
+Icon = "https://raw.githubusercontent.com/PozzettiAndrea/ComfyUI-PanoPack/main/assets/icon.png"
 
 [project.urls]
 Repository = "https://github.com/PozzettiAndrea/ComfyUI-PanoPack"
