@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-06-07T16:13:41.824002+00:00",
+  "timestamp": "2026-06-07T22:58:31.051777+00:00",
   "platform": "windows",
   "hardware": {
     "os": "Windows-11-10.0.26100-SP0",
     "cpu": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD"
   },
-  "commit_hash": "5edb21a86f7edaa6aa096586e199627d279f4eaa",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27097545679",
+  "commit_hash": "076a2b905f22b1c2d2db51058fd75679727cb9b7",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27106972661",
   "success": true,
   "summary": {
     "total": 13,
@@ -52,7 +52,7 @@
     {
       "name": "gpu_depth_merge_mesh_pointcloud",
       "status": "pass",
-      "duration_seconds": 134.47,
+      "duration_seconds": 131.61,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26100-SP0",
@@ -60,17 +60,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 8.25,
-          "avg": 4.8
+          "peak": 8.13,
+          "avg": 4.78
         },
         "total_ram_gb": 31.9,
-        "samples": 133
+        "samples": 131
       }
     },
     {
       "name": "gpu_depth_normal_conditioned",
       "status": "pass",
-      "duration_seconds": 144.79,
+      "duration_seconds": 146.41,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26100-SP0",
@@ -78,17 +78,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 17.37,
-          "avg": 9.71
+          "peak": 18.47,
+          "avg": 9.94
         },
         "total_ram_gb": 31.9,
-        "samples": 143
+        "samples": 145
       }
     },
     {
       "name": "gpu_plane_segmentation",
       "status": "pass",
-      "duration_seconds": 90.45,
+      "duration_seconds": 90.43,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26100-SP0",
@@ -96,8 +96,8 @@
       },
       "resources": {
         "ram": {
-          "peak": 10.75,
-          "avg": 8.2
+          "peak": 11.55,
+          "avg": 8.46
         },
         "total_ram_gb": 31.9,
         "samples": 90
