@@ -1,11 +1,14 @@
 [dependencies]
 open3d = "*"
 av = "*"
-# Provides libEGL + the llvmpipe software rasterizer so VTK/pyvista can render
-# off-screen on a headless, GPU-less host (CI). VTK 9.4+ auto-falls-back GLX ->
-# EGL -> OSMesa; OSMesa was removed from Mesa upstream (and from conda mesalib as
-# of 25.1.9), so the working software path is surfaceless EGL + llvmpipe. The
-# env vars that steer VTK onto it live in nodes/utils/headless_gl.py.
+# vtk + pyvista come from conda-forge (NOT PyPI) so VTK, Mesa and libglvnd all
+# live in one prefix that's wired for headless EGL. The PyPI vtk wheel cannot
+# load conda's libEGL (GLVND vendor discovery fails across the prefix boundary),
+# so off-screen rendering crashed on the GPU-less CI runner. mesalib supplies
+# libEGL + the llvmpipe software rasterizer; VTK 9.4+ auto-falls-back
+# GLX -> EGL -> llvmpipe. Env vars steering it live in nodes/utils/headless_gl.py.
+vtk = ">=9.3"
+pyvista = ">=0.45"
 mesalib = "*"
 
 [pypi-dependencies]
@@ -22,11 +25,11 @@ matplotlib = "*"
 scikit-image = "*"
 tqdm = "*"
 trimesh = ">=4.0"
-rtree = "*"     # trimesh ray intersect / bounds_tree → import rtree
+rtree = "*"     # trimesh ray intersect / bounds_tree -> import rtree
 plyfile = "*"
 imageio = { version = "*", extras = ["ffmpeg"] }
 loguru = "*"
-pyvista = ">=0.45"
+# pyvista + vtk moved to conda [dependencies] above (headless EGL needs the conda GL stack).
 utils3d = { git = "https://github.com/EasternJournalist/utils3d.git", rev = "3fab839f0be9931dac7c8488eb0e1600c236e183" }
 # torch-ransac3d intentionally NOT declared: its 2.0.0 py3-none-any wheel ships an
 # archive member named `tests/*`, an illegal filename on Windows (os error 123 /
