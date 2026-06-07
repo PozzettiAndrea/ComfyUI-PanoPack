@@ -1,6 +1,16 @@
   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
 Capturing execution frames: cpu_plane_segmentation.json
   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [1m[31m[ERROR][0m Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+  [ComfyUI] handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.13.13\x64\Lib\asyncio\events.py", line 89, in _run
+  [ComfyUI]     self._context.run(self._callback, *self._args)
+  [ComfyUI]     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.13.13\x64\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+  [ComfyUI]     self._sock.shutdown(socket.SHUT_RDWR)
+  [ComfyUI]     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  [ComfyUI] ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
   Frame 1 saved (frame_000.jpg, t=0.0s)
   Validating workflow...
   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 13 nodes, missing class_type: [65,84,103,107], sample: {"inputs":{"image":"actual_pano_from_real_life.jpg"},"class_type":"LoadImage","_meta":{"title":"Load Image"}}
