@@ -1,0 +1,142 @@
+{
+  "timestamp": "2026-06-07T14:18:04.847897+00:00",
+  "platform": "windows_portable",
+  "hardware": {
+    "os": "Windows-11-10.0.26100-SP0",
+    "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD"
+  },
+  "commit_hash": "b566bcec0a25350943b57e2796ccaf94b832a46b",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27094640071",
+  "success": false,
+  "summary": {
+    "total": 13,
+    "passed": 2,
+    "failed": 1
+  },
+  "workflows": [
+    {
+      "name": "360_render",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "cpu_depth_merge_mesh_pointcloud",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "cpu_depth_normal_conditioned",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "cpu_plane_segmentation",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "depth_merge_mesh_pointcloud",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "gpu_depth_merge_mesh_pointcloud",
+      "status": "fail",
+      "duration_seconds": 110.93,
+      "error": "Workflow execution failed: {'prompt_id': '7697c465-ffe0-4d4d-ab13-01e946329bc1', 'node_id': '80', 'node_type': 'PanoramaBuildMesh', 'executed': ['1', '10', '81', '69', '82', '65', '63', '74', '85'], 'exception_message': 'No module named \\'torchvision\\'\\n\\nWorker traceback:\\nTraceback (most recent call last):\\n  File \"C:\\\\Users\\\\ContainerUser\\\\AppData\\\\Local\\\\Temp\\\\comfyui_pvenv_b9qeco0k\\\\persistent_worker.py\", line 1762, in main\\n    result = method(**inputs)\\n  File \"C:\\\\workspaces\\\\PanoPack-1600\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\comfy_api\\\\latest\\\\_io.py\", line 1880, in EXECUTE_NORMALIZED\\n    to_return = cls.execute(*args, **kwargs)\\n  File \"C:\\\\workspaces\\\\PanoPack-1600\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\custom_nodes\\\\ComfyUI-PanoPack\\\\nodes\\\\build_mesh.py\", line 260, in execute\\n    from ._vendor.worldgen.pipeline import build_mesh as _build_mesh\\n  File \"C:\\\\workspaces\\\\PanoPack-1600\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\custom_nodes\\\\ComfyUI-PanoPack\\\\nodes\\\\_vendor\\\\worldgen\\\\pipeline.py\", line 26, in <module>\\n    import torchvision.transforms as transforms\\nModuleNotFoundError: No module named \\'torchvision\\'\\n\\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File \"C:\\\\workspaces\\\\PanoPack-1600\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\execution.py\", line 536, in execute\\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"C:\\\\workspaces\\\\PanoPack-1600\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\execution.py\", line 336, in get_output_data\\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"C:\\\\workspaces\\\\PanoPack-1600\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\execution.py\", line 310, in _async_map_node_over_list\\n    await process_inputs(input_dict, i)\\n', '  File \"C:\\\\workspaces\\\\PanoPack-1600\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\execution.py\", line 298, in process_inputs\\n    result = f(**inputs)\\n', '  File \"C:\\\\workspaces\\\\PanoPack-1600\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\python_embeded\\\\Lib\\\\site-packages\\\\comfy_env\\\\isolation\\\\metadata.py\", line 560, in proxy\\n    result = worker.call_method(\\n        module_name=mod,\\n    ...<4 lines>...\\n        timeout=600.0,\\n    )\\n', '  File \"C:\\\\workspaces\\\\PanoPack-1600\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\python_embeded\\\\Lib\\\\site-packages\\\\comfy_env\\\\isolation\\\\workers\\\\subprocess.py\", line 674, in call_method\\n    raise WorkerError(\\n    ...<2 lines>...\\n    )\\n'], 'current_inputs': {'contract': [False], 'contract_beyond': [8], 'edge_rtol': [0.1], 'clip_quantile': [1], 'panorama': [\"{'image': tensor([[[[0.8667, 0.7451, 0.6157],\\n          [0.8667, 0.7451, 0.6157],\\n          [0.8667, 0.7451, 0.6157],\\n          ...,\\n          [0.8667, 0.7451, 0.6157],\\n          [0.8667, 0.7451, 0.6157],\\n          [0.8667, 0.7451, 0.6157]],\\n\\n         [[0.8588, 0.7373, 0.6078],\\n          [0.8588, 0.7373, 0.6078],\\n          [0.8588, 0.7373, 0.6078],\\n          ...,\\n          [0.8588, 0.7373, 0.6078],\\n          [0.8588, 0.7373, 0.6078],\\n          [0.8588, 0.7373, 0.6078]],\\n\\n         [[0.8549, 0.7333, 0.6039],\\n          [0.8549, 0.7333, 0.6039],\\n          [0.8549, 0.7333, 0.6039],\\n          ...,\\n          [0.8549, 0.7333, 0.6039],\\n          [0.8549, 0.7333, 0.6039],\\n          [0.8549, 0.7333, 0.6039]],\\n\\n         ...,\\n\\n         [[0.7608, 0.5529, 0.3569],\\n          [0.7608, 0.5529, 0.3569],\\n          [0.7608, 0.5529, 0.3569],\\n          ...,\\n          [0.7490, 0.5529, 0.3529],\\n          [0.7490, 0.5529, 0.3529],\\n          [0.7490, 0.5529, 0.3529]],\\n\\n         [[0.8706, 0.6510, 0.4588],\\n          [0.8706, 0.6510, 0.4588],\\n          [0.8706, 0.6510, 0.4588],\\n          ...,\\n          [0.8706, 0.6549, 0.4627],\\n          [0.8745, 0.6588, 0.4667],\\n          [0.8745, 0.6588, 0.4667]],\\n\\n         [[0.8627, 0.6431, 0.4510],\\n          [0.8627, 0.6431, 0.4510],\\n          [0.8667, 0.6471, 0.4549],\\n          ...,\\n          [0.8667, 0.6510, 0.4588],\\n          [0.8667, 0.6510, 0.4588],\\n          [0.8627, 0.6471, 0.4549]]]]), 'meta': {}}\"], 'depth': ['tensor([[[[2.0782, 2.0782, 2.0782],\\n          [2.0782, 2.0782, 2.0782],\\n          [2.0783, 2.0783, 2.0783],\\n          ...,\\n          [2.0781, 2.0781, 2.0781],\\n          [2.0782, 2.0782, 2.0782],\\n          [2.0782, 2.0782, 2.0782]],\\n\\n         [[2.0782, 2.0782, 2.0782],\\n          [2.0782, 2.0782, 2.0782],\\n          [2.0783, 2.0783, 2.0783],\\n          ...,\\n          [2.0781, 2.0781, 2.0781],\\n          [2.0782, 2.0782, 2.0782],\\n          [2.0782, 2.0782, 2.0782]],\\n\\n         [[2.0782, 2.0782, 2.0782],\\n          [2.0782, 2.0782, 2.0782],\\n          [2.0783, 2.0783, 2.0783],\\n          ...,\\n          [2.0781, 2.0781, 2.0781],\\n          [2.0782, 2.0782, 2.0782],\\n          [2.0782, 2.0782, 2.0782]],\\n\\n         ...,\\n\\n         [[1.6911, 1.6911, 1.6911],\\n          [1.6911, 1.6911, 1.6911],\\n          [1.6911, 1.6911, 1.6911],\\n          ...,\\n          [1.6911, 1.6911, 1.6911],\\n          [1.6911, 1.6911, 1.6911],\\n          [1.6911, 1.6911, 1.6911]],\\n\\n         [[1.6912, 1.6912, 1.6912],\\n          [1.6912, 1.6912, 1.6912],\\n          [1.6912, 1.6912, 1.6912],\\n          ...,\\n          [1.6912, 1.6912, 1.6912],\\n          [1.6912, 1.6912, 1.6912],\\n          [1.6912, 1.6912, 1.6912]],\\n\\n         [[1.6917, 1.6917, 1.6917],\\n          [1.6917, 1.6917, 1.6917],\\n          [1.6917, 1.6917, 1.6917],\\n          ...,\\n          [1.6917, 1.6917, 1.6917],\\n          [1.6917, 1.6917, 1.6917],\\n          [1.6917, 1.6917, 1.6917]]]])'], 'valid_mask': ['tensor([[[1., 1., 1.,  ..., 1., 1., 1.],\\n         [1., 1., 1.,  ..., 1., 1., 1.],\\n         [1., 1., 1.,  ..., 1., 1., 1.],\\n         ...,\\n         [1., 1., 1.,  ..., 1., 1., 1.],\\n         [1., 1., 1.,  ..., 1., 1., 1.],\\n         [1., 1., 1.,  ..., 1., 1., 1.]]])']}, 'current_outputs': ['77', '1', '10', '79', '81', '69', '80', '82', '36', '63', '65', '74', '85', '35', '76', '78', '83'], 'timestamp': 1780841572579}\n\nDetails:\nWorkflow: C:\\ComfyUI-PanoPack\\workflows\\gpu_depth_merge_mesh_pointcloud.json\nNode error: PanoramaBuildMesh",
+      "hardware": {
+        "os": "Windows-11-10.0.26100-SP0",
+        "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD"
+      },
+      "resources": {
+        "ram": {
+          "peak": 7.79,
+          "avg": 4.08
+        },
+        "total_ram_gb": 23.9,
+        "samples": 110
+      }
+    },
+    {
+      "name": "gpu_depth_normal_conditioned",
+      "status": "pass",
+      "duration_seconds": 203.21,
+      "error": null,
+      "hardware": {
+        "os": "Windows-11-10.0.26100-SP0",
+        "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD"
+      },
+      "resources": {
+        "ram": {
+          "peak": 17.28,
+          "avg": 8.9
+        },
+        "total_ram_gb": 23.9,
+        "samples": 201
+      }
+    },
+    {
+      "name": "gpu_plane_segmentation",
+      "status": "pass",
+      "duration_seconds": 108.14,
+      "error": null,
+      "hardware": {
+        "os": "Windows-11-10.0.26100-SP0",
+        "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD"
+      },
+      "resources": {
+        "ram": {
+          "peak": 9.24,
+          "avg": 6.99
+        },
+        "total_ram_gb": 23.9,
+        "samples": 107
+      }
+    },
+    {
+      "name": "pano_crop",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "pano_info",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "panorama_shift",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "preview_panorama",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "test_wrap_unwrap",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    }
+  ]
+}

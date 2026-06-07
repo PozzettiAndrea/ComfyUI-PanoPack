@@ -1,0 +1,1950 @@
+Capturing execution frames: gpu_plane_segmentation.json
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  Frame 1 saved (frame_000.jpg, t=0.0s)
+  Validating workflow...
+  Queuing workflow for execution...
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Prompt has 13 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 13 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 13 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 13 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 13 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 13 nodes
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "actual_pano_from_real_life.jpg"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "actual_pano_from_real_life.jpg"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "actual_pano_from_real_life.jpg"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "actual_pano_from_real_life.jpg"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "actual_pano_from_real_life.jpg"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "actual_pano_from_real_life.jpg"}
+  [ComfyUI] [32m[INFO][0m   Node 10: DownloadAndLoadMoGe2Model
+  [ComfyUI] [32m[INFO][0m   Node 10: DownloadAndLoadMoGe2Model
+  [ComfyUI] [32m[INFO][0m   Node 10: DownloadAndLoadMoGe2Model
+  [ComfyUI] [32m[INFO][0m   Node 10: DownloadAndLoadMoGe2Model
+  [ComfyUI] [32m[INFO][0m   Node 10: DownloadAndLoadMoGe2Model
+  [ComfyUI] [32m[INFO][0m   Node 10: DownloadAndLoadMoGe2Model
+  [ComfyUI] [32m[INFO][0m     Inputs: {"model": "moge-2-vitl-normal.pt", "precision": "auto", "attention": "auto"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"model": "moge-2-vitl-normal.pt", "precision": "auto", "attention": "auto"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"model": "moge-2-vitl-normal.pt", "precision": "auto", "attention": "auto"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"model": "moge-2-vitl-normal.pt", "precision": "auto", "attention": "auto"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"model": "moge-2-vitl-normal.pt", "precision": "auto", "attention": "auto"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"model": "moge-2-vitl-normal.pt", "precision": "auto", "attention": "auto"}
+  [ComfyUI] [32m[INFO][0m   Node 63: MoGe2Inference
+  [ComfyUI] [32m[INFO][0m   Node 63: MoGe2Inference
+  [ComfyUI] [32m[INFO][0m   Node 63: MoGe2Inference
+  [ComfyUI] [32m[INFO][0m   Node 63: MoGe2Inference
+  [ComfyUI] [32m[INFO][0m   Node 63: MoGe2Inference
+  [ComfyUI] [32m[INFO][0m   Node 63: MoGe2Inference
+  [ComfyUI] [32m[INFO][0m     Inputs: {"resolution_level": 9, "num_tokens": 0, "fov_x_deg": ["107", 3], "force_projection": true, "apply_mask": true, "moge2_model": ["10", 0], "images": ["107", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"resolution_level": 9, "num_tokens": 0, "fov_x_deg": ["107", 3], "force_projection": true, "apply_mask": true, "moge2_model": ["10", 0], "images": ["107", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"resolution_level": 9, "num_tokens": 0, "fov_x_deg": ["107", 3], "force_projection": true, "apply_mask": true, "moge2_model": ["10", 0], "images": ["107", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"resolution_level": 9, "num_tokens": 0, "fov_x_deg": ["107", 3], "force_projection": true, "apply_mask": true, "moge2_model": ["10", 0], "images": ["107", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"resolution_level": 9, "num_tokens": 0, "fov_x_deg": ["107", 3], "force_projection": true, "apply_mask": true, "moge2_model": ["10", 0], "images": ["107", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"resolution_level": 9, "num_tokens": 0, "fov_x_deg": ["107", 3], "force_projection": true, "apply_mask": true, "moge2_model": ["10", 0], "images": ["107", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 65: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 65: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 65: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 65: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 65: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 65: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 81: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 81: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 81: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 81: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 81: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 81: PreviewImage
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["107", 5]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["107", 5]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["107", 5]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["107", 5]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["107", 5]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["107", 5]}
+  [ComfyUI] [32m[INFO][0m   Node 84: PanoramaFacesPlaneSegment
+  [ComfyUI] [32m[INFO][0m   Node 84: PanoramaFacesPlaneSegment
+  [ComfyUI] [32m[INFO][0m   Node 84: PanoramaFacesPlaneSegment
+  [ComfyUI] [32m[INFO][0m   Node 84: PanoramaFacesPlaneSegment
+  [ComfyUI] [32m[INFO][0m   Node 84: PanoramaFacesPlaneSegment
+  [ComfyUI] [32m[INFO][0m   Node 84: PanoramaFacesPlaneSegment
+  [ComfyUI] [32m[INFO][0m     Inputs: {"use_gpu": true, "ransac_iterations_per_batch": 100, "distance_threshold": 0.02, "max_planes_per_face": 25, "min_inlier_fraction": 0.02, "ransac_iterations": 1000, "dbscan_eps": 0.05, "dbscan_min_poi
+  [ComfyUI] [32m[INFO][0m     Inputs: {"use_gpu": true, "ransac_iterations_per_batch": 100, "distance_threshold": 0.02, "max_planes_per_face": 25, "min_inlier_fraction": 0.02, "ransac_iterations": 1000, "dbscan_eps": 0.05, "dbscan_min_poi
+  [ComfyUI] [32m[INFO][0m     Inputs: {"use_gpu": true, "ransac_iterations_per_batch": 100, "distance_threshold": 0.02, "max_planes_per_face": 25, "min_inlier_fraction": 0.02, "ransac_iterations": 1000, "dbscan_eps": 0.05, "dbscan_min_poi
+  [ComfyUI] [32m[INFO][0m     Inputs: {"use_gpu": true, "ransac_iterations_per_batch": 100, "distance_threshold": 0.02, "max_planes_per_face": 25, "min_inlier_fraction": 0.02, "ransac_iterations": 1000, "dbscan_eps": 0.05, "dbscan_min_poi
+  [ComfyUI] [32m[INFO][0m     Inputs: {"use_gpu": true, "ransac_iterations_per_batch": 100, "distance_threshold": 0.02, "max_planes_per_face": 25, "min_inlier_fraction": 0.02, "ransac_iterations": 1000, "dbscan_eps": 0.05, "dbscan_min_poi
+  [ComfyUI] [32m[INFO][0m     Inputs: {"use_gpu": true, "ransac_iterations_per_batch": 100, "distance_threshold": 0.02, "max_planes_per_face": 25, "min_inlier_fraction": 0.02, "ransac_iterations": 1000, "dbscan_eps": 0.05, "dbscan_min_poi
+  [ComfyUI] [32m[INFO][0m   Node 85: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 85: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 85: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 85: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 85: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 85: PreviewImage
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["84", 1]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["84", 1]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["84", 1]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["84", 1]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["84", 1]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["84", 1]}
+  [ComfyUI] [32m[INFO][0m   Node 91: GetImageSize
+  [ComfyUI] [32m[INFO][0m   Node 91: GetImageSize
+  [ComfyUI] [32m[INFO][0m   Node 91: GetImageSize
+  [ComfyUI] [32m[INFO][0m   Node 91: GetImageSize
+  [ComfyUI] [32m[INFO][0m   Node 91: GetImageSize
+  [ComfyUI] [32m[INFO][0m   Node 91: GetImageSize
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["96", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["96", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["96", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["96", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["96", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["96", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 96: ResizeImageMaskNode
+  [ComfyUI] [32m[INFO][0m   Node 96: ResizeImageMaskNode
+  [ComfyUI] [32m[INFO][0m   Node 96: ResizeImageMaskNode
+  [ComfyUI] [32m[INFO][0m   Node 96: ResizeImageMaskNode
+  [ComfyUI] [32m[INFO][0m   Node 96: ResizeImageMaskNode
+  [ComfyUI] [32m[INFO][0m   Node 96: ResizeImageMaskNode
+  [ComfyUI] [32m[INFO][0m     Inputs: {"resize_type": "scale by multiplier", "resize_type.multiplier": 0.5, "scale_method": "area", "input": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"resize_type": "scale by multiplier", "resize_type.multiplier": 0.5, "scale_method": "area", "input": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"resize_type": "scale by multiplier", "resize_type.multiplier": 0.5, "scale_method": "area", "input": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"resize_type": "scale by multiplier", "resize_type.multiplier": 0.5, "scale_method": "area", "input": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"resize_type": "scale by multiplier", "resize_type.multiplier": 0.5, "scale_method": "area", "input": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"resize_type": "scale by multiplier", "resize_type.multiplier": 0.5, "scale_method": "area", "input": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 97: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 97: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 97: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 97: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 97: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 97: PreviewImage
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["63", 3]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["63", 3]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["63", 3]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["63", 3]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["63", 3]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["63", 3]}
+  [ComfyUI] [32m[INFO][0m   Node 103: PanoramaDepthMerge
+  [ComfyUI] [32m[INFO][0m   Node 103: PanoramaDepthMerge
+  [ComfyUI] [32m[INFO][0m   Node 103: PanoramaDepthMerge
+  [ComfyUI] [32m[INFO][0m   Node 103: PanoramaDepthMerge
+  [ComfyUI] [32m[INFO][0m   Node 103: PanoramaDepthMerge
+  [ComfyUI] [32m[INFO][0m   Node 103: PanoramaDepthMerge
+  [ComfyUI] [32m[INFO][0m     Inputs: {"out_width": 1920, "out_height": 960, "use_gpu": true, "scale_anchor": "lsmr_depth", "chunk_size": 8, "center_weight_power": 2, "normal_edge_threshold_deg": 0, "normal_consistency_boost": 60, "max_ra
+  [ComfyUI] [32m[INFO][0m     Inputs: {"out_width": 1920, "out_height": 960, "use_gpu": true, "scale_anchor": "lsmr_depth", "chunk_size": 8, "center_weight_power": 2, "normal_edge_threshold_deg": 0, "normal_consistency_boost": 60, "max_ra
+  [ComfyUI] [32m[INFO][0m     Inputs: {"out_width": 1920, "out_height": 960, "use_gpu": true, "scale_anchor": "lsmr_depth", "chunk_size": 8, "center_weight_power": 2, "normal_edge_threshold_deg": 0, "normal_consistency_boost": 60, "max_ra
+  [ComfyUI] [32m[INFO][0m     Inputs: {"out_width": 1920, "out_height": 960, "use_gpu": true, "scale_anchor": "lsmr_depth", "chunk_size": 8, "center_weight_power": 2, "normal_edge_threshold_deg": 0, "normal_consistency_boost": 60, "max_ra
+  [ComfyUI] [32m[INFO][0m     Inputs: {"out_width": 1920, "out_height": 960, "use_gpu": true, "scale_anchor": "lsmr_depth", "chunk_size": 8, "center_weight_power": 2, "normal_edge_threshold_deg": 0, "normal_consistency_boost": 60, "max_ra
+  [ComfyUI] [32m[INFO][0m     Inputs: {"out_width": 1920, "out_height": 960, "use_gpu": true, "scale_anchor": "lsmr_depth", "chunk_size": 8, "center_weight_power": 2, "normal_edge_threshold_deg": 0, "normal_consistency_boost": 60, "max_ra
+  [ComfyUI] [32m[INFO][0m   Node 106: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 106: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 106: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 106: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 106: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 106: PreviewImage
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["103", 4]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["103", 4]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["103", 4]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["103", 4]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["103", 4]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["103", 4]}
+  [ComfyUI] [32m[INFO][0m   Node 107: PanoramaSplit
+  [ComfyUI] [32m[INFO][0m   Node 107: PanoramaSplit
+  [ComfyUI] [32m[INFO][0m   Node 107: PanoramaSplit
+  [ComfyUI] [32m[INFO][0m   Node 107: PanoramaSplit
+  [ComfyUI] [32m[INFO][0m   Node 107: PanoramaSplit
+  [ComfyUI] [32m[INFO][0m   Node 107: PanoramaSplit
+  [ComfyUI] [32m[INFO][0m     Inputs: {"split_method": "icosahedron_12", "resolution": 952, "fov_degrees": 90, "use_gpu": true, "create_masks": false, "fname": "pano_bank", "panorama": ["65", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"split_method": "icosahedron_12", "resolution": 952, "fov_degrees": 90, "use_gpu": true, "create_masks": false, "fname": "pano_bank", "panorama": ["65", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"split_method": "icosahedron_12", "resolution": 952, "fov_degrees": 90, "use_gpu": true, "create_masks": false, "fname": "pano_bank", "panorama": ["65", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"split_method": "icosahedron_12", "resolution": 952, "fov_degrees": 90, "use_gpu": true, "create_masks": false, "fname": "pano_bank", "panorama": ["65", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"split_method": "icosahedron_12", "resolution": 952, "fov_degrees": 90, "use_gpu": true, "create_masks": false, "fname": "pano_bank", "panorama": ["65", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"split_method": "icosahedron_12", "resolution": 952, "fov_degrees": 90, "use_gpu": true, "create_masks": false, "fname": "pano_bank", "panorama": ["65", 0]}
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 5881fd65-049c-4d67-b0bf-94b9bbacc9cc
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 5881fd65-049c-4d67-b0bf-94b9bbacc9cc
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 5881fd65-049c-4d67-b0bf-94b9bbacc9cc
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 5881fd65-049c-4d67-b0bf-94b9bbacc9cc
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 5881fd65-049c-4d67-b0bf-94b9bbacc9cc
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 5881fd65-049c-4d67-b0bf-94b9bbacc9cc
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m got prompt
+  [ComfyUI] [32m[INFO][0m got prompt
+  [ComfyUI] [32m[INFO][0m got prompt
+  [ComfyUI] [32m[INFO][0m got prompt
+  [ComfyUI] [32m[INFO][0m got prompt
+  [ComfyUI] [32m[INFO][0m got prompt
+  [ComfyUI] [comfy-env] Running DownloadAndLoadMoGe2Model: model: 'moge-2-vitl-normal.pt', precision: 'auto', attention: 'auto'
+  [ComfyUI] [comfy-env] Running DownloadAndLoadMoGe2Model: model: 'moge-2-vitl-normal.pt', precision: 'auto', attention: 'auto'
+  [ComfyUI] [comfy-env] Running DownloadAndLoadMoGe2Model: model: 'moge-2-vitl-normal.pt', precision: 'auto', attention: 'auto'
+  [ComfyUI] [comfy-env] Running DownloadAndLoadMoGe2Model: model: 'moge-2-vitl-normal.pt', precision: 'auto', attention: 'auto'
+  [ComfyUI] [comfy-env] Running DownloadAndLoadMoGe2Model: model: 'moge-2-vitl-normal.pt', precision: 'auto', attention: 'auto'
+  [ComfyUI] [comfy-env] Running DownloadAndLoadMoGe2Model: model: 'moge-2-vitl-normal.pt', precision: 'auto', attention: 'auto'
+  [ComfyUI] [VRAM] Before DownloadAndLoadMoGe2Model: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before DownloadAndLoadMoGe2Model: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before DownloadAndLoadMoGe2Model: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before DownloadAndLoadMoGe2Model: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before DownloadAndLoadMoGe2Model: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before DownloadAndLoadMoGe2Model: 1130 / 8150 MB
+  [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.DownloadAndLoadMoGe2Model.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.DownloadAndLoadMoGe2Model.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.DownloadAndLoadMoGe2Model.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.DownloadAndLoadMoGe2Model.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.DownloadAndLoadMoGe2Model.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.DownloadAndLoadMoGe2Model.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ok
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ok
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ok
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ok
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ok
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ok
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] call_id=8 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=8 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=8 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=8 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=8 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=8 sending call_method
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'MoGeWrapper_1' (631 MB) -> cpu: 1130 / 8150 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'MoGeWrapper_1' (631 MB) -> cpu: 1130 / 8150 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'MoGeWrapper_1' (631 MB) -> cpu: 1130 / 8150 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'MoGeWrapper_1' (631 MB) -> cpu: 1130 / 8150 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'MoGeWrapper_1' (631 MB) -> cpu: 1130 / 8150 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'MoGeWrapper_1' (631 MB) -> cpu: 1130 / 8150 MB
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ok
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ok
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ok
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ok
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ok
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ok
+  [ComfyUI] [SubprocessWorker] call_id=9 sending model_to_device
+  [ComfyUI] [SubprocessWorker] call_id=9 sending model_to_device
+  [ComfyUI] [SubprocessWorker] call_id=9 sending model_to_device
+  [ComfyUI] [SubprocessWorker] call_id=9 sending model_to_device
+  [ComfyUI] [SubprocessWorker] call_id=9 sending model_to_device
+  [ComfyUI] [SubprocessWorker] call_id=9 sending model_to_device
+  [ComfyUI] [1m[33m[WARNING][0m Model 'MoGeWrapper_1' gone from worker (restarted?), treating as offloaded
+  [ComfyUI] [1m[33m[WARNING][0m Model 'MoGeWrapper_1' gone from worker (restarted?), treating as offloaded
+  [ComfyUI] [1m[33m[WARNING][0m Model 'MoGeWrapper_1' gone from worker (restarted?), treating as offloaded
+  [ComfyUI] [1m[33m[WARNING][0m Model 'MoGeWrapper_1' gone from worker (restarted?), treating as offloaded
+  [ComfyUI] [1m[33m[WARNING][0m Model 'MoGeWrapper_1' gone from worker (restarted?), treating as offloaded
+  [ComfyUI] [1m[33m[WARNING][0m Model 'MoGeWrapper_1' gone from worker (restarted?), treating as offloaded
+  [ComfyUI] [comfy-env] [VRAM] After offload 'MoGeWrapper_1' (631 MB): 1130 / 8150 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'MoGeWrapper_1' (631 MB): 1130 / 8150 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'MoGeWrapper_1' (631 MB): 1130 / 8150 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'MoGeWrapper_1' (631 MB): 1130 / 8150 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'MoGeWrapper_1' (631 MB): 1130 / 8150 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'MoGeWrapper_1' (631 MB): 1130 / 8150 MB
+  [ComfyUI] [comfy-env] DownloadAndLoadMoGe2Model done (0.34s): result: NodeOutput
+  [ComfyUI] [comfy-env] DownloadAndLoadMoGe2Model done (0.34s): result: NodeOutput
+  [ComfyUI] [comfy-env] DownloadAndLoadMoGe2Model done (0.34s): result: NodeOutput
+  [ComfyUI] [comfy-env] DownloadAndLoadMoGe2Model done (0.34s): result: NodeOutput
+  [ComfyUI] [comfy-env] DownloadAndLoadMoGe2Model done (0.34s): result: NodeOutput
+  [ComfyUI] [comfy-env] DownloadAndLoadMoGe2Model done (0.34s): result: NodeOutput
+  [ComfyUI] [VRAM] After DownloadAndLoadMoGe2Model: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After DownloadAndLoadMoGe2Model: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After DownloadAndLoadMoGe2Model: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After DownloadAndLoadMoGe2Model: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After DownloadAndLoadMoGe2Model: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After DownloadAndLoadMoGe2Model: 1130 / 8150 MB
+  [ComfyUI] [comfy-env] Running PanoramaWrap: image: torch.float32 [1,1920,3840,3] cpu
+  [ComfyUI] [comfy-env] Running PanoramaWrap: image: torch.float32 [1,1920,3840,3] cpu
+  [ComfyUI] [comfy-env] Running PanoramaWrap: image: torch.float32 [1,1920,3840,3] cpu
+  [ComfyUI] [comfy-env] Running PanoramaWrap: image: torch.float32 [1,1920,3840,3] cpu
+  [ComfyUI] [comfy-env] Running PanoramaWrap: image: torch.float32 [1,1920,3840,3] cpu
+  [ComfyUI] [comfy-env] Running PanoramaWrap: image: torch.float32 [1,1920,3840,3] cpu
+  [ComfyUI] [VRAM] Before PanoramaWrap: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before PanoramaWrap: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before PanoramaWrap: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before PanoramaWrap: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before PanoramaWrap: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before PanoramaWrap: 1130 / 8150 MB
+  [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_type.PanoramaWrap.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_type.PanoramaWrap.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_type.PanoramaWrap.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_type.PanoramaWrap.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_type.PanoramaWrap.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_type.PanoramaWrap.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
+  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
+  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
+  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
+  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
+  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
+  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
+  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
+  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
+  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
+  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
+  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
+  [ComfyUI] [comfy-env] default: Library/bin has 610 DLLs
+  [ComfyUI] [comfy-env] default: Library/bin has 610 DLLs
+  [ComfyUI] [comfy-env] default: Library/bin has 610 DLLs
+  [ComfyUI] [comfy-env] default: Library/bin has 610 DLLs
+  [ComfyUI] [comfy-env] default: Library/bin has 610 DLLs
+  [ComfyUI] [comfy-env] default: Library/bin has 610 DLLs
+  [ComfyUI] [ComfyUI-PanoPack] python: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\python.exe
+  [ComfyUI] [ComfyUI-PanoPack] python: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\python.exe
+  [ComfyUI] [ComfyUI-PanoPack] python: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\python.exe
+  [ComfyUI] [ComfyUI-PanoPack] python: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\python.exe
+  [ComfyUI] [ComfyUI-PanoPack] python: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\python.exe
+  [ComfyUI] [ComfyUI-PanoPack] python: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\python.exe
+  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\panopack-nodes\\.pixi\\envs\\default\\Lib\\site-packages', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack']
+  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\panopack-nodes\\.pixi\\envs\\default\\Lib\\site-packages', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack']
+  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\panopack-nodes\\.pixi\\envs\\default\\Lib\\site-packages', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack']
+  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\panopack-nodes\\.pixi\\envs\\default\\Lib\\site-packages', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack']
+  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\panopack-nodes\\.pixi\\envs\\default\\Lib\\site-packages', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack']
+  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\panopack-nodes\\.pixi\\envs\\default\\Lib\\site-packages', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack']
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\python.exe
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\python.exe
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\python.exe
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\python.exe
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\python.exe
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\python.exe
+  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\ContainerUser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\panopack-nodes\\pixi.toml', '-e', 'default', 'python', 'C:\\Users\\ContainerUser\\AppData\\Local\\Temp\\comfyui_pvenv_b9qeco0k\\persistent_worker.py', 'tcp://127.0.0.1:63854']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\ContainerUser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\panopack-nodes\\pixi.toml', '-e', 'default', 'python', 'C:\\Users\\ContainerUser\\AppData\\Local\\Temp\\comfyui_pvenv_b9qeco0k\\persistent_worker.py', 'tcp://127.0.0.1:63854']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\ContainerUser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\panopack-nodes\\pixi.toml', '-e', 'default', 'python', 'C:\\Users\\ContainerUser\\AppData\\Local\\Temp\\comfyui_pvenv_b9qeco0k\\persistent_worker.py', 'tcp://127.0.0.1:63854']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\ContainerUser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\panopack-nodes\\pixi.toml', '-e', 'default', 'python', 'C:\\Users\\ContainerUser\\AppData\\Local\\Temp\\comfyui_pvenv_b9qeco0k\\persistent_worker.py', 'tcp://127.0.0.1:63854']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\ContainerUser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\panopack-nodes\\pixi.toml', '-e', 'default', 'python', 'C:\\Users\\ContainerUser\\AppData\\Local\\Temp\\comfyui_pvenv_b9qeco0k\\persistent_worker.py', 'tcp://127.0.0.1:63854']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\ContainerUser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\panopack-nodes\\pixi.toml', '-e', 'default', 'python', 'C:\\Users\\ContainerUser\\AppData\\Local\\Temp\\comfyui_pvenv_b9qeco0k\\persistent_worker.py', 'tcp://127.0.0.1:63854']...
+  Frame 2 saved (frame_001.jpg, t=2.2s)
+  [capture-periodic] freeze=3ms shot=110ms unfreeze=4ms saved=True
+  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'image' shape: torch.Size([1, 1920, 3840, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'image' shape: torch.Size([1, 1920, 3840, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'image' shape: torch.Size([1, 1920, 3840, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'image' shape: torch.Size([1, 1920, 3840, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'image' shape: torch.Size([1, 1920, 3840, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'image' shape: torch.Size([1, 1920, 3840, 3])
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] call_id=9 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=9 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=9 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=9 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=9 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=9 sending call_method
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1920, 3840, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1920, 3840, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1920, 3840, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1920, 3840, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1920, 3840, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1920, 3840, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [comfy-env] PanoramaWrap done (2.81s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (2.81s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (2.81s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (2.81s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (2.81s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (2.81s): result: NodeOutput
+  [ComfyUI] [VRAM] After PanoramaWrap: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After PanoramaWrap: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After PanoramaWrap: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After PanoramaWrap: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After PanoramaWrap: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After PanoramaWrap: 1130 / 8150 MB
+  [ComfyUI] [comfy-env] Running PanoramaSplit: split_method: dict, resolution: 952, fov_degrees: 90.0, use_gpu: True, create_masks: False, fname: 'pano_bank', panorama: dict
+  [ComfyUI] [comfy-env] Running PanoramaSplit: split_method: dict, resolution: 952, fov_degrees: 90.0, use_gpu: True, create_masks: False, fname: 'pano_bank', panorama: dict
+  [ComfyUI] [comfy-env] Running PanoramaSplit: split_method: dict, resolution: 952, fov_degrees: 90.0, use_gpu: True, create_masks: False, fname: 'pano_bank', panorama: dict
+  [ComfyUI] [comfy-env] Running PanoramaSplit: split_method: dict, resolution: 952, fov_degrees: 90.0, use_gpu: True, create_masks: False, fname: 'pano_bank', panorama: dict
+  [ComfyUI] [comfy-env] Running PanoramaSplit: split_method: dict, resolution: 952, fov_degrees: 90.0, use_gpu: True, create_masks: False, fname: 'pano_bank', panorama: dict
+  [ComfyUI] [comfy-env] Running PanoramaSplit: split_method: dict, resolution: 952, fov_degrees: 90.0, use_gpu: True, create_masks: False, fname: 'pano_bank', panorama: dict
+  [ComfyUI] [VRAM] Before PanoramaSplit: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before PanoramaSplit: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before PanoramaSplit: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before PanoramaSplit: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before PanoramaSplit: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before PanoramaSplit: 1130 / 8150 MB
+  [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_split.PanoramaSplit.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_split.PanoramaSplit.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_split.PanoramaSplit.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_split.PanoramaSplit.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_split.PanoramaSplit.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_split.PanoramaSplit.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] call_id=10 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=10 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=10 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=10 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=10 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=10 sending call_method
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1920, 3840, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1920, 3840, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1920, 3840, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1920, 3840, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1920, 3840, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1920, 3840, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
+  Frame 3 saved (frame_002.jpg, t=4.5s)
+  [capture-periodic] freeze=4ms shot=119ms unfreeze=6ms saved=True
+  [capture-loop] iter=50 t=6.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=8 ram=12.6/23.9GB (53%) swap=0.8/3.9GB (19%) cpu=26% browser_rss=1.06GB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaSplit] icosahedron_12: (3840x1920) -> 12 crops @ 952x952, fov=(90,90) via grid_sample (GPU); cameras 0.008s, split 1.897s, total 2.161s
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaSplit] icosahedron_12: (3840x1920) -> 12 crops @ 952x952, fov=(90,90) via grid_sample (GPU); cameras 0.008s, split 1.897s, total 2.161s
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaSplit] icosahedron_12: (3840x1920) -> 12 crops @ 952x952, fov=(90,90) via grid_sample (GPU); cameras 0.008s, split 1.897s, total 2.161s
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaSplit] icosahedron_12: (3840x1920) -> 12 crops @ 952x952, fov=(90,90) via grid_sample (GPU); cameras 0.008s, split 1.897s, total 2.161s
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaSplit] icosahedron_12: (3840x1920) -> 12 crops @ 952x952, fov=(90,90) via grid_sample (GPU); cameras 0.008s, split 1.897s, total 2.161s
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaSplit] icosahedron_12: (3840x1920) -> 12 crops @ 952x952, fov=(90,90) via grid_sample (GPU); cameras 0.008s, split 1.897s, total 2.161s
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [comfy-env] PanoramaSplit done (2.66s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaSplit done (2.66s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaSplit done (2.66s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaSplit done (2.66s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaSplit done (2.66s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaSplit done (2.66s): result: NodeOutput
+  [ComfyUI] [VRAM] After PanoramaSplit: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After PanoramaSplit: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After PanoramaSplit: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After PanoramaSplit: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After PanoramaSplit: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After PanoramaSplit: 1130 / 8150 MB
+  Node executed (1 total), capturing...
+  [ComfyUI] [comfy-env] Running MoGe2Inference: resolution_level: 9, num_tokens: 0, fov_x_deg: 90.0, force_projection: True, apply_mask: True, moge2_model: dict, images: torch.float32 [12,952,952,3] cpu
+  [ComfyUI] [comfy-env] Running MoGe2Inference: resolution_level: 9, num_tokens: 0, fov_x_deg: 90.0, force_projection: True, apply_mask: True, moge2_model: dict, images: torch.float32 [12,952,952,3] cpu
+  [ComfyUI] [comfy-env] Running MoGe2Inference: resolution_level: 9, num_tokens: 0, fov_x_deg: 90.0, force_projection: True, apply_mask: True, moge2_model: dict, images: torch.float32 [12,952,952,3] cpu
+  [ComfyUI] [comfy-env] Running MoGe2Inference: resolution_level: 9, num_tokens: 0, fov_x_deg: 90.0, force_projection: True, apply_mask: True, moge2_model: dict, images: torch.float32 [12,952,952,3] cpu
+  [ComfyUI] [comfy-env] Running MoGe2Inference: resolution_level: 9, num_tokens: 0, fov_x_deg: 90.0, force_projection: True, apply_mask: True, moge2_model: dict, images: torch.float32 [12,952,952,3] cpu
+  [ComfyUI] [comfy-env] Running MoGe2Inference: resolution_level: 9, num_tokens: 0, fov_x_deg: 90.0, force_projection: True, apply_mask: True, moge2_model: dict, images: torch.float32 [12,952,952,3] cpu
+  [ComfyUI] [VRAM] Before MoGe2Inference: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before MoGe2Inference: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before MoGe2Inference: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before MoGe2Inference: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before MoGe2Inference: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before MoGe2Inference: 1130 / 8150 MB
+  [ComfyUI] [SubprocessWorker] call_method: nodes.nodes_inference.MoGe2Inference.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.nodes_inference.MoGe2Inference.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.nodes_inference.MoGe2Inference.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.nodes_inference.MoGe2Inference.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.nodes_inference.MoGe2Inference.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.nodes_inference.MoGe2Inference.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ok
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ok
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ok
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ok
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ok
+  [ComfyUI] [ComfyUI-MoGe2] Health check: ok
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'images' shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'images' shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'images' shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'images' shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'images' shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'images' shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] call_id=10 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=10 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=10 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=10 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=10 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=10 sending call_method
+  [ComfyUI] [worker:ComfyUI-MoGe2] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-MoGe2] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-MoGe2] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-MoGe2] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-MoGe2] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-MoGe2] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-MoGe2] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+  [ComfyUI] [worker:ComfyUI-MoGe2] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+  [ComfyUI] [worker:ComfyUI-MoGe2] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+  [ComfyUI] [worker:ComfyUI-MoGe2] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+  [ComfyUI] [worker:ComfyUI-MoGe2] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+  [ComfyUI] [worker:ComfyUI-MoGe2] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+  [ComfyUI] [worker:ComfyUI-MoGe2] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [worker:ComfyUI-MoGe2] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [worker:ComfyUI-MoGe2] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [worker:ComfyUI-MoGe2] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [worker:ComfyUI-MoGe2] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [worker:ComfyUI-MoGe2] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+  Frame 4 saved (frame_003.jpg, t=6.6s)
+  [capture-node] freeze=4ms shot=124ms unfreeze=4ms saved=True
+  Frame 5 saved (frame_004.jpg, t=8.8s)
+  [capture-periodic] freeze=4ms shot=112ms unfreeze=5ms saved=True
+  [capture-loop] iter=100 t=12.0s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=4 ram=13.1/23.9GB (55%) swap=0.8/3.9GB (19%) cpu=27% browser_rss=1.02GB
+  [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=10
+  [ComfyUI] [comfy-env] VRAM request: 0.66GB, free before eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM request: 0.66GB, free before eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM request: 0.66GB, free before eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM request: 0.66GB, free before eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM request: 0.66GB, free before eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM request: 0.66GB, free before eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 7.36GB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] +224MB (now 224MB) reserved=256MB peak=224MB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] +224MB (now 224MB) reserved=256MB peak=224MB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] +224MB (now 224MB) reserved=256MB peak=224MB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] +224MB (now 224MB) reserved=256MB peak=224MB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] +224MB (now 224MB) reserved=256MB peak=224MB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] +224MB (now 224MB) reserved=256MB peak=224MB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] +445MB (now 669MB) reserved=1536MB peak=779MB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] +445MB (now 669MB) reserved=1536MB peak=779MB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] +445MB (now 669MB) reserved=1536MB peak=779MB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] +445MB (now 669MB) reserved=1536MB peak=779MB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] +445MB (now 669MB) reserved=1536MB peak=779MB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] +445MB (now 669MB) reserved=1536MB peak=779MB
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  Frame 6 saved (frame_005.jpg, t=17.6s)
+  [capture-periodic] freeze=3ms shot=128ms unfreeze=3ms saved=True
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [capture-loop] iter=150 t=18.1s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=4 ram=13.6/23.9GB (57%) swap=0.8/3.9GB (19%) cpu=54% browser_rss=1.03GB
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] +260MB (now 929MB) reserved=1568MB peak=929MB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] +260MB (now 929MB) reserved=1568MB peak=929MB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] +260MB (now 929MB) reserved=1568MB peak=929MB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] +260MB (now 929MB) reserved=1568MB peak=929MB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] +260MB (now 929MB) reserved=1568MB peak=929MB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] +260MB (now 929MB) reserved=1568MB peak=929MB
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] -260MB (now 670MB) reserved=1568MB peak=929MB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] -260MB (now 670MB) reserved=1568MB peak=929MB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] -260MB (now 670MB) reserved=1568MB peak=929MB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] -260MB (now 670MB) reserved=1568MB peak=929MB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] -260MB (now 670MB) reserved=1568MB peak=929MB
+  [ComfyUI] [worker:ComfyUI-MoGe2] [VRAM] -260MB (now 670MB) reserved=1568MB peak=929MB
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  Frame 7 saved (frame_006.jpg, t=19.8s)
+  [capture-periodic] freeze=4ms shot=111ms unfreeze=4ms saved=True
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=10
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [comfy-env] Created 1 model patchers: ['MoGeWrapper_1']
+  [ComfyUI] [comfy-env] Created 1 model patchers: ['MoGeWrapper_1']
+  [ComfyUI] [comfy-env] Created 1 model patchers: ['MoGeWrapper_1']
+  [ComfyUI] [comfy-env] Created 1 model patchers: ['MoGeWrapper_1']
+  [ComfyUI] [comfy-env] Created 1 model patchers: ['MoGeWrapper_1']
+  [ComfyUI] [comfy-env] Created 1 model patchers: ['MoGeWrapper_1']
+  [ComfyUI] [comfy-env] MoGe2Inference done (14.40s): result: NodeOutput
+  [ComfyUI] [comfy-env] MoGe2Inference done (14.40s): result: NodeOutput
+  [ComfyUI] [comfy-env] MoGe2Inference done (14.40s): result: NodeOutput
+  [ComfyUI] [comfy-env] MoGe2Inference done (14.40s): result: NodeOutput
+  [ComfyUI] [comfy-env] MoGe2Inference done (14.40s): result: NodeOutput
+  [ComfyUI] [comfy-env] MoGe2Inference done (14.40s): result: NodeOutput
+  [ComfyUI] [VRAM] After MoGe2Inference: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After MoGe2Inference: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After MoGe2Inference: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After MoGe2Inference: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After MoGe2Inference: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After MoGe2Inference: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [comfy-env] Running PanoramaDepthMerge: out_width: 1920, out_height: 960, use_gpu: True, scale_anchor: True, chunk_size: 8, center_weight_power: 2.0, normal_edge_threshold_deg: 0.0, normal_consistency_boost: True, max_ray_distance_m: 0.0, face_points: torch.float32 [12,952,952,3] cpu, extrinsics: torch.float32 [12,4,4] cpu, intrinsics: torch.float32 [12,3,3] cpu, face_normals: torch.float32 [12,952,952,3] cpu
+  [ComfyUI] [comfy-env] Running PanoramaDepthMerge: out_width: 1920, out_height: 960, use_gpu: True, scale_anchor: True, chunk_size: 8, center_weight_power: 2.0, normal_edge_threshold_deg: 0.0, normal_consistency_boost: True, max_ray_distance_m: 0.0, face_points: torch.float32 [12,952,952,3] cpu, extrinsics: torch.float32 [12,4,4] cpu, intrinsics: torch.float32 [12,3,3] cpu, face_normals: torch.float32 [12,952,952,3] cpu
+  [ComfyUI] [comfy-env] Running PanoramaDepthMerge: out_width: 1920, out_height: 960, use_gpu: True, scale_anchor: True, chunk_size: 8, center_weight_power: 2.0, normal_edge_threshold_deg: 0.0, normal_consistency_boost: True, max_ray_distance_m: 0.0, face_points: torch.float32 [12,952,952,3] cpu, extrinsics: torch.float32 [12,4,4] cpu, intrinsics: torch.float32 [12,3,3] cpu, face_normals: torch.float32 [12,952,952,3] cpu
+  [ComfyUI] [comfy-env] Running PanoramaDepthMerge: out_width: 1920, out_height: 960, use_gpu: True, scale_anchor: True, chunk_size: 8, center_weight_power: 2.0, normal_edge_threshold_deg: 0.0, normal_consistency_boost: True, max_ray_distance_m: 0.0, face_points: torch.float32 [12,952,952,3] cpu, extrinsics: torch.float32 [12,4,4] cpu, intrinsics: torch.float32 [12,3,3] cpu, face_normals: torch.float32 [12,952,952,3] cpu
+  [ComfyUI] [comfy-env] Running PanoramaDepthMerge: out_width: 1920, out_height: 960, use_gpu: True, scale_anchor: True, chunk_size: 8, center_weight_power: 2.0, normal_edge_threshold_deg: 0.0, normal_consistency_boost: True, max_ray_distance_m: 0.0, face_points: torch.float32 [12,952,952,3] cpu, extrinsics: torch.float32 [12,4,4] cpu, intrinsics: torch.float32 [12,3,3] cpu, face_normals: torch.float32 [12,952,952,3] cpu
+  [ComfyUI] [comfy-env] Running PanoramaDepthMerge: out_width: 1920, out_height: 960, use_gpu: True, scale_anchor: True, chunk_size: 8, center_weight_power: 2.0, normal_edge_threshold_deg: 0.0, normal_consistency_boost: True, max_ray_distance_m: 0.0, face_points: torch.float32 [12,952,952,3] cpu, extrinsics: torch.float32 [12,4,4] cpu, intrinsics: torch.float32 [12,3,3] cpu, face_normals: torch.float32 [12,952,952,3] cpu
+  [ComfyUI] [VRAM] Before PanoramaDepthMerge: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before PanoramaDepthMerge: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before PanoramaDepthMerge: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before PanoramaDepthMerge: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before PanoramaDepthMerge: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before PanoramaDepthMerge: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [SubprocessWorker] call_method: nodes.depth_merge.PanoramaDepthMerge.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.depth_merge.PanoramaDepthMerge.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.depth_merge.PanoramaDepthMerge.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.depth_merge.PanoramaDepthMerge.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.depth_merge.PanoramaDepthMerge.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.depth_merge.PanoramaDepthMerge.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_points' shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_points' shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_points' shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_points' shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_points' shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_points' shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'extrinsics' shape: torch.Size([12, 4, 4])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'extrinsics' shape: torch.Size([12, 4, 4])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'extrinsics' shape: torch.Size([12, 4, 4])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'extrinsics' shape: torch.Size([12, 4, 4])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'extrinsics' shape: torch.Size([12, 4, 4])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'extrinsics' shape: torch.Size([12, 4, 4])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'intrinsics' shape: torch.Size([12, 3, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'intrinsics' shape: torch.Size([12, 3, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'intrinsics' shape: torch.Size([12, 3, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'intrinsics' shape: torch.Size([12, 3, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'intrinsics' shape: torch.Size([12, 3, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'intrinsics' shape: torch.Size([12, 3, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_normals' shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_normals' shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_normals' shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_normals' shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_normals' shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_normals' shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  Node executed (2 total), capturing...
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] call_id=11 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=11 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=11 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=11 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=11 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=11 sending call_method
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 4, 4]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 4, 4]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 4, 4]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 4, 4]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 4, 4]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 4, 4]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 4, 4])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 4, 4])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 4, 4])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 4, 4])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 4, 4])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 4, 4])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 3, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 3, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 3, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 3, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 3, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 3, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 3, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 3, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 3, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 3, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 3, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 3, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+  Frame 8 saved (frame_007.jpg, t=21.4s)
+  [capture-node] freeze=3ms shot=122ms unfreeze=7ms saved=True
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] normal-consistency boost: mean=0.997 min=0.613 max=1.000
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] normal-consistency boost: mean=0.997 min=0.613 max=1.000
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] normal-consistency boost: mean=0.997 min=0.613 max=1.000
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] normal-consistency boost: mean=0.997 min=0.613 max=1.000
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] normal-consistency boost: mean=0.997 min=0.613 max=1.000
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] normal-consistency boost: mean=0.997 min=0.613 max=1.000
+  Frame 9 saved (frame_008.jpg, t=23.6s)
+  [capture-periodic] freeze=3ms shot=132ms unfreeze=9ms saved=True
+  [capture-loop] iter=200 t=24.3s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=3 ram=15.2/23.9GB (64%) swap=0.8/3.9GB (19%) cpu=43% browser_rss=1.05GB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] normals merged: 960x1920
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] normals merged: 960x1920
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] normals merged: 960x1920
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] normals merged: 960x1920
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] normals merged: 960x1920
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] normals merged: 960x1920
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] merging 12 faces @ 952x952 -> equirect 960x1920 (use_gpu=True); input = points (||.|| -> ray distance)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] merging 12 faces @ 952x952 -> equirect 960x1920 (use_gpu=True); input = points (||.|| -> ray distance)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] merging 12 faces @ 952x952 -> equirect 960x1920 (use_gpu=True); input = points (||.|| -> ray distance)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] merging 12 faces @ 952x952 -> equirect 960x1920 (use_gpu=True); input = points (||.|| -> ray distance)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] merging 12 faces @ 952x952 -> equirect 960x1920 (use_gpu=True); input = points (||.|| -> ray distance)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] merging 12 faces @ 952x952 -> equirect 960x1920 (use_gpu=True); input = points (||.|| -> ray distance)
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=11
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=11
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=11
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=11
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=11
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=11
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] top-level peak VRAM estimate: 0.76 GB (1920x960, N=12, chunk_size=8)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] top-level peak VRAM estimate: 0.76 GB (1920x960, N=12, chunk_size=8)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] top-level peak VRAM estimate: 0.76 GB (1920x960, N=12, chunk_size=8)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] top-level peak VRAM estimate: 0.76 GB (1920x960, N=12, chunk_size=8)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] top-level peak VRAM estimate: 0.76 GB (1920x960, N=12, chunk_size=8)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] top-level peak VRAM estimate: 0.76 GB (1920x960, N=12, chunk_size=8)
+  [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=11
+  [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=11
+  [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=11
+  [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=11
+  [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=11
+  [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=11
+  [ComfyUI] [comfy-env] VRAM request: 0.76GB, free before eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM request: 0.76GB, free before eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM request: 0.76GB, free before eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM request: 0.76GB, free before eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM request: 0.76GB, free before eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM request: 0.76GB, free before eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 7.36GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 7.36GB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge]   -> requested 0.76 GB eviction via comfy_worker.call_parent
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge]   -> requested 0.76 GB eviction via comfy_worker.call_parent
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge]   -> requested 0.76 GB eviction via comfy_worker.call_parent
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge]   -> requested 0.76 GB eviction via comfy_worker.call_parent
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge]   -> requested 0.76 GB eviction via comfy_worker.call_parent
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge]   -> requested 0.76 GB eviction via comfy_worker.call_parent
+  [ComfyUI] C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\_vendor\worldgen\src\panorama_utils.py:349: UserWarning: Sparse invariant checks are implicitly disabled. Memory errors (e.g. SEGFAULT) will occur when operating on a sparse tensor which violates the invariants, but checks incur performance overhead. To silence this warning, explicitly opt in or out. See `torch.sparse.check_sparse_tensor_invariants.__doc__` for guidance.  (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\Context.cpp:767.)
+  [ComfyUI] C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\_vendor\worldgen\src\panorama_utils.py:349: UserWarning: Sparse invariant checks are implicitly disabled. Memory errors (e.g. SEGFAULT) will occur when operating on a sparse tensor which violates the invariants, but checks incur performance overhead. To silence this warning, explicitly opt in or out. See `torch.sparse.check_sparse_tensor_invariants.__doc__` for guidance.  (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\Context.cpp:767.)
+  [ComfyUI] C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\_vendor\worldgen\src\panorama_utils.py:349: UserWarning: Sparse invariant checks are implicitly disabled. Memory errors (e.g. SEGFAULT) will occur when operating on a sparse tensor which violates the invariants, but checks incur performance overhead. To silence this warning, explicitly opt in or out. See `torch.sparse.check_sparse_tensor_invariants.__doc__` for guidance.  (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\Context.cpp:767.)
+  [ComfyUI] C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\_vendor\worldgen\src\panorama_utils.py:349: UserWarning: Sparse invariant checks are implicitly disabled. Memory errors (e.g. SEGFAULT) will occur when operating on a sparse tensor which violates the invariants, but checks incur performance overhead. To silence this warning, explicitly opt in or out. See `torch.sparse.check_sparse_tensor_invariants.__doc__` for guidance.  (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\Context.cpp:767.)
+  [ComfyUI] C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\_vendor\worldgen\src\panorama_utils.py:349: UserWarning: Sparse invariant checks are implicitly disabled. Memory errors (e.g. SEGFAULT) will occur when operating on a sparse tensor which violates the invariants, but checks incur performance overhead. To silence this warning, explicitly opt in or out. See `torch.sparse.check_sparse_tensor_invariants.__doc__` for guidance.  (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\Context.cpp:767.)
+  [ComfyUI] C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\_vendor\worldgen\src\panorama_utils.py:349: UserWarning: Sparse invariant checks are implicitly disabled. Memory errors (e.g. SEGFAULT) will occur when operating on a sparse tensor which violates the invariants, but checks incur performance overhead. To silence this warning, explicitly opt in or out. See `torch.sparse.check_sparse_tensor_invariants.__doc__` for guidance.  (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\Context.cpp:767.)
+  [ComfyUI]   A_gpu = torch.sparse_csr_tensor(
+  [ComfyUI]   A_gpu = torch.sparse_csr_tensor(
+  [ComfyUI]   A_gpu = torch.sparse_csr_tensor(
+  [ComfyUI]   A_gpu = torch.sparse_csr_tensor(
+  [ComfyUI]   A_gpu = torch.sparse_csr_tensor(
+  [ComfyUI]   A_gpu = torch.sparse_csr_tensor(
+  [ComfyUI] C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\_vendor\worldgen\src\panorama_utils.py:349: UserWarning: Sparse CSR tensor support is in beta state. If you miss a functionality in the sparse tensor support, please submit a feature request to https://github.com/pytorch/pytorch/issues. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\SparseCsrTensorImpl.cpp:51.)
+  [ComfyUI] C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\_vendor\worldgen\src\panorama_utils.py:349: UserWarning: Sparse CSR tensor support is in beta state. If you miss a functionality in the sparse tensor support, please submit a feature request to https://github.com/pytorch/pytorch/issues. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\SparseCsrTensorImpl.cpp:51.)
+  [ComfyUI] C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\_vendor\worldgen\src\panorama_utils.py:349: UserWarning: Sparse CSR tensor support is in beta state. If you miss a functionality in the sparse tensor support, please submit a feature request to https://github.com/pytorch/pytorch/issues. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\SparseCsrTensorImpl.cpp:51.)
+  [ComfyUI] C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\_vendor\worldgen\src\panorama_utils.py:349: UserWarning: Sparse CSR tensor support is in beta state. If you miss a functionality in the sparse tensor support, please submit a feature request to https://github.com/pytorch/pytorch/issues. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\SparseCsrTensorImpl.cpp:51.)
+  [ComfyUI] C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\_vendor\worldgen\src\panorama_utils.py:349: UserWarning: Sparse CSR tensor support is in beta state. If you miss a functionality in the sparse tensor support, please submit a feature request to https://github.com/pytorch/pytorch/issues. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\SparseCsrTensorImpl.cpp:51.)
+  [ComfyUI] C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\_vendor\worldgen\src\panorama_utils.py:349: UserWarning: Sparse CSR tensor support is in beta state. If you miss a functionality in the sparse tensor support, please submit a feature request to https://github.com/pytorch/pytorch/issues. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\SparseCsrTensorImpl.cpp:51.)
+  [ComfyUI]   A_gpu = torch.sparse_csr_tensor(
+  [ComfyUI]   A_gpu = torch.sparse_csr_tensor(
+  [ComfyUI]   A_gpu = torch.sparse_csr_tensor(
+  [ComfyUI]   A_gpu = torch.sparse_csr_tensor(
+  [ComfyUI]   A_gpu = torch.sparse_csr_tensor(
+  [ComfyUI]   A_gpu = torch.sparse_csr_tensor(
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  240x120 ] done 0.85s (warp 0.25, build 0.00, LSMR 0.52); N=12 K=8 chunks=2; scale_shift=+0.9179 (exp~=2.504); depth min/med/max = 1.667/2.503/4.582; valid 28800/28800
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  240x120 ] done 0.85s (warp 0.25, build 0.00, LSMR 0.52); N=12 K=8 chunks=2; scale_shift=+0.9179 (exp~=2.504); depth min/med/max = 1.667/2.503/4.582; valid 28800/28800
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  240x120 ] done 0.85s (warp 0.25, build 0.00, LSMR 0.52); N=12 K=8 chunks=2; scale_shift=+0.9179 (exp~=2.504); depth min/med/max = 1.667/2.503/4.582; valid 28800/28800
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  240x120 ] done 0.85s (warp 0.25, build 0.00, LSMR 0.52); N=12 K=8 chunks=2; scale_shift=+0.9179 (exp~=2.504); depth min/med/max = 1.667/2.503/4.582; valid 28800/28800
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  240x120 ] done 0.85s (warp 0.25, build 0.00, LSMR 0.52); N=12 K=8 chunks=2; scale_shift=+0.9179 (exp~=2.504); depth min/med/max = 1.667/2.503/4.582; valid 28800/28800
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  240x120 ] done 0.85s (warp 0.25, build 0.00, LSMR 0.52); N=12 K=8 chunks=2; scale_shift=+0.9179 (exp~=2.504); depth min/med/max = 1.667/2.503/4.582; valid 28800/28800
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  480x240 ] done 1.11s (warp 0.03, build 0.02, LSMR 0.19); N=12 K=8 chunks=2; depth min/med/max = 1.668/2.505/4.632; valid 115200/115200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  480x240 ] done 1.11s (warp 0.03, build 0.02, LSMR 0.19); N=12 K=8 chunks=2; depth min/med/max = 1.668/2.505/4.632; valid 115200/115200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  480x240 ] done 1.11s (warp 0.03, build 0.02, LSMR 0.19); N=12 K=8 chunks=2; depth min/med/max = 1.668/2.505/4.632; valid 115200/115200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  480x240 ] done 1.11s (warp 0.03, build 0.02, LSMR 0.19); N=12 K=8 chunks=2; depth min/med/max = 1.668/2.505/4.632; valid 115200/115200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  480x240 ] done 1.11s (warp 0.03, build 0.02, LSMR 0.19); N=12 K=8 chunks=2; depth min/med/max = 1.668/2.505/4.632; valid 115200/115200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  480x240 ] done 1.11s (warp 0.03, build 0.02, LSMR 0.19); N=12 K=8 chunks=2; depth min/med/max = 1.668/2.505/4.632; valid 115200/115200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +202MB (now 202MB) reserved=256MB peak=202MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +202MB (now 202MB) reserved=256MB peak=202MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +202MB (now 202MB) reserved=256MB peak=202MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +202MB (now 202MB) reserved=256MB peak=202MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +202MB (now 202MB) reserved=256MB peak=202MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +202MB (now 202MB) reserved=256MB peak=202MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  960x480 ] done 1.49s (warp 0.05, build 0.08, LSMR 0.23); N=12 K=8 chunks=2; depth min/med/max = 1.667/2.506/4.649; valid 460800/460800
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  960x480 ] done 1.49s (warp 0.05, build 0.08, LSMR 0.23); N=12 K=8 chunks=2; depth min/med/max = 1.667/2.506/4.649; valid 460800/460800
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  960x480 ] done 1.49s (warp 0.05, build 0.08, LSMR 0.23); N=12 K=8 chunks=2; depth min/med/max = 1.667/2.506/4.649; valid 460800/460800
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  960x480 ] done 1.49s (warp 0.05, build 0.08, LSMR 0.23); N=12 K=8 chunks=2; depth min/med/max = 1.667/2.506/4.649; valid 460800/460800
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  960x480 ] done 1.49s (warp 0.05, build 0.08, LSMR 0.23); N=12 K=8 chunks=2; depth min/med/max = 1.667/2.506/4.649; valid 460800/460800
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  960x480 ] done 1.49s (warp 0.05, build 0.08, LSMR 0.23); N=12 K=8 chunks=2; depth min/med/max = 1.667/2.506/4.649; valid 460800/460800
+  Frame 10 saved (frame_009.jpg, t=28.1s)
+  [capture-periodic] freeze=3ms shot=112ms unfreeze=3ms saved=True
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +270MB (now 473MB) reserved=544MB peak=473MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +270MB (now 473MB) reserved=544MB peak=473MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +270MB (now 473MB) reserved=544MB peak=473MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +270MB (now 473MB) reserved=544MB peak=473MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +270MB (now 473MB) reserved=544MB peak=473MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +270MB (now 473MB) reserved=544MB peak=473MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu 1920x960 ] done 2.49s (warp 0.10, build 0.33, LSMR 0.50); N=12 K=8 chunks=2; depth min/med/max = 1.667/2.506/4.650; valid 1843200/1843200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu 1920x960 ] done 2.49s (warp 0.10, build 0.33, LSMR 0.50); N=12 K=8 chunks=2; depth min/med/max = 1.667/2.506/4.650; valid 1843200/1843200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu 1920x960 ] done 2.49s (warp 0.10, build 0.33, LSMR 0.50); N=12 K=8 chunks=2; depth min/med/max = 1.667/2.506/4.650; valid 1843200/1843200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu 1920x960 ] done 2.49s (warp 0.10, build 0.33, LSMR 0.50); N=12 K=8 chunks=2; depth min/med/max = 1.667/2.506/4.650; valid 1843200/1843200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu 1920x960 ] done 2.49s (warp 0.10, build 0.33, LSMR 0.50); N=12 K=8 chunks=2; depth min/med/max = 1.667/2.506/4.650; valid 1843200/1843200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu 1920x960 ] done 2.49s (warp 0.10, build 0.33, LSMR 0.50); N=12 K=8 chunks=2; depth min/med/max = 1.667/2.506/4.650; valid 1843200/1843200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] merged depth: shape (960, 1920), min=1.685, median=2.506, max=4.650; valid pixels: 1843200 / 1843200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] merged depth: shape (960, 1920), min=1.685, median=2.506, max=4.650; valid pixels: 1843200 / 1843200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] merged depth: shape (960, 1920), min=1.685, median=2.506, max=4.650; valid pixels: 1843200 / 1843200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] merged depth: shape (960, 1920), min=1.685, median=2.506, max=4.650; valid pixels: 1843200 / 1843200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] merged depth: shape (960, 1920), min=1.685, median=2.506, max=4.650; valid pixels: 1843200 / 1843200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] merged depth: shape (960, 1920), min=1.685, median=2.506, max=4.650; valid pixels: 1843200 / 1843200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -442MB (now 32MB) reserved=544MB peak=473MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -442MB (now 32MB) reserved=544MB peak=473MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -442MB (now 32MB) reserved=544MB peak=473MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -442MB (now 32MB) reserved=544MB peak=473MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -442MB (now 32MB) reserved=544MB peak=473MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -442MB (now 32MB) reserved=544MB peak=473MB
+  [capture-loop] iter=250 t=30.1s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=3 ram=15.9/23.9GB (66%) swap=0.8/3.9GB (19%) cpu=40% browser_rss=1.05GB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] debug_image: H=960+48, mult_disagreement (log-d, sphere-uniform): mean=6.66%, p99=18.22%, max=28.77%; overlap_pixels=1422072
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] debug_image: H=960+48, mult_disagreement (log-d, sphere-uniform): mean=6.66%, p99=18.22%, max=28.77%; overlap_pixels=1422072
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] debug_image: H=960+48, mult_disagreement (log-d, sphere-uniform): mean=6.66%, p99=18.22%, max=28.77%; overlap_pixels=1422072
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] debug_image: H=960+48, mult_disagreement (log-d, sphere-uniform): mean=6.66%, p99=18.22%, max=28.77%; overlap_pixels=1422072
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] debug_image: H=960+48, mult_disagreement (log-d, sphere-uniform): mean=6.66%, p99=18.22%, max=28.77%; overlap_pixels=1422072
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] debug_image: H=960+48, mult_disagreement (log-d, sphere-uniform): mean=6.66%, p99=18.22%, max=28.77%; overlap_pixels=1422072
+  [ComfyUI] [worker:ComfyUI-PanoPack] [headless_gl] prefix=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default
+  [ComfyUI] [worker:ComfyUI-PanoPack] [headless_gl] prefix=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default
+  [ComfyUI] [worker:ComfyUI-PanoPack] [headless_gl] prefix=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default
+  [ComfyUI] [worker:ComfyUI-PanoPack] [headless_gl] prefix=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default
+  [ComfyUI] [worker:ComfyUI-PanoPack] [headless_gl] prefix=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default
+  [ComfyUI] [worker:ComfyUI-PanoPack] [headless_gl] prefix=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default
+  [ComfyUI] [worker:ComfyUI-PanoPack] [headless_gl] libOSMesa*: MISSING
+  [ComfyUI] [worker:ComfyUI-PanoPack] [headless_gl] libOSMesa*: MISSING
+  [ComfyUI] [worker:ComfyUI-PanoPack] [headless_gl] libOSMesa*: MISSING
+  [ComfyUI] [worker:ComfyUI-PanoPack] [headless_gl] libOSMesa*: MISSING
+  [ComfyUI] [worker:ComfyUI-PanoPack] [headless_gl] libOSMesa*: MISSING
+  [ComfyUI] [worker:ComfyUI-PanoPack] [headless_gl] libOSMesa*: MISSING
+  [ComfyUI] [worker:ComfyUI-PanoPack] [headless_gl] env: VTK_DEFAULT_OPENGL_WINDOW=vtkOSOpenGLRenderWindow PYVISTA_OFF_SCREEN=true
+  [ComfyUI] [worker:ComfyUI-PanoPack] [headless_gl] env: VTK_DEFAULT_OPENGL_WINDOW=vtkOSOpenGLRenderWindow PYVISTA_OFF_SCREEN=true
+  [ComfyUI] [worker:ComfyUI-PanoPack] [headless_gl] env: VTK_DEFAULT_OPENGL_WINDOW=vtkOSOpenGLRenderWindow PYVISTA_OFF_SCREEN=true
+  [ComfyUI] [worker:ComfyUI-PanoPack] [headless_gl] env: VTK_DEFAULT_OPENGL_WINDOW=vtkOSOpenGLRenderWindow PYVISTA_OFF_SCREEN=true
+  [ComfyUI] [worker:ComfyUI-PanoPack] [headless_gl] env: VTK_DEFAULT_OPENGL_WINDOW=vtkOSOpenGLRenderWindow PYVISTA_OFF_SCREEN=true
+  [ComfyUI] [worker:ComfyUI-PanoPack] [headless_gl] env: VTK_DEFAULT_OPENGL_WINDOW=vtkOSOpenGLRenderWindow PYVISTA_OFF_SCREEN=true
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] xyz_views: cloud bbox center=(+0.26, +0.40, +0.18) m, size=(6.11 x 6.00 x 3.91) m, N=80000 (subsampled)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] xyz_views: cloud bbox center=(+0.26, +0.40, +0.18) m, size=(6.11 x 6.00 x 3.91) m, N=80000 (subsampled)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] xyz_views: cloud bbox center=(+0.26, +0.40, +0.18) m, size=(6.11 x 6.00 x 3.91) m, N=80000 (subsampled)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] xyz_views: cloud bbox center=(+0.26, +0.40, +0.18) m, size=(6.11 x 6.00 x 3.91) m, N=80000 (subsampled)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] xyz_views: cloud bbox center=(+0.26, +0.40, +0.18) m, size=(6.11 x 6.00 x 3.91) m, N=80000 (subsampled)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] xyz_views: cloud bbox center=(+0.26, +0.40, +0.18) m, size=(6.11 x 6.00 x 3.91) m, N=80000 (subsampled)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] points: merged equirect point map (1, 960, 1920, 3)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] points: merged equirect point map (1, 960, 1920, 3)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] points: merged equirect point map (1, 960, 1920, 3)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] points: merged equirect point map (1, 960, 1920, 3)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] points: merged equirect point map (1, 960, 1920, 3)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaDepthMerge] points: merged equirect point map (1, 960, 1920, 3)
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=11
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=11
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=11
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=11
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=11
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=11
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [comfy-env] PanoramaDepthMerge done (11.91s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaDepthMerge done (11.91s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaDepthMerge done (11.91s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaDepthMerge done (11.91s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaDepthMerge done (11.91s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaDepthMerge done (11.91s): result: NodeOutput
+  [ComfyUI] [VRAM] After PanoramaDepthMerge: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After PanoramaDepthMerge: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After PanoramaDepthMerge: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After PanoramaDepthMerge: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After PanoramaDepthMerge: 1130 / 8150 MB
+  [ComfyUI] [VRAM] After PanoramaDepthMerge: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  Node executed (3 total), capturing...
+  [ComfyUI] [comfy-env] Running PanoramaFacesPlaneSegment: use_gpu: True, ransac_iterations_per_batch: 100, distance_threshold: 0.02, max_planes_per_face: 25, min_inlier_fraction: 0.02, ransac_iterations: 1000, dbscan_eps: 0.05, dbscan_min_points: 100, normal_consistency_threshold: 0.85, face_points: torch.float32 [1,960,1920,3] cpu, face_normals: torch.float32 [1,960,1920,3] cpu, face_valid_masks: torch.float32 [1,960,1920] cpu
+  [ComfyUI] [comfy-env] Running PanoramaFacesPlaneSegment: use_gpu: True, ransac_iterations_per_batch: 100, distance_threshold: 0.02, max_planes_per_face: 25, min_inlier_fraction: 0.02, ransac_iterations: 1000, dbscan_eps: 0.05, dbscan_min_points: 100, normal_consistency_threshold: 0.85, face_points: torch.float32 [1,960,1920,3] cpu, face_normals: torch.float32 [1,960,1920,3] cpu, face_valid_masks: torch.float32 [1,960,1920] cpu
+  [ComfyUI] [comfy-env] Running PanoramaFacesPlaneSegment: use_gpu: True, ransac_iterations_per_batch: 100, distance_threshold: 0.02, max_planes_per_face: 25, min_inlier_fraction: 0.02, ransac_iterations: 1000, dbscan_eps: 0.05, dbscan_min_points: 100, normal_consistency_threshold: 0.85, face_points: torch.float32 [1,960,1920,3] cpu, face_normals: torch.float32 [1,960,1920,3] cpu, face_valid_masks: torch.float32 [1,960,1920] cpu
+  [ComfyUI] [comfy-env] Running PanoramaFacesPlaneSegment: use_gpu: True, ransac_iterations_per_batch: 100, distance_threshold: 0.02, max_planes_per_face: 25, min_inlier_fraction: 0.02, ransac_iterations: 1000, dbscan_eps: 0.05, dbscan_min_points: 100, normal_consistency_threshold: 0.85, face_points: torch.float32 [1,960,1920,3] cpu, face_normals: torch.float32 [1,960,1920,3] cpu, face_valid_masks: torch.float32 [1,960,1920] cpu
+  [ComfyUI] [comfy-env] Running PanoramaFacesPlaneSegment: use_gpu: True, ransac_iterations_per_batch: 100, distance_threshold: 0.02, max_planes_per_face: 25, min_inlier_fraction: 0.02, ransac_iterations: 1000, dbscan_eps: 0.05, dbscan_min_points: 100, normal_consistency_threshold: 0.85, face_points: torch.float32 [1,960,1920,3] cpu, face_normals: torch.float32 [1,960,1920,3] cpu, face_valid_masks: torch.float32 [1,960,1920] cpu
+  [ComfyUI] [comfy-env] Running PanoramaFacesPlaneSegment: use_gpu: True, ransac_iterations_per_batch: 100, distance_threshold: 0.02, max_planes_per_face: 25, min_inlier_fraction: 0.02, ransac_iterations: 1000, dbscan_eps: 0.05, dbscan_min_points: 100, normal_consistency_threshold: 0.85, face_points: torch.float32 [1,960,1920,3] cpu, face_normals: torch.float32 [1,960,1920,3] cpu, face_valid_masks: torch.float32 [1,960,1920] cpu
+  [ComfyUI] [VRAM] Before PanoramaFacesPlaneSegment: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before PanoramaFacesPlaneSegment: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before PanoramaFacesPlaneSegment: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before PanoramaFacesPlaneSegment: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before PanoramaFacesPlaneSegment: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Before PanoramaFacesPlaneSegment: 1130 / 8150 MB
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [SubprocessWorker] call_method: nodes.plane_segment.PanoramaFacesPlaneSegment.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.plane_segment.PanoramaFacesPlaneSegment.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.plane_segment.PanoramaFacesPlaneSegment.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.plane_segment.PanoramaFacesPlaneSegment.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.plane_segment.PanoramaFacesPlaneSegment.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.plane_segment.PanoramaFacesPlaneSegment.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_points' shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_points' shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_points' shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_points' shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_points' shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_points' shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_normals' shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_normals' shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_normals' shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_normals' shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_normals' shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_normals' shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_valid_masks' shape: torch.Size([1, 960, 1920])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_valid_masks' shape: torch.Size([1, 960, 1920])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_valid_masks' shape: torch.Size([1, 960, 1920])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_valid_masks' shape: torch.Size([1, 960, 1920])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_valid_masks' shape: torch.Size([1, 960, 1920])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'face_valid_masks' shape: torch.Size([1, 960, 1920])
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] call_id=12 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=12 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=12 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=12 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=12 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=12 sending call_method
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 960, 1920, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 960, 1920, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 960, 1920, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 960, 1920, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 960, 1920, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 960, 1920, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 960, 1920, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 960, 1920, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 960, 1920, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 960, 1920, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 960, 1920, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 960, 1920, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 960, 1920, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 960, 1920]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 960, 1920]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 960, 1920]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 960, 1920]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 960, 1920]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 960, 1920]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 960, 1920])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 960, 1920])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 960, 1920])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 960, 1920])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 960, 1920])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 960, 1920])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] normals: RGB-encoded detected (range [0.000, 1.000]  subset of  [0, 1]) -> decoding via 2.x-1
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] normals: RGB-encoded detected (range [0.000, 1.000]  subset of  [0, 1]) -> decoding via 2.x-1
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] normals: RGB-encoded detected (range [0.000, 1.000]  subset of  [0, 1]) -> decoding via 2.x-1
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] normals: RGB-encoded detected (range [0.000, 1.000]  subset of  [0, 1]) -> decoding via 2.x-1
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] normals: RGB-encoded detected (range [0.000, 1.000]  subset of  [0, 1]) -> decoding via 2.x-1
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] normals: RGB-encoded detected (range [0.000, 1.000]  subset of  [0, 1]) -> decoding via 2.x-1
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] input: 1 faces @ 960x1920, normals=wired, valid_masks=wired, RANSAC=CUDA available: True
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] input: 1 faces @ 960x1920, normals=wired, valid_masks=wired, RANSAC=CUDA available: True
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] input: 1 faces @ 960x1920, normals=wired, valid_masks=wired, RANSAC=CUDA available: True
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] input: 1 faces @ 960x1920, normals=wired, valid_masks=wired, RANSAC=CUDA available: True
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] input: 1 faces @ 960x1920, normals=wired, valid_masks=wired, RANSAC=CUDA available: True
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] input: 1 faces @ 960x1920, normals=wired, valid_masks=wired, RANSAC=CUDA available: True
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] params: dist_thresh=0.020m, max_planes=25, min_inlier_frac=0.020, ransac_iter=1000 (per_batch=100), dbscan_eps=0.050m, dbscan_min_pts=100, normal_cos_thresh=0.85
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] params: dist_thresh=0.020m, max_planes=25, min_inlier_frac=0.020, ransac_iter=1000 (per_batch=100), dbscan_eps=0.050m, dbscan_min_pts=100, normal_cos_thresh=0.85
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] params: dist_thresh=0.020m, max_planes=25, min_inlier_frac=0.020, ransac_iter=1000 (per_batch=100), dbscan_eps=0.050m, dbscan_min_pts=100, normal_cos_thresh=0.85
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] params: dist_thresh=0.020m, max_planes=25, min_inlier_frac=0.020, ransac_iter=1000 (per_batch=100), dbscan_eps=0.050m, dbscan_min_pts=100, normal_cos_thresh=0.85
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] params: dist_thresh=0.020m, max_planes=25, min_inlier_frac=0.020, ransac_iter=1000 (per_batch=100), dbscan_eps=0.050m, dbscan_min_pts=100, normal_cos_thresh=0.85
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] params: dist_thresh=0.020m, max_planes=25, min_inlier_frac=0.020, ransac_iter=1000 (per_batch=100), dbscan_eps=0.050m, dbscan_min_pts=100, normal_cos_thresh=0.85
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] face 1/1: valid=1843200/1843200 (100.0%)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] face 1/1: valid=1843200/1843200 (100.0%)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] face 1/1: valid=1843200/1843200 (100.0%)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] face 1/1: valid=1843200/1843200 (100.0%)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] face 1/1: valid=1843200/1843200 (100.0%)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] face 1/1: valid=1843200/1843200 (100.0%)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 RANSAC backend: vendored torch RANSAC (CUDA)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 RANSAC backend: vendored torch RANSAC (CUDA)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 RANSAC backend: vendored torch RANSAC (CUDA)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 RANSAC backend: vendored torch RANSAC (CUDA)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 RANSAC backend: vendored torch RANSAC (CUDA)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 RANSAC backend: vendored torch RANSAC (CUDA)
+  Frame 11 saved (frame_010.jpg, t=33.3s)
+  [capture-node] freeze=3ms shot=113ms unfreeze=8ms saved=True
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +759MB (now 791MB) reserved=2208MB peak=791MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +759MB (now 791MB) reserved=2208MB peak=791MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +759MB (now 791MB) reserved=2208MB peak=791MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +759MB (now 791MB) reserved=2208MB peak=791MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +759MB (now 791MB) reserved=2208MB peak=791MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +759MB (now 791MB) reserved=2208MB peak=791MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #1: |a,b,c,d|=[+0.008,+0.015,-1.000,-1.703], inliers=470856/1843200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #1: |a,b,c,d|=[+0.008,+0.015,-1.000,-1.703], inliers=470856/1843200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #1: |a,b,c,d|=[+0.008,+0.015,-1.000,-1.703], inliers=470856/1843200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #1: |a,b,c,d|=[+0.008,+0.015,-1.000,-1.703], inliers=470856/1843200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #1: |a,b,c,d|=[+0.008,+0.015,-1.000,-1.703], inliers=470856/1843200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #1: |a,b,c,d|=[+0.008,+0.015,-1.000,-1.703], inliers=470856/1843200
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 466373/470856 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 466373/470856 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 466373/470856 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 466373/470856 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 466373/470856 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 466373/470856 inliers (|cos|>=0.85)
+  [capture-loop] iter=300 t=36.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=16.2/23.9GB (68%) swap=0.8/6.9GB (11%) cpu=25% browser_rss=1.06GB
+  [capture-loop] iter=350 t=41.9s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=16.6/23.9GB (70%) swap=0.8/6.9GB (11%) cpu=17% browser_rss=0.84GB
+  [capture-loop] iter=400 t=47.7s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=17.0/23.9GB (71%) swap=0.8/7.9GB (10%) cpu=11% browser_rss=0.84GB
+  [capture-loop] iter=450 t=53.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=17.4/23.9GB (73%) swap=0.8/7.9GB (10%) cpu=12% browser_rss=0.84GB
+  [capture-loop] iter=500 t=59.2s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=17.8/23.9GB (74%) swap=0.8/7.9GB (10%) cpu=11% browser_rss=0.84GB
+  [capture-loop] iter=550 t=65.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=18.0/23.9GB (75%) swap=0.8/8.9GB (8%) cpu=12% browser_rss=0.84GB
+  [capture-loop] iter=600 t=70.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=18.0/23.9GB (75%) swap=0.8/8.9GB (8%) cpu=12% browser_rss=0.84GB
+  [capture-loop] iter=650 t=76.5s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=18.0/23.9GB (75%) swap=0.8/8.9GB (8%) cpu=11% browser_rss=0.84GB
+  [ComfyUI] [worker:ComfyUI-PanoPack]
+  [ComfyUI] [worker:ComfyUI-PanoPack]
+  [ComfyUI] [worker:ComfyUI-PanoPack]
+  [ComfyUI] [worker:ComfyUI-PanoPack]
+  [ComfyUI] [worker:ComfyUI-PanoPack]
+  [ComfyUI] [worker:ComfyUI-PanoPack]
+  [ComfyUI] === WATCHDOG TICK 1 ===
+  [ComfyUI] === WATCHDOG TICK 1 ===
+  [ComfyUI] === WATCHDOG TICK 1 ===
+  [ComfyUI] === WATCHDOG TICK 1 ===
+  [ComfyUI] === WATCHDOG TICK 1 ===
+  [ComfyUI] === WATCHDOG TICK 1 ===
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -700MB (now 91MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -700MB (now 91MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -700MB (now 91MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -700MB (now 91MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -700MB (now 91MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -700MB (now 91MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] Thread 0x00000084 (most recent call first):
+  [ComfyUI] [worker:ComfyUI-PanoPack] Thread 0x00000084 (most recent call first):
+  [ComfyUI] [worker:ComfyUI-PanoPack] Thread 0x00000084 (most recent call first):
+  [ComfyUI] [worker:ComfyUI-PanoPack] Thread 0x00000084 (most recent call first):
+  [ComfyUI] [worker:ComfyUI-PanoPack] Thread 0x00000084 (most recent call first):
+  [ComfyUI] [worker:ComfyUI-PanoPack] Thread 0x00000084 (most recent call first):
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 82 in wlog
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 82 in wlog
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 82 in wlog
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 82 in wlog
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 82 in wlog
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 82 in wlog
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 124 in _vram_poller
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 124 in _vram_poller
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 124 in _vram_poller
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 124 in _vram_poller
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 124 in _vram_poller
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 124 in _vram_poller
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 995 in run
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 995 in run
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 995 in run
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 995 in run
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 995 in run
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 995 in run
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1044 in _bootstrap_inner
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1044 in _bootstrap_inner
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1044 in _bootstrap_inner
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1044 in _bootstrap_inner
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1044 in _bootstrap_inner
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1044 in _bootstrap_inner
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1015 in _bootstrap
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1015 in _bootstrap
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1015 in _bootstrap
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1015 in _bootstrap
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1015 in _bootstrap
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1015 in _bootstrap
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] Current thread 0x00001b3c (most recent call first):
+  [ComfyUI] Current thread 0x00001b3c (most recent call first):
+  [ComfyUI] Current thread 0x00001b3c (most recent call first):
+  [ComfyUI] Current thread 0x00001b3c (most recent call first):
+  [ComfyUI] Current thread 0x00001b3c (most recent call first):
+  [ComfyUI] Current thread 0x00001b3c (most recent call first):
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 52 in _watchdog
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 52 in _watchdog
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 52 in _watchdog
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 52 in _watchdog
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 52 in _watchdog
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 52 in _watchdog
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 995 in run
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 995 in run
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 995 in run
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 995 in run
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 995 in run
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 995 in run
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1044 in _bootstrap_inner
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1044 in _bootstrap_inner
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1044 in _bootstrap_inner
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1044 in _bootstrap_inner
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1044 in _bootstrap_inner
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1044 in _bootstrap_inner
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1015 in _bootstrap
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1015 in _bootstrap
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1015 in _bootstrap
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1015 in _bootstrap
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1015 in _bootstrap
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1015 in _bootstrap
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] Thread 0x00000a40 (most recent call first):
+  [ComfyUI] Thread 0x00000a40 (most recent call first):
+  [ComfyUI] Thread 0x00000a40 (most recent call first):
+  [ComfyUI] Thread 0x00000a40 (most recent call first):
+  [ComfyUI] Thread 0x00000a40 (most recent call first):
+  [ComfyUI] Thread 0x00000a40 (most recent call first):
+  [ComfyUI]   File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\plane_segment.py", line 252 in _segment_planes_one_face
+  [ComfyUI]   File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\plane_segment.py", line 252 in _segment_planes_one_face
+  [ComfyUI]   File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\plane_segment.py", line 252 in _segment_planes_one_face
+  [ComfyUI]   File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\plane_segment.py", line 252 in _segment_planes_one_face
+  [ComfyUI]   File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\plane_segment.py", line 252 in _segment_planes_one_face
+  [ComfyUI]   File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\plane_segment.py", line 252 in _segment_planes_one_face
+  [ComfyUI]   File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\plane_segment.py", line 599 in execute
+  [ComfyUI]   File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\plane_segment.py", line 599 in execute
+  [ComfyUI]   File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\plane_segment.py", line 599 in execute
+  [ComfyUI]   File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\plane_segment.py", line 599 in execute
+  [ComfyUI]   File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\plane_segment.py", line 599 in execute
+  [ComfyUI]   File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\plane_segment.py", line 599 in execute
+  [ComfyUI]   File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1880 in EXECUTE_NORMALIZED
+  [ComfyUI]   File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1880 in EXECUTE_NORMALIZED
+  [ComfyUI]   File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1880 in EXECUTE_NORMALIZED
+  [ComfyUI]   File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1880 in EXECUTE_NORMALIZED
+  [ComfyUI]   File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1880 in EXECUTE_NORMALIZED
+  [ComfyUI]   File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1880 in EXECUTE_NORMALIZED
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 1762 in main
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 1762 in main
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 1762 in main
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 1762 in main
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 1762 in main
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 1762 in main
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 1807 in <module>
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 1807 in <module>
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 1807 in <module>
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 1807 in <module>
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 1807 in <module>
+  [ComfyUI]   File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 1807 in <module>
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] [worker:ComfyUI-PanoPack] === END ===
+  [ComfyUI] [worker:ComfyUI-PanoPack] === END ===
+  [ComfyUI] [worker:ComfyUI-PanoPack] === END ===
+  [ComfyUI] [worker:ComfyUI-PanoPack] === END ===
+  [ComfyUI] [worker:ComfyUI-PanoPack] === END ===
+  [ComfyUI] [worker:ComfyUI-PanoPack] === END ===
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[427218]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[427218]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[427218]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[427218]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[427218]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[427218]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=1, 427218 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=1, 427218 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=1, 427218 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=1, 427218 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=1, 427218 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=1, 427218 px
+  [capture-loop] iter=700 t=82.3s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=4 ram=15.4/23.9GB (65%) swap=0.8/8.9GB (8%) cpu=12% browser_rss=0.84GB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +647MB (now 739MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +647MB (now 739MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +647MB (now 739MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +647MB (now 739MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +647MB (now 739MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +647MB (now 739MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #2: |a,b,c,d|=[+0.009,+0.020,-1.000,+2.070], inliers=260913/1376827
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #2: |a,b,c,d|=[+0.009,+0.020,-1.000,+2.070], inliers=260913/1376827
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #2: |a,b,c,d|=[+0.009,+0.020,-1.000,+2.070], inliers=260913/1376827
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #2: |a,b,c,d|=[+0.009,+0.020,-1.000,+2.070], inliers=260913/1376827
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #2: |a,b,c,d|=[+0.009,+0.020,-1.000,+2.070], inliers=260913/1376827
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #2: |a,b,c,d|=[+0.009,+0.020,-1.000,+2.070], inliers=260913/1376827
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 259734/260913 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 259734/260913 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 259734/260913 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 259734/260913 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 259734/260913 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 259734/260913 inliers (|cos|>=0.85)
+  [capture-loop] iter=750 t=88.0s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=15.9/23.9GB (67%) swap=0.8/8.9GB (8%) cpu=16% browser_rss=0.84GB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -659MB (now 81MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -659MB (now 81MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -659MB (now 81MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -659MB (now 81MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -659MB (now 81MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -659MB (now 81MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[197073]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[197073]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[197073]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[197073]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[197073]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[197073]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=2, 197073 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=2, 197073 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=2, 197073 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=2, 197073 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=2, 197073 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=2, 197073 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +528MB (now 609MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +528MB (now 609MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +528MB (now 609MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +528MB (now 609MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +528MB (now 609MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +528MB (now 609MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #3: |a,b,c,d|=[+0.012,+0.029,+1.000,-1.848], inliers=111415/1117093
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #3: |a,b,c,d|=[+0.012,+0.029,+1.000,-1.848], inliers=111415/1117093
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #3: |a,b,c,d|=[+0.012,+0.029,+1.000,-1.848], inliers=111415/1117093
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #3: |a,b,c,d|=[+0.012,+0.029,+1.000,-1.848], inliers=111415/1117093
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #3: |a,b,c,d|=[+0.012,+0.029,+1.000,-1.848], inliers=111415/1117093
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #3: |a,b,c,d|=[+0.012,+0.029,+1.000,-1.848], inliers=111415/1117093
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 106589/111415 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 106589/111415 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 106589/111415 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 106589/111415 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 106589/111415 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 106589/111415 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -535MB (now 75MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -535MB (now 75MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -535MB (now 75MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -535MB (now 75MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -535MB (now 75MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -535MB (now 75MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[95995]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[95995]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[95995]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[95995]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[95995]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[95995]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=3, 95995 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=3, 95995 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=3, 95995 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=3, 95995 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=3, 95995 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=3, 95995 px
+  [capture-loop] iter=800 t=93.8s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=15.4/23.9GB (64%) swap=0.8/8.9GB (8%) cpu=15% browser_rss=0.84GB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #4: |a,b,c,d|=[-0.005,+0.022,+1.000,+1.688], inliers=95001/1010504
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #4: |a,b,c,d|=[-0.005,+0.022,+1.000,+1.688], inliers=95001/1010504
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #4: |a,b,c,d|=[-0.005,+0.022,+1.000,+1.688], inliers=95001/1010504
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #4: |a,b,c,d|=[-0.005,+0.022,+1.000,+1.688], inliers=95001/1010504
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #4: |a,b,c,d|=[-0.005,+0.022,+1.000,+1.688], inliers=95001/1010504
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #4: |a,b,c,d|=[-0.005,+0.022,+1.000,+1.688], inliers=95001/1010504
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 90419/95001 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 90419/95001 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 90419/95001 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 90419/95001 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 90419/95001 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 90419/95001 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 2 cluster(s), top sizes=[40546, 8468]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 2 cluster(s), top sizes=[40546, 8468]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 2 cluster(s), top sizes=[40546, 8468]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 2 cluster(s), top sizes=[40546, 8468]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 2 cluster(s), top sizes=[40546, 8468]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 2 cluster(s), top sizes=[40546, 8468]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=4, 40546 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=4, 40546 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=4, 40546 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=4, 40546 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=4, 40546 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=4, 40546 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=5, 8468 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=5, 8468 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=5, 8468 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=5, 8468 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=5, 8468 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=5, 8468 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +435MB (now 510MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +435MB (now 510MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +435MB (now 510MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +435MB (now 510MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +435MB (now 510MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +435MB (now 510MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #5: |a,b,c,d|=[-0.019,-0.026,+0.999,-2.030], inliers=90400/920085
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #5: |a,b,c,d|=[-0.019,-0.026,+0.999,-2.030], inliers=90400/920085
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #5: |a,b,c,d|=[-0.019,-0.026,+0.999,-2.030], inliers=90400/920085
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #5: |a,b,c,d|=[-0.019,-0.026,+0.999,-2.030], inliers=90400/920085
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #5: |a,b,c,d|=[-0.019,-0.026,+0.999,-2.030], inliers=90400/920085
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #5: |a,b,c,d|=[-0.019,-0.026,+0.999,-2.030], inliers=90400/920085
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 87951/90400 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 87951/90400 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 87951/90400 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 87951/90400 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 87951/90400 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 87951/90400 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -440MB (now 71MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -440MB (now 71MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -440MB (now 71MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -440MB (now 71MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -440MB (now 71MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] -440MB (now 71MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 4 cluster(s), top sizes=[31530, 25536, 1663, 111]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 4 cluster(s), top sizes=[31530, 25536, 1663, 111]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 4 cluster(s), top sizes=[31530, 25536, 1663, 111]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 4 cluster(s), top sizes=[31530, 25536, 1663, 111]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 4 cluster(s), top sizes=[31530, 25536, 1663, 111]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 4 cluster(s), top sizes=[31530, 25536, 1663, 111]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=6, 31530 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=6, 31530 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=6, 31530 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=6, 31530 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=6, 31530 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=6, 31530 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=7, 25536 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=7, 25536 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=7, 25536 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=7, 25536 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=7, 25536 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=7, 25536 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=8, 111 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=8, 111 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=8, 111 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=8, 111 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=8, 111 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=8, 111 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=9, 1663 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=9, 1663 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=9, 1663 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=9, 1663 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=9, 1663 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=9, 1663 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #6: |a,b,c,d|=[+0.036,-0.999,-0.007,-2.452], inliers=90593/832134
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #6: |a,b,c,d|=[+0.036,-0.999,-0.007,-2.452], inliers=90593/832134
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #6: |a,b,c,d|=[+0.036,-0.999,-0.007,-2.452], inliers=90593/832134
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #6: |a,b,c,d|=[+0.036,-0.999,-0.007,-2.452], inliers=90593/832134
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #6: |a,b,c,d|=[+0.036,-0.999,-0.007,-2.452], inliers=90593/832134
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #6: |a,b,c,d|=[+0.036,-0.999,-0.007,-2.452], inliers=90593/832134
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 86965/90593 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 86965/90593 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 86965/90593 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 86965/90593 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 86965/90593 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 86965/90593 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[29703]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[29703]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[29703]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[29703]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[29703]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[29703]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=10, 29703 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=10, 29703 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=10, 29703 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=10, 29703 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=10, 29703 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=10, 29703 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +352MB (now 423MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +352MB (now 423MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +352MB (now 423MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +352MB (now 423MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +352MB (now 423MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [VRAM] +352MB (now 423MB) reserved=4576MB peak=970MB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #7: |a,b,c,d|=[+0.999,+0.043,+0.027,+2.341], inliers=57968/745169
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #7: |a,b,c,d|=[+0.999,+0.043,+0.027,+2.341], inliers=57968/745169
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #7: |a,b,c,d|=[+0.999,+0.043,+0.027,+2.341], inliers=57968/745169
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #7: |a,b,c,d|=[+0.999,+0.043,+0.027,+2.341], inliers=57968/745169
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #7: |a,b,c,d|=[+0.999,+0.043,+0.027,+2.341], inliers=57968/745169
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #7: |a,b,c,d|=[+0.999,+0.043,+0.027,+2.341], inliers=57968/745169
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 47352/57968 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 47352/57968 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 47352/57968 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 47352/57968 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 47352/57968 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 47352/57968 inliers (|cos|>=0.85)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 20 cluster(s), top sizes=[4804, 3159, 2575, 1954, 1378] (+15 more)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 20 cluster(s), top sizes=[4804, 3159, 2575, 1954, 1378] (+15 more)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 20 cluster(s), top sizes=[4804, 3159, 2575, 1954, 1378] (+15 more)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 20 cluster(s), top sizes=[4804, 3159, 2575, 1954, 1378] (+15 more)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 20 cluster(s), top sizes=[4804, 3159, 2575, 1954, 1378] (+15 more)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 20 cluster(s), top sizes=[4804, 3159, 2575, 1954, 1378] (+15 more)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=11, 331 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=11, 331 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=11, 331 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=11, 331 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=11, 331 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=11, 331 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=12, 514 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=12, 514 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=12, 514 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=12, 514 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=12, 514 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=12, 514 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=13, 2575 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=13, 2575 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=13, 2575 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=13, 2575 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=13, 2575 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=13, 2575 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=14, 199 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=14, 199 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=14, 199 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=14, 199 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=14, 199 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=14, 199 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=15, 147 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=15, 147 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=15, 147 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=15, 147 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=15, 147 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=15, 147 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=16, 3159 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=16, 3159 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=16, 3159 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=16, 3159 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=16, 3159 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=16, 3159 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=17, 1298 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=17, 1298 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=17, 1298 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=17, 1298 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=17, 1298 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=17, 1298 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=18, 1954 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=18, 1954 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=18, 1954 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=18, 1954 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=18, 1954 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=18, 1954 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=19, 4804 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=19, 4804 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=19, 4804 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=19, 4804 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=19, 4804 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=19, 4804 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=20, 1378 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=20, 1378 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=20, 1378 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=20, 1378 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=20, 1378 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=20, 1378 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=21, 1045 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=21, 1045 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=21, 1045 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=21, 1045 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=21, 1045 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=21, 1045 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=22, 655 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=22, 655 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=22, 655 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=22, 655 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=22, 655 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=22, 655 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=23, 379 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=23, 379 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=23, 379 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=23, 379 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=23, 379 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=23, 379 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=24, 268 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=24, 268 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=24, 268 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=24, 268 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=24, 268 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=24, 268 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=25, 123 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=25, 123 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=25, 123 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=25, 123 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=25, 123 px
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=25, 123 px
+  [capture-loop] iter=850 t=99.6s state={'complete': False, 'error': None, 'executedCount': 3, 'wsState': 1} eval_ms=3 ram=15.4/23.9GB (65%) swap=0.8/8.9GB (8%) cpu=19% browser_rss=0.84GB
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 RANSAC done (max_planes_per_face=25 hit); 7 attempt(s), 0 normal-filter rejects, 25 plane(s) accepted
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 RANSAC done (max_planes_per_face=25 hit); 7 attempt(s), 0 normal-filter rejects, 25 plane(s) accepted
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 RANSAC done (max_planes_per_face=25 hit); 7 attempt(s), 0 normal-filter rejects, 25 plane(s) accepted
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 RANSAC done (max_planes_per_face=25 hit); 7 attempt(s), 0 normal-filter rejects, 25 plane(s) accepted
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 RANSAC done (max_planes_per_face=25 hit); 7 attempt(s), 0 normal-filter rejects, 25 plane(s) accepted
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 RANSAC done (max_planes_per_face=25 hit); 7 attempt(s), 0 normal-filter rejects, 25 plane(s) accepted
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] face 1/1 done: 25 plane(s), 876672/1843200 px labeled (47.6%), 66508ms
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] face 1/1 done: 25 plane(s), 876672/1843200 px labeled (47.6%), 66508ms
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] face 1/1 done: 25 plane(s), 876672/1843200 px labeled (47.6%), 66508ms
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] face 1/1 done: 25 plane(s), 876672/1843200 px labeled (47.6%), 66508ms
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] face 1/1 done: 25 plane(s), 876672/1843200 px labeled (47.6%), 66508ms
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] face 1/1 done: 25 plane(s), 876672/1843200 px labeled (47.6%), 66508ms
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=12
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=12
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=12
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=12
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=12
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=12
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] DONE: 1 faces -> 25 total planes in 66.55s (min=25/med=25/max=25 planes/face, zero-plane faces: 0)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] DONE: 1 faces -> 25 total planes in 66.55s (min=25/med=25/max=25 planes/face, zero-plane faces: 0)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] DONE: 1 faces -> 25 total planes in 66.55s (min=25/med=25/max=25 planes/face, zero-plane faces: 0)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] DONE: 1 faces -> 25 total planes in 66.55s (min=25/med=25/max=25 planes/face, zero-plane faces: 0)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] DONE: 1 faces -> 25 total planes in 66.55s (min=25/med=25/max=25 planes/face, zero-plane faces: 0)
+  [ComfyUI] [worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] DONE: 1 faces -> 25 total planes in 66.55s (min=25/med=25/max=25 planes/face, zero-plane faces: 0)
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [comfy-env] PanoramaFacesPlaneSegment done (66.67s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaFacesPlaneSegment done (66.67s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaFacesPlaneSegment done (66.67s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaFacesPlaneSegment done (66.67s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaFacesPlaneSegment done (66.67s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaFacesPlaneSegment done (66.67s): result: NodeOutput
+  [ComfyUI] [VRAM] After PanoramaFacesPlaneSegment: 3023 / 8150 MB
+  [ComfyUI] [VRAM] After PanoramaFacesPlaneSegment: 3023 / 8150 MB
+  [ComfyUI] [VRAM] After PanoramaFacesPlaneSegment: 3023 / 8150 MB
+  [ComfyUI] [VRAM] After PanoramaFacesPlaneSegment: 3023 / 8150 MB
+  [ComfyUI] [VRAM] After PanoramaFacesPlaneSegment: 3023 / 8150 MB
+  [ComfyUI] [VRAM] After PanoramaFacesPlaneSegment: 3023 / 8150 MB
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [VRAM] Loaded: SubprocessModel (631 MB)
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 99.69 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 99.69 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 99.69 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 99.69 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 99.69 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 99.69 seconds[0m
+  Node executed (4 total), capturing...
+  Frame 12 saved (frame_011.jpg, t=100.1s)
+  [capture-node] freeze=10ms shot=147ms unfreeze=0ms saved=True
+  Execution complete (t=100.1s)
+  Captured 12 unique frames over 100.3s
+  [debug] iframes: 0
+  [timing] trigger_3d_previews: 0.0s
+  Saved high-quality screenshot: gpu_plane_segmentation_executed.png
+  [timing] final_screenshot: 0.2s
+    Captured 13 video frames

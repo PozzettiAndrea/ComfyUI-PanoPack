@@ -1,0 +1,1117 @@
+[32m[INFO][0m setup plugin alembic.autogenerate.schemas
+[32m[INFO][0m setup plugin alembic.autogenerate.tables
+[32m[INFO][0m setup plugin alembic.autogenerate.types
+[32m[INFO][0m setup plugin alembic.autogenerate.constraints
+[32m[INFO][0m setup plugin alembic.autogenerate.defaults
+[32m[INFO][0m setup plugin alembic.autogenerate.comments
+[comfy-env] ComfyUI-GeometryPack: 1 isolation env(s):
+[comfy-env]   nodes -> C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-GeometryPack\nodes
+[comfy-env] Workspace: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env
+[comfy-env]     env: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default  [OK]
+[comfy-env] prestartup complete
+[comfy-env] ComfyUI-MoGe2: 1 isolation env(s):
+[comfy-env]   nodes -> C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-MoGe2\nodes
+[comfy-env]     env: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default  [OK]
+[comfy-env] prestartup complete
+[comfy-env] ComfyUI-PanoPack: 1 isolation env(s):
+[comfy-env]   nodes -> C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes
+[comfy-env]     env: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default  [OK]
+[comfy-env] prestartup complete
+[32m[INFO][0m 
+Prestartup times for custom nodes:
+[32m[INFO][0m    0.0 seconds: C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-MoGe2
+[32m[INFO][0m    0.1 seconds: C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack
+[32m[INFO][0m    0.4 seconds: C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-GeometryPack
+[32m[INFO][0m 
+[32m[INFO][0m Found comfy_kitchen backend cuda: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'apply_rope_split_half', 'apply_rope_split_half1', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'gemv_awq_w4a16', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'quantize_svdquant_w4a4', 'scaled_mm_nvfp4', 'scaled_mm_svdquant_w4a4', 'stochastic_rounding_fp8']}
+[32m[INFO][0m Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': "ImportError: No module named 'triton'", 'capabilities': []}
+[32m[INFO][0m Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'apply_rope_split_half', 'apply_rope_split_half1', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'gemv_awq_w4a16', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'quantize_svdquant_w4a4', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4', 'scaled_mm_svdquant_w4a4', 'stochastic_rounding_fp8']}
+[32m[INFO][0m Checkpoint files will always be loaded safely.
+[32m[INFO][0m Total VRAM 8151 MB, total RAM 24466 MB
+[32m[INFO][0m pytorch version: 2.12.0+cu130
+[32m[INFO][0m Set vram state to: NORMAL_VRAM
+[32m[INFO][0m Device: cuda:0 NVIDIA GeForce RTX 5060 : cudaMallocAsync
+[32m[INFO][0m Using async weight offloading with 2 streams
+[32m[INFO][0m Enabled pinned memory 9786.0
+[32m[INFO][0m Using pytorch attention
+aimdo: src-win/cuda-detour.c:38:INFO:aimdo_setup_hooks: installing 6 hooks
+aimdo: src-win/cuda-detour.c:28:DEBUG:install_hook_entries: hooks successfully installed
+aimdo: src-win/shmem-detect.c:80:INFO:comfy-aimdo WDDM adapter match: NVIDIA GeForce RTX 5060 runtime_luid=00000000:006377d3 dxgi_luid=00000000:006377d3
+aimdo: src/control.c:241:INFO:comfy-aimdo inited for GPU: NVIDIA GeForce RTX 5060 (VRAM: 8150 MB)
+[32m[INFO][0m DynamicVRAM support detected and enabled
+[32m[INFO][0m Python version: 3.13.12 (tags/v3.13.12:1cbe481, Feb  3 2026, 18:22:25) [MSC v.1944 64 bit (AMD64)]
+[32m[INFO][0m ComfyUI version: 0.24.0
+[32m[INFO][0m comfy-aimdo version: 0.4.8
+[32m[INFO][0m comfy-kitchen version: 0.2.10
+[1m[33m[WARNING][0m ****** User settings have been changed to be stored on the server instead of browser storage. ******
+[1m[33m[WARNING][0m ****** For multi-user setups add the --multi-user CLI argument to enable multiple user profiles. ******
+[32m[INFO][0m comfyui-frontend-package version: 1.44.19
+[32m[INFO][0m comfyui-workflow-templates version: 0.9.94
+[32m[INFO][0m comfyui-embedded-docs version: 0.5.2
+[32m[INFO][0m comfy-kitchen version: 0.2.10
+[32m[INFO][0m comfy-aimdo version: 0.4.8
+[32m[INFO][0m [Prompt Server] web root: C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfyui_frontend_package\static
+[32m[INFO][0m Asset seeder disabled
+[32m[INFO][0m loading...
+[32m[INFO][0m calling register_nodes
+[comfy-env] Version: 0.4.1
+[comfy-env] register_nodes: ComfyUI-GeometryPack
+[comfy-env] ComfyUI source dir: C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI
+[comfy-env] Found 1 isolation env(s)
+[comfy-env] Scanning nodes metadata (isolation root)...
+[comfy-env] default: Library/bin has 612 DLLs
+[comfy-env] Metadata scan: C:\Users\ContainerUser\.pixi\bin\pixi.exe run --as-is --manifest-path C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\pixi.toml -e default python C:\Users\ContainerUser\AppData\Local\Temp\comfy_meta_wdx6voxf.py C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-GeometryPack nodes C:\Users\ContainerUser\AppData\Local\Temp\comfy_meta_out_dyv2pjn4.pkl
+[comfy-env] Scan env PATH for nodes:
+[comfy-env]   [0] C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default
+[comfy-env]   [1] C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default\Library\bin
+[comfy-env]   [2] C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default\Scripts
+[comfy-env]   [3] C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default\Lib\site-packages\bpy
+[comfy-env]   [4] C:\Windows\System32
+[comfy-env]   [5] C:\Windows
+[comfy-env]   [6] C:\Windows\System32\Wbem
+[comfy-env] Metadata scan stderr for nodes:
+[comfy-env]   [meta-scan] importing nodes from C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-GeometryPack
+[comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[comfy-env]   WARNING:root:comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+[comfy-env]   [meta-scan] import OK
+[comfy-env] Scanned nodes: 125 nodes (55.2s)
+[comfy-env] Scanned nodes root: 125 nodes (55.2s)
+[comfy-env] Imported nodes root: 125 nodes (isolation)
+[comfy-env] Registered 125 total nodes
+[comfy-env] Version: 0.4.1
+[comfy-env] register_nodes: ComfyUI-MoGe2
+[comfy-env] ComfyUI source dir: C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI
+[comfy-env] Found 1 isolation env(s)
+[comfy-env] Scanning nodes metadata (isolation root)...
+[comfy-env] default: Library/bin has 237 DLLs
+[comfy-env] Metadata scan: C:\Users\ContainerUser\.pixi\bin\pixi.exe run --as-is --manifest-path C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\pixi.toml -e default python C:\Users\ContainerUser\AppData\Local\Temp\comfy_meta_ax4l3gmd.py C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-MoGe2 nodes C:\Users\ContainerUser\AppData\Local\Temp\comfy_meta_out_vehvwu9j.pkl
+[comfy-env] Scan env PATH for nodes:
+[comfy-env]   [0] C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default
+[comfy-env]   [1] C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default\Library\bin
+[comfy-env]   [2] C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default\Scripts
+[comfy-env]   [3] C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default\Lib\site-packages\bpy
+[comfy-env]   [4] C:\Windows\System32
+[comfy-env]   [5] C:\Windows
+[comfy-env]   [6] C:\Windows\System32\Wbem
+[comfy-env] Metadata scan stderr for nodes:
+[comfy-env]   [meta-scan] importing nodes from C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-MoGe2
+[comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[comfy-env]   WARNING:root:comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+[comfy-env]   [meta-scan] import OK
+[comfy-env] Scanned nodes: 3 nodes (5.4s)
+[comfy-env] Scanned nodes root: 3 nodes (5.4s)
+[comfy-env] Imported nodes root: 3 nodes (isolation)
+[comfy-env] Registered 3 total nodes
+[comfy-env] Version: 0.4.1
+[comfy-env] register_nodes: ComfyUI-PanoPack
+[comfy-env] ComfyUI source dir: C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI
+[comfy-env] Found 1 isolation env(s)
+[comfy-env] Scanning nodes metadata (isolation root)...
+[comfy-env] default: Library/bin has 610 DLLs
+[comfy-env] Metadata scan: C:\Users\ContainerUser\.pixi\bin\pixi.exe run --as-is --manifest-path C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\pixi.toml -e default python C:\Users\ContainerUser\AppData\Local\Temp\comfy_meta__frf5nve.py C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack nodes C:\Users\ContainerUser\AppData\Local\Temp\comfy_meta_out_kvihjgmf.pkl
+[comfy-env] Scan env PATH for nodes:
+[comfy-env]   [0] C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default
+[comfy-env]   [1] C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Library\bin
+[comfy-env]   [2] C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Scripts
+[comfy-env]   [3] C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\site-packages\bpy
+[comfy-env]   [4] C:\Windows\System32
+[comfy-env]   [5] C:\Windows
+[comfy-env]   [6] C:\Windows\System32\Wbem
+[comfy-env] Metadata scan stderr for nodes:
+[comfy-env]   [meta-scan] importing nodes from C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack
+[comfy-env]   [meta-scan] import OK
+[comfy-env] Scanned nodes: 15 nodes (17.9s)
+[comfy-env] Scanned nodes root: 15 nodes (17.9s)
+[comfy-env] Imported nodes root: 15 nodes (isolation)
+[comfy-env] Registered 15 total nodes
+[32m[INFO][0m 
+Import times for custom nodes:
+[32m[INFO][0m    0.0 seconds: C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\websocket_image_save.py
+[32m[INFO][0m    0.0 seconds: C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
+[32m[INFO][0m    5.5 seconds: C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-MoGe2
+[32m[INFO][0m   18.0 seconds: C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack
+[32m[INFO][0m   55.7 seconds: C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-GeometryPack
+[32m[INFO][0m 
+[32m[INFO][0m Context impl SQLiteImpl.
+[32m[INFO][0m Will assume non-transactional DDL.
+[32m[INFO][0m Context impl SQLiteImpl.
+[32m[INFO][0m Will assume non-transactional DDL.
+[32m[INFO][0m Running upgrade  -> 0001_assets, Initial assets schema
+Revision ID: 0001_assets
+Revises: None
+Create Date: 2025-12-10 00:00:00
+[32m[INFO][0m Running upgrade 0001_assets -> 0002_merge_to_asset_references, Merge AssetInfo and AssetCacheState into unified asset_references table.
+[32m[INFO][0m Running upgrade 0002_merge_to_asset_references -> 0003_add_metadata_job_id, Add system_metadata and job_id columns to asset_references.
+Change preview_id FK from assets.id to asset_references.id.
+[32m[INFO][0m Database upgraded from None to 0003_add_metadata_job_id
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m Starting server
+
+[32m[INFO][0m To see the GUI go to: http://127.0.0.1:41889
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m === /validate endpoint called ===
+[32m[INFO][0m Received JSON with keys: ['prompt']
+[32m[INFO][0m Prompt has 17 nodes
+[32m[INFO][0m   Node 1: LoadImage
+[32m[INFO][0m     Inputs: {"image": "actual_pano_from_real_life.jpg"}
+[32m[INFO][0m   Node 10: DownloadAndLoadMoGe2Model
+[32m[INFO][0m     Inputs: {"model": "moge-2-vitl-normal.pt", "precision": "auto", "attention": "auto"}
+[32m[INFO][0m   Node 35: GeomPackRemesh
+[32m[INFO][0m     Inputs: {"backend": "gpu_cumesh", "backend.gpu_target_face_count": 200000, "backend.remesh_band": 1, "report_panel": "false", "trimesh": ["80", 0]}
+[32m[INFO][0m   Node 36: GeomPackPreviewMeshVTK
+[32m[INFO][0m     Inputs: {"mode": "fields", "preview_vtk": "{\"show_edges\":false,\"camera_state\":\"{\\\"position\\\":[0,0,0],\\\"focalPoint\\\":[0,0,0],\\\"viewUp\\\":[0,1,0]}\",\"selected_field\":\"\",\"selected_channel\":
+[32m[INFO][0m   Node 63: MoGe2Inference
+[32m[INFO][0m     Inputs: {"resolution_level": 9, "num_tokens": 0, "fov_x_deg": ["85", 3], "force_projection": true, "apply_mask": true, "moge2_model": ["10", 0], "images": ["85", 0]}
+[32m[INFO][0m   Node 65: PanoramaWrap
+[32m[INFO][0m     Inputs: {"image": ["1", 0]}
+[32m[INFO][0m   Node 69: PanoramaDepthMerge
+[32m[INFO][0m     Inputs: {"out_width": ["74", 0], "out_height": ["74", 1], "use_gpu": true, "scale_anchor": true, "chunk_size": 8, "center_weight_power": 2, "normal_edge_threshold_deg": 0, "normal_consistency_boost": false, "
+[32m[INFO][0m   Node 74: GetImageSize
+[32m[INFO][0m     Inputs: {"image": ["1", 0]}
+[32m[INFO][0m   Node 76: GeomPackPreviewMeshVTK
+[32m[INFO][0m     Inputs: {"mode": "fields", "preview_vtk": "{\"show_edges\":false,\"camera_state\":\"{\\\"position\\\":[0,0,0],\\\"focalPoint\\\":[0,0,0],\\\"viewUp\\\":[0,1,0]}\",\"selected_field\":\"\",\"selected_channel\":
+[32m[INFO][0m   Node 77: GeomPackSaveMesh
+[32m[INFO][0m     Inputs: {"file_path": "pano_pc", "format": "ply", "trimesh": ["83", 0]}
+[32m[INFO][0m   Node 78: GeomPackSaveMesh
+[32m[INFO][0m     Inputs: {"file_path": "pano_mesh", "format": "vtp", "trimesh": ["35", 0]}
+[32m[INFO][0m   Node 79: PanoramaBuildPointCloud
+[32m[INFO][0m     Inputs: {"contract": true, "contract_beyond": 8, "edge_rtol": 0.1, "max_size": 4096, "dropout_pcd": true, "panorama": ["65", 0], "depth": ["69", 0], "valid_mask": ["69", 1]}
+[32m[INFO][0m   Node 80: PanoramaBuildMesh
+[32m[INFO][0m     Inputs: {"contract": false, "contract_beyond": 8, "edge_rtol": 0.1, "clip_quantile": 1, "panorama": ["65", 0], "depth": ["69", 0], "valid_mask": ["69", 1]}
+[32m[INFO][0m   Node 81: PreviewImage
+[32m[INFO][0m     Inputs: {"images": ["85", 5]}
+[32m[INFO][0m   Node 82: PreviewImage
+[32m[INFO][0m     Inputs: {"images": ["69", 2]}
+[32m[INFO][0m   Node 83: GeomPackSubsamplePointCloud
+[32m[INFO][0m     Inputs: {"method": "random", "target_count": 2100, "seed": 42, "point_cloud": ["79", 0]}
+[32m[INFO][0m   Node 85: PanoramaSplit
+[32m[INFO][0m     Inputs: {"split_method": "icosahedron_12", "resolution": 952, "fov_degrees": 90, "use_gpu": true, "create_masks": false, "fname": "pano_bank", "panorama": ["65", 0]}
+[32m[INFO][0m Generated prompt_id: 09d530dd-56f9-493b-9370-14336b3daad1
+[32m[INFO][0m Calling execution.validate_prompt()...
+[32m[INFO][0m Validation result: valid=True
+[32m[INFO][0m === Validation PASSED ===
+[32m[INFO][0m got prompt
+[comfy-env] Running PanoramaWrap: image: torch.float32 [1,1920,3840,3] cpu
+[VRAM] Before PanoramaWrap: 1130 / 8150 MB
+[comfy-env] SubprocessWorker: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\python.exe
+[comfy-env] env_vars: {'COMFYUI_BASE': 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI'}
+[SubprocessWorker] call_method: nodes.panorama_type.PanoramaWrap.EXECUTE_NORMALIZED
+[SubprocessWorker] acquired lock, ensuring started...
+[comfy-env] default: Library/bin has 610 DLLs
+[ComfyUI-PanoPack] python: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\python.exe
+[ComfyUI-PanoPack] sys_path sent to worker: ['C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\panopack-nodes\\.pixi\\envs\\default\\Lib\\site-packages', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack']
+[SubprocessWorker] is_pixi=True, python=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\python.exe
+[SubprocessWorker] launching cmd=['C:\\Users\\ContainerUser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\panopack-nodes\\pixi.toml', '-e', 'default', 'python', 'C:\\Users\\ContainerUser\\AppData\\Local\\Temp\\comfyui_pvenv_b9qeco0k\\persistent_worker.py', 'tcp://127.0.0.1:56116']...
+[worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+[SubprocessWorker] worker started/confirmed
+[comfy-env] PRE-SERIALIZE 'image' shape: torch.Size([1, 1920, 3840, 3])
+[SubprocessWorker] serializing kwargs to shm...
+[SubprocessWorker] created 0 shm blocks
+[SubprocessWorker] sending request via socket...
+[SubprocessWorker] call_id=1 sending call_method
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1920, 3840, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
+[SubprocessWorker] got response: ok
+[comfy-env] PanoramaWrap done (3.40s): result: NodeOutput
+[VRAM] After PanoramaWrap: 1130 / 8150 MB
+[comfy-env] Running PanoramaSplit: split_method: dict, resolution: 952, fov_degrees: 90.0, use_gpu: True, create_masks: False, fname: 'pano_bank', panorama: dict
+[VRAM] Before PanoramaSplit: 1130 / 8150 MB
+[SubprocessWorker] call_method: nodes.panorama_split.PanoramaSplit.EXECUTE_NORMALIZED
+[SubprocessWorker] acquired lock, ensuring started...
+[ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+[ComfyUI-PanoPack] Health check: ok
+[SubprocessWorker] worker started/confirmed
+[SubprocessWorker] serializing kwargs to shm...
+[SubprocessWorker] created 0 shm blocks
+[SubprocessWorker] sending request via socket...
+[SubprocessWorker] call_id=2 sending call_method
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1920, 3840, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
+[worker:ComfyUI-PanoPack] [VRAM] +291MB (now 291MB) reserved=448MB peak=291MB
+[worker:ComfyUI-PanoPack] [PanoramaSplit] icosahedron_12: (3840x1920) -> 12 crops @ 952x952, fov=(90,90) via grid_sample (GPU); cameras 0.043s, split 2.138s, total 2.554s
+[SubprocessWorker] got response: ok
+[comfy-env] PanoramaSplit done (4.62s): result: NodeOutput
+[VRAM] After PanoramaSplit: 1130 / 8150 MB
+[comfy-env] Running DownloadAndLoadMoGe2Model: model: 'moge-2-vitl-normal.pt', precision: 'auto', attention: 'auto'
+[VRAM] Before DownloadAndLoadMoGe2Model: 1130 / 8150 MB
+[comfy-env] SubprocessWorker: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default\python.exe
+[comfy-env] env_vars: {'COMFYUI_BASE': 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI'}
+[SubprocessWorker] call_method: nodes.load_model.DownloadAndLoadMoGe2Model.EXECUTE_NORMALIZED
+[SubprocessWorker] acquired lock, ensuring started...
+[comfy-env] default: Library/bin has 237 DLLs
+[ComfyUI-MoGe2] python: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default\python.exe
+[ComfyUI-MoGe2] sys_path sent to worker: ['C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-MoGe2', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\moge2-nodes\\.pixi\\envs\\default\\Lib\\site-packages', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-MoGe2']
+[SubprocessWorker] is_pixi=True, python=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default\python.exe
+[SubprocessWorker] launching cmd=['C:\\Users\\ContainerUser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\moge2-nodes\\pixi.toml', '-e', 'default', 'python', 'C:\\Users\\ContainerUser\\AppData\\Local\\Temp\\comfyui_pvenv_jti_eak8\\persistent_worker.py', 'tcp://127.0.0.1:56118']...
+[worker:ComfyUI-MoGe2] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[worker:ComfyUI-MoGe2] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+[SubprocessWorker] worker started/confirmed
+[SubprocessWorker] serializing kwargs to shm...
+[SubprocessWorker] created 0 shm blocks
+[SubprocessWorker] sending request via socket...
+[SubprocessWorker] call_id=1 sending call_method
+model.pt:   0%|          | 0.00/1.32G [00:00<?, ?B/s]model.pt:   5%|▌         | 67.1M/1.32G [00:02<00:51, 24.3MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+model.pt:  10%|█         | 134M/1.32G [00:07<01:04, 18.5MB/s] [SubprocessWorker] callback 'report_progress' from call_id=1
+model.pt:  20%|██        | 268M/1.32G [00:07<00:22, 46.8MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+model.pt:  35%|███▌      | 469M/1.32G [00:09<00:12, 67.4MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+model.pt:  51%|█████     | 671M/1.32G [00:11<00:08, 79.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+model.pt:  66%|██████▌   | 872M/1.32G [00:11<00:03, 122MB/s] [SubprocessWorker] callback 'report_progress' from call_id=1
+model.pt:  86%|████████▌ | 1.14G/1.32G [00:11<00:00, 196MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+model.pt: 100%|██████████| 1.32G/1.32G [00:11<00:00, 255MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+model.pt: 100%|██████████| 1.32G/1.32G [00:11<00:00, 111MB/s]
+[SubprocessWorker] got response: ok
+[comfy-env] DownloadAndLoadMoGe2Model done (27.23s): result: NodeOutput
+[VRAM] After DownloadAndLoadMoGe2Model: 1130 / 8150 MB
+[comfy-env] Running MoGe2Inference: resolution_level: 9, num_tokens: 0, fov_x_deg: 90.0, force_projection: True, apply_mask: True, moge2_model: dict, images: torch.float32 [12,952,952,3] cpu
+[VRAM] Before MoGe2Inference: 1130 / 8150 MB
+[SubprocessWorker] call_method: nodes.nodes_inference.MoGe2Inference.EXECUTE_NORMALIZED
+[SubprocessWorker] acquired lock, ensuring started...
+[ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+[ComfyUI-MoGe2] Health check: ok
+[SubprocessWorker] worker started/confirmed
+[comfy-env] PRE-SERIALIZE 'images' shape: torch.Size([12, 952, 952, 3])
+[SubprocessWorker] serializing kwargs to shm...
+[SubprocessWorker] created 0 shm blocks
+[SubprocessWorker] sending request via socket...
+[SubprocessWorker] call_id=2 sending call_method
+[worker:ComfyUI-MoGe2] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-MoGe2] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+[worker:ComfyUI-MoGe2] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+[SubprocessWorker] callback 'request_vram_budget' from call_id=2
+[comfy-env] VRAM request: 0.66GB, free before eviction: 7.36GB
+[comfy-env] VRAM after eviction: 7.36GB
+[worker:ComfyUI-MoGe2] [VRAM] +256MB (now 256MB) reserved=288MB peak=256MB
+[worker:ComfyUI-MoGe2] [VRAM] +455MB (now 711MB) reserved=800MB peak=711MB
+[SubprocessWorker] callback 'report_progress' from call_id=2
+[SubprocessWorker] callback 'report_progress' from call_id=2
+[SubprocessWorker] callback 'report_progress' from call_id=2
+[SubprocessWorker] callback 'report_progress' from call_id=2
+[SubprocessWorker] callback 'report_progress' from call_id=2
+[SubprocessWorker] callback 'report_progress' from call_id=2
+[SubprocessWorker] callback 'report_progress' from call_id=2
+[SubprocessWorker] callback 'report_progress' from call_id=2
+[SubprocessWorker] callback 'report_progress' from call_id=2
+[SubprocessWorker] callback 'report_progress' from call_id=2
+[SubprocessWorker] callback 'report_progress' from call_id=2
+[SubprocessWorker] callback 'report_progress' from call_id=2
+[SubprocessWorker] got response: ok
+[comfy-env] Created 1 model patchers: ['MoGeWrapper_1']
+[comfy-env] MoGe2Inference done (22.60s): result: NodeOutput
+[VRAM] After MoGe2Inference: 1130 / 8150 MB
+[VRAM] Loaded: SubprocessModel (631 MB)
+[comfy-env] Running PanoramaDepthMerge: out_width: 3840, out_height: 1920, use_gpu: True, scale_anchor: True, chunk_size: 8, center_weight_power: 2.0, normal_edge_threshold_deg: 0.0, normal_consistency_boost: False, max_ray_distance_m: 0.0, face_points: torch.float32 [12,952,952,3] cpu, extrinsics: torch.float32 [12,4,4] cpu, intrinsics: torch.float32 [12,3,3] cpu, face_valid_masks: torch.float32 [12,952,952] cpu, face_normals: torch.float32 [12,952,952,3] cpu
+[VRAM] Before PanoramaDepthMerge: 1130 / 8150 MB
+[VRAM] Loaded: SubprocessModel (631 MB)
+[SubprocessWorker] call_method: nodes.depth_merge.PanoramaDepthMerge.EXECUTE_NORMALIZED
+[SubprocessWorker] acquired lock, ensuring started...
+[ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+[ComfyUI-PanoPack] Health check: failed
+[ComfyUI-PanoPack] Socket unhealthy, restarting worker...
+[comfy-env] default: Library/bin has 610 DLLs
+[ComfyUI-PanoPack] python: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\python.exe
+[ComfyUI-PanoPack] sys_path sent to worker: ['C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\panopack-nodes\\.pixi\\envs\\default\\Lib\\site-packages', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack']
+[SubprocessWorker] is_pixi=True, python=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\python.exe
+[SubprocessWorker] launching cmd=['C:\\Users\\ContainerUser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\panopack-nodes\\pixi.toml', '-e', 'default', 'python', 'C:\\Users\\ContainerUser\\AppData\\Local\\Temp\\comfyui_pvenv_b9qeco0k\\persistent_worker.py', 'tcp://127.0.0.1:56158']...
+[worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+[SubprocessWorker] worker started/confirmed
+[comfy-env] PRE-SERIALIZE 'face_points' shape: torch.Size([12, 952, 952, 3])
+[comfy-env] PRE-SERIALIZE 'extrinsics' shape: torch.Size([12, 4, 4])
+[comfy-env] PRE-SERIALIZE 'intrinsics' shape: torch.Size([12, 3, 3])
+[comfy-env] PRE-SERIALIZE 'face_valid_masks' shape: torch.Size([12, 952, 952])
+[comfy-env] PRE-SERIALIZE 'face_normals' shape: torch.Size([12, 952, 952, 3])
+[SubprocessWorker] serializing kwargs to shm...
+[SubprocessWorker] created 0 shm blocks
+[SubprocessWorker] sending request via socket...
+[SubprocessWorker] call_id=3 sending call_method
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 4, 4]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 4, 4])
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 3, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 3, 3])
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952])
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] normals merged: 1920x3840
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] merging 12 faces @ 952x952 -> equirect 1920x3840 (use_gpu=True); input = points (||.|| -> ray distance)
+[SubprocessWorker] callback 'report_progress' from call_id=3
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] top-level peak VRAM estimate: 3.04 GB (3840x1920, N=12, chunk_size=8)
+[SubprocessWorker] callback 'request_vram_budget' from call_id=3
+[comfy-env] VRAM request: 3.04GB, free before eviction: 7.36GB
+[comfy-env] VRAM after eviction: 7.36GB
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge]   -> requested 3.04 GB eviction via comfy_worker.call_parent
+C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\_vendor\worldgen\src\panorama_utils.py:349: UserWarning: Sparse invariant checks are implicitly disabled. Memory errors (e.g. SEGFAULT) will occur when operating on a sparse tensor which violates the invariants, but checks incur performance overhead. To silence this warning, explicitly opt in or out. See `torch.sparse.check_sparse_tensor_invariants.__doc__` for guidance.  (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\Context.cpp:767.)
+  A_gpu = torch.sparse_csr_tensor(
+C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\_vendor\worldgen\src\panorama_utils.py:349: UserWarning: Sparse CSR tensor support is in beta state. If you miss a functionality in the sparse tensor support, please submit a feature request to https://github.com/pytorch/pytorch/issues. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\SparseCsrTensorImpl.cpp:51.)
+  A_gpu = torch.sparse_csr_tensor(
+[worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  240x120 ] done 1.06s (warp 0.40, build 0.01, LSMR 0.55); N=12 K=8 chunks=2; scale_shift=+0.9179 (exp~=2.504); depth min/med/max = 1.667/2.503/4.582; valid 28800/28800
+[worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  480x240 ] done 1.35s (warp 0.04, build 0.02, LSMR 0.20); N=12 K=8 chunks=2; depth min/med/max = 1.667/2.505/4.632; valid 115200/115200
+[worker:ComfyUI-PanoPack] [VRAM] +202MB (now 202MB) reserved=256MB peak=202MB
+[worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  960x480 ] done 1.84s (warp 0.06, build 0.11, LSMR 0.30); N=12 K=8 chunks=2; depth min/med/max = 1.667/2.506/4.649; valid 460800/460800
+[worker:ComfyUI-PanoPack] [VRAM] +263MB (now 466MB) reserved=544MB peak=466MB
+[worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu 1920x960 ] done 3.14s (warp 0.10, build 0.48, LSMR 0.62); N=12 K=8 chunks=2; depth min/med/max = 1.667/2.506/4.650; valid 1843200/1843200
+[worker:ComfyUI-PanoPack] [VRAM] -352MB (now 114MB) reserved=192MB peak=522MB
+[worker:ComfyUI-PanoPack] [VRAM] +337MB (now 452MB) reserved=512MB peak=522MB
+[worker:ComfyUI-PanoPack] [VRAM] +534MB (now 986MB) reserved=1024MB peak=986MB
+[worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu 3840x1920] done 8.08s (warp 0.31, build 2.37, LSMR 1.93); N=12 K=8 chunks=2; depth min/med/max = 1.667/2.506/4.649; valid 7372800/7372800
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] merged depth: shape (1920, 3840), min=1.684, median=2.506, max=4.649; valid pixels: 7372800 / 7372800
+[worker:ComfyUI-PanoPack] [VRAM] -955MB (now 32MB) reserved=1728MB peak=1521MB
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] debug_image: H=1920+96, mult_disagreement (log-d, sphere-uniform): mean=6.66%, p99=18.22%, max=30.87%; overlap_pixels=5688080
+[worker:ComfyUI-PanoPack] [headless_gl] prefix=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default
+[worker:ComfyUI-PanoPack] [headless_gl] libOSMesa*: MISSING
+[worker:ComfyUI-PanoPack] [headless_gl] env: VTK_DEFAULT_OPENGL_WINDOW=vtkOSOpenGLRenderWindow PYVISTA_OFF_SCREEN=true
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] xyz_views: cloud bbox center=(+0.26, +0.39, +0.17) m, size=(6.10 x 5.99 x 3.93) m, N=80000 (subsampled)
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] points: merged equirect point map (1, 1920, 3840, 3)
+[SubprocessWorker] callback 'report_progress' from call_id=3
+[SubprocessWorker] got response: ok
+[comfy-env] PanoramaDepthMerge done (43.68s): result: NodeOutput
+[VRAM] After PanoramaDepthMerge: 1130 / 8150 MB
+[VRAM] Loaded: SubprocessModel (631 MB)
+[comfy-env] Running PanoramaBuildMesh: contract: False, contract_beyond: 8.0, edge_rtol: 0.1, clip_quantile: 1.0, panorama: dict, depth: torch.float32 [1,1920,3840,3] cpu, valid_mask: torch.float32 [1,1920,3840] cpu
+[VRAM] Before PanoramaBuildMesh: 1130 / 8150 MB
+[VRAM] Loaded: SubprocessModel (631 MB)
+[SubprocessWorker] call_method: nodes.build_mesh.PanoramaBuildMesh.EXECUTE_NORMALIZED
+[SubprocessWorker] acquired lock, ensuring started...
+[ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+[ComfyUI-PanoPack] Health check: ok
+[SubprocessWorker] worker started/confirmed
+[comfy-env] PRE-SERIALIZE 'depth' shape: torch.Size([1, 1920, 3840, 3])
+[comfy-env] PRE-SERIALIZE 'valid_mask' shape: torch.Size([1, 1920, 3840])
+[SubprocessWorker] serializing kwargs to shm...
+[SubprocessWorker] created 0 shm blocks
+[SubprocessWorker] sending request via socket...
+[SubprocessWorker] call_id=4 sending call_method
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1920, 3840, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1920, 3840, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1920, 3840]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840])
+[worker:ComfyUI-PanoPack] [PanoramaBuildMesh] panorama (3840, 1920) depth (1920, 3840) contract=False
+[SubprocessWorker] got response: error
+[1m[31m[ERROR][0m !!! Exception during processing !!! No module named 'torchvision'
+
+Worker traceback:
+Traceback (most recent call last):
+  File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 1762, in main
+    result = method(**inputs)
+  File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1880, in EXECUTE_NORMALIZED
+    to_return = cls.execute(*args, **kwargs)
+  File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\build_mesh.py", line 260, in execute
+    from ._vendor.worldgen.pipeline import build_mesh as _build_mesh
+  File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\_vendor\worldgen\pipeline.py", line 26, in <module>
+    import torchvision.transforms as transforms
+ModuleNotFoundError: No module named 'torchvision'
+
+[1m[31m[ERROR][0m Traceback (most recent call last):
+  File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 536, in execute
+    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 336, in get_output_data
+    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 310, in _async_map_node_over_list
+    await process_inputs(input_dict, i)
+  File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 298, in process_inputs
+    result = f(**inputs)
+  File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\metadata.py", line 560, in proxy
+    result = worker.call_method(
+        module_name=mod,
+    ...<4 lines>...
+        timeout=600.0,
+    )
+  File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\workers\subprocess.py", line 674, in call_method
+    raise WorkerError(
+    ...<2 lines>...
+    )
+comfy_env.isolation.workers.base.WorkerError: No module named 'torchvision'
+
+Worker traceback:
+Traceback (most recent call last):
+  File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 1762, in main
+    result = method(**inputs)
+  File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1880, in EXECUTE_NORMALIZED
+    to_return = cls.execute(*args, **kwargs)
+  File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\build_mesh.py", line 260, in execute
+    from ._vendor.worldgen.pipeline import build_mesh as _build_mesh
+  File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\_vendor\worldgen\pipeline.py", line 26, in <module>
+    import torchvision.transforms as transforms
+ModuleNotFoundError: No module named 'torchvision'
+
+
+[32m[INFO][0m [32mPrompt executed in 103.26 seconds[0m
+[comfy-env] [VRAM] Before offload 'MoGeWrapper_1' (631 MB) -> cpu: 1130 / 8150 MB
+[ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+[ComfyUI-MoGe2] Health check: failed
+[ComfyUI-MoGe2] Socket unhealthy, restarting worker...
+[comfy-env] Invalidated 1 stale model patchers (will be cleaned up during next unload)
+[comfy-env] default: Library/bin has 237 DLLs
+[ComfyUI-MoGe2] python: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default\python.exe
+[ComfyUI-MoGe2] sys_path sent to worker: ['C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-MoGe2', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\moge2-nodes\\.pixi\\envs\\default\\Lib\\site-packages', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-MoGe2']
+[SubprocessWorker] is_pixi=True, python=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default\python.exe
+[SubprocessWorker] launching cmd=['C:\\Users\\ContainerUser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\moge2-nodes\\pixi.toml', '-e', 'default', 'python', 'C:\\Users\\ContainerUser\\AppData\\Local\\Temp\\comfyui_pvenv_jti_eak8\\persistent_worker.py', 'tcp://127.0.0.1:56161']...
+[worker:ComfyUI-MoGe2] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[worker:ComfyUI-MoGe2] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+[SubprocessWorker] call_id=3 sending model_to_device
+[1m[33m[WARNING][0m Model 'MoGeWrapper_1' gone from worker (restarted?), treating as offloaded
+[comfy-env] [VRAM] After offload 'MoGeWrapper_1' (631 MB): 1130 / 8150 MB
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m === /validate endpoint called ===
+[32m[INFO][0m Received JSON with keys: ['prompt']
+[32m[INFO][0m Prompt has 13 nodes
+[32m[INFO][0m   Node 7: LoadImage
+[32m[INFO][0m     Inputs: {"image": "pano.png"}
+[32m[INFO][0m   Node 59: PanoramaWrap
+[32m[INFO][0m     Inputs: {"image": ["7", 0]}
+[32m[INFO][0m   Node 60: PanoramaDepthMerge
+[32m[INFO][0m     Inputs: {"out_width": ["61", 0], "out_height": ["61", 1], "use_gpu": true, "scale_anchor": false, "chunk_size": 8, "center_weight_power": 2, "normal_edge_threshold_deg": 0, "normal_consistency_boost": false, 
+[32m[INFO][0m   Node 61: GetImageSize
+[32m[INFO][0m     Inputs: {"image": ["7", 0]}
+[32m[INFO][0m   Node 62: PreviewImage
+[32m[INFO][0m     Inputs: {"images": ["60", 2]}
+[32m[INFO][0m   Node 68: PreviewImage
+[32m[INFO][0m     Inputs: {"images": ["95", 0]}
+[32m[INFO][0m   Node 70: PreviewImage
+[32m[INFO][0m     Inputs: {"images": ["81", 0]}
+[32m[INFO][0m   Node 80: DownloadAndLoadMoGe2Model
+[32m[INFO][0m     Inputs: {"model": "moge-2-vitl-normal.pt", "precision": "auto", "attention": "auto"}
+[32m[INFO][0m   Node 81: MoGe2Inference
+[32m[INFO][0m     Inputs: {"resolution_level": 9, "num_tokens": 0, "fov_x_deg": 0, "force_projection": true, "apply_mask": true, "moge2_model": ["80", 0], "images": ["95", 0]}
+[32m[INFO][0m   Node 87: PanoramaSplitAdaptive
+[32m[INFO][0m     Inputs: {"split_method": "icosahedron_42", "resolution": 1536, "fov_degrees": 90, "use_gpu": true, "create_masks": true, "mask_method": "closest_to", "panorama": ["59", 0], "depth_panorama": ["60", 0], "norma
+[32m[INFO][0m   Node 88: PreviewImage
+[32m[INFO][0m     Inputs: {"images": ["87", 7]}
+[32m[INFO][0m   Node 89: PreviewImage
+[32m[INFO][0m     Inputs: {"images": ["87", 8]}
+[32m[INFO][0m   Node 95: PanoramaSplit
+[32m[INFO][0m     Inputs: {"split_method": "icosahedron_12", "resolution": 952, "fov_degrees": 90, "use_gpu": true, "create_masks": false, "fname": "pano_bank", "panorama": ["59", 0]}
+[32m[INFO][0m Generated prompt_id: fc457536-1be1-4235-943e-41cc83f9d54f
+[32m[INFO][0m Calling execution.validate_prompt()...
+[32m[INFO][0m Validation result: valid=True
+[32m[INFO][0m === Validation PASSED ===
+[32m[INFO][0m got prompt
+[comfy-env] Running DownloadAndLoadMoGe2Model: model: 'moge-2-vitl-normal.pt', precision: 'auto', attention: 'auto'
+[VRAM] Before DownloadAndLoadMoGe2Model: 1130 / 8150 MB
+[SubprocessWorker] call_method: nodes.load_model.DownloadAndLoadMoGe2Model.EXECUTE_NORMALIZED
+[SubprocessWorker] acquired lock, ensuring started...
+[ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+[ComfyUI-MoGe2] Health check: ok
+[SubprocessWorker] worker started/confirmed
+[SubprocessWorker] serializing kwargs to shm...
+[SubprocessWorker] created 0 shm blocks
+[SubprocessWorker] sending request via socket...
+[SubprocessWorker] call_id=4 sending call_method
+[SubprocessWorker] got response: ok
+[comfy-env] [VRAM] Before offload 'MoGeWrapper_1' (631 MB) -> cpu: 1130 / 8150 MB
+[ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+[ComfyUI-MoGe2] Health check: ok
+[SubprocessWorker] call_id=5 sending model_to_device
+[1m[33m[WARNING][0m Model 'MoGeWrapper_1' gone from worker (restarted?), treating as offloaded
+[comfy-env] [VRAM] After offload 'MoGeWrapper_1' (631 MB): 1130 / 8150 MB
+[comfy-env] DownloadAndLoadMoGe2Model done (0.25s): result: NodeOutput
+[VRAM] After DownloadAndLoadMoGe2Model: 1130 / 8150 MB
+[comfy-env] Running PanoramaWrap: image: torch.float32 [1,2048,4096,3] cpu
+[VRAM] Before PanoramaWrap: 1130 / 8150 MB
+[SubprocessWorker] call_method: nodes.panorama_type.PanoramaWrap.EXECUTE_NORMALIZED
+[SubprocessWorker] acquired lock, ensuring started...
+[ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+[ComfyUI-PanoPack] Health check: ok
+[SubprocessWorker] worker started/confirmed
+[comfy-env] PRE-SERIALIZE 'image' shape: torch.Size([1, 2048, 4096, 3])
+[SubprocessWorker] serializing kwargs to shm...
+[SubprocessWorker] created 0 shm blocks
+[SubprocessWorker] sending request via socket...
+[SubprocessWorker] call_id=5 sending call_method
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 2048, 4096, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
+[SubprocessWorker] got response: ok
+[comfy-env] PanoramaWrap done (0.12s): result: NodeOutput
+[VRAM] After PanoramaWrap: 1130 / 8150 MB
+[comfy-env] Running PanoramaSplit: split_method: dict, resolution: 952, fov_degrees: 90.0, use_gpu: True, create_masks: False, fname: 'pano_bank', panorama: dict
+[VRAM] Before PanoramaSplit: 1130 / 8150 MB
+[SubprocessWorker] call_method: nodes.panorama_split.PanoramaSplit.EXECUTE_NORMALIZED
+[SubprocessWorker] acquired lock, ensuring started...
+[ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+[ComfyUI-PanoPack] Health check: ok
+[SubprocessWorker] worker started/confirmed
+[SubprocessWorker] serializing kwargs to shm...
+[SubprocessWorker] created 0 shm blocks
+[SubprocessWorker] sending request via socket...
+[SubprocessWorker] call_id=6 sending call_method
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 2048, 4096, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
+[worker:ComfyUI-PanoPack] [VRAM] +303MB (now 335MB) reserved=576MB peak=1521MB
+[worker:ComfyUI-PanoPack] [PanoramaSplit] icosahedron_12: (4096x2048) -> 12 crops @ 952x952, fov=(90,90) via grid_sample (GPU); cameras 0.001s, split 1.842s, total 2.115s
+[SubprocessWorker] got response: ok
+[comfy-env] PanoramaSplit done (2.28s): result: NodeOutput
+[VRAM] After PanoramaSplit: 1130 / 8150 MB
+[comfy-env] Running MoGe2Inference: resolution_level: 9, num_tokens: 0, fov_x_deg: 0.0, force_projection: True, apply_mask: True, moge2_model: dict, images: torch.float32 [12,952,952,3] cpu
+[VRAM] Before MoGe2Inference: 1130 / 8150 MB
+[SubprocessWorker] call_method: nodes.nodes_inference.MoGe2Inference.EXECUTE_NORMALIZED
+[SubprocessWorker] acquired lock, ensuring started...
+[ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+[ComfyUI-MoGe2] Health check: ok
+[SubprocessWorker] worker started/confirmed
+[comfy-env] PRE-SERIALIZE 'images' shape: torch.Size([12, 952, 952, 3])
+[SubprocessWorker] serializing kwargs to shm...
+[SubprocessWorker] created 0 shm blocks
+[SubprocessWorker] sending request via socket...
+[SubprocessWorker] call_id=6 sending call_method
+[worker:ComfyUI-MoGe2] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-MoGe2] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+[worker:ComfyUI-MoGe2] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+[SubprocessWorker] callback 'request_vram_budget' from call_id=6
+[comfy-env] VRAM request: 0.66GB, free before eviction: 7.36GB
+[comfy-env] VRAM after eviction: 7.36GB
+[worker:ComfyUI-MoGe2] [VRAM] +320MB (now 320MB) reserved=352MB peak=320MB
+[worker:ComfyUI-MoGe2] [VRAM] +349MB (now 669MB) reserved=1632MB peak=865MB
+[SubprocessWorker] callback 'report_progress' from call_id=6
+[SubprocessWorker] callback 'report_progress' from call_id=6
+[SubprocessWorker] callback 'report_progress' from call_id=6
+[SubprocessWorker] callback 'report_progress' from call_id=6
+[SubprocessWorker] callback 'report_progress' from call_id=6
+[SubprocessWorker] callback 'report_progress' from call_id=6
+[SubprocessWorker] callback 'report_progress' from call_id=6
+[SubprocessWorker] callback 'report_progress' from call_id=6
+[SubprocessWorker] callback 'report_progress' from call_id=6
+[SubprocessWorker] callback 'report_progress' from call_id=6
+[SubprocessWorker] callback 'report_progress' from call_id=6
+[SubprocessWorker] callback 'report_progress' from call_id=6
+[SubprocessWorker] got response: ok
+[comfy-env] Created 1 model patchers: ['MoGeWrapper_1']
+[comfy-env] MoGe2Inference done (13.12s): result: NodeOutput
+[VRAM] After MoGe2Inference: 1130 / 8150 MB
+[VRAM] Loaded: SubprocessModel (631 MB)
+[comfy-env] Running PanoramaDepthMerge: out_width: 4096, out_height: 2048, use_gpu: True, scale_anchor: False, chunk_size: 8, center_weight_power: 2.0, normal_edge_threshold_deg: 0.0, normal_consistency_boost: False, max_ray_distance_m: 0.0, face_points: torch.float32 [12,952,952,3] cpu, extrinsics: torch.float32 [12,4,4] cpu, intrinsics: torch.float32 [12,3,3] cpu, face_valid_masks: torch.float32 [12,952,952] cpu, face_normals: torch.float32 [12,952,952,3] cpu
+[VRAM] Before PanoramaDepthMerge: 1130 / 8150 MB
+[VRAM] Loaded: SubprocessModel (631 MB)
+[SubprocessWorker] call_method: nodes.depth_merge.PanoramaDepthMerge.EXECUTE_NORMALIZED
+[SubprocessWorker] acquired lock, ensuring started...
+[ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+[ComfyUI-PanoPack] Health check: failed
+[ComfyUI-PanoPack] Socket unhealthy, restarting worker...
+[comfy-env] default: Library/bin has 610 DLLs
+[ComfyUI-PanoPack] python: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\python.exe
+[ComfyUI-PanoPack] sys_path sent to worker: ['C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\panopack-nodes\\.pixi\\envs\\default\\Lib\\site-packages', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack']
+[SubprocessWorker] is_pixi=True, python=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\python.exe
+[SubprocessWorker] launching cmd=['C:\\Users\\ContainerUser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\panopack-nodes\\pixi.toml', '-e', 'default', 'python', 'C:\\Users\\ContainerUser\\AppData\\Local\\Temp\\comfyui_pvenv_b9qeco0k\\persistent_worker.py', 'tcp://127.0.0.1:59165']...
+[worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+[SubprocessWorker] worker started/confirmed
+[comfy-env] PRE-SERIALIZE 'face_points' shape: torch.Size([12, 952, 952, 3])
+[comfy-env] PRE-SERIALIZE 'extrinsics' shape: torch.Size([12, 4, 4])
+[comfy-env] PRE-SERIALIZE 'intrinsics' shape: torch.Size([12, 3, 3])
+[comfy-env] PRE-SERIALIZE 'face_valid_masks' shape: torch.Size([12, 952, 952])
+[comfy-env] PRE-SERIALIZE 'face_normals' shape: torch.Size([12, 952, 952, 3])
+[SubprocessWorker] serializing kwargs to shm...
+[SubprocessWorker] created 0 shm blocks
+[SubprocessWorker] sending request via socket...
+[SubprocessWorker] call_id=7 sending call_method
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 4, 4]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 4, 4])
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 3, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 3, 3])
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952])
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] normals merged: 2048x4096
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] merging 12 faces @ 952x952 -> equirect 2048x4096 (use_gpu=True); input = points (||.|| -> ray distance)
+[SubprocessWorker] callback 'report_progress' from call_id=7
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] top-level peak VRAM estimate: 3.46 GB (4096x2048, N=12, chunk_size=8)
+[SubprocessWorker] callback 'request_vram_budget' from call_id=7
+[comfy-env] VRAM request: 3.46GB, free before eviction: 7.36GB
+[comfy-env] VRAM after eviction: 7.36GB
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge]   -> requested 3.46 GB eviction via comfy_worker.call_parent
+C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\_vendor\worldgen\src\panorama_utils.py:349: UserWarning: Sparse invariant checks are implicitly disabled. Memory errors (e.g. SEGFAULT) will occur when operating on a sparse tensor which violates the invariants, but checks incur performance overhead. To silence this warning, explicitly opt in or out. See `torch.sparse.check_sparse_tensor_invariants.__doc__` for guidance.  (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\Context.cpp:767.)
+  A_gpu = torch.sparse_csr_tensor(
+C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\_vendor\worldgen\src\panorama_utils.py:349: UserWarning: Sparse CSR tensor support is in beta state. If you miss a functionality in the sparse tensor support, please submit a feature request to https://github.com/pytorch/pytorch/issues. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\SparseCsrTensorImpl.cpp:51.)
+  A_gpu = torch.sparse_csr_tensor(
+[worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  256x128 ] done 0.94s (warp 0.37, build 0.01, LSMR 0.57); N=12 K=8 chunks=2; depth min/med/max = 0.403/0.957/2.914; valid 32768/32768
+[worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  512x256 ] done 1.20s (warp 0.04, build 0.02, LSMR 0.19); N=12 K=8 chunks=2; depth min/med/max = 0.403/0.957/2.922; valid 131072/131072
+[worker:ComfyUI-PanoPack] [VRAM] +214MB (now 214MB) reserved=256MB peak=214MB
+[worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu 1024x512 ] done 1.69s (warp 0.06, build 0.10, LSMR 0.31); N=12 K=8 chunks=2; depth min/med/max = 0.402/0.957/2.923; valid 524288/524288
+[worker:ComfyUI-PanoPack] [VRAM] +299MB (now 514MB) reserved=608MB peak=514MB
+[worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu 2048x1024] done 3.21s (warp 0.12, build 0.53, LSMR 0.78); N=12 K=8 chunks=2; depth min/med/max = 0.402/0.957/2.924; valid 2097152/2097152
+[worker:ComfyUI-PanoPack] [VRAM] -400MB (now 114MB) reserved=224MB peak=572MB
+[worker:ComfyUI-PanoPack] [VRAM] +383MB (now 498MB) reserved=576MB peak=572MB
+[worker:ComfyUI-PanoPack] [VRAM] +607MB (now 1106MB) reserved=1152MB peak=1106MB
+[worker:ComfyUI-PanoPack] [VRAM] +607MB (now 1714MB) reserved=1952MB peak=1714MB
+[worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu 4096x2048] done 9.17s (warp 0.35, build 2.59, LSMR 2.70); N=12 K=8 chunks=2; depth min/med/max = 0.402/0.957/2.924; valid 8388608/8388608
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] merged depth: shape (2048, 4096), min=0.402, median=0.957, max=2.924; valid pixels: 8388608 / 8388608
+[worker:ComfyUI-PanoPack] [VRAM] -1683MB (now 32MB) reserved=1952MB peak=1714MB
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] debug_image: H=2048+102, mult_disagreement (log-d, sphere-uniform): mean=6.95%, p99=16.87%, max=20.22%; overlap_pixels=6472176
+[worker:ComfyUI-PanoPack] [headless_gl] prefix=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default
+[worker:ComfyUI-PanoPack] [headless_gl] libOSMesa*: MISSING
+[worker:ComfyUI-PanoPack] [headless_gl] env: VTK_DEFAULT_OPENGL_WINDOW=vtkOSOpenGLRenderWindow PYVISTA_OFF_SCREEN=true
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] xyz_views: cloud bbox center=(-0.71, -0.31, +0.01) m, size=(4.12 x 3.47 x 1.91) m, N=80000 (subsampled)
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] points: merged equirect point map (1, 2048, 4096, 3)
+[SubprocessWorker] callback 'report_progress' from call_id=7
+[SubprocessWorker] got response: ok
+[comfy-env] PanoramaDepthMerge done (35.15s): result: NodeOutput
+[VRAM] After PanoramaDepthMerge: 1130 / 8150 MB
+[VRAM] Loaded: SubprocessModel (631 MB)
+[comfy-env] Running PanoramaSplitAdaptive: split_method: 'icosahedron_42', resolution: 1536, fov_degrees: 90.0, use_gpu: True, create_masks: True, mask_method: 'closest_to', panorama: dict, depth_panorama: torch.float32 [1,2048,4096,3] cpu, normals_panorama: torch.float32 [1,2048,4096,3] cpu
+[VRAM] Before PanoramaSplitAdaptive: 1130 / 8150 MB
+[VRAM] Loaded: SubprocessModel (631 MB)
+[SubprocessWorker] call_method: nodes.panorama_split_adaptive.PanoramaSplitAdaptive.EXECUTE_NORMALIZED
+[SubprocessWorker] acquired lock, ensuring started...
+[ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+[ComfyUI-PanoPack] Health check: ok
+[SubprocessWorker] worker started/confirmed
+[comfy-env] PRE-SERIALIZE 'depth_panorama' shape: torch.Size([1, 2048, 4096, 3])
+[comfy-env] PRE-SERIALIZE 'normals_panorama' shape: torch.Size([1, 2048, 4096, 3])
+[SubprocessWorker] serializing kwargs to shm...
+[SubprocessWorker] created 0 shm blocks
+[SubprocessWorker] sending request via socket...
+[SubprocessWorker] call_id=8 sending call_method
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 2048, 4096, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 2048, 4096, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 2048, 4096, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
+[worker:ComfyUI-PanoPack] [PanoramaSplitAdaptive] computing area weights from depth (2048x4096) + normals...
+[worker:ComfyUI-PanoPack] [PanoramaSplitAdaptive]   weight range: [1.03, 121], mean=11.6
+[worker:ComfyUI-PanoPack] [PanoramaSplitAdaptive] adaptive relax: icosahedron_42 (42 cameras), weighted Lloyd...
+[worker:ComfyUI-PanoPack] 
+=== WATCHDOG TICK 1 ===
+[worker:ComfyUI-PanoPack] Thread 0x00000c24 (most recent call first):
+  File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 106 in _vram_poller
+  File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 995 in run
+  File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1044 in _bootstrap_inner
+  File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1015 in _bootstrap
+
+Current thread 0x00002658 (most recent call first):
+  File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 52 in _watchdog
+  File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 995 in run
+  File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1044 in _bootstrap_inner
+  File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1015 in _bootstrap
+
+Thread 0x00003638 (most recent call first):
+  File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\panorama_split_adaptive.py", line 237 in _lloyd_relax
+  File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\panorama_split_adaptive.py", line 408 in execute
+  File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1880 in EXECUTE_NORMALIZED
+  File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 1762 in main
+  File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 1807 in <module>
+
+[worker:ComfyUI-PanoPack] === END ===
+
+[worker:ComfyUI-PanoPack] [PanoramaSplitAdaptive]   Lloyd ran 24 iters (max move 1.22e-02)
+[worker:ComfyUI-PanoPack] [PanoramaSplitAdaptive]   Lloyd relaxation done: 42 camera directions in 49.615s
+[worker:ComfyUI-PanoPack] [PanoramaSplitAdaptive] rasterizing 42 faces @ 1536x1536...
+[worker:ComfyUI-PanoPack] [VRAM] +756MB (now 788MB) reserved=832MB peak=1714MB
+[worker:ComfyUI-PanoPack] [VRAM] +1230MB (now 2018MB) reserved=3264MB peak=2018MB
+[worker:ComfyUI-PanoPack] [PanoramaSplitAdaptive]   rasterized RGB in 17.231s (GPU)
+[worker:ComfyUI-PanoPack] [VRAM] -1986MB (now 32MB) reserved=3264MB peak=2018MB
+[worker:ComfyUI-PanoPack] [PanoramaSplitAdaptive] rasterizing depth crops...
+[worker:ComfyUI-PanoPack] [VRAM] +756MB (now 788MB) reserved=3264MB peak=2018MB
+[worker:ComfyUI-PanoPack] [VRAM] +1230MB (now 2018MB) reserved=3264MB peak=2018MB
+[worker:ComfyUI-PanoPack] 
+=== WATCHDOG TICK 2 ===
+[worker:ComfyUI-PanoPack] Thread 0x00000c24 (most recent call first):
+  File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 106 in _vram_poller
+  File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 995 in run
+  File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1044 in _bootstrap_inner
+  File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1015 in _bootstrap
+
+Current thread 0x00002658 (most recent call first):
+  File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 52 in _watchdog
+  File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 995 in run
+  File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1044 in _bootstrap_inner
+  File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1015 in _bootstrap
+
+Thread 0x00003638 (most recent call first):
+  File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\panorama_split_adaptive.py", line 451 in execute
+  File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1880 in EXECUTE_NORMALIZED
+  File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 1762 in main
+  File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 1807 in <module>
+
+[worker:ComfyUI-PanoPack] === END ===
+
+[worker:ComfyUI-PanoPack] [PanoramaSplitAdaptive] rasterizing normals crops...
+[worker:ComfyUI-PanoPack] [VRAM] -1986MB (now 32MB) reserved=3264MB peak=2018MB
+[worker:ComfyUI-PanoPack] [VRAM] +756MB (now 788MB) reserved=3264MB peak=2018MB
+[worker:ComfyUI-PanoPack] [VRAM] +1230MB (now 2018MB) reserved=3264MB peak=2018MB
+[worker:ComfyUI-PanoPack] [PanoramaSplitAdaptive] generating closest_to masks...
+[worker:ComfyUI-PanoPack] [VRAM] -1986MB (now 32MB) reserved=3264MB peak=2018MB
+[worker:ComfyUI-PanoPack] [PanoramaSplitAdaptive] generating debug_masks equirect image...
+[worker:ComfyUI-PanoPack] [PanoramaSplitAdaptive] pixels/area: lowest 0.238 -> 0.329 (+38% on the worst-sampled cell), highest 6.16 -> 3; spread max/min 25.9x -> 9.1x
+[worker:ComfyUI-PanoPack] [PanoramaSplitAdaptive] done: 42 adaptive faces, 139.266s total
+[SubprocessWorker] got response: ok
+[comfy-env] PanoramaSplitAdaptive done (141.16s): result: NodeOutput
+[VRAM] After PanoramaSplitAdaptive: 1130 / 8150 MB
+[VRAM] Loaded: SubprocessModel (631 MB)
+[32m[INFO][0m [32mPrompt executed in 194.66 seconds[0m
+[comfy-env] [VRAM] Before offload 'MoGeWrapper_1' (631 MB) -> cpu: 1130 / 8150 MB
+[ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+[ComfyUI-MoGe2] Health check: failed
+[ComfyUI-MoGe2] Socket unhealthy, restarting worker...
+[comfy-env] Invalidated 1 stale model patchers (will be cleaned up during next unload)
+[comfy-env] default: Library/bin has 237 DLLs
+[ComfyUI-MoGe2] python: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default\python.exe
+[ComfyUI-MoGe2] sys_path sent to worker: ['C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-MoGe2', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\moge2-nodes\\.pixi\\envs\\default\\Lib\\site-packages', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-MoGe2']
+[SubprocessWorker] is_pixi=True, python=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default\python.exe
+[SubprocessWorker] launching cmd=['C:\\Users\\ContainerUser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\moge2-nodes\\pixi.toml', '-e', 'default', 'python', 'C:\\Users\\ContainerUser\\AppData\\Local\\Temp\\comfyui_pvenv_jti_eak8\\persistent_worker.py', 'tcp://127.0.0.1:59167']...
+[worker:ComfyUI-MoGe2] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[worker:ComfyUI-MoGe2] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+[SubprocessWorker] call_id=7 sending model_to_device
+[1m[33m[WARNING][0m Model 'MoGeWrapper_1' gone from worker (restarted?), treating as offloaded
+[comfy-env] [VRAM] After offload 'MoGeWrapper_1' (631 MB): 1130 / 8150 MB
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m === /validate endpoint called ===
+[32m[INFO][0m Received JSON with keys: ['prompt']
+[32m[INFO][0m Prompt has 13 nodes
+[32m[INFO][0m   Node 1: LoadImage
+[32m[INFO][0m     Inputs: {"image": "actual_pano_from_real_life.jpg"}
+[32m[INFO][0m   Node 10: DownloadAndLoadMoGe2Model
+[32m[INFO][0m     Inputs: {"model": "moge-2-vitl-normal.pt", "precision": "auto", "attention": "auto"}
+[32m[INFO][0m   Node 63: MoGe2Inference
+[32m[INFO][0m     Inputs: {"resolution_level": 9, "num_tokens": 0, "fov_x_deg": ["107", 3], "force_projection": true, "apply_mask": true, "moge2_model": ["10", 0], "images": ["107", 0]}
+[32m[INFO][0m   Node 65: PanoramaWrap
+[32m[INFO][0m     Inputs: {"image": ["1", 0]}
+[32m[INFO][0m   Node 81: PreviewImage
+[32m[INFO][0m     Inputs: {"images": ["107", 5]}
+[32m[INFO][0m   Node 84: PanoramaFacesPlaneSegment
+[32m[INFO][0m     Inputs: {"use_gpu": true, "ransac_iterations_per_batch": 100, "distance_threshold": 0.02, "max_planes_per_face": 25, "min_inlier_fraction": 0.02, "ransac_iterations": 1000, "dbscan_eps": 0.05, "dbscan_min_poi
+[32m[INFO][0m   Node 85: PreviewImage
+[32m[INFO][0m     Inputs: {"images": ["84", 1]}
+[32m[INFO][0m   Node 91: GetImageSize
+[32m[INFO][0m     Inputs: {"image": ["96", 0]}
+[32m[INFO][0m   Node 96: ResizeImageMaskNode
+[32m[INFO][0m     Inputs: {"resize_type": "scale by multiplier", "resize_type.multiplier": 0.5, "scale_method": "area", "input": ["1", 0]}
+[32m[INFO][0m   Node 97: PreviewImage
+[32m[INFO][0m     Inputs: {"images": ["63", 3]}
+[32m[INFO][0m   Node 103: PanoramaDepthMerge
+[32m[INFO][0m     Inputs: {"out_width": 1920, "out_height": 960, "use_gpu": true, "scale_anchor": "lsmr_depth", "chunk_size": 8, "center_weight_power": 2, "normal_edge_threshold_deg": 0, "normal_consistency_boost": 60, "max_ra
+[32m[INFO][0m   Node 106: PreviewImage
+[32m[INFO][0m     Inputs: {"images": ["103", 4]}
+[32m[INFO][0m   Node 107: PanoramaSplit
+[32m[INFO][0m     Inputs: {"split_method": "icosahedron_12", "resolution": 952, "fov_degrees": 90, "use_gpu": true, "create_masks": false, "fname": "pano_bank", "panorama": ["65", 0]}
+[32m[INFO][0m Generated prompt_id: 5881fd65-049c-4d67-b0bf-94b9bbacc9cc
+[32m[INFO][0m Calling execution.validate_prompt()...
+[32m[INFO][0m Validation result: valid=True
+[32m[INFO][0m === Validation PASSED ===
+[32m[INFO][0m got prompt
+[comfy-env] Running DownloadAndLoadMoGe2Model: model: 'moge-2-vitl-normal.pt', precision: 'auto', attention: 'auto'
+[VRAM] Before DownloadAndLoadMoGe2Model: 1130 / 8150 MB
+[SubprocessWorker] call_method: nodes.load_model.DownloadAndLoadMoGe2Model.EXECUTE_NORMALIZED
+[SubprocessWorker] acquired lock, ensuring started...
+[ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+[ComfyUI-MoGe2] Health check: ok
+[SubprocessWorker] worker started/confirmed
+[SubprocessWorker] serializing kwargs to shm...
+[SubprocessWorker] created 0 shm blocks
+[SubprocessWorker] sending request via socket...
+[SubprocessWorker] call_id=8 sending call_method
+[SubprocessWorker] got response: ok
+[comfy-env] [VRAM] Before offload 'MoGeWrapper_1' (631 MB) -> cpu: 1130 / 8150 MB
+[ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+[ComfyUI-MoGe2] Health check: ok
+[SubprocessWorker] call_id=9 sending model_to_device
+[1m[33m[WARNING][0m Model 'MoGeWrapper_1' gone from worker (restarted?), treating as offloaded
+[comfy-env] [VRAM] After offload 'MoGeWrapper_1' (631 MB): 1130 / 8150 MB
+[comfy-env] DownloadAndLoadMoGe2Model done (0.34s): result: NodeOutput
+[VRAM] After DownloadAndLoadMoGe2Model: 1130 / 8150 MB
+[comfy-env] Running PanoramaWrap: image: torch.float32 [1,1920,3840,3] cpu
+[VRAM] Before PanoramaWrap: 1130 / 8150 MB
+[SubprocessWorker] call_method: nodes.panorama_type.PanoramaWrap.EXECUTE_NORMALIZED
+[SubprocessWorker] acquired lock, ensuring started...
+[ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+[ComfyUI-PanoPack] Health check: failed
+[ComfyUI-PanoPack] Socket unhealthy, restarting worker...
+[comfy-env] default: Library/bin has 610 DLLs
+[ComfyUI-PanoPack] python: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\python.exe
+[ComfyUI-PanoPack] sys_path sent to worker: ['C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\panopack-nodes\\.pixi\\envs\\default\\Lib\\site-packages', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack']
+[SubprocessWorker] is_pixi=True, python=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\python.exe
+[SubprocessWorker] launching cmd=['C:\\Users\\ContainerUser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\panopack-nodes\\pixi.toml', '-e', 'default', 'python', 'C:\\Users\\ContainerUser\\AppData\\Local\\Temp\\comfyui_pvenv_b9qeco0k\\persistent_worker.py', 'tcp://127.0.0.1:63854']...
+[worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+[SubprocessWorker] worker started/confirmed
+[comfy-env] PRE-SERIALIZE 'image' shape: torch.Size([1, 1920, 3840, 3])
+[SubprocessWorker] serializing kwargs to shm...
+[SubprocessWorker] created 0 shm blocks
+[SubprocessWorker] sending request via socket...
+[SubprocessWorker] call_id=9 sending call_method
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1920, 3840, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
+[SubprocessWorker] got response: ok
+[comfy-env] PanoramaWrap done (2.81s): result: NodeOutput
+[VRAM] After PanoramaWrap: 1130 / 8150 MB
+[comfy-env] Running PanoramaSplit: split_method: dict, resolution: 952, fov_degrees: 90.0, use_gpu: True, create_masks: False, fname: 'pano_bank', panorama: dict
+[VRAM] Before PanoramaSplit: 1130 / 8150 MB
+[SubprocessWorker] call_method: nodes.panorama_split.PanoramaSplit.EXECUTE_NORMALIZED
+[SubprocessWorker] acquired lock, ensuring started...
+[ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+[ComfyUI-PanoPack] Health check: ok
+[SubprocessWorker] worker started/confirmed
+[SubprocessWorker] serializing kwargs to shm...
+[SubprocessWorker] created 0 shm blocks
+[SubprocessWorker] sending request via socket...
+[SubprocessWorker] call_id=10 sending call_method
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1920, 3840, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
+[worker:ComfyUI-PanoPack] [PanoramaSplit] icosahedron_12: (3840x1920) -> 12 crops @ 952x952, fov=(90,90) via grid_sample (GPU); cameras 0.008s, split 1.897s, total 2.161s
+[SubprocessWorker] got response: ok
+[comfy-env] PanoramaSplit done (2.66s): result: NodeOutput
+[VRAM] After PanoramaSplit: 1130 / 8150 MB
+[comfy-env] Running MoGe2Inference: resolution_level: 9, num_tokens: 0, fov_x_deg: 90.0, force_projection: True, apply_mask: True, moge2_model: dict, images: torch.float32 [12,952,952,3] cpu
+[VRAM] Before MoGe2Inference: 1130 / 8150 MB
+[SubprocessWorker] call_method: nodes.nodes_inference.MoGe2Inference.EXECUTE_NORMALIZED
+[SubprocessWorker] acquired lock, ensuring started...
+[ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+[ComfyUI-MoGe2] Health check: ok
+[SubprocessWorker] worker started/confirmed
+[comfy-env] PRE-SERIALIZE 'images' shape: torch.Size([12, 952, 952, 3])
+[SubprocessWorker] serializing kwargs to shm...
+[SubprocessWorker] created 0 shm blocks
+[SubprocessWorker] sending request via socket...
+[SubprocessWorker] call_id=10 sending call_method
+[worker:ComfyUI-MoGe2] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-MoGe2] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+[worker:ComfyUI-MoGe2] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+[SubprocessWorker] callback 'request_vram_budget' from call_id=10
+[comfy-env] VRAM request: 0.66GB, free before eviction: 7.36GB
+[comfy-env] VRAM after eviction: 7.36GB
+[worker:ComfyUI-MoGe2] [VRAM] +224MB (now 224MB) reserved=256MB peak=224MB
+[worker:ComfyUI-MoGe2] [VRAM] +445MB (now 669MB) reserved=1536MB peak=779MB
+[SubprocessWorker] callback 'report_progress' from call_id=10
+[SubprocessWorker] callback 'report_progress' from call_id=10
+[SubprocessWorker] callback 'report_progress' from call_id=10
+[SubprocessWorker] callback 'report_progress' from call_id=10
+[SubprocessWorker] callback 'report_progress' from call_id=10
+[SubprocessWorker] callback 'report_progress' from call_id=10
+[worker:ComfyUI-MoGe2] [VRAM] +260MB (now 929MB) reserved=1568MB peak=929MB
+[SubprocessWorker] callback 'report_progress' from call_id=10
+[SubprocessWorker] callback 'report_progress' from call_id=10
+[worker:ComfyUI-MoGe2] [VRAM] -260MB (now 670MB) reserved=1568MB peak=929MB
+[SubprocessWorker] callback 'report_progress' from call_id=10
+[SubprocessWorker] callback 'report_progress' from call_id=10
+[SubprocessWorker] callback 'report_progress' from call_id=10
+[SubprocessWorker] callback 'report_progress' from call_id=10
+[SubprocessWorker] got response: ok
+[comfy-env] Created 1 model patchers: ['MoGeWrapper_1']
+[comfy-env] MoGe2Inference done (14.40s): result: NodeOutput
+[VRAM] After MoGe2Inference: 1130 / 8150 MB
+[VRAM] Loaded: SubprocessModel (631 MB)
+[comfy-env] Running PanoramaDepthMerge: out_width: 1920, out_height: 960, use_gpu: True, scale_anchor: True, chunk_size: 8, center_weight_power: 2.0, normal_edge_threshold_deg: 0.0, normal_consistency_boost: True, max_ray_distance_m: 0.0, face_points: torch.float32 [12,952,952,3] cpu, extrinsics: torch.float32 [12,4,4] cpu, intrinsics: torch.float32 [12,3,3] cpu, face_normals: torch.float32 [12,952,952,3] cpu
+[VRAM] Before PanoramaDepthMerge: 1130 / 8150 MB
+[VRAM] Loaded: SubprocessModel (631 MB)
+[SubprocessWorker] call_method: nodes.depth_merge.PanoramaDepthMerge.EXECUTE_NORMALIZED
+[SubprocessWorker] acquired lock, ensuring started...
+[ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+[ComfyUI-PanoPack] Health check: ok
+[SubprocessWorker] worker started/confirmed
+[comfy-env] PRE-SERIALIZE 'face_points' shape: torch.Size([12, 952, 952, 3])
+[comfy-env] PRE-SERIALIZE 'extrinsics' shape: torch.Size([12, 4, 4])
+[comfy-env] PRE-SERIALIZE 'intrinsics' shape: torch.Size([12, 3, 3])
+[comfy-env] PRE-SERIALIZE 'face_normals' shape: torch.Size([12, 952, 952, 3])
+[SubprocessWorker] serializing kwargs to shm...
+[SubprocessWorker] created 0 shm blocks
+[SubprocessWorker] sending request via socket...
+[SubprocessWorker] call_id=11 sending call_method
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 4, 4]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 4, 4])
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 3, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 3, 3])
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[12, 952, 952, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([12, 952, 952, 3])
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] normal-consistency boost: mean=0.997 min=0.613 max=1.000
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] normals merged: 960x1920
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] merging 12 faces @ 952x952 -> equirect 960x1920 (use_gpu=True); input = points (||.|| -> ray distance)
+[SubprocessWorker] callback 'report_progress' from call_id=11
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] top-level peak VRAM estimate: 0.76 GB (1920x960, N=12, chunk_size=8)
+[SubprocessWorker] callback 'request_vram_budget' from call_id=11
+[comfy-env] VRAM request: 0.76GB, free before eviction: 7.36GB
+[comfy-env] VRAM after eviction: 7.36GB
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge]   -> requested 0.76 GB eviction via comfy_worker.call_parent
+C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\_vendor\worldgen\src\panorama_utils.py:349: UserWarning: Sparse invariant checks are implicitly disabled. Memory errors (e.g. SEGFAULT) will occur when operating on a sparse tensor which violates the invariants, but checks incur performance overhead. To silence this warning, explicitly opt in or out. See `torch.sparse.check_sparse_tensor_invariants.__doc__` for guidance.  (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\Context.cpp:767.)
+  A_gpu = torch.sparse_csr_tensor(
+C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\_vendor\worldgen\src\panorama_utils.py:349: UserWarning: Sparse CSR tensor support is in beta state. If you miss a functionality in the sparse tensor support, please submit a feature request to https://github.com/pytorch/pytorch/issues. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\SparseCsrTensorImpl.cpp:51.)
+  A_gpu = torch.sparse_csr_tensor(
+[worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  240x120 ] done 0.85s (warp 0.25, build 0.00, LSMR 0.52); N=12 K=8 chunks=2; scale_shift=+0.9179 (exp~=2.504); depth min/med/max = 1.667/2.503/4.582; valid 28800/28800
+[worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  480x240 ] done 1.11s (warp 0.03, build 0.02, LSMR 0.19); N=12 K=8 chunks=2; depth min/med/max = 1.668/2.505/4.632; valid 115200/115200
+[worker:ComfyUI-PanoPack] [VRAM] +202MB (now 202MB) reserved=256MB peak=202MB
+[worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu  960x480 ] done 1.49s (warp 0.05, build 0.08, LSMR 0.23); N=12 K=8 chunks=2; depth min/med/max = 1.667/2.506/4.649; valid 460800/460800
+[worker:ComfyUI-PanoPack] [VRAM] +270MB (now 473MB) reserved=544MB peak=473MB
+[worker:ComfyUI-PanoPack] [merge_panorama_depth_gpu 1920x960 ] done 2.49s (warp 0.10, build 0.33, LSMR 0.50); N=12 K=8 chunks=2; depth min/med/max = 1.667/2.506/4.650; valid 1843200/1843200
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] merged depth: shape (960, 1920), min=1.685, median=2.506, max=4.650; valid pixels: 1843200 / 1843200
+[worker:ComfyUI-PanoPack] [VRAM] -442MB (now 32MB) reserved=544MB peak=473MB
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] debug_image: H=960+48, mult_disagreement (log-d, sphere-uniform): mean=6.66%, p99=18.22%, max=28.77%; overlap_pixels=1422072
+[worker:ComfyUI-PanoPack] [headless_gl] prefix=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default
+[worker:ComfyUI-PanoPack] [headless_gl] libOSMesa*: MISSING
+[worker:ComfyUI-PanoPack] [headless_gl] env: VTK_DEFAULT_OPENGL_WINDOW=vtkOSOpenGLRenderWindow PYVISTA_OFF_SCREEN=true
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] xyz_views: cloud bbox center=(+0.26, +0.40, +0.18) m, size=(6.11 x 6.00 x 3.91) m, N=80000 (subsampled)
+[worker:ComfyUI-PanoPack] [PanoramaDepthMerge] points: merged equirect point map (1, 960, 1920, 3)
+[SubprocessWorker] callback 'report_progress' from call_id=11
+[SubprocessWorker] got response: ok
+[comfy-env] PanoramaDepthMerge done (11.91s): result: NodeOutput
+[VRAM] After PanoramaDepthMerge: 1130 / 8150 MB
+[VRAM] Loaded: SubprocessModel (631 MB)
+[comfy-env] Running PanoramaFacesPlaneSegment: use_gpu: True, ransac_iterations_per_batch: 100, distance_threshold: 0.02, max_planes_per_face: 25, min_inlier_fraction: 0.02, ransac_iterations: 1000, dbscan_eps: 0.05, dbscan_min_points: 100, normal_consistency_threshold: 0.85, face_points: torch.float32 [1,960,1920,3] cpu, face_normals: torch.float32 [1,960,1920,3] cpu, face_valid_masks: torch.float32 [1,960,1920] cpu
+[VRAM] Before PanoramaFacesPlaneSegment: 1130 / 8150 MB
+[VRAM] Loaded: SubprocessModel (631 MB)
+[SubprocessWorker] call_method: nodes.plane_segment.PanoramaFacesPlaneSegment.EXECUTE_NORMALIZED
+[SubprocessWorker] acquired lock, ensuring started...
+[ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+[ComfyUI-PanoPack] Health check: ok
+[SubprocessWorker] worker started/confirmed
+[comfy-env] PRE-SERIALIZE 'face_points' shape: torch.Size([1, 960, 1920, 3])
+[comfy-env] PRE-SERIALIZE 'face_normals' shape: torch.Size([1, 960, 1920, 3])
+[comfy-env] PRE-SERIALIZE 'face_valid_masks' shape: torch.Size([1, 960, 1920])
+[SubprocessWorker] serializing kwargs to shm...
+[SubprocessWorker] created 0 shm blocks
+[SubprocessWorker] sending request via socket...
+[SubprocessWorker] call_id=12 sending call_method
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 960, 1920, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 960, 1920, 3])
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 960, 1920, 3]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 960, 1920, 3])
+[worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 960, 1920]
+[worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 960, 1920])
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] normals: RGB-encoded detected (range [0.000, 1.000]  subset of  [0, 1]) -> decoding via 2.x-1
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] input: 1 faces @ 960x1920, normals=wired, valid_masks=wired, RANSAC=CUDA available: True
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] params: dist_thresh=0.020m, max_planes=25, min_inlier_frac=0.020, ransac_iter=1000 (per_batch=100), dbscan_eps=0.050m, dbscan_min_pts=100, normal_cos_thresh=0.85
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] face 1/1: valid=1843200/1843200 (100.0%)
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 RANSAC backend: vendored torch RANSAC (CUDA)
+[worker:ComfyUI-PanoPack] [VRAM] +759MB (now 791MB) reserved=2208MB peak=791MB
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #1: |a,b,c,d|=[+0.008,+0.015,-1.000,-1.703], inliers=470856/1843200
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 466373/470856 inliers (|cos|>=0.85)
+[worker:ComfyUI-PanoPack] 
+=== WATCHDOG TICK 1 ===
+[worker:ComfyUI-PanoPack] [VRAM] -700MB (now 91MB) reserved=4576MB peak=970MB
+[worker:ComfyUI-PanoPack] Thread 0x00000084 (most recent call first):
+  File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 82 in wlog
+  File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 124 in _vram_poller
+  File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 995 in run
+  File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1044 in _bootstrap_inner
+  File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1015 in _bootstrap
+
+Current thread 0x00001b3c (most recent call first):
+  File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 52 in _watchdog
+  File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 995 in run
+  File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1044 in _bootstrap_inner
+  File "C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\panopack-nodes\.pixi\envs\default\Lib\threading.py", line 1015 in _bootstrap
+
+Thread 0x00000a40 (most recent call first):
+  File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\plane_segment.py", line 252 in _segment_planes_one_face
+  File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-PanoPack\nodes\plane_segment.py", line 599 in execute
+  File "C:\workspaces\PanoPack-1600\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1880 in EXECUTE_NORMALIZED
+  File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 1762 in main
+  File "C:\Users\ContainerUser\AppData\Local\Temp\comfyui_pvenv_b9qeco0k\persistent_worker.py", line 1807 in <module>
+
+[worker:ComfyUI-PanoPack] === END ===
+
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[427218]
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=1, 427218 px
+[worker:ComfyUI-PanoPack] [VRAM] +647MB (now 739MB) reserved=4576MB peak=970MB
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #2: |a,b,c,d|=[+0.009,+0.020,-1.000,+2.070], inliers=260913/1376827
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 259734/260913 inliers (|cos|>=0.85)
+[worker:ComfyUI-PanoPack] [VRAM] -659MB (now 81MB) reserved=4576MB peak=970MB
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[197073]
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=2, 197073 px
+[worker:ComfyUI-PanoPack] [VRAM] +528MB (now 609MB) reserved=4576MB peak=970MB
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #3: |a,b,c,d|=[+0.012,+0.029,+1.000,-1.848], inliers=111415/1117093
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 106589/111415 inliers (|cos|>=0.85)
+[worker:ComfyUI-PanoPack] [VRAM] -535MB (now 75MB) reserved=4576MB peak=970MB
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[95995]
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=3, 95995 px
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #4: |a,b,c,d|=[-0.005,+0.022,+1.000,+1.688], inliers=95001/1010504
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 90419/95001 inliers (|cos|>=0.85)
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 2 cluster(s), top sizes=[40546, 8468]
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=4, 40546 px
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=5, 8468 px
+[worker:ComfyUI-PanoPack] [VRAM] +435MB (now 510MB) reserved=4576MB peak=970MB
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #5: |a,b,c,d|=[-0.019,-0.026,+0.999,-2.030], inliers=90400/920085
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 87951/90400 inliers (|cos|>=0.85)
+[worker:ComfyUI-PanoPack] [VRAM] -440MB (now 71MB) reserved=4576MB peak=970MB
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 4 cluster(s), top sizes=[31530, 25536, 1663, 111]
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=6, 31530 px
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=7, 25536 px
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=8, 111 px
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=9, 1663 px
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #6: |a,b,c,d|=[+0.036,-0.999,-0.007,-2.452], inliers=90593/832134
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 86965/90593 inliers (|cos|>=0.85)
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 1 cluster(s), top sizes=[29703]
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=10, 29703 px
+[worker:ComfyUI-PanoPack] [VRAM] +352MB (now 423MB) reserved=4576MB peak=970MB
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 attempt #7: |a,b,c,d|=[+0.999,+0.043,+0.027,+2.341], inliers=57968/745169
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 normal-filter: kept 47352/57968 inliers (|cos|>=0.85)
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]     face 1/1 DBSCAN: 20 cluster(s), top sizes=[4804, 3159, 2575, 1954, 1378] (+15 more)
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=11, 331 px
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=12, 514 px
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=13, 2575 px
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=14, 199 px
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=15, 147 px
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=16, 3159 px
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=17, 1298 px
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=18, 1954 px
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=19, 4804 px
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=20, 1378 px
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=21, 1045 px
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=22, 655 px
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=23, 379 px
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=24, 268 px
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]       face 1/1 -> label_id=25, 123 px
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment]   face 1/1 RANSAC done (max_planes_per_face=25 hit); 7 attempt(s), 0 normal-filter rejects, 25 plane(s) accepted
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] face 1/1 done: 25 plane(s), 876672/1843200 px labeled (47.6%), 66508ms
+[SubprocessWorker] callback 'report_progress' from call_id=12
+[worker:ComfyUI-PanoPack] [PanoramaFacesPlaneSegment] DONE: 1 faces -> 25 total planes in 66.55s (min=25/med=25/max=25 planes/face, zero-plane faces: 0)
+[SubprocessWorker] got response: ok
+[comfy-env] PanoramaFacesPlaneSegment done (66.67s): result: NodeOutput
+[VRAM] After PanoramaFacesPlaneSegment: 3023 / 8150 MB
+[VRAM] Loaded: SubprocessModel (631 MB)
+[32m[INFO][0m [32mPrompt executed in 99.69 seconds[0m
+[comfy-env] [VRAM] Before offload 'MoGeWrapper_1' (631 MB) -> cpu: 3023 / 8150 MB
+[ComfyUI-MoGe2] Health check: ping (timeout=5.0s)...
+[ComfyUI-MoGe2] Health check: failed
+[ComfyUI-MoGe2] Socket unhealthy, restarting worker...
+[comfy-env] Invalidated 1 stale model patchers (will be cleaned up during next unload)
+[comfy-env] default: Library/bin has 237 DLLs
+[ComfyUI-MoGe2] python: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default\python.exe
+[ComfyUI-MoGe2] sys_path sent to worker: ['C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-MoGe2', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\moge2-nodes\\.pixi\\envs\\default\\Lib\\site-packages', 'C:\\workspaces\\PanoPack-1600\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-MoGe2']
+[SubprocessWorker] is_pixi=True, python=C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\envs\moge2-nodes\.pixi\envs\default\python.exe
+[SubprocessWorker] launching cmd=['C:\\Users\\ContainerUser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\ContainerUser\\AppData\\Local\\Programs\\comfy-env\\envs\\moge2-nodes\\pixi.toml', '-e', 'default', 'python', 'C:\\Users\\ContainerUser\\AppData\\Local\\Temp\\comfyui_pvenv_jti_eak8\\persistent_worker.py', 'tcp://127.0.0.1:63856']...
