@@ -58,11 +58,14 @@ def setup_headless_software_gl() -> None:
     if not os.environ.get("_HEADLESS_GL_DIAG_DONE"):
         os.environ["_HEADLESS_GL_DIAG_DONE"] = "1"
         try:
-            osmesa = sorted(
-                os.path.basename(p) for p in glob.glob(os.path.join(libdir, "libOSMesa*"))
-            )
+            # libOSMesa.so on Linux (lib/); osmesa.dll on Windows (Library/bin/).
+            osmesa = sorted(os.path.basename(p) for p in (
+                glob.glob(os.path.join(libdir, "libOSMesa*"))
+                + glob.glob(os.path.join(prefix, "Library", "bin", "osmesa*"))
+                + glob.glob(os.path.join(prefix, "Library", "bin", "OSMesa*"))
+            ))
             _p(f"prefix={prefix}")
-            _p(f"libOSMesa*: {osmesa or 'MISSING'}")
+            _p(f"OSMesa: {osmesa or 'MISSING'}")
             _p(
                 "env: "
                 f"VTK_DEFAULT_OPENGL_WINDOW={os.environ.get('VTK_DEFAULT_OPENGL_WINDOW')} "

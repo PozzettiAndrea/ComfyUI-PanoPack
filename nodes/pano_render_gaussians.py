@@ -45,16 +45,92 @@ def _resolve_ply_path(p: str) -> str:
         f"PanoRenderGaussians: PLY not found: {p!r} (tried {[p, *candidates]})")
 
 
+# Inlined 3DGS PLY parser (self-contained, numpy-only). We deliberately do NOT
+# `from comfy_extras.nodes_gaussian_splat import _parse_ply_gaussian`: importing
+# that module pulls in ComfyUI's whole server/model stack (server -> execution ->
+# comfy.sd -> ldm.cascade -> `import torchvision`), which isn't installed in this
+# node's isolated env and crashes the worker on Windows ("No module named
+# 'torchvision'"). Parsing a 3DGS PLY needs only numpy. Mirrors the upstream
+# parser in comfy_extras/nodes_gaussian_splat.py.
+_PLY_DTYPES = {
+    'char': 'i1', 'uchar': 'u1', 'short': 'i2', 'ushort': 'u2', 'int': 'i4',
+    'uint': 'u4', 'float': 'f4', 'double': 'f8', 'int8': 'i1', 'uint8': 'u1',
+    'int16': 'i2', 'uint16': 'u2', 'int32': 'i4', 'uint32': 'u4',
+    'float32': 'f4', 'float64': 'f8',
+}
+
+
+def _norm_quat(q):
+    return q / np.linalg.norm(q, axis=1, keepdims=True).clip(1e-12)
+
+
+def _rgb_to_sh_dc(rgb):
+    # (N,3) base color -> (N,1,3) SH band-0 (DC) coefficient.
+    return ((np.asarray(rgb, np.float32) - 0.5) / _C0)[:, None, :]
+
+
+def _parse_ply_gaussian(data: bytes):
+    """Parse a binary-little-endian 3DGS .ply -> (xyz, scale, rot, opacity, sh)."""
+    end = data.find(b'end_header')
+    if end < 0:
+        raise ValueError("PanoRenderGaussians: not a PLY (missing end_header)")
+    header = data[:end].decode('ascii', 'replace')
+    body = end + len(b'end_header')
+    body += 2 if data[body:body + 2] == b'\r\n' else 1
+    count, props, in_vertex = 0, [], False
+    for line in header.splitlines():
+        p = line.split()
+        if not p:
+            continue
+        if p[0] == 'format' and p[1] != 'binary_little_endian':
+            raise ValueError(
+                f"PanoRenderGaussians: unsupported PLY format '{p[1]}' "
+                f"(need binary_little_endian)")
+        if p[0] == 'element':
+            in_vertex = p[1] == 'vertex'
+            if in_vertex:
+                count = int(p[2])
+        elif p[0] == 'property' and in_vertex:
+            if p[1] == 'list':
+                raise ValueError(
+                    "PanoRenderGaussians: PLY vertex has list properties (unsupported)")
+            props.append((p[2], '<' + _PLY_DTYPES[p[1]]))
+    arr = np.frombuffer(data, np.dtype(props), count=count, offset=body)
+    names = arr.dtype.names
+    c = lambda k: arr[k].astype(np.float32)   # noqa: E731
+    n = count
+
+    xyz = np.stack([c('x'), c('y'), c('z')], 1)
+    if 'scale_0' in names:
+        scale = np.exp(np.stack([c('scale_0'), c('scale_1'), c('scale_2')], 1))   # 3DGS log scale
+    else:
+        scale = np.full((n, 3), 0.01, np.float32)
+    if 'rot_0' in names:
+        rot = _norm_quat(np.stack([c('rot_0'), c('rot_1'), c('rot_2'), c('rot_3')], 1))   # wxyz
+    else:
+        rot = np.tile(np.array([1, 0, 0, 0], np.float32), (n, 1))
+    opacity = 1.0 / (1.0 + np.exp(-c('opacity'))) if 'opacity' in names else np.ones(n, np.float32)
+
+    if 'f_dc_0' in names:
+        dc = np.stack([c('f_dc_0'), c('f_dc_1'), c('f_dc_2')], 1)                 # (N,3)
+        rest = sorted((k for k in names if k.startswith('f_rest_')), key=lambda s: int(s.split('_')[-1]))
+        if rest:
+            r = np.stack([c(k) for k in rest], 1)                                 # (N, 3*(K-1)) channel-major
+            kk = r.shape[1] // 3 + 1
+            r = r.reshape(n, 3, kk - 1).transpose(0, 2, 1)                        # -> (N, K-1, 3)
+            sh = np.concatenate([dc[:, None, :], r], 1)
+        else:
+            sh = dc[:, None, :]
+    elif 'red' in names:
+        sh = _rgb_to_sh_dc(np.stack([c('red'), c('green'), c('blue')], 1) / 255.0)
+    else:
+        sh = np.zeros((n, 1, 3), np.float32)
+    return xyz, scale, rot, opacity, sh
+
+
 def _load_gaussian_ply(path: str):
     """Load a 3DGS .ply file. Returns (xyz, rgb, scale, opacity, rot)."""
     path = _resolve_ply_path(path)
-    # Reuse ComfyUI's robust PLY parser
-    sys_path = sys.path.copy()
-    try:
-        from comfy_extras.nodes_gaussian_splat import _parse_ply_gaussian
-    finally:
-        sys.path = sys_path
-
     with open(path, "rb") as f:
         data = f.read()
     _p(f"  parsing {len(data)} bytes from {path}")
@@ -113,48 +189,6 @@ def _render_6_faces_cpu(xyz, rgb, scale, opacity, face_size, gain=2.0, max_px=40
         nz = int((face_np.reshape(-1, face_np.shape[-1]).max(-1) > 1e-4).sum())
         _p(f"  CPU face {view['name']} (yaw={view['yaw']},pitch={view['pitch']}): "
            f"nonblack={nz} max={float(face_np.max()):.3f}")
-        faces.append(face_np)
-    return faces
-
-
-def _render_6_faces_gpu(xyz, rgb, scale, opacity, rot, face_size):
-    """Render 6 cube faces using the GPU gaussian rasterizer."""
-    import torch
-    import comfy.model_management
-    from comfy_extras.nodes_gaussian_splat import (
-        _render_gaussian,
-        _lookat_camera_info,
-    )
-
-    dev = comfy.model_management.get_torch_device()
-    origin = torch.zeros(3, device=dev)
-    bg = torch.zeros(3)
-    _p(f"  GPU backend: device={dev} fov={FACE_FOV_DEG} splat_scale=1.0 bg=black "
-       f"over {len(xyz)} splats")
-
-    faces = []
-    for view in _CUBE_VIEWS:
-        yaw_rad = math.radians(view["yaw"])
-        pitch_rad = math.radians(view["pitch"])
-        # Compute look-at target 1 unit away
-        target = torch.tensor([
-            -math.cos(pitch_rad) * math.sin(yaw_rad),
-            math.sin(pitch_rad),
-            math.cos(pitch_rad) * math.cos(yaw_rad),
-        ], device=dev)
-        cam_info = _lookat_camera_info(origin, target, fov=FACE_FOV_DEG, dev=dev)
-        img, mask = _render_gaussian(
-            xyz, rgb, opacity, scale, rot,
-            width=face_size, height=face_size,
-            splat_scale=1.0, bg=bg,
-            camera_info=cam_info,
-            render_style="color",
-        )
-        face_np = img.numpy().astype(np.float32)
-        nz = int((face_np.reshape(-1, face_np.shape[-1]).max(-1) > 1e-4).sum())
-        cov = float(mask.float().mean()) if hasattr(mask, "float") else float("nan")
-        _p(f"  GPU face {view['name']} target={[round(float(x), 2) for x in target.tolist()]}: "
-           f"nonblack={nz} coverage={cov:.4f} max={float(face_np.max()):.3f}")
         faces.append(face_np)
     return faces
 
