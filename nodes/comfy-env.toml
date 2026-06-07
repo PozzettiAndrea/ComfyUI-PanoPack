@@ -1,6 +1,12 @@
 [dependencies]
 open3d = "*"
 av = "*"
+# Provides libEGL + the llvmpipe software rasterizer so VTK/pyvista can render
+# off-screen on a headless, GPU-less host (CI). VTK 9.4+ auto-falls-back GLX ->
+# EGL -> OSMesa; OSMesa was removed from Mesa upstream (and from conda mesalib as
+# of 25.1.9), so the working software path is surfaceless EGL + llvmpipe. The
+# env vars that steer VTK onto it live in nodes/utils/headless_gl.py.
+mesalib = "*"
 
 [pypi-dependencies]
 safetensors = ">=0.4.0"

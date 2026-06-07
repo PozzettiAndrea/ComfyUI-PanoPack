@@ -45,8 +45,8 @@ def _render_mesh_preview(
     # the rest of the module import cleanly even if the env hasn't been
     # rebuilt yet after adding pyvista to comfy-env.toml.
     try:
-        import os as _os
-        _os.environ.setdefault("PYVISTA_OFF_SCREEN", "true")
+        from .utils.headless_gl import setup_headless_software_gl
+        setup_headless_software_gl()
         import pyvista as pv
     except Exception as e:
         _p(f"pyvista import failed: {e!r} - falling back to a placeholder preview")

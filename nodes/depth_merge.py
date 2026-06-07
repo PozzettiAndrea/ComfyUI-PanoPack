@@ -263,6 +263,8 @@ def _render_xyz_views(
     offscreen rasterizer isn't available in the worker.
     """
     import torch
+    from .utils.headless_gl import setup_headless_software_gl
+    setup_headless_software_gl()
     try:
         import pyvista as pv
     except ImportError:

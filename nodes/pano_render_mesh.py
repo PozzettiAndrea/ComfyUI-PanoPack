@@ -111,8 +111,8 @@ def _trimesh_to_pyvista(mesh):
 
 def _render_cube_faces_color(mesh, face_size, mode_params):
     """Render 6 cube faces as color images."""
-    import os
-    os.environ.setdefault("PYVISTA_OFF_SCREEN", "true")
+    from .utils.headless_gl import setup_headless_software_gl
+    setup_headless_software_gl()
     import pyvista as pv
 
     poly = _trimesh_to_pyvista(mesh)
@@ -173,8 +173,8 @@ def _render_cube_faces_color(mesh, face_size, mode_params):
 
 def _render_cube_faces_depth(mesh, face_size):
     """Render 6 cube faces as depth images."""
-    import os
-    os.environ.setdefault("PYVISTA_OFF_SCREEN", "true")
+    from .utils.headless_gl import setup_headless_software_gl
+    setup_headless_software_gl()
     import pyvista as pv
 
     poly = _trimesh_to_pyvista(mesh)
