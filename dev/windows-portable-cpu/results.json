@@ -1,35 +1,35 @@
 {
-  "timestamp": "2026-06-07T13:28:35.962208+00:00",
+  "timestamp": "2026-06-07T16:19:30.824032+00:00",
   "platform": "windows_portable",
   "hardware": {
-    "os": "Windows-2025Server-10.0.26100-SP0",
-    "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+    "os": "Windows-10-10.0.26100-SP0",
+    "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
   },
-  "commit_hash": "b566bcec0a25350943b57e2796ccaf94b832a46b",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27093507875",
-  "success": false,
+  "commit_hash": "5edb21a86f7edaa6aa096586e199627d279f4eaa",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27097546207",
+  "success": true,
   "summary": {
     "total": 13,
-    "passed": 5,
-    "failed": 1
+    "passed": 6,
+    "failed": 0
   },
   "workflows": [
     {
       "name": "360_render",
-      "status": "fail",
-      "duration_seconds": 104.9,
-      "error": "Workflow execution failed: {'prompt_id': 'ada11d28-895b-4528-949b-f37f980ef232', 'node_id': '94', 'node_type': 'PanoRenderGaussians', 'executed': ['90', '93', '91', '88', '92', '97', '84', '96', '87'], 'exception_message': 'No module named \\'torchvision\\'\\n\\nWorker traceback:\\nTraceback (most recent call last):\\n  File \"C:\\\\Users\\\\stduser\\\\AppData\\\\Local\\\\Temp\\\\comfyui_pvenv_575ggdxa\\\\persistent_worker.py\", line 1762, in main\\n    result = method(**inputs)\\n  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1310\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\comfy_api\\\\latest\\\\_io.py\", line 1880, in EXECUTE_NORMALIZED\\n    to_return = cls.execute(*args, **kwargs)\\n  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1310\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\custom_nodes\\\\ComfyUI-PanoPack\\\\nodes\\\\pano_render_gaussians.py\", line 222, in execute\\n    xyz, rgb, scale, opacity, rot = _load_gaussian_ply(resolved)\\n                                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^\\n  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1310\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\custom_nodes\\\\ComfyUI-PanoPack\\\\nodes\\\\pano_render_gaussians.py\", line 54, in _load_gaussian_ply\\n    from comfy_extras.nodes_gaussian_splat import _parse_ply_gaussian\\n  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1310\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\comfy_extras\\\\nodes_gaussian_splat.py\", line 20, in <module>\\n    from server import PromptServer\\n  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1310\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\server.py\", line 10, in <module>\\n    import execution\\n  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1310\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\execution.py\", line 22, in <module>\\n    from latent_preview import set_preview_method\\n  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1310\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\latent_preview.py\", line 5, in <module>\\n    from comfy.sd import VAE\\n  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1310\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\comfy\\\\sd.py\", line 10, in <module>\\n    from .ldm.cascade.stage_c_coder import StageC_coder\\n  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1310\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\comfy\\\\ldm\\\\cascade\\\\stage_c_coder.py\", line 19, in <module>\\n    import torchvision\\nModuleNotFoundError: No module named \\'torchvision\\'\\n\\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1310\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\execution.py\", line 536, in execute\\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1310\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\execution.py\", line 336, in get_output_data\\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1310\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\execution.py\", line 310, in _async_map_node_over_list\\n    await process_inputs(input_dict, i)\\n', '  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1310\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\execution.py\", line 298, in process_inputs\\n    result = f(**inputs)\\n', '  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1310\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\python_embeded\\\\Lib\\\\site-packages\\\\comfy_env\\\\isolation\\\\metadata.py\", line 560, in proxy\\n    result = worker.call_method(\\n        module_name=mod,\\n    ...<4 lines>...\\n        timeout=600.0,\\n    )\\n', '  File \"D:\\\\a\\\\comfy-gpu-ci\\\\comfy-gpu-ci\\\\test_workspaces\\\\PanoPack-1310\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\python_embeded\\\\Lib\\\\site-packages\\\\comfy_env\\\\isolation\\\\workers\\\\subprocess.py\", line 674, in call_method\\n    raise WorkerError(\\n    ...<2 lines>...\\n    )\\n'], 'current_inputs': {'gaussian_ply_path': ['/input/3d/pano_gaussians.ply'], 'width': [2048], 'face_resolution': [1024], 'gain': [2], 'backend': ['cpu']}, 'current_outputs': ['94', '90', '87', '93', '91', '95', '92', '97', '84', '96', '88'], 'timestamp': 1780838846639}\n\nDetails:\nWorkflow: C:\\Users\\stduser\\AppData\\Local\\Temp\\comfy-test-run-nbvflff9\\ComfyUI-PanoPack\\workflows\\360_render.json\nNode error: PanoRenderGaussians",
+      "status": "pass",
+      "duration_seconds": 92.38,
+      "error": null,
       "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+        "os": "Windows-10-10.0.26100-SP0",
+        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 3.29,
-          "avg": 2.65
+          "peak": 6.69,
+          "avg": 3.0
         },
         "total_ram_gb": 16.0,
-        "samples": 102
+        "samples": 91
       }
     },
     {
@@ -84,88 +84,88 @@
     {
       "name": "pano_crop",
       "status": "pass",
-      "duration_seconds": 10.82,
+      "duration_seconds": 9.6,
       "error": null,
       "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+        "os": "Windows-10-10.0.26100-SP0",
+        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 2.83,
-          "avg": 2.77
+          "peak": 2.93,
+          "avg": 2.88
         },
         "total_ram_gb": 16.0,
-        "samples": 11
+        "samples": 10
       }
     },
     {
       "name": "pano_info",
       "status": "pass",
-      "duration_seconds": 10.43,
+      "duration_seconds": 9.72,
       "error": null,
       "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+        "os": "Windows-10-10.0.26100-SP0",
+        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 2.93,
-          "avg": 2.83
+          "peak": 3.19,
+          "avg": 2.98
         },
         "total_ram_gb": 16.0,
-        "samples": 11
+        "samples": 10
       }
     },
     {
       "name": "panorama_shift",
       "status": "pass",
-      "duration_seconds": 13.77,
+      "duration_seconds": 11.91,
       "error": null,
       "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+        "os": "Windows-10-10.0.26100-SP0",
+        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 3.66,
-          "avg": 3.07
+          "peak": 3.68,
+          "avg": 3.27
         },
         "total_ram_gb": 16.0,
-        "samples": 14
+        "samples": 12
       }
     },
     {
       "name": "preview_panorama",
       "status": "pass",
-      "duration_seconds": 18.9,
+      "duration_seconds": 16.88,
       "error": null,
       "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+        "os": "Windows-10-10.0.26100-SP0",
+        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 3.29,
-          "avg": 2.96
+          "peak": 3.58,
+          "avg": 3.28
         },
         "total_ram_gb": 16.0,
-        "samples": 19
+        "samples": 17
       }
     },
     {
       "name": "test_wrap_unwrap",
       "status": "pass",
-      "duration_seconds": 10.62,
+      "duration_seconds": 10.31,
       "error": null,
       "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+        "os": "Windows-10-10.0.26100-SP0",
+        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 2.81,
-          "avg": 2.75
+          "peak": 3.21,
+          "avg": 3.15
         },
         "total_ram_gb": 16.0,
         "samples": 11
