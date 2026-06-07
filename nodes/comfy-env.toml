@@ -1,17 +1,17 @@
 [dependencies]
 open3d = "*"
 av = "*"
+# vtk + pyvista stay on conda-forge (NOT PyPI) so VTK's RPATH includes
+# $CONDA_PREFIX/lib -- that's what lets VTK dlopen conda's libOSMesa below. A PyPI
+# vtk wheel's RPATH points inside the wheel and can't resolve it across prefixes.
 vtk = ">=9.3"
 pyvista = ">=0.45"
-# Headless software GL stack (no GPU, no X display on CI):
-#   mesalib  - Mesa: llvmpipe software rasterizer + the EGL vendor (libEGL_mesa).
-#   libglvnd - the GLVND dispatcher (libEGL.so.1) that VTK loads and that reads
-#              __EGL_VENDOR_LIBRARY_DIRS to discover Mesa's vendor.
-# With the vendor discoverable, Mesa's software EGL device becomes enumerable so
-# VTK's vtkEGLRenderWindow can initialize. The wiring lives in
-# nodes/utils/headless_gl.py (called before every pv.Plotter).
-mesalib = "*"
-libglvnd = "*"
+# Headless software OpenGL with no GPU / no X display (CI): VTK dlopens libOSMesa.so
+# at runtime for its off-screen OSMesa render window (llvmpipe software GL baked in).
+# conda mesalib SHIPS libOSMesa only up to 25.0.5 -- 25.1.9+ and 26.x dropped it
+# (Lavapipe/Vulkan only). So pin to the last range that still provides it. The
+# wiring (force the OSMesa window) lives in nodes/utils/headless_gl.py.
+mesalib = ">=24.3,<25.1"
 
 [pypi-dependencies]
 safetensors = ">=0.4.0"
