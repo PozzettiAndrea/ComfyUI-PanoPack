@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-06-07T11:49:33.191865+00:00",
+  "timestamp": "2026-06-07T14:13:45.200848+00:00",
   "platform": "windows",
   "hardware": {
     "os": "Windows-11-10.0.26100-SP0",
-    "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
+    "cpu": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD"
   },
-  "commit_hash": "e206e7bf251e72ffded0d88a71b530a05ba2c101",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27091235592",
+  "commit_hash": "b566bcec0a25350943b57e2796ccaf94b832a46b",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27094639345",
   "success": true,
   "summary": {
     "total": 13,
@@ -52,55 +52,55 @@
     {
       "name": "gpu_depth_merge_mesh_pointcloud",
       "status": "pass",
-      "duration_seconds": 211.93,
+      "duration_seconds": 136.03,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26100-SP0",
-        "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
+        "cpu": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 7.91,
-          "avg": 4.98
+          "peak": 7.95,
+          "avg": 4.86
         },
         "total_ram_gb": 31.9,
-        "samples": 210
+        "samples": 135
       }
     },
     {
       "name": "gpu_depth_normal_conditioned",
       "status": "pass",
-      "duration_seconds": 240.88,
+      "duration_seconds": 149.17,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26100-SP0",
-        "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
+        "cpu": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 18.22,
-          "avg": 9.82
+          "peak": 18.27,
+          "avg": 9.75
         },
         "total_ram_gb": 31.9,
-        "samples": 238
+        "samples": 148
       }
     },
     {
       "name": "gpu_plane_segmentation",
       "status": "pass",
-      "duration_seconds": 127.45,
+      "duration_seconds": 92.88,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26100-SP0",
-        "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
+        "cpu": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 11.22,
-          "avg": 8.39
+          "peak": 10.88,
+          "avg": 8.26
         },
         "total_ram_gb": 31.9,
-        "samples": 126
+        "samples": 92
       }
     },
     {
