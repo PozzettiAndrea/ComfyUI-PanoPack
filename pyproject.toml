@@ -1,28 +1,13 @@
-[build-system]
-requires = ["setuptools>=61.0", "wheel"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "comfyui-panopack"
 version = "0.1.0"
-description = "ComfyUI utility pack for 360° equirectangular panoramas: typed PANORAMA socket, info / quality metrics, yaw shift, interactive 3D viewer, and shared equirect helpers reusable across MoGe-2 / WorldMirror / SHARP / DAP pipelines."
-authors = [{ name = "Andrea Pozzetti", email = "andrea@pozzetti.it" }]
-license = { text = "MIT" }
-readme = "README.md"
-requires-python = ">=3.10"
-dependencies = [
-    "numpy",
-    "torch",
-]
-
-[project.urls]
-Repository = "https://github.com/PozzettiAndrea/ComfyUI-PanoPack"
-
-[tool.setuptools.packages.find]
-include = ["nodes*"]
-exclude = ["web*"]
+description = "Warning, uses experimental package `comfy-env` to attempt a one click isolated install. Will download and use pixi package manager. ComfyUI utility pack for 360° equirectangular panoramas."
+license = {file = "LICENSE"}
 
 [tool.comfy]
 PublisherId = "pozzettiandrea"
 DisplayName = "ComfyUI PanoPack"
 Icon = ""
+
+[project.urls]
+Repository = "https://github.com/PozzettiAndrea/ComfyUI-PanoPack"
