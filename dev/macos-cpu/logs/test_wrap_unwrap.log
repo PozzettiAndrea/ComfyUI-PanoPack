@@ -1,9 +1,9 @@
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
 Capturing execution frames: test_wrap_unwrap.json
-  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
@@ -66,27 +66,27 @@ Capturing execution frames: test_wrap_unwrap.json
   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["3", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["3", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["3", 0]}
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: d86fb0ad-f344-44b7-8466-7de5e581032c
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: d86fb0ad-f344-44b7-8466-7de5e581032c
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: d86fb0ad-f344-44b7-8466-7de5e581032c
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: d86fb0ad-f344-44b7-8466-7de5e581032c
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: d86fb0ad-f344-44b7-8466-7de5e581032c
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
   Queuing workflow for execution...
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 6287b203-572f-40e9-8ee9-6d4918da36c1
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 6287b203-572f-40e9-8ee9-6d4918da36c1
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 6287b203-572f-40e9-8ee9-6d4918da36c1
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 6287b203-572f-40e9-8ee9-6d4918da36c1
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 6287b203-572f-40e9-8ee9-6d4918da36c1
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
   [ComfyUI] [32m[INFO][0m got prompt
   [ComfyUI] [32m[INFO][0m got prompt
   [ComfyUI] [32m[INFO][0m got prompt
@@ -167,11 +167,11 @@ Capturing execution frames: test_wrap_unwrap.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.02s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.02s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.02s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.02s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.02s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.04s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.04s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.04s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.04s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.04s): result: NodeOutput
   [ComfyUI] [comfy-env] Running PanoramaUnwrap: panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaUnwrap: panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaUnwrap: panorama: dict
@@ -247,14 +247,14 @@ Capturing execution frames: test_wrap_unwrap.json
   [ComfyUI] [comfy-env] PanoramaUnwrap done (0.01s): result: NodeOutput
   [ComfyUI] [comfy-env] PanoramaUnwrap done (0.01s): result: NodeOutput
   [ComfyUI] [comfy-env] PanoramaUnwrap done (0.01s): result: NodeOutput
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.61 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.61 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.61 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.61 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.61 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.65 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.65 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.65 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.65 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.65 seconds[0m
   Node executed (1 total), capturing...
   Frame 2 saved (frame_001.jpg, t=1.0s)
-  [capture-node] freeze=2ms shot=74ms unfreeze=0ms saved=True
+  [capture-node] freeze=2ms shot=88ms unfreeze=0ms saved=True
   Execution complete (t=1.0s)
   Captured 2 unique frames over 1.1s
   [debug] iframes: 0
