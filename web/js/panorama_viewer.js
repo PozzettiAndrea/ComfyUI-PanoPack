@@ -29,6 +29,9 @@ app.registerExtension({
             iframe.style.border = "none";
             iframe.style.backgroundColor = "#000";
             iframe.style.borderRadius = "6px";
+            // Let the in-iframe Fullscreen button fill the whole screen.
+            iframe.allowFullscreen = true;
+            iframe.setAttribute("allow", "fullscreen");
             iframe.src = `${VIEWER_HTML_URL}?v=${Date.now()}`;
 
             this._panoIframe = iframe;

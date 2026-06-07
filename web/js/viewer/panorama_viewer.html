@@ -28,6 +28,25 @@
     display: flex; align-items: center; gap: 8px;
   }
   #controls span { color: #666; }
+  /* Keep the viewport black (no flash) when it goes fullscreen. */
+  #viewport:fullscreen, #viewport:-webkit-full-screen { background: #000; }
+  #viewport::backdrop { background: #000; }
+  /* On-screen key indicator: WASD + arrows that light up as you navigate. */
+  #keypad {
+    position: absolute; left: 8px; bottom: 8px; z-index: 10;
+    display: flex; gap: 10px; align-items: center;
+    padding: 5px 8px; background: rgba(20,20,20,0.55);
+    border: 1px solid #333; border-radius: 5px;
+    backdrop-filter: blur(4px); user-select: none; pointer-events: none;
+  }
+  #keypad .kp-grid { display: grid; grid-template-columns: repeat(3, 18px); gap: 2px; }
+  #keypad .kp-key {
+    min-width: 18px; height: 18px; line-height: 16px; text-align: center;
+    font-size: 10px; font-family: monospace; color: #aaa;
+    background: #2a2a2a; border: 1px solid #444; border-radius: 3px;
+    box-sizing: border-box; transition: all 0.04s;
+  }
+  #keypad .kp-key.on { background: #00e0ff; color: #002b30; border-color: #00e0ff; }
 </style>
 </head>
 <body>
@@ -72,6 +91,64 @@ for (const p of PRESETS) {
   btnBar.appendChild(b);
 }
 viewport.appendChild(btnBar);
+
+// Fullscreen toggle. Kept in the #buttons cluster so it stays visible (and can
+// toggle back off) while fullscreen. Target the viewport itself: the UA
+// stylesheet stretches a non-:root fullscreen element to fill the screen.
+const fsBtn = document.createElement("button");
+fsBtn.textContent = "Fullscreen";
+fsBtn.title = "Toggle fullscreen";
+btnBar.appendChild(fsBtn);
+const fsReq = viewport.requestFullscreen || viewport.webkitRequestFullscreen;
+const fsExit = document.exitFullscreen || document.webkitExitFullscreen;
+const fsEl = () => document.fullscreenElement || document.webkitFullscreenElement;
+fsBtn.addEventListener("click", () => {
+  try {
+    if (!fsEl()) { const p = fsReq.call(viewport); if (p && p.then) p.catch(() => {}); }
+    else { fsExit.call(document); }
+  } catch (_) {}
+});
+const onFsChange = () => {
+  fsBtn.textContent = fsEl() ? "Exit Full" : "Fullscreen";
+  // The container size settles a frame or two after the event; re-fit then.
+  requestAnimationFrame(() => requestAnimationFrame(resize));
+  setTimeout(resize, 150);
+};
+document.addEventListener("fullscreenchange", onFsChange);
+document.addEventListener("webkitfullscreenchange", onFsChange);
+
+// On-screen key indicator: WASD + arrows light up as you navigate (handy for
+// screen recordings). Lives inside the viewport so it shows in fullscreen too.
+const keyPad = (() => {
+  const cells = {};
+  const pad = document.createElement("div");
+  pad.id = "keypad";
+  const mkKey = (label, code) => {
+    const k = document.createElement("div");
+    k.className = "kp-key";
+    k.textContent = label;
+    cells[code] = k;
+    return k;
+  };
+  const mkGrid = (rows) => {
+    const g = document.createElement("div");
+    g.className = "kp-grid";
+    rows.forEach(r => r.forEach(c => g.appendChild(c || document.createElement("div"))));
+    return g;
+  };
+  pad.appendChild(mkGrid([
+    [null, mkKey("W", "w"), null],
+    [mkKey("A", "a"), mkKey("S", "s"), mkKey("D", "d")],
+  ]));
+  pad.appendChild(mkGrid([
+    [null, mkKey("↑", "arrowup"), null],
+    [mkKey("←", "arrowleft"), mkKey("↓", "arrowdown"), mkKey("→", "arrowright")],
+  ]));
+  const set = (code, on) => { const el = cells[code]; if (el) el.classList.toggle("on", on); };
+  const reset = () => Object.keys(cells).forEach(c => set(c, false));
+  return { el: pad, set, reset };
+})();
+viewport.appendChild(keyPad.el);
 
 // Three.js setup
 const scene = new THREE.Scene();
@@ -128,9 +205,15 @@ viewport.addEventListener("wheel", e => {
 // Keyboard
 document.addEventListener("keydown", e => {
   const nav = ["arrowup","arrowdown","arrowleft","arrowright","w","a","s","d"];
-  if (nav.includes(e.key.toLowerCase())) { keys.add(e.key.toLowerCase()); e.preventDefault(); }
+  const k = e.key.toLowerCase();
+  if (nav.includes(k)) { keys.add(k); keyPad.set(k, true); e.preventDefault(); }
 });
-document.addEventListener("keyup", e => { keys.delete(e.key.toLowerCase()); });
+document.addEventListener("keyup", e => {
+  const k = e.key.toLowerCase();
+  keys.delete(k); keyPad.set(k, false);
+});
+// Losing focus drops key events; clear so nothing sticks "on".
+window.addEventListener("blur", () => { keys.clear(); keyPad.reset(); });
 
 // Animation
 let animating = false;
