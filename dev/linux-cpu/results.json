@@ -1,35 +1,35 @@
 {
-  "timestamp": "2026-06-07T11:31:54.324069+00:00",
+  "timestamp": "2026-06-07T11:54:42.586736+00:00",
   "platform": "linux",
   "hardware": {
     "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
-    "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
+    "cpu": "AMD EPYC 7763 64-Core Processor"
   },
-  "commit_hash": "e206e7bf251e72ffded0d88a71b530a05ba2c101",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27091232437",
+  "commit_hash": "ba646ca33ca446a0a79e72ca3ee00a1f71e10ddf",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27091724610",
   "success": false,
   "summary": {
     "total": 13,
-    "passed": 4,
-    "failed": 2
+    "passed": 5,
+    "failed": 1
   },
   "workflows": [
     {
       "name": "360_render",
       "status": "fail",
-      "duration_seconds": 17.83,
-      "error": "Workflow execution failed: {'prompt_id': 'eeb92b61-7cb2-48cf-8736-9d411839e698', 'node_id': '92', 'node_type': 'PanoRenderMesh', 'executed': ['84'], 'exception_message': \"ComfyUI-PanoPack: Socket closed but worker process still running.\\n  exit code: None\\n  worker log (/tmp/comfy_worker_debug.log, last 20 lines):\\n    11:30:55 [worker] Waiting for request #1...\\n    11:30:55 [worker] Request: call_method nodes.pano_render_mesh call_id=1\\n    11:30:55 [worker] Reconstructing inputs from shm...\\n    11:30:55 [_from_shm] top-level keys: ['mode', 'yz_flip', 'width', 'face_resolution', 'mesh']\\n    11:30:55 [_from_shm] mesh: trimesh memfd pid=3000 fd=26 size=22515610\\n    11:30:57 [worker] Inputs ready: ['mode', 'yz_flip', 'width', 'face_resolution', 'mesh']\\n    11:30:57 [worker] Importing module nodes.pano_render_mesh...\\n    11:30:57 [worker] Module imported\\n    11:30:57 [worker] Getting class PanoRenderMesh...\\n    11:30:57 [worker] Creating instance...\\n    11:30:57 [worker] Calling EXECUTE_NORMALIZED...\\n    11:30:57 [print] [PanoRenderMesh] === PanoRenderMesh: yz_flip=True width=2048 face_res=1024 ===\\n    11:30:57 [print] [PanoRenderMesh]   input: type=Trimesh verts=233816 faces=469926 vertex_colors=True colors=False\\n    11:30:57 [print] [PanoRenderMesh]   input: bbox min=[-2.744999885559082, -2.63700008392334, -1.7869999408721924] max=[3.319000005722046, 3.378000020980835, 2.121999979019165]\\n    11:30:57 [print] [PanoRenderMesh]   input: |v| from origin min=1.675 med=3.069 max=4.084\\n    11:30:57 [print] [PanoRenderMesh]   yz_flipped: type=Trimesh verts=233816 faces=469926 vertex_colors=True colors=False\\n    11:30:57 [print] [PanoRenderMesh]   yz_flipped: bbox min=[-2.744999885559082, -1.7869999408721924, -2.63700008392334] max=[3.319000005722046, 2.121999979019165, 3.378000020980835]\\n    11:30:57 [print] [PanoRenderMesh]   yz_flipped: |v| from origin min=1.675 med=3.069 max=4.084\\n    11:30:57 [print] [PanoRenderMesh] rendering 6 cube faces @ 1024px (color, mode=mesh)\\n    11:30:58 [print] [PanoRenderMesh]   pyvista poly: n_points=233816 n_cells=469926 has_RGB=True mode=mesh\\n\", 'exception_type': 'RuntimeError', 'traceback': ['  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1128/ComfyUI/execution.py\", line 536, in execute\\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1128/ComfyUI/execution.py\", line 336, in get_output_data\\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1128/ComfyUI/execution.py\", line 310, in _async_map_node_over_list\\n    await process_inputs(input_dict, i)\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1128/ComfyUI/execution.py\", line 298, in process_inputs\\n    result = f(**inputs)\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1128/.venv/lib/python3.10/site-packages/comfy_env/isolation/metadata.py\", line 560, in proxy\\n    result = worker.call_method(\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1128/.venv/lib/python3.10/site-packages/comfy_env/isolation/workers/subprocess.py\", line 669, in call_method\\n    response = self._send_request(request, timeout)\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1128/.venv/lib/python3.10/site-packages/comfy_env/isolation/workers/subprocess.py\", line 589, in _send_request\\n    raise RuntimeError(\\n'], 'current_inputs': {'mode': ['mesh'], 'mode.show_edges': ['on'], 'mode.show_edges.edge_thickness': [1], 'yz_flip': [True], 'width': [2048], 'face_resolution': [1024], 'mesh': ['<trimesh.Trimesh(vertices.shape=(233816, 3), faces.shape=(469926, 3), name=`pano_mesh.vtp`)>']}, 'current_outputs': ['93', '92', '84', '94', '96', '90', '91', '88', '87', '97', '95'], 'timestamp': 1780831861502}\n\nDetails:\nWorkflow: /tmp/comfy-test-run-a_oczd0x/ComfyUI-PanoPack/workflows/360_render.json\nNode error: PanoRenderMesh",
+      "duration_seconds": 19.13,
+      "error": "Workflow execution failed: {'prompt_id': '9c70c0b3-3d71-4fa8-b013-14a75b5195b9', 'node_id': '92', 'node_type': 'PanoRenderMesh', 'executed': ['84'], 'exception_message': \"ComfyUI-PanoPack: Socket closed but worker process still running.\\n  exit code: None\\n  worker log (/tmp/comfy_worker_debug.log, last 20 lines):\\n    11:53:38 [worker] Waiting for request #1...\\n    11:53:38 [worker] Request: call_method nodes.pano_render_mesh call_id=1\\n    11:53:38 [worker] Reconstructing inputs from shm...\\n    11:53:38 [_from_shm] top-level keys: ['mode', 'yz_flip', 'width', 'face_resolution', 'mesh']\\n    11:53:38 [_from_shm] mesh: trimesh memfd pid=3043 fd=26 size=22515610\\n    11:53:40 [worker] Inputs ready: ['mode', 'yz_flip', 'width', 'face_resolution', 'mesh']\\n    11:53:40 [worker] Importing module nodes.pano_render_mesh...\\n    11:53:40 [worker] Module imported\\n    11:53:40 [worker] Getting class PanoRenderMesh...\\n    11:53:40 [worker] Creating instance...\\n    11:53:40 [worker] Calling EXECUTE_NORMALIZED...\\n    11:53:40 [print] [PanoRenderMesh] === PanoRenderMesh: yz_flip=True width=2048 face_res=1024 ===\\n    11:53:40 [print] [PanoRenderMesh]   input: type=Trimesh verts=233816 faces=469926 vertex_colors=True colors=False\\n    11:53:40 [print] [PanoRenderMesh]   input: bbox min=[-2.744999885559082, -2.63700008392334, -1.7869999408721924] max=[3.319000005722046, 3.378000020980835, 2.121999979019165]\\n    11:53:40 [print] [PanoRenderMesh]   input: |v| from origin min=1.675 med=3.069 max=4.084\\n    11:53:40 [print] [PanoRenderMesh]   yz_flipped: type=Trimesh verts=233816 faces=469926 vertex_colors=True colors=False\\n    11:53:40 [print] [PanoRenderMesh]   yz_flipped: bbox min=[-2.744999885559082, -1.7869999408721924, -2.63700008392334] max=[3.319000005722046, 2.121999979019165, 3.378000020980835]\\n    11:53:40 [print] [PanoRenderMesh]   yz_flipped: |v| from origin min=1.675 med=3.069 max=4.084\\n    11:53:40 [print] [PanoRenderMesh] rendering 6 cube faces @ 1024px (color, mode=mesh)\\n    11:53:40 [print] [PanoRenderMesh]   pyvista poly: n_points=233816 n_cells=469926 has_RGB=True mode=mesh\\n\", 'exception_type': 'RuntimeError', 'traceback': ['  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1151/ComfyUI/execution.py\", line 536, in execute\\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1151/ComfyUI/execution.py\", line 336, in get_output_data\\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1151/ComfyUI/execution.py\", line 310, in _async_map_node_over_list\\n    await process_inputs(input_dict, i)\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1151/ComfyUI/execution.py\", line 298, in process_inputs\\n    result = f(**inputs)\\n             ^^^^^^^^^^^\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1151/.venv/lib/python3.11/site-packages/comfy_env/isolation/metadata.py\", line 560, in proxy\\n    result = worker.call_method(\\n             ^^^^^^^^^^^^^^^^^^^\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1151/.venv/lib/python3.11/site-packages/comfy_env/isolation/workers/subprocess.py\", line 669, in call_method\\n    response = self._send_request(request, timeout)\\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1151/.venv/lib/python3.11/site-packages/comfy_env/isolation/workers/subprocess.py\", line 589, in _send_request\\n    raise RuntimeError(\\n'], 'current_inputs': {'mode': ['mesh'], 'mode.show_edges': ['on'], 'mode.show_edges.edge_thickness': [1], 'yz_flip': [True], 'width': [2048], 'face_resolution': [1024], 'mesh': ['<trimesh.Trimesh(vertices.shape=(233816, 3), faces.shape=(469926, 3), name=`pano_mesh.vtp`)>']}, 'current_outputs': ['93', '96', '97', '90', '95', '87', '92', '88', '94', '84', '91'], 'timestamp': 1780833224950}\n\nDetails:\nWorkflow: /tmp/comfy-test-run-8yms_yxp/ComfyUI-PanoPack/workflows/360_render.json\nNode error: PanoRenderMesh",
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
-        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
+        "cpu": "AMD EPYC 7763 64-Core Processor"
       },
       "resources": {
         "ram": {
-          "peak": 1.84,
-          "avg": 1.03
+          "peak": 1.91,
+          "avg": 1.13
         },
         "total_ram_gb": 15.6,
-        "samples": 18
+        "samples": 20
       }
     },
     {
@@ -84,16 +84,16 @@
     {
       "name": "pano_crop",
       "status": "pass",
-      "duration_seconds": 10.27,
+      "duration_seconds": 10.61,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
-        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
+        "cpu": "AMD EPYC 7763 64-Core Processor"
       },
       "resources": {
         "ram": {
-          "peak": 1.97,
-          "avg": 1.41
+          "peak": 2.04,
+          "avg": 1.48
         },
         "total_ram_gb": 15.6,
         "samples": 11
@@ -102,16 +102,16 @@
     {
       "name": "pano_info",
       "status": "pass",
-      "duration_seconds": 8.84,
+      "duration_seconds": 8.85,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
-        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
+        "cpu": "AMD EPYC 7763 64-Core Processor"
       },
       "resources": {
         "ram": {
-          "peak": 2.39,
-          "avg": 2.08
+          "peak": 2.48,
+          "avg": 2.18
         },
         "total_ram_gb": 15.6,
         "samples": 9
@@ -119,53 +119,53 @@
     },
     {
       "name": "panorama_shift",
-      "status": "fail",
-      "duration_seconds": 6.63,
-      "error": "Workflow execution failed: {'prompt_id': '5d94a35b-dd0e-4ed2-bc96-7c77c6e31497', 'node_id': '8', 'node_type': 'PanoramaShift', 'executed': ['2', '1'], 'exception_message': 'name \\'torch\\' is not defined\\n\\nWorker traceback:\\nTraceback (most recent call last):\\n  File \"/tmp/comfyui_pvenv_4lo1_vzy/persistent_worker.py\", line 1762, in main\\n    result = method(**inputs)\\n  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1128/ComfyUI/comfy_api/latest/_io.py\", line 1892, in EXECUTE_NORMALIZED\\n    to_return = cls.execute(*args, **kwargs)\\n  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1128/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py\", line 64, in execute\\n    rotated = panorama_shift_pitch(rotated, pitch_degrees)\\n  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1128/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py\", line 188, in panorama_shift_pitch\\n    u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)\\nNameError: name \\'torch\\' is not defined\\n\\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1128/ComfyUI/execution.py\", line 536, in execute\\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1128/ComfyUI/execution.py\", line 336, in get_output_data\\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1128/ComfyUI/execution.py\", line 310, in _async_map_node_over_list\\n    await process_inputs(input_dict, i)\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1128/ComfyUI/execution.py\", line 298, in process_inputs\\n    result = f(**inputs)\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1128/.venv/lib/python3.10/site-packages/comfy_env/isolation/metadata.py\", line 560, in proxy\\n    result = worker.call_method(\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1128/.venv/lib/python3.10/site-packages/comfy_env/isolation/workers/subprocess.py\", line 674, in call_method\\n    raise WorkerError(\\n'], 'current_inputs': {'yaw_degrees': [0], 'pitch_degrees': [45], 'panorama': [\"{'image': tensor([[[[0.1647, 0.1020, 0.0745],\\n          [0.1765, 0.1098, 0.0863],\\n          [0.1765, 0.1137, 0.0941],\\n          ...,\\n          [0.1647, 0.1137, 0.0941],\\n          [0.1647, 0.1098, 0.0902],\\n          [0.1333, 0.0784, 0.0667]],\\n\\n         [[0.1922, 0.1255, 0.0902],\\n          [0.1843, 0.1216, 0.0902],\\n          [0.1922, 0.1255, 0.0980],\\n          ...,\\n          [0.1765, 0.1255, 0.0980],\\n          [0.1725, 0.1255, 0.1020],\\n          [0.1647, 0.1059, 0.0824]],\\n\\n         [[0.1882, 0.1216, 0.0980],\\n          [0.1843, 0.1216, 0.0980],\\n          [0.1882, 0.1216, 0.0980],\\n          ...,\\n          [0.1804, 0.1333, 0.1020],\\n          [0.1804, 0.1373, 0.1098],\\n          [0.1569, 0.1059, 0.0863]],\\n\\n         ...,\\n\\n         [[0.1882, 0.1255, 0.1176],\\n          [0.1922, 0.1255, 0.1176],\\n          [0.1922, 0.1255, 0.1176],\\n          ...,\\n          [0.1176, 0.1333, 0.1412],\\n          [0.1686, 0.1529, 0.1451],\\n          [0.1843, 0.1569, 0.1333]],\\n\\n         [[0.1882, 0.1255, 0.1176],\\n          [0.1882, 0.1255, 0.1137],\\n          [0.1922, 0.1255, 0.1176],\\n          ...,\\n          [0.1647, 0.1412, 0.1098],\\n          [0.1922, 0.1529, 0.1176],\\n          [0.2039, 0.1490, 0.1294]],\\n\\n         [[0.1765, 0.1137, 0.1137],\\n          [0.1804, 0.1255, 0.1216],\\n          [0.1765, 0.1216, 0.1137],\\n          ...,\\n          [0.1961, 0.1725, 0.1412],\\n          [0.1647, 0.1451, 0.1333],\\n          [0.1843, 0.1137, 0.1373]]]]), 'meta': {}}\"]}, 'current_outputs': ['4', '2', '8', '7', '5', '3', '6', '1'], 'timestamp': 1780831889331}\n\nDetails:\nWorkflow: /tmp/comfy-test-run-a_oczd0x/ComfyUI-PanoPack/workflows/panorama_shift.json\nNode error: PanoramaShift",
+      "status": "pass",
+      "duration_seconds": 11.75,
+      "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
-        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
+        "cpu": "AMD EPYC 7763 64-Core Processor"
       },
       "resources": {
         "ram": {
-          "peak": 2.41,
-          "avg": 2.39
+          "peak": 4.06,
+          "avg": 3.02
         },
         "total_ram_gb": 15.6,
-        "samples": 7
+        "samples": 12
       }
     },
     {
       "name": "preview_panorama",
       "status": "pass",
-      "duration_seconds": 13.94,
+      "duration_seconds": 13.04,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
-        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
+        "cpu": "AMD EPYC 7763 64-Core Processor"
       },
       "resources": {
         "ram": {
-          "peak": 3.38,
-          "avg": 2.97
+          "peak": 4.04,
+          "avg": 3.75
         },
         "total_ram_gb": 15.6,
-        "samples": 14
+        "samples": 13
       }
     },
     {
       "name": "test_wrap_unwrap",
       "status": "pass",
-      "duration_seconds": 9.95,
+      "duration_seconds": 10.04,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
-        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
+        "cpu": "AMD EPYC 7763 64-Core Processor"
       },
       "resources": {
         "ram": {
-          "peak": 3.48,
-          "avg": 3.23
+          "peak": 4.28,
+          "avg": 3.94
         },
         "total_ram_gb": 15.6,
         "samples": 10
