@@ -1,0 +1,13 @@
+[project]
+name = "comfyui-panopack"
+version = "0.1.0"
+description = "Warning, uses experimental package `comfy-env` to attempt a one click isolated install. Will download and use pixi package manager. ComfyUI utility pack for 360° equirectangular panoramas."
+license = {file = "LICENSE"}
+
+[tool.comfy]
+PublisherId = "pozzettiandrea"
+DisplayName = "ComfyUI PanoPack"
+Icon = "https://raw.githubusercontent.com/PozzettiAndrea/ComfyUI-PanoPack/main/assets/icon.png"
+
+[project.urls]
+Repository = "https://github.com/PozzettiAndrea/ComfyUI-PanoPack"

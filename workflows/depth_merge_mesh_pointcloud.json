@@ -1,0 +1,1621 @@
+{
+  "id": "worldnav-3node-pipeline",
+  "revision": 0,
+  "last_node_id": 83,
+  "last_link_id": 175,
+  "nodes": [
+    {
+      "id": 65,
+      "type": "PanoramaWrap",
+      "pos": [
+        -382.9528508428775,
+        745.4606430940048
+      ],
+      "size": [
+        305.2095703125,
+        26
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 134
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "panorama",
+          "name": "panorama",
+          "type": "PANORAMA",
+          "links": [
+            135,
+            162,
+            165
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "PozzettiAndrea/ComfyUI-PanoPack",
+        "ver": "668e39e1fb590de0a8b43166cb5153813d231081",
+        "Node name for S&R": "PanoramaWrap"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 10,
+      "type": "DownloadAndLoadMoGe2Model",
+      "pos": [
+        3.314271889630292,
+        364.93762363511075
+      ],
+      "size": [
+        320,
+        110
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "COMBO",
+          "widget": {
+            "name": "model"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "precision",
+          "name": "precision",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "precision"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "attention",
+          "name": "attention",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "attention"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "moge2_model",
+          "name": "moge2_model",
+          "type": "MOGE2_MODEL",
+          "slot_index": 0,
+          "links": [
+            127
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-MoGe2",
+        "ver": "29d3023a6efd4b68dd22f1b4173df8f9b5f47801",
+        "Node name for S&R": "DownloadAndLoadMoGe2Model",
+        "aux_id": "PozzettiAndrea/ComfyUI-MoGe2"
+      },
+      "widgets_values": [
+        "moge-2-vitl-normal.pt",
+        "auto",
+        "auto"
+      ]
+    },
+    {
+      "id": 63,
+      "type": "MoGe2Inference",
+      "pos": [
+        360.8602507470551,
+        372.49259327856385
+      ],
+      "size": [
+        292.564453125,
+        294
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "moge2_model",
+          "name": "moge2_model",
+          "type": "MOGE2_MODEL",
+          "link": 127
+        },
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 136
+        },
+        {
+          "localized_name": "resolution_level",
+          "name": "resolution_level",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "resolution_level"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "num_tokens",
+          "name": "num_tokens",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "num_tokens"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "fov_x_deg",
+          "name": "fov_x_deg",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "fov_x_deg"
+          },
+          "link": 137
+        },
+        {
+          "localized_name": "force_projection",
+          "name": "force_projection",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "force_projection"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "apply_mask",
+          "name": "apply_mask",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "apply_mask"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "depth_visualization",
+          "name": "depth_visualization",
+          "type": "IMAGE",
+          "links": null
+        },
+        {
+          "localized_name": "depth_raw",
+          "name": "depth_raw",
+          "type": "IMAGE",
+          "links": []
+        },
+        {
+          "localized_name": "normal",
+          "name": "normal",
+          "type": "IMAGE",
+          "links": [
+            141
+          ]
+        },
+        {
+          "localized_name": "points_raw",
+          "name": "points_raw",
+          "type": "IMAGE",
+          "links": [
+            140
+          ]
+        },
+        {
+          "localized_name": "valid_mask",
+          "name": "valid_mask",
+          "type": "MASK",
+          "links": [
+            142
+          ]
+        },
+        {
+          "localized_name": "intrinsics",
+          "name": "intrinsics",
+          "type": "INTRINSICS",
+          "links": null
+        },
+        {
+          "localized_name": "fov_x",
+          "name": "fov_x",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "localized_name": "fov_y",
+          "name": "fov_y",
+          "type": "FLOAT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-MoGe2",
+        "ver": "6ef48db2c09cce4003571a6f6c8611d91b700da1",
+        "Node name for S&R": "MoGe2Inference",
+        "aux_id": "PozzettiAndrea/ComfyUI-MoGe2"
+      },
+      "widgets_values": [
+        9,
+        0,
+        0,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [
+        -379.14103822383873,
+        363.5759865049563
+      ],
+      "size": [
+        320,
+        320
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "choose file to upload",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            9,
+            134,
+            155
+          ]
+        },
+        {
+          "localized_name": "MASK",
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.21.1",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "actual_pano_from_real_life.jpg",
+        "image"
+      ]
+    },
+    {
+      "id": 74,
+      "type": "GetImageSize",
+      "pos": [
+        35.528055035817204,
+        860.2354912685444
+      ],
+      "size": [
+        140,
+        124
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 155
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "links": [
+            156
+          ]
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "links": [
+            157
+          ]
+        },
+        {
+          "localized_name": "batch_size",
+          "name": "batch_size",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.24.0",
+        "Node name for S&R": "GetImageSize"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 66,
+      "type": "PanoramaSplit",
+      "pos": [
+        19.225067665704067,
+        533.8708372150986
+      ],
+      "size": [
+        270,
+        210
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "panorama",
+          "name": "panorama",
+          "type": "PANORAMA",
+          "link": 135
+        },
+        {
+          "localized_name": "split_method",
+          "name": "split_method",
+          "type": "COMFY_DYNAMICCOMBO_V3",
+          "widget": {
+            "name": "split_method"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "resolution",
+          "name": "resolution",
+          "type": "INT",
+          "widget": {
+            "name": "resolution"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "fov_degrees",
+          "name": "fov_degrees",
+          "type": "FLOAT",
+          "widget": {
+            "name": "fov_degrees"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "use_gpu",
+          "name": "use_gpu",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "use_gpu"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "create_masks",
+          "name": "create_masks",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "create_masks"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "fname",
+          "name": "fname",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "fname"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "face_images",
+          "name": "face_images",
+          "type": "IMAGE",
+          "links": [
+            136
+          ]
+        },
+        {
+          "localized_name": "extrinsics",
+          "name": "extrinsics",
+          "type": "EXTRINSICS",
+          "links": [
+            143
+          ]
+        },
+        {
+          "localized_name": "intrinsics",
+          "name": "intrinsics",
+          "type": "INTRINSICS",
+          "links": [
+            144
+          ]
+        },
+        {
+          "localized_name": "fov_x_deg",
+          "name": "fov_x_deg",
+          "type": "FLOAT",
+          "links": [
+            137
+          ]
+        },
+        {
+          "localized_name": "face_masks",
+          "name": "face_masks",
+          "type": "MASK",
+          "links": null
+        },
+        {
+          "localized_name": "debug_image",
+          "name": "debug_image",
+          "type": "IMAGE",
+          "links": [
+            171
+          ]
+        },
+        {
+          "localized_name": "debug_masks",
+          "name": "debug_masks",
+          "type": "IMAGE",
+          "links": null
+        },
+        {
+          "localized_name": "entries",
+          "name": "entries",
+          "type": "MEMORY_BANK_ENTRIES",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "PozzettiAndrea/ComfyUI-PanoPack",
+        "ver": "681d3216b36e1e6a9c8e9d66824b33aad160a9ca",
+        "Node name for S&R": "PanoramaSplit"
+      },
+      "widgets_values": [
+        "icosahedron_42",
+        512,
+        90,
+        true,
+        false,
+        "pano_bank"
+      ]
+    },
+    {
+      "id": 81,
+      "type": "PreviewImage",
+      "pos": [
+        272.29651625861277,
+        867.1544089276288
+      ],
+      "size": [
+        140,
+        26
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 171
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.24.0",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 82,
+      "type": "PreviewImage",
+      "pos": [
+        596.7570962586125,
+        937.6798106298988
+      ],
+      "size": [
+        140,
+        246
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 172
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.24.0",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 69,
+      "type": "PanoramaDepthMerge",
+      "pos": [
+        682.5924948257352,
+        378.39783762945945
+      ],
+      "size": [
+        323.181640625,
+        350
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "face_points",
+          "name": "face_points",
+          "type": "IMAGE",
+          "link": 140
+        },
+        {
+          "localized_name": "extrinsics",
+          "name": "extrinsics",
+          "type": "EXTRINSICS",
+          "link": 143
+        },
+        {
+          "localized_name": "intrinsics",
+          "name": "intrinsics",
+          "type": "INTRINSICS",
+          "link": 144
+        },
+        {
+          "localized_name": "face_valid_masks",
+          "name": "face_valid_masks",
+          "shape": 7,
+          "type": "MASK",
+          "link": 142
+        },
+        {
+          "localized_name": "face_confidences",
+          "name": "face_confidences",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        },
+        {
+          "localized_name": "face_normals",
+          "name": "face_normals",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 141
+        },
+        {
+          "localized_name": "out_width",
+          "name": "out_width",
+          "type": "INT",
+          "widget": {
+            "name": "out_width"
+          },
+          "link": 156
+        },
+        {
+          "localized_name": "out_height",
+          "name": "out_height",
+          "type": "INT",
+          "widget": {
+            "name": "out_height"
+          },
+          "link": 157
+        },
+        {
+          "localized_name": "use_gpu",
+          "name": "use_gpu",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "use_gpu"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "scale_anchor",
+          "name": "scale_anchor",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "scale_anchor"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "chunk_size",
+          "name": "chunk_size",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "chunk_size"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "center_weight_power",
+          "name": "center_weight_power",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "center_weight_power"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "normal_edge_threshold_deg",
+          "name": "normal_edge_threshold_deg",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "normal_edge_threshold_deg"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "normal_consistency_boost",
+          "name": "normal_consistency_boost",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "normal_consistency_boost"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "max_ray_distance_m",
+          "name": "max_ray_distance_m",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "max_ray_distance_m"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "depth",
+          "name": "depth",
+          "type": "IMAGE",
+          "links": [
+            163,
+            166
+          ]
+        },
+        {
+          "localized_name": "valid_mask",
+          "name": "valid_mask",
+          "type": "MASK",
+          "links": [
+            164,
+            167
+          ]
+        },
+        {
+          "localized_name": "debug_image",
+          "name": "debug_image",
+          "type": "IMAGE",
+          "links": [
+            172
+          ]
+        },
+        {
+          "localized_name": "xyz_views",
+          "name": "xyz_views",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "PozzettiAndrea/ComfyUI-PanoPack",
+        "ver": "64f522b14fa176cc78f6d5f3c35ee47746ab5051",
+        "Node name for S&R": "PanoramaDepthMerge"
+      },
+      "widgets_values": [
+        1920,
+        960,
+        true,
+        true,
+        8,
+        2,
+        0,
+        false,
+        0
+      ]
+    },
+    {
+      "id": 80,
+      "type": "PanoramaBuildMesh",
+      "pos": [
+        1057.269266214993,
+        378.14481355180806
+      ],
+      "size": [
+        287.853515625,
+        166
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "panorama",
+          "name": "panorama",
+          "type": "PANORAMA",
+          "link": 165
+        },
+        {
+          "localized_name": "depth",
+          "name": "depth",
+          "type": "IMAGE",
+          "link": 166
+        },
+        {
+          "localized_name": "sky_mask",
+          "name": "sky_mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        },
+        {
+          "localized_name": "valid_mask",
+          "name": "valid_mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": 167
+        },
+        {
+          "localized_name": "contract",
+          "name": "contract",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "contract"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "contract_beyond",
+          "name": "contract_beyond",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "contract_beyond"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "edge_rtol",
+          "name": "edge_rtol",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "edge_rtol"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "mesh",
+          "name": "mesh",
+          "type": "TRIMESH",
+          "links": [
+            168
+          ]
+        },
+        {
+          "localized_name": "mesh_preview",
+          "name": "mesh_preview",
+          "type": "IMAGE",
+          "links": null
+        },
+        {
+          "localized_name": "global_median_depth",
+          "name": "global_median_depth",
+          "type": "FLOAT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "PozzettiAndrea/ComfyUI-PanoPack",
+        "ver": "1f619dc6044a4aedaa2150c453d21315d6224e60",
+        "Node name for S&R": "PanoramaBuildMesh"
+      },
+      "widgets_values": [
+        true,
+        8,
+        0.1
+      ]
+    },
+    {
+      "id": 35,
+      "type": "GeomPackRemesh",
+      "pos": [
+        1376.624330553818,
+        384.3698764575211
+      ],
+      "size": [
+        358.068359375,
+        158
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "trimesh",
+          "name": "trimesh",
+          "type": "TRIMESH",
+          "link": 168
+        },
+        {
+          "localized_name": "backend",
+          "name": "backend",
+          "type": "COMFY_DYNAMICCOMBO_V3",
+          "widget": {
+            "name": "backend"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "backend.gpu_target_face_count",
+          "name": "backend.gpu_target_face_count",
+          "type": "INT",
+          "widget": {
+            "name": "backend.gpu_target_face_count"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "backend.remesh_band",
+          "name": "backend.remesh_band",
+          "type": "FLOAT",
+          "widget": {
+            "name": "backend.remesh_band"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "remeshed_mesh",
+          "name": "remeshed_mesh",
+          "type": "TRIMESH",
+          "links": [
+            62,
+            102,
+            106,
+            117,
+            161
+          ]
+        },
+        {
+          "localized_name": "info",
+          "name": "info",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-geometrypack",
+        "ver": "c67199de05705642258e727fa118f412877b4ebf",
+        "Node name for S&R": "GeomPackRemesh",
+        "aux_id": "PozzettiAndrea/ComfyUI-GeometryPack"
+      },
+      "widgets_values": [
+        "gpu_cumesh",
+        500000,
+        1,
+        "false"
+      ]
+    },
+    {
+      "id": 77,
+      "type": "GeomPackSaveMesh",
+      "pos": [
+        1077.172975734488,
+        1152.6083138551576
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "trimesh",
+          "name": "trimesh",
+          "type": "TRIMESH",
+          "link": 174
+        },
+        {
+          "localized_name": "file_path",
+          "name": "file_path",
+          "type": "STRING",
+          "widget": {
+            "name": "file_path"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "format",
+          "name": "format",
+          "type": "COMBO",
+          "widget": {
+            "name": "format"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "file_path",
+          "name": "file_path",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-geometrypack",
+        "ver": "c67199de05705642258e727fa118f412877b4ebf",
+        "Node name for S&R": "GeomPackSaveMesh",
+        "aux_id": "PozzettiAndrea/ComfyUI-GeometryPack"
+      },
+      "widgets_values": [
+        "pano_pc",
+        "ply"
+      ]
+    },
+    {
+      "id": 79,
+      "type": "PanoramaBuildPointCloud",
+      "pos": [
+        1074.5934325886471,
+        720.4890111343882
+      ],
+      "size": [
+        287.853515625,
+        214
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "panorama",
+          "name": "panorama",
+          "type": "PANORAMA",
+          "link": 162
+        },
+        {
+          "localized_name": "depth",
+          "name": "depth",
+          "type": "IMAGE",
+          "link": 163
+        },
+        {
+          "localized_name": "sky_mask",
+          "name": "sky_mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        },
+        {
+          "localized_name": "valid_mask",
+          "name": "valid_mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": 164
+        },
+        {
+          "localized_name": "contract",
+          "name": "contract",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "contract"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "contract_beyond",
+          "name": "contract_beyond",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "contract_beyond"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "edge_rtol",
+          "name": "edge_rtol",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "edge_rtol"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "max_size",
+          "name": "max_size",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "max_size"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "dropout_pcd",
+          "name": "dropout_pcd",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "dropout_pcd"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "point_cloud",
+          "name": "point_cloud",
+          "type": "TRIMESH",
+          "links": [
+            173
+          ]
+        },
+        {
+          "localized_name": "global_median_depth",
+          "name": "global_median_depth",
+          "type": "FLOAT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "PozzettiAndrea/ComfyUI-PanoPack",
+        "ver": "1f619dc6044a4aedaa2150c453d21315d6224e60",
+        "Node name for S&R": "PanoramaBuildPointCloud"
+      },
+      "widgets_values": [
+        true,
+        8,
+        0.1,
+        4096,
+        true
+      ]
+    },
+    {
+      "id": 83,
+      "type": "GeomPackSubsamplePointCloud",
+      "pos": [
+        1077.0814864631166,
+        984.0555421153886
+      ],
+      "size": [
+        270,
+        130
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "point_cloud",
+          "name": "point_cloud",
+          "type": "TRIMESH",
+          "link": 173
+        },
+        {
+          "localized_name": "method",
+          "name": "method",
+          "type": "COMBO",
+          "widget": {
+            "name": "method"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "target_count",
+          "name": "target_count",
+          "type": "INT",
+          "widget": {
+            "name": "target_count"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "seed",
+          "name": "seed",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "point_cloud",
+          "name": "point_cloud",
+          "type": "TRIMESH",
+          "links": [
+            174,
+            175
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-geometrypack",
+        "ver": "c67199de05705642258e727fa118f412877b4ebf",
+        "Node name for S&R": "GeomPackSubsamplePointCloud"
+      },
+      "widgets_values": [
+        "random",
+        2100,
+        42,
+        "fixed"
+      ]
+    },
+    {
+      "id": 76,
+      "type": "GeomPackPreviewMeshVTK",
+      "pos": [
+        1453.2819553889053,
+        885.5380766053817
+      ],
+      "size": [
+        512,
+        722
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "trimesh",
+          "name": "trimesh",
+          "shape": 7,
+          "type": "TRIMESH",
+          "link": 175
+        },
+        {
+          "localized_name": "voxelgrid",
+          "name": "voxelgrid",
+          "shape": 7,
+          "type": "VOXELGRID",
+          "link": null
+        },
+        {
+          "localized_name": "mode",
+          "name": "mode",
+          "type": "COMBO",
+          "widget": {
+            "name": "mode"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfyui-geometrypack",
+        "ver": "c67199de05705642258e727fa118f412877b4ebf",
+        "Node name for S&R": "GeomPackPreviewMeshVTK",
+        "aux_id": "PozzettiAndrea/ComfyUI-GeometryPack"
+      },
+      "widgets_values": [
+        "fields",
+        "{\"show_edges\":false,\"camera_state\":\"{\\\"position\\\":[0,0,0],\\\"focalPoint\\\":[0,0,0],\\\"viewUp\\\":[0,1,0]}\",\"selected_field\":\"\",\"selected_channel\":\"magnitude\",\"selected_colormap\":\"erdc_rainbow_bright\"}"
+      ]
+    },
+    {
+      "id": 78,
+      "type": "GeomPackSaveMesh",
+      "pos": [
+        1762.6692577099504,
+        620.0962693775308
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "trimesh",
+          "name": "trimesh",
+          "type": "TRIMESH",
+          "link": 161
+        },
+        {
+          "localized_name": "file_path",
+          "name": "file_path",
+          "type": "STRING",
+          "widget": {
+            "name": "file_path"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "format",
+          "name": "format",
+          "type": "COMBO",
+          "widget": {
+            "name": "format"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "file_path",
+          "name": "file_path",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-geometrypack",
+        "ver": "c67199de05705642258e727fa118f412877b4ebf",
+        "Node name for S&R": "GeomPackSaveMesh",
+        "aux_id": "PozzettiAndrea/ComfyUI-GeometryPack"
+      },
+      "widgets_values": [
+        "pano_mesh",
+        "vtp"
+      ]
+    },
+    {
+      "id": 36,
+      "type": "GeomPackPreviewMeshVTK",
+      "pos": [
+        2079.9978859616954,
+        524.1592253071567
+      ],
+      "size": [
+        512,
+        722
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "trimesh",
+          "name": "trimesh",
+          "shape": 7,
+          "type": "TRIMESH",
+          "link": 62
+        },
+        {
+          "localized_name": "voxelgrid",
+          "name": "voxelgrid",
+          "shape": 7,
+          "type": "VOXELGRID",
+          "link": null
+        },
+        {
+          "localized_name": "mode",
+          "name": "mode",
+          "type": "COMBO",
+          "widget": {
+            "name": "mode"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfyui-geometrypack",
+        "ver": "c67199de05705642258e727fa118f412877b4ebf",
+        "Node name for S&R": "GeomPackPreviewMeshVTK",
+        "aux_id": "PozzettiAndrea/ComfyUI-GeometryPack"
+      },
+      "widgets_values": [
+        "fields",
+        "{\"show_edges\":false,\"camera_state\":\"{\\\"position\\\":[0,0,0],\\\"focalPoint\\\":[0,0,0],\\\"viewUp\\\":[0,1,0]}\",\"selected_field\":\"\",\"selected_channel\":\"magnitude\",\"selected_colormap\":\"erdc_rainbow_bright\"}"
+      ]
+    }
+  ],
+  "links": [
+    [
+      62,
+      35,
+      0,
+      36,
+      0,
+      "TRIMESH"
+    ],
+    [
+      127,
+      10,
+      0,
+      63,
+      0,
+      "MOGE2_MODEL"
+    ],
+    [
+      134,
+      1,
+      0,
+      65,
+      0,
+      "IMAGE"
+    ],
+    [
+      135,
+      65,
+      0,
+      66,
+      0,
+      "PANORAMA"
+    ],
+    [
+      136,
+      66,
+      0,
+      63,
+      1,
+      "IMAGE"
+    ],
+    [
+      137,
+      66,
+      3,
+      63,
+      4,
+      "FLOAT"
+    ],
+    [
+      140,
+      63,
+      3,
+      69,
+      0,
+      "IMAGE"
+    ],
+    [
+      141,
+      63,
+      2,
+      69,
+      5,
+      "IMAGE"
+    ],
+    [
+      142,
+      63,
+      4,
+      69,
+      3,
+      "MASK"
+    ],
+    [
+      143,
+      66,
+      1,
+      69,
+      1,
+      "EXTRINSICS"
+    ],
+    [
+      144,
+      66,
+      2,
+      69,
+      2,
+      "INTRINSICS"
+    ],
+    [
+      155,
+      1,
+      0,
+      74,
+      0,
+      "IMAGE"
+    ],
+    [
+      156,
+      74,
+      0,
+      69,
+      6,
+      "INT"
+    ],
+    [
+      157,
+      74,
+      1,
+      69,
+      7,
+      "INT"
+    ],
+    [
+      161,
+      35,
+      0,
+      78,
+      0,
+      "TRIMESH"
+    ],
+    [
+      162,
+      65,
+      0,
+      79,
+      0,
+      "PANORAMA"
+    ],
+    [
+      163,
+      69,
+      0,
+      79,
+      1,
+      "IMAGE"
+    ],
+    [
+      164,
+      69,
+      1,
+      79,
+      3,
+      "MASK"
+    ],
+    [
+      165,
+      65,
+      0,
+      80,
+      0,
+      "PANORAMA"
+    ],
+    [
+      166,
+      69,
+      0,
+      80,
+      1,
+      "IMAGE"
+    ],
+    [
+      167,
+      69,
+      1,
+      80,
+      3,
+      "MASK"
+    ],
+    [
+      168,
+      80,
+      0,
+      35,
+      0,
+      "TRIMESH"
+    ],
+    [
+      171,
+      66,
+      4,
+      81,
+      0,
+      "IMAGE"
+    ],
+    [
+      172,
+      69,
+      2,
+      82,
+      0,
+      "IMAGE"
+    ],
+    [
+      173,
+      79,
+      0,
+      83,
+      0,
+      "TRIMESH"
+    ],
+    [
+      174,
+      83,
+      0,
+      77,
+      0,
+      "TRIMESH"
+    ],
+    [
+      175,
+      83,
+      0,
+      76,
+      0,
+      "TRIMESH"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6830134553650709,
+      "offset": [
+        -1396.6300292822805,
+        -265.2541879464783
+      ]
+    },
+    "frontendVersion": "1.43.18",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

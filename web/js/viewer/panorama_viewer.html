@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: #000; }
+  body { display: flex; flex-direction: column; }
+  /* Clean canvas: every control lives in the bars below it. */
+  #viewport { flex: 1; min-height: 120px; position: relative; }
+  #viewport canvas { display: block; }
+  /* No flash when the viewer goes fullscreen. */
+  body:fullscreen, body:-webkit-full-screen { background: #000; }
+  body::backdrop { background: #000; }
+
+  /* Info row: live lon/lat/uv readout on the left, key indicator on the right. */
+  #infoRow {
+    display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+    padding: 3px 8px; background: #111; border-top: 1px solid #333;
+  }
+  #info {
+    flex: 1; min-width: 0; font-size: 10px; font-family: monospace; color: #aaa;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  /* On-screen key indicator: WASD + arrows that light up as you navigate. */
+  #keypad { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+  #keypad .kp-grid { display: grid; grid-template-columns: repeat(3, 16px); gap: 2px; }
+  #keypad .kp-key {
+    min-width: 16px; height: 16px; line-height: 14px; text-align: center;
+    font-size: 9px; font-family: monospace; color: #aaa;
+    background: #2a2a2a; border: 1px solid #444; border-radius: 3px;
+    box-sizing: border-box; transition: all 0.04s;
+  }
+  #keypad .kp-key.on { background: #00e0ff; color: #002b30; border-color: #00e0ff; }
+
+  /* Controls row: hint text + preset / fullscreen buttons, below the canvas. */
+  #controls {
+    display: flex; align-items: center; gap: 8px; flex-shrink: 0;
+    padding: 4px 8px; background: #0a0a0a; border-top: 1px solid #222;
+  }
+  #controls .hint {
+    flex: 1; min-width: 0; color: #666; font-size: 10px; font-family: monospace;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  #buttons { display: flex; gap: 3px; flex-wrap: wrap; flex-shrink: 0; }
+  #buttons button {
+    padding: 2px 6px; font-size: 9px; border: 1px solid #555; border-radius: 3px;
+    background: #2a2a3a; color: #ccc; cursor: pointer; line-height: 1.3;
+  }
+  #buttons button:hover { background: #3a3a55; }
+</style>
+</head>
+<body>
+<div id="viewport"></div>
+<div id="infoRow">
+  <div id="info">lon: --  lat: --  |  u: --  v: --</div>
+  <!-- key indicator (#keypad) appended here by JS -->
+</div>
+<div id="controls">
+  <span class="hint">Drag to rotate | Scroll to zoom | WASD / Arrows to navigate</span>
+  <div id="buttons"><!-- preset + fullscreen buttons appended here by JS --></div>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from "three";
+
+const PRESETS = [
+  { label: "Front",  lon: 0,    lat: 0   },
+  { label: "Back",   lon: 180,  lat: 0   },
+  { label: "Left",   lon: -90,  lat: 0   },
+  { label: "Right",  lon: 90,   lat: 0   },
+  { label: "Top",    lon: 0,    lat: 90  },
+  { label: "Bottom", lon: 0,    lat: -90 },
+];
+
+const KEY_SPEED = 2;
+const viewport = document.getElementById("viewport");
+const infoEl = document.getElementById("info");
+
+// Preset buttons
+const btnBar = document.getElementById("buttons") || (() => {
+  const d = document.createElement("div"); d.id = "buttons";
+  viewport.appendChild(d); return d;
+})();
+for (const p of PRESETS) {
+  const b = document.createElement("button");
+  b.textContent = p.label;
+  b.addEventListener("click", () => { lon = p.lon; lat = p.lat; });
+  btnBar.appendChild(b);
+}
+
+// Fullscreen toggle. Lives in the controls bar (below the canvas). Fullscreen the
+// whole viewer (document.body, a non-:root element the UA stylesheet stretches to
+// fill the screen) so the bars stay usable while fullscreen.
+const fsBtn = document.createElement("button");
+fsBtn.textContent = "Fullscreen";
+fsBtn.title = "Toggle fullscreen";
+btnBar.appendChild(fsBtn);
+const fsTarget = document.body;
+const fsReq = fsTarget.requestFullscreen || fsTarget.webkitRequestFullscreen;
+const fsExit = document.exitFullscreen || document.webkitExitFullscreen;
+const fsEl = () => document.fullscreenElement || document.webkitFullscreenElement;
+fsBtn.addEventListener("click", () => {
+  try {
+    if (!fsEl()) { const p = fsReq.call(fsTarget); if (p && p.then) p.catch(() => {}); }
+    else { fsExit.call(document); }
+  } catch (_) {}
+});
+const onFsChange = () => {
+  fsBtn.textContent = fsEl() ? "Exit Full" : "Fullscreen";
+  // The container size settles a frame or two after the event; re-fit then.
+  requestAnimationFrame(() => requestAnimationFrame(resize));
+  setTimeout(resize, 150);
+};
+document.addEventListener("fullscreenchange", onFsChange);
+document.addEventListener("webkitfullscreenchange", onFsChange);
+
+// On-screen key indicator: WASD + arrows light up as you navigate (handy for
+// screen recordings). Lives in the info row, to the right of the readout.
+const keyPad = (() => {
+  const cells = {};
+  const pad = document.createElement("div");
+  pad.id = "keypad";
+  const mkKey = (label, code) => {
+    const k = document.createElement("div");
+    k.className = "kp-key";
+    k.textContent = label;
+    cells[code] = k;
+    return k;
+  };
+  const mkGrid = (rows) => {
+    const g = document.createElement("div");
+    g.className = "kp-grid";
+    rows.forEach(r => r.forEach(c => g.appendChild(c || document.createElement("div"))));
+    return g;
+  };
+  pad.appendChild(mkGrid([
+    [null, mkKey("W", "w"), null],
+    [mkKey("A", "a"), mkKey("S", "s"), mkKey("D", "d")],
+  ]));
+  pad.appendChild(mkGrid([
+    [null, mkKey("↑", "arrowup"), null],
+    [mkKey("←", "arrowleft"), mkKey("↓", "arrowdown"), mkKey("→", "arrowright")],
+  ]));
+  const set = (code, on) => { const el = cells[code]; if (el) el.classList.toggle("on", on); };
+  const reset = () => Object.keys(cells).forEach(c => set(c, false));
+  return { el: pad, set, reset };
+})();
+document.getElementById("infoRow").appendChild(keyPad.el);
+
+// Three.js setup
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1100);
+camera.position.set(0, 0, 0);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(window.devicePixelRatio);
+viewport.appendChild(renderer.domElement);
+
+let lon = 0, lat = 0, fov = 75;
+let isDragging = false, startX = 0, startY = 0, startLon = 0, startLat = 0;
+let panoWidth = 0, panoHeight = 0;
+const keys = new Set();
+
+function resize() {
+  const w = viewport.clientWidth, h = viewport.clientHeight;
+  if (w > 0 && h > 0) {
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  }
+}
+window.addEventListener("resize", resize);
+resize();
+
+// The keyboard handlers below live on this iframe's document, so they only
+// fire while the iframe holds keyboard focus. Make the viewport focusable and
+// grab focus on hover/click so WASD / arrow keys work without an extra click.
+viewport.tabIndex = 0;
+viewport.style.outline = "none";
+const focusViewer = () => { try { window.focus(); viewport.focus(); } catch (_) {} };
+viewport.addEventListener("mouseenter", focusViewer);
+viewport.addEventListener("pointerdown", focusViewer);
+
+// Mouse
+viewport.addEventListener("mousedown", e => {
+  isDragging = true; startX = e.clientX; startY = e.clientY;
+  startLon = lon; startLat = lat; e.preventDefault();
+});
+viewport.addEventListener("mousemove", e => {
+  if (!isDragging) return;
+  lon = (startX - e.clientX) * 0.15 + startLon;
+  lat = (startY - e.clientY) * 0.15 + startLat;
+  e.preventDefault();
+});
+viewport.addEventListener("mouseup", () => { isDragging = false; });
+viewport.addEventListener("mouseleave", () => { isDragging = false; });
+viewport.addEventListener("wheel", e => {
+  fov = Math.max(30, Math.min(100, fov + e.deltaY * 0.05));
+  camera.fov = fov; camera.updateProjectionMatrix();
+  e.preventDefault();
+}, { passive: false });
+
+// Keyboard
+document.addEventListener("keydown", e => {
+  const nav = ["arrowup","arrowdown","arrowleft","arrowright","w","a","s","d"];
+  const k = e.key.toLowerCase();
+  if (nav.includes(k)) { keys.add(k); keyPad.set(k, true); e.preventDefault(); }
+});
+document.addEventListener("keyup", e => {
+  const k = e.key.toLowerCase();
+  keys.delete(k); keyPad.set(k, false);
+});
+// Losing focus drops key events; clear so nothing sticks "on".
+window.addEventListener("blur", () => { keys.clear(); keyPad.reset(); });
+
+// Animation
+let animating = false;
+function animate() {
+  requestAnimationFrame(animate);
+  if (keys.has("arrowleft")  || keys.has("a")) lon -= KEY_SPEED;
+  if (keys.has("arrowright") || keys.has("d")) lon += KEY_SPEED;
+  if (keys.has("arrowup")    || keys.has("w")) lat += KEY_SPEED;
+  if (keys.has("arrowdown")  || keys.has("s")) lat -= KEY_SPEED;
+  lat = Math.max(-85, Math.min(85, lat));
+
+  const phi = THREE.MathUtils.degToRad(90 - lat);
+  const theta = THREE.MathUtils.degToRad(lon);
+  camera.lookAt(new THREE.Vector3(
+    Math.sin(phi) * Math.cos(theta), Math.cos(phi), Math.sin(phi) * Math.sin(theta)
+  ));
+  renderer.render(scene, camera);
+  updateInfo();
+  scheduleCameraState();
+}
+
+function updateInfo() {
+  let lonNorm = ((lon % 360) + 360) % 360;
+  // +0.5: the view centre samples image-U lon/360 + 0.5 (three.js equirect).
+  const u = ((lonNorm / 360.0) + 0.5) % 1.0;
+  const v = 0.5 - (lat / 180.0);
+  let px = "";
+  if (panoWidth > 0 && panoHeight > 0) {
+    px = `  |  px: (${Math.round(u * panoWidth) % panoWidth}, ${Math.min(Math.round(v * panoHeight), panoHeight - 1)})`;
+  }
+  const lonD = ((lonNorm + 180) % 360 - 180);
+  infoEl.textContent = `lon: ${lonD.toFixed(1)} lat: ${lat.toFixed(1)}  |  u: ${u.toFixed(4)}  v: ${v.toFixed(4)}  |  fov: ${fov.toFixed(0)}${px}`;
+}
+
+function loadImage(url) {
+  new THREE.TextureLoader().load(url, tex => {
+    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.mapping = THREE.EquirectangularReflectionMapping;
+    tex.minFilter = THREE.LinearFilter;
+    tex.magFilter = THREE.LinearFilter;
+    scene.background = tex;
+    resize();
+    if (!animating) { animating = true; animate(); }
+  }, undefined, err => console.error("PanoPack: texture load error", err));
+}
+
+// Report the current camera orientation back to the parent so that
+// re-running the node produces a crop matching the current view.
+// Coalesced to at most once per ~60ms and deduped while idle.
+let lastSent = { yaw: NaN, pitch: NaN, fov: NaN };
+let camTimer = null;
+function sendCameraState() {
+  const lonNorm = ((lon % 360) + 360) % 360;
+  const yaw = ((lonNorm + 180) % 360) - 180;  // normalize to [-180, 180]
+  if (yaw === lastSent.yaw && lat === lastSent.pitch && fov === lastSent.fov) return;
+  lastSent = { yaw, pitch: lat, fov };
+  window.parent.postMessage({ type: "camera_state", yaw, pitch: lat, fov }, "*");
+}
+function scheduleCameraState() {
+  if (camTimer) return;
+  camTimer = setTimeout(() => { camTimer = null; sendCameraState(); }, 60);
+}
+
+// Listen for messages from parent (ComfyUI extension JS)
+window.addEventListener("message", e => {
+  const d = e.data;
+  if (!d || !d.type) return;
+  if (d.type === "load_panorama") {
+    loadImage(d.url);
+    if (d.width) panoWidth = d.width;
+    if (d.height) panoHeight = d.height;
+    if (d.initial_yaw !== undefined) lon = d.initial_yaw;
+    if (d.initial_pitch !== undefined) lat = d.initial_pitch;
+    if (d.crop_fov !== undefined) {
+      fov = d.crop_fov;
+      camera.fov = fov;
+      camera.updateProjectionMatrix();
+    }
+  }
+});
+
+// Signal ready
+window.parent.postMessage({ type: "panopack_viewer_ready" }, "*");
+</script>
+</body>
+</html>
