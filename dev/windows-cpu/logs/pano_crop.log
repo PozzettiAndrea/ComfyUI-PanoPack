@@ -73,47 +73,47 @@ Capturing execution frames: pano_crop.json
   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
+  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
+  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
+  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
+  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
+  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
+  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
+  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
+  [ComfyUI] [32m[INFO][0m     Inputs: {"center_u": 0.5, "center_v": 0.5, "fov_h": 90, "fov_v": 90, "width": 512, "height": 512, "panorama": ["65", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"center_u": 0.5, "center_v": 0.5, "fov_h": 90, "fov_v": 90, "width": 512, "height": 512, "panorama": ["65", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"center_u": 0.5, "center_v": 0.5, "fov_h": 90, "fov_v": 90, "width": 512, "height": 512, "panorama": ["65", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"center_u": 0.5, "center_v": 0.5, "fov_h": 90, "fov_v": 90, "width": 512, "height": 512, "panorama": ["65", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"center_u": 0.5, "center_v": 0.5, "fov_h": 90, "fov_v": 90, "width": 512, "height": 512, "panorama": ["65", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"center_u": 0.5, "center_v": 0.5, "fov_h": 90, "fov_v": 90, "width": 512, "height": 512, "panorama": ["65", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"center_u": 0.5, "center_v": 0.5, "fov_h": 90, "fov_v": 90, "width": 512, "height": 512, "panorama": ["65", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"center_u": 0.5, "center_v": 0.5, "fov_h": 90, "fov_v": 90, "width": 512, "height": 512, "panorama": ["65", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 88: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 88: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 88: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 88: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 88: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 88: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 88: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 88: PreviewImage
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
   Queuing workflow for execution...
-  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
-  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
-  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
-  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
-  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
-  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
-  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
-  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
-  [ComfyUI] [32m[INFO][0m     Inputs: {"center_u": 0.5, "center_v": 0.5, "fov_h": 90, "fov_v": 90, "width": 512, "height": 512, "panorama": ["65", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"center_u": 0.5, "center_v": 0.5, "fov_h": 90, "fov_v": 90, "width": 512, "height": 512, "panorama": ["65", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"center_u": 0.5, "center_v": 0.5, "fov_h": 90, "fov_v": 90, "width": 512, "height": 512, "panorama": ["65", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"center_u": 0.5, "center_v": 0.5, "fov_h": 90, "fov_v": 90, "width": 512, "height": 512, "panorama": ["65", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"center_u": 0.5, "center_v": 0.5, "fov_h": 90, "fov_v": 90, "width": 512, "height": 512, "panorama": ["65", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"center_u": 0.5, "center_v": 0.5, "fov_h": 90, "fov_v": 90, "width": 512, "height": 512, "panorama": ["65", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"center_u": 0.5, "center_v": 0.5, "fov_h": 90, "fov_v": 90, "width": 512, "height": 512, "panorama": ["65", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"center_u": 0.5, "center_v": 0.5, "fov_h": 90, "fov_v": 90, "width": 512, "height": 512, "panorama": ["65", 0]}
-  [ComfyUI] [32m[INFO][0m   Node 88: PreviewImage
-  [ComfyUI] [32m[INFO][0m   Node 88: PreviewImage
-  [ComfyUI] [32m[INFO][0m   Node 88: PreviewImage
-  [ComfyUI] [32m[INFO][0m   Node 88: PreviewImage
-  [ComfyUI] [32m[INFO][0m   Node 88: PreviewImage
-  [ComfyUI] [32m[INFO][0m   Node 88: PreviewImage
-  [ComfyUI] [32m[INFO][0m   Node 88: PreviewImage
-  [ComfyUI] [32m[INFO][0m   Node 88: PreviewImage
-  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: e7dd3610-2b39-4d3c-bde1-01d335995197
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: e7dd3610-2b39-4d3c-bde1-01d335995197
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: e7dd3610-2b39-4d3c-bde1-01d335995197
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: e7dd3610-2b39-4d3c-bde1-01d335995197
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: e7dd3610-2b39-4d3c-bde1-01d335995197
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: e7dd3610-2b39-4d3c-bde1-01d335995197
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: e7dd3610-2b39-4d3c-bde1-01d335995197
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: e7dd3610-2b39-4d3c-bde1-01d335995197
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 718ad620-8a46-49bc-8f32-9f1e6f3339dc
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 718ad620-8a46-49bc-8f32-9f1e6f3339dc
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 718ad620-8a46-49bc-8f32-9f1e6f3339dc
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 718ad620-8a46-49bc-8f32-9f1e6f3339dc
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 718ad620-8a46-49bc-8f32-9f1e6f3339dc
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 718ad620-8a46-49bc-8f32-9f1e6f3339dc
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 718ad620-8a46-49bc-8f32-9f1e6f3339dc
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 718ad620-8a46-49bc-8f32-9f1e6f3339dc
   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
@@ -266,14 +266,14 @@ Capturing execution frames: pano_crop.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.29s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.29s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.29s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.29s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.29s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.29s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.29s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.29s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.24s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.24s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.24s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.24s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.24s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.24s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.24s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.24s): result: NodeOutput
   [ComfyUI] [comfy-env] Running PanoCrop: center_u: 0.5, center_v: 0.5, fov_h: 90.0, fov_v: 90.0, width: 512, height: 512, panorama: dict
   [ComfyUI] [comfy-env] Running PanoCrop: center_u: 0.5, center_v: 0.5, fov_h: 90.0, fov_v: 90.0, width: 512, height: 512, panorama: dict
   [ComfyUI] [comfy-env] Running PanoCrop: center_u: 0.5, center_v: 0.5, fov_h: 90.0, fov_v: 90.0, width: 512, height: 512, panorama: dict
@@ -386,27 +386,27 @@ Capturing execution frames: pano_crop.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoCrop done (0.62s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoCrop done (0.62s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoCrop done (0.62s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoCrop done (0.62s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoCrop done (0.62s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoCrop done (0.62s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoCrop done (0.62s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoCrop done (0.62s): result: NodeOutput
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.09 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.09 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.09 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.09 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.09 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.09 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.09 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.09 seconds[0m
+  [ComfyUI] [comfy-env] PanoCrop done (0.37s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoCrop done (0.37s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoCrop done (0.37s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoCrop done (0.37s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoCrop done (0.37s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoCrop done (0.37s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoCrop done (0.37s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoCrop done (0.37s): result: NodeOutput
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.76 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.76 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.76 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.76 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.76 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.76 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.76 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.76 seconds[0m
   Node executed (1 total), capturing...
-  Frame 2 saved (frame_001.jpg, t=1.4s)
-  [capture-node] freeze=4ms shot=101ms unfreeze=0ms saved=True
-  Execution complete (t=1.4s)
-  Captured 2 unique frames over 1.53s
+  Frame 2 saved (frame_001.jpg, t=1.1s)
+  [capture-node] freeze=4ms shot=91ms unfreeze=0ms saved=True
+  Execution complete (t=1.1s)
+  Captured 2 unique frames over 1.2s
   [debug] iframes: 0
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: pano_crop_executed.png
