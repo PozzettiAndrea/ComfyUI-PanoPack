@@ -110,6 +110,7 @@ def panorama_shift_horizontal(
     LEFT) - i.e. content at u_pixel=0 moves toward u_pixel=+shift_pixels.
     This matches the visual expectation when you say "rotate +90deg".
     """
+    import torch
     import torch.nn.functional as F
 
     img = normalize_pano_tensor(image)
@@ -172,6 +173,7 @@ def panorama_shift_pitch(
 
     Sign convention: positive pitch tilts the camera UP (scene moves down).
     """
+    import torch
     import torch.nn.functional as F
     import math
 
