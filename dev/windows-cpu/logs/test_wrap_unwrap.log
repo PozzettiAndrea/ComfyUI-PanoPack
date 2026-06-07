@@ -65,23 +65,23 @@ Capturing execution frames: test_wrap_unwrap.json
   [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
   [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
   [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
   Queuing workflow for execution...
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
   [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
@@ -106,14 +106,14 @@ Capturing execution frames: test_wrap_unwrap.json
   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["3", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["3", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["3", 0]}
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: d0147e62-314c-4694-bc5d-ab633772abd9
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: d0147e62-314c-4694-bc5d-ab633772abd9
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: d0147e62-314c-4694-bc5d-ab633772abd9
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: d0147e62-314c-4694-bc5d-ab633772abd9
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: d0147e62-314c-4694-bc5d-ab633772abd9
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: d0147e62-314c-4694-bc5d-ab633772abd9
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: d0147e62-314c-4694-bc5d-ab633772abd9
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: d0147e62-314c-4694-bc5d-ab633772abd9
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 345574b3-6e13-4021-8c90-903ca14835f1
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 345574b3-6e13-4021-8c90-903ca14835f1
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 345574b3-6e13-4021-8c90-903ca14835f1
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 345574b3-6e13-4021-8c90-903ca14835f1
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 345574b3-6e13-4021-8c90-903ca14835f1
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 345574b3-6e13-4021-8c90-903ca14835f1
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 345574b3-6e13-4021-8c90-903ca14835f1
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 345574b3-6e13-4021-8c90-903ca14835f1
   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
@@ -178,80 +178,14 @@ Capturing execution frames: test_wrap_unwrap.json
   [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
-  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
-  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
-  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
-  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
-  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
-  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
-  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
-  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
-  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
-  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
-  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
-  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
-  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
-  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
-  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
-  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
-  [ComfyUI] [comfy-env] panopack-nodes: Library/bin has 609 DLLs
-  [ComfyUI] [comfy-env] panopack-nodes: Library/bin has 609 DLLs
-  [ComfyUI] [comfy-env] panopack-nodes: Library/bin has 609 DLLs
-  [ComfyUI] [comfy-env] panopack-nodes: Library/bin has 609 DLLs
-  [ComfyUI] [comfy-env] panopack-nodes: Library/bin has 609 DLLs
-  [ComfyUI] [comfy-env] panopack-nodes: Library/bin has 609 DLLs
-  [ComfyUI] [comfy-env] panopack-nodes: Library/bin has 609 DLLs
-  [ComfyUI] [comfy-env] panopack-nodes: Library/bin has 609 DLLs
-  [ComfyUI] [ComfyUI-PanoPack] python: C:\Users\stduser\AppData\Local\Programs\comfy-env\.pixi\envs\panopack-nodes\python.exe
-  [ComfyUI] [ComfyUI-PanoPack] python: C:\Users\stduser\AppData\Local\Programs\comfy-env\.pixi\envs\panopack-nodes\python.exe
-  [ComfyUI] [ComfyUI-PanoPack] python: C:\Users\stduser\AppData\Local\Programs\comfy-env\.pixi\envs\panopack-nodes\python.exe
-  [ComfyUI] [ComfyUI-PanoPack] python: C:\Users\stduser\AppData\Local\Programs\comfy-env\.pixi\envs\panopack-nodes\python.exe
-  [ComfyUI] [ComfyUI-PanoPack] python: C:\Users\stduser\AppData\Local\Programs\comfy-env\.pixi\envs\panopack-nodes\python.exe
-  [ComfyUI] [ComfyUI-PanoPack] python: C:\Users\stduser\AppData\Local\Programs\comfy-env\.pixi\envs\panopack-nodes\python.exe
-  [ComfyUI] [ComfyUI-PanoPack] python: C:\Users\stduser\AppData\Local\Programs\comfy-env\.pixi\envs\panopack-nodes\python.exe
-  [ComfyUI] [ComfyUI-PanoPack] python: C:\Users\stduser\AppData\Local\Programs\comfy-env\.pixi\envs\panopack-nodes\python.exe
-  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack', 'C:\\Users\\stduser\\AppData\\Local\\Programs\\comfy-env\\.pixi\\envs\\panopack-nodes\\Lib\\site-packages', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack']
-  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack', 'C:\\Users\\stduser\\AppData\\Local\\Programs\\comfy-env\\.pixi\\envs\\panopack-nodes\\Lib\\site-packages', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack']
-  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack', 'C:\\Users\\stduser\\AppData\\Local\\Programs\\comfy-env\\.pixi\\envs\\panopack-nodes\\Lib\\site-packages', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack']
-  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack', 'C:\\Users\\stduser\\AppData\\Local\\Programs\\comfy-env\\.pixi\\envs\\panopack-nodes\\Lib\\site-packages', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack']
-  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack', 'C:\\Users\\stduser\\AppData\\Local\\Programs\\comfy-env\\.pixi\\envs\\panopack-nodes\\Lib\\site-packages', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack']
-  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack', 'C:\\Users\\stduser\\AppData\\Local\\Programs\\comfy-env\\.pixi\\envs\\panopack-nodes\\Lib\\site-packages', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack']
-  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack', 'C:\\Users\\stduser\\AppData\\Local\\Programs\\comfy-env\\.pixi\\envs\\panopack-nodes\\Lib\\site-packages', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack']
-  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack', 'C:\\Users\\stduser\\AppData\\Local\\Programs\\comfy-env\\.pixi\\envs\\panopack-nodes\\Lib\\site-packages', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\PanoPack-2240\\ComfyUI\\custom_nodes\\ComfyUI-PanoPack']
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\Users\stduser\AppData\Local\Programs\comfy-env\.pixi\envs\panopack-nodes\python.exe
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\Users\stduser\AppData\Local\Programs\comfy-env\.pixi\envs\panopack-nodes\python.exe
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\Users\stduser\AppData\Local\Programs\comfy-env\.pixi\envs\panopack-nodes\python.exe
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\Users\stduser\AppData\Local\Programs\comfy-env\.pixi\envs\panopack-nodes\python.exe
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\Users\stduser\AppData\Local\Programs\comfy-env\.pixi\envs\panopack-nodes\python.exe
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\Users\stduser\AppData\Local\Programs\comfy-env\.pixi\envs\panopack-nodes\python.exe
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\Users\stduser\AppData\Local\Programs\comfy-env\.pixi\envs\panopack-nodes\python.exe
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\Users\stduser\AppData\Local\Programs\comfy-env\.pixi\envs\panopack-nodes\python.exe
-  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\stduser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\stduser\\AppData\\Local\\Programs\\comfy-env\\pixi.toml', '-e', 'panopack-nodes', 'python', 'C:\\Users\\stduser\\AppData\\Local\\Temp\\comfyui_pvenv_d3a3ps6c\\persistent_worker.py', 'tcp://127.0.0.1:64461']...
-  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\stduser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\stduser\\AppData\\Local\\Programs\\comfy-env\\pixi.toml', '-e', 'panopack-nodes', 'python', 'C:\\Users\\stduser\\AppData\\Local\\Temp\\comfyui_pvenv_d3a3ps6c\\persistent_worker.py', 'tcp://127.0.0.1:64461']...
-  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\stduser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\stduser\\AppData\\Local\\Programs\\comfy-env\\pixi.toml', '-e', 'panopack-nodes', 'python', 'C:\\Users\\stduser\\AppData\\Local\\Temp\\comfyui_pvenv_d3a3ps6c\\persistent_worker.py', 'tcp://127.0.0.1:64461']...
-  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\stduser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\stduser\\AppData\\Local\\Programs\\comfy-env\\pixi.toml', '-e', 'panopack-nodes', 'python', 'C:\\Users\\stduser\\AppData\\Local\\Temp\\comfyui_pvenv_d3a3ps6c\\persistent_worker.py', 'tcp://127.0.0.1:64461']...
-  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\stduser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\stduser\\AppData\\Local\\Programs\\comfy-env\\pixi.toml', '-e', 'panopack-nodes', 'python', 'C:\\Users\\stduser\\AppData\\Local\\Temp\\comfyui_pvenv_d3a3ps6c\\persistent_worker.py', 'tcp://127.0.0.1:64461']...
-  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\stduser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\stduser\\AppData\\Local\\Programs\\comfy-env\\pixi.toml', '-e', 'panopack-nodes', 'python', 'C:\\Users\\stduser\\AppData\\Local\\Temp\\comfyui_pvenv_d3a3ps6c\\persistent_worker.py', 'tcp://127.0.0.1:64461']...
-  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\stduser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\stduser\\AppData\\Local\\Programs\\comfy-env\\pixi.toml', '-e', 'panopack-nodes', 'python', 'C:\\Users\\stduser\\AppData\\Local\\Temp\\comfyui_pvenv_d3a3ps6c\\persistent_worker.py', 'tcp://127.0.0.1:64461']...
-  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\stduser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\stduser\\AppData\\Local\\Programs\\comfy-env\\pixi.toml', '-e', 'panopack-nodes', 'python', 'C:\\Users\\stduser\\AppData\\Local\\Temp\\comfyui_pvenv_d3a3ps6c\\persistent_worker.py', 'tcp://127.0.0.1:64461']...
-  Frame 2 saved (frame_001.jpg, t=2.2s)
-  [capture-periodic] freeze=4ms shot=95ms unfreeze=7ms saved=True
-  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
-  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
-  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
-  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
-  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
-  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
-  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
-  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] worker started/confirmed
@@ -332,14 +266,14 @@ Capturing execution frames: test_wrap_unwrap.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaWrap done (3.45s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (3.45s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (3.45s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (3.45s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (3.45s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (3.45s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (3.45s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (3.45s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.40s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.40s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.40s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.40s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.40s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.40s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.40s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.40s): result: NodeOutput
   [ComfyUI] [comfy-env] Running PanoramaUnwrap: panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaUnwrap: panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaUnwrap: panorama: dict
@@ -452,31 +386,29 @@ Capturing execution frames: test_wrap_unwrap.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.07s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.07s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.07s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.07s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.07s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.07s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.07s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.07s): result: NodeOutput
-  Frame 3 saved (frame_002.jpg, t=4.4s)
-  [capture-periodic] freeze=6ms shot=116ms unfreeze=4ms saved=True
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 4.62 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 4.62 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 4.62 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 4.62 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 4.62 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 4.62 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 4.62 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 4.62 seconds[0m
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.34s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.34s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.34s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.34s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.34s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.34s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.34s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.34s): result: NodeOutput
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.91 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.91 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.91 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.91 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.91 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.91 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.91 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.91 seconds[0m
   Node executed (1 total), capturing...
-  Frame 4 saved (frame_003.jpg, t=4.9s)
-  [capture-node] freeze=4ms shot=103ms unfreeze=0ms saved=True
-  Execution complete (t=4.9s)
-  Captured 4 unique frames over 5.11s
+  Frame 2 saved (frame_001.jpg, t=2.2s)
+  [capture-node] freeze=12ms shot=119ms unfreeze=0ms saved=True
+  Execution complete (t=2.2s)
+  Captured 2 unique frames over 2.4s
   [debug] iframes: 0
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: test_wrap_unwrap_executed.png
   [timing] final_screenshot: 0.2s
-    Captured 5 video frames
+    Captured 3 video frames
