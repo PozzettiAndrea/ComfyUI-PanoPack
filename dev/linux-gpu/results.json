@@ -1,0 +1,158 @@
+{
+  "timestamp": "2026-06-07T11:41:40.956170+00:00",
+  "platform": "linux",
+  "hardware": {
+    "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
+    "cpu": "AMD Ryzen 5 5600 6-Core Processor",
+    "gpu": "NVIDIA GeForce RTX 3090"
+  },
+  "commit_hash": "e206e7bf251e72ffded0d88a71b530a05ba2c101",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27091233486",
+  "success": true,
+  "summary": {
+    "total": 13,
+    "passed": 3,
+    "failed": 0
+  },
+  "workflows": [
+    {
+      "name": "360_render",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "cpu_depth_merge_mesh_pointcloud",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "cpu_depth_normal_conditioned",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "cpu_plane_segmentation",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "depth_merge_mesh_pointcloud",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "gpu_depth_merge_mesh_pointcloud",
+      "status": "pass",
+      "duration_seconds": 104.93,
+      "error": null,
+      "hardware": {
+        "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
+        "cpu": "AMD Ryzen 5 5600 6-Core Processor",
+        "gpu": "NVIDIA GeForce RTX 3090"
+      },
+      "resources": {
+        "ram": {
+          "peak": 11.81,
+          "avg": 7.42
+        },
+        "total_ram_gb": 31.3,
+        "samples": 103,
+        "vram": {
+          "peak": 4.59,
+          "avg": 2.46
+        }
+      }
+    },
+    {
+      "name": "gpu_depth_normal_conditioned",
+      "status": "pass",
+      "duration_seconds": 138.14,
+      "error": null,
+      "hardware": {
+        "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
+        "cpu": "AMD Ryzen 5 5600 6-Core Processor",
+        "gpu": "NVIDIA GeForce RTX 3090"
+      },
+      "resources": {
+        "ram": {
+          "peak": 20.78,
+          "avg": 12.42
+        },
+        "total_ram_gb": 31.3,
+        "samples": 135,
+        "vram": {
+          "peak": 6.15,
+          "avg": 4.36
+        }
+      }
+    },
+    {
+      "name": "gpu_plane_segmentation",
+      "status": "pass",
+      "duration_seconds": 76.4,
+      "error": null,
+      "hardware": {
+        "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
+        "cpu": "AMD Ryzen 5 5600 6-Core Processor",
+        "gpu": "NVIDIA GeForce RTX 3090"
+      },
+      "resources": {
+        "ram": {
+          "peak": 10.89,
+          "avg": 9.03
+        },
+        "total_ram_gb": 31.3,
+        "samples": 75,
+        "vram": {
+          "peak": 7.5,
+          "avg": 5.7
+        }
+      }
+    },
+    {
+      "name": "pano_crop",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "pano_info",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "panorama_shift",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "preview_panorama",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "test_wrap_unwrap",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    }
+  ]
+}
