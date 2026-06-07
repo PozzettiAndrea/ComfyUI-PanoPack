@@ -1,9 +1,0 @@
-Capturing execution frames: cpu_depth_merge_mesh_pointcloud.json
-  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-  Frame 1 saved (frame_000.jpg, t=0.0s)
-  Validating workflow...
-  Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 17 nodes, missing class_type: [65,69,79,80,85], sample: {"inputs":{"image":"actual_pano_from_real_life.jpg"},"class_type":"LoadImage","_meta":{"title":"Load Image"}}
-    Status: FAILED
-    Error: Workflow validation failed
-    Details: graphToPrompt produced nodes without class_type: graphToPrompt: 17 nodes, missing class_type: [65,69,79,80,85], sample: {"inputs":{"image":"actual_pano_from_real_life.jpg"},"class_type":"LoadImage","_meta":{"title":"Load Image"}}
