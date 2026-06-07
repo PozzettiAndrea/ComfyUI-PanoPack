@@ -73,15 +73,15 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
   Queuing workflow for execution...
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
   [ComfyUI] [32m[INFO][0m     Inputs: {"yaw_degrees": 90, "pitch_degrees": 0, "panorama": ["2", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"yaw_degrees": 90, "pitch_degrees": 0, "panorama": ["2", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"yaw_degrees": 90, "pitch_degrees": 0, "panorama": ["2", 0]}
@@ -170,14 +170,14 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [32m[INFO][0m     Inputs: {"yaw_degrees": 0, "pitch_degrees": 45, "panorama": ["2", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"yaw_degrees": 0, "pitch_degrees": 45, "panorama": ["2", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"yaw_degrees": 0, "pitch_degrees": 45, "panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: f1b1e07a-ada3-4dea-9b28-d3d97293097b
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: f1b1e07a-ada3-4dea-9b28-d3d97293097b
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: f1b1e07a-ada3-4dea-9b28-d3d97293097b
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: f1b1e07a-ada3-4dea-9b28-d3d97293097b
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: f1b1e07a-ada3-4dea-9b28-d3d97293097b
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: f1b1e07a-ada3-4dea-9b28-d3d97293097b
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: f1b1e07a-ada3-4dea-9b28-d3d97293097b
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: f1b1e07a-ada3-4dea-9b28-d3d97293097b
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 5843768a-d042-47e6-af97-0b7c70ce4d41
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 5843768a-d042-47e6-af97-0b7c70ce4d41
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 5843768a-d042-47e6-af97-0b7c70ce4d41
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 5843768a-d042-47e6-af97-0b7c70ce4d41
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 5843768a-d042-47e6-af97-0b7c70ce4d41
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 5843768a-d042-47e6-af97-0b7c70ce4d41
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 5843768a-d042-47e6-af97-0b7c70ce4d41
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 5843768a-d042-47e6-af97-0b7c70ce4d41
   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
@@ -330,14 +330,14 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.15s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.15s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.15s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.15s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.15s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.15s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.15s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.15s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.11s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.11s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.11s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.11s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.11s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.11s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.11s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.11s): result: NodeOutput
   [ComfyUI] [comfy-env] Running PanoramaShift: yaw_degrees: 0.0, pitch_degrees: 45.0, panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaShift: yaw_degrees: 0.0, pitch_degrees: 45.0, panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaShift: yaw_degrees: 0.0, pitch_degrees: 45.0, panorama: dict
@@ -450,14 +450,14 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaShift done (0.78s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaShift done (0.78s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaShift done (0.78s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaShift done (0.78s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaShift done (0.78s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaShift done (0.78s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaShift done (0.78s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaShift done (0.78s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaShift done (0.74s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaShift done (0.74s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaShift done (0.74s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaShift done (0.74s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaShift done (0.74s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaShift done (0.74s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaShift done (0.74s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaShift done (0.74s): result: NodeOutput
   [ComfyUI] [comfy-env] Running PanoramaUnwrap: panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaUnwrap: panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaUnwrap: panorama: dict
@@ -570,14 +570,14 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.11s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.11s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.11s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.11s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.11s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.11s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.11s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.11s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.09s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.09s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.09s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.09s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.09s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.09s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.09s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.09s): result: NodeOutput
   [ComfyUI] [comfy-env] Running PanoramaShift: yaw_degrees: 90.0, pitch_degrees: 0.0, panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaShift: yaw_degrees: 90.0, pitch_degrees: 0.0, panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaShift: yaw_degrees: 90.0, pitch_degrees: 0.0, panorama: dict
@@ -674,15 +674,15 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 2048, 4096, 3]
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 2048, 4096, 3]
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 2048, 4096, 3]
-  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
-  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
-  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
-  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
-  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
-  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
-  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
-  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
   Node executed (1 total), capturing...
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
@@ -691,14 +691,14 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaShift done (0.20s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaShift done (0.20s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaShift done (0.20s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaShift done (0.20s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaShift done (0.20s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaShift done (0.20s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaShift done (0.20s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaShift done (0.20s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaShift done (0.16s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaShift done (0.16s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaShift done (0.16s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaShift done (0.16s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaShift done (0.16s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaShift done (0.16s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaShift done (0.16s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaShift done (0.16s): result: NodeOutput
   [ComfyUI] [comfy-env] Running PanoramaUnwrap: panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaUnwrap: panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaUnwrap: panorama: dict
@@ -811,29 +811,29 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.12s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.12s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.12s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.12s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.12s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.12s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.12s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.12s): result: NodeOutput
-  Frame 2 saved (frame_001.jpg, t=2.4s)
-  [capture-node] freeze=91ms shot=158ms unfreeze=4ms saved=True
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 3.01 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 3.01 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 3.01 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 3.01 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 3.01 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 3.01 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 3.01 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 3.01 seconds[0m
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.07s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.07s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.07s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.07s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.07s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.07s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.07s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaUnwrap done (0.07s): result: NodeOutput
+  Frame 2 saved (frame_001.jpg, t=2.3s)
+  [capture-node] freeze=89ms shot=172ms unfreeze=4ms saved=True
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 2.83 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 2.83 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 2.83 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 2.83 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 2.83 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 2.83 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 2.83 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 2.83 seconds[0m
   Node executed (2 total), capturing...
-  Frame 3 saved (frame_002.jpg, t=3.4s)
-  [capture-node] freeze=4ms shot=114ms unfreeze=0ms saved=True
-  Execution complete (t=3.4s)
-  Captured 3 unique frames over 3.52s
+  Frame 3 saved (frame_002.jpg, t=3.2s)
+  [capture-node] freeze=4ms shot=110ms unfreeze=0ms saved=True
+  Execution complete (t=3.2s)
+  Captured 3 unique frames over 3.32s
   [debug] iframes: 0
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: panorama_shift_executed.png

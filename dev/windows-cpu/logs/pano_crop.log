@@ -15,6 +15,70 @@ Capturing execution frames: pano_crop.json
   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [1m[31m[ERROR][0m Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+  [ComfyUI] [1m[31m[ERROR][0m Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+  [ComfyUI] [1m[31m[ERROR][0m Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+  [ComfyUI] [1m[31m[ERROR][0m Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+  [ComfyUI] [1m[31m[ERROR][0m Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+  [ComfyUI] [1m[31m[ERROR][0m Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+  [ComfyUI] [1m[31m[ERROR][0m Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+  [ComfyUI] [1m[31m[ERROR][0m Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+  [ComfyUI] handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+  [ComfyUI] handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+  [ComfyUI] handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+  [ComfyUI] handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+  [ComfyUI] handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+  [ComfyUI] handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+  [ComfyUI] handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+  [ComfyUI] handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\asyncio\events.py", line 80, in _run
+  [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\asyncio\events.py", line 80, in _run
+  [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\asyncio\events.py", line 80, in _run
+  [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\asyncio\events.py", line 80, in _run
+  [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\asyncio\events.py", line 80, in _run
+  [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\asyncio\events.py", line 80, in _run
+  [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\asyncio\events.py", line 80, in _run
+  [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\asyncio\events.py", line 80, in _run
+  [ComfyUI]     self._context.run(self._callback, *self._args)
+  [ComfyUI]     self._context.run(self._callback, *self._args)
+  [ComfyUI]     self._context.run(self._callback, *self._args)
+  [ComfyUI]     self._context.run(self._callback, *self._args)
+  [ComfyUI]     self._context.run(self._callback, *self._args)
+  [ComfyUI]     self._context.run(self._callback, *self._args)
+  [ComfyUI]     self._context.run(self._callback, *self._args)
+  [ComfyUI]     self._context.run(self._callback, *self._args)
+  [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+  [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+  [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+  [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+  [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+  [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+  [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+  [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+  [ComfyUI]     self._sock.shutdown(socket.SHUT_RDWR)
+  [ComfyUI]     self._sock.shutdown(socket.SHUT_RDWR)
+  [ComfyUI]     self._sock.shutdown(socket.SHUT_RDWR)
+  [ComfyUI]     self._sock.shutdown(socket.SHUT_RDWR)
+  [ComfyUI]     self._sock.shutdown(socket.SHUT_RDWR)
+  [ComfyUI]     self._sock.shutdown(socket.SHUT_RDWR)
+  [ComfyUI]     self._sock.shutdown(socket.SHUT_RDWR)
+  [ComfyUI]     self._sock.shutdown(socket.SHUT_RDWR)
+  [ComfyUI] ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+  [ComfyUI] ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+  [ComfyUI] ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+  [ComfyUI] ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+  [ComfyUI] ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+  [ComfyUI] ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+  [ComfyUI] ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+  [ComfyUI] ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
   Frame 1 saved (frame_000.jpg, t=0.0s)
   Validating workflow...
   [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
@@ -65,23 +129,23 @@ Capturing execution frames: pano_crop.json
   [ComfyUI] [32m[INFO][0m   Node 65: PanoramaWrap
   [ComfyUI] [32m[INFO][0m   Node 65: PanoramaWrap
   [ComfyUI] [32m[INFO][0m   Node 65: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
+  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
+  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
+  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
+  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
+  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
+  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
+  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
   Queuing workflow for execution...
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
-  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
-  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
-  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
-  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
-  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
-  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
-  [ComfyUI] [32m[INFO][0m   Node 87: PanoCrop
   [ComfyUI] [32m[INFO][0m     Inputs: {"center_u": 0.5, "center_v": 0.5, "fov_h": 90, "fov_v": 90, "width": 512, "height": 512, "panorama": ["65", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"center_u": 0.5, "center_v": 0.5, "fov_h": 90, "fov_v": 90, "width": 512, "height": 512, "panorama": ["65", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"center_u": 0.5, "center_v": 0.5, "fov_h": 90, "fov_v": 90, "width": 512, "height": 512, "panorama": ["65", 0]}
@@ -106,14 +170,14 @@ Capturing execution frames: pano_crop.json
   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: e4f11bcc-d0c2-4f77-b546-9538a6d7ecde
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: e4f11bcc-d0c2-4f77-b546-9538a6d7ecde
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: e4f11bcc-d0c2-4f77-b546-9538a6d7ecde
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: e4f11bcc-d0c2-4f77-b546-9538a6d7ecde
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: e4f11bcc-d0c2-4f77-b546-9538a6d7ecde
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: e4f11bcc-d0c2-4f77-b546-9538a6d7ecde
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: e4f11bcc-d0c2-4f77-b546-9538a6d7ecde
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: e4f11bcc-d0c2-4f77-b546-9538a6d7ecde
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: c2c63594-538c-49a8-821b-34c4fe447608
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: c2c63594-538c-49a8-821b-34c4fe447608
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: c2c63594-538c-49a8-821b-34c4fe447608
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: c2c63594-538c-49a8-821b-34c4fe447608
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: c2c63594-538c-49a8-821b-34c4fe447608
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: c2c63594-538c-49a8-821b-34c4fe447608
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: c2c63594-538c-49a8-821b-34c4fe447608
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: c2c63594-538c-49a8-821b-34c4fe447608
   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
@@ -266,14 +330,14 @@ Capturing execution frames: pano_crop.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.21s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.21s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.21s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.21s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.21s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.21s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.21s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.21s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.10s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.10s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.10s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.10s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.10s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.10s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.10s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.10s): result: NodeOutput
   [ComfyUI] [comfy-env] Running PanoCrop: center_u: 0.5, center_v: 0.5, fov_h: 90.0, fov_v: 90.0, width: 512, height: 512, panorama: dict
   [ComfyUI] [comfy-env] Running PanoCrop: center_u: 0.5, center_v: 0.5, fov_h: 90.0, fov_v: 90.0, width: 512, height: 512, panorama: dict
   [ComfyUI] [comfy-env] Running PanoCrop: center_u: 0.5, center_v: 0.5, fov_h: 90.0, fov_v: 90.0, width: 512, height: 512, panorama: dict
@@ -386,27 +450,27 @@ Capturing execution frames: pano_crop.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoCrop done (0.27s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoCrop done (0.27s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoCrop done (0.27s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoCrop done (0.27s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoCrop done (0.27s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoCrop done (0.27s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoCrop done (0.27s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoCrop done (0.27s): result: NodeOutput
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.66 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.66 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.66 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.66 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.66 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.66 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.66 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.66 seconds[0m
+  [ComfyUI] [comfy-env] PanoCrop done (0.22s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoCrop done (0.22s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoCrop done (0.22s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoCrop done (0.22s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoCrop done (0.22s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoCrop done (0.22s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoCrop done (0.22s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoCrop done (0.22s): result: NodeOutput
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.50 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.50 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.50 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.50 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.50 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.50 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.50 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.50 seconds[0m
   Node executed (1 total), capturing...
-  Frame 2 saved (frame_001.jpg, t=1.0s)
-  [capture-node] freeze=5ms shot=112ms unfreeze=0ms saved=True
-  Execution complete (t=1.0s)
-  Captured 2 unique frames over 1.16s
+  Frame 2 saved (frame_001.jpg, t=0.9s)
+  [capture-node] freeze=4ms shot=117ms unfreeze=0ms saved=True
+  Execution complete (t=0.9s)
+  Captured 2 unique frames over 1.02s
   [debug] iframes: 0
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: pano_crop_executed.png
