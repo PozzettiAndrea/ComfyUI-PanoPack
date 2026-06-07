@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-06-07T13:20:25.927698+00:00",
+  "timestamp": "2026-06-07T14:11:00.163258+00:00",
   "platform": "macos",
   "hardware": {
     "os": "macOS-15.7.7-arm64-arm-64bit",
     "cpu": "arm"
   },
   "commit_hash": "b566bcec0a25350943b57e2796ccaf94b832a46b",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27093508834",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27094640421",
   "success": true,
   "summary": {
     "total": 13,
@@ -17,7 +17,7 @@
     {
       "name": "360_render",
       "status": "pass",
-      "duration_seconds": 356.56,
+      "duration_seconds": 403.26,
       "error": null,
       "hardware": {
         "os": "macOS-15.7.7-arm64-arm-64bit",
@@ -25,11 +25,11 @@
       },
       "resources": {
         "ram": {
-          "peak": 2.86,
-          "avg": 1.88
+          "peak": 2.7,
+          "avg": 1.89
         },
         "total_ram_gb": 7.0,
-        "samples": 323
+        "samples": 366
       }
     },
     {
@@ -84,7 +84,7 @@
     {
       "name": "pano_crop",
       "status": "pass",
-      "duration_seconds": 9.77,
+      "duration_seconds": 9.81,
       "error": null,
       "hardware": {
         "os": "macOS-15.7.7-arm64-arm-64bit",
@@ -92,8 +92,8 @@
       },
       "resources": {
         "ram": {
-          "peak": 2.49,
-          "avg": 2.39
+          "peak": 1.77,
+          "avg": 1.5
         },
         "total_ram_gb": 7.0,
         "samples": 10
@@ -102,7 +102,7 @@
     {
       "name": "pano_info",
       "status": "pass",
-      "duration_seconds": 9.8,
+      "duration_seconds": 9.12,
       "error": null,
       "hardware": {
         "os": "macOS-15.7.7-arm64-arm-64bit",
@@ -110,8 +110,8 @@
       },
       "resources": {
         "ram": {
-          "peak": 2.59,
-          "avg": 2.49
+          "peak": 2.29,
+          "avg": 1.94
         },
         "total_ram_gb": 7.0,
         "samples": 9
@@ -120,7 +120,7 @@
     {
       "name": "panorama_shift",
       "status": "pass",
-      "duration_seconds": 16.64,
+      "duration_seconds": 11.46,
       "error": null,
       "hardware": {
         "os": "macOS-15.7.7-arm64-arm-64bit",
@@ -128,17 +128,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 2.63,
-          "avg": 2.24
+          "peak": 2.49,
+          "avg": 2.31
         },
         "total_ram_gb": 7.0,
-        "samples": 16
+        "samples": 11
       }
     },
     {
       "name": "preview_panorama",
       "status": "pass",
-      "duration_seconds": 12.42,
+      "duration_seconds": 13.69,
       "error": null,
       "hardware": {
         "os": "macOS-15.7.7-arm64-arm-64bit",
@@ -146,17 +146,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 2.56,
-          "avg": 2.38
+          "peak": 2.29,
+          "avg": 1.85
         },
         "total_ram_gb": 7.0,
-        "samples": 12
+        "samples": 13
       }
     },
     {
       "name": "test_wrap_unwrap",
       "status": "pass",
-      "duration_seconds": 8.69,
+      "duration_seconds": 9.62,
       "error": null,
       "hardware": {
         "os": "macOS-15.7.7-arm64-arm-64bit",
@@ -164,8 +164,8 @@
       },
       "resources": {
         "ram": {
-          "peak": 2.38,
-          "avg": 2.28
+          "peak": 2.04,
+          "avg": 1.88
         },
         "total_ram_gb": 7.0,
         "samples": 9
