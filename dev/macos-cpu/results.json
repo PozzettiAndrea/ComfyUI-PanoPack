@@ -1,23 +1,23 @@
 {
-  "timestamp": "2026-06-07T11:21:19.200760+00:00",
+  "timestamp": "2026-06-07T11:36:31.117257+00:00",
   "platform": "macos",
   "hardware": {
     "os": "macOS-15.7.7-arm64-arm-64bit",
     "cpu": "arm"
   },
-  "commit_hash": "b24cf3d6418bc07bc7c19dfb17135871631132a7",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27090154547",
+  "commit_hash": "e206e7bf251e72ffded0d88a71b530a05ba2c101",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27091237385",
   "success": false,
   "summary": {
     "total": 13,
-    "passed": 7,
-    "failed": 2
+    "passed": 5,
+    "failed": 1
   },
   "workflows": [
     {
       "name": "360_render",
       "status": "pass",
-      "duration_seconds": 326.75,
+      "duration_seconds": 253.71,
       "error": null,
       "hardware": {
         "os": "macOS-15.7.7-arm64-arm-64bit",
@@ -25,66 +25,33 @@
       },
       "resources": {
         "ram": {
-          "peak": 2.82,
-          "avg": 2.31
+          "peak": 3.05,
+          "avg": 1.85
         },
         "total_ram_gb": 7.0,
-        "samples": 298
+        "samples": 233
       }
     },
     {
       "name": "cpu_depth_merge_mesh_pointcloud",
-      "status": "pass",
-      "duration_seconds": 572.09,
-      "error": null,
-      "hardware": {
-        "os": "macOS-15.7.7-arm64-arm-64bit",
-        "cpu": "arm"
-      },
-      "resources": {
-        "ram": {
-          "peak": 2.98,
-          "avg": 1.51
-        },
-        "total_ram_gb": 7.0,
-        "samples": 519
-      }
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
     },
     {
       "name": "cpu_depth_normal_conditioned",
-      "status": "fail",
-      "duration_seconds": 335.56,
-      "error": "1 node(s) had validation errors and were silently skipped: node 87: split_method: 42 not in ['icosahedron_42', 'icosahedron_12', 'cube_split']\n\nDetails:\nWorkflow: /private/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy-test-run-ujmq9r6d/ComfyUI-PanoPack/workflows/cpu_depth_normal_conditioned.json",
-      "hardware": {
-        "os": "macOS-15.7.7-arm64-arm-64bit",
-        "cpu": "arm"
-      },
-      "resources": {
-        "ram": {
-          "peak": 2.94,
-          "avg": 1.28
-        },
-        "total_ram_gb": 7.0,
-        "samples": 305
-      }
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
     },
     {
       "name": "cpu_plane_segmentation",
-      "status": "pass",
-      "duration_seconds": 985.53,
-      "error": null,
-      "hardware": {
-        "os": "macOS-15.7.7-arm64-arm-64bit",
-        "cpu": "arm"
-      },
-      "resources": {
-        "ram": {
-          "peak": 4.3,
-          "avg": 1.15
-        },
-        "total_ram_gb": 7.0,
-        "samples": 896
-      }
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
     },
     {
       "name": "depth_merge_mesh_pointcloud",
@@ -117,7 +84,7 @@
     {
       "name": "pano_crop",
       "status": "pass",
-      "duration_seconds": 15.04,
+      "duration_seconds": 14.16,
       "error": null,
       "hardware": {
         "os": "macOS-15.7.7-arm64-arm-64bit",
@@ -125,17 +92,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 1.51,
-          "avg": 1.24
+          "peak": 2.11,
+          "avg": 1.89
         },
         "total_ram_gb": 7.0,
-        "samples": 15
+        "samples": 13
       }
     },
     {
       "name": "pano_info",
       "status": "pass",
-      "duration_seconds": 8.84,
+      "duration_seconds": 9.59,
       "error": null,
       "hardware": {
         "os": "macOS-15.7.7-arm64-arm-64bit",
@@ -143,8 +110,8 @@
       },
       "resources": {
         "ram": {
-          "peak": 1.62,
-          "avg": 1.26
+          "peak": 2.27,
+          "avg": 1.9
         },
         "total_ram_gb": 7.0,
         "samples": 9
@@ -153,25 +120,25 @@
     {
       "name": "panorama_shift",
       "status": "fail",
-      "duration_seconds": 5.69,
-      "error": "Workflow execution failed: {'prompt_id': '30f6f935-4341-4225-976c-5a0140a98ae9', 'node_id': '3', 'node_type': 'PanoramaShift', 'executed': ['2', '1'], 'exception_message': 'name \\'torch\\' is not defined\\n\\nWorker traceback:\\nTraceback (most recent call last):\\n  File \"/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_c4zcrt2p/persistent_worker.py\", line 1762, in main\\n    result = method(**inputs)\\n             ^^^^^^^^^^^^^^^^\\n  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/comfy_api/latest/_io.py\", line 1892, in EXECUTE_NORMALIZED\\n    to_return = cls.execute(*args, **kwargs)\\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py\", line 63, in execute\\n    rotated = panorama_shift_horizontal(img, yaw_degrees)\\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py\", line 125, in panorama_shift_horizontal\\n    img = torch.roll(img, shifts=int_shift, dims=-2)\\n          ^^^^^\\nNameError: name \\'torch\\' is not defined\\n\\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py\", line 536, in execute\\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py\", line 336, in get_output_data\\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py\", line 310, in _async_map_node_over_list\\n    await process_inputs(input_dict, i)\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py\", line 298, in process_inputs\\n    result = f(**inputs)\\n             ^^^^^^^^^^^\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/venv/lib/python3.11/site-packages/comfy_env/isolation/metadata.py\", line 560, in proxy\\n    result = worker.call_method(\\n             ^^^^^^^^^^^^^^^^^^^\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/venv/lib/python3.11/site-packages/comfy_env/isolation/workers/subprocess.py\", line 674, in call_method\\n    raise WorkerError(\\n'], 'current_inputs': {'yaw_degrees': [90], 'pitch_degrees': [0], 'panorama': [\"{'image': tensor([[[[0.1647, 0.1020, 0.0745],\\n          [0.1765, 0.1098, 0.0863],\\n          [0.1765, 0.1137, 0.0941],\\n          ...,\\n          [0.1647, 0.1137, 0.0941],\\n          [0.1647, 0.1098, 0.0902],\\n          [0.1333, 0.0784, 0.0667]],\\n\\n         [[0.1922, 0.1255, 0.0902],\\n          [0.1843, 0.1216, 0.0902],\\n          [0.1922, 0.1255, 0.0980],\\n          ...,\\n          [0.1765, 0.1255, 0.0980],\\n          [0.1725, 0.1255, 0.1020],\\n          [0.1647, 0.1059, 0.0824]],\\n\\n         [[0.1882, 0.1216, 0.0980],\\n          [0.1843, 0.1216, 0.0980],\\n          [0.1882, 0.1216, 0.0980],\\n          ...,\\n          [0.1804, 0.1333, 0.1020],\\n          [0.1804, 0.1373, 0.1098],\\n          [0.1569, 0.1059, 0.0863]],\\n\\n         ...,\\n\\n         [[0.1882, 0.1255, 0.1176],\\n          [0.1922, 0.1255, 0.1176],\\n          [0.1922, 0.1255, 0.1176],\\n          ...,\\n          [0.1176, 0.1333, 0.1412],\\n          [0.1686, 0.1529, 0.1451],\\n          [0.1843, 0.1569, 0.1333]],\\n\\n         [[0.1882, 0.1255, 0.1176],\\n          [0.1882, 0.1255, 0.1137],\\n          [0.1922, 0.1255, 0.1176],\\n          ...,\\n          [0.1647, 0.1412, 0.1098],\\n          [0.1922, 0.1529, 0.1176],\\n          [0.2039, 0.1490, 0.1294]],\\n\\n         [[0.1765, 0.1137, 0.1137],\\n          [0.1804, 0.1255, 0.1216],\\n          [0.1765, 0.1216, 0.1137],\\n          ...,\\n          [0.1961, 0.1725, 0.1412],\\n          [0.1647, 0.1451, 0.1333],\\n          [0.1843, 0.1137, 0.1373]]]]), 'meta': {}}\"]}, 'current_outputs': ['8', '5', '6', '2', '4', '7', '3', '1'], 'timestamp': 1780831259379}\n\nDetails:\nWorkflow: /private/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy-test-run-ujmq9r6d/ComfyUI-PanoPack/workflows/panorama_shift.json\nNode error: PanoramaShift",
+      "duration_seconds": 6.49,
+      "error": "Workflow execution failed: {'prompt_id': 'c5ee4a7a-e742-4fdd-98c5-b0f79fd1f839', 'node_id': '8', 'node_type': 'PanoramaShift', 'executed': ['1', '2'], 'exception_message': 'name \\'torch\\' is not defined\\n\\nWorker traceback:\\nTraceback (most recent call last):\\n  File \"/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_50iso0z9/persistent_worker.py\", line 1762, in main\\n    result = method(**inputs)\\n  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/comfy_api/latest/_io.py\", line 1892, in EXECUTE_NORMALIZED\\n    to_return = cls.execute(*args, **kwargs)\\n  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py\", line 64, in execute\\n    rotated = panorama_shift_pitch(rotated, pitch_degrees)\\n  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py\", line 188, in panorama_shift_pitch\\n    u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)\\nNameError: name \\'torch\\' is not defined\\n\\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py\", line 536, in execute\\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py\", line 336, in get_output_data\\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py\", line 310, in _async_map_node_over_list\\n    await process_inputs(input_dict, i)\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py\", line 298, in process_inputs\\n    result = f(**inputs)\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/metadata.py\", line 560, in proxy\\n    result = worker.call_method(\\n', '  File \"/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/workers/subprocess.py\", line 674, in call_method\\n    raise WorkerError(\\n'], 'current_inputs': {'yaw_degrees': [0], 'pitch_degrees': [45], 'panorama': [\"{'image': tensor([[[[0.1647, 0.1020, 0.0745],\\n          [0.1765, 0.1098, 0.0863],\\n          [0.1765, 0.1137, 0.0941],\\n          ...,\\n          [0.1647, 0.1137, 0.0941],\\n          [0.1647, 0.1098, 0.0902],\\n          [0.1333, 0.0784, 0.0667]],\\n\\n         [[0.1922, 0.1255, 0.0902],\\n          [0.1843, 0.1216, 0.0902],\\n          [0.1922, 0.1255, 0.0980],\\n          ...,\\n          [0.1765, 0.1255, 0.0980],\\n          [0.1725, 0.1255, 0.1020],\\n          [0.1647, 0.1059, 0.0824]],\\n\\n         [[0.1882, 0.1216, 0.0980],\\n          [0.1843, 0.1216, 0.0980],\\n          [0.1882, 0.1216, 0.0980],\\n          ...,\\n          [0.1804, 0.1333, 0.1020],\\n          [0.1804, 0.1373, 0.1098],\\n          [0.1569, 0.1059, 0.0863]],\\n\\n         ...,\\n\\n         [[0.1882, 0.1255, 0.1176],\\n          [0.1922, 0.1255, 0.1176],\\n          [0.1922, 0.1255, 0.1176],\\n          ...,\\n          [0.1176, 0.1333, 0.1412],\\n          [0.1686, 0.1529, 0.1451],\\n          [0.1843, 0.1569, 0.1333]],\\n\\n         [[0.1882, 0.1255, 0.1176],\\n          [0.1882, 0.1255, 0.1137],\\n          [0.1922, 0.1255, 0.1176],\\n          ...,\\n          [0.1647, 0.1412, 0.1098],\\n          [0.1922, 0.1529, 0.1176],\\n          [0.2039, 0.1490, 0.1294]],\\n\\n         [[0.1765, 0.1137, 0.1137],\\n          [0.1804, 0.1255, 0.1216],\\n          [0.1765, 0.1216, 0.1137],\\n          ...,\\n          [0.1961, 0.1725, 0.1412],\\n          [0.1647, 0.1451, 0.1333],\\n          [0.1843, 0.1137, 0.1373]]]]), 'meta': {}}\"]}, 'current_outputs': ['8', '6', '5', '7', '3', '1', '4', '2'], 'timestamp': 1780832169859}\n\nDetails:\nWorkflow: /private/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy-test-run-nu8qnro1/ComfyUI-PanoPack/workflows/panorama_shift.json\nNode error: PanoramaShift",
       "hardware": {
         "os": "macOS-15.7.7-arm64-arm-64bit",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 1.62,
-          "avg": 1.62
+          "peak": 2.37,
+          "avg": 2.28
         },
         "total_ram_gb": 7.0,
-        "samples": 6
+        "samples": 7
       }
     },
     {
       "name": "preview_panorama",
       "status": "pass",
-      "duration_seconds": 10.2,
+      "duration_seconds": 11.77,
       "error": null,
       "hardware": {
         "os": "macOS-15.7.7-arm64-arm-64bit",
@@ -179,17 +146,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 2.18,
-          "avg": 1.9
+          "peak": 2.73,
+          "avg": 2.38
         },
         "total_ram_gb": 7.0,
-        "samples": 10
+        "samples": 12
       }
     },
     {
       "name": "test_wrap_unwrap",
       "status": "pass",
-      "duration_seconds": 8.49,
+      "duration_seconds": 8.28,
       "error": null,
       "hardware": {
         "os": "macOS-15.7.7-arm64-arm-64bit",
@@ -197,8 +164,8 @@
       },
       "resources": {
         "ram": {
-          "peak": 2.24,
-          "avg": 2.19
+          "peak": 2.35,
+          "avg": 2.28
         },
         "total_ram_gb": 7.0,
         "samples": 8

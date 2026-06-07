@@ -3,7 +3,13 @@
   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
 Capturing execution frames: panorama_shift.json
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
@@ -16,6 +22,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
   [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
   [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
   [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
   [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
   [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
@@ -26,6 +38,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [32m[INFO][0m Prompt has 8 nodes
   [ComfyUI] [32m[INFO][0m Prompt has 8 nodes
   [ComfyUI] [32m[INFO][0m Prompt has 8 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 8 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 8 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 8 nodes
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
   [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
   [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
   [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
@@ -36,6 +54,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
   [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
   [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
   [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
   [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
   [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
@@ -46,6 +70,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
   [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
   [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
   [ComfyUI] [32m[INFO][0m   Node 3: PanoramaShift
@@ -56,6 +86,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [32m[INFO][0m     Inputs: {"yaw_degrees": 90, "pitch_degrees": 0, "panorama": ["2", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"yaw_degrees": 90, "pitch_degrees": 0, "panorama": ["2", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"yaw_degrees": 90, "pitch_degrees": 0, "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"yaw_degrees": 90, "pitch_degrees": 0, "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"yaw_degrees": 90, "pitch_degrees": 0, "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"yaw_degrees": 90, "pitch_degrees": 0, "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaUnwrap
+  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaUnwrap
+  [ComfyUI] [32m[INFO][0m   Node 4: PanoramaUnwrap
   [ComfyUI] [32m[INFO][0m   Node 4: PanoramaUnwrap
   [ComfyUI] [32m[INFO][0m   Node 4: PanoramaUnwrap
   [ComfyUI] [32m[INFO][0m   Node 4: PanoramaUnwrap
@@ -66,6 +102,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["3", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["3", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["3", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["3", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["3", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["3", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 5: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 5: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 5: PreviewImage
   [ComfyUI] [32m[INFO][0m   Node 5: PreviewImage
   [ComfyUI] [32m[INFO][0m   Node 5: PreviewImage
   [ComfyUI] [32m[INFO][0m   Node 5: PreviewImage
@@ -76,6 +118,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["4", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
   [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
   [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
   [ComfyUI] [32m[INFO][0m   Node 6: PreviewImage
@@ -86,6 +134,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["7", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["7", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["7", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["7", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["7", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["7", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 7: PanoramaUnwrap
+  [ComfyUI] [32m[INFO][0m   Node 7: PanoramaUnwrap
+  [ComfyUI] [32m[INFO][0m   Node 7: PanoramaUnwrap
   [ComfyUI] [32m[INFO][0m   Node 7: PanoramaUnwrap
   [ComfyUI] [32m[INFO][0m   Node 7: PanoramaUnwrap
   [ComfyUI] [32m[INFO][0m   Node 7: PanoramaUnwrap
@@ -96,6 +150,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["8", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["8", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["8", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["8", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["8", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["8", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 8: PanoramaShift
+  [ComfyUI] [32m[INFO][0m   Node 8: PanoramaShift
+  [ComfyUI] [32m[INFO][0m   Node 8: PanoramaShift
   [ComfyUI] [32m[INFO][0m   Node 8: PanoramaShift
   [ComfyUI] [32m[INFO][0m   Node 8: PanoramaShift
   [ComfyUI] [32m[INFO][0m   Node 8: PanoramaShift
@@ -106,17 +166,29 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [32m[INFO][0m     Inputs: {"yaw_degrees": 0, "pitch_degrees": 45, "panorama": ["2", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"yaw_degrees": 0, "pitch_degrees": 45, "panorama": ["2", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"yaw_degrees": 0, "pitch_degrees": 45, "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"yaw_degrees": 0, "pitch_degrees": 45, "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"yaw_degrees": 0, "pitch_degrees": 45, "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"yaw_degrees": 0, "pitch_degrees": 45, "panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 573fb393-b744-48a7-a398-21fab83564d4
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 573fb393-b744-48a7-a398-21fab83564d4
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 573fb393-b744-48a7-a398-21fab83564d4
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 573fb393-b744-48a7-a398-21fab83564d4
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 573fb393-b744-48a7-a398-21fab83564d4
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 573fb393-b744-48a7-a398-21fab83564d4
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 573fb393-b744-48a7-a398-21fab83564d4
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 573fb393-b744-48a7-a398-21fab83564d4
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
   Queuing workflow for execution...
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 63612b82-504a-42ad-9871-f3536e504dc3
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 63612b82-504a-42ad-9871-f3536e504dc3
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 63612b82-504a-42ad-9871-f3536e504dc3
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 63612b82-504a-42ad-9871-f3536e504dc3
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 63612b82-504a-42ad-9871-f3536e504dc3
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
   [ComfyUI] [32m[INFO][0m Validation result: valid=True
   [ComfyUI] [32m[INFO][0m Validation result: valid=True
   [ComfyUI] [32m[INFO][0m Validation result: valid=True
@@ -127,6 +199,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [32m[INFO][0m === Validation PASSED ===
   [ComfyUI] [32m[INFO][0m === Validation PASSED ===
   [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m got prompt
+  [ComfyUI] [32m[INFO][0m got prompt
+  [ComfyUI] [32m[INFO][0m got prompt
   [ComfyUI] [32m[INFO][0m got prompt
   [ComfyUI] [32m[INFO][0m got prompt
   [ComfyUI] [32m[INFO][0m got prompt
@@ -137,6 +215,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [comfy-env] Running PanoramaWrap: image: torch.float32 [1,2048,4096,3] cpu
   [ComfyUI] [comfy-env] Running PanoramaWrap: image: torch.float32 [1,2048,4096,3] cpu
   [ComfyUI] [comfy-env] Running PanoramaWrap: image: torch.float32 [1,2048,4096,3] cpu
+  [ComfyUI] [comfy-env] Running PanoramaWrap: image: torch.float32 [1,2048,4096,3] cpu
+  [ComfyUI] [comfy-env] Running PanoramaWrap: image: torch.float32 [1,2048,4096,3] cpu
+  [ComfyUI] [comfy-env] Running PanoramaWrap: image: torch.float32 [1,2048,4096,3] cpu
+  [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_type.PanoramaWrap.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_type.PanoramaWrap.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_type.PanoramaWrap.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_type.PanoramaWrap.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_type.PanoramaWrap.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_type.PanoramaWrap.EXECUTE_NORMALIZED
@@ -147,6 +231,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
@@ -157,6 +247,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [ComfyUI-PanoPack] Health check: ok
   [ComfyUI] [ComfyUI-PanoPack] Health check: ok
   [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] worker started/confirmed
@@ -167,6 +263,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [comfy-env] PRE-SERIALIZE 'image' shape: torch.Size([1, 2048, 4096, 3])
   [ComfyUI] [comfy-env] PRE-SERIALIZE 'image' shape: torch.Size([1, 2048, 4096, 3])
   [ComfyUI] [comfy-env] PRE-SERIALIZE 'image' shape: torch.Size([1, 2048, 4096, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'image' shape: torch.Size([1, 2048, 4096, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'image' shape: torch.Size([1, 2048, 4096, 3])
+  [ComfyUI] [comfy-env] PRE-SERIALIZE 'image' shape: torch.Size([1, 2048, 4096, 3])
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
@@ -177,16 +279,28 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [SubprocessWorker] created 0 shm blocks
   [ComfyUI] [SubprocessWorker] created 0 shm blocks
   [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] sending request via socket...
-  [ComfyUI] [SubprocessWorker] call_id=21 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=21 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=21 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=21 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=21 sending call_method
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] call_id=9 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=9 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=9 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=9 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=9 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=9 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=9 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=9 sending call_method
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
@@ -197,6 +311,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 2048, 4096, 3]
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 2048, 4096, 3]
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 2048, 4096, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 2048, 4096, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 2048, 4096, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 2048, 4096, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
@@ -207,16 +327,28 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.02s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.02s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.02s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.02s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.02s): result: NodeOutput
-  [ComfyUI] [comfy-env] Running PanoramaShift: yaw_degrees: 90.0, pitch_degrees: 0.0, panorama: dict
-  [ComfyUI] [comfy-env] Running PanoramaShift: yaw_degrees: 90.0, pitch_degrees: 0.0, panorama: dict
-  [ComfyUI] [comfy-env] Running PanoramaShift: yaw_degrees: 90.0, pitch_degrees: 0.0, panorama: dict
-  [ComfyUI] [comfy-env] Running PanoramaShift: yaw_degrees: 90.0, pitch_degrees: 0.0, panorama: dict
-  [ComfyUI] [comfy-env] Running PanoramaShift: yaw_degrees: 90.0, pitch_degrees: 0.0, panorama: dict
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.10s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.10s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.10s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.10s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.10s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.10s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.10s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.10s): result: NodeOutput
+  [ComfyUI] [comfy-env] Running PanoramaShift: yaw_degrees: 0.0, pitch_degrees: 45.0, panorama: dict
+  [ComfyUI] [comfy-env] Running PanoramaShift: yaw_degrees: 0.0, pitch_degrees: 45.0, panorama: dict
+  [ComfyUI] [comfy-env] Running PanoramaShift: yaw_degrees: 0.0, pitch_degrees: 45.0, panorama: dict
+  [ComfyUI] [comfy-env] Running PanoramaShift: yaw_degrees: 0.0, pitch_degrees: 45.0, panorama: dict
+  [ComfyUI] [comfy-env] Running PanoramaShift: yaw_degrees: 0.0, pitch_degrees: 45.0, panorama: dict
+  [ComfyUI] [comfy-env] Running PanoramaShift: yaw_degrees: 0.0, pitch_degrees: 45.0, panorama: dict
+  [ComfyUI] [comfy-env] Running PanoramaShift: yaw_degrees: 0.0, pitch_degrees: 45.0, panorama: dict
+  [ComfyUI] [comfy-env] Running PanoramaShift: yaw_degrees: 0.0, pitch_degrees: 45.0, panorama: dict
+  [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_shift.PanoramaShift.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_shift.PanoramaShift.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_shift.PanoramaShift.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_shift.PanoramaShift.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_shift.PanoramaShift.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_shift.PanoramaShift.EXECUTE_NORMALIZED
@@ -227,6 +359,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
@@ -237,6 +375,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [ComfyUI-PanoPack] Health check: ok
   [ComfyUI] [ComfyUI-PanoPack] Health check: ok
   [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] worker started/confirmed
@@ -247,6 +391,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
   [ComfyUI] [SubprocessWorker] created 0 shm blocks
   [ComfyUI] [SubprocessWorker] created 0 shm blocks
   [ComfyUI] [SubprocessWorker] created 0 shm blocks
@@ -257,11 +407,20 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] sending request via socket...
-  [ComfyUI] [SubprocessWorker] call_id=22 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=22 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=22 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=22 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=22 sending call_method
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] call_id=10 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=10 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=10 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=10 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=10 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=10 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=10 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=10 sending call_method
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
@@ -272,6 +431,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 2048, 4096, 3]
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 2048, 4096, 3]
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 2048, 4096, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 2048, 4096, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 2048, 4096, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 2048, 4096, 3]
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
+  [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
@@ -282,6 +447,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [SubprocessWorker] got response: error
   [ComfyUI] [SubprocessWorker] got response: error
   [ComfyUI] [SubprocessWorker] got response: error
+  [ComfyUI] [SubprocessWorker] got response: error
+  [ComfyUI] [SubprocessWorker] got response: error
+  [ComfyUI] [SubprocessWorker] got response: error
+  [ComfyUI] [1m[31m[ERROR][0m !!! Exception during processing !!! name 'torch' is not defined
+  [ComfyUI] [1m[31m[ERROR][0m !!! Exception during processing !!! name 'torch' is not defined
+  [ComfyUI] [1m[31m[ERROR][0m !!! Exception during processing !!! name 'torch' is not defined
   [ComfyUI] [1m[31m[ERROR][0m !!! Exception during processing !!! name 'torch' is not defined
   [ComfyUI] [1m[31m[ERROR][0m !!! Exception during processing !!! name 'torch' is not defined
   [ComfyUI] [1m[31m[ERROR][0m !!! Exception during processing !!! name 'torch' is not defined
@@ -292,6 +463,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] 
   [ComfyUI] 
   [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] Worker traceback:
+  [ComfyUI] Worker traceback:
+  [ComfyUI] Worker traceback:
   [ComfyUI] Worker traceback:
   [ComfyUI] Worker traceback:
   [ComfyUI] Worker traceback:
@@ -302,71 +479,84 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] Traceback (most recent call last):
   [ComfyUI] Traceback (most recent call last):
   [ComfyUI] Traceback (most recent call last):
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_c4zcrt2p/persistent_worker.py", line 1762, in main
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_c4zcrt2p/persistent_worker.py", line 1762, in main
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_c4zcrt2p/persistent_worker.py", line 1762, in main
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_c4zcrt2p/persistent_worker.py", line 1762, in main
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_c4zcrt2p/persistent_worker.py", line 1762, in main
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_50iso0z9/persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_50iso0z9/persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_50iso0z9/persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_50iso0z9/persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_50iso0z9/persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_50iso0z9/persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_50iso0z9/persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_50iso0z9/persistent_worker.py", line 1762, in main
   [ComfyUI]     result = method(**inputs)
   [ComfyUI]     result = method(**inputs)
   [ComfyUI]     result = method(**inputs)
   [ComfyUI]     result = method(**inputs)
   [ComfyUI]     result = method(**inputs)
-  [ComfyUI]              ^^^^^^^^^^^^^^^^
-  [ComfyUI]              ^^^^^^^^^^^^^^^^
-  [ComfyUI]              ^^^^^^^^^^^^^^^^
-  [ComfyUI]              ^^^^^^^^^^^^^^^^
-  [ComfyUI]              ^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
+  [ComfyUI]     result = method(**inputs)
+  [ComfyUI]     result = method(**inputs)
+  [ComfyUI]     result = method(**inputs)
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
-  [ComfyUI]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 63, in execute
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 63, in execute
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 63, in execute
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 63, in execute
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 63, in execute
-  [ComfyUI]     rotated = panorama_shift_horizontal(img, yaw_degrees)
-  [ComfyUI]     rotated = panorama_shift_horizontal(img, yaw_degrees)
-  [ComfyUI]     rotated = panorama_shift_horizontal(img, yaw_degrees)
-  [ComfyUI]     rotated = panorama_shift_horizontal(img, yaw_degrees)
-  [ComfyUI]     rotated = panorama_shift_horizontal(img, yaw_degrees)
-  [ComfyUI]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 125, in panorama_shift_horizontal
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 125, in panorama_shift_horizontal
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 125, in panorama_shift_horizontal
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 125, in panorama_shift_horizontal
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 125, in panorama_shift_horizontal
-  [ComfyUI]     img = torch.roll(img, shifts=int_shift, dims=-2)
-  [ComfyUI]     img = torch.roll(img, shifts=int_shift, dims=-2)
-  [ComfyUI]     img = torch.roll(img, shifts=int_shift, dims=-2)
-  [ComfyUI]     img = torch.roll(img, shifts=int_shift, dims=-2)
-  [ComfyUI]     img = torch.roll(img, shifts=int_shift, dims=-2)
-  [ComfyUI]           ^^^^^
-  [ComfyUI]           ^^^^^
-  [ComfyUI]           ^^^^^
-  [ComfyUI]           ^^^^^
-  [ComfyUI]           ^^^^^
+  [ComfyUI]     to_return = cls.execute(*args, **kwargs)
+  [ComfyUI]     to_return = cls.execute(*args, **kwargs)
+  [ComfyUI]     to_return = cls.execute(*args, **kwargs)
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 64, in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 64, in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 64, in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 64, in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 64, in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 64, in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 64, in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 64, in execute
+  [ComfyUI]     rotated = panorama_shift_pitch(rotated, pitch_degrees)
+  [ComfyUI]     rotated = panorama_shift_pitch(rotated, pitch_degrees)
+  [ComfyUI]     rotated = panorama_shift_pitch(rotated, pitch_degrees)
+  [ComfyUI]     rotated = panorama_shift_pitch(rotated, pitch_degrees)
+  [ComfyUI]     rotated = panorama_shift_pitch(rotated, pitch_degrees)
+  [ComfyUI]     rotated = panorama_shift_pitch(rotated, pitch_degrees)
+  [ComfyUI]     rotated = panorama_shift_pitch(rotated, pitch_degrees)
+  [ComfyUI]     rotated = panorama_shift_pitch(rotated, pitch_degrees)
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 188, in panorama_shift_pitch
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 188, in panorama_shift_pitch
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 188, in panorama_shift_pitch
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 188, in panorama_shift_pitch
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 188, in panorama_shift_pitch
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 188, in panorama_shift_pitch
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 188, in panorama_shift_pitch
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 188, in panorama_shift_pitch
+  [ComfyUI]     u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)
+  [ComfyUI]     u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)
+  [ComfyUI]     u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)
+  [ComfyUI]     u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)
+  [ComfyUI]     u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)
+  [ComfyUI]     u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)
+  [ComfyUI]     u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)
+  [ComfyUI]     u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)
   [ComfyUI] NameError: name 'torch' is not defined
   [ComfyUI] NameError: name 'torch' is not defined
   [ComfyUI] NameError: name 'torch' is not defined
   [ComfyUI] NameError: name 'torch' is not defined
   [ComfyUI] NameError: name 'torch' is not defined
+  [ComfyUI] NameError: name 'torch' is not defined
+  [ComfyUI] NameError: name 'torch' is not defined
+  [ComfyUI] NameError: name 'torch' is not defined
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
   [ComfyUI] 
   [ComfyUI] 
   [ComfyUI] 
@@ -377,81 +567,100 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] [1m[31m[ERROR][0m Traceback (most recent call last):
   [ComfyUI] [1m[31m[ERROR][0m Traceback (most recent call last):
   [ComfyUI] [1m[31m[ERROR][0m Traceback (most recent call last):
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 536, in execute
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 536, in execute
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 536, in execute
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 536, in execute
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 536, in execute
+  [ComfyUI] [1m[31m[ERROR][0m Traceback (most recent call last):
+  [ComfyUI] [1m[31m[ERROR][0m Traceback (most recent call last):
+  [ComfyUI] [1m[31m[ERROR][0m Traceback (most recent call last):
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 536, in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 536, in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 536, in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 536, in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 536, in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 536, in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 536, in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 536, in execute
   [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
   [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
   [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
   [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
   [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
-  [ComfyUI]                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 336, in get_output_data
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 336, in get_output_data
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 336, in get_output_data
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 336, in get_output_data
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 336, in get_output_data
+  [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+  [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+  [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 336, in get_output_data
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 336, in get_output_data
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 336, in get_output_data
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 336, in get_output_data
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 336, in get_output_data
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 336, in get_output_data
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 336, in get_output_data
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 336, in get_output_data
   [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
   [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
   [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
   [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
   [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
-  [ComfyUI]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 310, in _async_map_node_over_list
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 310, in _async_map_node_over_list
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 310, in _async_map_node_over_list
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 310, in _async_map_node_over_list
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 310, in _async_map_node_over_list
+  [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+  [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+  [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 310, in _async_map_node_over_list
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 310, in _async_map_node_over_list
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 310, in _async_map_node_over_list
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 310, in _async_map_node_over_list
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 310, in _async_map_node_over_list
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 310, in _async_map_node_over_list
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 310, in _async_map_node_over_list
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 310, in _async_map_node_over_list
   [ComfyUI]     await process_inputs(input_dict, i)
   [ComfyUI]     await process_inputs(input_dict, i)
   [ComfyUI]     await process_inputs(input_dict, i)
   [ComfyUI]     await process_inputs(input_dict, i)
   [ComfyUI]     await process_inputs(input_dict, i)
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 298, in process_inputs
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 298, in process_inputs
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 298, in process_inputs
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 298, in process_inputs
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 298, in process_inputs
+  [ComfyUI]     await process_inputs(input_dict, i)
+  [ComfyUI]     await process_inputs(input_dict, i)
+  [ComfyUI]     await process_inputs(input_dict, i)
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 298, in process_inputs
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 298, in process_inputs
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 298, in process_inputs
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 298, in process_inputs
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 298, in process_inputs
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 298, in process_inputs
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 298, in process_inputs
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 298, in process_inputs
   [ComfyUI]     result = f(**inputs)
   [ComfyUI]     result = f(**inputs)
   [ComfyUI]     result = f(**inputs)
   [ComfyUI]     result = f(**inputs)
   [ComfyUI]     result = f(**inputs)
-  [ComfyUI]              ^^^^^^^^^^^
-  [ComfyUI]              ^^^^^^^^^^^
-  [ComfyUI]              ^^^^^^^^^^^
-  [ComfyUI]              ^^^^^^^^^^^
-  [ComfyUI]              ^^^^^^^^^^^
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/venv/lib/python3.11/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/venv/lib/python3.11/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/venv/lib/python3.11/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/venv/lib/python3.11/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/venv/lib/python3.11/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy
+  [ComfyUI]     result = f(**inputs)
+  [ComfyUI]     result = f(**inputs)
+  [ComfyUI]     result = f(**inputs)
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy
   [ComfyUI]     result = worker.call_method(
   [ComfyUI]     result = worker.call_method(
   [ComfyUI]     result = worker.call_method(
   [ComfyUI]     result = worker.call_method(
   [ComfyUI]     result = worker.call_method(
-  [ComfyUI]              ^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]              ^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]              ^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]              ^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]              ^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/venv/lib/python3.11/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/venv/lib/python3.11/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/venv/lib/python3.11/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/venv/lib/python3.11/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/venv/lib/python3.11/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method
+  [ComfyUI]     result = worker.call_method(
+  [ComfyUI]     result = worker.call_method(
+  [ComfyUI]     result = worker.call_method(
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method
+  [ComfyUI]     raise WorkerError(
+  [ComfyUI]     raise WorkerError(
+  [ComfyUI]     raise WorkerError(
   [ComfyUI]     raise WorkerError(
   [ComfyUI]     raise WorkerError(
   [ComfyUI]     raise WorkerError(
@@ -462,6 +671,12 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] comfy_env.isolation.workers.base.WorkerError: name 'torch' is not defined
   [ComfyUI] comfy_env.isolation.workers.base.WorkerError: name 'torch' is not defined
   [ComfyUI] comfy_env.isolation.workers.base.WorkerError: name 'torch' is not defined
+  [ComfyUI] comfy_env.isolation.workers.base.WorkerError: name 'torch' is not defined
+  [ComfyUI] comfy_env.isolation.workers.base.WorkerError: name 'torch' is not defined
+  [ComfyUI] comfy_env.isolation.workers.base.WorkerError: name 'torch' is not defined
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
   [ComfyUI] 
   [ComfyUI] 
   [ComfyUI] 
@@ -472,76 +687,89 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] Worker traceback:
   [ComfyUI] Worker traceback:
   [ComfyUI] Worker traceback:
+  [ComfyUI] Worker traceback:
+  [ComfyUI] Worker traceback:
+  [ComfyUI] Worker traceback:
   [ComfyUI] Traceback (most recent call last):
   [ComfyUI] Traceback (most recent call last):
   [ComfyUI] Traceback (most recent call last):
   [ComfyUI] Traceback (most recent call last):
   [ComfyUI] Traceback (most recent call last):
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_c4zcrt2p/persistent_worker.py", line 1762, in main
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_c4zcrt2p/persistent_worker.py", line 1762, in main
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_c4zcrt2p/persistent_worker.py", line 1762, in main
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_c4zcrt2p/persistent_worker.py", line 1762, in main
-  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_c4zcrt2p/persistent_worker.py", line 1762, in main
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_50iso0z9/persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_50iso0z9/persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_50iso0z9/persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_50iso0z9/persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_50iso0z9/persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_50iso0z9/persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_50iso0z9/persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_50iso0z9/persistent_worker.py", line 1762, in main
   [ComfyUI]     result = method(**inputs)
   [ComfyUI]     result = method(**inputs)
   [ComfyUI]     result = method(**inputs)
   [ComfyUI]     result = method(**inputs)
   [ComfyUI]     result = method(**inputs)
-  [ComfyUI]              ^^^^^^^^^^^^^^^^
-  [ComfyUI]              ^^^^^^^^^^^^^^^^
-  [ComfyUI]              ^^^^^^^^^^^^^^^^
-  [ComfyUI]              ^^^^^^^^^^^^^^^^
-  [ComfyUI]              ^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
+  [ComfyUI]     result = method(**inputs)
+  [ComfyUI]     result = method(**inputs)
+  [ComfyUI]     result = method(**inputs)
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
-  [ComfyUI]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 63, in execute
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 63, in execute
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 63, in execute
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 63, in execute
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 63, in execute
-  [ComfyUI]     rotated = panorama_shift_horizontal(img, yaw_degrees)
-  [ComfyUI]     rotated = panorama_shift_horizontal(img, yaw_degrees)
-  [ComfyUI]     rotated = panorama_shift_horizontal(img, yaw_degrees)
-  [ComfyUI]     rotated = panorama_shift_horizontal(img, yaw_degrees)
-  [ComfyUI]     rotated = panorama_shift_horizontal(img, yaw_degrees)
-  [ComfyUI]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 125, in panorama_shift_horizontal
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 125, in panorama_shift_horizontal
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 125, in panorama_shift_horizontal
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 125, in panorama_shift_horizontal
-  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 125, in panorama_shift_horizontal
-  [ComfyUI]     img = torch.roll(img, shifts=int_shift, dims=-2)
-  [ComfyUI]     img = torch.roll(img, shifts=int_shift, dims=-2)
-  [ComfyUI]     img = torch.roll(img, shifts=int_shift, dims=-2)
-  [ComfyUI]     img = torch.roll(img, shifts=int_shift, dims=-2)
-  [ComfyUI]     img = torch.roll(img, shifts=int_shift, dims=-2)
-  [ComfyUI]           ^^^^^
-  [ComfyUI]           ^^^^^
-  [ComfyUI]           ^^^^^
-  [ComfyUI]           ^^^^^
-  [ComfyUI]           ^^^^^
+  [ComfyUI]     to_return = cls.execute(*args, **kwargs)
+  [ComfyUI]     to_return = cls.execute(*args, **kwargs)
+  [ComfyUI]     to_return = cls.execute(*args, **kwargs)
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 64, in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 64, in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 64, in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 64, in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 64, in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 64, in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 64, in execute
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 64, in execute
+  [ComfyUI]     rotated = panorama_shift_pitch(rotated, pitch_degrees)
+  [ComfyUI]     rotated = panorama_shift_pitch(rotated, pitch_degrees)
+  [ComfyUI]     rotated = panorama_shift_pitch(rotated, pitch_degrees)
+  [ComfyUI]     rotated = panorama_shift_pitch(rotated, pitch_degrees)
+  [ComfyUI]     rotated = panorama_shift_pitch(rotated, pitch_degrees)
+  [ComfyUI]     rotated = panorama_shift_pitch(rotated, pitch_degrees)
+  [ComfyUI]     rotated = panorama_shift_pitch(rotated, pitch_degrees)
+  [ComfyUI]     rotated = panorama_shift_pitch(rotated, pitch_degrees)
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 188, in panorama_shift_pitch
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 188, in panorama_shift_pitch
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 188, in panorama_shift_pitch
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 188, in panorama_shift_pitch
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 188, in panorama_shift_pitch
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 188, in panorama_shift_pitch
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 188, in panorama_shift_pitch
+  [ComfyUI]   File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 188, in panorama_shift_pitch
+  [ComfyUI]     u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)
+  [ComfyUI]     u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)
+  [ComfyUI]     u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)
+  [ComfyUI]     u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)
+  [ComfyUI]     u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)
+  [ComfyUI]     u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)
+  [ComfyUI]     u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)
+  [ComfyUI]     u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)
   [ComfyUI] NameError: name 'torch' is not defined
   [ComfyUI] NameError: name 'torch' is not defined
   [ComfyUI] NameError: name 'torch' is not defined
   [ComfyUI] NameError: name 'torch' is not defined
   [ComfyUI] NameError: name 'torch' is not defined
+  [ComfyUI] NameError: name 'torch' is not defined
+  [ComfyUI] NameError: name 'torch' is not defined
+  [ComfyUI] NameError: name 'torch' is not defined
   [ComfyUI] 
   [ComfyUI] 
   [ComfyUI] 
@@ -552,14 +780,23 @@ Capturing execution frames: panorama_shift.json
   [ComfyUI] 
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.35 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.35 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.35 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.35 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.35 seconds[0m
-  Execution complete (t=0.5s)
-  Execution error: {'prompt_id': '30f6f935-4341-4225-976c-5a0140a98ae9', 'node_id': '3', 'node_type': 'PanoramaShift', 'executed': ['2', '1'], 'exception_message': 'name \'torch\' is not defined\n\nWorker traceback:\nTraceback (most recent call last):\n  File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_c4zcrt2p/persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n             ^^^^^^^^^^^^^^^^\n  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 63, in execute\n    rotated = panorama_shift_horizontal(img, yaw_degrees)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 125, in panorama_shift_horizontal\n    img = torch.roll(img, shifts=int_shift, dims=-2)\n          ^^^^^\nNameError: name \'torch\' is not defined\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 536, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 336, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 310, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 298, in process_inputs\n    result = f(**inputs)\n             ^^^^^^^^^^^\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/venv/lib/python3.11/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy\n    result = worker.call_method(\n             ^^^^^^^^^^^^^^^^^^^\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/venv/lib/python3.11/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method\n    raise WorkerError(\n'], 'current_inputs': {'yaw_degrees': [90], 'pitch_degrees': [0], 'panorama': ["{'image': tensor([[[[0.1647, 0.1020, 0.0745],\n          [0.1765, 0.1098, 0.0863],\n          [0.1765, 0.1137, 0.0941],\n          ...,\n          [0.1647, 0.1137, 0.0941],\n          [0.1647, 0.1098, 0.0902],\n          [0.1333, 0.0784, 0.0667]],\n\n         [[0.1922, 0.1255, 0.0902],\n          [0.1843, 0.1216, 0.0902],\n          [0.1922, 0.1255, 0.0980],\n          ...,\n          [0.1765, 0.1255, 0.0980],\n          [0.1725, 0.1255, 0.1020],\n          [0.1647, 0.1059, 0.0824]],\n\n         [[0.1882, 0.1216, 0.0980],\n          [0.1843, 0.1216, 0.0980],\n          [0.1882, 0.1216, 0.0980],\n          ...,\n          [0.1804, 0.1333, 0.1020],\n          [0.1804, 0.1373, 0.1098],\n          [0.1569, 0.1059, 0.0863]],\n\n         ...,\n\n         [[0.1882, 0.1255, 0.1176],\n          [0.1922, 0.1255, 0.1176],\n          [0.1922, 0.1255, 0.1176],\n          ...,\n          [0.1176, 0.1333, 0.1412],\n          [0.1686, 0.1529, 0.1451],\n          [0.1843, 0.1569, 0.1333]],\n\n         [[0.1882, 0.1255, 0.1176],\n          [0.1882, 0.1255, 0.1137],\n          [0.1922, 0.1255, 0.1176],\n          ...,\n          [0.1647, 0.1412, 0.1098],\n          [0.1922, 0.1529, 0.1176],\n          [0.2039, 0.1490, 0.1294]],\n\n         [[0.1765, 0.1137, 0.1137],\n          [0.1804, 0.1255, 0.1216],\n          [0.1765, 0.1216, 0.1137],\n          ...,\n          [0.1961, 0.1725, 0.1412],\n          [0.1647, 0.1451, 0.1333],\n          [0.1843, 0.1137, 0.1373]]]]), 'meta': {}}"]}, 'current_outputs': ['8', '5', '6', '2', '4', '7', '3', '1'], 'timestamp': 1780831259379}
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.57 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.57 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.57 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.57 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.57 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.57 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.57 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.57 seconds[0m
+  Execution complete (t=0.8s)
+  Execution error: {'prompt_id': 'c5ee4a7a-e742-4fdd-98c5-b0f79fd1f839', 'node_id': '8', 'node_type': 'PanoramaShift', 'executed': ['1', '2'], 'exception_message': 'name \'torch\' is not defined\n\nWorker traceback:\nTraceback (most recent call last):\n  File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_50iso0z9/persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 64, in execute\n    rotated = panorama_shift_pitch(rotated, pitch_degrees)\n  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 188, in panorama_shift_pitch\n    u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)\nNameError: name \'torch\' is not defined\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 536, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 336, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 310, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 298, in process_inputs\n    result = f(**inputs)\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy\n    result = worker.call_method(\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method\n    raise WorkerError(\n'], 'current_inputs': {'yaw_degrees': [0], 'pitch_degrees': [45], 'panorama': ["{'image': tensor([[[[0.1647, 0.1020, 0.0745],\n          [0.1765, 0.1098, 0.0863],\n          [0.1765, 0.1137, 0.0941],\n          ...,\n          [0.1647, 0.1137, 0.0941],\n          [0.1647, 0.1098, 0.0902],\n          [0.1333, 0.0784, 0.0667]],\n\n         [[0.1922, 0.1255, 0.0902],\n          [0.1843, 0.1216, 0.0902],\n          [0.1922, 0.1255, 0.0980],\n          ...,\n          [0.1765, 0.1255, 0.0980],\n          [0.1725, 0.1255, 0.1020],\n          [0.1647, 0.1059, 0.0824]],\n\n         [[0.1882, 0.1216, 0.0980],\n          [0.1843, 0.1216, 0.0980],\n          [0.1882, 0.1216, 0.0980],\n          ...,\n          [0.1804, 0.1333, 0.1020],\n          [0.1804, 0.1373, 0.1098],\n          [0.1569, 0.1059, 0.0863]],\n\n         ...,\n\n         [[0.1882, 0.1255, 0.1176],\n          [0.1922, 0.1255, 0.1176],\n          [0.1922, 0.1255, 0.1176],\n          ...,\n          [0.1176, 0.1333, 0.1412],\n          [0.1686, 0.1529, 0.1451],\n          [0.1843, 0.1569, 0.1333]],\n\n         [[0.1882, 0.1255, 0.1176],\n          [0.1882, 0.1255, 0.1137],\n          [0.1922, 0.1255, 0.1176],\n          ...,\n          [0.1647, 0.1412, 0.1098],\n          [0.1922, 0.1529, 0.1176],\n          [0.2039, 0.1490, 0.1294]],\n\n         [[0.1765, 0.1137, 0.1137],\n          [0.1804, 0.1255, 0.1216],\n          [0.1765, 0.1216, 0.1137],\n          ...,\n          [0.1961, 0.1725, 0.1412],\n          [0.1647, 0.1451, 0.1333],\n          [0.1843, 0.1137, 0.1373]]]]), 'meta': {}}"]}, 'current_outputs': ['8', '6', '5', '7', '3', '1', '4', '2'], 'timestamp': 1780832169859}
     Status: FAILED
-    Error: Workflow execution failed: {'prompt_id': '30f6f935-4341-4225-976c-5a0140a98ae9', 'node_id': '3', 'node_type': 'PanoramaShift', 'executed': ['2', '1'], 'exception_message': 'name \'torch\' is not defined\n\nWorker traceback:\nTraceback (most recent call last):\n  File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_c4zcrt2p/persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n             ^^^^^^^^^^^^^^^^\n  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 63, in execute\n    rotated = panorama_shift_horizontal(img, yaw_degrees)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 125, in panorama_shift_horizontal\n    img = torch.roll(img, shifts=int_shift, dims=-2)\n          ^^^^^\nNameError: name \'torch\' is not defined\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 536, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 336, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 310, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/ComfyUI/execution.py", line 298, in process_inputs\n    result = f(**inputs)\n             ^^^^^^^^^^^\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/venv/lib/python3.11/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy\n    result = worker.call_method(\n             ^^^^^^^^^^^^^^^^^^^\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1040/venv/lib/python3.11/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method\n    raise WorkerError(\n'], 'current_inputs': {'yaw_degrees': [90], 'pitch_degrees': [0], 'panorama': ["{'image': tensor([[[[0.1647, 0.1020, 0.0745],\n          [0.1765, 0.1098, 0.0863],\n          [0.1765, 0.1137, 0.0941],\n          ...,\n          [0.1647, 0.1137, 0.0941],\n          [0.1647, 0.1098, 0.0902],\n          [0.1333, 0.0784, 0.0667]],\n\n         [[0.1922, 0.1255, 0.0902],\n          [0.1843, 0.1216, 0.0902],\n          [0.1922, 0.1255, 0.0980],\n          ...,\n          [0.1765, 0.1255, 0.0980],\n          [0.1725, 0.1255, 0.1020],\n          [0.1647, 0.1059, 0.0824]],\n\n         [[0.1882, 0.1216, 0.0980],\n          [0.1843, 0.1216, 0.0980],\n          [0.1882, 0.1216, 0.0980],\n          ...,\n          [0.1804, 0.1333, 0.1020],\n          [0.1804, 0.1373, 0.1098],\n          [0.1569, 0.1059, 0.0863]],\n\n         ...,\n\n         [[0.1882, 0.1255, 0.1176],\n          [0.1922, 0.1255, 0.1176],\n          [0.1922, 0.1255, 0.1176],\n          ...,\n          [0.1176, 0.1333, 0.1412],\n          [0.1686, 0.1529, 0.1451],\n          [0.1843, 0.1569, 0.1333]],\n\n         [[0.1882, 0.1255, 0.1176],\n          [0.1882, 0.1255, 0.1137],\n          [0.1922, 0.1255, 0.1176],\n          ...,\n          [0.1647, 0.1412, 0.1098],\n          [0.1922, 0.1529, 0.1176],\n          [0.2039, 0.1490, 0.1294]],\n\n         [[0.1765, 0.1137, 0.1137],\n          [0.1804, 0.1255, 0.1216],\n          [0.1765, 0.1216, 0.1137],\n          ...,\n          [0.1961, 0.1725, 0.1412],\n          [0.1647, 0.1451, 0.1333],\n          [0.1843, 0.1137, 0.1373]]]]), 'meta': {}}"]}, 'current_outputs': ['8', '5', '6', '2', '4', '7', '3', '1'], 'timestamp': 1780831259379}
-    Details: Workflow: /private/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy-test-run-ujmq9r6d/ComfyUI-PanoPack/workflows/panorama_shift.json
+    Error: Workflow execution failed: {'prompt_id': 'c5ee4a7a-e742-4fdd-98c5-b0f79fd1f839', 'node_id': '8', 'node_type': 'PanoramaShift', 'executed': ['1', '2'], 'exception_message': 'name \'torch\' is not defined\n\nWorker traceback:\nTraceback (most recent call last):\n  File "/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_50iso0z9/persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/comfy_api/latest/_io.py", line 1892, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/panorama_shift.py", line 64, in execute\n    rotated = panorama_shift_pitch(rotated, pitch_degrees)\n  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/custom_nodes/ComfyUI-PanoPack/nodes/utils/equirect.py", line 188, in panorama_shift_pitch\n    u = torch.linspace(0.5, w - 0.5, w, device=device)  # [0, W)\nNameError: name \'torch\' is not defined\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 536, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 336, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 310, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/ComfyUI/execution.py", line 298, in process_inputs\n    result = f(**inputs)\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/metadata.py", line 560, in proxy\n    result = worker.call_method(\n', '  File "/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1129/venv/lib/python3.10/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method\n    raise WorkerError(\n'], 'current_inputs': {'yaw_degrees': [0], 'pitch_degrees': [45], 'panorama': ["{'image': tensor([[[[0.1647, 0.1020, 0.0745],\n          [0.1765, 0.1098, 0.0863],\n          [0.1765, 0.1137, 0.0941],\n          ...,\n          [0.1647, 0.1137, 0.0941],\n          [0.1647, 0.1098, 0.0902],\n          [0.1333, 0.0784, 0.0667]],\n\n         [[0.1922, 0.1255, 0.0902],\n          [0.1843, 0.1216, 0.0902],\n          [0.1922, 0.1255, 0.0980],\n          ...,\n          [0.1765, 0.1255, 0.0980],\n          [0.1725, 0.1255, 0.1020],\n          [0.1647, 0.1059, 0.0824]],\n\n         [[0.1882, 0.1216, 0.0980],\n          [0.1843, 0.1216, 0.0980],\n          [0.1882, 0.1216, 0.0980],\n          ...,\n          [0.1804, 0.1333, 0.1020],\n          [0.1804, 0.1373, 0.1098],\n          [0.1569, 0.1059, 0.0863]],\n\n         ...,\n\n         [[0.1882, 0.1255, 0.1176],\n          [0.1922, 0.1255, 0.1176],\n          [0.1922, 0.1255, 0.1176],\n          ...,\n          [0.1176, 0.1333, 0.1412],\n          [0.1686, 0.1529, 0.1451],\n          [0.1843, 0.1569, 0.1333]],\n\n         [[0.1882, 0.1255, 0.1176],\n          [0.1882, 0.1255, 0.1137],\n          [0.1922, 0.1255, 0.1176],\n          ...,\n          [0.1647, 0.1412, 0.1098],\n          [0.1922, 0.1529, 0.1176],\n          [0.2039, 0.1490, 0.1294]],\n\n         [[0.1765, 0.1137, 0.1137],\n          [0.1804, 0.1255, 0.1216],\n          [0.1765, 0.1216, 0.1137],\n          ...,\n          [0.1961, 0.1725, 0.1412],\n          [0.1647, 0.1451, 0.1333],\n          [0.1843, 0.1137, 0.1373]]]]), 'meta': {}}"]}, 'current_outputs': ['8', '6', '5', '7', '3', '1', '4', '2'], 'timestamp': 1780832169859}
+    Details: Workflow: /private/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy-test-run-nu8qnro1/ComfyUI-PanoPack/workflows/panorama_shift.json
 Node error: PanoramaShift
