@@ -1,0 +1,39 @@
+{
+  "models_dir": "C:\\workspaces\\PanoPack-1329\\ComfyUI\\models",
+  "summary": {
+    "total_files": 4,
+    "total_size_bytes": 1323816228,
+    "total_size_human": "1.2 GB"
+  },
+  "folders": {
+    "moge2": {
+      "total_size_bytes": 1323816228,
+      "total_size_human": "1.2 GB",
+      "source": {
+        "type": "unknown"
+      },
+      "files": [
+        {
+          "path": "moge-2-vitl-normal.pt",
+          "size_bytes": 1323815904,
+          "size_human": "1.2 GB"
+        },
+        {
+          "path": ".cache\\huggingface\\CACHEDIR.TAG",
+          "size_bytes": 195,
+          "size_human": "195.0 B"
+        },
+        {
+          "path": ".cache\\huggingface\\download\\model.pt.metadata",
+          "size_bytes": 128,
+          "size_human": "128.0 B"
+        },
+        {
+          "path": ".cache\\huggingface\\.gitignore",
+          "size_bytes": 1,
+          "size_human": "1.0 B"
+        }
+      ]
+    }
+  }
+}

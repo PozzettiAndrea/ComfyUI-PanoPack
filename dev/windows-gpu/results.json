@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-06-07T10:49:00.332721+00:00",
+  "timestamp": "2026-06-07T11:49:33.191865+00:00",
   "platform": "windows",
   "hardware": {
     "os": "Windows-11-10.0.26100-SP0",
     "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
   },
-  "commit_hash": "b24cf3d6418bc07bc7c19dfb17135871631132a7",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27090153155",
-  "success": false,
+  "commit_hash": "e206e7bf251e72ffded0d88a71b530a05ba2c101",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27091235592",
+  "success": true,
   "summary": {
     "total": 13,
-    "passed": 0,
-    "failed": 3
+    "passed": 3,
+    "failed": 0
   },
   "workflows": [
     {
@@ -51,56 +51,56 @@
     },
     {
       "name": "gpu_depth_merge_mesh_pointcloud",
-      "status": "fail",
-      "duration_seconds": 8.22,
-      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 17 nodes, missing class_type: [65,69,79,80,85], sample: {\"inputs\":{\"image\":\"actual_pano_from_real_life.jpg\"},\"class_type\":\"LoadImage\",\"_meta\":{\"title\":\"Load Image\"}}",
+      "status": "pass",
+      "duration_seconds": 211.93,
+      "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26100-SP0",
         "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
       },
       "resources": {
         "ram": {
-          "peak": 0.93,
-          "avg": 0.93
+          "peak": 7.91,
+          "avg": 4.98
         },
         "total_ram_gb": 31.9,
-        "samples": 9
+        "samples": 210
       }
     },
     {
       "name": "gpu_depth_normal_conditioned",
-      "status": "fail",
-      "duration_seconds": 6.32,
-      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 13 nodes, missing class_type: [59,60,87,95], sample: {\"inputs\":{\"image\":\"pano.png\"},\"class_type\":\"LoadImage\",\"_meta\":{\"title\":\"Load Image\"}}",
+      "status": "pass",
+      "duration_seconds": 240.88,
+      "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26100-SP0",
         "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
       },
       "resources": {
         "ram": {
-          "peak": 0.93,
-          "avg": 0.93
+          "peak": 18.22,
+          "avg": 9.82
         },
         "total_ram_gb": 31.9,
-        "samples": 7
+        "samples": 238
       }
     },
     {
       "name": "gpu_plane_segmentation",
-      "status": "fail",
-      "duration_seconds": 6.2,
-      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 13 nodes, missing class_type: [65,84,103,107], sample: {\"inputs\":{\"image\":\"actual_pano_from_real_life.jpg\"},\"class_type\":\"LoadImage\",\"_meta\":{\"title\":\"Load Image\"}}",
+      "status": "pass",
+      "duration_seconds": 127.45,
+      "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26100-SP0",
         "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
       },
       "resources": {
         "ram": {
-          "peak": 0.93,
-          "avg": 0.93
+          "peak": 11.22,
+          "avg": 8.39
         },
         "total_ram_gb": 31.9,
-        "samples": 7
+        "samples": 126
       }
     },
     {
