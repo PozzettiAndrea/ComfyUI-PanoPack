@@ -13,6 +13,9 @@ pyvista = ">=0.45"
 # wiring (force the OSMesa window) lives in nodes/utils/headless_gl.py.
 mesalib = ">=24.3,<25.1"
 
+[cuda]
+packages = ["cc_torch"]
+
 [pypi-dependencies]
 safetensors = ">=0.4.0"
 psutil = "*"
