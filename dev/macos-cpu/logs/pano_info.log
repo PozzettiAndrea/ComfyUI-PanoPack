@@ -17,111 +17,111 @@ Capturing execution frames: pano_info.json
   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
   Frame 1 saved (frame_000.jpg, t=0.0s)
   Validating workflow...
-  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
-  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
-  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
-  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
-  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
-  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
-  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
-  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
-  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
-  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
-  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
-  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
-  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
-  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
-  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
-  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
-  [ComfyUI] [32m[INFO][0m Prompt has 3 nodes
-  [ComfyUI] [32m[INFO][0m Prompt has 3 nodes
-  [ComfyUI] [32m[INFO][0m Prompt has 3 nodes
-  [ComfyUI] [32m[INFO][0m Prompt has 3 nodes
-  [ComfyUI] [32m[INFO][0m Prompt has 3 nodes
-  [ComfyUI] [32m[INFO][0m Prompt has 3 nodes
-  [ComfyUI] [32m[INFO][0m Prompt has 3 nodes
-  [ComfyUI] [32m[INFO][0m Prompt has 3 nodes
-  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
-  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
-  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
-  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
-  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
-  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
-  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
-  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
-  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
-  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
-  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
-  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
-  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
-  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
-  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
-  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
-  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 027480ef-b076-40bf-b2db-bd145b1d4f3d
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 027480ef-b076-40bf-b2db-bd145b1d4f3d
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 027480ef-b076-40bf-b2db-bd145b1d4f3d
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 027480ef-b076-40bf-b2db-bd145b1d4f3d
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 027480ef-b076-40bf-b2db-bd145b1d4f3d
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 027480ef-b076-40bf-b2db-bd145b1d4f3d
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 027480ef-b076-40bf-b2db-bd145b1d4f3d
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 027480ef-b076-40bf-b2db-bd145b1d4f3d
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
   Queuing workflow for execution...
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Prompt has 3 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 3 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 3 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 3 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 3 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 3 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 3 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 3 nodes
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 7e46ab45-361e-4b5c-b3c3-7c365f28b840
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 7e46ab45-361e-4b5c-b3c3-7c365f28b840
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 7e46ab45-361e-4b5c-b3c3-7c365f28b840
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 7e46ab45-361e-4b5c-b3c3-7c365f28b840
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 7e46ab45-361e-4b5c-b3c3-7c365f28b840
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 7e46ab45-361e-4b5c-b3c3-7c365f28b840
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 7e46ab45-361e-4b5c-b3c3-7c365f28b840
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 7e46ab45-361e-4b5c-b3c3-7c365f28b840
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
   [ComfyUI] [32m[INFO][0m got prompt
   [ComfyUI] [32m[INFO][0m got prompt
   [ComfyUI] [32m[INFO][0m got prompt
@@ -162,14 +162,82 @@ Capturing execution frames: pano_info.json
   [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
-  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
-  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
-  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
-  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
-  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
-  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
-  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
-  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
+  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
+  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
+  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
+  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
+  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
+  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
+  [ComfyUI] [ComfyUI-PanoPack] Health check: failed
+  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
+  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
+  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
+  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
+  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
+  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
+  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
+  [ComfyUI] [ComfyUI-PanoPack] Socket unhealthy, restarting worker...
+  [ComfyUI] [ComfyUI-PanoPack] python: /Users/runner/.ce/.pixi/envs/panopack-nodes/bin/python
+  [ComfyUI] [ComfyUI-PanoPack] python: /Users/runner/.ce/.pixi/envs/panopack-nodes/bin/python
+  [ComfyUI] [ComfyUI-PanoPack] python: /Users/runner/.ce/.pixi/envs/panopack-nodes/bin/python
+  [ComfyUI] [ComfyUI-PanoPack] python: /Users/runner/.ce/.pixi/envs/panopack-nodes/bin/python
+  [ComfyUI] [ComfyUI-PanoPack] python: /Users/runner/.ce/.pixi/envs/panopack-nodes/bin/python
+  [ComfyUI] [ComfyUI-PanoPack] python: /Users/runner/.ce/.pixi/envs/panopack-nodes/bin/python
+  [ComfyUI] [ComfyUI-PanoPack] python: /Users/runner/.ce/.pixi/envs/panopack-nodes/bin/python
+  [ComfyUI] [ComfyUI-PanoPack] python: /Users/runner/.ce/.pixi/envs/panopack-nodes/bin/python
+  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI/custom_nodes/ComfyUI-PanoPack', '/Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.1/site-packages', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI/custom_nodes/ComfyUI-PanoPack']
+  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI/custom_nodes/ComfyUI-PanoPack', '/Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.1/site-packages', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI/custom_nodes/ComfyUI-PanoPack']
+  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI/custom_nodes/ComfyUI-PanoPack', '/Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.1/site-packages', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI/custom_nodes/ComfyUI-PanoPack']
+  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI/custom_nodes/ComfyUI-PanoPack', '/Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.1/site-packages', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI/custom_nodes/ComfyUI-PanoPack']
+  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI/custom_nodes/ComfyUI-PanoPack', '/Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.1/site-packages', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI/custom_nodes/ComfyUI-PanoPack']
+  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI/custom_nodes/ComfyUI-PanoPack', '/Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.1/site-packages', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI/custom_nodes/ComfyUI-PanoPack']
+  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI/custom_nodes/ComfyUI-PanoPack', '/Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.1/site-packages', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI/custom_nodes/ComfyUI-PanoPack']
+  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI/custom_nodes/ComfyUI-PanoPack', '/Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.1/site-packages', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-2239/ComfyUI/custom_nodes/ComfyUI-PanoPack']
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/Users/runner/.ce/.pixi/envs/panopack-nodes/bin/python
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/Users/runner/.ce/.pixi/envs/panopack-nodes/bin/python
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/Users/runner/.ce/.pixi/envs/panopack-nodes/bin/python
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/Users/runner/.ce/.pixi/envs/panopack-nodes/bin/python
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/Users/runner/.ce/.pixi/envs/panopack-nodes/bin/python
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/Users/runner/.ce/.pixi/envs/panopack-nodes/bin/python
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/Users/runner/.ce/.pixi/envs/panopack-nodes/bin/python
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/Users/runner/.ce/.pixi/envs/panopack-nodes/bin/python
+  [ComfyUI] [SubprocessWorker] launching cmd=['/Users/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/Users/runner/.ce/pixi.toml', '-e', 'panopack-nodes', 'python', '/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_7oc8ulvk/persistent_worker.py', 'unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_63c9555afc21.sock']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['/Users/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/Users/runner/.ce/pixi.toml', '-e', 'panopack-nodes', 'python', '/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_7oc8ulvk/persistent_worker.py', 'unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_63c9555afc21.sock']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['/Users/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/Users/runner/.ce/pixi.toml', '-e', 'panopack-nodes', 'python', '/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_7oc8ulvk/persistent_worker.py', 'unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_63c9555afc21.sock']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['/Users/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/Users/runner/.ce/pixi.toml', '-e', 'panopack-nodes', 'python', '/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_7oc8ulvk/persistent_worker.py', 'unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_63c9555afc21.sock']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['/Users/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/Users/runner/.ce/pixi.toml', '-e', 'panopack-nodes', 'python', '/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_7oc8ulvk/persistent_worker.py', 'unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_63c9555afc21.sock']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['/Users/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/Users/runner/.ce/pixi.toml', '-e', 'panopack-nodes', 'python', '/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_7oc8ulvk/persistent_worker.py', 'unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_63c9555afc21.sock']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['/Users/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/Users/runner/.ce/pixi.toml', '-e', 'panopack-nodes', 'python', '/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_7oc8ulvk/persistent_worker.py', 'unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_63c9555afc21.sock']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['/Users/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/Users/runner/.ce/pixi.toml', '-e', 'panopack-nodes', 'python', '/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_7oc8ulvk/persistent_worker.py', 'unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_63c9555afc21.sock']...
+  [ComfyUI] [SubprocessWorker] socket_addr=unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_63c9555afc21.sock exists=True
+  [ComfyUI] [SubprocessWorker] socket_addr=unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_63c9555afc21.sock exists=True
+  [ComfyUI] [SubprocessWorker] socket_addr=unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_63c9555afc21.sock exists=True
+  [ComfyUI] [SubprocessWorker] socket_addr=unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_63c9555afc21.sock exists=True
+  [ComfyUI] [SubprocessWorker] socket_addr=unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_63c9555afc21.sock exists=True
+  [ComfyUI] [SubprocessWorker] socket_addr=unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_63c9555afc21.sock exists=True
+  [ComfyUI] [SubprocessWorker] socket_addr=unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_63c9555afc21.sock exists=True
+  [ComfyUI] [SubprocessWorker] socket_addr=unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_63c9555afc21.sock exists=True
+  Frame 2 saved (frame_001.jpg, t=2.3s)
+  [capture-periodic] freeze=3ms shot=138ms unfreeze=9ms saved=True
+  Frame 3 saved (frame_002.jpg, t=4.6s)
+  [capture-periodic] freeze=4ms shot=151ms unfreeze=16ms saved=True
+  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] worker started/confirmed
@@ -242,6 +310,22 @@ Capturing execution frames: pano_info.json
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
+  [ComfyUI] objc[15985]: Class AVFFrameReceiver is implemented in both /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/libavdevice.62.3.100.dylib (0x1189c07a8) and /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b8943a8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+  [ComfyUI] objc[15985]: Class AVFFrameReceiver is implemented in both /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/libavdevice.62.3.100.dylib (0x1189c07a8) and /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b8943a8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+  [ComfyUI] objc[15985]: Class AVFFrameReceiver is implemented in both /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/libavdevice.62.3.100.dylib (0x1189c07a8) and /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b8943a8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+  [ComfyUI] objc[15985]: Class AVFFrameReceiver is implemented in both /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/libavdevice.62.3.100.dylib (0x1189c07a8) and /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b8943a8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+  [ComfyUI] objc[15985]: Class AVFFrameReceiver is implemented in both /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/libavdevice.62.3.100.dylib (0x1189c07a8) and /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b8943a8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+  [ComfyUI] objc[15985]: Class AVFFrameReceiver is implemented in both /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/libavdevice.62.3.100.dylib (0x1189c07a8) and /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b8943a8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+  [ComfyUI] objc[15985]: Class AVFFrameReceiver is implemented in both /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/libavdevice.62.3.100.dylib (0x1189c07a8) and /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b8943a8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+  [ComfyUI] objc[15985]: Class AVFFrameReceiver is implemented in both /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/libavdevice.62.3.100.dylib (0x1189c07a8) and /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b8943a8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+  [ComfyUI] objc[15985]: Class AVFAudioReceiver is implemented in both /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/libavdevice.62.3.100.dylib (0x1189c07f8) and /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b8943f8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+  [ComfyUI] objc[15985]: Class AVFAudioReceiver is implemented in both /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/libavdevice.62.3.100.dylib (0x1189c07f8) and /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b8943f8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+  [ComfyUI] objc[15985]: Class AVFAudioReceiver is implemented in both /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/libavdevice.62.3.100.dylib (0x1189c07f8) and /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b8943f8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+  [ComfyUI] objc[15985]: Class AVFAudioReceiver is implemented in both /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/libavdevice.62.3.100.dylib (0x1189c07f8) and /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b8943f8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+  [ComfyUI] objc[15985]: Class AVFAudioReceiver is implemented in both /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/libavdevice.62.3.100.dylib (0x1189c07f8) and /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b8943f8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+  [ComfyUI] objc[15985]: Class AVFAudioReceiver is implemented in both /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/libavdevice.62.3.100.dylib (0x1189c07f8) and /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b8943f8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+  [ComfyUI] objc[15985]: Class AVFAudioReceiver is implemented in both /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/libavdevice.62.3.100.dylib (0x1189c07f8) and /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b8943f8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+  [ComfyUI] objc[15985]: Class AVFAudioReceiver is implemented in both /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/libavdevice.62.3.100.dylib (0x1189c07f8) and /Users/runner/.ce/.pixi/envs/panopack-nodes/lib/python3.12/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b8943f8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
@@ -250,14 +334,14 @@ Capturing execution frames: pano_info.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.03s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.03s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.03s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.03s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.03s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.03s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.03s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.03s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (5.59s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (5.59s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (5.59s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (5.59s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (5.59s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (5.59s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (5.59s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (5.59s): result: NodeOutput
   [ComfyUI] [comfy-env] Running PanoramaInfo: panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaInfo: panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaInfo: panorama: dict
@@ -370,29 +454,30 @@ Capturing execution frames: pano_info.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaInfo done (0.18s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaInfo done (0.18s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaInfo done (0.18s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaInfo done (0.18s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaInfo done (0.18s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaInfo done (0.18s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaInfo done (0.18s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaInfo done (0.18s): result: NodeOutput
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.41 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.41 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.41 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.41 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.41 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.41 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.41 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.41 seconds[0m
+  [ComfyUI] [comfy-env] PanoramaInfo done (0.23s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaInfo done (0.23s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaInfo done (0.23s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaInfo done (0.23s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaInfo done (0.23s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaInfo done (0.23s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaInfo done (0.23s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaInfo done (0.23s): result: NodeOutput
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 6.21 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 6.21 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 6.21 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 6.21 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 6.21 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 6.21 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 6.21 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 6.21 seconds[0m
+  [capture-loop] iter=50 t=6.4s state={'complete': True, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=7 ram=2.8/7.0GB (55%) swap=0.0/0.0GB (0%) cpu=90% browser_rss=0.72GB
   Node executed (1 total), capturing...
-  Frame 2 saved (frame_001.jpg, t=0.7s)
-  [capture-node] freeze=3ms shot=100ms unfreeze=0ms saved=True
-  Execution complete (t=0.7s)
-  Captured 2 unique frames over 0.85s
+  Frame 4 saved (frame_003.jpg, t=6.6s)
+  [capture-node] freeze=4ms shot=106ms unfreeze=0ms saved=True
+  Execution complete (t=6.6s)
+  Captured 4 unique frames over 6.75s
   [debug] iframes: 0
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: pano_info_executed.png
-  [timing] final_screenshot: 0.1s
-    Captured 3 video frames
+  [timing] final_screenshot: 0.2s
+    Captured 5 video frames
