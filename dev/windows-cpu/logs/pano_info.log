@@ -65,47 +65,47 @@ Capturing execution frames: pano_info.json
   [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
   [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
   [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
-  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: b5765551-8f9a-4b15-9b53-0151237766db
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: b5765551-8f9a-4b15-9b53-0151237766db
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: b5765551-8f9a-4b15-9b53-0151237766db
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: b5765551-8f9a-4b15-9b53-0151237766db
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: b5765551-8f9a-4b15-9b53-0151237766db
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: b5765551-8f9a-4b15-9b53-0151237766db
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: b5765551-8f9a-4b15-9b53-0151237766db
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: b5765551-8f9a-4b15-9b53-0151237766db
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
   Queuing workflow for execution...
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaInfo
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 3f1269c3-6ced-4992-89c6-b3ba42df2624
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 3f1269c3-6ced-4992-89c6-b3ba42df2624
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 3f1269c3-6ced-4992-89c6-b3ba42df2624
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 3f1269c3-6ced-4992-89c6-b3ba42df2624
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 3f1269c3-6ced-4992-89c6-b3ba42df2624
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 3f1269c3-6ced-4992-89c6-b3ba42df2624
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 3f1269c3-6ced-4992-89c6-b3ba42df2624
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 3f1269c3-6ced-4992-89c6-b3ba42df2624
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
   [ComfyUI] [32m[INFO][0m Validation result: valid=True
   [ComfyUI] [32m[INFO][0m Validation result: valid=True
   [ComfyUI] [32m[INFO][0m Validation result: valid=True
@@ -242,8 +242,6 @@ Capturing execution frames: pano_info.json
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
-  Frame 2 saved (frame_001.jpg, t=2.1s)
-  [capture-periodic] freeze=4ms shot=62ms unfreeze=5ms saved=True
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
@@ -252,14 +250,14 @@ Capturing execution frames: pano_info.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaWrap done (2.25s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (2.25s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (2.25s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (2.25s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (2.25s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (2.25s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (2.25s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (2.25s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.18s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.18s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.18s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.18s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.18s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.18s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.18s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.18s): result: NodeOutput
   [ComfyUI] [comfy-env] Running PanoramaInfo: panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaInfo: panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaInfo: panorama: dict
@@ -364,9 +362,6 @@ Capturing execution frames: pano_info.json
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 2048, 4096, 3])
-  Frame 3 saved (frame_002.jpg, t=4.2s)
-  [capture-periodic] freeze=3ms shot=75ms unfreeze=3ms saved=True
-  [capture-loop] iter=50 t=5.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=5.2/16.0GB (32%) swap=0.8/2.9GB (29%) cpu=29% browser_rss=0.66GB
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
@@ -375,29 +370,29 @@ Capturing execution frames: pano_info.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaInfo done (3.43s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaInfo done (3.43s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaInfo done (3.43s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaInfo done (3.43s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaInfo done (3.43s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaInfo done (3.43s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaInfo done (3.43s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaInfo done (3.43s): result: NodeOutput
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 6.05 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 6.05 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 6.05 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 6.05 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 6.05 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 6.05 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 6.05 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 6.05 seconds[0m
+  [ComfyUI] [comfy-env] PanoramaInfo done (0.76s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaInfo done (0.76s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaInfo done (0.76s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaInfo done (0.76s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaInfo done (0.76s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaInfo done (0.76s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaInfo done (0.76s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaInfo done (0.76s): result: NodeOutput
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.34 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.34 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.34 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.34 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.34 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.34 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.34 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.34 seconds[0m
   Node executed (1 total), capturing...
-  Frame 4 saved (frame_003.jpg, t=6.4s)
-  [capture-node] freeze=4ms shot=74ms unfreeze=0ms saved=True
-  Execution complete (t=6.4s)
-  Captured 4 unique frames over 6.49s
+  Frame 2 saved (frame_001.jpg, t=1.7s)
+  [capture-node] freeze=3ms shot=70ms unfreeze=0ms saved=True
+  Execution complete (t=1.7s)
+  Captured 2 unique frames over 1.81s
   [debug] iframes: 0
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: pano_info_executed.png
-  [timing] final_screenshot: 0.1s
-    Captured 5 video frames
+  [timing] final_screenshot: 0.2s
+    Captured 3 video frames
