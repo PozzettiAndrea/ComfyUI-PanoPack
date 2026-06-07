@@ -66,11 +66,11 @@ Capturing execution frames: pano_crop.json
   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
   [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["87", 0]}
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 735e66fb-c3fb-40cc-a171-23f756e495e2
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 735e66fb-c3fb-40cc-a171-23f756e495e2
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 735e66fb-c3fb-40cc-a171-23f756e495e2
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 735e66fb-c3fb-40cc-a171-23f756e495e2
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 735e66fb-c3fb-40cc-a171-23f756e495e2
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: ef1ad1c8-fc4f-4794-8f29-4cca647bf292
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: ef1ad1c8-fc4f-4794-8f29-4cca647bf292
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: ef1ad1c8-fc4f-4794-8f29-4cca647bf292
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: ef1ad1c8-fc4f-4794-8f29-4cca647bf292
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: ef1ad1c8-fc4f-4794-8f29-4cca647bf292
   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
@@ -97,16 +97,6 @@ Capturing execution frames: pano_crop.json
   [ComfyUI] [comfy-env] Running PanoramaWrap: image: torch.float32 [1,1920,3840,3] cpu
   [ComfyUI] [comfy-env] Running PanoramaWrap: image: torch.float32 [1,1920,3840,3] cpu
   [ComfyUI] [comfy-env] Running PanoramaWrap: image: torch.float32 [1,1920,3840,3] cpu
-  [ComfyUI] [comfy-env] SubprocessWorker: /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [comfy-env] SubprocessWorker: /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [comfy-env] SubprocessWorker: /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [comfy-env] SubprocessWorker: /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [comfy-env] SubprocessWorker: /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1817/ComfyUI'}
-  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1817/ComfyUI'}
-  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1817/ComfyUI'}
-  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1817/ComfyUI'}
-  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1817/ComfyUI'}
   [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_type.PanoramaWrap.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_type.PanoramaWrap.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.panorama_type.PanoramaWrap.EXECUTE_NORMALIZED
@@ -117,43 +107,16 @@ Capturing execution frames: pano_crop.json
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
-  [ComfyUI] [ComfyUI-PanoPack] python: /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [ComfyUI-PanoPack] python: /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [ComfyUI-PanoPack] python: /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [ComfyUI-PanoPack] python: /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [ComfyUI-PanoPack] python: /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1817/ComfyUI', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1817/ComfyUI/custom_nodes/ComfyUI-PanoPack', '/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.11/site-packages', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1817/ComfyUI/custom_nodes/ComfyUI-PanoPack']
-  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1817/ComfyUI', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1817/ComfyUI/custom_nodes/ComfyUI-PanoPack', '/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.11/site-packages', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1817/ComfyUI/custom_nodes/ComfyUI-PanoPack']
-  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1817/ComfyUI', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1817/ComfyUI/custom_nodes/ComfyUI-PanoPack', '/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.11/site-packages', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1817/ComfyUI/custom_nodes/ComfyUI-PanoPack']
-  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1817/ComfyUI', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1817/ComfyUI/custom_nodes/ComfyUI-PanoPack', '/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.11/site-packages', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1817/ComfyUI/custom_nodes/ComfyUI-PanoPack']
-  [ComfyUI] [ComfyUI-PanoPack] sys_path sent to worker: ['/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1817/ComfyUI', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1817/ComfyUI/custom_nodes/ComfyUI-PanoPack', '/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.11/site-packages', '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1817/ComfyUI/custom_nodes/ComfyUI-PanoPack']
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [SubprocessWorker] launching cmd=['/Users/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/Users/runner/.ce/envs/panopack-nodes/pixi.toml', '-e', 'default', 'python', '/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_qtgfm8zs/persistent_worker.py', 'unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_e5c57ea3bcba.sock']...
-  [ComfyUI] [SubprocessWorker] launching cmd=['/Users/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/Users/runner/.ce/envs/panopack-nodes/pixi.toml', '-e', 'default', 'python', '/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_qtgfm8zs/persistent_worker.py', 'unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_e5c57ea3bcba.sock']...
-  [ComfyUI] [SubprocessWorker] launching cmd=['/Users/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/Users/runner/.ce/envs/panopack-nodes/pixi.toml', '-e', 'default', 'python', '/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_qtgfm8zs/persistent_worker.py', 'unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_e5c57ea3bcba.sock']...
-  [ComfyUI] [SubprocessWorker] launching cmd=['/Users/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/Users/runner/.ce/envs/panopack-nodes/pixi.toml', '-e', 'default', 'python', '/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_qtgfm8zs/persistent_worker.py', 'unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_e5c57ea3bcba.sock']...
-  [ComfyUI] [SubprocessWorker] launching cmd=['/Users/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/Users/runner/.ce/envs/panopack-nodes/pixi.toml', '-e', 'default', 'python', '/var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfyui_pvenv_qtgfm8zs/persistent_worker.py', 'unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_e5c57ea3bcba.sock']...
-  [ComfyUI] [SubprocessWorker] socket_addr=unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_e5c57ea3bcba.sock exists=True
-  [ComfyUI] [SubprocessWorker] socket_addr=unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_e5c57ea3bcba.sock exists=True
-  [ComfyUI] [SubprocessWorker] socket_addr=unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_e5c57ea3bcba.sock exists=True
-  [ComfyUI] [SubprocessWorker] socket_addr=unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_e5c57ea3bcba.sock exists=True
-  [ComfyUI] [SubprocessWorker] socket_addr=unix:///var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/comfy_worker_e5c57ea3bcba.sock exists=True
-  Frame 2 saved (frame_001.jpg, t=2.2s)
-  [capture-periodic] freeze=2ms shot=95ms unfreeze=2ms saved=True
-  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-  [ComfyUI] [worker:ComfyUI-PanoPack] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
-  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
-  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
-  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
-  [ComfyUI] [worker:ComfyUI-PanoPack] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
+  [ComfyUI] [ComfyUI-PanoPack] Health check: ok
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] worker started/confirmed
@@ -179,11 +142,11 @@ Capturing execution frames: pano_crop.json
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] sending request via socket...
-  [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=17 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=17 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=17 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=17 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=17 sending call_method
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
@@ -199,28 +162,16 @@ Capturing execution frames: pano_crop.json
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
-  Frame 3 saved (frame_002.jpg, t=4.5s)
-  [capture-periodic] freeze=3ms shot=92ms unfreeze=3ms saved=True
-  [ComfyUI] objc[51452]: Class AVFFrameReceiver is implemented in both /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x113fc07a8) and /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.11/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b6683a8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
-  [ComfyUI] objc[51452]: Class AVFFrameReceiver is implemented in both /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x113fc07a8) and /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.11/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b6683a8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
-  [ComfyUI] objc[51452]: Class AVFFrameReceiver is implemented in both /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x113fc07a8) and /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.11/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b6683a8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
-  [ComfyUI] objc[51452]: Class AVFFrameReceiver is implemented in both /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x113fc07a8) and /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.11/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b6683a8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
-  [ComfyUI] objc[51452]: Class AVFFrameReceiver is implemented in both /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x113fc07a8) and /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.11/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b6683a8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
-  [ComfyUI] objc[51452]: Class AVFAudioReceiver is implemented in both /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x113fc07f8) and /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.11/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b6683f8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
-  [ComfyUI] objc[51452]: Class AVFAudioReceiver is implemented in both /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x113fc07f8) and /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.11/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b6683f8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
-  [ComfyUI] objc[51452]: Class AVFAudioReceiver is implemented in both /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x113fc07f8) and /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.11/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b6683f8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
-  [ComfyUI] objc[51452]: Class AVFAudioReceiver is implemented in both /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x113fc07f8) and /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.11/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b6683f8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
-  [ComfyUI] objc[51452]: Class AVFAudioReceiver is implemented in both /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/libavdevice.62.3.101.dylib (0x113fc07f8) and /Users/runner/.ce/envs/panopack-nodes/.pixi/envs/default/lib/python3.11/site-packages/cv2/.dylibs/libavdevice.61.3.100.dylib (0x12b6683f8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaWrap done (5.10s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (5.10s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (5.10s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (5.10s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (5.10s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.11s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.11s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.11s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.11s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.11s): result: NodeOutput
   [ComfyUI] [comfy-env] Running PanoCrop: center_u: 0.5, center_v: 0.5, fov_h: 90.0, fov_v: 90.0, width: 512, height: 512, panorama: dict
   [ComfyUI] [comfy-env] Running PanoCrop: center_u: 0.5, center_v: 0.5, fov_h: 90.0, fov_v: 90.0, width: 512, height: 512, panorama: dict
   [ComfyUI] [comfy-env] Running PanoCrop: center_u: 0.5, center_v: 0.5, fov_h: 90.0, fov_v: 90.0, width: 512, height: 512, panorama: dict
@@ -266,11 +217,11 @@ Capturing execution frames: pano_crop.json
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] sending request via socket...
-  [ComfyUI] [SubprocessWorker] call_id=2 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=2 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=2 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=2 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=2 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=18 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=18 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=18 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=18 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=18 sending call_method
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
@@ -286,29 +237,28 @@ Capturing execution frames: pano_crop.json
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1920, 3840, 3])
-  [capture-loop] iter=50 t=5.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=2.9/7.0GB (55%) swap=8.6/15.0GB (57%) cpu=46% browser_rss=0.65GB
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoCrop done (0.50s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoCrop done (0.50s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoCrop done (0.50s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoCrop done (0.50s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoCrop done (0.50s): result: NodeOutput
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 5.90 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 5.90 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 5.90 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 5.90 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 5.90 seconds[0m
+  [ComfyUI] [comfy-env] PanoCrop done (0.15s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoCrop done (0.15s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoCrop done (0.15s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoCrop done (0.15s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoCrop done (0.15s): result: NodeOutput
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.53 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.53 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.53 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.53 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.53 seconds[0m
   Node executed (1 total), capturing...
-  Frame 4 saved (frame_003.jpg, t=6.3s)
-  [capture-node] freeze=4ms shot=96ms unfreeze=0ms saved=True
-  Execution complete (t=6.3s)
-  Captured 4 unique frames over 6.4s
+  Frame 2 saved (frame_001.jpg, t=0.9s)
+  [capture-node] freeze=2ms shot=100ms unfreeze=0ms saved=True
+  Execution complete (t=0.9s)
+  Captured 2 unique frames over 1.03s
   [debug] iframes: 0
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: pano_crop_executed.png
   [timing] final_screenshot: 0.2s
-    Captured 5 video frames
+    Captured 3 video frames

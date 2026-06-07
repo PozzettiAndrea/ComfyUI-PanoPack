@@ -11,82 +11,82 @@ Capturing execution frames: test_wrap_unwrap.json
   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
   Frame 1 saved (frame_000.jpg, t=0.0s)
   Validating workflow...
-  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
-  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
-  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
-  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
-  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
-  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
-  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
-  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
-  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
-  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
-  [ComfyUI] [32m[INFO][0m Prompt has 4 nodes
-  [ComfyUI] [32m[INFO][0m Prompt has 4 nodes
-  [ComfyUI] [32m[INFO][0m Prompt has 4 nodes
-  [ComfyUI] [32m[INFO][0m Prompt has 4 nodes
-  [ComfyUI] [32m[INFO][0m Prompt has 4 nodes
-  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
-  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
-  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
-  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
-  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
-  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
-  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
-  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
-  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
-  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
-  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
-  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
-  [ComfyUI] [32m[INFO][0m   Node 4: PreviewImage
-  [ComfyUI] [32m[INFO][0m   Node 4: PreviewImage
-  [ComfyUI] [32m[INFO][0m   Node 4: PreviewImage
-  [ComfyUI] [32m[INFO][0m   Node 4: PreviewImage
-  [ComfyUI] [32m[INFO][0m   Node 4: PreviewImage
-  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["3", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["3", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["3", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["3", 0]}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["3", 0]}
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 59208eb2-114c-478b-9f84-ea8448616bef
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 59208eb2-114c-478b-9f84-ea8448616bef
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 59208eb2-114c-478b-9f84-ea8448616bef
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 59208eb2-114c-478b-9f84-ea8448616bef
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: 59208eb2-114c-478b-9f84-ea8448616bef
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
   Queuing workflow for execution...
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Prompt has 4 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 4 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 4 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 4 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 4 nodes
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m   Node 1: LoadImage
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": "pano.png"}
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m   Node 2: PanoramaWrap
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"image": ["1", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
+  [ComfyUI] [32m[INFO][0m   Node 3: PanoramaUnwrap
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"panorama": ["2", 0]}
+  [ComfyUI] [32m[INFO][0m   Node 4: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 4: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 4: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 4: PreviewImage
+  [ComfyUI] [32m[INFO][0m   Node 4: PreviewImage
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["3", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["3", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["3", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["3", 0]}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"images": ["3", 0]}
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: e09a1e1d-940b-4639-bc58-704c7d64a3dc
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: e09a1e1d-940b-4639-bc58-704c7d64a3dc
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: e09a1e1d-940b-4639-bc58-704c7d64a3dc
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: e09a1e1d-940b-4639-bc58-704c7d64a3dc
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: e09a1e1d-940b-4639-bc58-704c7d64a3dc
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
   [ComfyUI] [32m[INFO][0m got prompt
   [ComfyUI] [32m[INFO][0m got prompt
   [ComfyUI] [32m[INFO][0m got prompt
@@ -142,11 +142,11 @@ Capturing execution frames: test_wrap_unwrap.json
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] sending request via socket...
-  [ComfyUI] [SubprocessWorker] call_id=12 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=12 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=12 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=12 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=12 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=25 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=25 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=25 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=25 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=25 sending call_method
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
@@ -167,11 +167,11 @@ Capturing execution frames: test_wrap_unwrap.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.43s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.43s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.43s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.43s): result: NodeOutput
-  [ComfyUI] [comfy-env] PanoramaWrap done (0.43s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.05s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.05s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.05s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.05s): result: NodeOutput
+  [ComfyUI] [comfy-env] PanoramaWrap done (0.05s): result: NodeOutput
   [ComfyUI] [comfy-env] Running PanoramaUnwrap: panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaUnwrap: panorama: dict
   [ComfyUI] [comfy-env] Running PanoramaUnwrap: panorama: dict
@@ -217,11 +217,11 @@ Capturing execution frames: test_wrap_unwrap.json
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] sending request via socket...
-  [ComfyUI] [SubprocessWorker] call_id=13 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=13 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=13 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=13 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=13 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=26 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=26 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=26 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=26 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=26 sending call_method
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-PanoPack] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
@@ -247,20 +247,18 @@ Capturing execution frames: test_wrap_unwrap.json
   [ComfyUI] [comfy-env] PanoramaUnwrap done (0.01s): result: NodeOutput
   [ComfyUI] [comfy-env] PanoramaUnwrap done (0.01s): result: NodeOutput
   [ComfyUI] [comfy-env] PanoramaUnwrap done (0.01s): result: NodeOutput
-  Frame 2 saved (frame_001.jpg, t=2.4s)
-  [capture-periodic] freeze=3ms shot=182ms unfreeze=6ms saved=True
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 2.49 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 2.49 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 2.49 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 2.49 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 2.49 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.70 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.70 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.70 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.70 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.70 seconds[0m
   Node executed (1 total), capturing...
-  Frame 3 saved (frame_002.jpg, t=3.0s)
-  [capture-node] freeze=3ms shot=97ms unfreeze=0ms saved=True
-  Execution complete (t=3.0s)
-  Captured 3 unique frames over 3.13s
+  Frame 2 saved (frame_001.jpg, t=1.1s)
+  [capture-node] freeze=3ms shot=108ms unfreeze=0ms saved=True
+  Execution complete (t=1.1s)
+  Captured 2 unique frames over 1.26s
   [debug] iframes: 0
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: test_wrap_unwrap_executed.png
-  [timing] final_screenshot: 1.0s
-    Captured 4 video frames
+  [timing] final_screenshot: 0.2s
+    Captured 3 video frames
