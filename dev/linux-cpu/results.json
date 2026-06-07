@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-06-07T14:03:31.587437+00:00",
+  "timestamp": "2026-06-07T16:03:57.319840+00:00",
   "platform": "linux",
   "hardware": {
     "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
-    "cpu": "AMD EPYC 9V74 80-Core Processor"
+    "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
   },
-  "commit_hash": "b566bcec0a25350943b57e2796ccaf94b832a46b",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27094638002",
+  "commit_hash": "5edb21a86f7edaa6aa096586e199627d279f4eaa",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27097543434",
   "success": true,
   "summary": {
     "total": 13,
@@ -17,16 +17,16 @@
     {
       "name": "360_render",
       "status": "pass",
-      "duration_seconds": 53.35,
+      "duration_seconds": 53.67,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
-        "cpu": "AMD EPYC 9V74 80-Core Processor"
+        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
       },
       "resources": {
         "ram": {
-          "peak": 5.21,
-          "avg": 1.96
+          "peak": 5.16,
+          "avg": 2.17
         },
         "total_ram_gb": 15.6,
         "samples": 54
@@ -84,34 +84,34 @@
     {
       "name": "pano_crop",
       "status": "pass",
-      "duration_seconds": 9.05,
+      "duration_seconds": 8.72,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
-        "cpu": "AMD EPYC 9V74 80-Core Processor"
+        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
       },
       "resources": {
         "ram": {
-          "peak": 2.69,
-          "avg": 2.43
+          "peak": 2.62,
+          "avg": 2.35
         },
         "total_ram_gb": 15.6,
-        "samples": 10
+        "samples": 9
       }
     },
     {
       "name": "pano_info",
       "status": "pass",
-      "duration_seconds": 10.68,
+      "duration_seconds": 10.19,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
-        "cpu": "AMD EPYC 9V74 80-Core Processor"
+        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
       },
       "resources": {
         "ram": {
-          "peak": 2.69,
-          "avg": 2.42
+          "peak": 2.62,
+          "avg": 2.4
         },
         "total_ram_gb": 15.6,
         "samples": 11
@@ -120,16 +120,16 @@
     {
       "name": "panorama_shift",
       "status": "pass",
-      "duration_seconds": 11.85,
+      "duration_seconds": 11.48,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
-        "cpu": "AMD EPYC 9V74 80-Core Processor"
+        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
       },
       "resources": {
         "ram": {
-          "peak": 3.7,
-          "avg": 2.79
+          "peak": 3.74,
+          "avg": 2.86
         },
         "total_ram_gb": 15.6,
         "samples": 12
@@ -138,34 +138,34 @@
     {
       "name": "preview_panorama",
       "status": "pass",
-      "duration_seconds": 13.21,
+      "duration_seconds": 12.98,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
-        "cpu": "AMD EPYC 9V74 80-Core Processor"
+        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
       },
       "resources": {
         "ram": {
-          "peak": 3.95,
-          "avg": 3.6
+          "peak": 4.03,
+          "avg": 3.68
         },
         "total_ram_gb": 15.6,
-        "samples": 14
+        "samples": 13
       }
     },
     {
       "name": "test_wrap_unwrap",
       "status": "pass",
-      "duration_seconds": 10.32,
+      "duration_seconds": 10.06,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
-        "cpu": "AMD EPYC 9V74 80-Core Processor"
+        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
       },
       "resources": {
         "ram": {
-          "peak": 4.22,
-          "avg": 3.9
+          "peak": 4.27,
+          "avg": 3.94
         },
         "total_ram_gb": 15.6,
         "samples": 11
