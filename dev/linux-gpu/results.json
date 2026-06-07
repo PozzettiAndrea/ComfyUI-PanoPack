@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-06-07T16:09:58.615470+00:00",
+  "timestamp": "2026-06-07T17:29:49.154854+00:00",
   "platform": "linux",
   "hardware": {
     "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
     "cpu": "AMD Ryzen 5 5600 6-Core Processor",
     "gpu": "NVIDIA GeForce RTX 3090"
   },
-  "commit_hash": "5edb21a86f7edaa6aa096586e199627d279f4eaa",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27097543962",
+  "commit_hash": "7e5abd0c53b3bf3ca432343d9d46ebcc65a500fe",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27099446546",
   "success": true,
   "summary": {
     "total": 13,
@@ -53,7 +53,7 @@
     {
       "name": "gpu_depth_merge_mesh_pointcloud",
       "status": "pass",
-      "duration_seconds": 107.94,
+      "duration_seconds": 107.45,
       "error": null,
       "hardware": {
         "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
@@ -62,21 +62,21 @@
       },
       "resources": {
         "ram": {
-          "peak": 11.87,
-          "avg": 7.25
+          "peak": 12.05,
+          "avg": 7.36
         },
         "total_ram_gb": 31.3,
         "samples": 106,
         "vram": {
-          "peak": 6.79,
-          "avg": 2.33
+          "peak": 4.28,
+          "avg": 2.35
         }
       }
     },
     {
       "name": "gpu_depth_normal_conditioned",
       "status": "pass",
-      "duration_seconds": 141.59,
+      "duration_seconds": 146.59,
       "error": null,
       "hardware": {
         "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
@@ -85,21 +85,21 @@
       },
       "resources": {
         "ram": {
-          "peak": 20.87,
-          "avg": 12.52
+          "peak": 21.04,
+          "avg": 12.83
         },
         "total_ram_gb": 31.3,
-        "samples": 139,
+        "samples": 143,
         "vram": {
           "peak": 6.15,
-          "avg": 4.37
+          "avg": 4.46
         }
       }
     },
     {
       "name": "gpu_plane_segmentation",
       "status": "pass",
-      "duration_seconds": 75.44,
+      "duration_seconds": 73.59,
       "error": null,
       "hardware": {
         "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
@@ -108,14 +108,14 @@
       },
       "resources": {
         "ram": {
-          "peak": 10.81,
-          "avg": 9.01
+          "peak": 12.48,
+          "avg": 10.07
         },
         "total_ram_gb": 31.3,
-        "samples": 74,
+        "samples": 72,
         "vram": {
-          "peak": 7.43,
-          "avg": 5.63
+          "peak": 7.5,
+          "avg": 6.3
         }
       }
     },
