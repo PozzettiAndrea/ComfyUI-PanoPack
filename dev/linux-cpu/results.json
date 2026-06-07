@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-06-07T11:54:42.586736+00:00",
+  "timestamp": "2026-06-07T12:15:46.997469+00:00",
   "platform": "linux",
   "hardware": {
     "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
-    "cpu": "AMD EPYC 7763 64-Core Processor"
+    "cpu": "AMD EPYC 9V74 80-Core Processor"
   },
-  "commit_hash": "ba646ca33ca446a0a79e72ca3ee00a1f71e10ddf",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27091724610",
+  "commit_hash": "cef5958202d16159a1240c09eae8d585bb8e4bff",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27092205928",
   "success": false,
   "summary": {
     "total": 13,
@@ -17,16 +17,16 @@
     {
       "name": "360_render",
       "status": "fail",
-      "duration_seconds": 19.13,
-      "error": "Workflow execution failed: {'prompt_id': '9c70c0b3-3d71-4fa8-b013-14a75b5195b9', 'node_id': '92', 'node_type': 'PanoRenderMesh', 'executed': ['84'], 'exception_message': \"ComfyUI-PanoPack: Socket closed but worker process still running.\\n  exit code: None\\n  worker log (/tmp/comfy_worker_debug.log, last 20 lines):\\n    11:53:38 [worker] Waiting for request #1...\\n    11:53:38 [worker] Request: call_method nodes.pano_render_mesh call_id=1\\n    11:53:38 [worker] Reconstructing inputs from shm...\\n    11:53:38 [_from_shm] top-level keys: ['mode', 'yz_flip', 'width', 'face_resolution', 'mesh']\\n    11:53:38 [_from_shm] mesh: trimesh memfd pid=3043 fd=26 size=22515610\\n    11:53:40 [worker] Inputs ready: ['mode', 'yz_flip', 'width', 'face_resolution', 'mesh']\\n    11:53:40 [worker] Importing module nodes.pano_render_mesh...\\n    11:53:40 [worker] Module imported\\n    11:53:40 [worker] Getting class PanoRenderMesh...\\n    11:53:40 [worker] Creating instance...\\n    11:53:40 [worker] Calling EXECUTE_NORMALIZED...\\n    11:53:40 [print] [PanoRenderMesh] === PanoRenderMesh: yz_flip=True width=2048 face_res=1024 ===\\n    11:53:40 [print] [PanoRenderMesh]   input: type=Trimesh verts=233816 faces=469926 vertex_colors=True colors=False\\n    11:53:40 [print] [PanoRenderMesh]   input: bbox min=[-2.744999885559082, -2.63700008392334, -1.7869999408721924] max=[3.319000005722046, 3.378000020980835, 2.121999979019165]\\n    11:53:40 [print] [PanoRenderMesh]   input: |v| from origin min=1.675 med=3.069 max=4.084\\n    11:53:40 [print] [PanoRenderMesh]   yz_flipped: type=Trimesh verts=233816 faces=469926 vertex_colors=True colors=False\\n    11:53:40 [print] [PanoRenderMesh]   yz_flipped: bbox min=[-2.744999885559082, -1.7869999408721924, -2.63700008392334] max=[3.319000005722046, 2.121999979019165, 3.378000020980835]\\n    11:53:40 [print] [PanoRenderMesh]   yz_flipped: |v| from origin min=1.675 med=3.069 max=4.084\\n    11:53:40 [print] [PanoRenderMesh] rendering 6 cube faces @ 1024px (color, mode=mesh)\\n    11:53:40 [print] [PanoRenderMesh]   pyvista poly: n_points=233816 n_cells=469926 has_RGB=True mode=mesh\\n\", 'exception_type': 'RuntimeError', 'traceback': ['  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1151/ComfyUI/execution.py\", line 536, in execute\\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1151/ComfyUI/execution.py\", line 336, in get_output_data\\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1151/ComfyUI/execution.py\", line 310, in _async_map_node_over_list\\n    await process_inputs(input_dict, i)\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1151/ComfyUI/execution.py\", line 298, in process_inputs\\n    result = f(**inputs)\\n             ^^^^^^^^^^^\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1151/.venv/lib/python3.11/site-packages/comfy_env/isolation/metadata.py\", line 560, in proxy\\n    result = worker.call_method(\\n             ^^^^^^^^^^^^^^^^^^^\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1151/.venv/lib/python3.11/site-packages/comfy_env/isolation/workers/subprocess.py\", line 669, in call_method\\n    response = self._send_request(request, timeout)\\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1151/.venv/lib/python3.11/site-packages/comfy_env/isolation/workers/subprocess.py\", line 589, in _send_request\\n    raise RuntimeError(\\n'], 'current_inputs': {'mode': ['mesh'], 'mode.show_edges': ['on'], 'mode.show_edges.edge_thickness': [1], 'yz_flip': [True], 'width': [2048], 'face_resolution': [1024], 'mesh': ['<trimesh.Trimesh(vertices.shape=(233816, 3), faces.shape=(469926, 3), name=`pano_mesh.vtp`)>']}, 'current_outputs': ['93', '96', '97', '90', '95', '87', '92', '88', '94', '84', '91'], 'timestamp': 1780833224950}\n\nDetails:\nWorkflow: /tmp/comfy-test-run-8yms_yxp/ComfyUI-PanoPack/workflows/360_render.json\nNode error: PanoRenderMesh",
+      "duration_seconds": 19.65,
+      "error": "Workflow execution failed: {'prompt_id': '8c9209ec-d142-458b-abdb-64c3c1769477', 'node_id': '92', 'node_type': 'PanoRenderMesh', 'executed': ['84'], 'exception_message': \"ComfyUI-PanoPack: Socket closed but worker process still running.\\n  exit code: None\\n  worker log (/tmp/comfy_worker_debug.log, last 20 lines):\\n    12:14:40 [worker] Waiting for request #1...\\n    12:14:40 [worker] Request: call_method nodes.pano_render_mesh call_id=1\\n    12:14:40 [worker] Reconstructing inputs from shm...\\n    12:14:40 [_from_shm] top-level keys: ['mode', 'yz_flip', 'width', 'face_resolution', 'mesh']\\n    12:14:40 [_from_shm] mesh: trimesh memfd pid=3009 fd=25 size=22515610\\n    12:14:42 [worker] Inputs ready: ['mode', 'yz_flip', 'width', 'face_resolution', 'mesh']\\n    12:14:42 [worker] Importing module nodes.pano_render_mesh...\\n    12:14:42 [worker] Module imported\\n    12:14:42 [worker] Getting class PanoRenderMesh...\\n    12:14:42 [worker] Creating instance...\\n    12:14:42 [worker] Calling EXECUTE_NORMALIZED...\\n    12:14:42 [print] [PanoRenderMesh] === PanoRenderMesh: yz_flip=True width=2048 face_res=1024 ===\\n    12:14:42 [print] [PanoRenderMesh]   input: type=Trimesh verts=233816 faces=469926 vertex_colors=True colors=False\\n    12:14:42 [print] [PanoRenderMesh]   input: bbox min=[-2.744999885559082, -2.63700008392334, -1.7869999408721924] max=[3.319000005722046, 3.378000020980835, 2.121999979019165]\\n    12:14:42 [print] [PanoRenderMesh]   input: |v| from origin min=1.675 med=3.069 max=4.084\\n    12:14:42 [print] [PanoRenderMesh]   yz_flipped: type=Trimesh verts=233816 faces=469926 vertex_colors=True colors=False\\n    12:14:42 [print] [PanoRenderMesh]   yz_flipped: bbox min=[-2.744999885559082, -1.7869999408721924, -2.63700008392334] max=[3.319000005722046, 2.121999979019165, 3.378000020980835]\\n    12:14:42 [print] [PanoRenderMesh]   yz_flipped: |v| from origin min=1.675 med=3.069 max=4.084\\n    12:14:42 [print] [PanoRenderMesh] rendering 6 cube faces @ 1024px (color, mode=mesh)\\n    12:14:43 [print] [PanoRenderMesh]   pyvista poly: n_points=233816 n_cells=469926 has_RGB=True mode=mesh\\n\", 'exception_type': 'RuntimeError', 'traceback': ['  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1212/ComfyUI/execution.py\", line 536, in execute\\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1212/ComfyUI/execution.py\", line 336, in get_output_data\\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1212/ComfyUI/execution.py\", line 310, in _async_map_node_over_list\\n    await process_inputs(input_dict, i)\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1212/ComfyUI/execution.py\", line 298, in process_inputs\\n    result = f(**inputs)\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1212/.venv/lib/python3.13/site-packages/comfy_env/isolation/metadata.py\", line 560, in proxy\\n    result = worker.call_method(\\n        module_name=mod,\\n    ...<4 lines>...\\n        timeout=600.0,\\n    )\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1212/.venv/lib/python3.13/site-packages/comfy_env/isolation/workers/subprocess.py\", line 669, in call_method\\n    response = self._send_request(request, timeout)\\n', '  File \"/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/PanoPack-1212/.venv/lib/python3.13/site-packages/comfy_env/isolation/workers/subprocess.py\", line 589, in _send_request\\n    raise RuntimeError(\\n        f\"{self.name}: Socket closed but worker process still running.\\\\n{diag}\"\\n    ) from e\\n'], 'current_inputs': {'mode': ['mesh'], 'mode.show_edges': ['on'], 'mode.show_edges.edge_thickness': [1], 'yz_flip': [True], 'width': [2048], 'face_resolution': [1024], 'mesh': ['<trimesh.Trimesh(vertices.shape=(233816, 3), faces.shape=(469926, 3), name=`pano_mesh.vtp`)>']}, 'current_outputs': ['97', '91', '87', '96', '92', '95', '88', '84', '94', '90', '93'], 'timestamp': 1780834486477}\n\nDetails:\nWorkflow: /tmp/comfy-test-run-t3y67fnw/ComfyUI-PanoPack/workflows/360_render.json\nNode error: PanoRenderMesh",
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
-        "cpu": "AMD EPYC 7763 64-Core Processor"
+        "cpu": "AMD EPYC 9V74 80-Core Processor"
       },
       "resources": {
         "ram": {
-          "peak": 1.91,
-          "avg": 1.13
+          "peak": 1.88,
+          "avg": 1.1
         },
         "total_ram_gb": 15.6,
         "samples": 20
@@ -84,16 +84,16 @@
     {
       "name": "pano_crop",
       "status": "pass",
-      "duration_seconds": 10.61,
+      "duration_seconds": 10.79,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
-        "cpu": "AMD EPYC 7763 64-Core Processor"
+        "cpu": "AMD EPYC 9V74 80-Core Processor"
       },
       "resources": {
         "ram": {
-          "peak": 2.04,
-          "avg": 1.48
+          "peak": 2.03,
+          "avg": 1.45
         },
         "total_ram_gb": 15.6,
         "samples": 11
@@ -102,16 +102,16 @@
     {
       "name": "pano_info",
       "status": "pass",
-      "duration_seconds": 8.85,
+      "duration_seconds": 8.95,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
-        "cpu": "AMD EPYC 7763 64-Core Processor"
+        "cpu": "AMD EPYC 9V74 80-Core Processor"
       },
       "resources": {
         "ram": {
-          "peak": 2.48,
-          "avg": 2.18
+          "peak": 2.43,
+          "avg": 2.1
         },
         "total_ram_gb": 15.6,
         "samples": 9
@@ -120,55 +120,55 @@
     {
       "name": "panorama_shift",
       "status": "pass",
-      "duration_seconds": 11.75,
+      "duration_seconds": 12.35,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
-        "cpu": "AMD EPYC 7763 64-Core Processor"
+        "cpu": "AMD EPYC 9V74 80-Core Processor"
       },
       "resources": {
         "ram": {
-          "peak": 4.06,
-          "avg": 3.02
-        },
-        "total_ram_gb": 15.6,
-        "samples": 12
-      }
-    },
-    {
-      "name": "preview_panorama",
-      "status": "pass",
-      "duration_seconds": 13.04,
-      "error": null,
-      "hardware": {
-        "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
-        "cpu": "AMD EPYC 7763 64-Core Processor"
-      },
-      "resources": {
-        "ram": {
-          "peak": 4.04,
-          "avg": 3.75
+          "peak": 3.84,
+          "avg": 2.97
         },
         "total_ram_gb": 15.6,
         "samples": 13
       }
     },
     {
-      "name": "test_wrap_unwrap",
+      "name": "preview_panorama",
       "status": "pass",
-      "duration_seconds": 10.04,
+      "duration_seconds": 13.41,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
-        "cpu": "AMD EPYC 7763 64-Core Processor"
+        "cpu": "AMD EPYC 9V74 80-Core Processor"
       },
       "resources": {
         "ram": {
-          "peak": 4.28,
-          "avg": 3.94
+          "peak": 4.01,
+          "avg": 3.69
         },
         "total_ram_gb": 15.6,
-        "samples": 10
+        "samples": 14
+      }
+    },
+    {
+      "name": "test_wrap_unwrap",
+      "status": "pass",
+      "duration_seconds": 10.57,
+      "error": null,
+      "hardware": {
+        "os": "Linux-6.17.0-1015-azure-x86_64-with-glibc2.39",
+        "cpu": "AMD EPYC 9V74 80-Core Processor"
+      },
+      "resources": {
+        "ram": {
+          "peak": 4.16,
+          "avg": 3.91
+        },
+        "total_ram_gb": 15.6,
+        "samples": 11
       }
     }
   ]
