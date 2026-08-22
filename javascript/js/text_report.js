@@ -7,17 +7,25 @@ import { app } from "../../../scripts/app.js";
 import { buildTextReportHTML } from "./utils/analysisPanel.js";
 
 const TEXT_REPORT_NODES = [
+    // CADabra
+    "CADUltimateInspection",
     // Analysis
     "GeomPackMeshInfo",
     "GeomPackMeshQuality",
     "GeomPackDegenerateFaces",
     "GeomPackConnectedComponents",
     "GeomPackOpenEdges",
+    "GeomPackComputeCurvature",
+    "GeomPackSegmentByCurvature",
+    "GeomPackComputeFilletField",
+    "GeomPackSegmentPatches",
+    "GeomPackClusterFaces",
     // Repair
     "GeomPackFillHoles",
     "GeomPackMeshFix",
     "GeomPackCheckNormals",
     "GeomPackFixNormals",
+    "GeomPackMeshRepair",
     "GeomPackRemoveDegenerateFaces",
     "GeomPackMergeVertices",
     "GeomPackVisualizeNormals",
@@ -26,12 +34,17 @@ const TEXT_REPORT_NODES = [
     "GeomPackDetectSelfIntersections",
     "GeomPackFixSelfIntersectionsByPerturbation",
     "GeomPackRemeshSelfIntersections",
+    // Smoothing / Decimation (unified dispatcher front nodes — info forwarded
+    // from the hidden backend via the executed event's display_node)
+    "GeomPackSharpenMesh",
+    "GeomPackDecimateMesh",
     // Remeshing
     "GeomPackRemesh",
     "GeomPackRemeshCGAL",
     "GeomPackRemeshBlender",
     "GeomPackRemeshGPU",
     "RefineMesh",
+    "GeomPackEdgeFlip",
     // Reconstruction
     "GeomPackReconstructSurface",
     "GeomPackAlphaWrap",
@@ -79,7 +92,7 @@ const TOGGLE_HEIGHT = 28;
 const DEFAULT_CONTENT_HEIGHT = 60;
 
 app.registerExtension({
-    name: "geompack.text_report",
+    name: "panopack.text_report",
 
     async beforeRegisterNodeDef(nodeType, nodeData, app) {
         if (!TEXT_REPORT_NODES.includes(nodeData.name)) return;

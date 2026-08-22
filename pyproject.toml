@@ -6,7 +6,8 @@ license = {file = "LICENSE"}
 
 [tool.comfy]
 PublisherId = "pznodes"
-DisplayName = "ComfyUI PanoPack"
+DisplayName = "PanoPack"
+web = "javascript"
 Icon = "https://raw.githubusercontent.com/PozzettiAndrea/ComfyUI-PanoPack/main/assets/icon.png"
 
 [project.urls]
